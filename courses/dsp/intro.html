@@ -514,7 +514,7 @@ title="Print to PDF"
 
 <span class="n">mpl_axes_step</span><span class="p">(</span><span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span> 
     <span class="n">expr</span><span class="o">=</span><span class="n">h</span><span class="p">,</span> 
-    <span class="n">xrange</span><span class="o">=</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="o">-</span><span class="mi">60</span><span class="p">,</span> <span class="mi">60</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> 
+    <span class="n">xrange</span><span class="o">=</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="o">-</span><span class="mi">60</span><span class="p">,</span> <span class="mi">60</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> 
     <span class="n">color</span><span class="o">=</span><span class="s1">&#39;b&#39;</span><span class="p">,</span>
 <span class="p">)</span>
 <span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
@@ -529,8 +529,8 @@ title="Print to PDF"
 
 <span class="c1">#</span>
 <span class="n">mpl_axes_stem</span><span class="p">(</span><span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">],</span> 
-    <span class="n">expr</span><span class="o">=</span><span class="n">h</span><span class="p">,</span> 
-    <span class="n">xrange</span><span class="o">=</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="o">-</span><span class="mi">60</span><span class="p">,</span> <span class="mi">60</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> 
+    <span class="n">expr</span><span class="o">=</span><span class="n">h</span><span class="o">.</span><span class="n">xreplace</span><span class="p">({</span><span class="n">n</span> <span class="p">:</span> <span class="nb">round</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">h</span><span class="o">.</span><span class="n">atoms</span><span class="p">(</span><span class="n">sp</span><span class="o">.</span><span class="n">Number</span><span class="p">)}),</span>
+    <span class="n">xrange</span><span class="o">=</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="o">-</span><span class="mi">60</span><span class="p">,</span> <span class="mi">60</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> 
     <span class="n">linefmt</span><span class="o">=</span><span class="s1">&#39;b&#39;</span><span class="p">,</span> 
     <span class="n">markerfmt</span><span class="o">=</span><span class="s1">&#39;bo&#39;</span><span class="p">)</span>
 <span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
