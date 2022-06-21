@@ -570,6 +570,9 @@ title="Print to PDF"
 <div class="cell tag_hide_input docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># HIDE/SHOW</span>
+<span class="kn">import</span> <span class="nn">warnings</span>
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s1">&#39;ignore&#39;</span><span class="p">)</span>
+
 <span class="kn">import</span> <span class="nn">sympy</span> <span class="k">as</span> <span class="nn">sp</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
@@ -707,7 +710,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/intro_9_0.png" src="../../_images/intro_9_0.png" />
+<img alt="../../_images/intro_10_0.png" src="../../_images/intro_10_0.png" />
 </div>
 </div>
 </section>
@@ -765,7 +768,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/intro_12_0.png" src="../../_images/intro_12_0.png" />
+<img alt="../../_images/intro_13_0.png" src="../../_images/intro_13_0.png" />
 </div>
 </div>
 </section>
@@ -810,7 +813,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/intro_14_0.png" src="../../_images/intro_14_0.png" />
+<img alt="../../_images/intro_15_0.png" src="../../_images/intro_15_0.png" />
 </div>
 </div>
 </section>
@@ -861,7 +864,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/intro_16_0.png" src="../../_images/intro_16_0.png" />
+<img alt="../../_images/intro_17_0.png" src="../../_images/intro_17_0.png" />
 </div>
 </div>
 </section>
@@ -894,7 +897,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/intro_18_0.png" src="../../_images/intro_18_0.png" />
+<img alt="../../_images/intro_19_0.png" src="../../_images/intro_19_0.png" />
 </div>
 </div>
 </section>
@@ -927,7 +930,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/intro_21_0.png" src="../../_images/intro_21_0.png" />
+<img alt="../../_images/intro_22_0.png" src="../../_images/intro_22_0.png" />
 </div>
 </div>
 </section>
@@ -957,7 +960,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/intro_23_0.png" src="../../_images/intro_23_0.png" />
+<img alt="../../_images/intro_24_0.png" src="../../_images/intro_24_0.png" />
 </div>
 </div>
 </section>
@@ -992,7 +995,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/intro_25_0.png" src="../../_images/intro_25_0.png" />
+<img alt="../../_images/intro_26_0.png" src="../../_images/intro_26_0.png" />
 </div>
 </div>
 </section>
@@ -1026,7 +1029,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/intro_27_0.png" src="../../_images/intro_27_0.png" />
+<img alt="../../_images/intro_28_0.png" src="../../_images/intro_28_0.png" />
 </div>
 </div>
 </section>
@@ -1064,7 +1067,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/intro_29_0.png" src="../../_images/intro_29_0.png" />
+<img alt="../../_images/intro_30_0.png" src="../../_images/intro_30_0.png" />
 </div>
 </div>
 </section>
@@ -1078,8 +1081,8 @@ title="Print to PDF"
     <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> 
     <span class="c1"># tight_layout=True,</span>
 <span class="p">)</span>
-
-<span class="n">mpl_axes_plot</span><span class="p">(</span><span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">sp</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">sp</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="n">t</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">sp</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="n">t</span><span class="p">),</span> <span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="o">-</span><span class="mi">40</span><span class="p">,</span> <span class="mi">40</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;b&#39;</span><span class="p">)</span>
+<span class="n">sp</span><span class="o">.</span><span class="n">SingularityFunction</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">mpl_axes_plot</span><span class="p">(</span><span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">sp</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">sp</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="n">t</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">sp</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="n">t</span><span class="o">+</span><span class="mf">1e-6</span><span class="p">),</span> <span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="o">-</span><span class="mi">40</span><span class="p">,</span> <span class="mi">40</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;b&#39;</span><span class="p">)</span>
 <span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
 <span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
 <span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$x(t)$&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
@@ -1095,11 +1098,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;lambdifygenerated-40&gt;:2: RuntimeWarning: invalid value encountered in true_divide
-  return sin(pi*t)/(pi*t)
-</pre></div>
-</div>
-<img alt="../../_images/intro_31_1.png" src="../../_images/intro_31_1.png" />
+<img alt="../../_images/intro_32_0.png" src="../../_images/intro_32_0.png" />
 </div>
 </div>
 </section>
