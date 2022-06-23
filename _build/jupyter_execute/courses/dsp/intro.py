@@ -367,7 +367,7 @@ ax[1].set_title(r'$x[n]$', fontsize=16)
 plt.show()
 
 
-# ### Unit Step (Heavy Step Side) Functions
+# ### Unit Step (Heaviside) Functions
 
 # In[11]:
 
@@ -451,7 +451,7 @@ ax[1].set_title(r'$x[n]$', fontsize=16)
 plt.show()
 
 
-# ### Delta Functions
+# ### Unit Impulse (Delta) Functions
 
 # In[14]:
 
