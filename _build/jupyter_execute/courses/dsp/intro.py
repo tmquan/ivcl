@@ -342,7 +342,7 @@ plt.show()
 
 # ## Elementary Signals
 
-# ### Unit Ramp (Rectified Linear Unit) Functions
+# ### Unit Ramp (ReLU) Functions
 
 # In[10]:
 
