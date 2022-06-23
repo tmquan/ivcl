@@ -319,23 +319,33 @@ plt.show()
 
 # HIDE/SHOW
 fig, ax = plt.subplots(
-    1, 2, 
-    figsize=(12, 4), 
+    2, 2, 
+    figsize=(12, 8), 
     # tight_layout=True,
 )
 
-mpl_axes_plot(ax[0], sp.sin((t*sp.pi)/sp.pi/5), (t, -40, 40), color='b')
-mpl_axes_plot(ax[0], sp.cos((t*sp.pi)/sp.pi/5), (t, -40, 40), color='r')
-ax[0].set_xlim(-16, 16, 1)
-# ax[0].set_ylim(-10, 10, 1)
-ax[0].set_title(r'$x(t)$', fontsize=16)
+mpl_axes_plot(ax[0][0], sp.sin(t*(sp.pi/8)), (t, -40, 40), color='b')
+ax[0][0].set_xlim(-20, 20, 1)
+ax[0][0].set_ylim(-2, 2, 1)
+ax[0][0].set_title(r'$x(t)$', fontsize=16)
 
 
-mpl_axes_stem(ax[1], sp.sin((t*sp.pi)/sp.pi/5), (t, -40, 40, 1), linefmt='b', markerfmt='bo')
-mpl_axes_stem(ax[1], sp.cos((t*sp.pi)/sp.pi/5), (t, -40, 40, 1), linefmt='r', markerfmt='ro')
-ax[1].set_xlim(-16, 16, 1)
-# ax[1].set_ylim(-10, 10, 1)
-ax[1].set_title(r'$x[n]$', fontsize=16)
+mpl_axes_stem(ax[0][1], sp.sin(t*(sp.pi/8)), (t, -40, 40, 1), linefmt='b', markerfmt='bo')
+ax[0][1].set_xlim(-20, 20, 1)
+ax[0][1].set_ylim(-2, 2, 1)
+ax[0][1].set_title(r'$x[n]$', fontsize=16)
+
+
+mpl_axes_plot(ax[1][0], sp.cos(t*(sp.pi/8)), (t, -40, 40), color='b')
+ax[1][0].set_xlim(-20, 20, 1)
+ax[1][0].set_ylim(-2, 2, 1)
+# ax[1][0].set_title(r'$x(t) = cos(t)$', fontsize=16)
+
+
+mpl_axes_stem(ax[1][1], sp.cos(t*(sp.pi/8)), (t, -40, 40, 1), linefmt='b', markerfmt='bo')
+ax[1][1].set_xlim(-20, 20, 1)
+ax[1][1].set_ylim(-2, 2, 1)
+# ax[1][1].set_title(r'$x[n] = cos[n]$', fontsize=16)
 
 plt.show()
 
