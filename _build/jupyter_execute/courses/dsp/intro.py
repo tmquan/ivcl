@@ -342,7 +342,7 @@ plt.show()
 
 # ## Elementary Signals
 
-# ### Ramp Functions
+# ### Unit Ramp (Rectified Linear Unit) Functions
 
 # In[10]:
 
@@ -392,7 +392,7 @@ ax[1].set_title(r'$x[n]$', fontsize=16)
 plt.show()
 
 
-# ### Rectangle Functions
+# ### Unit Rectangle Functions
 
 # In[12]:
 
@@ -422,7 +422,7 @@ ax[1].set_title(r'$x[n]$', fontsize=16)
 plt.show()
 
 
-# ### Triangle Functions
+# ### Unit Triangle Functions
 
 # In[13]:
 
@@ -484,7 +484,7 @@ ax[1].set_title(r'$x[n]$', fontsize=16)
 plt.show()
 
 
-# ### Sinc Functions
+# ### Unit Sinc Functions
 
 # In[15]:
 
