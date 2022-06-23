@@ -2,8 +2,45 @@
 # Learn more at https://jupyterbook.org/customize/toc.html
 
 format: jb-book
-root: intro
-chapters:
-- file: SignalProcessing
-- file: ImageProcessing
-- file: VolumeProcessing
+root: home
+
+parts:
+  # - caption: News
+  #   chapters:
+  #   - file: updates
+
+  # - caption: About
+  #   chapters:
+  #   - file: about
+
+  - caption: Digital Signal Processing
+    chapters:
+    - file: courses/dsp/intro.ipynb
+
+# parts:
+# - caption: Publications
+#   chapters:
+#     - file: publications
+
+
+# parts:
+#   - caption: Digital Signal Processing
+#     chapters:
+#     - file: courses/dsp/intro
+
+  # - caption: Digital Image Processing
+  #   chapters:
+  #   - file: courses/dip/intro
+  
+  # - caption: Medical Image Processing
+  #   chapters:
+  #   - file: courses/mip/intro
+  
+  # - caption: Graphics Processing Unit
+  #   chapters:
+  #   - file: courses/gpu/intro
+  
+  # - caption: Visualization
+  #   chapters:
+  #   - file: courses/vis/intro
+
