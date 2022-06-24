@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>TBD &#8212; Intelligent Visual Computing</title>
+    <title>Systems and Transformations &#8212; Intelligent Visual Computing</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -54,6 +54,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="author" title="About these documents" href="../../about.html" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
+    <link rel="prev" title="Signals and Sequences" href="signals.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -118,14 +119,14 @@ const thebe_selector_output = ".output, .cell_output"
   Digital Signal Processing
  </span>
 </p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="../dsp/signals.html">
+  <a class="reference internal" href="signals.html">
    Signals and Sequences
   </a>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../dsp/systems.html">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
    Systems and Transformations
   </a>
  </li>
@@ -180,6 +181,35 @@ title="Toggle navigation"
         
     </div>
     <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/tmquan/ivcl/master?urlpath=tree/docs/courses/dsp/systems.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
 <button onclick="toggleFullScreen()"
   class="headerbtn"
   data-toggle="tooltip"
@@ -219,7 +249,7 @@ title="Source repository"
       </li>
       
       <li>
-        <a href="https://github.com/tmquan/ivcl/issues/new?title=Issue%20on%20page%20%2Fcourses/vis/intro.html&body=Your%20issue%20content%20here."
+        <a href="https://github.com/tmquan/ivcl/issues/new?title=Issue%20on%20page%20%2Fcourses/dsp/systems.html&body=Your%20issue%20content%20here."
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -247,7 +277,7 @@ title="Open an issue"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="../../_sources/courses/vis/intro.md"
+        <a href="../../_sources/courses/dsp/systems.ipynb"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -258,7 +288,7 @@ title="Download source file"
 <span class="headerbtn__icon-container">
   <i class="fas fa-file"></i>
   </span>
-<span class="headerbtn__text-container">.md</span>
+<span class="headerbtn__text-container">.ipynb</span>
 </a>
 
       </li>
@@ -284,23 +314,70 @@ title="Print to PDF"
     </ul>
   </div>
 </div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
 
     </div>
 </div>
 
 <!-- Table of contents -->
 <div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#what-are-systems">
+   What are Systems?
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#types-of-systems">
+   Types of Systems
+  </a>
+ </li>
+</ul>
+
+    </nav>
 </div>
     </div>
     <div class="article row">
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>TBD</h1>
+                <h1>Systems and Transformations</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
                         
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#what-are-systems">
+   What are Systems?
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#types-of-systems">
+   Types of Systems
+  </a>
+ </li>
+</ul>
+
+                        </nav>
                     </div>
                 </div>
             </div>
@@ -308,8 +385,14 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="tbd">
-<h1>TBD<a class="headerlink" href="#tbd" title="Permalink to this headline">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="systems-and-transformations">
+<h1>Systems and Transformations<a class="headerlink" href="#systems-and-transformations" title="Permalink to this headline">#</a></h1>
+<section id="what-are-systems">
+<h2>What are Systems?<a class="headerlink" href="#what-are-systems" title="Permalink to this headline">#</a></h2>
+</section>
+<section id="types-of-systems">
+<h2>Types of Systems<a class="headerlink" href="#types-of-systems" title="Permalink to this headline">#</a></h2>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -325,7 +408,7 @@ title="Print to PDF"
         },
         kernelOptions: {
             kernelName: "python3",
-            path: "./courses/vis"
+            path: "./courses/dsp"
         },
         predefinedOutput: true
     }
@@ -339,6 +422,13 @@ title="Print to PDF"
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="signals.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Signals and Sequences</p>
+        </div>
+    </a>
 </div>
             </footer>
         </div>
