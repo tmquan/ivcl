@@ -51,6 +51,8 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <link rel="author" title="About these documents" href="../../about.html" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
@@ -431,6 +433,23 @@ title="Print to PDF"
    </li>
   </ul>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#combination-time-ops">
+   Combination Time Ops
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#method-1-shift-then-scale-recommended">
+     Method 1: Shift, then Scale (Recommended)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#method-2-scale-then-shift">
+     Method 2: Scale, then Shift
+    </a>
+   </li>
+  </ul>
+ </li>
 </ul>
 
     </nav>
@@ -488,6 +507,23 @@ title="Print to PDF"
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#time-reversal">
      Time Reversal
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#combination-time-ops">
+   Combination Time Ops
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#method-1-shift-then-scale-recommended">
+     Method 1: Shift, then Scale (Recommended)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#method-2-scale-then-shift">
+     Method 2: Scale, then Shift
     </a>
    </li>
   </ul>
@@ -776,6 +812,23 @@ title="Print to PDF"
 <img alt="../../_images/systems_17_0.png" src="../../_images/systems_17_0.png" />
 </div>
 </div>
+</section>
+</section>
+<section id="combination-time-ops">
+<h2>Combination Time Ops<a class="headerlink" href="#combination-time-ops" title="Permalink to this headline">#</a></h2>
+<section id="method-1-shift-then-scale-recommended">
+<h3>Method 1: Shift, then Scale (Recommended)<a class="headerlink" href="#method-1-shift-then-scale-recommended" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p>Define <span class="math notranslate nohighlight">\(s(t) = x\left(t+b\right)\)</span></p></li>
+<li><p>Define <span class="math notranslate nohighlight">\(y(t) = s\left(at\right) = x\left(at+b\right)\)</span></p></li>
+</ul>
+</section>
+<section id="method-2-scale-then-shift">
+<h3>Method 2: Scale, then Shift<a class="headerlink" href="#method-2-scale-then-shift" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p>Define <span class="math notranslate nohighlight">\(s(t) = x\left(at\right)\)</span></p></li>
+<li><p>Define <span class="math notranslate nohighlight">\(y(t) = s\left(t+\dfrac{b}{a}\right) = x\left(at+b\right)\)</span></p></li>
+</ul>
 </section>
 </section>
 </section>
