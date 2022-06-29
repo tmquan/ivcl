@@ -15,7 +15,24 @@ parts:
 
   - caption: Digital Signal Processing
     chapters:
-    - file: courses/dsp/intro.ipynb
+    - file: courses/dsp/signals.ipynb    
+    - file: courses/dsp/systems.ipynb
+
+  - caption: Medical Image Processing
+    chapters:
+    - file: courses/mip/intro.md     
+    - file: courses/mip/sigsys.md
+    - file: courses/mip/xr.md
+    - file: courses/mip/ct.md
+    - file: courses/mip/mr.md
+    - file: courses/mip/pt.md
+    - file: courses/mip/sp.md
+    - file: courses/mip/us.md
+    - file: courses/mip/es.md
+    - file: courses/mip/histo.md
+    - file: courses/mip/em.md
+    # - file: courses/mip/fg.md
+    # - file: courses/mip/oct.md
 
 # parts:
 # - caption: Publications

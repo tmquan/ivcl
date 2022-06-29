@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# # Signals and Systems
+# # Signals and Sequences
 
 # ## Prerequisites
 
@@ -64,7 +64,7 @@ get_ipython().run_line_magic('matplotlib', 'inline')
 
 
 # HIDE/SHOW            
-def mpl_axes_plot(axes, expr, xrange, **kwargs):
+def mpl_axes_plot(axes, expr, xrange, zero_is_none=False, **kwargs):
     x, start, stop = xrange
     func = sp.lambdify(x, expr)
     x = np.linspace(start, stop, 10000)
@@ -75,11 +75,13 @@ def mpl_axes_plot(axes, expr, xrange, **kwargs):
     axes.yaxis.set_major_locator(MaxNLocator(integer=True))
     axes.grid(False)
     axes.margins(0.02, 0.02)
-    axes.plot(x, np.zeros_like(x), color='k', alpha=0.5)
+    if zero_is_none:
+        y[y==0] = np.nan
     axes.plot(x, y, **kwargs)
+    axes.plot(x, np.zeros_like(x), color='k', alpha=0.5)
     return axes
     
-def mpl_axes_stem(axes, expr, xrange, **kwargs):
+def mpl_axes_stem(axes, expr, xrange, zero_is_none=False, **kwargs):
     x, start, stop, step = xrange
     func = sp.lambdify(x, expr, ['numpy', 'sympy'])
     x = np.arange(start, stop, step)
@@ -91,8 +93,11 @@ def mpl_axes_stem(axes, expr, xrange, **kwargs):
     axes.grid(False)
     axes.margins(0.02, 0.02)
     axes.plot(x, np.zeros_like(x), color='k', alpha=0.5)
-    return axes.stem(x, y, basefmt=" ", use_line_collection=True, **kwargs)
-
+    if zero_is_none:
+        y[y==0] = np.nan
+    axes.stem(x, y, basefmt=" ", use_line_collection=True, **kwargs)
+    return axes
+    
 def mpl_axes_step(axes, expr, xrange, **kwargs):
     x, start, stop, step = xrange
     func = sp.lambdify(x, expr)
@@ -144,7 +149,7 @@ ax[0][0].set_title(r'$x(t)$', fontsize=16)
 
 mpl_axes_stem(ax[0][1], 
     expr=h, 
-    xrange=(t, -60, 60, 1), 
+    xrange=(t, -60, 60, 0.5), 
     linefmt='b', 
     markerfmt='bo')
 ax[0][1].set_xlim(-1, 15, 1)
@@ -153,21 +158,21 @@ ax[0][1].set_title(r'$x[n]$', fontsize=16)
 
 mpl_axes_step(ax[1][0], 
     expr=h, 
-    xrange=(t, -60, 60, 1), 
+    xrange=(t, -60, 60, 0.5), 
     color='b',
 )
 ax[1][0].set_xlim(-1, 15, 1)
 ax[1][0].set_ylim(-10, 15, 1)
-# ax[1][0].set_title(r'$x[n]$', fontsize=16)
+ax[1][0].set_title(r'$x(t)$', fontsize=16)
 
 mpl_axes_stem(ax[1][1], 
     expr=h.xreplace({n : round(n, 1) for n in h.atoms(sp.Number)}),
-    xrange=(t, -60, 60, 1), 
+    xrange=(t, -60, 60, 0.5), 
     linefmt='b', 
     markerfmt='bo')
 ax[1][1].set_xlim(-1, 15, 1)
 ax[1][1].set_ylim(-10, 15, 1)
-# ax[1][1].set_title(r'$x[n]$', fontsize=16)
+ax[1][1].set_title(r'$x[n]$', fontsize=16)
 
 
 plt.show()
@@ -197,38 +202,89 @@ f = sp.Piecewise(
 h = f.subs(t, t/5)
 mpl_axes_plot(ax[0][0], (h+h.subs(t, -t)), (t, -40, 40), color='b')
 # mpl_axes_plot(ax[0][0], (h+h.subs(t, -t)), (t, -40, 40), color='r')
-ax[0][0].set_xlim(-15, 15, 1)
-ax[0][0].set_ylim(-1.2, 1.2, 1)
+ax[0][0].set_xlim(-20, 20, 1)
+ax[0][0].set_ylim(-2., 2., 1)
 ax[0][0].set_title(r'$x(t)$', fontsize=16)
 
 
 mpl_axes_stem(ax[0][1], (h+h.subs(t, -t)), (t, -40, 40, 1), linefmt='b', markerfmt='bo')
 # mpl_axes_stem(ax[0][1], (h+h.subs(t, -t)), (t, -40, 40, 1), linefmt='r', markerfmt='ro')
 ax[0][1].stem(0, 1, basefmt=" ", linefmt='b', markerfmt='bo')
-ax[0][1].set_xlim(-15, 15, 1)
-ax[0][1].set_ylim(-1.2, 1.2, 1)
+ax[0][1].set_xlim(-20, 20, 1)
+ax[0][1].set_ylim(-2., 2., 1)
 ax[0][1].set_title(r'$x[n]$', fontsize=16)
 
 mpl_axes_plot(ax[1][0], (h-h.subs(t, -t)), (t, -40, 40), color='b')
 # mpl_axes_plot(ax[1][0], (h-h.subs(t, -t)), (t, -40, 40), color='r')
-ax[1][0].set_xlim(-15, 15, 1)
-ax[1][0].set_ylim(-1.2, 1.2, 1)
-# ax[1][0].set_title(r'$x(t)$', fontsize=16)
+ax[1][0].set_xlim(-20, 20, 1)
+ax[1][0].set_ylim(-2., 2., 1)
+ax[1][0].set_title(r'$x(t)$', fontsize=16)
 
 
 mpl_axes_stem(ax[1][1], (h-h.subs(t, -t)), (t, -40, 40, 1), linefmt='b', markerfmt='bo')
 # mpl_axes_stem(ax[1][1], (h-h.subs(t, -t)), (t, -40, 40, 1), linefmt='r', markerfmt='ro')
 ax[1][1].scatter(0, 0, color='b')
-ax[1][1].set_xlim(-15, 15, 1)
-ax[1][1].set_ylim(-1.2, 1.2, 1)
-# ax[1][1].set_title(r'$x[n]$', fontsize=16)
+ax[1][1].set_xlim(-20, 20, 1)
+ax[1][1].set_ylim(-2., 2., 1)
+ax[1][1].set_title(r'$x[n]$', fontsize=16)
+
+plt.show()
+
+
+# ### Nonperiodic and Periodic Signals
+
+# In[7]:
+
+
+# HIDE/SHOW
+fig, ax = plt.subplots(
+    2, 2, 
+    figsize=(12, 8), 
+    # tight_layout=True,
+)
+
+
+n = sp.Piecewise(
+    (0, t<0),
+    (0, t>5),
+    (1-t/5, (0<=t)&(t<=5)),  
+).subs(t, t+2)
+
+p = sp.Piecewise(
+    (0, t<0),
+    (0, t>=5),
+    (1-t/5, (0<=t)&(t<=5)),  
+).subs(t, t+3)
+
+mpl_axes_plot(ax[0][0], n, (t, -40, 40), color='b')
+ax[0][0].set_xlim(-20, 20, 1)
+ax[0][0].set_ylim(-2., 2., 1)
+ax[0][0].set_title(r'$x(t)$', fontsize=16)
+
+
+mpl_axes_stem(ax[0][1], n, (t, -40, 40, 1), linefmt='b', markerfmt='bo')
+ax[0][1].set_xlim(-20, 20, 1)
+ax[0][1].set_ylim(-2., 2., 1)
+ax[0][1].set_title(r'$x[n]$', fontsize=16)
+
+for k in range(-5, 5):
+    mpl_axes_plot(ax[1][0], p.subs(t, -t).subs(t, t+k*5), (t, -40, 40), zero_is_none=False, color='b')
+ax[1][0].set_xlim(-20, 20, 1)
+ax[1][0].set_ylim(-2., 2., 1)
+ax[1][0].set_title(r'$x(t)$', fontsize=16)
+
+for k in range(-5, 5):
+    mpl_axes_stem(ax[1][1], p.subs(t, -t).subs(t, t+k*5), (t, -40, 40, 1), zero_is_none=True, linefmt='b', markerfmt='bo')
+ax[1][1].set_xlim(-20, 20, 1)
+ax[1][1].set_ylim(-2., 2., 1)
+ax[1][1].set_title(r'$x[n]$', fontsize=16)
 
 plt.show()
 
 
 # ### Sinusoidal Signals
 
-# In[7]:
+# In[8]:
 
 
 # HIDE/SHOW
@@ -253,20 +309,20 @@ ax[0][1].set_title(r'$x[n]$', fontsize=16)
 mpl_axes_plot(ax[1][0], sp.cos(t*(sp.pi/8)), (t, -40, 40), color='b')
 ax[1][0].set_xlim(-20, 20, 1)
 ax[1][0].set_ylim(-2, 2, 1)
-# ax[1][0].set_title(r'$x(t) = cos(t)$', fontsize=16)
+ax[1][0].set_title(r'$x(t)$', fontsize=16)
 
 
 mpl_axes_stem(ax[1][1], sp.cos(t*(sp.pi/8)), (t, -40, 40, 1), linefmt='b', markerfmt='bo')
 ax[1][1].set_xlim(-20, 20, 1)
 ax[1][1].set_ylim(-2, 2, 1)
-# ax[1][1].set_title(r'$x[n] = cos[n]$', fontsize=16)
+ax[1][1].set_title(r'$x[n]$', fontsize=16)
 
 plt.show()
 
 
-# ### Real-valued Exponential Signals
+# ### Real Exponential Signals
 
-# In[8]:
+# In[9]:
 
 
 # HIDE/SHOW
@@ -283,7 +339,7 @@ ax[0][0].set_ylim(0, 8, 1)
 ax[0][0].set_title(r'$x(t) = Ce^{at}  \qquad  a>0$', fontsize=16)
 
 
-mpl_axes_stem(ax[0][1], sp.exp((t)/5), (t, -40, 40, 1), linefmt='b', markerfmt='bo')
+mpl_axes_stem(ax[0][1], sp.exp((t)/5), (t, -40, 40, 0.5), linefmt='b', markerfmt='bo')
 ax[0][1].set_xlim(-10, 10, 1)
 ax[0][1].set_ylim(0, 8, 1)
 ax[0][1].set_title(r'$x[n] = Ce^{an}  \qquad  a>0$', fontsize=16)
@@ -296,7 +352,7 @@ ax[1][0].set_ylim(0, 8, 1)
 ax[1][0].set_title(r'$x(t) = Ce^{at}  \qquad  a<0$', fontsize=16)
 
 
-mpl_axes_stem(ax[1][1], sp.exp((-t)/5), (t, -40, 40, 1), linefmt='b', markerfmt='bo')
+mpl_axes_stem(ax[1][1], sp.exp((-t)/5), (t, -40, 40, 0.5), linefmt='b', markerfmt='bo')
 ax[1][1].set_xlim(-10, 10, 1)
 ax[1][1].set_ylim(0, 8, 1)
 ax[1][1].set_title(r'$x[n] = Ce^{an}  \qquad  a<0$', fontsize=16)
@@ -306,7 +362,7 @@ plt.show()
 
 # ### Complex Exponential Signals
 
-# In[9]:
+# In[10]:
 
 
 # HIDE/SHOW
@@ -324,7 +380,7 @@ ax[0][0].set_ylim(-3, 3, 1)
 ax[0][0].set_title(r'$x(t) = Ce^{rt}\cos(\omega_0t+\phi) \qquad r>0$', fontsize=16)
 
 
-mpl_axes_stem(ax[0][1], sp.exp((t)/10)*sp.cos(2*np.pi*t/10), (t, -40, 40, 1), linefmt='b', markerfmt='bo')
+mpl_axes_stem(ax[0][1], sp.exp((t)/10)*sp.cos(2*np.pi*t/10), (t, -40, 40, 0.5), linefmt='b', markerfmt='bo')
 mpl_axes_plot(ax[0][1], sp.exp((t)/10), (t, -40, 40), color='b', alpha=0.5, linestyle='--')
 mpl_axes_plot(ax[0][1], -sp.exp((t)/10), (t, -40, 40), color='b', alpha=0.5, linestyle='--')
 ax[0][1].set_xlim(-10, 10, 1)
@@ -340,7 +396,7 @@ ax[1][0].set_ylim(-3, 3, 1)
 ax[1][0].set_title(r'$x(t) = Ce^{rt}\cos(\omega_0t+\phi) \qquad r<0$', fontsize=16)
 
 
-mpl_axes_stem(ax[1][1], sp.exp((-t)/10)*sp.cos(2*np.pi*t/10), (t, -40, 40, 1), linefmt='b', markerfmt='bo')
+mpl_axes_stem(ax[1][1], sp.exp((-t)/10)*sp.cos(2*np.pi*t/10), (t, -40, 40, 0.5), linefmt='b', markerfmt='bo')
 mpl_axes_plot(ax[1][1], sp.exp((-t)/10), (t, -40, 40), color='b', alpha=0.5, linestyle='--')
 mpl_axes_plot(ax[1][1], -sp.exp((-t)/10), (t, -40, 40), color='b', alpha=0.5, linestyle='--')
 ax[1][1].set_xlim(-10, 10, 1)
@@ -354,7 +410,7 @@ plt.show()
 
 # ### Unit Ramp (ReLU) Functions
 
-# In[10]:
+# In[11]:
 
 
 # HIDE/SHOW
@@ -379,7 +435,7 @@ plt.show()
 
 # ### Unit Step (Heaviside) Functions
 
-# In[11]:
+# In[12]:
 
 
 # HIDE/SHOW
@@ -404,7 +460,7 @@ plt.show()
 
 # ### Unit Rectangle Functions
 
-# In[12]:
+# In[13]:
 
 
 # HIDE/SHOW
@@ -434,7 +490,7 @@ plt.show()
 
 # ### Unit Triangle Functions
 
-# In[13]:
+# In[14]:
 
 
 # HIDE/SHOW
@@ -463,7 +519,7 @@ plt.show()
 
 # ### Unit Impulse (Delta) Functions
 
-# In[14]:
+# In[15]:
 
 
 # HIDE/SHOW
@@ -496,7 +552,7 @@ plt.show()
 
 # ### Unit Sinc Functions
 
-# In[15]:
+# In[16]:
 
 
 # HIDE/SHOW
