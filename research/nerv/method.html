@@ -101,7 +101,7 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
-  (DSP) Digital Signal Processing
+  DSP
  </span>
 </p>
 <ul class="nav bd-sidenav">
@@ -118,7 +118,7 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
-  (MIP) Medical Image Processing
+  MIP
  </span>
 </p>
 <ul class="nav bd-sidenav">
@@ -160,7 +160,7 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
-  (NeRV) Neural Reconstructed Volumes
+  NeRV
  </span>
 </p>
 <ul class="current nav bd-sidenav">
@@ -279,13 +279,13 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#cameranet">
-     CameraNet
+    <a class="reference internal nav-link" href="#cameramodel-cameranet">
+     CameraModel = CameraNet
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#screenmodel">
-     ScreenModel
+    <a class="reference internal nav-link" href="#screenmodel-opaquenet-renderer">
+     ScreenModel = OpaqueNet + Renderer
     </a>
     <ul class="nav section-nav flex-column">
      <li class="toc-h4 nav-item toc-entry">
@@ -301,8 +301,8 @@ const thebe_selector_output = ".output, .cell_output"
     </ul>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#volumemodel">
-     VolumeModel
+    <a class="reference internal nav-link" href="#volumemodel-reformnet-refinenet">
+     VolumeModel = ReformNet + RefineNet
     </a>
     <ul class="nav section-nav flex-column">
      <li class="toc-h4 nav-item toc-entry">
@@ -320,8 +320,8 @@ const thebe_selector_output = ".output, .cell_output"
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#losses">
-   Losses
+  <a class="reference internal nav-link" href="#losses-lossxr-lossct">
+   Losses = LossXR + LossCT
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
@@ -362,13 +362,13 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#cameranet">
-     CameraNet
+    <a class="reference internal nav-link" href="#cameramodel-cameranet">
+     CameraModel = CameraNet
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#screenmodel">
-     ScreenModel
+    <a class="reference internal nav-link" href="#screenmodel-opaquenet-renderer">
+     ScreenModel = OpaqueNet + Renderer
     </a>
     <ul class="nav section-nav flex-column">
      <li class="toc-h4 nav-item toc-entry">
@@ -384,8 +384,8 @@ const thebe_selector_output = ".output, .cell_output"
     </ul>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#volumemodel">
-     VolumeModel
+    <a class="reference internal nav-link" href="#volumemodel-reformnet-refinenet">
+     VolumeModel = ReformNet + RefineNet
     </a>
     <ul class="nav section-nav flex-column">
      <li class="toc-h4 nav-item toc-entry">
@@ -403,8 +403,8 @@ const thebe_selector_output = ".output, .cell_output"
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#losses">
-   Losses
+  <a class="reference internal nav-link" href="#losses-lossxr-lossct">
+   Losses = LossXR + LossCT
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
@@ -433,12 +433,12 @@ const thebe_selector_output = ".output, .cell_output"
 <div class="section" id="architecture">
 <h2>Architecture<a class="headerlink" href="#architecture" title="Permalink to this headline">¶</a></h2>
 <p><img alt="&quot;Architecture&quot;" src="../../_images/Architecture.png" /></p>
-<div class="section" id="cameranet">
-<h3>CameraNet<a class="headerlink" href="#cameranet" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="cameramodel-cameranet">
+<h3>CameraModel = CameraNet<a class="headerlink" href="#cameramodel-cameranet" title="Permalink to this headline">¶</a></h3>
 <p><img alt="&quot;CameraNet&quot;" src="../../_images/CameraNet.png" /></p>
 </div>
-<div class="section" id="screenmodel">
-<h3>ScreenModel<a class="headerlink" href="#screenmodel" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="screenmodel-opaquenet-renderer">
+<h3>ScreenModel = OpaqueNet + Renderer<a class="headerlink" href="#screenmodel-opaquenet-renderer" title="Permalink to this headline">¶</a></h3>
 <p><img alt="&quot;ScreenModel&quot;" src="../../_images/ScreenModel.png" /></p>
 <div class="section" id="opaquenet">
 <h4>OpaqueNet<a class="headerlink" href="#opaquenet" title="Permalink to this headline">¶</a></h4>
@@ -449,8 +449,8 @@ const thebe_selector_output = ".output, .cell_output"
 <p><img alt="&quot;Renderer&quot;" src="../../_images/Renderer.png" /></p>
 </div>
 </div>
-<div class="section" id="volumemodel">
-<h3>VolumeModel<a class="headerlink" href="#volumemodel" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="volumemodel-reformnet-refinenet">
+<h3>VolumeModel = ReformNet + RefineNet<a class="headerlink" href="#volumemodel-reformnet-refinenet" title="Permalink to this headline">¶</a></h3>
 <p><img alt="&quot;VolumeModel&quot;" src="../../_images/VolumeModel.png" /></p>
 <div class="section" id="reformnet">
 <h4>ReformNet<a class="headerlink" href="#reformnet" title="Permalink to this headline">¶</a></h4>
@@ -462,8 +462,8 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 </div>
-<div class="section" id="losses">
-<h2>Losses<a class="headerlink" href="#losses" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="losses-lossxr-lossct">
+<h2>Losses = LossXR + LossCT<a class="headerlink" href="#losses-lossxr-lossct" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="xr-pathway">
 <h3>XR pathway<a class="headerlink" href="#xr-pathway" title="Permalink to this headline">¶</a></h3>
 <p><img alt="&quot;XRPath&quot;" src="../../_images/XRPath.png" /></p>

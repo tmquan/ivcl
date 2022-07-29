@@ -1,0 +1,249 @@
+Traceback (most recent call last):
+  File "/data/qtran/anaconda3/lib/python3.9/site-packages/jupyter_cache/executors/utils.py", line 51, in single_nb_execution
+    executenb(
+  File "/data/qtran/anaconda3/lib/python3.9/site-packages/nbclient/client.py", line 1204, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+  File "/data/qtran/anaconda3/lib/python3.9/site-packages/nbclient/util.py", line 84, in wrapped
+    return just_run(coro(*args, **kwargs))
+  File "/data/qtran/anaconda3/lib/python3.9/site-packages/nbclient/util.py", line 62, in just_run
+    return loop.run_until_complete(coro)
+  File "/data/qtran/anaconda3/lib/python3.9/asyncio/base_events.py", line 647, in run_until_complete
+    return future.result()
+  File "/data/qtran/anaconda3/lib/python3.9/site-packages/nbclient/client.py", line 663, in async_execute
+    await self.async_execute_cell(
+  File "/data/qtran/anaconda3/lib/python3.9/site-packages/nbclient/client.py", line 965, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "/data/qtran/anaconda3/lib/python3.9/site-packages/nbclient/client.py", line 862, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+# HIDE/SHOW
+for f in funcs:
+    fig, ax = plt.subplots(
+        3, 2, 
+        figsize=(12, 12), 
+        # tight_layout=True,
+    )
+
+    a = 2
+
+    # mpl_axes_plot(ax[0][0], f, (t, -20, 20), color='b')
+    if f is not delta:
+        mpl_axes_plot(ax[0][0], f, (t, -20, 20), color='b')
+    else:
+        mpl_axes_stem(ax[0][0], f, (t, -20, 20, 0.25), linefmt='m', markerfmt=' ')
+        ax[0][0].scatter(0, 1, color='m', marker='^', s=100)
+    ax[0][0].set_xlim(-5, 5, 0.2)
+    ax[0][0].set_ylim(-2, 2, 0.2)
+    ax[0][0].set_title(r'$x(t)$', fontsize=16)
+
+    mpl_axes_stem(ax[0][1], f, (t, -20, 20, 0.25), linefmt='b', markerfmt='bo')
+    ax[0][1].set_xlim(-5, 5, 0.2)
+    ax[0][1].set_ylim(-2, 2, 0.2)
+    ax[0][1].set_title(r'$x[n]$', fontsize=16)
+
+    # mpl_axes_plot(ax[1][0], f.subs(t, a*t), (t, -5, 5), color='b')
+    if f is not delta:
+        mpl_axes_plot(ax[1][0], f.subs(t, a*t), (t, -5, 5), color='b')
+    else:
+        mpl_axes_stem(ax[1][0], f.subs(t, a*t), (t, -20, 20, 0.25), linefmt='m', markerfmt=' ')
+        ax[1][0].scatter(0, 1, color='m', marker='^', s=100)
+    ax[1][0].set_xlim(-5, 5, 0.2)
+    ax[1][0].set_ylim(-2, 2, 0.2)
+    ax[1][0].set_title(r'$x(at) \quad a>1$', fontsize=16)
+
+    mpl_axes_stem(ax[1][1], f.subs(t, a*t), (t, -20, 20, 0.25), linefmt='b', markerfmt='bo')
+    ax[1][1].set_xlim(-5, 5, 0.2)
+    ax[1][1].set_ylim(-2, 2, 0.2)
+    ax[1][1].set_title(r'$x[an] \quad a>1$', fontsize=16)
+
+    a = 2
+    # mpl_axes_plot(ax[2][0], f.subs(t, t/a), (t, -5, 5), color='b')    
+    if f is not delta:
+        mpl_axes_plot(ax[2][0], f.subs(t, t/a), (t, -5, 5), color='b')
+    else:
+        mpl_axes_stem(ax[2][0], f.subs(t, t/a), (t, -20, 20, 0.25), linefmt='m', markerfmt=' ')
+        ax[2][0].scatter(0, 1, color='m', marker='^', s=100)
+    ax[2][0].set_xlim(-5, 5, 0.2)
+    ax[2][0].set_ylim(-2, 2, 0.2)
+    ax[2][0].set_title(r'$x(t/a) \quad a>1$', fontsize=16)
+
+    # mpl_axes_stem(ax[2][1], f.subs(t, t/a), (t, -20, 20, 0.25), linefmt='b', markerfmt='bo')
+    if f is not delta:
+        mpl_axes_stem(ax[2][1], f.subs(t, a*t), (t, -20, 20, 0.25), linefmt='b', markerfmt='bo')  
+    else:
+        mpl_axes_stem(ax[2][1], f.subs(t, a*t), (t, -20, 20, 0.25), linefmt='m', markerfmt='mo')  
+    ax[2][1].set_xlim(-5, 5, 0.2)
+    ax[2][1].set_ylim(-2, 2, 0.2)
+    ax[2][1].set_title(r'$x[n/a] \quad a>1$', fontsize=16)
+
+    plt.show()
+------------------
+
+[0;31m---------------------------------------------------------------------------[0m
+[0;31mKeyboardInterrupt[0m                         Traceback (most recent call last)
+Input [0;32mIn [14][0m, in [0;36m<cell line: 2>[0;34m()[0m
+[1;32m     52[0m [38;5;66;03m# mpl_axes_stem(ax[2][1], f.subs(t, t/a), (t, -20, 20, 0.25), linefmt='b', markerfmt='bo')[39;00m
+[1;32m     53[0m [38;5;28;01mif[39;00m f [38;5;129;01mis[39;00m [38;5;129;01mnot[39;00m delta:
+[0;32m---> 54[0m     [43mmpl_axes_stem[49m[43m([49m[43max[49m[43m[[49m[38;5;241;43m2[39;49m[43m][49m[43m[[49m[38;5;241;43m1[39;49m[43m][49m[43m,[49m[43m [49m[43mf[49m[38;5;241;43m.[39;49m[43msubs[49m[43m([49m[43mt[49m[43m,[49m[43m [49m[43ma[49m[38;5;241;43m*[39;49m[43mt[49m[43m)[49m[43m,[49m[43m [49m[43m([49m[43mt[49m[43m,[49m[43m [49m[38;5;241;43m-[39;49m[38;5;241;43m20[39;49m[43m,[49m[43m [49m[38;5;241;43m20[39;49m[43m,[49m[43m [49m[38;5;241;43m0.25[39;49m[43m)[49m[43m,[49m[43m [49m[43mlinefmt[49m[38;5;241;43m=[39;49m[38;5;124;43m'[39;49m[38;5;124;43mb[39;49m[38;5;124;43m'[39;49m[43m,[49m[43m [49m[43mmarkerfmt[49m[38;5;241;43m=[39;49m[38;5;124;43m'[39;49m[38;5;124;43mbo[39;49m[38;5;124;43m'[39;49m[43m)[49m  
+[1;32m     55[0m [38;5;28;01melse[39;00m:
+[1;32m     56[0m     mpl_axes_stem(ax[[38;5;241m2[39m][[38;5;241m1[39m], f[38;5;241m.[39msubs(t, a[38;5;241m*[39mt), (t, [38;5;241m-[39m[38;5;241m20[39m, [38;5;241m20[39m, [38;5;241m0.25[39m), linefmt[38;5;241m=[39m[38;5;124m'[39m[38;5;124mm[39m[38;5;124m'[39m, markerfmt[38;5;241m=[39m[38;5;124m'[39m[38;5;124mmo[39m[38;5;124m'[39m)  
+
+Input [0;32mIn [1][0m, in [0;36mmpl_axes_stem[0;34m(axes, expr, xrange, zero_is_none, **kwargs)[0m
+[1;32m     50[0m [38;5;28;01mdef[39;00m [38;5;21mmpl_axes_stem[39m(axes, expr, xrange, zero_is_none[38;5;241m=[39m[38;5;28;01mFalse[39;00m, [38;5;241m*[39m[38;5;241m*[39mkwargs):
+[1;32m     51[0m     x, start, stop, step [38;5;241m=[39m xrange
+[0;32m---> 52[0m     func [38;5;241m=[39m [43msp[49m[38;5;241;43m.[39;49m[43mlambdify[49m[43m([49m[43mx[49m[43m,[49m[43m [49m[43mexpr[49m[43m,[49m[43m [49m[43m[[49m[38;5;124;43m'[39;49m[38;5;124;43mnumpy[39;49m[38;5;124;43m'[39;49m[43m,[49m[43m [49m[38;5;124;43m'[39;49m[38;5;124;43msympy[39;49m[38;5;124;43m'[39;49m[43m][49m[43m)[49m
+[1;32m     53[0m     x [38;5;241m=[39m np[38;5;241m.[39marange(start, stop, step)
+[1;32m     54[0m     y [38;5;241m=[39m func(x)
+
+File [0;32m/data/qtran/anaconda3/lib/python3.9/site-packages/sympy/utilities/lambdify.py:875[0m, in [0;36mlambdify[0;34m(args, expr, modules, printer, use_imps, dummify, cse)[0m
+[1;32m    873[0m [38;5;28;01melse[39;00m:
+[1;32m    874[0m     cses, _expr [38;5;241m=[39m (), expr
+[0;32m--> 875[0m funcstr [38;5;241m=[39m [43mfuncprinter[49m[38;5;241;43m.[39;49m[43mdoprint[49m[43m([49m[43mfuncname[49m[43m,[49m[43m [49m[43miterable_args[49m[43m,[49m[43m [49m[43m_expr[49m[43m,[49m[43m [49m[43mcses[49m[38;5;241;43m=[39;49m[43mcses[49m[43m)[49m
+[1;32m    877[0m [38;5;66;03m# Collect the module imports from the code printers.[39;00m
+[1;32m    878[0m imp_mod_lines [38;5;241m=[39m []
+
+File [0;32m/data/qtran/anaconda3/lib/python3.9/site-packages/sympy/utilities/lambdify.py:1152[0m, in [0;36m_EvaluatorPrinter.doprint[0;34m(self, funcname, args, expr, cses)[0m
+[1;32m   1149[0m     [38;5;28;01melse[39;00m:
+[1;32m   1150[0m         funcbody[38;5;241m.[39mappend([38;5;124m'[39m[38;5;132;01m{}[39;00m[38;5;124m = [39m[38;5;132;01m{}[39;00m[38;5;124m'[39m[38;5;241m.[39mformat(s, [38;5;28mself[39m[38;5;241m.[39m_exprrepr(e)))
+[0;32m-> 1152[0m str_expr [38;5;241m=[39m [43m_recursive_to_string[49m[43m([49m[38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43m_exprrepr[49m[43m,[49m[43m [49m[43mexpr[49m[43m)[49m
+[1;32m   1155[0m [38;5;28;01mif[39;00m [38;5;124m'[39m[38;5;130;01m\n[39;00m[38;5;124m'[39m [38;5;129;01min[39;00m str_expr:
+[1;32m   1156[0m     str_expr [38;5;241m=[39m [38;5;124m'[39m[38;5;124m([39m[38;5;132;01m{}[39;00m[38;5;124m)[39m[38;5;124m'[39m[38;5;241m.[39mformat(str_expr)
+
+File [0;32m/data/qtran/anaconda3/lib/python3.9/site-packages/sympy/utilities/lambdify.py:956[0m, in [0;36m_recursive_to_string[0;34m(doprint, arg)[0m
+[1;32m    953[0m [38;5;28;01mfrom[39;00m [38;5;21;01msympy[39;00m[38;5;21;01m.[39;00m[38;5;21;01mcore[39;00m[38;5;21;01m.[39;00m[38;5;21;01mbasic[39;00m [38;5;28;01mimport[39;00m Basic
+[1;32m    955[0m [38;5;28;01mif[39;00m [38;5;28misinstance[39m(arg, (Basic, MatrixOperations)):
+[0;32m--> 956[0m     [38;5;28;01mreturn[39;00m [43mdoprint[49m[43m([49m[43marg[49m[43m)[49m
+[1;32m    957[0m [38;5;28;01melif[39;00m iterable(arg):
+[1;32m    958[0m     [38;5;28;01mif[39;00m [38;5;28misinstance[39m(arg, [38;5;28mlist[39m):
+
+File [0;32m/data/qtran/anaconda3/lib/python3.9/site-packages/sympy/printing/codeprinter.py:150[0m, in [0;36mCodePrinter.doprint[0;34m(self, expr, assign_to)[0m
+[1;32m    147[0m [38;5;28mself[39m[38;5;241m.[39m_not_supported [38;5;241m=[39m [38;5;28mset[39m()
+[1;32m    148[0m [38;5;28mself[39m[38;5;241m.[39m_number_symbols [38;5;241m=[39m [38;5;28mset[39m()  [38;5;66;03m# type: tSet[tTuple[Expr, Float]][39;00m
+[0;32m--> 150[0m lines [38;5;241m=[39m [38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43m_print[49m[43m([49m[43mexpr[49m[43m)[49m[38;5;241m.[39msplitlines()
+[1;32m    152[0m [38;5;66;03m# format the output[39;00m
+[1;32m    153[0m [38;5;28;01mif[39;00m [38;5;28mself[39m[38;5;241m.[39m_settings[[38;5;124m"[39m[38;5;124mhuman[39m[38;5;124m"[39m]:
+
+File [0;32m/data/qtran/anaconda3/lib/python3.9/site-packages/sympy/printing/printer.py:331[0m, in [0;36mPrinter._print[0;34m(self, expr, **kwargs)[0m
+[1;32m    329[0m     printmethod [38;5;241m=[39m [38;5;28mgetattr[39m([38;5;28mself[39m, printmethodname, [38;5;28;01mNone[39;00m)
+[1;32m    330[0m     [38;5;28;01mif[39;00m printmethod [38;5;129;01mis[39;00m [38;5;129;01mnot[39;00m [38;5;28;01mNone[39;00m:
+[0;32m--> 331[0m         [38;5;28;01mreturn[39;00m [43mprintmethod[49m[43m([49m[43mexpr[49m[43m,[49m[43m [49m[38;5;241;43m*[39;49m[38;5;241;43m*[39;49m[43mkwargs[49m[43m)[49m
+[1;32m    332[0m [38;5;66;03m# Unknown object, fall back to the emptyPrinter.[39;00m
+[1;32m    333[0m [38;5;28;01mreturn[39;00m [38;5;28mself[39m[38;5;241m.[39memptyPrinter(expr)
+
+File [0;32m/data/qtran/anaconda3/lib/python3.9/site-packages/sympy/printing/codeprinter.py:437[0m, in [0;36mCodePrinter._print_Function[0;34m(self, expr)[0m
+[1;32m    435[0m     target_f, required_fs [38;5;241m=[39m [38;5;28mself[39m[38;5;241m.[39m_rewriteable_functions[expr[38;5;241m.[39mfunc[38;5;241m.[39m[38;5;18m__name__[39m]
+[1;32m    436[0m     [38;5;28;01mif[39;00m [38;5;28mself[39m[38;5;241m.[39m_can_print(target_f) [38;5;129;01mand[39;00m [38;5;28mall[39m([38;5;28mself[39m[38;5;241m.[39m_can_print(f) [38;5;28;01mfor[39;00m f [38;5;129;01min[39;00m required_fs):
+[0;32m--> 437[0m         [38;5;28;01mreturn[39;00m [38;5;28mself[39m[38;5;241m.[39m_print([43mexpr[49m[38;5;241;43m.[39;49m[43mrewrite[49m[43m([49m[43mtarget_f[49m[43m)[49m)
+[1;32m    438[0m [38;5;28;01mif[39;00m expr[38;5;241m.[39mis_Function [38;5;129;01mand[39;00m [38;5;28mself[39m[38;5;241m.[39m_settings[38;5;241m.[39mget([38;5;124m'[39m[38;5;124mallow_unknown_functions[39m[38;5;124m'[39m, [38;5;28;01mFalse[39;00m):
+[1;32m    439[0m     [38;5;28;01mreturn[39;00m [38;5;124m'[39m[38;5;132;01m%s[39;00m[38;5;124m([39m[38;5;132;01m%s[39;00m[38;5;124m)[39m[38;5;124m'[39m [38;5;241m%[39m ([38;5;28mself[39m[38;5;241m.[39m_print(expr[38;5;241m.[39mfunc), [38;5;124m'[39m[38;5;124m, [39m[38;5;124m'[39m[38;5;241m.[39mjoin([38;5;28mmap[39m([38;5;28mself[39m[38;5;241m.[39m_print, expr[38;5;241m.[39margs)))
+
+File [0;32m/data/qtran/anaconda3/lib/python3.9/site-packages/sympy/core/basic.py:1890[0m, in [0;36mBasic.rewrite[0;34m(self, deep, *args, **hints)[0m
+[1;32m   1887[0m         [38;5;28;01mreturn[39;00m [38;5;28mself[39m
+[1;32m   1888[0m [38;5;66;03m# hereafter, empty pattern is interpreted as all pattern.[39;00m
+[0;32m-> 1890[0m [38;5;28;01mreturn[39;00m [38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43m_rewrite[49m[43m([49m[43mpattern[49m[43m,[49m[43m [49m[43mrule[49m[43m,[49m[43m [49m[43mmethod[49m[43m,[49m[43m [49m[38;5;241;43m*[39;49m[38;5;241;43m*[39;49m[43mhints[49m[43m)[49m
+
+File [0;32m/data/qtran/anaconda3/lib/python3.9/site-packages/sympy/core/basic.py:1902[0m, in [0;36mBasic._rewrite[0;34m(self, pattern, rule, method, **hints)[0m
+[1;32m   1900[0m meth [38;5;241m=[39m [38;5;28mgetattr[39m([38;5;28mself[39m, method, [38;5;28;01mNone[39;00m)
+[1;32m   1901[0m [38;5;28;01mif[39;00m meth [38;5;129;01mis[39;00m [38;5;129;01mnot[39;00m [38;5;28;01mNone[39;00m:
+[0;32m-> 1902[0m     rewritten [38;5;241m=[39m [43mmeth[49m[43m([49m[38;5;241;43m*[39;49m[43margs[49m[43m,[49m[43m [49m[38;5;241;43m*[39;49m[38;5;241;43m*[39;49m[43mhints[49m[43m)[49m
+[1;32m   1903[0m [38;5;28;01melse[39;00m:
+[1;32m   1904[0m     rewritten [38;5;241m=[39m [38;5;28mself[39m[38;5;241m.[39m_eval_rewrite(rule, args, [38;5;241m*[39m[38;5;241m*[39mhints)
+
+File [0;32m/data/qtran/anaconda3/lib/python3.9/site-packages/sympy/functions/special/delta_functions.py:594[0m, in [0;36mHeaviside._eval_rewrite_as_Piecewise[0;34m(self, arg, H0, **kwargs)[0m
+[1;32m    592[0m     [38;5;28;01mreturn[39;00m Piecewise(([38;5;241m0[39m, arg [38;5;241m<[39m[38;5;241m=[39m [38;5;241m0[39m), ([38;5;241m1[39m, arg [38;5;241m>[39m [38;5;241m0[39m))
+[1;32m    593[0m [38;5;28;01mif[39;00m H0 [38;5;241m==[39m [38;5;241m1[39m:
+[0;32m--> 594[0m     [38;5;28;01mreturn[39;00m [43mPiecewise[49m[43m([49m[43m([49m[38;5;241;43m0[39;49m[43m,[49m[43m [49m[43marg[49m[43m [49m[38;5;241;43m<[39;49m[43m [49m[38;5;241;43m0[39;49m[43m)[49m[43m,[49m[43m [49m[43m([49m[38;5;241;43m1[39;49m[43m,[49m[43m [49m[43marg[49m[43m [49m[38;5;241;43m>[39;49m[38;5;241;43m=[39;49m[43m [49m[38;5;241;43m0[39;49m[43m)[49m[43m)[49m
+[1;32m    595[0m [38;5;28;01mreturn[39;00m Piecewise(([38;5;241m0[39m, arg [38;5;241m<[39m [38;5;241m0[39m), (H0, Eq(arg, [38;5;241m0[39m)), ([38;5;241m1[39m, arg [38;5;241m>[39m [38;5;241m0[39m))
+
+File [0;32m/data/qtran/anaconda3/lib/python3.9/site-packages/sympy/functions/elementary/piecewise.py:145[0m, in [0;36mPiecewise.__new__[0;34m(cls, *args, **options)[0m
+[1;32m    143[0m [38;5;28meval[39m [38;5;241m=[39m options[38;5;241m.[39mpop([38;5;124m'[39m[38;5;124mevaluate[39m[38;5;124m'[39m, global_parameters[38;5;241m.[39mevaluate)
+[1;32m    144[0m [38;5;28;01mif[39;00m [38;5;28meval[39m:
+[0;32m--> 145[0m     r [38;5;241m=[39m [38;5;28;43mcls[39;49m[38;5;241;43m.[39;49m[43meval[49m[43m([49m[38;5;241;43m*[39;49m[43mnewargs[49m[43m)[49m
+[1;32m    146[0m     [38;5;28;01mif[39;00m r [38;5;129;01mis[39;00m [38;5;129;01mnot[39;00m [38;5;28;01mNone[39;00m:
+[1;32m    147[0m         [38;5;28;01mreturn[39;00m r
+
+File [0;32m/data/qtran/anaconda3/lib/python3.9/site-packages/sympy/functions/elementary/piecewise.py:190[0m, in [0;36mPiecewise.eval[0;34m(cls, *_args)[0m
+[1;32m    188[0m current_cond [38;5;241m=[39m [38;5;28mset[39m()  [38;5;66;03m# the conditions up to a given e, c pair[39;00m
+[1;32m    189[0m [38;5;28;01mfor[39;00m expr, cond [38;5;129;01min[39;00m _args:
+[0;32m--> 190[0m     cond [38;5;241m=[39m [43mcond[49m[38;5;241;43m.[39;49m[43mreplace[49m[43m([49m
+[1;32m    191[0m [43m        [49m[38;5;28;43;01mlambda[39;49;00m[43m [49m[43m_[49m[43m:[49m[43m [49m[43m_[49m[38;5;241;43m.[39;49m[43mis_Relational[49m[43m,[49m[43m [49m[43m_canonical_coeff[49m[43m)[49m
+[1;32m    192[0m     [38;5;66;03m# Check here if expr is a Piecewise and collapse if one of[39;00m
+[1;32m    193[0m     [38;5;66;03m# the conds in expr matches cond. This allows the collapsing[39;00m
+[1;32m    194[0m     [38;5;66;03m# of Piecewise((Piecewise((x,x<0)),x<0)) to Piecewise((x,x<0)).[39;00m
+[0;32m   (...)[0m
+[1;32m    198[0m     [38;5;66;03m# having different intervals, but this will probably require[39;00m
+[1;32m    199[0m     [38;5;66;03m# using the new assumptions.[39;00m
+[1;32m    200[0m     [38;5;28;01mif[39;00m [38;5;28misinstance[39m(expr, Piecewise):
+
+File [0;32m/data/qtran/anaconda3/lib/python3.9/site-packages/sympy/core/basic.py:1577[0m, in [0;36mBasic.replace[0;34m(self, query, value, map, simultaneous, exact)[0m
+[1;32m   1574[0m             expr [38;5;241m=[39m v
+[1;32m   1575[0m     [38;5;28;01mreturn[39;00m expr
+[0;32m-> 1577[0m rv [38;5;241m=[39m [43mwalk[49m[43m([49m[38;5;28;43mself[39;49m[43m,[49m[43m [49m[43mrec_replace[49m[43m)[49m
+[1;32m   1578[0m [38;5;28;01mreturn[39;00m (rv, mapping) [38;5;28;01mif[39;00m [38;5;28mmap[39m [38;5;28;01melse[39;00m rv
+
+File [0;32m/data/qtran/anaconda3/lib/python3.9/site-packages/sympy/core/basic.py:1562[0m, in [0;36mBasic.replace.<locals>.walk[0;34m(rv, F)[0m
+[1;32m   1560[0m                     [38;5;28;01mif[39;00m rv [38;5;241m==[39m e [38;5;129;01mand[39;00m e [38;5;241m!=[39m newargs[i]:
+[1;32m   1561[0m                         [38;5;28;01mreturn[39;00m rv
+[0;32m-> 1562[0m     rv [38;5;241m=[39m [43mF[49m[43m([49m[43mrv[49m[43m)[49m
+[1;32m   1563[0m [38;5;28;01mreturn[39;00m rv
+
+File [0;32m/data/qtran/anaconda3/lib/python3.9/site-packages/sympy/core/basic.py:1570[0m, in [0;36mBasic.replace.<locals>.rec_replace[0;34m(expr)[0m
+[1;32m   1568[0m result [38;5;241m=[39m _query(expr)
+[1;32m   1569[0m [38;5;28;01mif[39;00m result [38;5;129;01mor[39;00m result [38;5;241m==[39m {}:
+[0;32m-> 1570[0m     v [38;5;241m=[39m [43m_value[49m[43m([49m[43mexpr[49m[43m,[49m[43m [49m[43mresult[49m[43m)[49m
+[1;32m   1571[0m     [38;5;28;01mif[39;00m v [38;5;129;01mis[39;00m [38;5;129;01mnot[39;00m [38;5;28;01mNone[39;00m [38;5;129;01mand[39;00m v [38;5;241m!=[39m expr:
+[1;32m   1572[0m         [38;5;28;01mif[39;00m [38;5;28mmap[39m:
+
+File [0;32m/data/qtran/anaconda3/lib/python3.9/site-packages/sympy/core/basic.py:1536[0m, in [0;36mBasic.replace.<locals>.<lambda>[0;34m(expr, result)[0m
+[1;32m   1533[0m _query [38;5;241m=[39m query
+[1;32m   1535[0m [38;5;28;01mif[39;00m callable(value):
+[0;32m-> 1536[0m     _value [38;5;241m=[39m [38;5;28;01mlambda[39;00m expr, result: [43mvalue[49m[43m([49m[43mexpr[49m[43m)[49m
+[1;32m   1537[0m [38;5;28;01melse[39;00m:
+[1;32m   1538[0m     [38;5;28;01mraise[39;00m [38;5;167;01mTypeError[39;00m(
+[1;32m   1539[0m         [38;5;124m"[39m[38;5;124mgiven a callable, replace() expects [39m[38;5;124m"[39m
+[1;32m   1540[0m         [38;5;124m"[39m[38;5;124manother callable[39m[38;5;124m"[39m)
+
+File [0;32m/data/qtran/anaconda3/lib/python3.9/site-packages/sympy/core/relational.py:49[0m, in [0;36m_canonical_coeff[0;34m(rel)[0m
+[1;32m     46[0m [38;5;28;01mdef[39;00m [38;5;21m_canonical_coeff[39m(rel):
+[1;32m     47[0m     [38;5;66;03m# return -2*x + 1 < 0 as x > 1/2[39;00m
+[1;32m     48[0m     [38;5;66;03m# XXX make this part of Relational.canonical?[39;00m
+[0;32m---> 49[0m     rel [38;5;241m=[39m [43mrel[49m[38;5;241;43m.[39;49m[43mcanonical[49m
+[1;32m     50[0m     [38;5;28;01mif[39;00m [38;5;129;01mnot[39;00m rel[38;5;241m.[39mis_Relational [38;5;129;01mor[39;00m rel[38;5;241m.[39mrhs[38;5;241m.[39mis_Boolean:
+[1;32m     51[0m         [38;5;28;01mreturn[39;00m rel  [38;5;66;03m# Eq(x, True)[39;00m
+
+File [0;32m/data/qtran/anaconda3/lib/python3.9/site-packages/sympy/core/relational.py:353[0m, in [0;36mRelational.canonical[0;34m(self)[0m
+[1;32m    350[0m     [38;5;28;01mreturn[39;00m r
+[1;32m    352[0m [38;5;66;03m# Check if first value has negative sign[39;00m
+[0;32m--> 353[0m [38;5;28;01mif[39;00m LHS_CEMS [38;5;129;01mand[39;00m [43mLHS_CEMS[49m[43m([49m[43m)[49m:
+[1;32m    354[0m     [38;5;28;01mreturn[39;00m r[38;5;241m.[39mreversedsign
+[1;32m    355[0m [38;5;28;01melif[39;00m [38;5;129;01mnot[39;00m r[38;5;241m.[39mrhs[38;5;241m.[39mis_number [38;5;129;01mand[39;00m RHS_CEMS [38;5;129;01mand[39;00m RHS_CEMS():
+[1;32m    356[0m     [38;5;66;03m# Right hand side has a minus, but not lhs.[39;00m
+[1;32m    357[0m     [38;5;66;03m# How does the expression with reversed signs behave?[39;00m
+[1;32m    358[0m     [38;5;66;03m# This is so that expressions of the type[39;00m
+[1;32m    359[0m     [38;5;66;03m# Eq(x, -y) and Eq(-x, y)[39;00m
+[1;32m    360[0m     [38;5;66;03m# have the same canonical representation[39;00m
+
+File [0;32m/data/qtran/anaconda3/lib/python3.9/site-packages/sympy/core/mul.py:177[0m, in [0;36mMul.could_extract_minus_sign[0;34m(self)[0m
+[1;32m    176[0m [38;5;28;01mdef[39;00m [38;5;21mcould_extract_minus_sign[39m([38;5;28mself[39m):
+[0;32m--> 177[0m     [38;5;28;01mif[39;00m [38;5;28mself[39m [38;5;241m==[39m ([38;5;241;43m-[39;49m[38;5;28;43mself[39;49m):
+[1;32m    178[0m         [38;5;28;01mreturn[39;00m [38;5;28;01mFalse[39;00m  [38;5;66;03m# e.g. zoo*x == -zoo*x[39;00m
+[1;32m    179[0m     c [38;5;241m=[39m [38;5;28mself[39m[38;5;241m.[39margs[[38;5;241m0[39m]
+
+File [0;32m/data/qtran/anaconda3/lib/python3.9/site-packages/sympy/core/mul.py:185[0m, in [0;36mMul.__neg__[0;34m(self)[0m
+[1;32m    183[0m c, args [38;5;241m=[39m [38;5;28mself[39m[38;5;241m.[39mas_coeff_mul()
+[1;32m    184[0m [38;5;28;01mif[39;00m args[[38;5;241m0[39m] [38;5;129;01mis[39;00m [38;5;129;01mnot[39;00m S[38;5;241m.[39mComplexInfinity:
+[0;32m--> 185[0m     c [38;5;241m=[39m [38;5;241;43m-[39;49m[43mc[49m
+[1;32m    186[0m [38;5;28;01mif[39;00m c [38;5;129;01mis[39;00m [38;5;129;01mnot[39;00m S[38;5;241m.[39mOne:
+[1;32m    187[0m     [38;5;28;01mif[39;00m args[[38;5;241m0[39m][38;5;241m.[39mis_Number:
+
+File [0;32m/data/qtran/anaconda3/lib/python3.9/site-packages/sympy/core/numbers.py:2132[0m, in [0;36mInteger.__neg__[0;34m(self)[0m
+[1;32m   2129[0m [38;5;28;01mdef[39;00m [38;5;21m__ceil__[39m([38;5;28mself[39m):
+[1;32m   2130[0m     [38;5;28;01mreturn[39;00m [38;5;28mself[39m[38;5;241m.[39mceiling()
+[0;32m-> 2132[0m [38;5;28;01mdef[39;00m [38;5;21m__neg__[39m([38;5;28mself[39m):
+[1;32m   2133[0m     [38;5;28;01mreturn[39;00m Integer([38;5;241m-[39m[38;5;28mself[39m[38;5;241m.[39mp)
+[1;32m   2135[0m [38;5;28;01mdef[39;00m [38;5;21m__abs__[39m([38;5;28mself[39m):
+
+[0;31mKeyboardInterrupt[0m: 
+KeyboardInterrupt: 
+
