@@ -1,1 +1,1 @@
-# Magnetic Resonance (MR) Imaging
+# Magnetic Resonance Imaging

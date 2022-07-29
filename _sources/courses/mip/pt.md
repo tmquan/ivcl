@@ -1,1 +1,1 @@
-# Positron Emission Tomography (PET)
+# Positron Emission Tomography

@@ -1,1 +1,1 @@
-# X-ray (XR) Imaging
+# X-ray Imaging

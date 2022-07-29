@@ -1,1 +1,1 @@
-# Endoscopy (ES) Imaging
+# Endoscopy Imaging

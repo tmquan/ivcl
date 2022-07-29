@@ -1,1 +1,1 @@
-# Computed Tomography (CT)
+# Computed Tomography

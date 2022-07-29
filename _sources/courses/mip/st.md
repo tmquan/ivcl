@@ -1,1 +1,1 @@
-# Single-Photon Emission Computed Tomography (SPECT)
+# Single-Photon Emission Computed Tomography

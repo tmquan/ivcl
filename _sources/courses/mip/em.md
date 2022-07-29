@@ -1,1 +1,1 @@
-# Electron Microscopy (EM) Imaging
+# Electron Microscopy Imaging
