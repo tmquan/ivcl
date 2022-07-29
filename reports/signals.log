@@ -1,0 +1,50 @@
+Traceback (most recent call last):
+  File "/data/qtran/anaconda3/lib/python3.9/site-packages/jupyter_cache/executors/utils.py", line 51, in single_nb_execution
+    executenb(
+  File "/data/qtran/anaconda3/lib/python3.9/site-packages/nbclient/client.py", line 1204, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+  File "/data/qtran/anaconda3/lib/python3.9/site-packages/nbclient/util.py", line 84, in wrapped
+    return just_run(coro(*args, **kwargs))
+  File "/data/qtran/anaconda3/lib/python3.9/site-packages/nbclient/util.py", line 62, in just_run
+    return loop.run_until_complete(coro)
+  File "/data/qtran/anaconda3/lib/python3.9/asyncio/base_events.py", line 647, in run_until_complete
+    return future.result()
+  File "/data/qtran/anaconda3/lib/python3.9/site-packages/nbclient/client.py", line 663, in async_execute
+    await self.async_execute_cell(
+  File "/data/qtran/anaconda3/lib/python3.9/site-packages/nbclient/client.py", line 965, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "/data/qtran/anaconda3/lib/python3.9/site-packages/nbclient/client.py", line 862, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+# HIDE/SHOW
+fig, ax = plt.subplots(
+    1, 2, 
+    figsize=(12, 4), 
+    # tight_layout=True,
+)
+
+delta = sp.Piecewise(
+    (1, sp.Equality(t, 0)),
+    (0, sp.Or(sp.StrictLessThan(t, 0), sp.StrictGreaterThan(t, 0))),
+)
+
+# mpl_axes_stem(ax[0], sp.Equality(t, 0), (t, 0, 1, 1), linefmt='b', markerfmt='b^')
+# mpl_axes_plot(ax[0], sp.Equality(t, 0), (t, -40, 40), color='k', alpha=0.5)
+mpl_axes_stem(ax[0], delta, (t, -40, 40, 0.25), linefmt='m', markerfmt=' ')
+ax[0].scatter(0, 1, color='m', marker='^', s=100)
+ax[0].set_xlim(-5, 5, 1)
+ax[0].set_ylim(-2, 2, 1)
+ax[0].set_title(r'$x(t)$', fontsize=16)
+
+mpl_axes_stem(ax[1], delta, (t, -40, 40, 0.25), linefmt='b', markerfmt='bo')
+ax[1].set_xlim(-5, 5, 1)
+ax[1].set_ylim(-2, 2, 1)
+ax[1].set_title(r'$x[n]$', fontsize=16)
+
+plt.show()
+------------------
+
+
+KeyboardInterrupt: 
+

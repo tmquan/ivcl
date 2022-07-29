@@ -621,40 +621,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li><p>Quantized Signals</p></li>
 <li><p>Digital Signals?</p></li>
 </ul>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># HIDDEN</span>
-<span class="c1"># Circuit(&quot;&quot;&quot;</span>
-<span class="c1">#     S1 box; l=$x(t)$, right=0.5, aspect=1.1, draw=white</span>
-<span class="c1">#     S2 box; l=$h(t)$, right=0.5, aspect=1.1, draw=black</span>
-<span class="c1">#     S3 box; l=$y(t)$, right=0.5, aspect=1.1, draw=white</span>
-<span class="c1">#     W S1.e S2.w; right=0.5, endarrow=stealth, color=black</span>
-<span class="c1">#     W S2.e S3.w; right=0.5, endarrow=stealth, color=black</span>
-<span class="c1"># ; label_nodes=false, scale=0.5</span>
-<span class="c1"># &quot;&quot;&quot;).draw(&quot;ht.png&quot;)</span>
-
-<span class="c1"># Circuit(&quot;&quot;&quot;</span>
-<span class="c1">#     S1 box; l=$x[n]$, right=0.5, aspect=1.1, draw=white</span>
-<span class="c1">#     S2 box; l=$h[n]$, right=0.5, aspect=1.1, draw=black</span>
-<span class="c1">#     S3 box; l=$y[n]$, right=0.5, aspect=1.1, draw=white</span>
-<span class="c1">#     W S1.e S2.w; right=0.5, endarrow=stealth, color=black</span>
-<span class="c1">#     W S2.e S3.w; right=0.5, endarrow=stealth, color=black</span>
-<span class="c1">#     ; label_nodes=false, scale=0.5</span>
-<span class="c1"># &quot;&quot;&quot;).draw(&quot;hn.png&quot;)</span>
-
-<span class="c1"># # display(HTML(</span>
-<span class="c1"># #     &quot;&quot;&quot;&lt;table align=&quot;center&quot; style=&quot;margin: 0px auto;&quot;&gt;</span>
-<span class="c1"># #     &lt;tr&gt;</span>
-<span class="c1"># #     &lt;th&gt;&lt;img src=&quot;%s&quot;/&gt;&lt;/th&gt;</span>
-<span class="c1"># #     &lt;th&gt;&lt;img src=&quot;%s&quot;/&gt;&lt;/th&gt;</span>
-<span class="c1"># #     &lt;/tr&gt;&lt;/table&gt;&quot;&quot;&quot;%(&quot;ht.png&quot;, &quot;hn.png&quot;)</span>
-<span class="c1"># # ))</span>
-<span class="c1"># display(HTML(&quot;&lt;table&gt;&lt;tr&gt;&lt;td&gt;&lt;img src=&#39;ht.png&#39;&gt;&lt;/td&gt;&lt;td&gt;&lt;img src=&#39;hn.png&#39;&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&quot;))</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
+<div class="cell tag_hide_input docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># HIDE/SHOW</span>
 <span class="n">h</span> <span class="o">=</span> <span class="n">t</span><span class="o">*</span><span class="n">sp</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">t</span><span class="o">/</span><span class="mf">1.7</span><span class="p">)</span>
@@ -705,43 +672,19 @@ const thebe_selector_output = ".output, .cell_output"
 <span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="o">-</span><span class="mf">1.</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="o">-</span><span class="mi">15</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;Digital Signal&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;introdi.png&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
-
-<span class="c1">###############################################################################</span>
-<span class="n">display</span><span class="p">(</span><span class="n">HTML</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;&lt;table align=&quot;center&quot; style=&quot;margin: 0px auto;&quot;&gt;</span>
-<span class="s2">    &lt;tr&gt;</span>
-<span class="s2">        &lt;th&gt;&lt;img src=&#39;introct.png&#39;&gt;&lt;/th&gt;</span>
-<span class="s2">        &lt;th&gt;&lt;img src=&#39;introdt.png&#39;&gt;&lt;/th&gt;</span>
-<span class="s2">    &lt;/tr&gt;</span>
-<span class="s2">    &lt;tr&gt;</span>
-<span class="s2">        &lt;th&gt;&lt;img src=&#39;introqt.png&#39;&gt;&lt;/th&gt;</span>
-<span class="s2">        &lt;th&gt;&lt;img src=&#39;introdi.png&#39;&gt;&lt;/th&gt;</span>
-<span class="s2">    &lt;/tr&gt;</span>
-<span class="s2">    &lt;/table&gt;</span>
-<span class="s2">    &quot;&quot;&quot;</span><span class="p">)</span>
-<span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;introdg.png&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_html"><table align="center" style="margin: 0px auto;">
-    <tr>
-        <th><img src='introct.png'></th>
-        <th><img src='introdt.png'></th>
-    </tr>
-    <tr>
-        <th><img src='introqt.png'></th>
-        <th><img src='introdi.png'></th>
-    </tr>
-    </table>
-</div></div>
 </div>
+<p><img alt="" src="../../_images/introct.png" /> <img alt="" src="../../_images/introdt.png" />
+<img alt="" src="../../_images/introqt.png" /> <img alt="" src="../../_images/introdg.png" /></p>
 </div>
 <div class="section" id="classes-of-signals">
 <h2>Classes of Signals<a class="headerlink" href="#classes-of-signals" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="even-and-odd-signals">
 <h3>Even and Odd Signals<a class="headerlink" href="#even-and-odd-signals" title="Permalink to this headline">¶</a></h3>
-<div class="cell docutils container">
+<div class="cell tag_hide_input docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># HIDE/SHOW</span>
 <span class="n">f</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Piecewise</span><span class="p">(</span>
@@ -802,40 +745,16 @@ const thebe_selector_output = ".output, .cell_output"
 <span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="o">-</span><span class="mf">2.</span><span class="p">,</span> <span class="mf">2.</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$x(t)$&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;odddt.png&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
-
-<span class="c1">###############################################################################</span>
-<span class="n">display</span><span class="p">(</span><span class="n">HTML</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;&lt;table align=&quot;center&quot; style=&quot;margin: 0px auto;&quot;&gt;</span>
-<span class="s2">    &lt;tr&gt;</span>
-<span class="s2">        &lt;th&gt;&lt;img src=&#39;evenct.png&#39;&gt;&lt;/th&gt;</span>
-<span class="s2">        &lt;th&gt;&lt;img src=&#39;evendt.png&#39;&gt;&lt;/th&gt;</span>
-<span class="s2">    &lt;/tr&gt;</span>
-<span class="s2">    &lt;tr&gt;</span>
-<span class="s2">        &lt;th&gt;&lt;img src=&#39;oddct.png&#39;&gt;&lt;/th&gt;</span>
-<span class="s2">        &lt;th&gt;&lt;img src=&#39;odddt.png&#39;&gt;&lt;/th&gt;</span>
-<span class="s2">    &lt;/tr&gt;</span>
-<span class="s2">    &lt;/table&gt;</span>
-<span class="s2">    &quot;&quot;&quot;</span><span class="p">)</span>
-<span class="p">)</span>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_html"><table align="center" style="margin: 0px auto;">
-    <tr>
-        <th><img src='evenct.png'></th>
-        <th><img src='evendt.png'></th>
-    </tr>
-    <tr>
-        <th><img src='oddct.png'></th>
-        <th><img src='odddt.png'></th>
-    </tr>
-    </table>
-</div></div>
 </div>
+<p><img alt="" src="../../_images/evenct.png" /> <img alt="" src="../../_images/evendt.png" />
+<img alt="" src="../../_images/oddct.png" /> <img alt="" src="../../_images/odddt.png" /></p>
 </div>
 <div class="section" id="aperiodic-and-periodic-signals">
 <h3>Aperiodic and Periodic Signals<a class="headerlink" href="#aperiodic-and-periodic-signals" title="Permalink to this headline">¶</a></h3>
-<div class="cell docutils container">
+<div class="cell tag_hide_input docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># HIDE/SHOW</span>
 <span class="n">n</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Piecewise</span><span class="p">(</span>
@@ -880,40 +799,16 @@ const thebe_selector_output = ".output, .cell_output"
 <span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="o">-</span><span class="mf">2.</span><span class="p">,</span> <span class="mf">2.</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$x[n]$&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;periodicdt.png&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
-
-<span class="c1">###############################################################################</span>
-<span class="n">display</span><span class="p">(</span><span class="n">HTML</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;&lt;table align=&quot;center&quot; style=&quot;margin: 0px auto;&quot;&gt;</span>
-<span class="s2">    &lt;tr&gt;</span>
-<span class="s2">        &lt;th&gt;&lt;img src=&#39;aperiodicct.png&#39;&gt;&lt;/th&gt;</span>
-<span class="s2">        &lt;th&gt;&lt;img src=&#39;aperiodicdt.png&#39;&gt;&lt;/th&gt;</span>
-<span class="s2">    &lt;/tr&gt;</span>
-<span class="s2">    &lt;tr&gt;</span>
-<span class="s2">        &lt;th&gt;&lt;img src=&#39;periodicct.png&#39;&gt;&lt;/th&gt;</span>
-<span class="s2">        &lt;th&gt;&lt;img src=&#39;periodicdt.png&#39;&gt;&lt;/th&gt;</span>
-<span class="s2">    &lt;/tr&gt;</span>
-<span class="s2">    &lt;/table&gt;</span>
-<span class="s2">    &quot;&quot;&quot;</span><span class="p">)</span>
-<span class="p">)</span>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_html"><table align="center" style="margin: 0px auto;">
-    <tr>
-        <th><img src='aperiodicct.png'></th>
-        <th><img src='aperiodicdt.png'></th>
-    </tr>
-    <tr>
-        <th><img src='periodicct.png'></th>
-        <th><img src='periodicdt.png'></th>
-    </tr>
-    </table>
-</div></div>
 </div>
+<p><img alt="" src="../../_images/aperiodicct.png" /> <img alt="" src="../../_images/aperiodicdt.png" />
+<img alt="" src="../../_images/periodicct.png" /> <img alt="" src="../../_images/periodicdt.png" /></p>
 </div>
 <div class="section" id="sinusoidal-signals">
 <h3>Sinusoidal Signals<a class="headerlink" href="#sinusoidal-signals" title="Permalink to this headline">¶</a></h3>
-<div class="cell docutils container">
+<div class="cell tag_hide_input docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># HIDE/SHOW</span>
 <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
@@ -944,39 +839,16 @@ const thebe_selector_output = ".output, .cell_output"
 <span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="o">-</span><span class="mf">2.</span><span class="p">,</span> <span class="mf">2.</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$x[n]$&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;cosinedt.png&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
-<span class="c1">###############################################################################</span>
-<span class="n">display</span><span class="p">(</span><span class="n">HTML</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;&lt;table align=&quot;center&quot; style=&quot;margin: 0px auto;&quot;&gt;</span>
-<span class="s2">    &lt;tr&gt;</span>
-<span class="s2">        &lt;th&gt;&lt;img src=&#39;sinect.png&#39;&gt;&lt;/th&gt;</span>
-<span class="s2">        &lt;th&gt;&lt;img src=&#39;sinedt.png&#39;&gt;&lt;/th&gt;</span>
-<span class="s2">    &lt;/tr&gt;</span>
-<span class="s2">    &lt;tr&gt;</span>
-<span class="s2">        &lt;th&gt;&lt;img src=&#39;cosinect.png&#39;&gt;&lt;/th&gt;</span>
-<span class="s2">        &lt;th&gt;&lt;img src=&#39;cosinedt.png&#39;&gt;&lt;/th&gt;</span>
-<span class="s2">    &lt;/tr&gt;</span>
-<span class="s2">    &lt;/table&gt;</span>
-<span class="s2">    &quot;&quot;&quot;</span><span class="p">)</span>
-<span class="p">)</span>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_html"><table align="center" style="margin: 0px auto;">
-    <tr>
-        <th><img src='sinect.png'></th>
-        <th><img src='sinedt.png'></th>
-    </tr>
-    <tr>
-        <th><img src='cosinect.png'></th>
-        <th><img src='cosinedt.png'></th>
-    </tr>
-    </table>
-</div></div>
 </div>
+<p><img alt="" src="../../_images/sinect.png" /> <img alt="" src="../../_images/sinedt.png" />
+<img alt="" src="../../_images/cosinect.png" /> <img alt="" src="../../_images/cosinedt.png" /></p>
 </div>
 <div class="section" id="real-exponential-signals">
 <h3>Real Exponential Signals<a class="headerlink" href="#real-exponential-signals" title="Permalink to this headline">¶</a></h3>
-<div class="cell docutils container">
+<div class="cell tag_hide_input docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># HIDE/SHOW</span>
 <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
@@ -1009,39 +881,16 @@ const thebe_selector_output = ".output, .cell_output"
 <span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$x[n] = Ce^</span><span class="si">{an}</span><span class="s1">  \qquad  a&lt;0$&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;realexpnegdt.png&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
-<span class="c1">###############################################################################</span>
-<span class="n">display</span><span class="p">(</span><span class="n">HTML</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;&lt;table align=&quot;center&quot; style=&quot;margin: 0px auto;&quot;&gt;</span>
-<span class="s2">    &lt;tr&gt;</span>
-<span class="s2">        &lt;th&gt;&lt;img src=&#39;realexpposct.png&#39;&gt;&lt;/th&gt;</span>
-<span class="s2">        &lt;th&gt;&lt;img src=&#39;realexpposdt.png&#39;&gt;&lt;/th&gt;</span>
-<span class="s2">    &lt;/tr&gt;</span>
-<span class="s2">    &lt;tr&gt;</span>
-<span class="s2">        &lt;th&gt;&lt;img src=&#39;realexpnegct.png&#39;&gt;&lt;/th&gt;</span>
-<span class="s2">        &lt;th&gt;&lt;img src=&#39;realexpnegdt.png&#39;&gt;&lt;/th&gt;</span>
-<span class="s2">    &lt;/tr&gt;</span>
-<span class="s2">    &lt;/table&gt;</span>
-<span class="s2">    &quot;&quot;&quot;</span><span class="p">)</span>
-<span class="p">)</span>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_html"><table align="center" style="margin: 0px auto;">
-    <tr>
-        <th><img src='realexpposct.png'></th>
-        <th><img src='realexpposdt.png'></th>
-    </tr>
-    <tr>
-        <th><img src='realexpnegct.png'></th>
-        <th><img src='realexpnegdt.png'></th>
-    </tr>
-    </table>
-</div></div>
 </div>
+<p><img alt="" src="../../_images/realexpposct.png" /> <img alt="" src="../../_images/realexpposdt.png" />
+<img alt="" src="../../_images/realexpnegct.png" /> <img alt="" src="../../_images/realexpnegdt.png" /></p>
 </div>
 <div class="section" id="complex-exponential-signals">
 <h3>Complex Exponential Signals<a class="headerlink" href="#complex-exponential-signals" title="Permalink to this headline">¶</a></h3>
-<div class="cell docutils container">
+<div class="cell tag_hide_input docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># HIDE/SHOW</span>
 <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
@@ -1082,42 +931,19 @@ const thebe_selector_output = ".output, .cell_output"
 <span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="o">-</span><span class="mf">3.</span><span class="p">,</span> <span class="mf">3.</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$x[n] = Ce^</span><span class="si">{rn}</span><span class="s1">\cos[\omega_0n+\phi] \qquad r&lt;0$&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;compexpnegdt.png&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
-<span class="c1">###############################################################################</span>
-<span class="n">display</span><span class="p">(</span><span class="n">HTML</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;&lt;table align=&quot;center&quot; style=&quot;margin: 0px auto;&quot;&gt;</span>
-<span class="s2">    &lt;tr&gt;</span>
-<span class="s2">        &lt;th&gt;&lt;img src=&#39;compexpposct.png&#39;&gt;&lt;/th&gt;</span>
-<span class="s2">        &lt;th&gt;&lt;img src=&#39;compexpposdt.png&#39;&gt;&lt;/th&gt;</span>
-<span class="s2">    &lt;/tr&gt;</span>
-<span class="s2">    &lt;tr&gt;</span>
-<span class="s2">        &lt;th&gt;&lt;img src=&#39;compexpnegct.png&#39;&gt;&lt;/th&gt;</span>
-<span class="s2">        &lt;th&gt;&lt;img src=&#39;compexpnegdt.png&#39;&gt;&lt;/th&gt;</span>
-<span class="s2">    &lt;/tr&gt;</span>
-<span class="s2">    &lt;/table&gt;</span>
-<span class="s2">    &quot;&quot;&quot;</span><span class="p">)</span>
-<span class="p">)</span>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_html"><table align="center" style="margin: 0px auto;">
-    <tr>
-        <th><img src='compexpposct.png'></th>
-        <th><img src='compexpposdt.png'></th>
-    </tr>
-    <tr>
-        <th><img src='compexpnegct.png'></th>
-        <th><img src='compexpnegdt.png'></th>
-    </tr>
-    </table>
-</div></div>
 </div>
+<p><img alt="" src="../../_images/compexpposct.png" /> <img alt="" src="../../_images/compexpposdt.png" />
+<img alt="" src="../../_images/compexpnegct.png" /> <img alt="" src="../../_images/compexpnegdt.png" /></p>
 </div>
 </div>
 <div class="section" id="elementary-signals">
 <h2>Elementary Signals<a class="headerlink" href="#elementary-signals" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="step-functions">
 <h3>Step Functions<a class="headerlink" href="#step-functions" title="Permalink to this headline">¶</a></h3>
-<div class="cell docutils container">
+<div class="cell tag_hide_input docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># HIDE/SHOW</span>
 <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
@@ -1155,10 +981,11 @@ const thebe_selector_output = ".output, .cell_output"
     </table>
 </div></div>
 </div>
+<p><img alt="" src="../../_images/stepct.png" /> <img alt="" src="../../_images/stepdt.png" /></p>
 </div>
 <div class="section" id="signum-functions">
 <h3>Signum Functions<a class="headerlink" href="#signum-functions" title="Permalink to this headline">¶</a></h3>
-<div class="cell docutils container">
+<div class="cell tag_hide_input docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># HIDE/SHOW</span>
 <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
@@ -1174,32 +1001,15 @@ const thebe_selector_output = ".output, .cell_output"
 <span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="o">-</span><span class="mf">2.</span><span class="p">,</span> <span class="mf">2.</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$sign[n]$&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;signdt.png&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
-
-<span class="c1">###############################################################################</span>
-<span class="n">display</span><span class="p">(</span><span class="n">HTML</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;&lt;table align=&quot;center&quot; style=&quot;margin: 0px auto;&quot;&gt;</span>
-<span class="s2">    &lt;tr&gt;</span>
-<span class="s2">        &lt;th&gt;&lt;img src=&#39;signct.png&#39;&gt;&lt;/th&gt;</span>
-<span class="s2">        &lt;th&gt;&lt;img src=&#39;signdt.png&#39;&gt;&lt;/th&gt;</span>
-<span class="s2">    &lt;/tr&gt;</span>
-<span class="s2">    &lt;/table&gt;</span>
-<span class="s2">    &quot;&quot;&quot;</span><span class="p">)</span>
-<span class="p">)</span>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_html"><table align="center" style="margin: 0px auto;">
-    <tr>
-        <th><img src='signct.png'></th>
-        <th><img src='signdt.png'></th>
-    </tr>
-    </table>
-</div></div>
 </div>
+<p><img alt="" src="../../_images/signct.png" /> <img alt="" src="../../_images/signdt.png" /></p>
 </div>
 <div class="section" id="ramp-functions">
 <h3>Ramp Functions<a class="headerlink" href="#ramp-functions" title="Permalink to this headline">¶</a></h3>
-<div class="cell docutils container">
+<div class="cell tag_hide_input docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># HIDE/SHOW</span>
 <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
@@ -1215,32 +1025,15 @@ const thebe_selector_output = ".output, .cell_output"
 <span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="o">-</span><span class="mf">1.</span><span class="p">,</span> <span class="mf">5.</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$ramp[n]$&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;rampdt.png&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
-
-<span class="c1">###############################################################################</span>
-<span class="n">display</span><span class="p">(</span><span class="n">HTML</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;&lt;table align=&quot;center&quot; style=&quot;margin: 0px auto;&quot;&gt;</span>
-<span class="s2">    &lt;tr&gt;</span>
-<span class="s2">        &lt;th&gt;&lt;img src=&#39;rampct.png&#39;&gt;&lt;/th&gt;</span>
-<span class="s2">        &lt;th&gt;&lt;img src=&#39;rampdt.png&#39;&gt;&lt;/th&gt;</span>
-<span class="s2">    &lt;/tr&gt;</span>
-<span class="s2">    &lt;/table&gt;</span>
-<span class="s2">    &quot;&quot;&quot;</span><span class="p">)</span>
-<span class="p">)</span>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_html"><table align="center" style="margin: 0px auto;">
-    <tr>
-        <th><img src='rampct.png'></th>
-        <th><img src='rampdt.png'></th>
-    </tr>
-    </table>
-</div></div>
 </div>
+<p><img alt="" src="../../_images/rampct.png" /> <img alt="" src="../../_images/rampdt.png" /></p>
 </div>
 <div class="section" id="unit-rectangle-functions">
 <h3>Unit Rectangle Functions<a class="headerlink" href="#unit-rectangle-functions" title="Permalink to this headline">¶</a></h3>
-<div class="cell docutils container">
+<div class="cell tag_hide_input docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># HIDE/SHOW</span>
 <span class="n">rect</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Piecewise</span><span class="p">(</span>
@@ -1261,32 +1054,15 @@ const thebe_selector_output = ".output, .cell_output"
 <span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="o">-</span><span class="mf">2.</span><span class="p">,</span> <span class="mf">2.</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$rect[n]$&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;rectdt.png&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
-
-<span class="c1">###############################################################################</span>
-<span class="n">display</span><span class="p">(</span><span class="n">HTML</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;&lt;table align=&quot;center&quot; style=&quot;margin: 0px auto;&quot;&gt;</span>
-<span class="s2">    &lt;tr&gt;</span>
-<span class="s2">        &lt;th&gt;&lt;img src=&#39;rectct.png&#39;&gt;&lt;/th&gt;</span>
-<span class="s2">        &lt;th&gt;&lt;img src=&#39;rectdt.png&#39;&gt;&lt;/th&gt;</span>
-<span class="s2">    &lt;/tr&gt;</span>
-<span class="s2">    &lt;/table&gt;</span>
-<span class="s2">    &quot;&quot;&quot;</span><span class="p">)</span>
-<span class="p">)</span>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_html"><table align="center" style="margin: 0px auto;">
-    <tr>
-        <th><img src='rectct.png'></th>
-        <th><img src='rectdt.png'></th>
-    </tr>
-    </table>
-</div></div>
 </div>
+<p><img alt="" src="../../_images/rectct.png" /> <img alt="" src="../../_images/rectdt.png" /></p>
 </div>
 <div class="section" id="unit-triangle-functions">
 <h3>Unit Triangle Functions<a class="headerlink" href="#unit-triangle-functions" title="Permalink to this headline">¶</a></h3>
-<div class="cell docutils container">
+<div class="cell tag_hide_input docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># HIDE/SHOW</span>
 <span class="n">ramp</span> <span class="o">=</span> <span class="n">t</span><span class="o">*</span><span class="n">sp</span><span class="o">.</span><span class="n">Heaviside</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
@@ -1305,32 +1081,15 @@ const thebe_selector_output = ".output, .cell_output"
 <span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="o">-</span><span class="mf">2.</span><span class="p">,</span> <span class="mf">2.</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$tri[n]$&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;tridt.png&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
-
-<span class="c1">###############################################################################</span>
-<span class="n">display</span><span class="p">(</span><span class="n">HTML</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;&lt;table align=&quot;center&quot; style=&quot;margin: 0px auto;&quot;&gt;</span>
-<span class="s2">    &lt;tr&gt;</span>
-<span class="s2">        &lt;th&gt;&lt;img src=&#39;trict.png&#39;&gt;&lt;/th&gt;</span>
-<span class="s2">        &lt;th&gt;&lt;img src=&#39;tridt.png&#39;&gt;&lt;/th&gt;</span>
-<span class="s2">    &lt;/tr&gt;</span>
-<span class="s2">    &lt;/table&gt;</span>
-<span class="s2">    &quot;&quot;&quot;</span><span class="p">)</span>
-<span class="p">)</span>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_html"><table align="center" style="margin: 0px auto;">
-    <tr>
-        <th><img src='trict.png'></th>
-        <th><img src='tridt.png'></th>
-    </tr>
-    </table>
-</div></div>
 </div>
+<p><img alt="" src="../../_images/trict.png" /> <img alt="" src="../../_images/tridt.png" /></p>
 </div>
 <div class="section" id="unit-sinc-functions">
 <h3>Unit Sinc Functions<a class="headerlink" href="#unit-sinc-functions" title="Permalink to this headline">¶</a></h3>
-<div class="cell docutils container">
+<div class="cell tag_hide_input docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># HIDE/SHOW</span>
 <span class="n">sinc</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">sp</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="n">t</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">sp</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="n">t</span><span class="p">)</span>
@@ -1347,32 +1106,15 @@ const thebe_selector_output = ".output, .cell_output"
 <span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="o">-</span><span class="mf">2.</span><span class="p">,</span> <span class="mf">2.</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$sinc[n]$&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;sincdt.png&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
-
-<span class="c1">###############################################################################</span>
-<span class="n">display</span><span class="p">(</span><span class="n">HTML</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;&lt;table align=&quot;center&quot; style=&quot;margin: 0px auto;&quot;&gt;</span>
-<span class="s2">    &lt;tr&gt;</span>
-<span class="s2">        &lt;th&gt;&lt;img src=&#39;sincct.png&#39;&gt;&lt;/th&gt;</span>
-<span class="s2">        &lt;th&gt;&lt;img src=&#39;sincdt.png&#39;&gt;&lt;/th&gt;</span>
-<span class="s2">    &lt;/tr&gt;</span>
-<span class="s2">    &lt;/table&gt;</span>
-<span class="s2">    &quot;&quot;&quot;</span><span class="p">)</span>
-<span class="p">)</span>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_html"><table align="center" style="margin: 0px auto;">
-    <tr>
-        <th><img src='sincct.png'></th>
-        <th><img src='sincdt.png'></th>
-    </tr>
-    </table>
-</div></div>
 </div>
+<p><img alt="" src="../../_images/sincct.png" /> <img alt="" src="../../_images/sincdt.png" /></p>
 </div>
 <div class="section" id="unit-impulse-functions">
 <h3>Unit Impulse Functions<a class="headerlink" href="#unit-impulse-functions" title="Permalink to this headline">¶</a></h3>
-<div class="cell docutils container">
+<div class="cell tag_hide_input docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># HIDE/SHOW</span>
 <span class="n">delta</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Piecewise</span><span class="p">(</span>
@@ -1394,28 +1136,11 @@ const thebe_selector_output = ".output, .cell_output"
 <span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="o">-</span><span class="mf">2.</span><span class="p">,</span> <span class="mf">2.</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$\delta[n]$&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;deltadt.png&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
-
-<span class="c1">###############################################################################</span>
-<span class="n">display</span><span class="p">(</span><span class="n">HTML</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;&lt;table align=&quot;center&quot; style=&quot;margin: 0px auto;&quot;&gt;</span>
-<span class="s2">    &lt;tr&gt;</span>
-<span class="s2">        &lt;th&gt;&lt;img src=&#39;deltact.png&#39;&gt;&lt;/th&gt;</span>
-<span class="s2">        &lt;th&gt;&lt;img src=&#39;deltadt.png&#39;&gt;&lt;/th&gt;</span>
-<span class="s2">    &lt;/tr&gt;</span>
-<span class="s2">    &lt;/table&gt;</span>
-<span class="s2">    &quot;&quot;&quot;</span><span class="p">)</span>
-<span class="p">)</span>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_html"><table align="center" style="margin: 0px auto;">
-    <tr>
-        <th><img src='deltact.png'></th>
-        <th><img src='deltadt.png'></th>
-    </tr>
-    </table>
-</div></div>
 </div>
+<p><img alt="" src="../../_images/deltact.png" /> <img alt="" src="../../_images/deltadt.png" /></p>
 </div>
 </div>
 </div>
