@@ -349,232 +349,65 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">KeyboardInterrupt</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
+<span class="nn">Input In [3],</span> in <span class="ni">&lt;cell line: 1&gt;</span><span class="nt">()</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">df</span> <span class="o">=</span> <span class="n">folderstats</span><span class="o">.</span><span class="n">folderstats</span><span class="p">(</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span>     <span class="n">train_image3d_folders</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> 
+<span class="g g-Whitespace">      </span><span class="mi">3</span>     <span class="n">hash_name</span><span class="o">=</span><span class="s1">&#39;md5&#39;</span><span class="p">,</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span>     <span class="n">filter_extension</span><span class="o">=</span><span class="s1">&#39;gz&#39;</span><span class="p">,</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span>     <span class="n">exclude</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;tests&quot;</span><span class="p">,</span> <span class="s2">&quot;venv&quot;</span><span class="p">,</span> <span class="s2">&quot;__pycache__&quot;</span><span class="p">],</span>
+<span class="g g-Whitespace">      </span><span class="mi">6</span>     <span class="n">ignore_hidden</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="n">df</span>
 
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
+<span class="nn">File /data/qtran/anaconda3/lib/python3.9/site-packages/folderstats/__init__.py:142,</span> in <span class="ni">folderstats</span><span class="nt">(folderpath, hash_name, microseconds, absolute_paths, exclude, filter_extension, follow_links, ignore_hidden, parent)</span>
+<span class="g g-Whitespace">    </span><span class="mi">139</span>     <span class="n">hash_name</span> <span class="o">=</span> <span class="n">hash_name</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+<span class="g g-Whitespace">    </span><span class="mi">140</span>     <span class="n">columns</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">hash_name</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">142</span> <span class="n">idx</span><span class="p">,</span> <span class="n">items</span><span class="p">,</span> <span class="n">foldersize</span><span class="p">,</span> <span class="n">num_files</span> <span class="o">=</span> <span class="n">_recursive_folderstats</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">143</span>     <span class="n">folderpath</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">144</span>     <span class="n">hash_name</span><span class="o">=</span><span class="n">hash_name</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">145</span>     <span class="n">ignore_hidden</span><span class="o">=</span><span class="n">ignore_hidden</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">146</span>     <span class="n">exclude</span><span class="o">=</span><span class="n">exclude</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">147</span>     <span class="n">filter_extension</span><span class="o">=</span><span class="n">filter_extension</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">148</span>     <span class="n">follow_links</span><span class="o">=</span><span class="n">follow_links</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">149</span> <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">items</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">columns</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">151</span> <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;atime&#39;</span><span class="p">,</span> <span class="s1">&#39;mtime&#39;</span><span class="p">,</span> <span class="s1">&#39;ctime&#39;</span><span class="p">]:</span>
 
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>id</th>
-      <th>path</th>
-      <th>name</th>
-      <th>extension</th>
-      <th>size</th>
-      <th>atime</th>
-      <th>mtime</th>
-      <th>ctime</th>
-      <th>folder</th>
-      <th>num_files</th>
-      <th>depth</th>
-      <th>parent</th>
-      <th>uid</th>
-      <th>md5</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>3</td>
-      <td>/data/qtran/DATA/SpineXRVertSegmentation/Verse...</td>
-      <td>sub-verse063_ct.nii</td>
-      <td>gz</td>
-      <td>34901906</td>
-      <td>2022-07-31 15:53:09</td>
-      <td>2021-02-25 00:08:32</td>
-      <td>2022-07-27 14:33:47</td>
-      <td>False</td>
-      <td>NaN</td>
-      <td>1</td>
-      <td>2</td>
-      <td>1006</td>
-      <td>04c6a8e68b66f07c1da24a5ba30a84e2</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>2</td>
-      <td>/data/qtran/DATA/SpineXRVertSegmentation/Verse...</td>
-      <td>sub-verse063</td>
-      <td>None</td>
-      <td>34901906</td>
-      <td>2022-08-01 05:34:45</td>
-      <td>2021-03-01 17:46:10</td>
-      <td>2022-07-27 14:33:47</td>
-      <td>True</td>
-      <td>1.0</td>
-      <td>1</td>
-      <td>1</td>
-      <td>1006</td>
-      <td>None</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>5</td>
-      <td>/data/qtran/DATA/SpineXRVertSegmentation/Verse...</td>
-      <td>sub-verse015_ct.nii</td>
-      <td>gz</td>
-      <td>4757210</td>
-      <td>2022-07-31 15:53:10</td>
-      <td>2021-02-25 00:01:21</td>
-      <td>2022-07-27 14:33:47</td>
-      <td>False</td>
-      <td>NaN</td>
-      <td>1</td>
-      <td>4</td>
-      <td>1006</td>
-      <td>a47316e226b8d833a48399209eada6cf</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>4</td>
-      <td>/data/qtran/DATA/SpineXRVertSegmentation/Verse...</td>
-      <td>sub-verse015</td>
-      <td>None</td>
-      <td>4757210</td>
-      <td>2022-08-01 05:34:46</td>
-      <td>2021-03-01 17:46:07</td>
-      <td>2022-07-27 14:33:47</td>
-      <td>True</td>
-      <td>1.0</td>
-      <td>1</td>
-      <td>1</td>
-      <td>1006</td>
-      <td>None</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>8</td>
-      <td>/data/qtran/DATA/SpineXRVertSegmentation/Verse...</td>
-      <td>sub-verse413_split-verse239_ct.nii</td>
-      <td>gz</td>
-      <td>30549006</td>
-      <td>2022-07-31 15:53:10</td>
-      <td>2021-02-25 01:46:44</td>
-      <td>2022-07-27 14:33:47</td>
-      <td>False</td>
-      <td>NaN</td>
-      <td>1</td>
-      <td>6</td>
-      <td>1006</td>
-      <td>1cfe335692f3bf167a18e6b71a570cb6</td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-    </tr>
-    <tr>
-      <th>156</th>
-      <td>172</td>
-      <td>/data/qtran/DATA/SpineXRVertSegmentation/Verse...</td>
-      <td>sub-verse082_ct.nii</td>
-      <td>gz</td>
-      <td>448845998</td>
-      <td>2022-07-29 10:06:11</td>
-      <td>2021-02-25 00:27:15</td>
-      <td>2022-07-27 14:33:47</td>
-      <td>False</td>
-      <td>NaN</td>
-      <td>1</td>
-      <td>171</td>
-      <td>1006</td>
-      <td>93ef01b990d9039a359cb08dbbf7a817</td>
-    </tr>
-    <tr>
-      <th>157</th>
-      <td>171</td>
-      <td>/data/qtran/DATA/SpineXRVertSegmentation/Verse...</td>
-      <td>sub-verse082</td>
-      <td>None</td>
-      <td>448845998</td>
-      <td>2022-08-01 05:43:17</td>
-      <td>2021-03-01 17:41:32</td>
-      <td>2022-07-27 14:33:47</td>
-      <td>True</td>
-      <td>1.0</td>
-      <td>1</td>
-      <td>1</td>
-      <td>1006</td>
-      <td>None</td>
-    </tr>
-    <tr>
-      <th>158</th>
-      <td>175</td>
-      <td>/data/qtran/DATA/SpineXRVertSegmentation/Verse...</td>
-      <td>sub-verse091_ct.nii</td>
-      <td>gz</td>
-      <td>281493307</td>
-      <td>2022-07-29 10:06:13</td>
-      <td>2021-02-25 00:32:58</td>
-      <td>2022-07-27 14:33:47</td>
-      <td>False</td>
-      <td>NaN</td>
-      <td>1</td>
-      <td>174</td>
-      <td>1006</td>
-      <td>a8cdebaf4087c191ff8a621ebb980c72</td>
-    </tr>
-    <tr>
-      <th>159</th>
-      <td>174</td>
-      <td>/data/qtran/DATA/SpineXRVertSegmentation/Verse...</td>
-      <td>sub-verse091</td>
-      <td>None</td>
-      <td>281493307</td>
-      <td>2022-08-01 05:43:17</td>
-      <td>2021-03-01 17:46:12</td>
-      <td>2022-07-27 14:33:47</td>
-      <td>True</td>
-      <td>1.0</td>
-      <td>1</td>
-      <td>1</td>
-      <td>1006</td>
-      <td>None</td>
-    </tr>
-    <tr>
-      <th>160</th>
-      <td>1</td>
-      <td>/data/qtran/DATA/SpineXRVertSegmentation/Verse...</td>
-      <td></td>
-      <td>None</td>
-      <td>6917508565</td>
-      <td>2022-08-01 05:34:45</td>
-      <td>2021-05-04 14:57:31</td>
-      <td>2022-07-27 14:33:47</td>
-      <td>True</td>
-      <td>80.0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>1006</td>
-      <td>None</td>
-    </tr>
-  </tbody>
-</table>
-<p>161 rows × 14 columns</p>
-</div></div></div>
+<span class="nn">File /data/qtran/anaconda3/lib/python3.9/site-packages/folderstats/__init__.py:76,</span> in <span class="ni">_recursive_folderstats</span><span class="nt">(root_entry, items, hash_name, ignore_hidden, exclude, filter_extension, follow_links, depth, idx, parent_idx)</span>
+<span class="g g-Whitespace">     </span><span class="mi">73</span> <span class="n">stat</span> <span class="o">=</span> <span class="n">entry</span><span class="o">.</span><span class="n">stat</span><span class="p">()</span>
+<span class="g g-Whitespace">     </span><span class="mi">74</span> <span class="n">foldersize</span> <span class="o">+=</span> <span class="n">stat</span><span class="o">.</span><span class="n">st_size</span>
+<span class="ne">---&gt; </span><span class="mi">76</span> <span class="n">idx</span><span class="p">,</span> <span class="n">items</span><span class="p">,</span> <span class="n">_foldersize</span><span class="p">,</span> <span class="n">_num_files</span> <span class="o">=</span> <span class="n">_recursive_folderstats</span><span class="p">(</span>
+<span class="g g-Whitespace">     </span><span class="mi">77</span>     <span class="n">entry</span><span class="o">.</span><span class="n">path</span><span class="p">,</span> <span class="n">items</span><span class="p">,</span> <span class="n">hash_name</span><span class="p">,</span>
+<span class="g g-Whitespace">     </span><span class="mi">78</span>     <span class="n">ignore_hidden</span><span class="p">,</span> <span class="n">exclude</span><span class="p">,</span> <span class="n">filter_extension</span><span class="p">,</span> <span class="n">follow_links</span><span class="p">,</span>
+<span class="g g-Whitespace">     </span><span class="mi">79</span>     <span class="n">depth</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">idx</span><span class="p">,</span> <span class="n">current_idx</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">80</span> <span class="n">foldersize</span> <span class="o">+=</span> <span class="n">_foldersize</span>
+<span class="g g-Whitespace">     </span><span class="mi">81</span> <span class="n">num_files</span> <span class="o">+=</span> <span class="n">_num_files</span>
+
+<span class="nn">File /data/qtran/anaconda3/lib/python3.9/site-packages/folderstats/__init__.py:100,</span> in <span class="ni">_recursive_folderstats</span><span class="nt">(root_entry, items, hash_name, ignore_hidden, exclude, filter_extension, follow_links, depth, idx, parent_idx)</span>
+<span class="g g-Whitespace">     </span><span class="mi">98</span> <span class="k">if</span> <span class="n">hash_name</span><span class="p">:</span>
+<span class="g g-Whitespace">     </span><span class="mi">99</span>     <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">access</span><span class="p">(</span><span class="n">entry</span><span class="o">.</span><span class="n">path</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">R_OK</span><span class="p">):</span>
+<span class="ne">--&gt; </span><span class="mi">100</span>         <span class="n">item</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">calculate_hash</span><span class="p">(</span><span class="n">entry</span><span class="o">.</span><span class="n">path</span><span class="p">,</span> <span class="n">hash_name</span><span class="p">))</span>
+<span class="g g-Whitespace">    </span><span class="mi">102</span> <span class="n">items</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">103</span> <span class="n">foldersize</span> <span class="o">+=</span> <span class="n">stat</span><span class="o">.</span><span class="n">st_size</span>
+
+<span class="nn">File /data/qtran/anaconda3/lib/python3.9/site-packages/folderstats/__init__.py:22,</span> in <span class="ni">calculate_hash</span><span class="nt">(filepath, hash_name)</span>
+<span class="g g-Whitespace">     </span><span class="mi">20</span> <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">filepath</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+<span class="g g-Whitespace">     </span><span class="mi">21</span>     <span class="n">checksum</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">hashlib</span><span class="p">,</span> <span class="n">hash_name</span><span class="p">)()</span>
+<span class="ne">---&gt; </span><span class="mi">22</span>     <span class="k">for</span> <span class="n">chunk</span> <span class="ow">in</span> <span class="nb">iter</span><span class="p">(</span><span class="k">lambda</span><span class="p">:</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="mi">4096</span><span class="p">),</span> <span class="sa">b</span><span class="s1">&#39;&#39;</span><span class="p">):</span>
+<span class="g g-Whitespace">     </span><span class="mi">23</span>         <span class="n">checksum</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">chunk</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">25</span>     <span class="k">return</span> <span class="n">checksum</span><span class="o">.</span><span class="n">hexdigest</span><span class="p">()</span>
+
+<span class="nn">File /data/qtran/anaconda3/lib/python3.9/site-packages/folderstats/__init__.py:22,</span> in <span class="ni">calculate_hash.&lt;locals&gt;.&lt;lambda&gt;</span><span class="nt">()</span>
+<span class="g g-Whitespace">     </span><span class="mi">20</span> <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">filepath</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+<span class="g g-Whitespace">     </span><span class="mi">21</span>     <span class="n">checksum</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">hashlib</span><span class="p">,</span> <span class="n">hash_name</span><span class="p">)()</span>
+<span class="ne">---&gt; </span><span class="mi">22</span>     <span class="k">for</span> <span class="n">chunk</span> <span class="ow">in</span> <span class="nb">iter</span><span class="p">(</span><span class="k">lambda</span><span class="p">:</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="mi">4096</span><span class="p">),</span> <span class="sa">b</span><span class="s1">&#39;&#39;</span><span class="p">):</span>
+<span class="g g-Whitespace">     </span><span class="mi">23</span>         <span class="n">checksum</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">chunk</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">25</span>     <span class="k">return</span> <span class="n">checksum</span><span class="o">.</span><span class="n">hexdigest</span><span class="p">()</span>
+
+<span class="ne">KeyboardInterrupt</span>: 
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -603,18 +436,79 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_355340/3893726661.py:7: DeprecationWarning: info is deprecated and will be removed in version 3.0.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Graph with 161 nodes and 160 edges
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_4189980/3333493932.py:7: DeprecationWarning: info is deprecated and will be removed in version 3.0.
 
   print(nx.info(G))
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Graph with 161 nodes and 160 edges
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span>---------------------------------------------------------------------------
+FileNotFoundError                         Traceback (most recent call last)
+/data/qtran/anaconda3/lib/python3.9/site-packages/pydot.py in create(self, prog, format, encoding)
+   1922         try:
+-&gt; 1923             stdout_data, stderr_data, process = call_graphviz(
+   1924                 program=prog,
+
+/data/qtran/anaconda3/lib/python3.9/site-packages/pydot.py in call_graphviz(program, arguments, working_dir, **kwargs)
+    131 
+--&gt; 132     process = subprocess.Popen(
+    133         program_with_args,
+
+/data/qtran/anaconda3/lib/python3.9/subprocess.py in __init__(self, args, bufsize, executable, stdin, stdout, stderr, preexec_fn, close_fds, shell, cwd, env, universal_newlines, startupinfo, creationflags, restore_signals, start_new_session, pass_fds, user, group, extra_groups, encoding, errors, text, umask)
+    950 
+--&gt; 951             self._execute_child(args, executable, preexec_fn, close_fds,
+    952                                 pass_fds, cwd, env,
+
+/data/qtran/anaconda3/lib/python3.9/subprocess.py in _execute_child(self, args, executable, preexec_fn, close_fds, pass_fds, cwd, env, startupinfo, creationflags, shell, p2cread, p2cwrite, c2pread, c2pwrite, errread, errwrite, restore_signals, gid, gids, uid, umask, start_new_session)
+   1820                         err_msg = os.strerror(errno_num)
+-&gt; 1821                     raise child_exception_type(errno_num, err_msg, err_filename)
+   1822                 raise child_exception_type(err_msg)
+
+FileNotFoundError: [Errno 2] No such file or directory: &#39;osage&#39;
+
+During handling of the above exception, another exception occurred:
+
+FileNotFoundError                         Traceback (most recent call last)
+/tmp/ipykernel_4189980/3333493932.py in &lt;module&gt;
+     14 # fdp
+     15 # nop
+---&gt; 16 pos_dot = graphviz_layout(G, prog=&#39;osage&#39;)
+     17 
+     18 fig = plt.figure(figsize=(16, 8))
+
+/data/qtran/anaconda3/lib/python3.9/site-packages/networkx/drawing/nx_pydot.py in graphviz_layout(G, prog, root)
+    261     This is a wrapper for pydot_layout.
+    262     &quot;&quot;&quot;
+--&gt; 263     return pydot_layout(G=G, prog=prog, root=root)
+    264 
+    265 
+
+/data/qtran/anaconda3/lib/python3.9/site-packages/networkx/drawing/nx_pydot.py in pydot_layout(G, prog, root)
+    310     # List of low-level bytes comprising a string in the dot language converted
+    311     # from the passed graph with the passed external GraphViz command.
+--&gt; 312     D_bytes = P.create_dot(prog=prog)
+    313 
+    314     # Unique string decoded from these bytes with the preferred locale encoding
+
+/data/qtran/anaconda3/lib/python3.9/site-packages/pydot.py in new_method(f, prog, encoding)
+   1731                     encoding=None):
+   1732                 &quot;&quot;&quot;Refer to docstring of method `create`.&quot;&quot;&quot;
+-&gt; 1733                 return self.create(
+   1734                     format=f, prog=prog, encoding=encoding)
+   1735             name = &#39;create_{fmt}&#39;.format(fmt=frmt)
+
+/data/qtran/anaconda3/lib/python3.9/site-packages/pydot.py in create(self, prog, format, encoding)
+   1931                 args[1] = &#39;&quot;{prog}&quot; not found in path.&#39;.format(
+   1932                     prog=prog)
+-&gt; 1933                 raise OSError(*args)
+   1934             else:
+   1935                 raise
+
+FileNotFoundError: [Errno 2] &quot;osage&quot; not found in path.
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(-573.6, 6347.6, -4.680000000000003, 256.68)
-</pre></div>
-</div>
-<img alt="../../_images/data_3_3.png" src="../../_images/data_3_3.png" />
 </div>
 </div>
 
