@@ -307,15 +307,15 @@ const thebe_selector_output = ".output, .cell_output"
         <span class="bp">self</span><span class="o">.</span><span class="n">datadir</span> <span class="o">=</span> <span class="n">datadir</span>
 <span class="n">hparams</span> <span class="o">=</span> <span class="n">Hparams</span><span class="p">(</span><span class="n">datadir</span><span class="o">=</span><span class="s2">&quot;/data/qtran/DATA/&quot;</span><span class="p">)</span>
 <span class="n">train_image3d_folders</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">hparams</span><span class="o">.</span><span class="n">datadir</span><span class="p">,</span> <span class="s1">&#39;SpineXRVertSegmentation/Verse2019/raw/train/rawdata/&#39;</span><span class="p">),</span>
-    <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">hparams</span><span class="o">.</span><span class="n">datadir</span><span class="p">,</span> <span class="s1">&#39;SpineXRVertSegmentation/Verse2020/raw/train/rawdata/&#39;</span><span class="p">),</span>
-    <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">hparams</span><span class="o">.</span><span class="n">datadir</span><span class="p">,</span> <span class="s1">&#39;SpineXRVertSegmentation/Verse2019/raw/val/rawdata/&#39;</span><span class="p">),</span>
-    <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">hparams</span><span class="o">.</span><span class="n">datadir</span><span class="p">,</span> <span class="s1">&#39;SpineXRVertSegmentation/Verse2020/raw/val/rawdata/&#39;</span><span class="p">),</span>
-    <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">hparams</span><span class="o">.</span><span class="n">datadir</span><span class="p">,</span> <span class="s1">&#39;SpineXRVertSegmentation/Verse2019/raw/test/rawdata/&#39;</span><span class="p">),</span>
-    <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">hparams</span><span class="o">.</span><span class="n">datadir</span><span class="p">,</span> <span class="s1">&#39;SpineXRVertSegmentation/Verse2020/raw/test/rawdata/&#39;</span><span class="p">),</span>
+    <span class="c1"># os.path.join(hparams.datadir, &#39;SpineXRVertSegmentation/Verse2019/raw/train/rawdata/&#39;),</span>
+    <span class="c1"># os.path.join(hparams.datadir, &#39;SpineXRVertSegmentation/Verse2020/raw/train/rawdata/&#39;),</span>
+    <span class="c1"># os.path.join(hparams.datadir, &#39;SpineXRVertSegmentation/Verse2019/raw/val/rawdata/&#39;),</span>
+    <span class="c1"># os.path.join(hparams.datadir, &#39;SpineXRVertSegmentation/Verse2020/raw/val/rawdata/&#39;),</span>
+    <span class="c1"># os.path.join(hparams.datadir, &#39;SpineXRVertSegmentation/Verse2019/raw/test/rawdata/&#39;),</span>
+    <span class="c1"># os.path.join(hparams.datadir, &#39;SpineXRVertSegmentation/Verse2020/raw/test/rawdata/&#39;),</span>
 
-    <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">hparams</span><span class="o">.</span><span class="n">datadir</span><span class="p">,</span> <span class="s1">&#39;SpineXRVertSegmentation/UWSpine/processed/train/images&#39;</span><span class="p">),</span>
-    <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">hparams</span><span class="o">.</span><span class="n">datadir</span><span class="p">,</span> <span class="s1">&#39;SpineXRVertSegmentation/UWSpine/processed/test/images/&#39;</span><span class="p">),</span>
+    <span class="c1"># os.path.join(hparams.datadir, &#39;SpineXRVertSegmentation/UWSpine/processed/train/images&#39;),</span>
+    <span class="c1"># os.path.join(hparams.datadir, &#39;SpineXRVertSegmentation/UWSpine/processed/test/images/&#39;),</span>
 
     <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">hparams</span><span class="o">.</span><span class="n">datadir</span><span class="p">,</span> <span class="s1">&#39;ChestXRLungSegmentation/NSCLC/processed/train/images&#39;</span><span class="p">),</span>
     <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">hparams</span><span class="o">.</span><span class="n">datadir</span><span class="p">,</span> <span class="s1">&#39;ChestXRLungSegmentation/MOSMED/processed/train/images/CT-0&#39;</span><span class="p">),</span>
@@ -323,7 +323,7 @@ const thebe_selector_output = ".output, .cell_output"
     <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">hparams</span><span class="o">.</span><span class="n">datadir</span><span class="p">,</span> <span class="s1">&#39;ChestXRLungSegmentation/MOSMED/processed/train/images/CT-2&#39;</span><span class="p">),</span>
     <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">hparams</span><span class="o">.</span><span class="n">datadir</span><span class="p">,</span> <span class="s1">&#39;ChestXRLungSegmentation/MOSMED/processed/train/images/CT-3&#39;</span><span class="p">),</span>
     <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">hparams</span><span class="o">.</span><span class="n">datadir</span><span class="p">,</span> <span class="s1">&#39;ChestXRLungSegmentation/MOSMED/processed/train/images/CT-4&#39;</span><span class="p">),</span>
-    <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">hparams</span><span class="o">.</span><span class="n">datadir</span><span class="p">,</span> <span class="s1">&#39;ChestXRLungSegmentation/Imagenglab/processed/train/images&#39;</span><span class="p">),</span>
+    <span class="c1"># os.path.join(hparams.datadir, &#39;ChestXRLungSegmentation/Imagenglab/processed/train/images&#39;),</span>
     <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">hparams</span><span class="o">.</span><span class="n">datadir</span><span class="p">,</span> <span class="s1">&#39;ChestXRLungSegmentation/MELA2022/raw/train/images&#39;</span><span class="p">),</span>
     <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">hparams</span><span class="o">.</span><span class="n">datadir</span><span class="p">,</span> <span class="s1">&#39;ChestXRLungSegmentation/MELA2022/raw/val/images&#39;</span><span class="p">),</span>
     <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">hparams</span><span class="o">.</span><span class="n">datadir</span><span class="p">,</span> <span class="s1">&#39;ChestXRLungSegmentation/AMOS2022/raw/train/images&#39;</span><span class="p">),</span>
@@ -338,73 +338,47 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">folderstats</span><span class="o">.</span><span class="n">folderstats</span><span class="p">(</span>
-    <span class="n">train_image3d_folders</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> 
-    <span class="n">hash_name</span><span class="o">=</span><span class="s1">&#39;md5&#39;</span><span class="p">,</span>
-    <span class="n">filter_extension</span><span class="o">=</span><span class="s1">&#39;gz&#39;</span><span class="p">,</span>
-    <span class="n">exclude</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;tests&quot;</span><span class="p">,</span> <span class="s2">&quot;venv&quot;</span><span class="p">,</span> <span class="s2">&quot;__pycache__&quot;</span><span class="p">],</span>
-    <span class="n">ignore_hidden</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">df</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">glob_files</span><span class="p">(</span><span class="n">folders</span><span class="p">:</span> <span class="nb">str</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">extension</span><span class="p">:</span> <span class="nb">str</span><span class="o">=</span><span class="s1">&#39;*.nii.gz&#39;</span><span class="p">,</span> <span class="n">verbose</span><span class="p">:</span> <span class="nb">bool</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="k">assert</span> <span class="n">folders</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+    <span class="n">paths</span> <span class="o">=</span> <span class="p">[</span><span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">folder</span><span class="p">,</span> <span class="n">extension</span><span class="p">),</span> <span class="n">recursive</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span> <span class="k">for</span> <span class="n">folder</span> <span class="ow">in</span> <span class="n">folders</span><span class="p">]</span>
+    <span class="n">files</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">([</span><span class="n">item</span> <span class="k">for</span> <span class="n">sublist</span> <span class="ow">in</span> <span class="n">paths</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">sublist</span><span class="p">])</span>
+    <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">files</span><span class="p">))</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">files</span><span class="p">[:</span><span class="mi">1</span><span class="p">])</span>
+    <span class="k">return</span> <span class="n">files</span>
+
+<span class="n">rows</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">folder</span> <span class="ow">in</span> <span class="n">train_image3d_folders</span><span class="p">:</span>
+    <span class="n">dataset_name</span> <span class="o">=</span> <span class="n">folder</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">)[</span><span class="mi">5</span><span class="p">]</span>
+    <span class="n">num_images</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">glob_files</span><span class="p">(</span><span class="n">folders</span><span class="o">=</span><span class="p">[</span><span class="n">folder</span><span class="p">],</span> <span class="n">extension</span><span class="o">=</span><span class="s1">&#39;*.nii.gz&#39;</span><span class="p">))</span>
+    <span class="n">rows</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="n">dataset_name</span><span class="p">,</span> <span class="n">num_images</span><span class="p">])</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">rows</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Datasets&quot;</span><span class="p">,</span> <span class="s2">&quot;Images&quot;</span><span class="p">],</span> <span class="n">index</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">()</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;Datasets&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">KeyboardInterrupt</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
-<span class="nn">Input In [3],</span> in <span class="ni">&lt;cell line: 1&gt;</span><span class="nt">()</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">df</span> <span class="o">=</span> <span class="n">folderstats</span><span class="o">.</span><span class="n">folderstats</span><span class="p">(</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span>     <span class="n">train_image3d_folders</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> 
-<span class="g g-Whitespace">      </span><span class="mi">3</span>     <span class="n">hash_name</span><span class="o">=</span><span class="s1">&#39;md5&#39;</span><span class="p">,</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span>     <span class="n">filter_extension</span><span class="o">=</span><span class="s1">&#39;gz&#39;</span><span class="p">,</span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span>     <span class="n">exclude</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;tests&quot;</span><span class="p">,</span> <span class="s2">&quot;venv&quot;</span><span class="p">,</span> <span class="s2">&quot;__pycache__&quot;</span><span class="p">],</span>
-<span class="g g-Whitespace">      </span><span class="mi">6</span>     <span class="n">ignore_hidden</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="n">df</span>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   Datasets  Images
+0     NSCLC     402
+1    MOSMED     254
+2    MOSMED     684
+3    MOSMED     125
+4    MOSMED      45
+5    MOSMED       2
+6  MELA2022     770
+7  MELA2022     110
+8  AMOS2022     240
+9  AMOS2022     120
 
-<span class="nn">File /data/qtran/anaconda3/lib/python3.9/site-packages/folderstats/__init__.py:142,</span> in <span class="ni">folderstats</span><span class="nt">(folderpath, hash_name, microseconds, absolute_paths, exclude, filter_extension, follow_links, ignore_hidden, parent)</span>
-<span class="g g-Whitespace">    </span><span class="mi">139</span>     <span class="n">hash_name</span> <span class="o">=</span> <span class="n">hash_name</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
-<span class="g g-Whitespace">    </span><span class="mi">140</span>     <span class="n">columns</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">hash_name</span><span class="p">)</span>
-<span class="ne">--&gt; </span><span class="mi">142</span> <span class="n">idx</span><span class="p">,</span> <span class="n">items</span><span class="p">,</span> <span class="n">foldersize</span><span class="p">,</span> <span class="n">num_files</span> <span class="o">=</span> <span class="n">_recursive_folderstats</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">143</span>     <span class="n">folderpath</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">144</span>     <span class="n">hash_name</span><span class="o">=</span><span class="n">hash_name</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">145</span>     <span class="n">ignore_hidden</span><span class="o">=</span><span class="n">ignore_hidden</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">146</span>     <span class="n">exclude</span><span class="o">=</span><span class="n">exclude</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">147</span>     <span class="n">filter_extension</span><span class="o">=</span><span class="n">filter_extension</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">148</span>     <span class="n">follow_links</span><span class="o">=</span><span class="n">follow_links</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">149</span> <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">items</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">columns</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">151</span> <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;atime&#39;</span><span class="p">,</span> <span class="s1">&#39;mtime&#39;</span><span class="p">,</span> <span class="s1">&#39;ctime&#39;</span><span class="p">]:</span>
-
-<span class="nn">File /data/qtran/anaconda3/lib/python3.9/site-packages/folderstats/__init__.py:76,</span> in <span class="ni">_recursive_folderstats</span><span class="nt">(root_entry, items, hash_name, ignore_hidden, exclude, filter_extension, follow_links, depth, idx, parent_idx)</span>
-<span class="g g-Whitespace">     </span><span class="mi">73</span> <span class="n">stat</span> <span class="o">=</span> <span class="n">entry</span><span class="o">.</span><span class="n">stat</span><span class="p">()</span>
-<span class="g g-Whitespace">     </span><span class="mi">74</span> <span class="n">foldersize</span> <span class="o">+=</span> <span class="n">stat</span><span class="o">.</span><span class="n">st_size</span>
-<span class="ne">---&gt; </span><span class="mi">76</span> <span class="n">idx</span><span class="p">,</span> <span class="n">items</span><span class="p">,</span> <span class="n">_foldersize</span><span class="p">,</span> <span class="n">_num_files</span> <span class="o">=</span> <span class="n">_recursive_folderstats</span><span class="p">(</span>
-<span class="g g-Whitespace">     </span><span class="mi">77</span>     <span class="n">entry</span><span class="o">.</span><span class="n">path</span><span class="p">,</span> <span class="n">items</span><span class="p">,</span> <span class="n">hash_name</span><span class="p">,</span>
-<span class="g g-Whitespace">     </span><span class="mi">78</span>     <span class="n">ignore_hidden</span><span class="p">,</span> <span class="n">exclude</span><span class="p">,</span> <span class="n">filter_extension</span><span class="p">,</span> <span class="n">follow_links</span><span class="p">,</span>
-<span class="g g-Whitespace">     </span><span class="mi">79</span>     <span class="n">depth</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">idx</span><span class="p">,</span> <span class="n">current_idx</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">80</span> <span class="n">foldersize</span> <span class="o">+=</span> <span class="n">_foldersize</span>
-<span class="g g-Whitespace">     </span><span class="mi">81</span> <span class="n">num_files</span> <span class="o">+=</span> <span class="n">_num_files</span>
-
-<span class="nn">File /data/qtran/anaconda3/lib/python3.9/site-packages/folderstats/__init__.py:100,</span> in <span class="ni">_recursive_folderstats</span><span class="nt">(root_entry, items, hash_name, ignore_hidden, exclude, filter_extension, follow_links, depth, idx, parent_idx)</span>
-<span class="g g-Whitespace">     </span><span class="mi">98</span> <span class="k">if</span> <span class="n">hash_name</span><span class="p">:</span>
-<span class="g g-Whitespace">     </span><span class="mi">99</span>     <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">access</span><span class="p">(</span><span class="n">entry</span><span class="o">.</span><span class="n">path</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">R_OK</span><span class="p">):</span>
-<span class="ne">--&gt; </span><span class="mi">100</span>         <span class="n">item</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">calculate_hash</span><span class="p">(</span><span class="n">entry</span><span class="o">.</span><span class="n">path</span><span class="p">,</span> <span class="n">hash_name</span><span class="p">))</span>
-<span class="g g-Whitespace">    </span><span class="mi">102</span> <span class="n">items</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">103</span> <span class="n">foldersize</span> <span class="o">+=</span> <span class="n">stat</span><span class="o">.</span><span class="n">st_size</span>
-
-<span class="nn">File /data/qtran/anaconda3/lib/python3.9/site-packages/folderstats/__init__.py:22,</span> in <span class="ni">calculate_hash</span><span class="nt">(filepath, hash_name)</span>
-<span class="g g-Whitespace">     </span><span class="mi">20</span> <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">filepath</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
-<span class="g g-Whitespace">     </span><span class="mi">21</span>     <span class="n">checksum</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">hashlib</span><span class="p">,</span> <span class="n">hash_name</span><span class="p">)()</span>
-<span class="ne">---&gt; </span><span class="mi">22</span>     <span class="k">for</span> <span class="n">chunk</span> <span class="ow">in</span> <span class="nb">iter</span><span class="p">(</span><span class="k">lambda</span><span class="p">:</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="mi">4096</span><span class="p">),</span> <span class="sa">b</span><span class="s1">&#39;&#39;</span><span class="p">):</span>
-<span class="g g-Whitespace">     </span><span class="mi">23</span>         <span class="n">checksum</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">chunk</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">25</span>     <span class="k">return</span> <span class="n">checksum</span><span class="o">.</span><span class="n">hexdigest</span><span class="p">()</span>
-
-<span class="nn">File /data/qtran/anaconda3/lib/python3.9/site-packages/folderstats/__init__.py:22,</span> in <span class="ni">calculate_hash.&lt;locals&gt;.&lt;lambda&gt;</span><span class="nt">()</span>
-<span class="g g-Whitespace">     </span><span class="mi">20</span> <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">filepath</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
-<span class="g g-Whitespace">     </span><span class="mi">21</span>     <span class="n">checksum</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">hashlib</span><span class="p">,</span> <span class="n">hash_name</span><span class="p">)()</span>
-<span class="ne">---&gt; </span><span class="mi">22</span>     <span class="k">for</span> <span class="n">chunk</span> <span class="ow">in</span> <span class="nb">iter</span><span class="p">(</span><span class="k">lambda</span><span class="p">:</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="mi">4096</span><span class="p">),</span> <span class="sa">b</span><span class="s1">&#39;&#39;</span><span class="p">):</span>
-<span class="g g-Whitespace">     </span><span class="mi">23</span>         <span class="n">checksum</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">chunk</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">25</span>     <span class="k">return</span> <span class="n">checksum</span><span class="o">.</span><span class="n">hexdigest</span><span class="p">()</span>
-
-<span class="ne">KeyboardInterrupt</span>: 
+   Datasets  Images
+0  AMOS2022     360
+1  MELA2022     880
+2    MOSMED    1110
+3     NSCLC     402
 </pre></div>
 </div>
 </div>
@@ -436,77 +410,41 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Graph with 161 nodes and 160 edges
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_4189980/3333493932.py:7: DeprecationWarning: info is deprecated and will be removed in version 3.0.
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">KeyError</span><span class="g g-Whitespace">                                  </span>Traceback (most recent call last)
+<span class="nn">Input In [4],</span> in <span class="ni">&lt;cell line: 2&gt;</span><span class="nt">()</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">Graph</span><span class="p">()</span>
+<span class="ne">----&gt; </span><span class="mi">2</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s1">&#39;id&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span>     <span class="k">if</span> <span class="n">row</span><span class="o">.</span><span class="n">parent</span><span class="p">:</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span>         <span class="n">G</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="n">row</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="n">row</span><span class="o">.</span><span class="n">parent</span><span class="p">)</span>
 
-  print(nx.info(G))
-</pre></div>
-</div>
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span>---------------------------------------------------------------------------
-FileNotFoundError                         Traceback (most recent call last)
-/data/qtran/anaconda3/lib/python3.9/site-packages/pydot.py in create(self, prog, format, encoding)
-   1922         try:
--&gt; 1923             stdout_data, stderr_data, process = call_graphviz(
-   1924                 program=prog,
+<span class="nn">File /data/qtran/anaconda3/lib/python3.9/site-packages/pandas/util/_decorators.py:311,</span> in <span class="ni">deprecate_nonkeyword_arguments.&lt;locals&gt;.decorate.&lt;locals&gt;.wrapper</span><span class="nt">(*args, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">305</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">args</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">num_allow_args</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">306</span>     <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">307</span>         <span class="n">msg</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">arguments</span><span class="o">=</span><span class="n">arguments</span><span class="p">),</span>
+<span class="g g-Whitespace">    </span><span class="mi">308</span>         <span class="ne">FutureWarning</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">309</span>         <span class="n">stacklevel</span><span class="o">=</span><span class="n">stacklevel</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">310</span>     <span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">311</span> <span class="k">return</span> <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 
-/data/qtran/anaconda3/lib/python3.9/site-packages/pydot.py in call_graphviz(program, arguments, working_dir, **kwargs)
-    131 
---&gt; 132     process = subprocess.Popen(
-    133         program_with_args,
+<span class="nn">File /data/qtran/anaconda3/lib/python3.9/site-packages/pandas/core/frame.py:6313,</span> in <span class="ni">DataFrame.sort_values</span><span class="nt">(self, by, axis, ascending, inplace, kind, na_position, ignore_index, key)</span>
+<span class="g g-Whitespace">   </span><span class="mi">6309</span> <span class="k">elif</span> <span class="nb">len</span><span class="p">(</span><span class="n">by</span><span class="p">):</span>
+<span class="g g-Whitespace">   </span><span class="mi">6310</span>     <span class="c1"># len(by) == 1</span>
+<span class="g g-Whitespace">   </span><span class="mi">6312</span>     <span class="n">by</span> <span class="o">=</span> <span class="n">by</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="ne">-&gt; </span><span class="mi">6313</span>     <span class="n">k</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_label_or_level_values</span><span class="p">(</span><span class="n">by</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="n">axis</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">6315</span>     <span class="c1"># need to rewrap column in Series to apply key function</span>
+<span class="g g-Whitespace">   </span><span class="mi">6316</span>     <span class="k">if</span> <span class="n">key</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">6317</span>         <span class="c1"># error: Incompatible types in assignment (expression has type</span>
+<span class="g g-Whitespace">   </span><span class="mi">6318</span>         <span class="c1"># &quot;Series&quot;, variable has type &quot;ndarray&quot;)</span>
 
-/data/qtran/anaconda3/lib/python3.9/subprocess.py in __init__(self, args, bufsize, executable, stdin, stdout, stderr, preexec_fn, close_fds, shell, cwd, env, universal_newlines, startupinfo, creationflags, restore_signals, start_new_session, pass_fds, user, group, extra_groups, encoding, errors, text, umask)
-    950 
---&gt; 951             self._execute_child(args, executable, preexec_fn, close_fds,
-    952                                 pass_fds, cwd, env,
+<span class="nn">File /data/qtran/anaconda3/lib/python3.9/site-packages/pandas/core/generic.py:1840,</span> in <span class="ni">NDFrame._get_label_or_level_values</span><span class="nt">(self, key, axis)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1838</span>     <span class="n">values</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">axes</span><span class="p">[</span><span class="n">axis</span><span class="p">]</span><span class="o">.</span><span class="n">get_level_values</span><span class="p">(</span><span class="n">key</span><span class="p">)</span><span class="o">.</span><span class="n">_values</span>
+<span class="g g-Whitespace">   </span><span class="mi">1839</span> <span class="k">else</span><span class="p">:</span>
+<span class="ne">-&gt; </span><span class="mi">1840</span>     <span class="k">raise</span> <span class="ne">KeyError</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1842</span> <span class="c1"># Check for duplicates</span>
+<span class="g g-Whitespace">   </span><span class="mi">1843</span> <span class="k">if</span> <span class="n">values</span><span class="o">.</span><span class="n">ndim</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
 
-/data/qtran/anaconda3/lib/python3.9/subprocess.py in _execute_child(self, args, executable, preexec_fn, close_fds, pass_fds, cwd, env, startupinfo, creationflags, shell, p2cread, p2cwrite, c2pread, c2pwrite, errread, errwrite, restore_signals, gid, gids, uid, umask, start_new_session)
-   1820                         err_msg = os.strerror(errno_num)
--&gt; 1821                     raise child_exception_type(errno_num, err_msg, err_filename)
-   1822                 raise child_exception_type(err_msg)
-
-FileNotFoundError: [Errno 2] No such file or directory: &#39;osage&#39;
-
-During handling of the above exception, another exception occurred:
-
-FileNotFoundError                         Traceback (most recent call last)
-/tmp/ipykernel_4189980/3333493932.py in &lt;module&gt;
-     14 # fdp
-     15 # nop
----&gt; 16 pos_dot = graphviz_layout(G, prog=&#39;osage&#39;)
-     17 
-     18 fig = plt.figure(figsize=(16, 8))
-
-/data/qtran/anaconda3/lib/python3.9/site-packages/networkx/drawing/nx_pydot.py in graphviz_layout(G, prog, root)
-    261     This is a wrapper for pydot_layout.
-    262     &quot;&quot;&quot;
---&gt; 263     return pydot_layout(G=G, prog=prog, root=root)
-    264 
-    265 
-
-/data/qtran/anaconda3/lib/python3.9/site-packages/networkx/drawing/nx_pydot.py in pydot_layout(G, prog, root)
-    310     # List of low-level bytes comprising a string in the dot language converted
-    311     # from the passed graph with the passed external GraphViz command.
---&gt; 312     D_bytes = P.create_dot(prog=prog)
-    313 
-    314     # Unique string decoded from these bytes with the preferred locale encoding
-
-/data/qtran/anaconda3/lib/python3.9/site-packages/pydot.py in new_method(f, prog, encoding)
-   1731                     encoding=None):
-   1732                 &quot;&quot;&quot;Refer to docstring of method `create`.&quot;&quot;&quot;
--&gt; 1733                 return self.create(
-   1734                     format=f, prog=prog, encoding=encoding)
-   1735             name = &#39;create_{fmt}&#39;.format(fmt=frmt)
-
-/data/qtran/anaconda3/lib/python3.9/site-packages/pydot.py in create(self, prog, format, encoding)
-   1931                 args[1] = &#39;&quot;{prog}&quot; not found in path.&#39;.format(
-   1932                     prog=prog)
--&gt; 1933                 raise OSError(*args)
-   1934             else:
-   1935                 raise
-
-FileNotFoundError: [Errno 2] &quot;osage&quot; not found in path.
+<span class="ne">KeyError</span>: &#39;id&#39;
 </pre></div>
 </div>
 </div>

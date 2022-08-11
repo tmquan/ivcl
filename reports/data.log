@@ -1,15 +1,4 @@
 Traceback (most recent call last):
-  File "/data/qtran/anaconda3/lib/python3.9/site-packages/nbclient/client.py", line 730, in _async_poll_for_reply
-    msg = await ensure_async(self.kc.shell_channel.get_msg(timeout=new_timeout))
-  File "/data/qtran/anaconda3/lib/python3.9/site-packages/nbclient/util.py", line 96, in ensure_async
-    result = await obj
-  File "/home/qtran/.local/lib/python3.9/site-packages/jupyter_client/channels.py", line 230, in get_msg
-    raise Empty
-_queue.Empty
-
-During handling of the above exception, another exception occurred:
-
-Traceback (most recent call last):
   File "/data/qtran/anaconda3/lib/python3.9/site-packages/jupyter_cache/executors/utils.py", line 51, in single_nb_execution
     executenb(
   File "/data/qtran/anaconda3/lib/python3.9/site-packages/nbclient/client.py", line 1204, in execute
@@ -22,22 +11,69 @@ Traceback (most recent call last):
     return future.result()
   File "/data/qtran/anaconda3/lib/python3.9/site-packages/nbclient/client.py", line 663, in async_execute
     await self.async_execute_cell(
-  File "/data/qtran/anaconda3/lib/python3.9/site-packages/nbclient/client.py", line 949, in async_execute_cell
-    exec_reply = await self.task_poll_for_reply
-  File "/data/qtran/anaconda3/lib/python3.9/site-packages/nbclient/client.py", line 754, in _async_poll_for_reply
-    await self._async_handle_timeout(timeout, cell)
-  File "/data/qtran/anaconda3/lib/python3.9/site-packages/nbclient/client.py", line 801, in _async_handle_timeout
-    raise CellTimeoutError.error_from_timeout_and_cell(
-nbclient.exceptions.CellTimeoutError: A cell timed out while it was being executed, after 30 seconds.
-The message was: Cell execution timed out.
-Here is a preview of the cell contents:
--------------------
-df = folderstats.folderstats(
-    train_image3d_folders[0], 
-    hash_name='md5',
-    filter_extension='gz',
-    exclude=["tests", "venv", "__pycache__"],
-    ignore_hidden=True)
-df
--------------------
+  File "/data/qtran/anaconda3/lib/python3.9/site-packages/nbclient/client.py", line 965, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "/data/qtran/anaconda3/lib/python3.9/site-packages/nbclient/client.py", line 862, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+G = nx.Graph()
+for i, row in df.sort_values(by='id').iterrows():
+    if row.parent:
+        G.add_edge(row.id, row.parent)
+    
+# Print some additional information
+print(nx.info(G))
+
+
+# neato
+# dot
+# twopi
+# circo
+# fdp
+# nop
+pos_dot = graphviz_layout(G, prog='dot')
+
+fig = plt.figure(figsize=(16, 8))
+nodes = nx.draw_networkx_nodes(G, pos_dot, node_size=2, node_color='C0')
+edges = nx.draw_networkx_edges(G, pos_dot, edge_color='C0', width=0.5)
+plt.axis('off')
+------------------
+
+[0;31m---------------------------------------------------------------------------[0m
+[0;31mKeyError[0m                                  Traceback (most recent call last)
+Input [0;32mIn [4][0m, in [0;36m<cell line: 2>[0;34m()[0m
+[1;32m      1[0m G [38;5;241m=[39m nx[38;5;241m.[39mGraph()
+[0;32m----> 2[0m [38;5;28;01mfor[39;00m i, row [38;5;129;01min[39;00m [43mdf[49m[38;5;241;43m.[39;49m[43msort_values[49m[43m([49m[43mby[49m[38;5;241;43m=[39;49m[38;5;124;43m'[39;49m[38;5;124;43mid[39;49m[38;5;124;43m'[39;49m[43m)[49m[38;5;241m.[39miterrows():
+[1;32m      3[0m     [38;5;28;01mif[39;00m row[38;5;241m.[39mparent:
+[1;32m      4[0m         G[38;5;241m.[39madd_edge(row[38;5;241m.[39mid, row[38;5;241m.[39mparent)
+
+File [0;32m/data/qtran/anaconda3/lib/python3.9/site-packages/pandas/util/_decorators.py:311[0m, in [0;36mdeprecate_nonkeyword_arguments.<locals>.decorate.<locals>.wrapper[0;34m(*args, **kwargs)[0m
+[1;32m    305[0m [38;5;28;01mif[39;00m [38;5;28mlen[39m(args) [38;5;241m>[39m num_allow_args:
+[1;32m    306[0m     warnings[38;5;241m.[39mwarn(
+[1;32m    307[0m         msg[38;5;241m.[39mformat(arguments[38;5;241m=[39marguments),
+[1;32m    308[0m         [38;5;167;01mFutureWarning[39;00m,
+[1;32m    309[0m         stacklevel[38;5;241m=[39mstacklevel,
+[1;32m    310[0m     )
+[0;32m--> 311[0m [38;5;28;01mreturn[39;00m [43mfunc[49m[43m([49m[38;5;241;43m*[39;49m[43margs[49m[43m,[49m[43m [49m[38;5;241;43m*[39;49m[38;5;241;43m*[39;49m[43mkwargs[49m[43m)[49m
+
+File [0;32m/data/qtran/anaconda3/lib/python3.9/site-packages/pandas/core/frame.py:6313[0m, in [0;36mDataFrame.sort_values[0;34m(self, by, axis, ascending, inplace, kind, na_position, ignore_index, key)[0m
+[1;32m   6309[0m [38;5;28;01melif[39;00m [38;5;28mlen[39m(by):
+[1;32m   6310[0m     [38;5;66;03m# len(by) == 1[39;00m
+[1;32m   6312[0m     by [38;5;241m=[39m by[[38;5;241m0[39m]
+[0;32m-> 6313[0m     k [38;5;241m=[39m [38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43m_get_label_or_level_values[49m[43m([49m[43mby[49m[43m,[49m[43m [49m[43maxis[49m[38;5;241;43m=[39;49m[43maxis[49m[43m)[49m
+[1;32m   6315[0m     [38;5;66;03m# need to rewrap column in Series to apply key function[39;00m
+[1;32m   6316[0m     [38;5;28;01mif[39;00m key [38;5;129;01mis[39;00m [38;5;129;01mnot[39;00m [38;5;28;01mNone[39;00m:
+[1;32m   6317[0m         [38;5;66;03m# error: Incompatible types in assignment (expression has type[39;00m
+[1;32m   6318[0m         [38;5;66;03m# "Series", variable has type "ndarray")[39;00m
+
+File [0;32m/data/qtran/anaconda3/lib/python3.9/site-packages/pandas/core/generic.py:1840[0m, in [0;36mNDFrame._get_label_or_level_values[0;34m(self, key, axis)[0m
+[1;32m   1838[0m     values [38;5;241m=[39m [38;5;28mself[39m[38;5;241m.[39maxes[axis][38;5;241m.[39mget_level_values(key)[38;5;241m.[39m_values
+[1;32m   1839[0m [38;5;28;01melse[39;00m:
+[0;32m-> 1840[0m     [38;5;28;01mraise[39;00m [38;5;167;01mKeyError[39;00m(key)
+[1;32m   1842[0m [38;5;66;03m# Check for duplicates[39;00m
+[1;32m   1843[0m [38;5;28;01mif[39;00m values[38;5;241m.[39mndim [38;5;241m>[39m [38;5;241m1[39m:
+
+[0;31mKeyError[0m: 'id'
+KeyError: 'id'
 
