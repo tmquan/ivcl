@@ -1,4 +1,15 @@
 Traceback (most recent call last):
+  File "/data/qtran/anaconda3/lib/python3.9/site-packages/nbclient/client.py", line 730, in _async_poll_for_reply
+    msg = await ensure_async(self.kc.shell_channel.get_msg(timeout=new_timeout))
+  File "/data/qtran/anaconda3/lib/python3.9/site-packages/nbclient/util.py", line 96, in ensure_async
+    result = await obj
+  File "/home/qtran/.local/lib/python3.9/site-packages/jupyter_client/channels.py", line 230, in get_msg
+    raise Empty
+_queue.Empty
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
   File "/data/qtran/anaconda3/lib/python3.9/site-packages/jupyter_cache/executors/utils.py", line 51, in single_nb_execution
     executenb(
   File "/data/qtran/anaconda3/lib/python3.9/site-packages/nbclient/client.py", line 1204, in execute
@@ -11,40 +22,18 @@ Traceback (most recent call last):
     return future.result()
   File "/data/qtran/anaconda3/lib/python3.9/site-packages/nbclient/client.py", line 663, in async_execute
     await self.async_execute_cell(
-  File "/data/qtran/anaconda3/lib/python3.9/site-packages/nbclient/client.py", line 965, in async_execute_cell
-    await self._check_raise_for_error(cell, cell_index, exec_reply)
-  File "/data/qtran/anaconda3/lib/python3.9/site-packages/nbclient/client.py", line 862, in _check_raise_for_error
-    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
-nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
-------------------
-# HIDE/SHOW
-fig, ax = plt.subplots(
-    1, 2, 
-    figsize=(12, 4), 
-    # tight_layout=True,
-)
-
-delta = sp.Piecewise(
-    (1, sp.Equality(t, 0)),
-    (0, sp.Or(sp.StrictLessThan(t, 0), sp.StrictGreaterThan(t, 0))),
-)
-
-# mpl_axes_stem(ax[0], sp.Equality(t, 0), (t, 0, 1, 1), linefmt='b', markerfmt='b^')
-# mpl_axes_plot(ax[0], sp.Equality(t, 0), (t, -40, 40), color='k', alpha=0.5)
-mpl_axes_stem(ax[0], delta, (t, -40, 40, 0.25), linefmt='m', markerfmt=' ')
-ax[0].scatter(0, 1, color='m', marker='^', s=100)
-ax[0].set_xlim(-5, 5, 1)
-ax[0].set_ylim(-2, 2, 1)
-ax[0].set_title(r'$x(t)$', fontsize=16)
-
-mpl_axes_stem(ax[1], delta, (t, -40, 40, 0.25), linefmt='b', markerfmt='bo')
-ax[1].set_xlim(-5, 5, 1)
-ax[1].set_ylim(-2, 2, 1)
-ax[1].set_title(r'$x[n]$', fontsize=16)
-
-plt.show()
-------------------
-
-
-KeyboardInterrupt: 
+  File "/data/qtran/anaconda3/lib/python3.9/site-packages/nbclient/client.py", line 949, in async_execute_cell
+    exec_reply = await self.task_poll_for_reply
+  File "/data/qtran/anaconda3/lib/python3.9/site-packages/nbclient/client.py", line 754, in _async_poll_for_reply
+    await self._async_handle_timeout(timeout, cell)
+  File "/data/qtran/anaconda3/lib/python3.9/site-packages/nbclient/client.py", line 801, in _async_handle_timeout
+    raise CellTimeoutError.error_from_timeout_and_cell(
+nbclient.exceptions.CellTimeoutError: A cell timed out while it was being executed, after 30 seconds.
+The message was: Cell execution timed out.
+Here is a preview of the cell contents:
+-------------------
+['# HIDDEN', '# %reset -f', '! rm -rfv *.png *.jpg signals/*', 'import os', 'import shutil']
+...
+["plt.rcParams['axes.labelsize'] = 24", "plt.rcParams['axes.titlesize'] = 24", "plt.rcParams['xtick.labelsize'] = 16", "plt.rcParams['ytick.labelsize'] = 16", '%matplotlib inline']
+-------------------
 
