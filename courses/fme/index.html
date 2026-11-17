@@ -29,7 +29,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=fme6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=fme7" />
     
   <link rel="preload" as="script" href="../../_static/js/index.be7d3bbb2ef33a8344ce.js">
 
@@ -744,7 +744,7 @@ const thebe_selector_output = ".output, .cell_output"
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="bjt-and-mosfet-circuits">
 <h1>BJT and MOSFET Circuits<a class="headerlink" href="#bjt-and-mosfet-circuits" title="Permalink to this headline">¶</a></h1>
-<p>A bipolar transistor and a MOSFET can be wired into the same networks. Figures and tables on this page share one layout of three columns: a label, then the BJT version and the MOSFET version side by side. Both versions of a circuit are drawn by the same few lines of Python. Where a circuit exists in only one of the two technologies, the other column is left empty. The page goes from one transistor in eight connections to forty-two circuits of two transistors in seven families.</p>
+<p>A bipolar transistor and a MOSFET can be wired into the same networks. Figures and tables on this page share one layout of three columns: a label, then the BJT version and the MOSFET version side by side. Both versions of a circuit are drawn by the same few lines of Python. Where a circuit exists in only one of the two technologies, the cell of the other one says so. The page goes from one transistor in eight connections to forty-two circuits of two transistors in seven families.</p>
 <p>The two-transistor circuits follow H. Pretl and M. Eberlein [1], who show the MOSFET versions. The BJT versions are obtained by swapping device for device. Circuits of [1] that use the body terminal, a thick-oxide device or the parasitic bipolar transistor of a MOSFET are left out. The symbols follow the drawing style of B. Razavi [2].</p>
 <div class="section" id="prerequisites">
 <h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Permalink to this headline">¶</a></h2>
@@ -823,7 +823,7 @@ const thebe_selector_output = ".output, .cell_output"
 </tbody>
 </table>
 <p>The circuit functions use only the shared names, which read <em>base or gate</em>, <em>collector or drain</em> and <em>emitter or source</em>. <code class="docutils literal notranslate"><span class="pre">c.w(p0,</span> <span class="pre">p1,</span> <span class="pre">...)</span></code> draws a wire, <code class="docutils literal notranslate"><span class="pre">c.dot(p)</span></code> a node, <code class="docutils literal notranslate"><span class="pre">c.port(p,</span> <span class="pre">label,</span> <span class="pre">side)</span></code> an open terminal, <code class="docutils literal notranslate"><span class="pre">c.gnd(p)</span></code> a ground and <code class="docutils literal notranslate"><span class="pre">c.res(p,</span> <span class="pre">label)</span></code> a resistor. <code class="docutils literal notranslate"><span class="pre">c.chain([...],</span> <span class="pre">x,</span> <span class="pre">y)</span></code> places a series stack of transistors, and <code class="docutils literal notranslate"><span class="pre">c.bus([...],</span> <span class="pre">x)</span></code> ties their bases or gates together. Coordinates are pixels on a 10-px grid with <span class="math notranslate nohighlight">\(y\)</span> pointing down. Before drawing, all wire pieces and symbol leads are merged into continuous connectors.</p>
-<p><code class="docutils literal notranslate"><span class="pre">show(a,</span> <span class="pre">b)</span></code> draws the circuits <code class="docutils literal notranslate"><span class="pre">a</span></code> and <code class="docutils literal notranslate"><span class="pre">b</span></code> as two rows: their names in the first column, then the drawing made with <code class="docutils literal notranslate"><span class="pre">BJT</span></code> and the drawing made with <code class="docutils literal notranslate"><span class="pre">MOSFET</span></code>. The first docstring line gives the names, as <code class="docutils literal notranslate"><span class="pre">BJT</span> <span class="pre">name</span> <span class="pre">|</span> <span class="pre">MOSFET</span> <span class="pre">name</span></code> where the two differ. A name <code class="docutils literal notranslate"><span class="pre">-</span></code> means that the circuit has no such version, and that column stays empty.</p>
+<p><code class="docutils literal notranslate"><span class="pre">show(a,</span> <span class="pre">b)</span></code> draws the circuits <code class="docutils literal notranslate"><span class="pre">a</span></code> and <code class="docutils literal notranslate"><span class="pre">b</span></code> as two rows: their names in the first column, then the drawing made with <code class="docutils literal notranslate"><span class="pre">BJT</span></code> and the drawing made with <code class="docutils literal notranslate"><span class="pre">MOSFET</span></code>. The first docstring line gives the names, as <code class="docutils literal notranslate"><span class="pre">BJT</span> <span class="pre">name</span> <span class="pre">|</span> <span class="pre">MOSFET</span> <span class="pre">name</span></code> where the two differ. A name <code class="docutils literal notranslate"><span class="pre">-</span></code> means that the circuit has no such version, and that cell says so.</p>
 <div class="cell tag_hide_input docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># HIDE/SHOW</span>
@@ -886,7 +886,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/fme_index_04_0.svg" src="../../_images/fme_index_04_0.svg?v=fme6" />
+<img alt="../../_images/fme_index_04_0.svg" src="../../_images/fme_index_04_0.svg?v=fme7" />
 </div>
 </div>
 <p>The two columns translate into each other term by term:</p>
@@ -969,7 +969,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/fme_index_05_0.svg" src="../../_images/fme_index_05_0.svg?v=fme6" />
+<img alt="../../_images/fme_index_05_0.svg" src="../../_images/fme_index_05_0.svg?v=fme7" />
 </div>
 </div>
 <table class="colwidths-auto table">
@@ -1017,7 +1017,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/fme_index_06_0.svg" src="../../_images/fme_index_06_0.svg?v=fme6" />
+<img alt="../../_images/fme_index_06_0.svg" src="../../_images/fme_index_06_0.svg?v=fme7" />
 </div>
 </div>
 <table class="colwidths-auto table">
@@ -1066,7 +1066,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/fme_index_07_0.svg" src="../../_images/fme_index_07_0.svg?v=fme6" />
+<img alt="../../_images/fme_index_07_0.svg" src="../../_images/fme_index_07_0.svg?v=fme7" />
 </div>
 </div>
 <table class="colwidths-auto table">
@@ -1115,7 +1115,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/fme_index_08_0.svg" src="../../_images/fme_index_08_0.svg?v=fme6" />
+<img alt="../../_images/fme_index_08_0.svg" src="../../_images/fme_index_08_0.svg?v=fme7" />
 </div>
 </div>
 <table class="colwidths-auto table">
@@ -1127,8 +1127,8 @@ const thebe_selector_output = ".output, .cell_output"
 </thead>
 <tbody>
 <tr class="row-even"><td><p><strong>Resistor</strong></p></td>
-<td></td>
-<td><p>Triode region: <span class="math notranslate nohighlight">\(R_\mathrm{on}\)</span> as above, set by <span class="math notranslate nohighlight">\(V_\mathrm{bias}\)</span>. <em>No BJT version:</em> a saturated BJT is not a linear resistor</p></td>
+<td><p><em>No BJT version.</em> A saturated BJT is not a linear resistor</p></td>
+<td><p>Triode region: <span class="math notranslate nohighlight">\(R_\mathrm{on}\)</span> as above, set by <span class="math notranslate nohighlight">\(V_\mathrm{bias}\)</span></p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>Capacitor</strong></p></td>
 <td><p><em>Limited.</em> Junction capacitance, usable only while the junctions stay reverse biased</p></td>
@@ -1235,7 +1235,7 @@ const thebe_selector_output = ".output, .cell_output"
 </tr>
 </tbody>
 </table>
-<p>Of the forty-two circuits, 21 carry over to the BJT unchanged and 6 with a restriction, marked <em>Limited</em> in the BJT column. The other 15 rely on a MOSFET as a linear resistor, a gate capacitor or a switch without control current. They have no working BJT version, so their BJT column is empty, in the figure and in the table, and the MOSFET column says why.</p>
+<p>Of the forty-two circuits, 21 carry over to the BJT unchanged and 6 with a restriction, marked <em>Limited</em> in the BJT column. The other 15 rely on a MOSFET as a linear resistor, a gate capacitor or a switch without control current. They have no working BJT version: their BJT cell says so in the figure, and says why in the table.</p>
 </div>
 <div class="section" id="bias-circuits">
 <h2>Bias Circuits<a class="headerlink" href="#bias-circuits" title="Permalink to this headline">¶</a></h2>
@@ -1273,7 +1273,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/fme_index_09_0.svg" src="../../_images/fme_index_09_0.svg?v=fme6" />
+<img alt="../../_images/fme_index_09_0.svg" src="../../_images/fme_index_09_0.svg?v=fme7" />
 </div>
 </div>
 <table class="colwidths-auto table">
@@ -1328,7 +1328,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/fme_index_10_0.svg" src="../../_images/fme_index_10_0.svg?v=fme6" />
+<img alt="../../_images/fme_index_10_0.svg" src="../../_images/fme_index_10_0.svg?v=fme7" />
 </div>
 </div>
 <table class="colwidths-auto table">
@@ -1340,8 +1340,8 @@ const thebe_selector_output = ".output, .cell_output"
 </thead>
 <tbody>
 <tr class="row-even"><td><p><strong>3. Bias generator</strong></p></td>
-<td></td>
-<td><p><span class="math notranslate nohighlight">\(M_1\)</span> is a current source and <span class="math notranslate nohighlight">\(M_2\)</span> a diode: <span class="math notranslate nohighlight">\(V_\mathrm{bias}=V_{GS2}\)</span>. <em>No BJT version:</em> a grounded base would put the whole supply across the emitter-base junction</p></td>
+<td><p><em>No BJT version.</em> A grounded base would put the whole supply across the emitter-base junction</p></td>
+<td><p><span class="math notranslate nohighlight">\(M_1\)</span> is a current source and <span class="math notranslate nohighlight">\(M_2\)</span> a diode: <span class="math notranslate nohighlight">\(V_\mathrm{bias}=V_{GS2}\)</span></p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>4. Tie cell</strong></p></td>
 <td><p><em>Limited.</em> Two junctions in series across the supply: needs a series resistor</p></td>
@@ -1360,6 +1360,7 @@ const thebe_selector_output = ".output, .cell_output"
     <span class="sd">&quot;&quot;&quot;Current mirror&quot;&quot;&quot;</span>
     <span class="n">t1</span> <span class="o">=</span> <span class="n">c</span><span class="o">.</span><span class="n">transistor</span><span class="p">(</span><span class="s1">&#39;n&#39;</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="s1">&#39;cd&#39;</span><span class="p">,</span> <span class="n">side</span><span class="o">=</span><span class="s1">&#39;right&#39;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">lbl</span><span class="o">=</span><span class="s1">&#39;l&#39;</span><span class="p">)</span>
     <span class="n">t2</span> <span class="o">=</span> <span class="n">c</span><span class="o">.</span><span class="n">transistor</span><span class="p">(</span><span class="s1">&#39;n&#39;</span><span class="p">,</span> <span class="p">(</span><span class="mi">140</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="s1">&#39;cd&#39;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">lbl</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">)</span>
+    <span class="n">t1</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="s1">&#39;(W/L)_1&#39;</span><span class="p">);</span> <span class="n">t2</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="s1">&#39;(W/L)_2&#39;</span><span class="p">)</span>
     <span class="n">top</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">20</span><span class="p">)</span>
     <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">(</span><span class="n">t1</span><span class="o">.</span><span class="n">cd</span><span class="p">,</span> <span class="n">top</span><span class="p">);</span> <span class="n">c</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">top</span><span class="p">);</span> <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">(</span><span class="n">top</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">60</span><span class="p">));</span> <span class="n">c</span><span class="o">.</span><span class="n">port</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">60</span><span class="p">),</span> <span class="s1">&#39;I_in&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span>
     <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">(</span><span class="n">t2</span><span class="o">.</span><span class="n">cd</span><span class="p">,</span> <span class="p">(</span><span class="mi">140</span><span class="p">,</span> <span class="o">-</span><span class="mi">60</span><span class="p">));</span> <span class="n">c</span><span class="o">.</span><span class="n">port</span><span class="p">((</span><span class="mi">140</span><span class="p">,</span> <span class="o">-</span><span class="mi">60</span><span class="p">),</span> <span class="s1">&#39;I_out&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span>
@@ -1386,7 +1387,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/fme_index_11_0.svg" src="../../_images/fme_index_11_0.svg?v=fme6" />
+<img alt="../../_images/fme_index_11_0.svg" src="../../_images/fme_index_11_0.svg?v=fme7" />
 </div>
 </div>
 <table class="colwidths-auto table">
@@ -1402,8 +1403,8 @@ const thebe_selector_output = ".output, .cell_output"
 <td><p><span class="math notranslate nohighlight">\(I_\mathrm{out}=\dfrac{(W/L)_2}{(W/L)_1}\,I_\mathrm{in}\)</span></p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>6. Current divider</strong></p></td>
-<td></td>
-<td><p><span class="math notranslate nohighlight">\(I_\mathrm{in}\)</span> splits between the two outputs in a fixed ratio set by the sizes, at any signal level. <em>No BJT version:</em> the exponential law gives no linear split</p></td>
+<td><p><em>No BJT version.</em> The exponential law gives no linear split</p></td>
+<td><p><span class="math notranslate nohighlight">\(I_\mathrm{in}\)</span> splits between the two outputs in a fixed ratio set by the sizes, at any signal level</p></td>
 </tr>
 </tbody>
 </table>
@@ -1443,7 +1444,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/fme_index_12_0.svg" src="../../_images/fme_index_12_0.svg?v=fme6" />
+<img alt="../../_images/fme_index_12_0.svg" src="../../_images/fme_index_12_0.svg?v=fme7" />
 </div>
 </div>
 <table class="colwidths-auto table">
@@ -1500,7 +1501,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/fme_index_13_0.svg" src="../../_images/fme_index_13_0.svg?v=fme6" />
+<img alt="../../_images/fme_index_13_0.svg" src="../../_images/fme_index_13_0.svg?v=fme7" />
 </div>
 </div>
 <table class="colwidths-auto table">
@@ -1551,7 +1552,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/fme_index_14_0.svg" src="../../_images/fme_index_14_0.svg?v=fme6" />
+<img alt="../../_images/fme_index_14_0.svg" src="../../_images/fme_index_14_0.svg?v=fme7" />
 </div>
 </div>
 <table class="colwidths-auto table">
@@ -1563,12 +1564,12 @@ const thebe_selector_output = ".output, .cell_output"
 </thead>
 <tbody>
 <tr class="row-even"><td><p><strong>11. Degeneration</strong></p></td>
-<td></td>
-<td><p><span class="math notranslate nohighlight">\(M_2\)</span> works in triode. The pair acts as one transistor of greater length. <em>No BJT version:</em> the lower device would saturate, and a saturated BJT is not a linear resistor</p></td>
+<td><p><em>No BJT version.</em> The lower device would saturate, and a saturated BJT is not a linear resistor</p></td>
+<td><p><span class="math notranslate nohighlight">\(M_2\)</span> works in triode. The pair acts as one transistor of greater length</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>12. Tunable degeneration</strong></p></td>
-<td></td>
-<td><p><span class="math notranslate nohighlight">\(G_m=\dfrac{g_{m1}}{1+g_{m1}R_\mathrm{on2}}\)</span>, with <span class="math notranslate nohighlight">\(R_\mathrm{on2}\)</span> set by <span class="math notranslate nohighlight">\(V_\mathrm{bias}\)</span>. <em>No BJT version:</em> a BJT offers no bias-controlled linear resistance</p></td>
+<td><p><em>No BJT version.</em> A BJT offers no bias-controlled linear resistance</p></td>
+<td><p><span class="math notranslate nohighlight">\(G_m=\dfrac{g_{m1}}{1+g_{m1}R_\mathrm{on2}}\)</span>, with <span class="math notranslate nohighlight">\(R_\mathrm{on2}\)</span> set by <span class="math notranslate nohighlight">\(V_\mathrm{bias}\)</span></p></td>
 </tr>
 </tbody>
 </table>
@@ -1608,7 +1609,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/fme_index_15_0.svg" src="../../_images/fme_index_15_0.svg?v=fme6" />
+<img alt="../../_images/fme_index_15_0.svg" src="../../_images/fme_index_15_0.svg?v=fme7" />
 </div>
 </div>
 <table class="colwidths-auto table">
@@ -1660,7 +1661,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/fme_index_16_0.svg" src="../../_images/fme_index_16_0.svg?v=fme6" />
+<img alt="../../_images/fme_index_16_0.svg" src="../../_images/fme_index_16_0.svg?v=fme7" />
 </div>
 </div>
 <table class="colwidths-auto table">
@@ -1719,7 +1720,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/fme_index_17_0.svg" src="../../_images/fme_index_17_0.svg?v=fme6" />
+<img alt="../../_images/fme_index_17_0.svg" src="../../_images/fme_index_17_0.svg?v=fme7" />
 </div>
 </div>
 <table class="colwidths-auto table">
@@ -1777,7 +1778,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/fme_index_18_0.svg" src="../../_images/fme_index_18_0.svg?v=fme6" />
+<img alt="../../_images/fme_index_18_0.svg" src="../../_images/fme_index_18_0.svg?v=fme7" />
 </div>
 </div>
 <table class="colwidths-auto table">
@@ -1818,20 +1819,20 @@ const thebe_selector_output = ".output, .cell_output"
 
 <span class="k">def</span> <span class="nf">active_inductor</span><span class="p">(</span><span class="n">c</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Active inductor&quot;&quot;&quot;</span>
-    <span class="p">(</span><span class="n">t1</span><span class="p">,</span> <span class="n">t2</span><span class="p">),</span> <span class="p">(</span><span class="n">j</span><span class="p">,)</span> <span class="o">=</span> <span class="n">c</span><span class="o">.</span><span class="n">chain</span><span class="p">([(</span><span class="s1">&#39;n&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;n&#39;</span><span class="p">,</span> <span class="mi">2</span><span class="p">)],</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
-    <span class="n">g</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">t2</span><span class="o">.</span><span class="n">es</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="mi">20</span><span class="p">);</span> <span class="n">c</span><span class="o">.</span><span class="n">gnd</span><span class="p">(</span><span class="n">g</span><span class="p">);</span> <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">(</span><span class="n">t2</span><span class="o">.</span><span class="n">es</span><span class="p">,</span> <span class="n">g</span><span class="p">)</span>
-    <span class="n">top</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">20</span><span class="p">);</span> <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">(</span><span class="n">t1</span><span class="o">.</span><span class="n">cd</span><span class="p">,</span> <span class="n">top</span><span class="p">);</span> <span class="n">c</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">top</span><span class="p">);</span> <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">(</span><span class="n">top</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">60</span><span class="p">));</span> <span class="n">c</span><span class="o">.</span><span class="n">port</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">60</span><span class="p">),</span> <span class="s1">&#39;I_bias&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span>
-    <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">(</span><span class="n">t1</span><span class="o">.</span><span class="n">bg</span><span class="p">,</span> <span class="p">(</span><span class="n">t1</span><span class="o">.</span><span class="n">bg</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="mi">40</span><span class="p">,</span> <span class="n">t1</span><span class="o">.</span><span class="n">bg</span><span class="p">[</span><span class="mi">1</span><span class="p">]));</span> <span class="n">c</span><span class="o">.</span><span class="n">port</span><span class="p">((</span><span class="n">t1</span><span class="o">.</span><span class="n">bg</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="mi">40</span><span class="p">,</span> <span class="n">t1</span><span class="o">.</span><span class="n">bg</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span> <span class="s1">&#39;V_bias&#39;</span><span class="p">,</span> <span class="s1">&#39;l&#39;</span><span class="p">)</span>
+    <span class="p">(</span><span class="n">t2</span><span class="p">,</span> <span class="n">t1</span><span class="p">),</span> <span class="p">(</span><span class="n">j</span><span class="p">,)</span> <span class="o">=</span> <span class="n">c</span><span class="o">.</span><span class="n">chain</span><span class="p">([(</span><span class="s1">&#39;n&#39;</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;n&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)],</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="n">g</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">t1</span><span class="o">.</span><span class="n">es</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="mi">20</span><span class="p">);</span> <span class="n">c</span><span class="o">.</span><span class="n">gnd</span><span class="p">(</span><span class="n">g</span><span class="p">);</span> <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">(</span><span class="n">t1</span><span class="o">.</span><span class="n">es</span><span class="p">,</span> <span class="n">g</span><span class="p">)</span>
+    <span class="n">top</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">20</span><span class="p">);</span> <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">(</span><span class="n">t2</span><span class="o">.</span><span class="n">cd</span><span class="p">,</span> <span class="n">top</span><span class="p">);</span> <span class="n">c</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">top</span><span class="p">);</span> <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">(</span><span class="n">top</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">60</span><span class="p">));</span> <span class="n">c</span><span class="o">.</span><span class="n">port</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">60</span><span class="p">),</span> <span class="s1">&#39;I_bias&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span>
+    <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">(</span><span class="n">t2</span><span class="o">.</span><span class="n">bg</span><span class="p">,</span> <span class="p">(</span><span class="n">t2</span><span class="o">.</span><span class="n">bg</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="mi">40</span><span class="p">,</span> <span class="n">t2</span><span class="o">.</span><span class="n">bg</span><span class="p">[</span><span class="mi">1</span><span class="p">]));</span> <span class="n">c</span><span class="o">.</span><span class="n">port</span><span class="p">((</span><span class="n">t2</span><span class="o">.</span><span class="n">bg</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="mi">40</span><span class="p">,</span> <span class="n">t2</span><span class="o">.</span><span class="n">bg</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span> <span class="s1">&#39;V_bias&#39;</span><span class="p">,</span> <span class="s1">&#39;l&#39;</span><span class="p">)</span>
     <span class="n">c</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">j</span><span class="p">);</span> <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">(</span><span class="n">j</span><span class="p">,</span> <span class="p">(</span><span class="mi">50</span><span class="p">,</span> <span class="n">j</span><span class="p">[</span><span class="mi">1</span><span class="p">]));</span> <span class="n">c</span><span class="o">.</span><span class="n">port</span><span class="p">((</span><span class="mi">50</span><span class="p">,</span> <span class="n">j</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span> <span class="s1">&#39;Z_in&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span>
     <span class="n">xb</span> <span class="o">=</span> <span class="o">-</span><span class="mi">130</span>
-    <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">(</span><span class="n">top</span><span class="p">,</span> <span class="p">(</span><span class="n">xb</span><span class="p">,</span> <span class="n">top</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span> <span class="p">(</span><span class="n">xb</span><span class="p">,</span> <span class="n">t2</span><span class="o">.</span><span class="n">bg</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span> <span class="n">t2</span><span class="o">.</span><span class="n">bg</span><span class="p">)</span>
+    <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">(</span><span class="n">top</span><span class="p">,</span> <span class="p">(</span><span class="n">xb</span><span class="p">,</span> <span class="n">top</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span> <span class="p">(</span><span class="n">xb</span><span class="p">,</span> <span class="n">t1</span><span class="o">.</span><span class="n">bg</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span> <span class="n">t1</span><span class="o">.</span><span class="n">bg</span><span class="p">)</span>
 
 <span class="n">show</span><span class="p">(</span><span class="n">flipped_follower</span><span class="p">,</span> <span class="n">active_inductor</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/fme_index_19_0.svg" src="../../_images/fme_index_19_0.svg?v=fme6" />
+<img alt="../../_images/fme_index_19_0.svg" src="../../_images/fme_index_19_0.svg?v=fme7" />
 </div>
 </div>
 <table class="colwidths-auto table">
@@ -1847,8 +1848,8 @@ const thebe_selector_output = ".output, .cell_output"
 <td><p><span class="math notranslate nohighlight">\(V_\mathrm{out}=V_\mathrm{in}-V_{GS1}\)</span>, <span class="math notranslate nohighlight">\(R_\mathrm{out}\approx\dfrac{1}{g_{m1}\,g_{m2}r_{O1}}\)</span></p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>22. Active inductor</strong></p></td>
-<td><p><span class="math notranslate nohighlight">\(Z_\mathrm{in}\)</span> is <span class="math notranslate nohighlight">\(1/g_{m1}\)</span> in parallel with <span class="math notranslate nohighlight">\(L\approx\dfrac{C_{\pi2}}{g_{m1}g_{m2}}\)</span></p></td>
-<td><p><span class="math notranslate nohighlight">\(Z_\mathrm{in}\)</span> is <span class="math notranslate nohighlight">\(1/g_{m1}\)</span> in parallel with <span class="math notranslate nohighlight">\(L\approx\dfrac{C_{GS2}}{g_{m1}g_{m2}}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(Z_\mathrm{in}\)</span> is <span class="math notranslate nohighlight">\(1/g_{m2}\)</span> in parallel with <span class="math notranslate nohighlight">\(L\approx\dfrac{C_{\pi1}}{g_{m1}g_{m2}}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(Z_\mathrm{in}\)</span> is <span class="math notranslate nohighlight">\(1/g_{m2}\)</span> in parallel with <span class="math notranslate nohighlight">\(L\approx\dfrac{C_{GS1}}{g_{m1}g_{m2}}\)</span></p></td>
 </tr>
 </tbody>
 </table>
@@ -1890,7 +1891,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/fme_index_20_0.svg" src="../../_images/fme_index_20_0.svg?v=fme6" />
+<img alt="../../_images/fme_index_20_0.svg" src="../../_images/fme_index_20_0.svg?v=fme7" />
 </div>
 </div>
 <table class="colwidths-auto table">
@@ -1953,7 +1954,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/fme_index_21_0.svg" src="../../_images/fme_index_21_0.svg?v=fme6" />
+<img alt="../../_images/fme_index_21_0.svg" src="../../_images/fme_index_21_0.svg?v=fme7" />
 </div>
 </div>
 <table class="colwidths-auto table">
@@ -1965,12 +1966,12 @@ const thebe_selector_output = ".output, .cell_output"
 </thead>
 <tbody>
 <tr class="row-even"><td><p><strong>25. Controlled resistor</strong></p></td>
-<td></td>
-<td><p><span class="math notranslate nohighlight">\(R=\dfrac{(W/L)_2}{(W/L)_1}\cdot\dfrac{1}{g_{m2}}\)</span>, set by <span class="math notranslate nohighlight">\(I_\mathrm{bias}\)</span>. <em>No BJT version:</em> a BJT is not a linear resistor</p></td>
+<td><p><em>No BJT version.</em> A BJT is not a linear resistor</p></td>
+<td><p><span class="math notranslate nohighlight">\(R=\dfrac{(W/L)_2}{(W/L)_1}\cdot\dfrac{1}{g_{m2}}\)</span>, set by <span class="math notranslate nohighlight">\(I_\mathrm{bias}\)</span></p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>26. Large resistor</strong></p></td>
-<td></td>
-<td><p>Both gates at the common node keep each device nearly off: very large resistance for small voltages. <em>No BJT version:</em> a BJT is not a linear resistor</p></td>
+<td><p><em>No BJT version.</em> A BJT is not a linear resistor</p></td>
+<td><p>Both gates at the common node keep each device nearly off: very large resistance for small voltages</p></td>
 </tr>
 </tbody>
 </table>
@@ -2011,7 +2012,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/fme_index_22_0.svg" src="../../_images/fme_index_22_0.svg?v=fme6" />
+<img alt="../../_images/fme_index_22_0.svg" src="../../_images/fme_index_22_0.svg?v=fme7" />
 </div>
 </div>
 <table class="colwidths-auto table">
@@ -2027,8 +2028,8 @@ const thebe_selector_output = ".output, .cell_output"
 <td><p>Capacitance between the two gates, tuned by <span class="math notranslate nohighlight">\(V_\mathrm{bias}\)</span></p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>28. Anti-parallel capacitors</strong></p></td>
-<td></td>
-<td><p>Two gate capacitors in opposite directions: <span class="math notranslate nohighlight">\(C(V)\)</span> is symmetric about zero. <em>No BJT version:</em> for either polarity one device would have forward-biased junctions and conduct</p></td>
+<td><p><em>No BJT version.</em> For either polarity one device would have forward-biased junctions and conduct</p></td>
+<td><p>Two gate capacitors in opposite directions: <span class="math notranslate nohighlight">\(C(V)\)</span> is symmetric about zero</p></td>
 </tr>
 </tbody>
 </table>
@@ -2067,7 +2068,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/fme_index_23_0.svg" src="../../_images/fme_index_23_0.svg?v=fme6" />
+<img alt="../../_images/fme_index_23_0.svg" src="../../_images/fme_index_23_0.svg?v=fme7" />
 </div>
 </div>
 <table class="colwidths-auto table">
@@ -2083,8 +2084,8 @@ const thebe_selector_output = ".output, .cell_output"
 <td><p>Conducts when <span class="math notranslate nohighlight">\(\lvert V_p-V_n\rvert\)</span> exceeds <span class="math notranslate nohighlight">\(V_{TH}\)</span></p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>30. Ultra-low-power diode</strong></p></td>
-<td></td>
-<td><p>Reverse bias drives both gate-source voltages negative, so the leakage falls far below that of one device. <em>No BJT version:</em> reverse bias does not turn a BJT further off</p></td>
+<td><p><em>No BJT version.</em> Reverse bias does not turn a BJT further off</p></td>
+<td><p>Reverse bias drives both gate-source voltages negative, so the leakage falls far below that of one device</p></td>
 </tr>
 </tbody>
 </table>
@@ -2124,7 +2125,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/fme_index_24_0.svg" src="../../_images/fme_index_24_0.svg?v=fme6" />
+<img alt="../../_images/fme_index_24_0.svg" src="../../_images/fme_index_24_0.svg?v=fme7" />
 </div>
 </div>
 <table class="colwidths-auto table">
@@ -2140,8 +2141,8 @@ const thebe_selector_output = ".output, .cell_output"
 <td><p><span class="math notranslate nohighlight">\(V_p-V_n=V_{GS1}+V_{GS2}\)</span></p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>32. Linear I-to-V converter</strong></p></td>
-<td></td>
-<td><p><span class="math notranslate nohighlight">\(V_{GS1}+V_{GS2}=V_\mathrm{bias}\)</span>: the square-law terms cancel and <span class="math notranslate nohighlight">\(\dfrac{dV_\mathrm{out}}{dI_\mathrm{in}}=\dfrac{1}{g_{m1}+g_{m2}}\)</span> is constant. <em>No BJT version:</em> the exponential law gives a <span class="math notranslate nohighlight">\(\sinh\)</span> characteristic, not a straight line</p></td>
+<td><p><em>No BJT version.</em> The exponential law gives a <span class="math notranslate nohighlight">\(\sinh\)</span> characteristic, not a straight line</p></td>
+<td><p><span class="math notranslate nohighlight">\(V_{GS1}+V_{GS2}=V_\mathrm{bias}\)</span>: the square-law terms cancel and <span class="math notranslate nohighlight">\(\dfrac{dV_\mathrm{out}}{dI_\mathrm{in}}=\dfrac{1}{g_{m1}+g_{m2}}\)</span> is constant</p></td>
 </tr>
 </tbody>
 </table>
@@ -2158,11 +2159,11 @@ const thebe_selector_output = ".output, .cell_output"
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># HIDE/SHOW</span>
 <span class="k">def</span> <span class="nf">transmission_gate</span><span class="p">(</span><span class="n">c</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;- | Transmission gate&quot;&quot;&quot;</span>
-    <span class="n">t1</span> <span class="o">=</span> <span class="n">c</span><span class="o">.</span><span class="n">transistor</span><span class="p">(</span><span class="s1">&#39;n&#39;</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="s1">&#39;cd&#39;</span><span class="p">,</span> <span class="n">rot</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-    <span class="n">t2</span> <span class="o">=</span> <span class="n">c</span><span class="o">.</span><span class="n">transistor</span><span class="p">(</span><span class="s1">&#39;p&#39;</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">60</span><span class="p">),</span> <span class="s1">&#39;cd&#39;</span><span class="p">,</span> <span class="n">rot</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">t1</span> <span class="o">=</span> <span class="n">c</span><span class="o">.</span><span class="n">transistor</span><span class="p">(</span><span class="s1">&#39;n&#39;</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="s1">&#39;es&#39;</span><span class="p">,</span> <span class="n">side</span><span class="o">=</span><span class="s1">&#39;right&#39;</span><span class="p">,</span> <span class="n">rot</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">t2</span> <span class="o">=</span> <span class="n">c</span><span class="o">.</span><span class="n">transistor</span><span class="p">(</span><span class="s1">&#39;p&#39;</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">60</span><span class="p">),</span> <span class="s1">&#39;es&#39;</span><span class="p">,</span> <span class="n">side</span><span class="o">=</span><span class="s1">&#39;right&#39;</span><span class="p">,</span> <span class="n">rot</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
     <span class="n">xl</span><span class="p">,</span> <span class="n">xr</span> <span class="o">=</span> <span class="o">-</span><span class="mi">20</span><span class="p">,</span> <span class="mi">100</span>
-    <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">(</span><span class="n">t1</span><span class="o">.</span><span class="n">cd</span><span class="p">,</span> <span class="p">(</span><span class="n">xl</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="p">(</span><span class="n">xl</span><span class="p">,</span> <span class="o">-</span><span class="mi">60</span><span class="p">),</span> <span class="n">t2</span><span class="o">.</span><span class="n">cd</span><span class="p">);</span> <span class="n">c</span><span class="o">.</span><span class="n">dot</span><span class="p">((</span><span class="n">xl</span><span class="p">,</span> <span class="o">-</span><span class="mi">30</span><span class="p">));</span> <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">((</span><span class="n">xl</span><span class="p">,</span> <span class="o">-</span><span class="mi">30</span><span class="p">),</span> <span class="p">(</span><span class="n">xl</span> <span class="o">-</span> <span class="mi">30</span><span class="p">,</span> <span class="o">-</span><span class="mi">30</span><span class="p">));</span> <span class="n">c</span><span class="o">.</span><span class="n">port</span><span class="p">((</span><span class="n">xl</span> <span class="o">-</span> <span class="mi">30</span><span class="p">,</span> <span class="o">-</span><span class="mi">30</span><span class="p">),</span> <span class="s1">&#39;V_1&#39;</span><span class="p">,</span> <span class="s1">&#39;l&#39;</span><span class="p">)</span>
-    <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">(</span><span class="n">t1</span><span class="o">.</span><span class="n">es</span><span class="p">,</span> <span class="p">(</span><span class="n">xr</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="p">(</span><span class="n">xr</span><span class="p">,</span> <span class="o">-</span><span class="mi">60</span><span class="p">),</span> <span class="n">t2</span><span class="o">.</span><span class="n">es</span><span class="p">);</span> <span class="n">c</span><span class="o">.</span><span class="n">dot</span><span class="p">((</span><span class="n">xr</span><span class="p">,</span> <span class="o">-</span><span class="mi">30</span><span class="p">));</span> <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">((</span><span class="n">xr</span><span class="p">,</span> <span class="o">-</span><span class="mi">30</span><span class="p">),</span> <span class="p">(</span><span class="n">xr</span> <span class="o">+</span> <span class="mi">30</span><span class="p">,</span> <span class="o">-</span><span class="mi">30</span><span class="p">));</span> <span class="n">c</span><span class="o">.</span><span class="n">port</span><span class="p">((</span><span class="n">xr</span> <span class="o">+</span> <span class="mi">30</span><span class="p">,</span> <span class="o">-</span><span class="mi">30</span><span class="p">),</span> <span class="s1">&#39;V_2&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span>
+    <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">(</span><span class="n">t1</span><span class="o">.</span><span class="n">es</span><span class="p">,</span> <span class="p">(</span><span class="n">xl</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="p">(</span><span class="n">xl</span><span class="p">,</span> <span class="o">-</span><span class="mi">60</span><span class="p">),</span> <span class="n">t2</span><span class="o">.</span><span class="n">es</span><span class="p">);</span> <span class="n">c</span><span class="o">.</span><span class="n">dot</span><span class="p">((</span><span class="n">xl</span><span class="p">,</span> <span class="o">-</span><span class="mi">30</span><span class="p">));</span> <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">((</span><span class="n">xl</span><span class="p">,</span> <span class="o">-</span><span class="mi">30</span><span class="p">),</span> <span class="p">(</span><span class="n">xl</span> <span class="o">-</span> <span class="mi">30</span><span class="p">,</span> <span class="o">-</span><span class="mi">30</span><span class="p">));</span> <span class="n">c</span><span class="o">.</span><span class="n">port</span><span class="p">((</span><span class="n">xl</span> <span class="o">-</span> <span class="mi">30</span><span class="p">,</span> <span class="o">-</span><span class="mi">30</span><span class="p">),</span> <span class="s1">&#39;V_1&#39;</span><span class="p">,</span> <span class="s1">&#39;l&#39;</span><span class="p">)</span>
+    <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">(</span><span class="n">t1</span><span class="o">.</span><span class="n">cd</span><span class="p">,</span> <span class="p">(</span><span class="n">xr</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="p">(</span><span class="n">xr</span><span class="p">,</span> <span class="o">-</span><span class="mi">60</span><span class="p">),</span> <span class="n">t2</span><span class="o">.</span><span class="n">cd</span><span class="p">);</span> <span class="n">c</span><span class="o">.</span><span class="n">dot</span><span class="p">((</span><span class="n">xr</span><span class="p">,</span> <span class="o">-</span><span class="mi">30</span><span class="p">));</span> <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">((</span><span class="n">xr</span><span class="p">,</span> <span class="o">-</span><span class="mi">30</span><span class="p">),</span> <span class="p">(</span><span class="n">xr</span> <span class="o">+</span> <span class="mi">30</span><span class="p">,</span> <span class="o">-</span><span class="mi">30</span><span class="p">));</span> <span class="n">c</span><span class="o">.</span><span class="n">port</span><span class="p">((</span><span class="n">xr</span> <span class="o">+</span> <span class="mi">30</span><span class="p">,</span> <span class="o">-</span><span class="mi">30</span><span class="p">),</span> <span class="s1">&#39;V_2&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span>
     <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">(</span><span class="n">t1</span><span class="o">.</span><span class="n">bg</span><span class="p">,</span> <span class="p">(</span><span class="n">t1</span><span class="o">.</span><span class="n">bg</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">t1</span><span class="o">.</span><span class="n">bg</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="mi">30</span><span class="p">));</span> <span class="n">c</span><span class="o">.</span><span class="n">port</span><span class="p">((</span><span class="n">t1</span><span class="o">.</span><span class="n">bg</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">t1</span><span class="o">.</span><span class="n">bg</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="mi">30</span><span class="p">),</span> <span class="s1">&#39;V_on&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">)</span>
     <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">(</span><span class="n">t2</span><span class="o">.</span><span class="n">bg</span><span class="p">,</span> <span class="p">(</span><span class="n">t2</span><span class="o">.</span><span class="n">bg</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">t2</span><span class="o">.</span><span class="n">bg</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="mi">30</span><span class="p">));</span> <span class="n">c</span><span class="o">.</span><span class="n">port</span><span class="p">((</span><span class="n">t2</span><span class="o">.</span><span class="n">bg</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">t2</span><span class="o">.</span><span class="n">bg</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="mi">30</span><span class="p">),</span> <span class="s1">&#39;!V_on&#39;</span><span class="p">,</span> <span class="s1">&#39;t&#39;</span><span class="p">)</span>
 
@@ -2184,7 +2185,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/fme_index_25_0.svg" src="../../_images/fme_index_25_0.svg?v=fme6" />
+<img alt="../../_images/fme_index_25_0.svg" src="../../_images/fme_index_25_0.svg?v=fme7" />
 </div>
 </div>
 <table class="colwidths-auto table">
@@ -2196,12 +2197,12 @@ const thebe_selector_output = ".output, .cell_output"
 </thead>
 <tbody>
 <tr class="row-even"><td><p><strong>33. Transmission gate</strong></p></td>
-<td></td>
-<td><p><span class="math notranslate nohighlight">\(M_1\)</span> passes low levels and <span class="math notranslate nohighlight">\(M_2\)</span> high levels, so the switch conducts from rail to rail. <em>No BJT version:</em> a BJT switch injects its base current into the signal path</p></td>
+<td><p><em>No BJT version.</em> A BJT switch injects its base current into the signal path</p></td>
+<td><p><span class="math notranslate nohighlight">\(M_1\)</span> passes low levels and <span class="math notranslate nohighlight">\(M_2\)</span> high levels, so the switch conducts from rail to rail</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>34. Multiplexer</strong></p></td>
-<td></td>
-<td><p><span class="math notranslate nohighlight">\(V_\mathrm{com}=V_1\)</span> or <span class="math notranslate nohighlight">\(V_2\)</span>, depending on which select input is high. <em>No BJT version:</em> a BJT switch injects its base current into the signal path</p></td>
+<td><p><em>No BJT version.</em> A BJT switch injects its base current into the signal path</p></td>
+<td><p><span class="math notranslate nohighlight">\(V_\mathrm{com}=V_1\)</span> or <span class="math notranslate nohighlight">\(V_2\)</span>, depending on which select input is high</p></td>
 </tr>
 </tbody>
 </table>
@@ -2226,7 +2227,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/fme_index_26_0.svg" src="../../_images/fme_index_26_0.svg?v=fme6" />
+<img alt="../../_images/fme_index_26_0.svg" src="../../_images/fme_index_26_0.svg?v=fme7" />
 </div>
 </div>
 <table class="colwidths-auto table">
@@ -2238,12 +2239,12 @@ const thebe_selector_output = ".output, .cell_output"
 </thead>
 <tbody>
 <tr class="row-even"><td><p><strong>35. Sample-and-hold</strong></p></td>
-<td></td>
-<td><p><span class="math notranslate nohighlight">\(M_1\)</span> on: <span class="math notranslate nohighlight">\(V_\mathrm{out}\)</span> tracks <span class="math notranslate nohighlight">\(V_\mathrm{in}\)</span>. <span class="math notranslate nohighlight">\(M_1\)</span> off: the gate capacitance of <span class="math notranslate nohighlight">\(M_2\)</span> holds it. <em>No BJT version:</em> there is no gate capacitance to hold the sample, and base current would disturb it</p></td>
+<td><p><em>No BJT version.</em> There is no gate capacitance to hold the sample, and base current would disturb it</p></td>
+<td><p><span class="math notranslate nohighlight">\(M_1\)</span> on: <span class="math notranslate nohighlight">\(V_\mathrm{out}\)</span> tracks <span class="math notranslate nohighlight">\(V_\mathrm{in}\)</span>. <span class="math notranslate nohighlight">\(M_1\)</span> off: the gate capacitance of <span class="math notranslate nohighlight">\(M_2\)</span> holds it</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>36. Low-pass filter</strong></p></td>
-<td></td>
-<td><p><span class="math notranslate nohighlight">\(f_{-3\,\mathrm{dB}}=\dfrac{1}{2\pi R_\mathrm{on1}C_2}\)</span>. <em>No BJT version:</em> neither a linear resistor nor a gate capacitance is available</p></td>
+<td><p><em>No BJT version.</em> Neither a linear resistor nor a gate capacitance is available</p></td>
+<td><p><span class="math notranslate nohighlight">\(f_{-3\,\mathrm{dB}}=\dfrac{1}{2\pi R_\mathrm{on1}C_2}\)</span></p></td>
 </tr>
 </tbody>
 </table>
@@ -2284,7 +2285,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/fme_index_27_0.svg" src="../../_images/fme_index_27_0.svg?v=fme6" />
+<img alt="../../_images/fme_index_27_0.svg" src="../../_images/fme_index_27_0.svg?v=fme7" />
 </div>
 </div>
 <table class="colwidths-auto table">
@@ -2300,8 +2301,8 @@ const thebe_selector_output = ".output, .cell_output"
 <td><p><span class="math notranslate nohighlight">\(V_\mathrm{peak}=\hat V_\mathrm{in}-V_{GS1}\)</span>, held on the gate capacitance of <span class="math notranslate nohighlight">\(M_2\)</span></p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>38. Voltage doubler</strong></p></td>
-<td></td>
-<td><p><span class="math notranslate nohighlight">\(M_1\)</span> couples the ac input and <span class="math notranslate nohighlight">\(M_2\)</span> clamps the low side: the output peaks near <span class="math notranslate nohighlight">\(2\hat V_\mathrm{in}-V_{GS2}\)</span>. <em>No BJT version:</em> the coupling element would be a junction, which conducts in one direction</p></td>
+<td><p><em>No BJT version.</em> The coupling element would be a junction, which conducts in one direction</p></td>
+<td><p><span class="math notranslate nohighlight">\(M_1\)</span> couples the ac input and <span class="math notranslate nohighlight">\(M_2\)</span> clamps the low side: the output peaks near <span class="math notranslate nohighlight">\(2\hat V_\mathrm{in}-V_{GS2}\)</span></p></td>
 </tr>
 </tbody>
 </table>
@@ -2345,7 +2346,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/fme_index_28_0.svg" src="../../_images/fme_index_28_0.svg?v=fme6" />
+<img alt="../../_images/fme_index_28_0.svg" src="../../_images/fme_index_28_0.svg?v=fme7" />
 </div>
 </div>
 <table class="colwidths-auto table">
@@ -2404,7 +2405,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/fme_index_29_0.svg" src="../../_images/fme_index_29_0.svg?v=fme6" />
+<img alt="../../_images/fme_index_29_0.svg" src="../../_images/fme_index_29_0.svg?v=fme7" />
 </div>
 </div>
 <table class="colwidths-auto table">
@@ -2420,8 +2421,8 @@ const thebe_selector_output = ".output, .cell_output"
 <td><p>Each input drives the gate of one device and the source of the other: <span class="math notranslate nohighlight">\(V_\mathrm{out}=\overline{V_a\oplus V_b}\)</span></p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>42. Mixer</strong></p></td>
-<td></td>
-<td><p><span class="math notranslate nohighlight">\(M_1\)</span> works in triode, where <span class="math notranslate nohighlight">\(I_\mathrm{out}\approx\mu_nC_{ox}\tfrac{W}{L}(V_\mathrm{rf}-V_{TH})\,V_{DS1}\)</span> and <span class="math notranslate nohighlight">\(V_\mathrm{lo}\)</span> sets <span class="math notranslate nohighlight">\(V_{DS1}\)</span>: the output contains the product. <em>No BJT version:</em> in the active region the collector current does not depend on <span class="math notranslate nohighlight">\(V_{CE}\)</span>, so an upper base would have no control</p></td>
+<td><p><em>No BJT version.</em> In the active region the collector current does not depend on <span class="math notranslate nohighlight">\(V_{CE}\)</span>, so an upper base would have no control</p></td>
+<td><p><span class="math notranslate nohighlight">\(M_1\)</span> works in triode, where <span class="math notranslate nohighlight">\(I_\mathrm{out}\approx\mu_nC_{ox}\tfrac{W}{L}(V_\mathrm{rf}-V_{TH})\,V_{DS1}\)</span> and <span class="math notranslate nohighlight">\(V_\mathrm{lo}\)</span> sets <span class="math notranslate nohighlight">\(V_{DS1}\)</span>: the output contains the product</p></td>
 </tr>
 </tbody>
 </table>
@@ -2438,7 +2439,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/fme_index_30_0.svg" src="../../_images/fme_index_30_0.svg?v=fme6" />
+<img alt="../../_images/fme_index_30_0.svg" src="../../_images/fme_index_30_0.svg?v=fme7" />
 </div>
 </div>
 </div>
