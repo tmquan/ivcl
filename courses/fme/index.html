@@ -29,7 +29,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=fme10" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=fme11" />
     
   <link rel="preload" as="script" href="../../_static/js/index.be7d3bbb2ef33a8344ce.js">
 
@@ -363,11 +363,6 @@ const thebe_selector_output = ".output, .cell_output"
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#circuits-of-two-transistors">
-   Circuits of Two Transistors
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#bias-circuits">
    Bias Circuits
   </a>
@@ -524,11 +519,6 @@ const thebe_selector_output = ".output, .cell_output"
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#symbols">
    Symbols
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#references">
-   References
   </a>
  </li>
 </ul>
@@ -643,11 +633,6 @@ const thebe_selector_output = ".output, .cell_output"
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#circuits-of-two-transistors">
-   Circuits of Two Transistors
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#bias-circuits">
    Bias Circuits
   </a>
@@ -806,11 +791,6 @@ const thebe_selector_output = ".output, .cell_output"
    Symbols
   </a>
  </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#references">
-   References
-  </a>
- </li>
 </ul>
 
                         </nav>
@@ -822,8 +802,8 @@ const thebe_selector_output = ".output, .cell_output"
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="bjt-and-mosfet-circuits">
 <h1>BJT and MOSFET Circuits<a class="headerlink" href="#bjt-and-mosfet-circuits" title="Permalink to this headline">¶</a></h1>
-<p>A bipolar transistor and a MOSFET can be wired into the same networks. Every circuit figure on this page has three columns: the names of a circuit, then its BJT version and its MOSFET version side by side, each with its key relation right under the drawing. Both versions of a circuit are drawn by the same few lines of Python. Where a circuit exists in only one of the two technologies, the cell of the other one says so, and why. The page goes from one transistor in eight connections, through the impedance and gain summary of [2], to forty-two circuits of two transistors in seven families.</p>
-<p>The two-transistor circuits follow H. Pretl and M. Eberlein [1], who show the MOSFET versions. The BJT versions are obtained by swapping device for device. Circuits of [1] that use the body terminal, a thick-oxide device or the parasitic bipolar transistor of a MOSFET are left out. The symbols follow the drawing style of B. Razavi [2]. As in [2], an arrow with a 90-degree corner marks an impedance; here it is red, and every impedance that a note names has one.</p>
+<p>A bipolar transistor and a MOSFET can be wired into the same networks. Every circuit figure on this page has three columns: the names of a circuit, then its BJT version and its MOSFET version side by side, each with its key relation right under the drawing. Both versions of a circuit are drawn by the same few lines of Python. Where a circuit exists in only one of the two technologies, the cell of the other one says so, and why. The page goes from one transistor in eight connections, through the impedance and gain summary of Razavi's textbook, to forty-two circuits of two transistors in seven families.</p>
+<p>The two-transistor circuits follow "Fifty Nifty Variations of Two-Transistor Circuits" by H. Pretl and M. Eberlein, who show the MOSFET versions. The BJT versions are obtained by swapping device for device. Circuits of that article that use the body terminal, a thick-oxide device or the parasitic bipolar transistor of a MOSFET are left out. The symbols follow the drawing style of B. Razavi's <em>Fundamentals of Microelectronics</em>. As in that book, an arrow with a 90-degree corner marks an impedance; here it is red, and every impedance that a note names has one.</p>
 <div class="section" id="prerequisites">
 <h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Permalink to this headline">¶</a></h2>
 <div class="cell tag_hide_input docutils container">
@@ -900,7 +880,7 @@ const thebe_selector_output = ".output, .cell_output"
 </tr>
 </tbody>
 </table>
-<p>The circuit functions use only the shared names, which read <em>base or gate</em>, <em>collector or drain</em> and <em>emitter or source</em>. <code class="docutils literal notranslate"><span class="pre">c.w(p0,</span> <span class="pre">p1,</span> <span class="pre">...)</span></code> draws a wire, <code class="docutils literal notranslate"><span class="pre">c.dot(p)</span></code> a node, <code class="docutils literal notranslate"><span class="pre">c.port(p,</span> <span class="pre">label,</span> <span class="pre">side)</span></code> an open terminal, <code class="docutils literal notranslate"><span class="pre">c.gnd(p)</span></code> a ground, <code class="docutils literal notranslate"><span class="pre">c.ac(p)</span></code> an ac ground, <code class="docutils literal notranslate"><span class="pre">c.res(p,</span> <span class="pre">label)</span></code> a resistor and <code class="docutils literal notranslate"><span class="pre">c.load(p)</span></code> a load. <code class="docutils literal notranslate"><span class="pre">c.look(p,</span> <span class="pre">into,</span> <span class="pre">side,</span> <span class="pre">label)</span></code> marks the impedance seen at <code class="docutils literal notranslate"><span class="pre">p</span></code> with a red arrow that has a 90-degree corner; <code class="docutils literal notranslate"><span class="pre">form='low'</span></code> and <code class="docutils literal notranslate"><span class="pre">form='long'</span></code> give the two other forms printed in [2]. <code class="docutils literal notranslate"><span class="pre">c.pick(a,</span> <span class="pre">b)</span></code> returns <code class="docutils literal notranslate"><span class="pre">a</span></code> in a BJT drawing and <code class="docutils literal notranslate"><span class="pre">b</span></code> in a MOSFET drawing, and <code class="docutils literal notranslate"><span class="pre">t.note(t.ideal)</span></code> writes <span class="math notranslate nohighlight">\(V_A=\infty\)</span> or <span class="math notranslate nohighlight">\(\lambda=0\)</span> beside a transistor. <code class="docutils literal notranslate"><span class="pre">c.chain([...],</span> <span class="pre">x,</span> <span class="pre">y)</span></code> places a series stack of transistors, and <code class="docutils literal notranslate"><span class="pre">c.bus([...],</span> <span class="pre">x)</span></code> ties their bases or gates together. Coordinates are pixels on a 10-px grid with <span class="math notranslate nohighlight">\(y\)</span> pointing down. Before drawing, all wire pieces and symbol leads are merged into continuous connectors.</p>
+<p>The circuit functions use only the shared names, which read <em>base or gate</em>, <em>collector or drain</em> and <em>emitter or source</em>. <code class="docutils literal notranslate"><span class="pre">c.w(p0,</span> <span class="pre">p1,</span> <span class="pre">...)</span></code> draws a wire, <code class="docutils literal notranslate"><span class="pre">c.dot(p)</span></code> a node, <code class="docutils literal notranslate"><span class="pre">c.port(p,</span> <span class="pre">label,</span> <span class="pre">side)</span></code> an open terminal, <code class="docutils literal notranslate"><span class="pre">c.gnd(p)</span></code> a ground, <code class="docutils literal notranslate"><span class="pre">c.ac(p)</span></code> an ac ground, <code class="docutils literal notranslate"><span class="pre">c.res(p,</span> <span class="pre">label)</span></code> a resistor and <code class="docutils literal notranslate"><span class="pre">c.load(p)</span></code> a load. <code class="docutils literal notranslate"><span class="pre">c.look(p,</span> <span class="pre">into,</span> <span class="pre">side,</span> <span class="pre">label)</span></code> marks the impedance seen at <code class="docutils literal notranslate"><span class="pre">p</span></code> with a red arrow that has a 90-degree corner; <code class="docutils literal notranslate"><span class="pre">form='low'</span></code> and <code class="docutils literal notranslate"><span class="pre">form='long'</span></code> give the two other forms printed in Razavi's book. <code class="docutils literal notranslate"><span class="pre">c.pick(a,</span> <span class="pre">b)</span></code> returns <code class="docutils literal notranslate"><span class="pre">a</span></code> in a BJT drawing and <code class="docutils literal notranslate"><span class="pre">b</span></code> in a MOSFET drawing, and <code class="docutils literal notranslate"><span class="pre">t.note(t.ideal)</span></code> writes <span class="math notranslate nohighlight">\(V_A=\infty\)</span> or <span class="math notranslate nohighlight">\(\lambda=0\)</span> beside a transistor. <code class="docutils literal notranslate"><span class="pre">c.chain([...],</span> <span class="pre">x,</span> <span class="pre">y)</span></code> places a series stack of transistors, and <code class="docutils literal notranslate"><span class="pre">c.bus([...],</span> <span class="pre">x)</span></code> ties their bases or gates together. Coordinates are pixels on a 10-px grid with <span class="math notranslate nohighlight">\(y\)</span> pointing down. Before drawing, all wire pieces and symbol leads are merged into continuous connectors.</p>
 <p><code class="docutils literal notranslate"><span class="pre">show(a,</span> <span class="pre">b,</span> <span class="pre">notes=[...])</span></code> draws the circuits <code class="docutils literal notranslate"><span class="pre">a</span></code> and <code class="docutils literal notranslate"><span class="pre">b</span></code> as two rows: their names in the first column, then the drawing made with <code class="docutils literal notranslate"><span class="pre">BJT</span></code> and the drawing made with <code class="docutils literal notranslate"><span class="pre">MOSFET</span></code>. <code class="docutils literal notranslate"><span class="pre">notes</span></code> holds the text that goes right under the drawings, for every circuit a pair <code class="docutils literal notranslate"><span class="pre">(BJT,</span> <span class="pre">MOSFET)</span></code> or one text for both. The first docstring line gives the names, as <code class="docutils literal notranslate"><span class="pre">BJT</span> <span class="pre">name</span> <span class="pre">|</span> <span class="pre">MOSFET</span> <span class="pre">name</span></code> where the two differ. A name <code class="docutils literal notranslate"><span class="pre">-</span></code> means that the circuit has no such version; that cell says so, and its note says why.</p>
 <div class="cell tag_hide_input docutils container">
 <div class="cell_input docutils container">
@@ -967,7 +947,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/fme_index_04_0.svg" src="../../_images/fme_index_04_0.svg?v=fme10" />
+<img alt="../../_images/fme_index_04_0.svg" src="../../_images/fme_index_04_0.svg?v=fme11" />
 </div>
 </div>
 <p>The two columns translate into each other term by term:</p>
@@ -1058,7 +1038,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/fme_index_05_0.svg" src="../../_images/fme_index_05_0.svg?v=fme10" />
+<img alt="../../_images/fme_index_05_0.svg" src="../../_images/fme_index_05_0.svg?v=fme11" />
 </div>
 </div>
 </div>
@@ -1092,7 +1072,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/fme_index_06_0.svg" src="../../_images/fme_index_06_0.svg?v=fme10" />
+<img alt="../../_images/fme_index_06_0.svg" src="../../_images/fme_index_06_0.svg?v=fme11" />
 </div>
 </div>
 </div>
@@ -1129,7 +1109,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/fme_index_07_0.svg" src="../../_images/fme_index_07_0.svg?v=fme10" />
+<img alt="../../_images/fme_index_07_0.svg" src="../../_images/fme_index_07_0.svg?v=fme11" />
 </div>
 </div>
 </div>
@@ -1164,14 +1144,14 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/fme_index_08_0.svg" src="../../_images/fme_index_08_0.svg?v=fme10" />
+<img alt="../../_images/fme_index_08_0.svg" src="../../_images/fme_index_08_0.svg?v=fme11" />
 </div>
 </div>
 </div>
 </div>
 <div class="section" id="input-and-output-impedances">
 <h2>Input and Output Impedances<a class="headerlink" href="#input-and-output-impedances" title="Permalink to this headline">¶</a></h2>
-<p>The small-signal resistance seen when looking into one terminal of a transistor. These are the ten cases of the summary inside the back cover of [2], six for the BJT and four for the MOSFET, drawn as printed there: a red arrow with a 90-degree corner points into the terminal and carries the impedance, <em>ac</em> marks a node held at a fixed voltage, a box is a load, and <span class="math notranslate nohighlight">\(V_A=\infty\)</span> or <span class="math notranslate nohighlight">\(\lambda=0\)</span> beside a transistor is the condition under which the result holds. Here <span class="math notranslate nohighlight">\(r_\pi=\beta/g_m\)</span>. The same red arrow marks every impedance in the other figures of this page.</p>
+<p>The small-signal resistance seen when looking into one terminal of a transistor. These are the ten cases of the summary inside the back cover of Razavi's book, six for the BJT and four for the MOSFET, drawn as printed there: a red arrow with a 90-degree corner points into the terminal and carries the impedance, <em>ac</em> marks a node held at a fixed voltage, a box is a load, and <span class="math notranslate nohighlight">\(V_A=\infty\)</span> or <span class="math notranslate nohighlight">\(\lambda=0\)</span> beside a transistor is the condition under which the result holds. Here <span class="math notranslate nohighlight">\(r_\pi=\beta/g_m\)</span>. The same red arrow marks every impedance in the other figures of this page.</p>
 <div class="section" id="looking-into-the-base-or-gate">
 <h3>Looking into the Base or Gate<a class="headerlink" href="#looking-into-the-base-or-gate" title="Permalink to this headline">¶</a></h3>
 <p>The emitter or source is at ac ground, directly or through a resistor. With the resistor the result holds for <span class="math notranslate nohighlight">\(V_A=\infty\)</span>, which is written beside the transistor.</p>
@@ -1198,12 +1178,12 @@ const thebe_selector_output = ".output, .cell_output"
 <span class="n">show</span><span class="p">(</span><span class="n">into_base</span><span class="p">,</span> <span class="n">into_base_degenerated</span><span class="p">,</span> <span class="n">notes</span><span class="o">=</span><span class="p">[</span>
     <span class="s1">&#39;&#39;</span><span class="p">,</span>
     <span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">,</span>
-     <span class="sa">r</span><span class="s1">&#39;The summary in [2] has no such entry: no current flows into the gate, so the resistance is $\approx\infty$ with or without a source resistor&#39;</span><span class="p">)])</span>
+     <span class="sa">r</span><span class="s1">&#39;The summary in the book has no such entry: no current flows into the gate, so the resistance is $\approx\infty$ with or without a source resistor&#39;</span><span class="p">)])</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/fme_index_09_0.svg" src="../../_images/fme_index_09_0.svg?v=fme10" />
+<img alt="../../_images/fme_index_09_0.svg" src="../../_images/fme_index_09_0.svg?v=fme11" />
 </div>
 </div>
 </div>
@@ -1238,7 +1218,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/fme_index_10_0.svg" src="../../_images/fme_index_10_0.svg?v=fme10" />
+<img alt="../../_images/fme_index_10_0.svg" src="../../_images/fme_index_10_0.svg?v=fme11" />
 </div>
 </div>
 </div>
@@ -1270,19 +1250,19 @@ const thebe_selector_output = ".output, .cell_output"
 <span class="n">show</span><span class="p">(</span><span class="n">into_emitter</span><span class="p">,</span> <span class="n">into_emitter_base_resistance</span><span class="p">,</span> <span class="n">notes</span><span class="o">=</span><span class="p">[</span>
     <span class="s1">&#39;&#39;</span><span class="p">,</span>
     <span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">,</span>
-     <span class="s1">&#39;The summary in [2] has no such entry: no current flows in a gate resistor, so the resistance is $1/g_m$ as in the row above&#39;</span><span class="p">)])</span>
+     <span class="s1">&#39;The summary in the book has no such entry: no current flows in a gate resistor, so the resistance is $1/g_m$ as in the row above&#39;</span><span class="p">)])</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/fme_index_11_0.svg" src="../../_images/fme_index_11_0.svg?v=fme10" />
+<img alt="../../_images/fme_index_11_0.svg" src="../../_images/fme_index_11_0.svg?v=fme11" />
 </div>
 </div>
 </div>
 </div>
 <div class="section" id="voltage-gain-equations">
 <h2>Voltage Gain Equations<a class="headerlink" href="#voltage-gain-equations" title="Permalink to this headline">¶</a></h2>
-<p>The small-signal voltage gain <span class="math notranslate nohighlight">\(A_v=v_\mathrm{out}/v_\mathrm{in}\)</span> of the three amplifier connections. These are the eight stages of the summary inside the back cover of [2], four for each technology, drawn as printed there with the gain under each stage. <span class="math notranslate nohighlight">\(V_A=\infty\)</span> or <span class="math notranslate nohighlight">\(\lambda=0\)</span> beside a transistor is the condition under which the gain holds.</p>
+<p>The small-signal voltage gain <span class="math notranslate nohighlight">\(A_v=v_\mathrm{out}/v_\mathrm{in}\)</span> of the three amplifier connections. These are the eight stages of the summary inside the back cover of Razavi's book, four for each technology, drawn as printed there with the gain under each stage. <span class="math notranslate nohighlight">\(V_A=\infty\)</span> or <span class="math notranslate nohighlight">\(\lambda=0\)</span> beside a transistor is the condition under which the gain holds.</p>
 <div class="section" id="common-emitter-and-common-source-stages">
 <h3>Common-Emitter and Common-Source Stages<a class="headerlink" href="#common-emitter-and-common-source-stages" title="Permalink to this headline">¶</a></h3>
 <p>The input drives the base or gate, and the output is taken at the collector or drain. A resistor in the emitter or source degenerates the stage; that gain holds for <span class="math notranslate nohighlight">\(V_A=\infty\)</span> or <span class="math notranslate nohighlight">\(\lambda=0\)</span>.</p>
@@ -1321,7 +1301,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/fme_index_12_0.svg" src="../../_images/fme_index_12_0.svg?v=fme10" />
+<img alt="../../_images/fme_index_12_0.svg" src="../../_images/fme_index_12_0.svg?v=fme11" />
 </div>
 </div>
 </div>
@@ -1365,109 +1345,10 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/fme_index_13_0.svg" src="../../_images/fme_index_13_0.svg?v=fme10" />
+<img alt="../../_images/fme_index_13_0.svg" src="../../_images/fme_index_13_0.svg?v=fme11" />
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="circuits-of-two-transistors">
-<h2>Circuits of Two Transistors<a class="headerlink" href="#circuits-of-two-transistors" title="Permalink to this headline">¶</a></h2>
-<p>The forty-two circuits are grouped into seven families by what the pair does. Inside a family the circuits come in pairs: the second circuit of a pair is the first one with a single change.</p>
-<table class="colwidths-auto table">
-<thead>
-<tr class="row-odd"><th class="head"><p>Family</p></th>
-<th class="head"><p>Circuits</p></th>
-<th class="head"><p>The one change</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p><strong>Bias Circuits</strong></p></td>
-<td><p>Voltage divider, PTAT generator</p></td>
-<td><p>Both bases or gates go to the top of the stack</p></td>
-</tr>
-<tr class="row-odd"><td></td>
-<td><p>Bias generator, Tie cell</p></td>
-<td><p>The diode connection moves from the n-type to the p-type device</p></td>
-</tr>
-<tr class="row-even"><td></td>
-<td><p>Current mirror, Current divider</p></td>
-<td><p>The devices are stacked, and the current enters between them</p></td>
-</tr>
-<tr class="row-odd"><td><p><strong>Gain Stages</strong></p></td>
-<td><p>Active load, Inverter</p></td>
-<td><p>The load is driven by the input as well</p></td>
-</tr>
-<tr class="row-even"><td></td>
-<td><p>Diode load, Folded diode load</p></td>
-<td><p>The load moves beside the amplifying device</p></td>
-</tr>
-<tr class="row-odd"><td></td>
-<td><p>Degeneration, Tunable degeneration</p></td>
-<td><p>The lower device gets its own bias</p></td>
-</tr>
-<tr class="row-even"><td><p><strong>Buffers</strong></p></td>
-<td><p>Follower, Push-pull follower</p></td>
-<td><p>A complementary follower replaces the current source</p></td>
-</tr>
-<tr class="row-odd"><td></td>
-<td><p>Current buffer, Stacked current buffers</p></td>
-<td><p>A second buffer replaces the current source</p></td>
-</tr>
-<tr class="row-even"><td></td>
-<td><p>Two outputs, Two paths</p></td>
-<td><p>The amplifier becomes a follower, and the two signal currents meet in one output</p></td>
-</tr>
-<tr class="row-odd"><td><p><strong>Feedback Pairs</strong></p></td>
-<td><p>Cascode, Regulated cascode</p></td>
-<td><p>An amplifier senses the emitter or source of the buffer and drives its base or gate</p></td>
-</tr>
-<tr class="row-even"><td></td>
-<td><p>Flipped follower, Active inductor</p></td>
-<td><p>The same loop, seen from the lower node</p></td>
-</tr>
-<tr class="row-odd"><td></td>
-<td><p>Differential pair, Cross-coupled pair</p></td>
-<td><p>Each base or gate goes to the opposite collector or drain</p></td>
-</tr>
-<tr class="row-even"><td><p><strong>Circuit Elements</strong></p></td>
-<td><p>Controlled resistor, Large resistor</p></td>
-<td><p>The devices bias each other, without a bias current</p></td>
-</tr>
-<tr class="row-odd"><td></td>
-<td><p>Varactor, Anti-parallel capacitors</p></td>
-<td><p>The two capacitors are connected in parallel and in opposite directions</p></td>
-</tr>
-<tr class="row-even"><td></td>
-<td><p>Anti-parallel diodes, Ultra-low-power diode</p></td>
-<td><p>The devices are put in series, each controlled from the far terminal</p></td>
-</tr>
-<tr class="row-odd"><td></td>
-<td><p>Level shift, Linear I-to-V converter</p></td>
-<td><p>A bias voltage fixes the sum of the two control voltages</p></td>
-</tr>
-<tr class="row-even"><td><p><strong>Switched Circuits</strong></p></td>
-<td><p>Transmission gate, Multiplexer</p></td>
-<td><p>The two switches share only the output</p></td>
-</tr>
-<tr class="row-odd"><td></td>
-<td><p>Sample-and-hold, Low-pass filter</p></td>
-<td><p>A fixed bias replaces the clock</p></td>
-</tr>
-<tr class="row-even"><td></td>
-<td><p>Peak detector, Voltage doubler</p></td>
-<td><p>Diode and capacitor change places</p></td>
-</tr>
-<tr class="row-odd"><td><p><strong>Logic Gates</strong></p></td>
-<td><p>NAND, NOR</p></td>
-<td><p>Series becomes parallel</p></td>
-</tr>
-<tr class="row-even"><td></td>
-<td><p>XNOR, Mixer</p></td>
-<td><p>Logic levels become analog signals</p></td>
-</tr>
-</tbody>
-</table>
-<p>Of the forty-two circuits, 21 carry over to the BJT unchanged and 6 with a restriction; the note under such a BJT drawing starts with <em>Limited</em>. The other 15 rely on something a BJT does not have: a gate that draws no current, a channel that acts as a linear resistor, a gate capacitance, or the square law. They have no working BJT version, and their BJT cell says so and why.</p>
 </div>
 <div class="section" id="bias-circuits">
 <h2>Bias Circuits<a class="headerlink" href="#bias-circuits" title="Permalink to this headline">¶</a></h2>
@@ -1509,7 +1390,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/fme_index_14_0.svg" src="../../_images/fme_index_14_0.svg?v=fme10" />
+<img alt="../../_images/fme_index_14_0.svg" src="../../_images/fme_index_14_0.svg?v=fme11" />
 </div>
 </div>
 </div>
@@ -1550,7 +1431,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/fme_index_15_0.svg" src="../../_images/fme_index_15_0.svg?v=fme10" />
+<img alt="../../_images/fme_index_15_0.svg" src="../../_images/fme_index_15_0.svg?v=fme11" />
 </div>
 </div>
 </div>
@@ -1595,7 +1476,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/fme_index_16_0.svg" src="../../_images/fme_index_16_0.svg?v=fme10" />
+<img alt="../../_images/fme_index_16_0.svg" src="../../_images/fme_index_16_0.svg?v=fme11" />
 </div>
 </div>
 </div>
@@ -1639,7 +1520,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/fme_index_17_0.svg" src="../../_images/fme_index_17_0.svg?v=fme10" />
+<img alt="../../_images/fme_index_17_0.svg" src="../../_images/fme_index_17_0.svg?v=fme11" />
 </div>
 </div>
 </div>
@@ -1682,7 +1563,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/fme_index_18_0.svg" src="../../_images/fme_index_18_0.svg?v=fme10" />
+<img alt="../../_images/fme_index_18_0.svg" src="../../_images/fme_index_18_0.svg?v=fme11" />
 </div>
 </div>
 </div>
@@ -1720,7 +1601,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/fme_index_19_0.svg" src="../../_images/fme_index_19_0.svg?v=fme10" />
+<img alt="../../_images/fme_index_19_0.svg" src="../../_images/fme_index_19_0.svg?v=fme11" />
 </div>
 </div>
 </div>
@@ -1763,7 +1644,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/fme_index_20_0.svg" src="../../_images/fme_index_20_0.svg?v=fme10" />
+<img alt="../../_images/fme_index_20_0.svg" src="../../_images/fme_index_20_0.svg?v=fme11" />
 </div>
 </div>
 </div>
@@ -1801,7 +1682,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/fme_index_21_0.svg" src="../../_images/fme_index_21_0.svg?v=fme10" />
+<img alt="../../_images/fme_index_21_0.svg" src="../../_images/fme_index_21_0.svg?v=fme11" />
 </div>
 </div>
 </div>
@@ -1844,7 +1725,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/fme_index_22_0.svg" src="../../_images/fme_index_22_0.svg?v=fme10" />
+<img alt="../../_images/fme_index_22_0.svg" src="../../_images/fme_index_22_0.svg?v=fme11" />
 </div>
 </div>
 </div>
@@ -1888,7 +1769,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/fme_index_23_0.svg" src="../../_images/fme_index_23_0.svg?v=fme10" />
+<img alt="../../_images/fme_index_23_0.svg" src="../../_images/fme_index_23_0.svg?v=fme11" />
 </div>
 </div>
 </div>
@@ -1928,7 +1809,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/fme_index_24_0.svg" src="../../_images/fme_index_24_0.svg?v=fme10" />
+<img alt="../../_images/fme_index_24_0.svg" src="../../_images/fme_index_24_0.svg?v=fme11" />
 </div>
 </div>
 </div>
@@ -1973,7 +1854,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/fme_index_25_0.svg" src="../../_images/fme_index_25_0.svg?v=fme10" />
+<img alt="../../_images/fme_index_25_0.svg" src="../../_images/fme_index_25_0.svg?v=fme11" />
 </div>
 </div>
 </div>
@@ -2022,7 +1903,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/fme_index_26_0.svg" src="../../_images/fme_index_26_0.svg?v=fme10" />
+<img alt="../../_images/fme_index_26_0.svg" src="../../_images/fme_index_26_0.svg?v=fme11" />
 </div>
 </div>
 </div>
@@ -2066,7 +1947,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/fme_index_27_0.svg" src="../../_images/fme_index_27_0.svg?v=fme10" />
+<img alt="../../_images/fme_index_27_0.svg" src="../../_images/fme_index_27_0.svg?v=fme11" />
 </div>
 </div>
 </div>
@@ -2108,7 +1989,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/fme_index_28_0.svg" src="../../_images/fme_index_28_0.svg?v=fme10" />
+<img alt="../../_images/fme_index_28_0.svg" src="../../_images/fme_index_28_0.svg?v=fme11" />
 </div>
 </div>
 </div>
@@ -2151,7 +2032,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/fme_index_29_0.svg" src="../../_images/fme_index_29_0.svg?v=fme10" />
+<img alt="../../_images/fme_index_29_0.svg" src="../../_images/fme_index_29_0.svg?v=fme11" />
 </div>
 </div>
 </div>
@@ -2197,7 +2078,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/fme_index_30_0.svg" src="../../_images/fme_index_30_0.svg?v=fme10" />
+<img alt="../../_images/fme_index_30_0.svg" src="../../_images/fme_index_30_0.svg?v=fme11" />
 </div>
 </div>
 </div>
@@ -2225,7 +2106,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/fme_index_31_0.svg" src="../../_images/fme_index_31_0.svg?v=fme10" />
+<img alt="../../_images/fme_index_31_0.svg" src="../../_images/fme_index_31_0.svg?v=fme11" />
 </div>
 </div>
 </div>
@@ -2269,7 +2150,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/fme_index_32_0.svg" src="../../_images/fme_index_32_0.svg?v=fme10" />
+<img alt="../../_images/fme_index_32_0.svg" src="../../_images/fme_index_32_0.svg?v=fme11" />
 </div>
 </div>
 </div>
@@ -2316,7 +2197,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/fme_index_33_0.svg" src="../../_images/fme_index_33_0.svg?v=fme10" />
+<img alt="../../_images/fme_index_33_0.svg" src="../../_images/fme_index_33_0.svg?v=fme11" />
 </div>
 </div>
 </div>
@@ -2361,14 +2242,14 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/fme_index_34_0.svg" src="../../_images/fme_index_34_0.svg?v=fme10" />
+<img alt="../../_images/fme_index_34_0.svg" src="../../_images/fme_index_34_0.svg?v=fme11" />
 </div>
 </div>
 </div>
 </div>
 <div class="section" id="symbols">
 <h2>Symbols<a class="headerlink" href="#symbols" title="Permalink to this headline">¶</a></h2>
-<p>The symbol library behind the drawings, at one scale. Its proportions were measured from the figures of [2]. This page uses the transistors, the resistor, the ground, the supply rail, the terminal and the node dot. The BJT and the MOSFET share one footprint, so the two versions of every circuit line up.</p>
+<p>The symbol library behind the drawings, at one scale. Its proportions were measured from the figures of Razavi's book. This page uses the transistors, the resistor, the ground, the supply rail, the terminal and the node dot. The BJT and the MOSFET share one footprint, so the two versions of every circuit line up.</p>
 <div class="cell tag_hide_input docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># HIDE/SHOW</span>
@@ -2377,16 +2258,9 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/fme_index_35_0.svg" src="../../_images/fme_index_35_0.svg?v=fme10" />
+<img alt="../../_images/fme_index_35_0.svg" src="../../_images/fme_index_35_0.svg?v=fme11" />
 </div>
 </div>
-</div>
-<div class="section" id="references">
-<h2>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
-<ol class="arabic simple">
-<li><p>H. Pretl and M. Eberlein, "Fifty Nifty Variations of Two-Transistor Circuits: A tribute to the versatility of MOSFETs," <em>IEEE Solid-State Circuits Magazine</em>, vol. 13, no. 3, pp. 38-46, 2021. <a class="reference external" href="https://doi.org/10.1109/MSSC.2021.3088968">doi:10.1109/MSSC.2021.3088968</a>. Web edition with the drawing code: <a class="reference external" href="https://iic-jku.github.io/fifty-nifty-circuits/">iic-jku.github.io/fifty-nifty-circuits</a>.</p></li>
-<li><p>B. Razavi, <em>Fundamentals of Microelectronics</em>, 3rd ed., Wiley, 2021. The summary of impedances and gains is printed inside its back cover.</p></li>
-</ol>
 </div>
 </div>
 
