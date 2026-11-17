@@ -14,7 +14,7 @@ from . import symbols as S
 from . import scene as SC
 from . import tex as T
 from .scene import Scene
-from .ckt import Ckt
+from .ckt import Ckt, BJT, MOSFET
 
 PT = 0.75                      # points per scene px at zoom 1 (96 px per inch)
 _HA = {'start': 'left', 'middle': 'center', 'end': 'right'}
@@ -104,10 +104,10 @@ def panels(scenes, titles=None, zoom=1.0, margin=14, gap=30, min_w=230, same_win
     return fig
 
 
-def build(circuit, bjt):
-    """run one circuit function -> Scene"""
+def build(circuit, device):
+    """run one circuit function with the transistor class `device` (BJT or MOSFET) -> Scene"""
     sc = Scene(getattr(circuit, '__name__', ''))
-    circuit(Ckt(sc, bjt))
+    circuit(Ckt(sc, device))
     return sc
 
 
@@ -168,15 +168,15 @@ def grid(rows, heads=('BJT', 'MOSFET'), zoom=1.0, panel_w=PANEL_W):
     return fig
 
 
-def show(*circuits, zoom=1.0, heads=('BJT', 'MOSFET')):
-    """Two columns: the BJT version of each circuit on the left, the MOSFET version on the right.
+def show(*circuits, zoom=1.0, devices=(BJT, MOSFET)):
+    """Two columns: every circuit drawn with BJTs on the left and with MOSFETs on the right.
     One row per circuit, so  show(a, b)  gives a 2 x 2 figure.  A circuit whose docstring names
     one version as "-" exists in the other technology only, and that panel stays empty."""
     rows = []
     for f in circuits:
         nm = names(f)
-        rows.append((tuple(build(f, bjt) if nm[j] else None for j, bjt in enumerate((True, False))), nm))
-    grid(rows, heads, zoom)
+        rows.append((tuple(build(f, d) if nm[j] else None for j, d in enumerate(devices)), nm))
+    grid(rows, tuple(d.__name__ for d in devices), zoom)
 
 
 def symbol_sheet(keys=None, cols=6, zoom=1.0, compact=False):
