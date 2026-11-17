@@ -12,6 +12,8 @@ the base class, and drawn with either subclass:
 
 The shared terminal names read "base or gate", "collector or drain", "emitter or source".
 """
+import math
+
 from .scene import Scene
 
 STEP = 20   # standard lead length / grid step
@@ -181,6 +183,14 @@ class Ckt:
             devs.append(t)
             cy = t.bottom[1] + gap
         return devs, js
+
+    @staticmethod
+    def cross(x, y1, y2, angle=60):
+        """Two wires that swap levels y1 and y2 cross as an X centred on the vertical line x.
+        Returns the x positions (left, right) between which the two diagonals run, each at
+        `angle` degrees to the horizontal."""
+        half = abs(y2 - y1) / 2 / math.tan(math.radians(angle))
+        return x - half, x + half
 
     def bus(self, devs, x):
         """tie the bases or gates of devs together on a vertical line at x"""

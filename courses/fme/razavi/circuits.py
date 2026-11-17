@@ -396,11 +396,12 @@ def cross_coupled_pair(c):
     """Cross-coupled pair"""
     t1 = c.transistor('n', (0, 0), 'cd', side='right', name=1)
     t2 = c.transistor('n', (150, 0), 'cd', name=2)
-    ta = (0, -20); tb = (150, -40)
-    c.w(t1.cd, ta); c.dot(ta); c.w(ta, (0, -60)); c.port((0, -60), 'V_p', 'r')
-    c.w(t2.cd, (150, -60)); c.dot(tb); c.port((150, -60), 'V_n', 'r')
-    c.w(ta, (95, -20), (95, t2.bg[1]), t2.bg)
-    c.w(tb, (55, -40), (55, t1.bg[1]), t1.bg)
+    a, b = (0, -20), (150, -20)
+    c.w(t1.cd, (0, -60)); c.dot(a); c.port((0, -60), 'V_p', 'r')
+    c.w(t2.cd, (150, -60)); c.dot(b); c.port((150, -60), 'V_n', 'r')
+    xl, xr = c.cross(75, a[1], t1.bg[1])                    # the two wires cross as an X
+    c.w(a, (xl, a[1]), (xr, t2.bg[1]), t2.bg)
+    c.w(b, (xr, b[1]), (xl, t1.bg[1]), t1.bg)
     ys = 100
     c.w(t1.es, (0, ys), (150, ys), t2.es); c.dot((75, ys)); c.w((75, ys), (75, ys + 40)); c.port((75, ys + 40), 'I_bias', 'b')
 
@@ -477,8 +478,10 @@ def low_leakage_diode(c):
     c.w(t1.cd, t2.cd)
     c.w(t1.es, (-20, 0)); c.dot((-20, 0)); c.w((-20, 0), (-40, 0)); c.port((-40, 0), 'V_p', 'l')
     c.w(t2.es, (200, 0)); c.dot((200, 0)); c.w((200, 0), (220, 0)); c.port((220, 0), 'V_n', 'r')
-    c.w(t1.bg, (t1.bg[0], -60), (200, -60), (200, 0))
-    c.w(t2.bg, (t2.bg[0], -80), (-20, -80), (-20, 0))
+    y1, y2 = -60, -90
+    xl, xr = c.cross(90, y1, y2)                            # the two wires cross as an X
+    c.w(t1.bg, (t1.bg[0], y1), (xl, y1), (xr, y2), (200, y2), (200, 0))
+    c.w(t2.bg, (t2.bg[0], y1), (xr, y1), (xl, y2), (-20, y2), (-20, 0))
 
 
 def level_shift(c):
@@ -605,9 +608,10 @@ def xnor(c):
     c.w(t1.cd, (0, yt), (mx, yt)); c.w(t2.cd, (100, yt), (mx, yt)); c.dot((mx, yt))
     c.w((mx, yt), (mx, -40)); c.dot((mx, -40)); c.w((mx, -40), (100, -40)); c.port((100, -40), OUT, 'r')
     c.w((mx, -40), (mx, -70)); c.port((mx, -70), 'I_bias', 'r')
-    y1, y2 = t1.es[1] + 20, t1.es[1] + 40
-    c.w(t1.es, (0, y1), (mx - 15, y1), (mx + 15, y2), (gb[0], y2), gb)
-    c.w(t2.es, (100, y1), (mx + 15, y1), (mx - 15, y2), (ga[0], y2), ga)
+    y1, y2 = t1.es[1] + 20, t1.es[1] + 50
+    xl, xr = c.cross(mx, y1, y2)                            # the two wires cross as an X
+    c.w(t1.es, (0, y1), (xl, y1), (xr, y2), (gb[0], y2), gb)
+    c.w(t2.es, (100, y1), (xr, y1), (xl, y2), (ga[0], y2), ga)
 
 
 def mixer(c):

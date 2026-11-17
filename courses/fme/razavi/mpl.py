@@ -152,8 +152,7 @@ def _label(titles):
 def grid(rows, heads=('BJT', 'MOSFET'), zoom=1.0):
     """rows = [((scene, scene), (name, name)), ...]: one row per circuit.
     Three columns, as in the tables: the names of the circuit, then one panel per technology.
-    Both panels of a row show the same window, so corresponding parts sit at identical positions.
-    A scene given as None leaves its panel empty."""
+    Every drawing is centred in its cell.  A scene given as None leaves its panel empty."""
     boxes = []
     for scenes, _ in rows:
         b = [sc.bounds() for sc in scenes if sc is not None]
@@ -173,17 +172,16 @@ def grid(rows, heads=('BJT', 'MOSFET'), zoom=1.0):
                  fontproperties=FontProperties(fname=bold, size=18 * k))
     rule = lambda xs, ys: fig.add_artist(Line2D(xs, ys, transform=fig.transFigure, color=RULE, lw=0.8))
     y = HEAD_H
-    ux = (min(q[0] for q in boxes) + max(q[2] for q in boxes)) / 2      # one centre line for all rows, if they fit
-    fits = max(q[2] for q in boxes) - min(q[0] for q in boxes) + 2 * MARGIN <= pw
     for (scenes, titles), q, h, (lines, lh) in zip(rows, boxes, hs, labels):
         rule([0, 1], [1 - y / H] * 2)
         for text, dy in lines:                                        # first column: the names of the circuit
             fig.text(MARGIN / W, 1 - (y + (h - lh) / 2 + dy + 0.5 * LINE) / H, text, ha='left', va='center',
                      fontproperties=FontProperties(fname=reg, size=LABEL * k))
-        cx, cy = (ux if fits else (q[0] + q[2]) / 2), (q[1] + q[3]) / 2
         for j, sc in enumerate(scenes):
             if sc is None:                                            # no such version: the panel stays empty
                 continue
+            b = sc.bounds()                                           # each drawing is centred in its own cell
+            cx, cy = (b[0] + b[2]) / 2, (b[1] + b[3]) / 2
             ax = fig.add_axes([(lw + j * pw) / W, 1 - (y + h) / H, pw / W, h / H])
             ax.set_xlim(cx - pw / 2, cx + pw / 2)
             ax.set_ylim(cy + h / 2, cy - h / 2)
