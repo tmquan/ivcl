@@ -3,7 +3,7 @@
 `Scene.connectors()` merges every wire piece and every symbol lead into maximal unbroken
 polylines: a connector runs from inside one symbol body (its anchor) to the next body,
 terminal or junction, turning corners as needed.  T-junctions end the side branch only.
-The corners of a connector are rounded, except where it turns at a transistor terminal.
+Every corner of a connector is rounded; the corners inside a symbol stay as drawn.
 """
 import json
 import math
@@ -48,23 +48,26 @@ def _straight(a, n, b):
     return abs(v1[0] * v2[1] - v1[1] * v2[0]) < 1e-6 and (v1[0] * v2[0] + v1[1] * v2[1]) < 0
 
 
-def _fillet(path, keep, r, steps=8):
-    """polyline with its interior corners replaced by circular arcs of radius r (each given as
-    `steps` chords).  A corner listed in `keep` stays sharp; an arc never takes more than half
-    of a neighbouring segment."""
+def _fillet(path, r, steps=8):
+    """polyline with its corners replaced by circular arcs of radius r (each given as `steps` chords).
+    Two neighbouring corners share the segment between them half and half; the first and the last
+    segment, which run into a symbol or end at a terminal, are available to their corner almost whole."""
+    last = len(path) - 2
     out = [path[0]]
     for k in range(1, len(path) - 1):
         a, p, b = path[k - 1], path[k], path[k + 1]
         ux, uy, la = p[0] - a[0], p[1] - a[1], math.hypot(p[0] - a[0], p[1] - a[1])
         vx, vy, lb = b[0] - p[0], b[1] - p[1], math.hypot(b[0] - p[0], b[1] - p[1])
-        if _key(p) in keep or la < 1e-9 or lb < 1e-9:
+        if la < 1e-9 or lb < 1e-9:
             out.append(p); continue
         ux, uy, vx, vy = ux / la, uy / la, vx / lb, vy / lb
         cross, dot = ux * vy - uy * vx, ux * vx + uy * vy
         turn = math.atan2(abs(cross), dot)                     # 0 = straight on
         if turn < 1e-3 or turn > math.pi - 1e-3:
             out.append(p); continue
-        d = min(r * math.tan(turn / 2), la / 2, lb / 2)        # distance from the corner to the arc ends
+        room_a = la - 1.5 if k == 1 else la / 2
+        room_b = lb - 1.5 if k == last else lb / 2
+        d = min(r * math.tan(turn / 2), room_a, room_b)        # distance from the corner to the arc ends
         rr = d / math.tan(turn / 2)
         sgn = 1.0 if cross > 0 else -1.0
         t1 = (p[0] - ux * d, p[1] - uy * d)
@@ -112,8 +115,9 @@ class Scene:
 
     # -- continuous connectors ---------------------------------------
     def connectors(s, corner=None):
-        """continuous connectors as polylines.  Their corners are rounded with radius `corner` px
-        (default CORNER; 0 = sharp), except corners that lie on a transistor terminal."""
+        """continuous connectors as polylines.  Every corner of a connector is rounded with radius
+        `corner` px (default CORNER; 0 = sharp).  The corners inside a symbol belong to the symbol
+        and stay as drawn."""
         corner = CORNER if corner is None else corner
         segs, ends = [], set()
         for w in s.wires:
@@ -177,9 +181,8 @@ class Scene:
                     q.append(p[k])
             q.append(p[-1])
             out.append(q)
-        if corner:                                  # corners at a transistor stay sharp
-            keep = {_key(pt) for i in s.insts if i.key in S.TRANSISTORS for pt in list(i.t.values()) + list(i.a.values())}
-            out = [_fillet(q, keep, corner) for q in out]
+        if corner:
+            out = [_fillet(q, corner) for q in out]
         return out
 
     # -- bounds -----------------------------------------------------
