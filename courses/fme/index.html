@@ -29,7 +29,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=fme2" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=fme3" />
     
   <link rel="preload" as="script" href="../../_static/js/index.be7d3bbb2ef33a8344ce.js">
 
@@ -744,7 +744,7 @@ const thebe_selector_output = ".output, .cell_output"
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="bjt-and-mosfet-circuits">
 <h1>BJT and MOSFET Circuits<a class="headerlink" href="#bjt-and-mosfet-circuits" title="Permalink to this headline">¶</a></h1>
-<p>A bipolar transistor and a MOSFET can be wired into the same networks. This page is laid out in two columns throughout: the BJT version of a circuit on the left and the MOSFET version on the right, both drawn by the same few lines of Python. Where a circuit exists in only one of the two technologies, the other column is left empty. The page goes from one transistor in eight connections to forty-two circuits of two transistors in seven families.</p>
+<p>A bipolar transistor and a MOSFET can be wired into the same networks. Every figure on this page has two columns: the BJT version of a circuit on the left and the MOSFET version on the right, both drawn by the same few lines of Python. Every table has three: a label, then the BJT and the MOSFET entry side by side. Where a circuit exists in only one of the two technologies, the other column is left empty. The page goes from one transistor in eight connections to forty-two circuits of two transistors in seven families.</p>
 <p>The two-transistor circuits follow H. Pretl and M. Eberlein [1], who show the MOSFET versions. The BJT versions are obtained by swapping device for device. Circuits of [1] that use the body terminal, a thick-oxide device or the parasitic bipolar transistor of a MOSFET are left out. The symbols follow the drawing style of B. Razavi [2].</p>
 <div class="section" id="prerequisites">
 <h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Permalink to this headline">¶</a></h2>
@@ -786,31 +786,39 @@ const thebe_selector_output = ".output, .cell_output"
 <p>A circuit is a function of a drawing context <code class="docutils literal notranslate"><span class="pre">c</span></code>. <code class="docutils literal notranslate"><span class="pre">c.transistor(kind,</span> <span class="pre">at,</span> <span class="pre">anchor)</span></code> places a transistor of the class the drawing is made with. There are two classes, <code class="docutils literal notranslate"><span class="pre">BJT</span></code> and <code class="docutils literal notranslate"><span class="pre">MOSFET</span></code>, both derived from <code class="docutils literal notranslate"><span class="pre">Transistor</span></code>, so one function draws both columns.</p>
 <table class="colwidths-auto table">
 <thead>
-<tr class="row-odd"><th class="head"><p>BJT</p></th>
+<tr class="row-odd"><th class="head"></th>
+<th class="head"><p>BJT</p></th>
 <th class="head"><p>MOSFET</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">class</span> <span class="pre">BJT(Transistor)</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">class</span> <span class="pre">MOSFET(Transistor)</span></code></p></td>
+<tr class="row-even"><td><p><strong>Class</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BJT(Transistor)</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">MOSFET(Transistor)</span></code></p></td>
 </tr>
-<tr class="row-odd"><td><p>kind <code class="docutils literal notranslate"><span class="pre">'n'</span></code> is an npn, kind <code class="docutils literal notranslate"><span class="pre">'p'</span></code> a pnp transistor</p></td>
-<td><p>kind <code class="docutils literal notranslate"><span class="pre">'n'</span></code> is an NMOS, kind <code class="docutils literal notranslate"><span class="pre">'p'</span></code> a PMOS transistor</p></td>
+<tr class="row-odd"><td><p><strong>Kind</strong> <code class="docutils literal notranslate"><span class="pre">'n'</span></code>, <code class="docutils literal notranslate"><span class="pre">'p'</span></code></p></td>
+<td><p>npn, pnp</p></td>
+<td><p>NMOS, PMOS</p></td>
 </tr>
-<tr class="row-even"><td><p>terminals <code class="docutils literal notranslate"><span class="pre">.b</span></code>, <code class="docutils literal notranslate"><span class="pre">.c</span></code>, <code class="docutils literal notranslate"><span class="pre">.e</span></code>: base, collector, emitter</p></td>
-<td><p>terminals <code class="docutils literal notranslate"><span class="pre">.g</span></code>, <code class="docutils literal notranslate"><span class="pre">.d</span></code>, <code class="docutils literal notranslate"><span class="pre">.s</span></code>: gate, drain, source</p></td>
+<tr class="row-even"><td><p><strong>Terminals</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">.b</span></code>, <code class="docutils literal notranslate"><span class="pre">.c</span></code>, <code class="docutils literal notranslate"><span class="pre">.e</span></code>: base, collector, emitter</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">.g</span></code>, <code class="docutils literal notranslate"><span class="pre">.d</span></code>, <code class="docutils literal notranslate"><span class="pre">.s</span></code>: gate, drain, source</p></td>
 </tr>
-<tr class="row-odd"><td><p>the shared names <code class="docutils literal notranslate"><span class="pre">.bg</span></code>, <code class="docutils literal notranslate"><span class="pre">.cd</span></code>, <code class="docutils literal notranslate"><span class="pre">.es</span></code> give <code class="docutils literal notranslate"><span class="pre">.b</span></code>, <code class="docutils literal notranslate"><span class="pre">.c</span></code>, <code class="docutils literal notranslate"><span class="pre">.e</span></code></p></td>
-<td><p>the shared names <code class="docutils literal notranslate"><span class="pre">.bg</span></code>, <code class="docutils literal notranslate"><span class="pre">.cd</span></code>, <code class="docutils literal notranslate"><span class="pre">.es</span></code> give <code class="docutils literal notranslate"><span class="pre">.g</span></code>, <code class="docutils literal notranslate"><span class="pre">.d</span></code>, <code class="docutils literal notranslate"><span class="pre">.s</span></code></p></td>
+<tr class="row-odd"><td><p><strong>Shared names</strong> <code class="docutils literal notranslate"><span class="pre">.bg</span></code>, <code class="docutils literal notranslate"><span class="pre">.cd</span></code>, <code class="docutils literal notranslate"><span class="pre">.es</span></code></p></td>
+<td><p>give <code class="docutils literal notranslate"><span class="pre">.b</span></code>, <code class="docutils literal notranslate"><span class="pre">.c</span></code>, <code class="docutils literal notranslate"><span class="pre">.e</span></code></p></td>
+<td><p>give <code class="docutils literal notranslate"><span class="pre">.g</span></code>, <code class="docutils literal notranslate"><span class="pre">.d</span></code>, <code class="docutils literal notranslate"><span class="pre">.s</span></code></p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">name=1</span></code> is shown as <span class="math notranslate nohighlight">\(Q_1\)</span></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">name=1</span></code> is shown as <span class="math notranslate nohighlight">\(M_1\)</span></p></td>
+<tr class="row-even"><td><p><strong>Name</strong> <code class="docutils literal notranslate"><span class="pre">name=1</span></code></p></td>
+<td><p><span class="math notranslate nohighlight">\(Q_1\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(M_1\)</span></p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">c.supply(p)</span></code> is labelled <span class="math notranslate nohighlight">\(V_{CC}\)</span></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">c.supply(p)</span></code> is labelled <span class="math notranslate nohighlight">\(V_{DD}\)</span></p></td>
+<tr class="row-odd"><td><p><strong>Supply</strong> <code class="docutils literal notranslate"><span class="pre">c.supply(p)</span></code></p></td>
+<td><p><span class="math notranslate nohighlight">\(V_{CC}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(V_{DD}\)</span></p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">.size(text)</span></code> draws nothing</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">.size(text)</span></code> writes a <span class="math notranslate nohighlight">\(W/L\)</span> label beside the device</p></td>
+<tr class="row-even"><td><p><strong>Size</strong> <code class="docutils literal notranslate"><span class="pre">.size(text)</span></code></p></td>
+<td><p>draws nothing</p></td>
+<td><p>writes a <span class="math notranslate nohighlight">\(W/L\)</span> label beside the device</p></td>
 </tr>
 </tbody>
 </table>
@@ -884,34 +892,43 @@ const thebe_selector_output = ".output, .cell_output"
 <p>The two columns translate into each other term by term:</p>
 <table class="colwidths-auto table">
 <thead>
-<tr class="row-odd"><th class="head"><p>BJT</p></th>
+<tr class="row-odd"><th class="head"></th>
+<th class="head"><p>BJT</p></th>
 <th class="head"><p>MOSFET</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><strong>Terminals.</strong> Base <span class="math notranslate nohighlight">\(B\)</span>, collector <span class="math notranslate nohighlight">\(C\)</span>, emitter <span class="math notranslate nohighlight">\(E\)</span></p></td>
-<td><p><strong>Terminals.</strong> Gate <span class="math notranslate nohighlight">\(G\)</span>, drain <span class="math notranslate nohighlight">\(D\)</span>, source <span class="math notranslate nohighlight">\(S\)</span></p></td>
+<tr class="row-even"><td><p><strong>Terminals</strong></p></td>
+<td><p>base <span class="math notranslate nohighlight">\(B\)</span>, collector <span class="math notranslate nohighlight">\(C\)</span>, emitter <span class="math notranslate nohighlight">\(E\)</span></p></td>
+<td><p>gate <span class="math notranslate nohighlight">\(G\)</span>, drain <span class="math notranslate nohighlight">\(D\)</span>, source <span class="math notranslate nohighlight">\(S\)</span></p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>Control voltage.</strong> <span class="math notranslate nohighlight">\(V_{BE}\)</span></p></td>
-<td><p><strong>Control voltage.</strong> <span class="math notranslate nohighlight">\(V_{GS}\)</span></p></td>
+<tr class="row-odd"><td><p><strong>Control voltage</strong></p></td>
+<td><p><span class="math notranslate nohighlight">\(V_{BE}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(V_{GS}\)</span></p></td>
 </tr>
-<tr class="row-even"><td><p><strong>Current law.</strong> <span class="math notranslate nohighlight">\(I_C=I_S\,e^{V_{BE}/V_T}\)</span> in the active region</p></td>
-<td><p><strong>Current law.</strong> <span class="math notranslate nohighlight">\(I_D=\tfrac12\mu_nC_{ox}\tfrac{W}{L}(V_{GS}-V_{TH})^2\)</span> in saturation</p></td>
+<tr class="row-even"><td><p><strong>Current law</strong></p></td>
+<td><p><span class="math notranslate nohighlight">\(I_C=I_S\,e^{V_{BE}/V_T}\)</span> in the active region</p></td>
+<td><p><span class="math notranslate nohighlight">\(I_D=\tfrac12\mu_nC_{ox}\tfrac{W}{L}(V_{GS}-V_{TH})^2\)</span> in saturation</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>Transconductance.</strong> <span class="math notranslate nohighlight">\(g_m=I_C/V_T\)</span></p></td>
-<td><p><strong>Transconductance.</strong> <span class="math notranslate nohighlight">\(g_m=2I_D/(V_{GS}-V_{TH})\)</span></p></td>
+<tr class="row-odd"><td><p><strong>Transconductance</strong></p></td>
+<td><p><span class="math notranslate nohighlight">\(g_m=I_C/V_T\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(g_m=2I_D/(V_{GS}-V_{TH})\)</span></p></td>
 </tr>
-<tr class="row-even"><td><p><strong>Output resistance.</strong> <span class="math notranslate nohighlight">\(r_O=V_A/I_C\)</span></p></td>
-<td><p><strong>Output resistance.</strong> <span class="math notranslate nohighlight">\(r_O=1/(\lambda I_D)\)</span></p></td>
+<tr class="row-even"><td><p><strong>Output resistance</strong></p></td>
+<td><p><span class="math notranslate nohighlight">\(r_O=V_A/I_C\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(r_O=1/(\lambda I_D)\)</span></p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>Control current.</strong> <span class="math notranslate nohighlight">\(I_B=I_C/\beta\)</span></p></td>
-<td><p><strong>Control current.</strong> <span class="math notranslate nohighlight">\(I_G=0\)</span></p></td>
+<tr class="row-odd"><td><p><strong>Control current</strong></p></td>
+<td><p><span class="math notranslate nohighlight">\(I_B=I_C/\beta\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(I_G=0\)</span></p></td>
 </tr>
-<tr class="row-even"><td><p><strong>Size.</strong> Emitter area, through <span class="math notranslate nohighlight">\(I_S\)</span></p></td>
-<td><p><strong>Size.</strong> <span class="math notranslate nohighlight">\(W/L\)</span></p></td>
+<tr class="row-even"><td><p><strong>Size</strong></p></td>
+<td><p>emitter area, through <span class="math notranslate nohighlight">\(I_S\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(W/L\)</span></p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>Names.</strong> <span class="math notranslate nohighlight">\(Q_1\)</span>, <span class="math notranslate nohighlight">\(Q_2\)</span>, supply <span class="math notranslate nohighlight">\(V_{CC}\)</span></p></td>
-<td><p><strong>Names.</strong> <span class="math notranslate nohighlight">\(M_1\)</span>, <span class="math notranslate nohighlight">\(M_2\)</span>, supply <span class="math notranslate nohighlight">\(V_{DD}\)</span></p></td>
+<tr class="row-odd"><td><p><strong>Names</strong></p></td>
+<td><p><span class="math notranslate nohighlight">\(Q_1\)</span>, <span class="math notranslate nohighlight">\(Q_2\)</span>, supply <span class="math notranslate nohighlight">\(V_{CC}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(M_1\)</span>, <span class="math notranslate nohighlight">\(M_2\)</span>, supply <span class="math notranslate nohighlight">\(V_{DD}\)</span></p></td>
 </tr>
 </tbody>
 </table>
@@ -957,16 +974,19 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 <table class="colwidths-auto table">
 <thead>
-<tr class="row-odd"><th class="head"><p>BJT</p></th>
+<tr class="row-odd"><th class="head"></th>
+<th class="head"><p>BJT</p></th>
 <th class="head"><p>MOSFET</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><strong>Common emitter.</strong> <span class="math notranslate nohighlight">\(A_v=-g_mR_C\)</span></p></td>
-<td><p><strong>Common source.</strong> <span class="math notranslate nohighlight">\(A_v=-g_mR_D\)</span></p></td>
+<tr class="row-even"><td><p><strong>Amplifier</strong></p></td>
+<td><p><span class="math notranslate nohighlight">\(A_v=-g_mR_C\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(A_v=-g_mR_D\)</span></p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>Emitter follower.</strong> The common-collector stage: <span class="math notranslate nohighlight">\(A_v=\dfrac{g_mR_E}{1+g_mR_E}\)</span></p></td>
-<td><p><strong>Source follower.</strong> The common-drain stage: <span class="math notranslate nohighlight">\(A_v=\dfrac{g_mR_S}{1+g_mR_S}\)</span></p></td>
+<tr class="row-odd"><td><p><strong>Follower</strong></p></td>
+<td><p>The common-collector stage: <span class="math notranslate nohighlight">\(A_v=\dfrac{g_mR_E}{1+g_mR_E}\)</span></p></td>
+<td><p>The common-drain stage: <span class="math notranslate nohighlight">\(A_v=\dfrac{g_mR_S}{1+g_mR_S}\)</span></p></td>
 </tr>
 </tbody>
 </table>
@@ -1002,16 +1022,19 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 <table class="colwidths-auto table">
 <thead>
-<tr class="row-odd"><th class="head"><p>BJT</p></th>
+<tr class="row-odd"><th class="head"></th>
+<th class="head"><p>BJT</p></th>
 <th class="head"><p>MOSFET</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><strong>Common base.</strong> <span class="math notranslate nohighlight">\(I_\mathrm{out}=\dfrac{\beta}{\beta+1}I_\mathrm{in}\)</span>, <span class="math notranslate nohighlight">\(R_\mathrm{in}\approx1/g_m\)</span></p></td>
-<td><p><strong>Common gate.</strong> <span class="math notranslate nohighlight">\(I_\mathrm{out}=I_\mathrm{in}\)</span>, <span class="math notranslate nohighlight">\(R_\mathrm{in}\approx1/g_m\)</span></p></td>
+<tr class="row-even"><td><p><strong>Current buffer</strong></p></td>
+<td><p><span class="math notranslate nohighlight">\(I_\mathrm{out}=\dfrac{\beta}{\beta+1}I_\mathrm{in}\)</span>, <span class="math notranslate nohighlight">\(R_\mathrm{in}\approx1/g_m\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(I_\mathrm{out}=I_\mathrm{in}\)</span>, <span class="math notranslate nohighlight">\(R_\mathrm{in}\approx1/g_m\)</span></p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>Current source.</strong> <span class="math notranslate nohighlight">\(I_\mathrm{out}=I_S\,e^{V_\mathrm{bias}/V_T}\)</span>, <span class="math notranslate nohighlight">\(R_\mathrm{out}=r_O\)</span></p></td>
-<td><p><strong>Current source.</strong> <span class="math notranslate nohighlight">\(I_\mathrm{out}=\tfrac12\mu_nC_{ox}\tfrac{W}{L}(V_\mathrm{bias}-V_{TH})^2\)</span>, <span class="math notranslate nohighlight">\(R_\mathrm{out}=r_O\)</span></p></td>
+<tr class="row-odd"><td><p><strong>Current source</strong></p></td>
+<td><p><span class="math notranslate nohighlight">\(I_\mathrm{out}=I_S\,e^{V_\mathrm{bias}/V_T}\)</span>, <span class="math notranslate nohighlight">\(R_\mathrm{out}=r_O\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(I_\mathrm{out}=\tfrac12\mu_nC_{ox}\tfrac{W}{L}(V_\mathrm{bias}-V_{TH})^2\)</span>, <span class="math notranslate nohighlight">\(R_\mathrm{out}=r_O\)</span></p></td>
 </tr>
 </tbody>
 </table>
@@ -1048,16 +1071,19 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 <table class="colwidths-auto table">
 <thead>
-<tr class="row-odd"><th class="head"><p>BJT</p></th>
+<tr class="row-odd"><th class="head"></th>
+<th class="head"><p>BJT</p></th>
 <th class="head"><p>MOSFET</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><strong>Diode-connected transistor.</strong> Conducts at <span class="math notranslate nohighlight">\(V_{BE}\approx0.7\,\mathrm{V}\)</span>, small-signal resistance <span class="math notranslate nohighlight">\(1/g_m\)</span></p></td>
-<td><p><strong>Diode-connected transistor.</strong> Conducts above <span class="math notranslate nohighlight">\(V_{TH}\)</span>, small-signal resistance <span class="math notranslate nohighlight">\(1/g_m\)</span></p></td>
+<tr class="row-even"><td><p><strong>Diode</strong></p></td>
+<td><p>Conducts at <span class="math notranslate nohighlight">\(V_{BE}\approx0.7\,\mathrm{V}\)</span>, small-signal resistance <span class="math notranslate nohighlight">\(1/g_m\)</span></p></td>
+<td><p>Conducts above <span class="math notranslate nohighlight">\(V_{TH}\)</span>, small-signal resistance <span class="math notranslate nohighlight">\(1/g_m\)</span></p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>Switch.</strong> <em>Limited.</em> On in saturation: a few hundred millivolts of <span class="math notranslate nohighlight">\(V_{CE}\)</span> remain, and the base current flows into the path</p></td>
-<td><p><strong>Switch.</strong> On in triode: no offset, <span class="math notranslate nohighlight">\(R_\mathrm{on}=\left[\mu_nC_{ox}\tfrac{W}{L}(V_{GS}-V_{TH})\right]^{-1}\)</span></p></td>
+<tr class="row-odd"><td><p><strong>Switch</strong></p></td>
+<td><p><em>Limited.</em> On in saturation: a few hundred millivolts of <span class="math notranslate nohighlight">\(V_{CE}\)</span> remain, and the base current flows into the path</p></td>
+<td><p>On in triode: no offset, <span class="math notranslate nohighlight">\(R_\mathrm{on}=\left[\mu_nC_{ox}\tfrac{W}{L}(V_{GS}-V_{TH})\right]^{-1}\)</span></p></td>
 </tr>
 </tbody>
 </table>
@@ -1094,16 +1120,19 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 <table class="colwidths-auto table">
 <thead>
-<tr class="row-odd"><th class="head"><p>BJT</p></th>
+<tr class="row-odd"><th class="head"></th>
+<th class="head"><p>BJT</p></th>
 <th class="head"><p>MOSFET</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td></td>
-<td><p><strong>Resistor.</strong> Triode region: <span class="math notranslate nohighlight">\(R_\mathrm{on}\)</span> as above, set by <span class="math notranslate nohighlight">\(V_\mathrm{bias}\)</span>. <em>No BJT version:</em> a saturated BJT is not a linear resistor</p></td>
+<tr class="row-even"><td><p><strong>Resistor</strong></p></td>
+<td></td>
+<td><p>Triode region: <span class="math notranslate nohighlight">\(R_\mathrm{on}\)</span> as above, set by <span class="math notranslate nohighlight">\(V_\mathrm{bias}\)</span>. <em>No BJT version:</em> a saturated BJT is not a linear resistor</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>Capacitor.</strong> <em>Limited.</em> Junction capacitance, usable only while the junctions stay reverse biased</p></td>
-<td><p><strong>Capacitor.</strong> Gate capacitance, <span class="math notranslate nohighlight">\(C\approx WLC_{ox}\)</span></p></td>
+<tr class="row-odd"><td><p><strong>Capacitor</strong></p></td>
+<td><p><em>Limited.</em> Junction capacitance, usable only while the junctions stay reverse biased</p></td>
+<td><p>Gate capacitance, <span class="math notranslate nohighlight">\(C\approx WLC_{ox}\)</span></p></td>
 </tr>
 </tbody>
 </table>
@@ -1115,120 +1144,98 @@ const thebe_selector_output = ".output, .cell_output"
 <table class="colwidths-auto table">
 <thead>
 <tr class="row-odd"><th class="head"><p>Family</p></th>
-<th class="head"><p>First circuit</p></th>
-<th class="head"><p>Second circuit</p></th>
+<th class="head"><p>Circuits</p></th>
 <th class="head"><p>The one change</p></th>
 </tr>
 </thead>
 <tbody>
 <tr class="row-even"><td><p><strong>Bias Circuits</strong></p></td>
-<td><p>1. Voltage divider (34)</p></td>
-<td><p>2. PTAT generator (26)</p></td>
+<td><p>1. Voltage divider (34), 2. PTAT generator (26)</p></td>
 <td><p>Both bases or gates go to the top of the stack</p></td>
 </tr>
 <tr class="row-odd"><td></td>
-<td><p>3. Bias generator (24)</p></td>
-<td><p>4. Tie cell (3)</p></td>
+<td><p>3. Bias generator (24), 4. Tie cell (3)</p></td>
 <td><p>The diode connection moves from the n-type to the p-type device</p></td>
 </tr>
 <tr class="row-even"><td></td>
-<td><p>5. Current mirror (7)</p></td>
-<td><p>6. Current divider (35)</p></td>
+<td><p>5. Current mirror (7), 6. Current divider (35)</p></td>
 <td><p>The devices are stacked, and the current enters between them</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>Gain Stages</strong></p></td>
-<td><p>7. Active load (10)</p></td>
-<td><p>8. Inverter (1)</p></td>
+<td><p>7. Active load (10), 8. Inverter (1)</p></td>
 <td><p>The load is driven by the input as well</p></td>
 </tr>
 <tr class="row-even"><td></td>
-<td><p>9. Diode load (17)</p></td>
-<td><p>10. Folded diode load (18)</p></td>
+<td><p>9. Diode load (17), 10. Folded diode load (18)</p></td>
 <td><p>The load moves beside the amplifying device</p></td>
 </tr>
 <tr class="row-odd"><td></td>
-<td><p>11. Degeneration (20)</p></td>
-<td><p>12. Tunable degeneration (21)</p></td>
+<td><p>11. Degeneration (20), 12. Tunable degeneration (21)</p></td>
 <td><p>The lower device gets its own bias</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>Buffers</strong></p></td>
-<td><p>13. Follower (9)</p></td>
-<td><p>14. Push-pull follower (19)</p></td>
+<td><p>13. Follower (9), 14. Push-pull follower (19)</p></td>
 <td><p>A complementary follower replaces the current source</p></td>
 </tr>
 <tr class="row-odd"><td></td>
-<td><p>15. Current buffer (13)</p></td>
-<td><p>16. Stacked current buffers (12)</p></td>
+<td><p>15. Current buffer (13), 16. Stacked current buffers (12)</p></td>
 <td><p>A second buffer replaces the current source</p></td>
 </tr>
 <tr class="row-even"><td></td>
-<td><p>17. Two outputs (22)</p></td>
-<td><p>18. Two paths (23)</p></td>
+<td><p>17. Two outputs (22), 18. Two paths (23)</p></td>
 <td><p>The amplifier becomes a follower, and the two signal currents meet in one output</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>Feedback Pairs</strong></p></td>
-<td><p>19. Cascode (11)</p></td>
-<td><p>20. Regulated cascode (48)</p></td>
+<td><p>19. Cascode (11), 20. Regulated cascode (48)</p></td>
 <td><p>An amplifier senses the emitter or source of the buffer and drives its base or gate</p></td>
 </tr>
 <tr class="row-even"><td></td>
-<td><p>21. Flipped follower (47)</p></td>
-<td><p>22. Active inductor (33)</p></td>
+<td><p>21. Flipped follower (47), 22. Active inductor (33)</p></td>
 <td><p>The same loop, seen from the lower node</p></td>
 </tr>
 <tr class="row-odd"><td></td>
-<td><p>23. Differential pair (8)</p></td>
-<td><p>24. Cross-coupled pair (28)</p></td>
+<td><p>23. Differential pair (8), 24. Cross-coupled pair (28)</p></td>
 <td><p>Each base or gate goes to the opposite collector or drain</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>Circuit Elements</strong></p></td>
-<td><p>25. Controlled resistor (41)</p></td>
-<td><p>26. Large resistor (42)</p></td>
+<td><p>25. Controlled resistor (41), 26. Large resistor (42)</p></td>
 <td><p>The devices bias each other, without a bias current</p></td>
 </tr>
 <tr class="row-odd"><td></td>
-<td><p>27. Varactor (30)</p></td>
-<td><p>28. Anti-parallel capacitors (32)</p></td>
+<td><p>27. Varactor (30), 28. Anti-parallel capacitors (32)</p></td>
 <td><p>The two capacitors are connected in parallel and in opposite directions</p></td>
 </tr>
 <tr class="row-even"><td></td>
-<td><p>29. Anti-parallel diodes (31)</p></td>
-<td><p>30. Ultra-low-power diode (43)</p></td>
+<td><p>29. Anti-parallel diodes (31), 30. Ultra-low-power diode (43)</p></td>
 <td><p>The devices are put in series, each controlled from the far terminal</p></td>
 </tr>
 <tr class="row-odd"><td></td>
-<td><p>31. Level shift (44)</p></td>
-<td><p>32. Linear I-to-V converter (45)</p></td>
+<td><p>31. Level shift (44), 32. Linear I-to-V converter (45)</p></td>
 <td><p>A bias voltage fixes the sum of the two control voltages</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>Switched Circuits</strong></p></td>
-<td><p>33. Transmission gate (14)</p></td>
-<td><p>34. Multiplexer (15)</p></td>
+<td><p>33. Transmission gate (14), 34. Multiplexer (15)</p></td>
 <td><p>The two switches share only the output</p></td>
 </tr>
 <tr class="row-odd"><td></td>
-<td><p>35. Sample-and-hold (36)</p></td>
-<td><p>36. Low-pass filter (38)</p></td>
+<td><p>35. Sample-and-hold (36), 36. Low-pass filter (38)</p></td>
 <td><p>A fixed bias replaces the clock</p></td>
 </tr>
 <tr class="row-even"><td></td>
-<td><p>37. Peak detector (39)</p></td>
-<td><p>38. Voltage doubler (40)</p></td>
+<td><p>37. Peak detector (39), 38. Voltage doubler (40)</p></td>
 <td><p>Diode and capacitor change places</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>Logic Gates</strong></p></td>
-<td><p>39. NAND (5)</p></td>
-<td><p>40. NOR (6)</p></td>
+<td><p>39. NAND (5), 40. NOR (6)</p></td>
 <td><p>Series becomes parallel</p></td>
 </tr>
 <tr class="row-even"><td></td>
-<td><p>41. XNOR (4)</p></td>
-<td><p>42. Mixer (37)</p></td>
+<td><p>41. XNOR (4), 42. Mixer (37)</p></td>
 <td><p>Logic levels become analog signals</p></td>
 </tr>
 </tbody>
 </table>
-<p>Of the forty-two circuits, 21 carry over to the BJT unchanged and 6 with a restriction, marked <em>Limited</em> in the BJT column. The other 15 rely on a MOSFET as a linear resistor, a gate capacitor or a switch without control current. They have no working BJT version, so their BJT column is empty and the MOSFET column says why.</p>
+<p>Of the forty-two circuits, 21 carry over to the BJT unchanged and 6 with a restriction, marked <em>Limited</em> in the BJT column. The other 15 rely on a MOSFET as a linear resistor, a gate capacitor or a switch without control current. They have no working BJT version, so their BJT column is empty, in the figure and in the table, and the MOSFET column says why.</p>
 </div>
 <div class="section" id="bias-circuits">
 <h2>Bias Circuits<a class="headerlink" href="#bias-circuits" title="Permalink to this headline">¶</a></h2>
@@ -1271,16 +1278,19 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 <table class="colwidths-auto table">
 <thead>
-<tr class="row-odd"><th class="head"><p>BJT</p></th>
+<tr class="row-odd"><th class="head"></th>
+<th class="head"><p>BJT</p></th>
 <th class="head"><p>MOSFET</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><strong>1. Voltage divider.</strong> <span class="math notranslate nohighlight">\(V_\mathrm{out}=V_\mathrm{in}/2\)</span> for matched devices: each drops one <span class="math notranslate nohighlight">\(V_{BE}\)</span></p></td>
-<td><p><strong>1. Voltage divider.</strong> <span class="math notranslate nohighlight">\(V_\mathrm{out}=V_\mathrm{in}/2\)</span> for matched devices: each drops one <span class="math notranslate nohighlight">\(V_{GS}\)</span></p></td>
+<tr class="row-even"><td><p><strong>1. Voltage divider</strong></p></td>
+<td><p><span class="math notranslate nohighlight">\(V_\mathrm{out}=V_\mathrm{in}/2\)</span> for matched devices: each drops one <span class="math notranslate nohighlight">\(V_{BE}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(V_\mathrm{out}=V_\mathrm{in}/2\)</span> for matched devices: each drops one <span class="math notranslate nohighlight">\(V_{GS}\)</span></p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>2. PTAT generator.</strong> <em>Limited.</em> <span class="math notranslate nohighlight">\(Q_1\)</span> saturates. Its <span class="math notranslate nohighlight">\(V_{CE}\)</span> is of the order of <span class="math notranslate nohighlight">\(V_T\)</span></p></td>
-<td><p><strong>2. PTAT generator.</strong> Weak inversion: <span class="math notranslate nohighlight">\(V_\mathrm{ptat}=V_T\ln(1+K)\)</span> with <span class="math notranslate nohighlight">\(V_T=kT/q\)</span></p></td>
+<tr class="row-odd"><td><p><strong>2. PTAT generator</strong></p></td>
+<td><p><em>Limited.</em> <span class="math notranslate nohighlight">\(Q_1\)</span> saturates. Its <span class="math notranslate nohighlight">\(V_{CE}\)</span> is of the order of <span class="math notranslate nohighlight">\(V_T\)</span></p></td>
+<td><p>Weak inversion: <span class="math notranslate nohighlight">\(V_\mathrm{ptat}=V_T\ln(1+K)\)</span> with <span class="math notranslate nohighlight">\(V_T=kT/q\)</span></p></td>
 </tr>
 </tbody>
 </table>
@@ -1323,16 +1333,19 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 <table class="colwidths-auto table">
 <thead>
-<tr class="row-odd"><th class="head"><p>BJT</p></th>
+<tr class="row-odd"><th class="head"></th>
+<th class="head"><p>BJT</p></th>
 <th class="head"><p>MOSFET</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td></td>
-<td><p><strong>3. Bias generator.</strong> <span class="math notranslate nohighlight">\(M_1\)</span> is a current source and <span class="math notranslate nohighlight">\(M_2\)</span> a diode: <span class="math notranslate nohighlight">\(V_\mathrm{bias}=V_{GS2}\)</span>. <em>No BJT version:</em> a grounded base would put the whole supply across the emitter-base junction</p></td>
+<tr class="row-even"><td><p><strong>3. Bias generator</strong></p></td>
+<td></td>
+<td><p><span class="math notranslate nohighlight">\(M_1\)</span> is a current source and <span class="math notranslate nohighlight">\(M_2\)</span> a diode: <span class="math notranslate nohighlight">\(V_\mathrm{bias}=V_{GS2}\)</span>. <em>No BJT version:</em> a grounded base would put the whole supply across the emitter-base junction</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>4. Tie cell.</strong> <em>Limited.</em> Two junctions in series across the supply: needs a series resistor</p></td>
-<td><p><strong>4. Tie cell.</strong> Diode <span class="math notranslate nohighlight">\(M_1\)</span> turns <span class="math notranslate nohighlight">\(M_2\)</span> on, which holds the output at ground. No gate is wired to a supply rail</p></td>
+<tr class="row-odd"><td><p><strong>4. Tie cell</strong></p></td>
+<td><p><em>Limited.</em> Two junctions in series across the supply: needs a series resistor</p></td>
+<td><p>Diode <span class="math notranslate nohighlight">\(M_1\)</span> turns <span class="math notranslate nohighlight">\(M_2\)</span> on, which holds the output at ground. No gate is wired to a supply rail</p></td>
 </tr>
 </tbody>
 </table>
@@ -1378,16 +1391,19 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 <table class="colwidths-auto table">
 <thead>
-<tr class="row-odd"><th class="head"><p>BJT</p></th>
+<tr class="row-odd"><th class="head"></th>
+<th class="head"><p>BJT</p></th>
 <th class="head"><p>MOSFET</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><strong>5. Current mirror.</strong> <span class="math notranslate nohighlight">\(I_\mathrm{out}=\dfrac{I_\mathrm{in}}{1+2/\beta}\)</span> for equal devices. The ratio follows the emitter areas</p></td>
-<td><p><strong>5. Current mirror.</strong> <span class="math notranslate nohighlight">\(I_\mathrm{out}=\dfrac{(W/L)_2}{(W/L)_1}\,I_\mathrm{in}\)</span></p></td>
+<tr class="row-even"><td><p><strong>5. Current mirror</strong></p></td>
+<td><p><span class="math notranslate nohighlight">\(I_\mathrm{out}=\dfrac{I_\mathrm{in}}{1+2/\beta}\)</span> for equal devices. The ratio follows the emitter areas</p></td>
+<td><p><span class="math notranslate nohighlight">\(I_\mathrm{out}=\dfrac{(W/L)_2}{(W/L)_1}\,I_\mathrm{in}\)</span></p></td>
 </tr>
-<tr class="row-odd"><td></td>
-<td><p><strong>6. Current divider.</strong> <span class="math notranslate nohighlight">\(I_\mathrm{in}\)</span> splits between the two outputs in a fixed ratio set by the sizes, at any signal level. <em>No BJT version:</em> the exponential law gives no linear split</p></td>
+<tr class="row-odd"><td><p><strong>6. Current divider</strong></p></td>
+<td></td>
+<td><p><span class="math notranslate nohighlight">\(I_\mathrm{in}\)</span> splits between the two outputs in a fixed ratio set by the sizes, at any signal level. <em>No BJT version:</em> the exponential law gives no linear split</p></td>
 </tr>
 </tbody>
 </table>
@@ -1432,16 +1448,19 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 <table class="colwidths-auto table">
 <thead>
-<tr class="row-odd"><th class="head"><p>BJT</p></th>
+<tr class="row-odd"><th class="head"></th>
+<th class="head"><p>BJT</p></th>
 <th class="head"><p>MOSFET</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><strong>7. Common emitter with active load.</strong> <span class="math notranslate nohighlight">\(A_v=-g_{m1}\,(r_{O1}\parallel r_{O2})\)</span></p></td>
-<td><p><strong>7. Common source with active load.</strong> <span class="math notranslate nohighlight">\(A_v=-g_{m1}\,(r_{O1}\parallel r_{O2})\)</span></p></td>
+<tr class="row-even"><td><p><strong>7. Active load</strong></p></td>
+<td><p><span class="math notranslate nohighlight">\(A_v=-g_{m1}\,(r_{O1}\parallel r_{O2})\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(A_v=-g_{m1}\,(r_{O1}\parallel r_{O2})\)</span></p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>8. Inverter.</strong> <em>Limited.</em> <span class="math notranslate nohighlight">\(V_{CC}\)</span> lies across two base-emitter junctions, so it must stay near <span class="math notranslate nohighlight">\(2V_{BE}\)</span></p></td>
-<td><p><strong>8. Inverter.</strong> <span class="math notranslate nohighlight">\(A_v=-(g_{m1}+g_{m2})(r_{O1}\parallel r_{O2})\)</span> around the switching point. As a logic gate the output swings from rail to rail</p></td>
+<tr class="row-odd"><td><p><strong>8. Inverter</strong></p></td>
+<td><p><em>Limited.</em> <span class="math notranslate nohighlight">\(V_{CC}\)</span> lies across two base-emitter junctions, so it must stay near <span class="math notranslate nohighlight">\(2V_{BE}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(A_v=-(g_{m1}+g_{m2})(r_{O1}\parallel r_{O2})\)</span> around the switching point. As a logic gate the output swings from rail to rail</p></td>
 </tr>
 </tbody>
 </table>
@@ -1486,16 +1505,19 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 <table class="colwidths-auto table">
 <thead>
-<tr class="row-odd"><th class="head"><p>BJT</p></th>
+<tr class="row-odd"><th class="head"></th>
+<th class="head"><p>BJT</p></th>
 <th class="head"><p>MOSFET</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><strong>9. Common emitter with diode load.</strong> <span class="math notranslate nohighlight">\(A_v=-\dfrac{g_{m1}}{g_{m2}}=-1\)</span>, because both devices carry the same current</p></td>
-<td><p><strong>9. Common source with diode load.</strong> <span class="math notranslate nohighlight">\(A_v=-\dfrac{g_{m1}}{g_{m2}}=-\sqrt{\dfrac{(W/L)_1}{(W/L)_2}}\)</span></p></td>
+<tr class="row-even"><td><p><strong>9. Diode load</strong></p></td>
+<td><p><span class="math notranslate nohighlight">\(A_v=-\dfrac{g_{m1}}{g_{m2}}=-1\)</span>, because both devices carry the same current</p></td>
+<td><p><span class="math notranslate nohighlight">\(A_v=-\dfrac{g_{m1}}{g_{m2}}=-\sqrt{\dfrac{(W/L)_1}{(W/L)_2}}\)</span></p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>10. Folded diode load.</strong> <span class="math notranslate nohighlight">\(A_v=-\dfrac{g_{m1}}{g_{m2}}=-\dfrac{I_{C1}}{I_{C2}}\)</span></p></td>
-<td><p><strong>10. Folded diode load.</strong> <span class="math notranslate nohighlight">\(A_v=-\dfrac{g_{m1}}{g_{m2}}\)</span>, output referred to ground, no body effect in <span class="math notranslate nohighlight">\(M_2\)</span></p></td>
+<tr class="row-odd"><td><p><strong>10. Folded diode load</strong></p></td>
+<td><p><span class="math notranslate nohighlight">\(A_v=-\dfrac{g_{m1}}{g_{m2}}=-\dfrac{I_{C1}}{I_{C2}}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(A_v=-\dfrac{g_{m1}}{g_{m2}}\)</span>, output referred to ground, no body effect in <span class="math notranslate nohighlight">\(M_2\)</span></p></td>
 </tr>
 </tbody>
 </table>
@@ -1534,16 +1556,19 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 <table class="colwidths-auto table">
 <thead>
-<tr class="row-odd"><th class="head"><p>BJT</p></th>
+<tr class="row-odd"><th class="head"></th>
+<th class="head"><p>BJT</p></th>
 <th class="head"><p>MOSFET</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td></td>
-<td><p><strong>11. Degenerated common source.</strong> <span class="math notranslate nohighlight">\(M_2\)</span> works in triode. The pair acts as one transistor of greater length. <em>No BJT version:</em> the lower device would saturate, and a saturated BJT is not a linear resistor</p></td>
+<tr class="row-even"><td><p><strong>11. Degeneration</strong></p></td>
+<td></td>
+<td><p><span class="math notranslate nohighlight">\(M_2\)</span> works in triode. The pair acts as one transistor of greater length. <em>No BJT version:</em> the lower device would saturate, and a saturated BJT is not a linear resistor</p></td>
 </tr>
-<tr class="row-odd"><td></td>
-<td><p><strong>12. Tunable degeneration.</strong> <span class="math notranslate nohighlight">\(G_m=\dfrac{g_{m1}}{1+g_{m1}R_\mathrm{on2}}\)</span>, with <span class="math notranslate nohighlight">\(R_\mathrm{on2}\)</span> set by <span class="math notranslate nohighlight">\(V_\mathrm{bias}\)</span>. <em>No BJT version:</em> a BJT offers no bias-controlled linear resistance</p></td>
+<tr class="row-odd"><td><p><strong>12. Tunable degeneration</strong></p></td>
+<td></td>
+<td><p><span class="math notranslate nohighlight">\(G_m=\dfrac{g_{m1}}{1+g_{m1}R_\mathrm{on2}}\)</span>, with <span class="math notranslate nohighlight">\(R_\mathrm{on2}\)</span> set by <span class="math notranslate nohighlight">\(V_\mathrm{bias}\)</span>. <em>No BJT version:</em> a BJT offers no bias-controlled linear resistance</p></td>
 </tr>
 </tbody>
 </table>
@@ -1588,16 +1613,19 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 <table class="colwidths-auto table">
 <thead>
-<tr class="row-odd"><th class="head"><p>BJT</p></th>
+<tr class="row-odd"><th class="head"></th>
+<th class="head"><p>BJT</p></th>
 <th class="head"><p>MOSFET</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><strong>13. Emitter follower.</strong> <span class="math notranslate nohighlight">\(V_\mathrm{out}=V_\mathrm{in}-V_{BE1}\)</span>, <span class="math notranslate nohighlight">\(R_\mathrm{out}\approx1/g_{m1}\)</span></p></td>
-<td><p><strong>13. Source follower.</strong> <span class="math notranslate nohighlight">\(V_\mathrm{out}=V_\mathrm{in}-V_{GS1}\)</span>, <span class="math notranslate nohighlight">\(R_\mathrm{out}\approx1/g_{m1}\)</span></p></td>
+<tr class="row-even"><td><p><strong>13. Follower</strong></p></td>
+<td><p><span class="math notranslate nohighlight">\(V_\mathrm{out}=V_\mathrm{in}-V_{BE1}\)</span>, <span class="math notranslate nohighlight">\(R_\mathrm{out}\approx1/g_{m1}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(V_\mathrm{out}=V_\mathrm{in}-V_{GS1}\)</span>, <span class="math notranslate nohighlight">\(R_\mathrm{out}\approx1/g_{m1}\)</span></p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>14. Push-pull emitter follower.</strong> No device conducts while <span class="math notranslate nohighlight">\(\lvert V_\mathrm{in}-V_\mathrm{out}\rvert&lt;V_{BE}\)</span></p></td>
-<td><p><strong>14. Push-pull source follower.</strong> No device conducts while <span class="math notranslate nohighlight">\(\lvert V_\mathrm{in}-V_\mathrm{out}\rvert&lt;V_{TH}\)</span></p></td>
+<tr class="row-odd"><td><p><strong>14. Push-pull follower</strong></p></td>
+<td><p>No device conducts while <span class="math notranslate nohighlight">\(\lvert V_\mathrm{in}-V_\mathrm{out}\rvert&lt;V_{BE}\)</span></p></td>
+<td><p>No device conducts while <span class="math notranslate nohighlight">\(\lvert V_\mathrm{in}-V_\mathrm{out}\rvert&lt;V_{TH}\)</span></p></td>
 </tr>
 </tbody>
 </table>
@@ -1637,16 +1665,19 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 <table class="colwidths-auto table">
 <thead>
-<tr class="row-odd"><th class="head"><p>BJT</p></th>
+<tr class="row-odd"><th class="head"></th>
+<th class="head"><p>BJT</p></th>
 <th class="head"><p>MOSFET</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><strong>15. Common-base stage.</strong> <span class="math notranslate nohighlight">\(R_\mathrm{in}\approx1/g_{m1}\)</span>. The signal current reaches the output almost unchanged</p></td>
-<td><p><strong>15. Common-gate stage.</strong> <span class="math notranslate nohighlight">\(R_\mathrm{in}\approx1/g_{m1}\)</span>. The signal current reaches the output unchanged</p></td>
+<tr class="row-even"><td><p><strong>15. Current buffer</strong></p></td>
+<td><p><span class="math notranslate nohighlight">\(R_\mathrm{in}\approx1/g_{m1}\)</span>. The signal current reaches the output almost unchanged</p></td>
+<td><p><span class="math notranslate nohighlight">\(R_\mathrm{in}\approx1/g_{m1}\)</span>. The signal current reaches the output unchanged</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>16. Cascoded common base.</strong> The output resistance rises with each device, up to about <span class="math notranslate nohighlight">\(\beta\,r_O\)</span></p></td>
-<td><p><strong>16. Cascoded common gate.</strong> The output resistance rises by about <span class="math notranslate nohighlight">\(g_mr_O\)</span> with each device</p></td>
+<tr class="row-odd"><td><p><strong>16. Stacked current buffers</strong></p></td>
+<td><p>The output resistance rises with each device, up to about <span class="math notranslate nohighlight">\(\beta\,r_O\)</span></p></td>
+<td><p>The output resistance rises by about <span class="math notranslate nohighlight">\(g_mr_O\)</span> with each device</p></td>
 </tr>
 </tbody>
 </table>
@@ -1693,16 +1724,19 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 <table class="colwidths-auto table">
 <thead>
-<tr class="row-odd"><th class="head"><p>BJT</p></th>
+<tr class="row-odd"><th class="head"></th>
+<th class="head"><p>BJT</p></th>
 <th class="head"><p>MOSFET</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><strong>17. Common base + common emitter.</strong> The output currents change by <span class="math notranslate nohighlight">\(\mp g_mV_\mathrm{in}\)</span> for equal <span class="math notranslate nohighlight">\(g_m\)</span>. <span class="math notranslate nohighlight">\(R_\mathrm{in}\approx1/g_{m2}\)</span></p></td>
-<td><p><strong>17. Common gate + common source.</strong> The output currents change by <span class="math notranslate nohighlight">\(\mp g_mV_\mathrm{in}\)</span> for equal <span class="math notranslate nohighlight">\(g_m\)</span>. <span class="math notranslate nohighlight">\(R_\mathrm{in}\approx1/g_{m2}\)</span></p></td>
+<tr class="row-even"><td><p><strong>17. Two outputs</strong></p></td>
+<td><p>The output currents change by <span class="math notranslate nohighlight">\(\mp g_mV_\mathrm{in}\)</span> for equal <span class="math notranslate nohighlight">\(g_m\)</span>. <span class="math notranslate nohighlight">\(R_\mathrm{in}\approx1/g_{m2}\)</span></p></td>
+<td><p>The output currents change by <span class="math notranslate nohighlight">\(\mp g_mV_\mathrm{in}\)</span> for equal <span class="math notranslate nohighlight">\(g_m\)</span>. <span class="math notranslate nohighlight">\(R_\mathrm{in}\approx1/g_{m2}\)</span></p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>18. Emitter follower + common base.</strong> <span class="math notranslate nohighlight">\(A_v=1+\dfrac{g_{m2}}{g_{m1}}\)</span></p></td>
-<td><p><strong>18. Source follower + common gate.</strong> <span class="math notranslate nohighlight">\(A_v=1+\dfrac{g_{m2}}{g_{m1}}\)</span></p></td>
+<tr class="row-odd"><td><p><strong>18. Two paths</strong></p></td>
+<td><p><span class="math notranslate nohighlight">\(A_v=1+\dfrac{g_{m2}}{g_{m1}}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(A_v=1+\dfrac{g_{m2}}{g_{m1}}\)</span></p></td>
 </tr>
 </tbody>
 </table>
@@ -1748,16 +1782,19 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 <table class="colwidths-auto table">
 <thead>
-<tr class="row-odd"><th class="head"><p>BJT</p></th>
+<tr class="row-odd"><th class="head"></th>
+<th class="head"><p>BJT</p></th>
 <th class="head"><p>MOSFET</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><strong>19. Cascode.</strong> <span class="math notranslate nohighlight">\(R_\mathrm{out}\approx\beta\,r_{O2}\)</span> at most</p></td>
-<td><p><strong>19. Cascode.</strong> <span class="math notranslate nohighlight">\(R_\mathrm{out}\approx g_{m2}r_{O2}\,r_{O1}\)</span></p></td>
+<tr class="row-even"><td><p><strong>19. Cascode</strong></p></td>
+<td><p><span class="math notranslate nohighlight">\(R_\mathrm{out}\approx\beta\,r_{O2}\)</span> at most</p></td>
+<td><p><span class="math notranslate nohighlight">\(R_\mathrm{out}\approx g_{m2}r_{O2}\,r_{O1}\)</span></p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>20. Regulated cascode.</strong> <span class="math notranslate nohighlight">\(R_\mathrm{out}\)</span> stays near <span class="math notranslate nohighlight">\(\beta\,r_{O1}\)</span>: the base current of <span class="math notranslate nohighlight">\(Q_1\)</span> sets the limit</p></td>
-<td><p><strong>20. Regulated cascode.</strong> The loop multiplies <span class="math notranslate nohighlight">\(R_\mathrm{out}\)</span> once more, by about <span class="math notranslate nohighlight">\(g_{m2}r_{O2}\)</span></p></td>
+<tr class="row-odd"><td><p><strong>20. Regulated cascode</strong></p></td>
+<td><p><span class="math notranslate nohighlight">\(R_\mathrm{out}\)</span> stays near <span class="math notranslate nohighlight">\(\beta\,r_{O1}\)</span>: the base current of <span class="math notranslate nohighlight">\(Q_1\)</span> sets the limit</p></td>
+<td><p>The loop multiplies <span class="math notranslate nohighlight">\(R_\mathrm{out}\)</span> once more, by about <span class="math notranslate nohighlight">\(g_{m2}r_{O2}\)</span></p></td>
 </tr>
 </tbody>
 </table>
@@ -1799,16 +1836,19 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 <table class="colwidths-auto table">
 <thead>
-<tr class="row-odd"><th class="head"><p>BJT</p></th>
+<tr class="row-odd"><th class="head"></th>
+<th class="head"><p>BJT</p></th>
 <th class="head"><p>MOSFET</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><strong>21. Flipped voltage follower.</strong> <span class="math notranslate nohighlight">\(V_\mathrm{out}=V_\mathrm{in}-V_{BE1}\)</span>, <span class="math notranslate nohighlight">\(R_\mathrm{out}\approx\dfrac{1}{g_{m1}\,g_{m2}r_{O1}}\)</span></p></td>
-<td><p><strong>21. Flipped voltage follower.</strong> <span class="math notranslate nohighlight">\(V_\mathrm{out}=V_\mathrm{in}-V_{GS1}\)</span>, <span class="math notranslate nohighlight">\(R_\mathrm{out}\approx\dfrac{1}{g_{m1}\,g_{m2}r_{O1}}\)</span></p></td>
+<tr class="row-even"><td><p><strong>21. Flipped follower</strong></p></td>
+<td><p><span class="math notranslate nohighlight">\(V_\mathrm{out}=V_\mathrm{in}-V_{BE1}\)</span>, <span class="math notranslate nohighlight">\(R_\mathrm{out}\approx\dfrac{1}{g_{m1}\,g_{m2}r_{O1}}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(V_\mathrm{out}=V_\mathrm{in}-V_{GS1}\)</span>, <span class="math notranslate nohighlight">\(R_\mathrm{out}\approx\dfrac{1}{g_{m1}\,g_{m2}r_{O1}}\)</span></p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>22. Active inductor.</strong> <span class="math notranslate nohighlight">\(Z_\mathrm{in}\)</span> is <span class="math notranslate nohighlight">\(1/g_{m1}\)</span> in parallel with <span class="math notranslate nohighlight">\(L\approx\dfrac{C_{\pi2}}{g_{m1}g_{m2}}\)</span></p></td>
-<td><p><strong>22. Active inductor.</strong> <span class="math notranslate nohighlight">\(Z_\mathrm{in}\)</span> is <span class="math notranslate nohighlight">\(1/g_{m1}\)</span> in parallel with <span class="math notranslate nohighlight">\(L\approx\dfrac{C_{GS2}}{g_{m1}g_{m2}}\)</span></p></td>
+<tr class="row-odd"><td><p><strong>22. Active inductor</strong></p></td>
+<td><p><span class="math notranslate nohighlight">\(Z_\mathrm{in}\)</span> is <span class="math notranslate nohighlight">\(1/g_{m1}\)</span> in parallel with <span class="math notranslate nohighlight">\(L\approx\dfrac{C_{\pi2}}{g_{m1}g_{m2}}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(Z_\mathrm{in}\)</span> is <span class="math notranslate nohighlight">\(1/g_{m1}\)</span> in parallel with <span class="math notranslate nohighlight">\(L\approx\dfrac{C_{GS2}}{g_{m1}g_{m2}}\)</span></p></td>
 </tr>
 </tbody>
 </table>
@@ -1854,16 +1894,19 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 <table class="colwidths-auto table">
 <thead>
-<tr class="row-odd"><th class="head"><p>BJT</p></th>
+<tr class="row-odd"><th class="head"></th>
+<th class="head"><p>BJT</p></th>
 <th class="head"><p>MOSFET</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><strong>23. Emitter-coupled pair.</strong> <span class="math notranslate nohighlight">\(\Delta I_\mathrm{out}=I_\mathrm{bias}\tanh\dfrac{\Delta V_\mathrm{in}}{2V_T}\)</span>, <span class="math notranslate nohighlight">\(g_m=\dfrac{I_\mathrm{bias}}{2V_T}\)</span></p></td>
-<td><p><strong>23. Source-coupled pair.</strong> <span class="math notranslate nohighlight">\(\Delta I_\mathrm{out}\approx g_m\,\Delta V_\mathrm{in}\)</span>, <span class="math notranslate nohighlight">\(g_m=\sqrt{\mu_nC_{ox}\tfrac{W}{L}\,I_\mathrm{bias}}\)</span></p></td>
+<tr class="row-even"><td><p><strong>23. Differential pair</strong></p></td>
+<td><p><span class="math notranslate nohighlight">\(\Delta I_\mathrm{out}=I_\mathrm{bias}\tanh\dfrac{\Delta V_\mathrm{in}}{2V_T}\)</span>, <span class="math notranslate nohighlight">\(g_m=\dfrac{I_\mathrm{bias}}{2V_T}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\Delta I_\mathrm{out}\approx g_m\,\Delta V_\mathrm{in}\)</span>, <span class="math notranslate nohighlight">\(g_m=\sqrt{\mu_nC_{ox}\tfrac{W}{L}\,I_\mathrm{bias}}\)</span></p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>24. Cross-coupled pair.</strong> <span class="math notranslate nohighlight">\(R=-2/g_m\)</span> between the two collectors</p></td>
-<td><p><strong>24. Cross-coupled pair.</strong> <span class="math notranslate nohighlight">\(R=-2/g_m\)</span> between the two drains</p></td>
+<tr class="row-odd"><td><p><strong>24. Cross-coupled pair</strong></p></td>
+<td><p><span class="math notranslate nohighlight">\(R=-2/g_m\)</span> between the two collectors</p></td>
+<td><p><span class="math notranslate nohighlight">\(R=-2/g_m\)</span> between the two drains</p></td>
 </tr>
 </tbody>
 </table>
@@ -1914,16 +1957,19 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 <table class="colwidths-auto table">
 <thead>
-<tr class="row-odd"><th class="head"><p>BJT</p></th>
+<tr class="row-odd"><th class="head"></th>
+<th class="head"><p>BJT</p></th>
 <th class="head"><p>MOSFET</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td></td>
-<td><p><strong>25. Controlled resistor.</strong> <span class="math notranslate nohighlight">\(R=\dfrac{(W/L)_2}{(W/L)_1}\cdot\dfrac{1}{g_{m2}}\)</span>, set by <span class="math notranslate nohighlight">\(I_\mathrm{bias}\)</span>. <em>No BJT version:</em> a BJT is not a linear resistor</p></td>
+<tr class="row-even"><td><p><strong>25. Controlled resistor</strong></p></td>
+<td></td>
+<td><p><span class="math notranslate nohighlight">\(R=\dfrac{(W/L)_2}{(W/L)_1}\cdot\dfrac{1}{g_{m2}}\)</span>, set by <span class="math notranslate nohighlight">\(I_\mathrm{bias}\)</span>. <em>No BJT version:</em> a BJT is not a linear resistor</p></td>
 </tr>
-<tr class="row-odd"><td></td>
-<td><p><strong>26. Large resistor.</strong> Both gates at the common node keep each device nearly off: very large resistance for small voltages. <em>No BJT version:</em> a BJT is not a linear resistor</p></td>
+<tr class="row-odd"><td><p><strong>26. Large resistor</strong></p></td>
+<td></td>
+<td><p>Both gates at the common node keep each device nearly off: very large resistance for small voltages. <em>No BJT version:</em> a BJT is not a linear resistor</p></td>
 </tr>
 </tbody>
 </table>
@@ -1969,16 +2015,19 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 <table class="colwidths-auto table">
 <thead>
-<tr class="row-odd"><th class="head"><p>BJT</p></th>
+<tr class="row-odd"><th class="head"></th>
+<th class="head"><p>BJT</p></th>
 <th class="head"><p>MOSFET</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><strong>27. Varactor.</strong> <em>Limited.</em> Junction capacitances, tuned by a reverse bias</p></td>
-<td><p><strong>27. Varactor.</strong> Capacitance between the two gates, tuned by <span class="math notranslate nohighlight">\(V_\mathrm{bias}\)</span></p></td>
+<tr class="row-even"><td><p><strong>27. Varactor</strong></p></td>
+<td><p><em>Limited.</em> Junction capacitances, tuned by a reverse bias</p></td>
+<td><p>Capacitance between the two gates, tuned by <span class="math notranslate nohighlight">\(V_\mathrm{bias}\)</span></p></td>
 </tr>
-<tr class="row-odd"><td></td>
-<td><p><strong>28. Anti-parallel capacitors.</strong> Two gate capacitors in opposite directions: <span class="math notranslate nohighlight">\(C(V)\)</span> is symmetric about zero. <em>No BJT version:</em> for either polarity one device would have forward-biased junctions and conduct</p></td>
+<tr class="row-odd"><td><p><strong>28. Anti-parallel capacitors</strong></p></td>
+<td></td>
+<td><p>Two gate capacitors in opposite directions: <span class="math notranslate nohighlight">\(C(V)\)</span> is symmetric about zero. <em>No BJT version:</em> for either polarity one device would have forward-biased junctions and conduct</p></td>
 </tr>
 </tbody>
 </table>
@@ -2020,16 +2069,19 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 <table class="colwidths-auto table">
 <thead>
-<tr class="row-odd"><th class="head"><p>BJT</p></th>
+<tr class="row-odd"><th class="head"></th>
+<th class="head"><p>BJT</p></th>
 <th class="head"><p>MOSFET</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><strong>29. Anti-parallel diodes.</strong> Conducts when <span class="math notranslate nohighlight">\(\lvert V_p-V_n\rvert\)</span> reaches <span class="math notranslate nohighlight">\(V_{BE}\)</span></p></td>
-<td><p><strong>29. Anti-parallel diodes.</strong> Conducts when <span class="math notranslate nohighlight">\(\lvert V_p-V_n\rvert\)</span> exceeds <span class="math notranslate nohighlight">\(V_{TH}\)</span></p></td>
+<tr class="row-even"><td><p><strong>29. Anti-parallel diodes</strong></p></td>
+<td><p>Conducts when <span class="math notranslate nohighlight">\(\lvert V_p-V_n\rvert\)</span> reaches <span class="math notranslate nohighlight">\(V_{BE}\)</span></p></td>
+<td><p>Conducts when <span class="math notranslate nohighlight">\(\lvert V_p-V_n\rvert\)</span> exceeds <span class="math notranslate nohighlight">\(V_{TH}\)</span></p></td>
 </tr>
-<tr class="row-odd"><td></td>
-<td><p><strong>30. Ultra-low-power diode.</strong> Reverse bias drives both gate-source voltages negative, so the leakage falls far below that of one device. <em>No BJT version:</em> reverse bias does not turn a BJT further off</p></td>
+<tr class="row-odd"><td><p><strong>30. Ultra-low-power diode</strong></p></td>
+<td></td>
+<td><p>Reverse bias drives both gate-source voltages negative, so the leakage falls far below that of one device. <em>No BJT version:</em> reverse bias does not turn a BJT further off</p></td>
 </tr>
 </tbody>
 </table>
@@ -2074,16 +2126,19 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 <table class="colwidths-auto table">
 <thead>
-<tr class="row-odd"><th class="head"><p>BJT</p></th>
+<tr class="row-odd"><th class="head"></th>
+<th class="head"><p>BJT</p></th>
 <th class="head"><p>MOSFET</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><strong>31. Level shift.</strong> <span class="math notranslate nohighlight">\(V_p-V_n=V_{BE1}+V_{BE2}\)</span></p></td>
-<td><p><strong>31. Level shift.</strong> <span class="math notranslate nohighlight">\(V_p-V_n=V_{GS1}+V_{GS2}\)</span></p></td>
+<tr class="row-even"><td><p><strong>31. Level shift</strong></p></td>
+<td><p><span class="math notranslate nohighlight">\(V_p-V_n=V_{BE1}+V_{BE2}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(V_p-V_n=V_{GS1}+V_{GS2}\)</span></p></td>
 </tr>
-<tr class="row-odd"><td></td>
-<td><p><strong>32. Linear I-to-V converter.</strong> <span class="math notranslate nohighlight">\(V_{GS1}+V_{GS2}=V_\mathrm{bias}\)</span>: the square-law terms cancel and <span class="math notranslate nohighlight">\(\dfrac{dV_\mathrm{out}}{dI_\mathrm{in}}=\dfrac{1}{g_{m1}+g_{m2}}\)</span> is constant. <em>No BJT version:</em> the exponential law gives a <span class="math notranslate nohighlight">\(\sinh\)</span> characteristic, not a straight line</p></td>
+<tr class="row-odd"><td><p><strong>32. Linear I-to-V converter</strong></p></td>
+<td></td>
+<td><p><span class="math notranslate nohighlight">\(V_{GS1}+V_{GS2}=V_\mathrm{bias}\)</span>: the square-law terms cancel and <span class="math notranslate nohighlight">\(\dfrac{dV_\mathrm{out}}{dI_\mathrm{in}}=\dfrac{1}{g_{m1}+g_{m2}}\)</span> is constant. <em>No BJT version:</em> the exponential law gives a <span class="math notranslate nohighlight">\(\sinh\)</span> characteristic, not a straight line</p></td>
 </tr>
 </tbody>
 </table>
@@ -2131,16 +2186,19 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 <table class="colwidths-auto table">
 <thead>
-<tr class="row-odd"><th class="head"><p>BJT</p></th>
+<tr class="row-odd"><th class="head"></th>
+<th class="head"><p>BJT</p></th>
 <th class="head"><p>MOSFET</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td></td>
-<td><p><strong>33. Transmission gate.</strong> <span class="math notranslate nohighlight">\(M_1\)</span> passes low levels and <span class="math notranslate nohighlight">\(M_2\)</span> high levels, so the switch conducts from rail to rail. <em>No BJT version:</em> a BJT switch injects its base current into the signal path</p></td>
+<tr class="row-even"><td><p><strong>33. Transmission gate</strong></p></td>
+<td></td>
+<td><p><span class="math notranslate nohighlight">\(M_1\)</span> passes low levels and <span class="math notranslate nohighlight">\(M_2\)</span> high levels, so the switch conducts from rail to rail. <em>No BJT version:</em> a BJT switch injects its base current into the signal path</p></td>
 </tr>
-<tr class="row-odd"><td></td>
-<td><p><strong>34. Multiplexer.</strong> <span class="math notranslate nohighlight">\(V_\mathrm{com}=V_1\)</span> or <span class="math notranslate nohighlight">\(V_2\)</span>, depending on which select input is high. <em>No BJT version:</em> a BJT switch injects its base current into the signal path</p></td>
+<tr class="row-odd"><td><p><strong>34. Multiplexer</strong></p></td>
+<td></td>
+<td><p><span class="math notranslate nohighlight">\(V_\mathrm{com}=V_1\)</span> or <span class="math notranslate nohighlight">\(V_2\)</span>, depending on which select input is high. <em>No BJT version:</em> a BJT switch injects its base current into the signal path</p></td>
 </tr>
 </tbody>
 </table>
@@ -2170,16 +2228,19 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 <table class="colwidths-auto table">
 <thead>
-<tr class="row-odd"><th class="head"><p>BJT</p></th>
+<tr class="row-odd"><th class="head"></th>
+<th class="head"><p>BJT</p></th>
 <th class="head"><p>MOSFET</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td></td>
-<td><p><strong>35. Sample-and-hold.</strong> <span class="math notranslate nohighlight">\(M_1\)</span> on: <span class="math notranslate nohighlight">\(V_\mathrm{out}\)</span> tracks <span class="math notranslate nohighlight">\(V_\mathrm{in}\)</span>. <span class="math notranslate nohighlight">\(M_1\)</span> off: the gate capacitance of <span class="math notranslate nohighlight">\(M_2\)</span> holds it. <em>No BJT version:</em> there is no gate capacitance to hold the sample, and base current would disturb it</p></td>
+<tr class="row-even"><td><p><strong>35. Sample-and-hold</strong></p></td>
+<td></td>
+<td><p><span class="math notranslate nohighlight">\(M_1\)</span> on: <span class="math notranslate nohighlight">\(V_\mathrm{out}\)</span> tracks <span class="math notranslate nohighlight">\(V_\mathrm{in}\)</span>. <span class="math notranslate nohighlight">\(M_1\)</span> off: the gate capacitance of <span class="math notranslate nohighlight">\(M_2\)</span> holds it. <em>No BJT version:</em> there is no gate capacitance to hold the sample, and base current would disturb it</p></td>
 </tr>
-<tr class="row-odd"><td></td>
-<td><p><strong>36. Low-pass filter.</strong> <span class="math notranslate nohighlight">\(f_{-3\,\mathrm{dB}}=\dfrac{1}{2\pi R_\mathrm{on1}C_2}\)</span>. <em>No BJT version:</em> neither a linear resistor nor a gate capacitance is available</p></td>
+<tr class="row-odd"><td><p><strong>36. Low-pass filter</strong></p></td>
+<td></td>
+<td><p><span class="math notranslate nohighlight">\(f_{-3\,\mathrm{dB}}=\dfrac{1}{2\pi R_\mathrm{on1}C_2}\)</span>. <em>No BJT version:</em> neither a linear resistor nor a gate capacitance is available</p></td>
 </tr>
 </tbody>
 </table>
@@ -2225,16 +2286,19 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 <table class="colwidths-auto table">
 <thead>
-<tr class="row-odd"><th class="head"><p>BJT</p></th>
+<tr class="row-odd"><th class="head"></th>
+<th class="head"><p>BJT</p></th>
 <th class="head"><p>MOSFET</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><strong>37. Peak detector.</strong> <em>Limited.</em> <span class="math notranslate nohighlight">\(V_\mathrm{peak}=\hat V_\mathrm{in}-V_{BE1}\)</span>, held only on a junction capacitance</p></td>
-<td><p><strong>37. Peak detector.</strong> <span class="math notranslate nohighlight">\(V_\mathrm{peak}=\hat V_\mathrm{in}-V_{GS1}\)</span>, held on the gate capacitance of <span class="math notranslate nohighlight">\(M_2\)</span></p></td>
+<tr class="row-even"><td><p><strong>37. Peak detector</strong></p></td>
+<td><p><em>Limited.</em> <span class="math notranslate nohighlight">\(V_\mathrm{peak}=\hat V_\mathrm{in}-V_{BE1}\)</span>, held only on a junction capacitance</p></td>
+<td><p><span class="math notranslate nohighlight">\(V_\mathrm{peak}=\hat V_\mathrm{in}-V_{GS1}\)</span>, held on the gate capacitance of <span class="math notranslate nohighlight">\(M_2\)</span></p></td>
 </tr>
-<tr class="row-odd"><td></td>
-<td><p><strong>38. Voltage doubler.</strong> <span class="math notranslate nohighlight">\(M_1\)</span> couples the ac input and <span class="math notranslate nohighlight">\(M_2\)</span> clamps the low side: the output peaks near <span class="math notranslate nohighlight">\(2\hat V_\mathrm{in}-V_{GS2}\)</span>. <em>No BJT version:</em> the coupling element would be a junction, which conducts in one direction</p></td>
+<tr class="row-odd"><td><p><strong>38. Voltage doubler</strong></p></td>
+<td></td>
+<td><p><span class="math notranslate nohighlight">\(M_1\)</span> couples the ac input and <span class="math notranslate nohighlight">\(M_2\)</span> clamps the low side: the output peaks near <span class="math notranslate nohighlight">\(2\hat V_\mathrm{in}-V_{GS2}\)</span>. <em>No BJT version:</em> the coupling element would be a junction, which conducts in one direction</p></td>
 </tr>
 </tbody>
 </table>
@@ -2283,16 +2347,19 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 <table class="colwidths-auto table">
 <thead>
-<tr class="row-odd"><th class="head"><p>BJT</p></th>
+<tr class="row-odd"><th class="head"></th>
+<th class="head"><p>BJT</p></th>
 <th class="head"><p>MOSFET</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><strong>39. NAND.</strong> <span class="math notranslate nohighlight">\(V_\mathrm{out}=\overline{V_a\wedge V_b}\)</span>. The inputs must supply base current</p></td>
-<td><p><strong>39. NAND.</strong> <span class="math notranslate nohighlight">\(V_\mathrm{out}=\overline{V_a\wedge V_b}\)</span></p></td>
+<tr class="row-even"><td><p><strong>39. NAND</strong></p></td>
+<td><p><span class="math notranslate nohighlight">\(V_\mathrm{out}=\overline{V_a\wedge V_b}\)</span>. The inputs must supply base current</p></td>
+<td><p><span class="math notranslate nohighlight">\(V_\mathrm{out}=\overline{V_a\wedge V_b}\)</span></p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>40. NOR.</strong> <span class="math notranslate nohighlight">\(V_\mathrm{out}=\overline{V_a\vee V_b}\)</span>. The inputs must supply base current</p></td>
-<td><p><strong>40. NOR.</strong> <span class="math notranslate nohighlight">\(V_\mathrm{out}=\overline{V_a\vee V_b}\)</span></p></td>
+<tr class="row-odd"><td><p><strong>40. NOR</strong></p></td>
+<td><p><span class="math notranslate nohighlight">\(V_\mathrm{out}=\overline{V_a\vee V_b}\)</span>. The inputs must supply base current</p></td>
+<td><p><span class="math notranslate nohighlight">\(V_\mathrm{out}=\overline{V_a\vee V_b}\)</span></p></td>
 </tr>
 </tbody>
 </table>
@@ -2338,16 +2405,19 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 <table class="colwidths-auto table">
 <thead>
-<tr class="row-odd"><th class="head"><p>BJT</p></th>
+<tr class="row-odd"><th class="head"></th>
+<th class="head"><p>BJT</p></th>
 <th class="head"><p>MOSFET</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><strong>41. XNOR.</strong> <em>Limited.</em> The conducting device draws its base current from one input and returns it to the other</p></td>
-<td><p><strong>41. XNOR.</strong> Each input drives the gate of one device and the source of the other: <span class="math notranslate nohighlight">\(V_\mathrm{out}=\overline{V_a\oplus V_b}\)</span></p></td>
+<tr class="row-even"><td><p><strong>41. XNOR</strong></p></td>
+<td><p><em>Limited.</em> The conducting device draws its base current from one input and returns it to the other</p></td>
+<td><p>Each input drives the gate of one device and the source of the other: <span class="math notranslate nohighlight">\(V_\mathrm{out}=\overline{V_a\oplus V_b}\)</span></p></td>
 </tr>
-<tr class="row-odd"><td></td>
-<td><p><strong>42. Mixer.</strong> <span class="math notranslate nohighlight">\(M_1\)</span> works in triode, where <span class="math notranslate nohighlight">\(I_\mathrm{out}\approx\mu_nC_{ox}\tfrac{W}{L}(V_\mathrm{rf}-V_{TH})\,V_{DS1}\)</span> and <span class="math notranslate nohighlight">\(V_\mathrm{lo}\)</span> sets <span class="math notranslate nohighlight">\(V_{DS1}\)</span>: the output contains the product. <em>No BJT version:</em> in the active region the collector current does not depend on <span class="math notranslate nohighlight">\(V_{CE}\)</span>, so an upper base would have no control</p></td>
+<tr class="row-odd"><td><p><strong>42. Mixer</strong></p></td>
+<td></td>
+<td><p><span class="math notranslate nohighlight">\(M_1\)</span> works in triode, where <span class="math notranslate nohighlight">\(I_\mathrm{out}\approx\mu_nC_{ox}\tfrac{W}{L}(V_\mathrm{rf}-V_{TH})\,V_{DS1}\)</span> and <span class="math notranslate nohighlight">\(V_\mathrm{lo}\)</span> sets <span class="math notranslate nohighlight">\(V_{DS1}\)</span>: the output contains the product. <em>No BJT version:</em> in the active region the collector current does not depend on <span class="math notranslate nohighlight">\(V_{CE}\)</span>, so an upper base would have no control</p></td>
 </tr>
 </tbody>
 </table>

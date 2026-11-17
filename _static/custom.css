@@ -2,10 +2,10 @@ p {
     text-align: justify;
 }
 
-/* courses/fme (BJT and MOSFET Circuits): two columns of equal width.
+/* courses/fme (BJT and MOSFET Circuits): BJT and MOSFET columns of equal width.
    The theme shows tables as scrollable blocks whose columns follow their content.
-   On this page they span the text width with fixed, equal columns, and the figures
-   span the same width, so their BJT | MOSFET halves line up with the table columns. */
+   On this page they span the text width with fixed column widths, and the figures
+   span the same width. */
 #bjt-and-mosfet-circuits table {
     display: table;
     width: 100%;
@@ -26,6 +26,8 @@ p {
 #bjt-and-mosfet-circuits .cell_output img {
     width: 100%;
 }
-/* the overview table has four columns: family, first circuit, second circuit, the one change */
-#circuits-of-two-transistors table th:nth-child(1) { width: 17%; }
-#circuits-of-two-transistors table th:nth-child(4) { width: 35%; }
+/* tables of text and formulas have three columns: a label, then BJT and MOSFET at equal width */
+#bjt-and-mosfet-circuits table th:nth-child(1) { width: 20%; }
+/* the overview table: family, circuits, the one change */
+#circuits-of-two-transistors table th:nth-child(1) { width: 18%; }
+#circuits-of-two-transistors table th:nth-child(3) { width: 36%; }
