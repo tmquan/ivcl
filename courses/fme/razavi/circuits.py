@@ -4,8 +4,8 @@ Each function draws one circuit through a drawing context `c`.  It is written ag
 class `Transistor` (terminals .bg, .cd, .es) and is drawn twice: once with the subclass `BJT`
 (.b, .c, .e; npn / pnp; Q_1; V_CC) and once with the subclass `MOSFET` (.g, .d, .s; NMOS / PMOS;
 M_1; V_DD).  The first line of the docstring names the circuit, as  "BJT name | MOSFET name"
-where the two differ.  A name "-" means that the circuit has no such version: that column of
-the figure stays empty.
+where the two differ.  A name "-" means that the circuit has no such version: that cell of
+the figure says so.
 Coordinates are px on a 10-px grid; the main column of leads is at x = 0.
 
 The two-transistor circuits follow Pretl & Eberlein, "Fifty Nifty Variations of Two-Transistor
@@ -177,6 +177,7 @@ def current_mirror(c):
     """Current mirror"""
     t1 = c.transistor('n', (0, 0), 'cd', side='right', name=1, lbl='l')
     t2 = c.transistor('n', (140, 0), 'cd', name=2, lbl='r')
+    t1.size('(W/L)_1'); t2.size('(W/L)_2')
     top = (0, -20)
     c.w(t1.cd, top); c.dot(top); c.w(top, (0, -60)); c.port((0, -60), 'I_in', 'r')
     c.w(t2.cd, (140, -60)); c.port((140, -60), 'I_out', 'r')
@@ -370,13 +371,13 @@ def flipped_follower(c):
 
 def active_inductor(c):
     """Active inductor"""
-    (t1, t2), (j,) = c.chain([('n', 1), ('n', 2)], 0, 0)
-    g = (0, t2.es[1] + 20); c.gnd(g); c.w(t2.es, g)
-    top = (0, -20); c.w(t1.cd, top); c.dot(top); c.w(top, (0, -60)); c.port((0, -60), 'I_bias', 'r')
-    c.w(t1.bg, (t1.bg[0] - 40, t1.bg[1])); c.port((t1.bg[0] - 40, t1.bg[1]), 'V_bias', 'l')
+    (t2, t1), (j,) = c.chain([('n', 2), ('n', 1)], 0, 0)
+    g = (0, t1.es[1] + 20); c.gnd(g); c.w(t1.es, g)
+    top = (0, -20); c.w(t2.cd, top); c.dot(top); c.w(top, (0, -60)); c.port((0, -60), 'I_bias', 'r')
+    c.w(t2.bg, (t2.bg[0] - 40, t2.bg[1])); c.port((t2.bg[0] - 40, t2.bg[1]), 'V_bias', 'l')
     c.dot(j); c.w(j, (50, j[1])); c.port((50, j[1]), 'Z_in', 'r')
     xb = -130
-    c.w(top, (xb, top[1]), (xb, t2.bg[1]), t2.bg)
+    c.w(top, (xb, top[1]), (xb, t1.bg[1]), t1.bg)
 
 
 def differential_pair(c):
@@ -512,11 +513,11 @@ def linear_i_to_v(c):
 # ================================================================ 6. switched circuits
 def transmission_gate(c):
     """- | Transmission gate"""
-    t1 = c.transistor('n', (0, 0), 'cd', rot=3, name=1)
-    t2 = c.transistor('p', (0, -60), 'cd', rot=1, name=2)
+    t1 = c.transistor('n', (0, 0), 'es', side='right', rot=1, name=1)
+    t2 = c.transistor('p', (0, -60), 'es', side='right', rot=3, name=2)
     xl, xr = -20, 100
-    c.w(t1.cd, (xl, 0), (xl, -60), t2.cd); c.dot((xl, -30)); c.w((xl, -30), (xl - 30, -30)); c.port((xl - 30, -30), 'V_1', 'l')
-    c.w(t1.es, (xr, 0), (xr, -60), t2.es); c.dot((xr, -30)); c.w((xr, -30), (xr + 30, -30)); c.port((xr + 30, -30), 'V_2', 'r')
+    c.w(t1.es, (xl, 0), (xl, -60), t2.es); c.dot((xl, -30)); c.w((xl, -30), (xl - 30, -30)); c.port((xl - 30, -30), 'V_1', 'l')
+    c.w(t1.cd, (xr, 0), (xr, -60), t2.cd); c.dot((xr, -30)); c.w((xr, -30), (xr + 30, -30)); c.port((xr + 30, -30), 'V_2', 'r')
     c.w(t1.bg, (t1.bg[0], t1.bg[1] + 30)); c.port((t1.bg[0], t1.bg[1] + 30), 'V_on', 'b')
     c.w(t2.bg, (t2.bg[0], t2.bg[1] - 30)); c.port((t2.bg[0], t2.bg[1] - 30), '!V_on', 't')
 

@@ -123,6 +123,7 @@ LABEL_W, PANEL_W = 170, 340    # px: three columns of 20 % | 40 % | 40 %, the sa
 HEAD_H, MARGIN = 34, 12
 LABEL, LINE, PARA = 16, 21, 9  # label column: font size, line height, space between two names (px)
 RULE = '0.82'
+NOTE = '0.45'                  # grey of the note in a cell without a drawing
 
 
 def _wrap(text, size, width):
@@ -152,7 +153,8 @@ def _label(titles):
 def grid(rows, heads=('BJT', 'MOSFET'), zoom=1.0):
     """rows = [((scene, scene), (name, name)), ...]: one row per circuit.
     Three columns, as in the tables: the names of the circuit, then one panel per technology.
-    Every drawing is centred in its cell.  A scene given as None leaves its panel empty."""
+    Every drawing is centred in its cell.  A scene given as None gives a cell that says
+    "No ... version"."""
     boxes = []
     for scenes, _ in rows:
         b = [sc.bounds() for sc in scenes if sc is not None]
@@ -178,7 +180,9 @@ def grid(rows, heads=('BJT', 'MOSFET'), zoom=1.0):
             fig.text(MARGIN / W, 1 - (y + (h - lh) / 2 + dy + 0.5 * LINE) / H, text, ha='left', va='center',
                      fontproperties=FontProperties(fname=reg, size=LABEL * k))
         for j, sc in enumerate(scenes):
-            if sc is None:                                            # no such version: the panel stays empty
+            if sc is None:                                            # no such version: the cell says so
+                fig.text((lw + j * pw + pw / 2) / W, 1 - (y + h / 2) / H, 'No %s version' % heads[j], ha='center',
+                         va='center', color=NOTE, fontproperties=FontProperties(fname=reg, size=LABEL * k))
                 continue
             b = sc.bounds()                                           # each drawing is centred in its own cell
             cx, cy = (b[0] + b[2]) / 2, (b[1] + b[3]) / 2
@@ -197,7 +201,7 @@ def grid(rows, heads=('BJT', 'MOSFET'), zoom=1.0):
 def show(*circuits, zoom=1.0, devices=(BJT, MOSFET)):
     """Three columns: the names of a circuit, the circuit drawn with BJTs, and drawn with MOSFETs.
     One row per circuit.  A circuit whose docstring names one version as "-" exists in the other
-    technology only, and that panel stays empty."""
+    technology only, and that cell says so."""
     rows = []
     for f in circuits:
         nm = names(f)
