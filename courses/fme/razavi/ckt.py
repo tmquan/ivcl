@@ -9,13 +9,15 @@ the base class, and drawn with either subclass:
     name 1                              Q_1                 M_1
     supply                              V_CC                V_DD
     size label                          none                W/L
+    ideal                               V_A = infinity      lambda = 0
+    pick(a, b)                          a                   b
 
 The shared terminal names read "base or gate", "collector or drain", "emitter or source".
 """
 import math
 
 from . import symbols as S
-from .scene import Scene, Inst
+from .scene import Scene, Inst, RED, LABEL
 
 STEP = 20   # standard lead length / grid step
 
@@ -24,6 +26,7 @@ class Transistor:
     """One transistor in a drawing.  Subclasses say which symbol is drawn and what things are called."""
     letter = '?'            # device letter: Q_1, M_1
     supply = 'V'            # name of the positive supply
+    ideal = ''              # the condition under which the output resistance r_O is infinite
     own = {}                # shared terminal name -> own terminal name, e.g. 'bg' -> 'b'
 
     def __init__(self, ckt, kind, at, anchor, side='left', rot=0, **options):
@@ -61,9 +64,17 @@ class Transistor:
     def bottom(self):
         return self.es if self.kind == 'n' else self.cd
 
+    @classmethod
+    def pick(cls, bjt, mosfet):
+        """the one of two things that belongs to this kind of transistor"""
+        raise NotImplementedError
+
     def name(self, index, loc='auto', dy=0, dx=0):
         """label the device: name(1) writes Q_1 or M_1"""
-        text = '%s_%s' % (self.letter, index)
+        self.note('%s_%s' % (self.letter, index), loc, dy, dx)
+
+    def note(self, text, loc='auto', dy=0, dx=0):
+        """write something beside the device, such as its name or the condition `ideal`"""
         sc, i = self.ckt.sc, self.inst
         cx, cy = i.x + i.w / 2, i.y + i.h / 2
         if loc == 'auto':
@@ -79,7 +90,7 @@ class Transistor:
 
 class BJT(Transistor):
     """Bipolar junction transistor: base .b, collector .c, emitter .e"""
-    letter, supply = 'Q', 'V_CC'
+    letter, supply, ideal = 'Q', 'V_CC', r'$V_A=\infty$'
     own = {'bg': 'b', 'cd': 'c', 'es': 'e'}
     b = property(lambda self: self.bg)
     c = property(lambda self: self.cd)
@@ -88,10 +99,14 @@ class BJT(Transistor):
     def symbol(self, kind, **options):
         return 'npn' if kind == 'n' else 'pnp'
 
+    @classmethod
+    def pick(cls, bjt, mosfet):
+        return bjt
+
 
 class MOSFET(Transistor):
     """MOS field-effect transistor: gate .g, drain .d, source .s"""
-    letter, supply = 'M', 'V_DD'
+    letter, supply, ideal = 'M', 'V_DD', r'$\lambda=0$'
     own = {'bg': 'g', 'cd': 'd', 'es': 's'}
     g = property(lambda self: self.bg)
     d = property(lambda self: self.cd)
@@ -101,6 +116,10 @@ class MOSFET(Transistor):
         if thick:
             return 'nmos_thick'
         return ('nmos' if kind == 'n' else 'pmos') + ('_b' if bulk else '')
+
+    @classmethod
+    def pick(cls, bjt, mosfet):
+        return mosfet
 
     def size(self, text):
         i = self.inst
@@ -129,44 +148,67 @@ class Ckt:
         """terminal letter in this drawing: 'cd' -> C or D"""
         return self.device.pin(name)
 
-    def res(self, p, label=None, to='down'):
-        """resistor with one end at p, running 'down', 'left' or 'right'; returns the other end"""
+    def pick(self, bjt, mosfet):
+        """the first argument in a BJT drawing, the second in a MOSFET drawing"""
+        return self.device.pick(bjt, mosfet)
+
+    def res(self, p, label=None, to='down', side=None):
+        """resistor with one end at p, running 'down', 'left' or 'right'; returns the other end.
+        The label goes on the right of an upright resistor and below a lying one; side 'l' or 'u' puts it
+        on the left or above."""
         want = {'down': (0, 1), 'left': (-1, 0), 'right': (1, 0)}[to]
         rot = next(r for r in range(4) if _dir(Inst('resistor', 0, 0, r, False, S.SYM['resistor']).t, 'a', 'b') == want)
         i = self.sc.put('resistor', 'a', p, rot)
         if label and to == 'down':
-            self.sc.text(label, p[0] + 18, p[1] + 30, 'start')
+            if side == 'l':
+                self.sc.text(label, p[0] - 18, p[1] + 30, 'end')
+            else:
+                self.sc.text(label, p[0] + 18, p[1] + 30, 'start')
         elif label:
-            self.sc.text(label, (p[0] + i.t['b'][0]) / 2, p[1] + 22, 'middle')
+            self.sc.text(label, (p[0] + i.t['b'][0]) / 2, p[1] + (-22 if side == 'u' else 22), 'middle')
         return i.t['b']
 
     def load(self, p):
         """generic load, drawn as a box, with its upper end at p; returns the lower end"""
         return self.sc.put('load', 'a', p).t['b']
 
-    def look(self, p, into, side, label=None, shift=0, gap=17):
-        """Mark the impedance seen at the point p with an arrow that has a 90-degree corner.
-        into: direction of view, 'l', 'r', 'u' or 'd'.  The arrow sits beside the lead on the
-        given side; its tail leaves towards that side and carries the label."""
+    def look(self, p, into, side, label=None, form='plain', shift=None, gap=None):
+        """Mark the impedance seen at the terminal p with the hooked arrow of the book, in red.
+        into: direction of view, 'l', 'r', 'u' or 'd'.  The arrow runs beside the lead on the given
+        side; its tail leaves towards that side and carries the label.
+        form 'plain': as printed at a base or a collector, the arrow passes the terminal.
+             'low':   as printed at an emitter, the arrow stops at the terminal and has a short tail.
+             'long':  long shaft and short tail, as printed with a long expression.
+        shift moves the arrow along its direction, gap sets its distance from the lead (px)."""
         a, b = _UNIT[into], _UNIT[side]
+        k = S.LOOK
+        key = {'plain': 'look', 'low': 'look_short', 'long': 'look_long'}[form]
         for rot, mir in ((r, m) for r in range(4) for m in (False, True)):
-            t = Inst('look', 0, 0, rot, mir, S.SYM['look']).t
+            t = Inst(key, 0, 0, rot, mir, S.SYM[key]).t
             if _dir(t, 'corner', 'tip') == a and _dir(t, 'corner', 'tail') == b:
                 break
-        back = shift - S.SYM['look']['w'] / 2 + 4
+        back = (shift or 0) - S.S * (k['low'] if form == 'low' else k['lead'])
+        gap = S.S * k['gap'] if gap is None else gap
         corner = (p[0] + a[0] * back + b[0] * gap, p[1] + a[1] * back + b[1] * gap)
-        i = self.sc.add('look', corner[0] - t['corner'][0], corner[1] - t['corner'][1], rot, mir)
-        if label:
-            x, y = i.t['tail']
-            if b[1]:
-                self.sc.text(label, x, y + 13 * b[1], 'middle')
-            else:
-                self.sc.text(label, x + 7 * b[0], y, 'start' if b[0] > 0 else 'end')
+        i = self.sc.add(key, corner[0] - t['corner'][0], corner[1] - t['corner'][1], rot, mir, color=RED)
+        if not label:
+            return
+        x, y = i.t['tail']
+        if b[1]:                                    # tail up or down: the label sits at its end, and a long
+            x0, _, x1, _ = self.sc.text_box((label, 0, 0, 'middle', LABEL, 'math'))    # one grows away from the circuit
+            over = max((x1 - x0) / 2 - 15, 0)
+            self.sc.text(label, x - a[0] * over, y + 13 * b[1], 'middle', color=RED)
+        else:                                       # tail to the left or right: the label follows it
+            pad = 16 if 'frac' in label.split('}')[0] else 7
+            self.sc.text(label, x + pad * b[0], y, 'start' if b[0] > 0 else 'end', color=RED)
 
     # ---- rails / ports ------------------------------------------------
     def supply(self, p, side='r'):
-        """supply bar with its stub ending at p, labelled V_CC or V_DD beside the bar as in the book"""
+        """supply bar with its stub ending at p, labelled V_CC or V_DD beside the bar as in the book;
+        side None leaves the bar without a label"""
         self.sc.put('vdd', 't', p)
+        if side is None:
+            return
         if side == 'r':
             self.sc.text(self.device.supply, p[0] + 23, p[1] - 14, 'start')
         else:
@@ -180,20 +222,26 @@ class Ckt:
         self.sc.put('ground', 't', p)
         self.sc.text('~ac', p[0], p[1] + 33, 'middle', 13)
 
-    def port(self, p, label, side='l', dx=10):
-        """open terminal with a label on the given side: 'l', 'r', 't' or 'b'"""
+    def port(self, p, label, side='l', dx=10, solid=False, color=None):
+        """terminal with a label on the given side: 'l', 'r', 't' or 'b'.  Open, or solid as the book
+        draws a terminal that is held at a fixed voltage."""
         sc = self.sc
-        sc.dot(p, True)
+        sc.dot(p, not solid)
         if not label:
             return
         if side == 'l':
-            sc.text(label, p[0] - dx, p[1], 'end')
+            sc.text(label, p[0] - dx, p[1], 'end', color=color)
         elif side == 'r':
-            sc.text(label, p[0] + dx, p[1], 'start')
+            sc.text(label, p[0] + dx, p[1], 'start', color=color)
         elif side == 't':
-            sc.text(label, p[0], p[1] - 17, 'middle')
+            sc.text(label, p[0], p[1] - 17, 'middle', color=color)
         else:
-            sc.text(label, p[0], p[1] + 17, 'middle')
+            sc.text(label, p[0], p[1] + 17, 'middle', color=color)
+
+    def caption(self, text, gap=34):
+        """a line under the drawing, as the book writes the gain under each stage"""
+        x0, _, x1, y1 = self.sc.bounds()
+        self.sc.text(text, (x0 + x1) / 2, y1 + gap, 'middle')
 
     def w(self, *pts):
         self.sc.wire(*pts)

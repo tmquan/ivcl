@@ -18,12 +18,14 @@ DOT_R = S.DOT['r'] * S.S                                # node dot radius
 LABEL = 16                                              # default label size (px)
 CORNER = 8.0                                            # radius of the rounded connector corners (px)
 BASE = 0.33                                             # baseline offset below the label's y, in font sizes
+BLACK = '#000000'
+RED = '#e00000'                                         # impedance arrows and their labels
 
 
 class Inst:
-    def __init__(s, key, x, y, rot, mirror, sym):
+    def __init__(s, key, x, y, rot, mirror, sym, color=None):
         s.key, s.x, s.y, s.rot, s.mirror = key, x, y, rot, mirror
-        s.sym = sym
+        s.sym, s.color = sym, color                     # color None = black
         s.w, s.h = S.oriented(sym, rot, mirror)
         s.t = {k: (x + p[0], y + p[1]) for k, p in S.terminals(sym, rot, mirror).items()}
         s.a = {k: (x + p[0], y + p[1]) for k, p in S.anchors(sym, rot, mirror).items()}
@@ -86,8 +88,8 @@ class Scene:
         s.insts, s.wires, s.dots, s.texts = [], [], [], []
 
     # -- building ---------------------------------------------------
-    def add(s, key, x, y, rot=0, mirror=False):
-        i = Inst(key, x, y, rot, mirror, S.SYM[key])
+    def add(s, key, x, y, rot=0, mirror=False, color=None):
+        i = Inst(key, x, y, rot, mirror, S.SYM[key], color)
         s.insts.append(i)
         return i
 
@@ -109,9 +111,10 @@ class Scene:
     def dot(s, p, open_=False):
         s.dots.append((p[0], p[1], open_))
 
-    def text(s, txt, x, y, anchor='middle', size=None, mode='math'):
-        """mode 'math': label mini-markup (see tex.py); 'text'/'bold': plain Computer Modern"""
-        s.texts.append((txt, x, y, anchor, size or LABEL, mode))
+    def text(s, txt, x, y, anchor='middle', size=None, mode='math', color=None):
+        """mode 'math': label mini-markup (see tex.py); 'text'/'bold': plain Computer Modern.
+        color None = black."""
+        s.texts.append((txt, x, y, anchor, size or LABEL, mode, color))
 
     # -- continuous connectors ---------------------------------------
     def connectors(s, corner=None):
@@ -188,7 +191,7 @@ class Scene:
     # -- bounds -----------------------------------------------------
     def text_box(s, t):
         """(x0, y0, x1, y1) of a label in scene px (y down)"""
-        txt, x, y, a, sz, mode = t
+        txt, x, y, a, sz, mode = t[:6]
         try:
             src = T.tex(txt) if mode == 'math' else txt
             xa, ya, xb, yb = T.extent(src, sz, mode)
@@ -223,15 +226,17 @@ class Scene:
             g.append('<polyline points="%s" fill="none"/>' % ' '.join('%.2f,%.2f' % p for p in w))
         for i in s.insts:
             cw, ch, body = S.svg_body(i.sym, i.rot, i.mirror, 'body')
+            if i.color:
+                body = '<g stroke="%s">%s</g>' % (i.color, body.replace('fill="#000"', 'fill="%s"' % i.color))
             g.append('<g transform="translate(%.2f,%.2f)">%s</g>' % (i.x, i.y, body))
         for x, y, op in s.dots:
             if op:
                 g.append('<circle cx="%.2f" cy="%.2f" r="%.2f" fill="#fff" stroke-width="%.2f"/>' % (x, y, RING_R, RING_W))
             else:
                 g.append('<circle cx="%.2f" cy="%.2f" r="%.2f" fill="#000" stroke="none"/>' % (x, y, DOT_R))
-        for txt, x, y, a, sz, mode in s.texts:
+        for txt, x, y, a, sz, mode, color in s.texts:
             src = T.tex(txt) if mode == 'math' else txt
-            g.append('<path d="%s" fill="#000" stroke="none"/>' % T.svg_d(src, sz, x, y + BASE * sz, a, mode))
+            g.append('<path d="%s" fill="%s" stroke="none"/>' % (T.svg_d(src, sz, x, y + BASE * sz, a, mode), color or '#000'))
         return ''.join(g)
 
     def to_svg(s, margin=30, caption=True):
@@ -283,6 +288,8 @@ class Scene:
         pad = S.PAD
         for i in s.insts:
             svg = S.svg_doc(i.sym, i.rot, i.mirror, which='body')
+            if i.color:
+                svg = svg.replace('"#000"', '"%s"' % i.color)
             b = base64.b64encode(svg.encode()).decode()
             pts = json.dumps(S.conn_points(i.sym, i.rot, i.mirror, which='anchor')).replace(' ', '')
             cells.append('<mxCell id="%s" value="" style="shape=image;aspect=fixed;imageAspect=0;verticalLabelPosition=bottom;'
@@ -294,15 +301,15 @@ class Scene:
             cells.append('<mxCell id="%s" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;%s" '
                          'vertex="1" parent="1"><mxGeometry x="%.2f" y="%.2f" width="%.2f" height="%.2f" as="geometry"/></mxCell>'
                          % (new(), st, x + ox - r, y + oy - r, 2 * r, 2 * r))
-        for txt, x, y, a, sz, mode in s.texts:
+        for txt, x, y, a, sz, mode, color in s.texts:
             al = {'start': 'left', 'middle': 'center', 'end': 'right'}[a]
             wd = 160
             px = {'start': x, 'middle': x - wd / 2, 'end': x - wd}[a]
             val = '\\(%s\\)' % T.tex(txt) if mode == 'math' else txt
             cells.append('<mxCell id="%s" value="%s" style="text;html=1;strokeColor=none;fillColor=none;align=%s;verticalAlign=middle;'
-                         'fontSize=%d;spacing=0;whiteSpace=nowrap;" vertex="1" parent="1">'
+                         'fontSize=%d;fontColor=%s;spacing=0;whiteSpace=nowrap;" vertex="1" parent="1">'
                          '<mxGeometry x="%.2f" y="%.2f" width="%d" height="26" as="geometry"/></mxCell>'
-                         % (new(), q(val), al, sz, px + ox, y + oy - 13, wd))
+                         % (new(), q(val), al, sz, color or BLACK, px + ox, y + oy - 13, wd))
         return cells
 
     def to_drawio_page(s, idx):

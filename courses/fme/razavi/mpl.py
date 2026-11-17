@@ -41,8 +41,10 @@ def draw(ax, sc, k=PT, color='k'):
     for w in sc.connectors():                                         # continuous connectors
         ax.add_line(Line2D([p[0] for p in w], [p[1] for p in w], lw=SC.WIRE_W * k, color=color,
                            solid_capstyle='butt', solid_joinstyle='miter', zorder=2))
+    black = color
     for i in sc.insts:                                                # symbol bodies
         tf = _inst_tf(i) + ax.transData
+        color = i.color or black
         for p in i.sym['body']:
             kind = p[0]
             if kind == 'line':
@@ -57,12 +59,14 @@ def draw(ax, sc, k=PT, color='k'):
             elif kind == 'circ':
                 ax.add_patch(Circle((p[1], p[2]), p[3], fc=color if p[5] else 'white', ec=color,
                                     lw=0 if p[5] else p[4] * k, transform=tf, zorder=3))
+    color = black
     for x, y, op in sc.dots:                                          # terminals and node dots
         if op:
             ax.add_patch(Circle((x, y), SC.RING_R, fc='white', ec=color, lw=SC.RING_W * k, zorder=5))
         else:
             ax.add_patch(Circle((x, y), SC.DOT_R, fc=color, ec='none', lw=0, zorder=5))
-    for txt, x, y, a, sz, mode in sc.texts:                           # labels
+    for txt, x, y, a, sz, mode, own in sc.texts:                      # labels
+        color = own or black
         if mode == 'math':
             ax.text(x, y + SC.BASE * sz, '$%s$' % T.tex(txt), fontsize=sz * k, ha=_HA[a], va='baseline',
                     color=color, math_fontfamily='cm', zorder=6)

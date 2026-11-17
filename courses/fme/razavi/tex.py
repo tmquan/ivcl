@@ -4,6 +4,7 @@ Label mini-markup used by the circuit code:
     'V_in'  'V_{in,p}'  'I_out,n'  'M_1'  '(W/L)_2'  'V_out (or I_out)'
     '!V_on'    leading '!'  = overline (logical complement)
     '~plain'   leading '~'  = upright text, no maths
+    '$...$'    LaTeX maths as written, for anything the mini-markup cannot say:  r'$\frac{1}{g_m}$'
 
 tex(label)      -> LaTeX maths source (no $ delimiters)
 The outline helpers need matplotlib (its mathtext engine and bundled Computer Modern fonts);
@@ -33,6 +34,8 @@ def _tok(t):
 
 
 def tex(label):
+    if label.startswith('$'):
+        return label.strip('$')
     if label.startswith('~'):
         return r'\mathrm{%s}' % label[1:].replace(' ', r'\ ')
     over = label.startswith('!')

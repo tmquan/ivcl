@@ -54,7 +54,11 @@ DOT = dict(r=3.46)                                       # junction dot (dia 6.9
 OPA = dict(H=53.6, Wd=53.3, wt=3.2, yi=10.9, px=9.05, py=-13.5, mx=8.95, my=13.2, sw=7.9, ss=1.8)
 BULK = dict(on=3.0, off=3.0)                             # dashed substrate lead (Fig. 6.29)
 NUB = 2.0                                                # book px: stub kept on a lead-free body
-LOOK = dict(L=25.0, T=22.0, w=1.8, hL=9.5, hW=8.0)       # hooked arrow of an impedance (inside back cover): shaft, tail
+# hooked arrow of an impedance (inside back cover), mean of the ten arrows printed there, in book px:
+# shaft = corner to the back of the head, head hL x hW, tail = corner to the end that carries the label.
+# Two more forms are printed: a short tail (label beside the arrow) and a long shaft with a short tail.
+# gap = distance between the arrow and the lead it runs along; lead = how far the corner sits before the terminal.
+LOOK = dict(shaft=7.5, long=16.4, hL=19.2, hW=9.2, tail=22.7, short=11.3, gap=12.0, lead=11.0, low=22.5)
 LOADBOX = dict(w=10.0, h=24.0, t=2.6)                    # generic load drawn as a box (inside back cover)
 
 
@@ -417,15 +421,18 @@ def load():
                 dict(a=(10, 0), b=(10, 60)), dict(a=(0, -h), b=(0, h)), in_book=False)
 
 
-def look():
+def look(shaft=None, tail=None):
     """arrow with a 90-degree corner that marks an impedance: the head points into the circuit,
-    the tail leads to the label.  Corner at the origin, head along +x, tail along +y."""
+    the tail leads to the label.  Corner at the origin, head along +x, tail along +y.
+    The line has the weight of a wire and the corner is sharp, as printed."""
     k = LOOK
-    f = lambda *a: [('line', [(0, k['T']), (0, 0), (k['L'] - k['hL'] + 0.5, 0)], k['w'], 'butt', 'miter'),
-                    ('poly', _tri((k['L'], 0), (1, 0), k['hL'], k['hW']), 0.4, 'miter')]
-    w, h = round(S * k['L'], 3), round(S * k['T'], 3)
+    shaft, tail = shaft or k['shaft'], tail or k['tail']
+    L = shaft + k['hL']
+    f = lambda *a: [('line', [(0, tail), (0, 0), (shaft + 0.5, 0)], WIRE, 'butt', 'miter'),
+                    ('poly', _tri((L, 0), (1, 0), k['hL'], k['hW']), 0.0, 'miter')]
+    w, h = round(S * L, 3), round(S * tail, 3)
     return _sym(w, h, 0, 0, f, f, dict(corner=(0, 0), tip=(w, 0), tail=(0, h)),
-                dict(corner=(0, 0), tip=(k['L'], 0), tail=(0, k['T'])), in_book=False)
+                dict(corner=(0, 0), tip=(L, 0), tail=(0, tail)), in_book=False)
 
 
 # ---------------------------------------------------------------- catalogue
@@ -465,8 +472,10 @@ CATALOG = [
 SYM = {k: v for k, _, v in CATALOG}
 TITLE = {k: t for k, t, _ in CATALOG}
 COMPACT = {k: f(40) for k, f in TRANSISTORS.items()}      # 40 x 40 transistors with short leads
-SYM.update(load=load(), look=look())                      # used by the figures only, not part of the library
-TITLE.update(load='Load', look='Impedance arrow')
+# used by the figures only, not part of the library
+SYM.update(load=load(), look=look(), look_short=look(tail=LOOK['short']), look_long=look(LOOK['long'], LOOK['short']))
+TITLE.update(load='Load', look='Impedance arrow', look_short='Impedance arrow, short tail',
+             look_long='Impedance arrow, long shaft')
 
 
 # ---------------------------------------------------------------- transform / export

@@ -11,7 +11,7 @@ Coordinates are px on a 10-px grid; the main column of leads is at x = 0.
 The two-transistor circuits follow Pretl & Eberlein, "Fifty Nifty Variations of Two-Transistor
 Circuits", IEEE Solid-State Circuits Magazine 13(3), 2021.
 """
-from .ckt import mid
+from .ckt import mid, RED
 
 IN, OUT = 'V_in', 'V_out'
 
@@ -107,22 +107,23 @@ def role_capacitor(c):
 
 
 # ================================================================ one transistor: input and output impedances
+# The ten drawings inside the back cover of Razavi.  The arrow carries the impedance, as printed.
 def into_base(c):
     """Into the base | Into the gate"""
     t = c.transistor('n', (0, 0), 'cd')
     c.w(t.cd, (0, -20))
     c.w(t.es, (0, 100)); c.ac((0, 100))
-    p = (t.bg[0] - 30, 40)
-    c.w(t.bg, p); c.port(p, None); c.look(p, 'r', 'd', 'R_in')
+    p = (t.bg[0] - 20, 40)
+    c.w(t.bg, p); c.port(p, None); c.look(p, 'r', 'd', c.pick(r'$r_\pi$', r'$\approx\infty$'))
 
 
 def into_base_degenerated(c):
     """Into the base, with emitter degeneration | -"""
-    t = c.transistor('n', (0, 0), 'cd')
+    t = c.transistor('n', (0, 0), 'cd'); t.note(t.ideal)
     c.w(t.cd, (0, -20))
     c.w(t.es, (0, 100)); c.w(c.res((0, 100), 'R_' + t.pin('es')), (0, 180)); c.ac((0, 180))
-    p = (t.bg[0] - 30, 40)
-    c.w(t.bg, p); c.port(p, None); c.look(p, 'r', 'd', 'R_in')
+    p = (t.bg[0] - 20, 40)
+    c.w(t.bg, p); c.port(p, None); c.look(p, 'r', 'd', r'$r_\pi+(\beta+1)R_E$')
 
 
 def into_collector(c):
@@ -130,8 +131,8 @@ def into_collector(c):
     t = c.transistor('n', (0, 0), 'cd')
     c.w(t.bg, (-60, 40), (-60, 100)); c.ac((-60, 100))
     c.w(t.es, (0, 100)); c.ac((0, 100))
-    p = (0, -40)
-    c.w(t.cd, p); c.port(p, None); c.look(p, 'd', 'r', 'R_out')
+    p = (0, -20)
+    c.w(t.cd, p); c.port(p, None); c.look(p, 'd', 'r', '$r_O$')
 
 
 def into_collector_degenerated(c):
@@ -139,53 +140,85 @@ def into_collector_degenerated(c):
     t = c.transistor('n', (0, 0), 'cd')
     c.w(t.bg, (-60, 40), (-60, 100)); c.ac((-60, 100))
     c.w(t.es, (0, 100)); c.w(c.res((0, 100), 'R_' + t.pin('es')), (0, 180)); c.ac((0, 180))
-    p = (0, -40)
-    c.w(t.cd, p); c.port(p, None); c.look(p, 'd', 'r', 'R_out')
+    p = (0, -20)
+    c.w(t.cd, p); c.port(p, None)
+    c.look(p, 'd', 'r', c.pick(r'$(1+g_mr_O)(R_E\|r_\pi)+r_O$', r'$(1+g_mr_O)R_S+r_O$'), form='long')
 
 
 def into_emitter(c):
     """Into the emitter | Into the source"""
-    t = c.transistor('n', (0, 0), 'cd')
-    c.supply((0, -100)); c.w((0, -100), (0, -80)); c.w(c.load((0, -80)), t.cd)
+    t = c.transistor('n', (0, 0), 'cd'); t.note(t.ideal)
+    c.supply((0, -100), side=None); c.w((0, -100), (0, -80)); c.w(c.load((0, -80)), t.cd)
     c.w(t.bg, (-60, 40), (-60, 100)); c.ac((-60, 100))
-    p = (0, 120)
-    c.w(t.es, p); c.port(p, None); c.look(p, 'u', 'r', 'R_out')
+    p = (0, 110)
+    c.w(t.es, p); c.port(p, None); c.look(p, 'u', 'r', r'$\dfrac{1}{g_m}$', form='low')
 
 
 def into_emitter_base_resistance(c):
     """Into the emitter, with base resistance | -"""
-    t = c.transistor('n', (0, 0), 'cd')
-    c.supply((0, -100)); c.w((0, -100), (0, -80)); c.w(c.load((0, -80)), t.cd)
+    t = c.transistor('n', (0, 0), 'cd'); t.note(t.ideal)
+    c.supply((0, -100), side=None); c.w((0, -100), (0, -80)); c.w(c.load((0, -80)), t.cd)
     c.w(t.bg, (t.bg[0] - 10, 40))
-    left = c.res((t.bg[0] - 10, 40), 'R_' + t.pin('bg'), to='left')
+    left = c.res((t.bg[0] - 10, 40), 'R_' + t.pin('bg'), to='left', side='u')
     c.w(left, (left[0] - 20, 40), (left[0] - 20, 100)); c.ac((left[0] - 20, 100))
-    p = (0, 120)
-    c.w(t.es, p); c.port(p, None); c.look(p, 'u', 'r', 'R_out')
+    p = (0, 110)
+    c.w(t.es, p); c.port(p, None); c.look(p, 'u', 'r', r'$\dfrac{1}{g_m}+\dfrac{R_B}{\beta+1}$', form='low')
 
 
 # ================================================================ one transistor: voltage gain
+# The eight stages inside the back cover of Razavi, each with its gain written underneath, as printed.
+def gain_common_emitter(c):
+    """Common emitter | Common source"""
+    t = c.transistor('n', (0, 0), 'cd')
+    C = t.pin('cd')
+    c.supply((0, -120)); c.w((0, -120), (0, -100))
+    out = (0, -20)
+    c.w(c.res((0, -100), 'R_' + C, side='l'), t.cd); c.dot(out)
+    c.w(out, (50, -20)); c.port((50, -20), 'v_out', 'r')
+    c.w(t.es, (0, 100)); c.gnd((0, 100))
+    c.w(t.bg, (t.bg[0] - 30, 40)); c.port((t.bg[0] - 30, 40), 'v_in', 'l')
+    c.caption(r'$A_v=-g_m(R_%s\|r_O)$' % C)
+
+
 def gain_degenerated(c):
     """Degenerated common emitter | Degenerated common source"""
-    t1 = c.transistor('n', (0, 0), 'cd', name=1)
+    t = c.transistor('n', (0, 0), 'cd'); t.note(t.ideal)
+    C, E = t.pin('cd'), t.pin('es')
     c.supply((0, -120)); c.w((0, -120), (0, -100))
     out = (0, -20)
-    c.w(c.res((0, -100), 'R_' + t1.pin('cd')), t1.cd); c.dot(out)
-    c.w(out, (50, -20)); c.port((50, -20), OUT, 'r')
-    c.w(t1.es, (0, 100)); c.w(c.res((0, 100), 'R_' + t1.pin('es')), (0, 180)); c.gnd((0, 180))
-    c.w(t1.bg, (t1.bg[0] - 30, 40)); c.port((t1.bg[0] - 30, 40), IN, 'l')
+    c.w(c.res((0, -100), 'R_' + C, side='l'), t.cd); c.dot(out)
+    c.w(out, (50, -20)); c.port((50, -20), 'v_out', 'r')
+    c.w(t.es, (0, 100)); c.w(c.res((0, 100), 'R_' + E), (0, 180)); c.gnd((0, 180))
+    c.w(t.bg, (t.bg[0] - 30, 40)); c.port((t.bg[0] - 30, 40), 'v_in', 'l')
+    c.caption(r'$A_v=-\dfrac{R_%s}{\frac{1}{g_m}+R_%s}$' % (C, E))
 
 
-def gain_buffer(c):
+def gain_common_base(c):
     """Common base | Common gate"""
-    t1 = c.transistor('n', (0, 0), 'cd', side='right', name=1, lbl='l')
+    t = c.transistor('n', (0, 0), 'cd', side='right'); t.note(t.ideal)
+    C, E = t.pin('cd'), t.pin('es')
     c.supply((0, -120)); c.w((0, -120), (0, -100))
     out = (0, -20)
-    c.w(c.res((0, -100), 'R_' + t1.pin('cd')), t1.cd); c.dot(out)
-    c.w(out, (50, -20)); c.port((50, -20), OUT, 'r')
-    c.w(t1.bg, (t1.bg[0] + 20, 40)); c.port((t1.bg[0] + 20, 40), 'V_b', 'r')
-    c.w(t1.es, (0, 100), (-20, 100))
-    left = c.res((-20, 100), 'R_' + t1.pin('es'), to='left')
-    c.w(left, (left[0] - 20, 100)); c.port((left[0] - 20, 100), IN, 'l')
+    c.w(c.res((0, -100), 'R_' + C, side='l'), t.cd); c.dot(out)
+    c.w(out, (50, -20)); c.port((50, -20), 'v_out', 'r')
+    c.w(t.bg, (t.bg[0] + 10, 40)); c.port((t.bg[0] + 10, 40), 'V_b', 'r', solid=True)
+    c.w(t.es, (0, 100), (-20, 100))
+    left = c.res((-20, 100), 'R_' + E, to='left')
+    c.w(left, (left[0] - 20, 100)); c.port((left[0] - 20, 100), 'v_in', 'l')
+    c.caption(r'$A_v=\dfrac{R_%s}{\frac{1}{g_m}+R_%s}$' % (C, E))
+
+
+def gain_follower(c):
+    """Emitter follower | Source follower"""
+    t = c.transistor('n', (0, 0), 'cd')
+    E = t.pin('es')
+    c.supply((0, -20)); c.w((0, -20), t.cd)
+    out = (0, 100)
+    c.w(t.es, (0, 120)); c.dot(out)
+    c.w(out, (50, 100)); c.port((50, 100), 'v_out', 'r')
+    c.w(c.res((0, 120), 'R_' + E), (0, 200)); c.gnd((0, 200))
+    c.w(t.bg, (t.bg[0] - 30, 40)); c.port((t.bg[0] - 30, 40), 'v_in', 'l')
+    c.caption(r'$A_v=\dfrac{R_%s\|r_O}{\frac{1}{g_m}+R_%s\|r_O}$' % (E, E))
 
 
 # ================================================================ helpers shared by several circuits
@@ -457,7 +490,7 @@ def active_inductor(c):
     g = (0, t1.es[1] + 20); c.gnd(g); c.w(t1.es, g)
     top = (0, -20); c.w(t2.cd, top); c.dot(top); c.w(top, (0, -60)); c.port((0, -60), 'I_bias', 'r')
     c.w(t2.bg, (t2.bg[0] - 40, t2.bg[1])); c.port((t2.bg[0] - 40, t2.bg[1]), 'V_bias', 'l')
-    c.dot(j); c.w(j, (50, j[1])); c.port((50, j[1]), 'Z_in', 'r'); c.look((50, j[1]), 'l', 'd')
+    c.dot(j); c.w(j, (50, j[1])); c.port((50, j[1]), 'Z_in', 'r', color=RED); c.look((50, j[1]), 'l', 'd')
     xb = -130
     c.w(top, (xb, top[1]), (xb, t1.bg[1]), t1.bg)
 
@@ -731,8 +764,8 @@ IMPEDANCES = [
     ('Looking into the Emitter or Source', into_emitter, into_emitter_base_resistance),
 ]
 GAINS = [
-    ('Common-Emitter and Common-Source Stages', role_amplifier, gain_degenerated),
-    ('Common-Base or Common-Gate Stage and Follower', gain_buffer, role_follower),
+    ('Common-Emitter and Common-Source Stages', gain_common_emitter, gain_degenerated),
+    ('Common-Base or Common-Gate Stage and Follower', gain_common_base, gain_follower),
 ]
 
 # two transistors: (family, [(heading, first circuit, second circuit), ...])
