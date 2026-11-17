@@ -29,7 +29,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=fme3" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=fme4" />
     
   <link rel="preload" as="script" href="../../_static/js/index.be7d3bbb2ef33a8344ce.js">
 
@@ -744,7 +744,7 @@ const thebe_selector_output = ".output, .cell_output"
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="bjt-and-mosfet-circuits">
 <h1>BJT and MOSFET Circuits<a class="headerlink" href="#bjt-and-mosfet-circuits" title="Permalink to this headline">¶</a></h1>
-<p>A bipolar transistor and a MOSFET can be wired into the same networks. Every figure on this page has two columns: the BJT version of a circuit on the left and the MOSFET version on the right, both drawn by the same few lines of Python. Every table has three: a label, then the BJT and the MOSFET entry side by side. Where a circuit exists in only one of the two technologies, the other column is left empty. The page goes from one transistor in eight connections to forty-two circuits of two transistors in seven families.</p>
+<p>A bipolar transistor and a MOSFET can be wired into the same networks. Figures and tables on this page share one layout of three columns: a label, then the BJT version and the MOSFET version side by side. Both versions of a circuit are drawn by the same few lines of Python. Where a circuit exists in only one of the two technologies, the other column is left empty. The page goes from one transistor in eight connections to forty-two circuits of two transistors in seven families.</p>
 <p>The two-transistor circuits follow H. Pretl and M. Eberlein [1], who show the MOSFET versions. The BJT versions are obtained by swapping device for device. Circuits of [1] that use the body terminal, a thick-oxide device or the parasitic bipolar transistor of a MOSFET are left out. The symbols follow the drawing style of B. Razavi [2].</p>
 <div class="section" id="prerequisites">
 <h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Permalink to this headline">¶</a></h2>
@@ -823,7 +823,7 @@ const thebe_selector_output = ".output, .cell_output"
 </tbody>
 </table>
 <p>The circuit functions use only the shared names, which read <em>base or gate</em>, <em>collector or drain</em> and <em>emitter or source</em>. <code class="docutils literal notranslate"><span class="pre">c.w(p0,</span> <span class="pre">p1,</span> <span class="pre">...)</span></code> draws a wire, <code class="docutils literal notranslate"><span class="pre">c.dot(p)</span></code> a node, <code class="docutils literal notranslate"><span class="pre">c.port(p,</span> <span class="pre">label,</span> <span class="pre">side)</span></code> an open terminal, <code class="docutils literal notranslate"><span class="pre">c.gnd(p)</span></code> a ground and <code class="docutils literal notranslate"><span class="pre">c.res(p,</span> <span class="pre">label)</span></code> a resistor. <code class="docutils literal notranslate"><span class="pre">c.chain([...],</span> <span class="pre">x,</span> <span class="pre">y)</span></code> places a series stack of transistors, and <code class="docutils literal notranslate"><span class="pre">c.bus([...],</span> <span class="pre">x)</span></code> ties their bases or gates together. Coordinates are pixels on a 10-px grid with <span class="math notranslate nohighlight">\(y\)</span> pointing down. Before drawing, all wire pieces and symbol leads are merged into continuous connectors.</p>
-<p><code class="docutils literal notranslate"><span class="pre">show(a,</span> <span class="pre">b)</span></code> draws the circuits <code class="docutils literal notranslate"><span class="pre">a</span></code> and <code class="docutils literal notranslate"><span class="pre">b</span></code> as two rows, with <code class="docutils literal notranslate"><span class="pre">BJT</span></code> in the left column and with <code class="docutils literal notranslate"><span class="pre">MOSFET</span></code> in the right column. The first docstring line names a circuit, as <code class="docutils literal notranslate"><span class="pre">BJT</span> <span class="pre">name</span> <span class="pre">|</span> <span class="pre">MOSFET</span> <span class="pre">name</span></code> where the two names differ. A name <code class="docutils literal notranslate"><span class="pre">-</span></code> means that the circuit has no such version, and that column stays empty.</p>
+<p><code class="docutils literal notranslate"><span class="pre">show(a,</span> <span class="pre">b)</span></code> draws the circuits <code class="docutils literal notranslate"><span class="pre">a</span></code> and <code class="docutils literal notranslate"><span class="pre">b</span></code> as two rows: their names in the first column, then the drawing made with <code class="docutils literal notranslate"><span class="pre">BJT</span></code> and the drawing made with <code class="docutils literal notranslate"><span class="pre">MOSFET</span></code>. The first docstring line gives the names, as <code class="docutils literal notranslate"><span class="pre">BJT</span> <span class="pre">name</span> <span class="pre">|</span> <span class="pre">MOSFET</span> <span class="pre">name</span></code> where the two differ. A name <code class="docutils literal notranslate"><span class="pre">-</span></code> means that the circuit has no such version, and that column stays empty.</p>
 <div class="cell tag_hide_input docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># HIDE/SHOW</span>
@@ -886,7 +886,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/fme_index_04_0.svg" src="../../_images/fme_index_04_0.svg" />
+<img alt="../../_images/fme_index_04_0.svg" src="../../_images/fme_index_04_0.svg?v=fme4" />
 </div>
 </div>
 <p>The two columns translate into each other term by term:</p>
@@ -969,7 +969,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/fme_index_05_0.svg" src="../../_images/fme_index_05_0.svg" />
+<img alt="../../_images/fme_index_05_0.svg" src="../../_images/fme_index_05_0.svg?v=fme4" />
 </div>
 </div>
 <table class="colwidths-auto table">
@@ -1017,7 +1017,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/fme_index_06_0.svg" src="../../_images/fme_index_06_0.svg" />
+<img alt="../../_images/fme_index_06_0.svg" src="../../_images/fme_index_06_0.svg?v=fme4" />
 </div>
 </div>
 <table class="colwidths-auto table">
@@ -1066,7 +1066,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/fme_index_07_0.svg" src="../../_images/fme_index_07_0.svg" />
+<img alt="../../_images/fme_index_07_0.svg" src="../../_images/fme_index_07_0.svg?v=fme4" />
 </div>
 </div>
 <table class="colwidths-auto table">
@@ -1115,7 +1115,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/fme_index_08_0.svg" src="../../_images/fme_index_08_0.svg" />
+<img alt="../../_images/fme_index_08_0.svg" src="../../_images/fme_index_08_0.svg?v=fme4" />
 </div>
 </div>
 <table class="colwidths-auto table">
@@ -1273,7 +1273,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/fme_index_09_0.svg" src="../../_images/fme_index_09_0.svg" />
+<img alt="../../_images/fme_index_09_0.svg" src="../../_images/fme_index_09_0.svg?v=fme4" />
 </div>
 </div>
 <table class="colwidths-auto table">
@@ -1328,7 +1328,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/fme_index_10_0.svg" src="../../_images/fme_index_10_0.svg" />
+<img alt="../../_images/fme_index_10_0.svg" src="../../_images/fme_index_10_0.svg?v=fme4" />
 </div>
 </div>
 <table class="colwidths-auto table">
@@ -1386,7 +1386,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/fme_index_11_0.svg" src="../../_images/fme_index_11_0.svg" />
+<img alt="../../_images/fme_index_11_0.svg" src="../../_images/fme_index_11_0.svg?v=fme4" />
 </div>
 </div>
 <table class="colwidths-auto table">
@@ -1443,7 +1443,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/fme_index_12_0.svg" src="../../_images/fme_index_12_0.svg" />
+<img alt="../../_images/fme_index_12_0.svg" src="../../_images/fme_index_12_0.svg?v=fme4" />
 </div>
 </div>
 <table class="colwidths-auto table">
@@ -1500,7 +1500,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/fme_index_13_0.svg" src="../../_images/fme_index_13_0.svg" />
+<img alt="../../_images/fme_index_13_0.svg" src="../../_images/fme_index_13_0.svg?v=fme4" />
 </div>
 </div>
 <table class="colwidths-auto table">
@@ -1551,7 +1551,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/fme_index_14_0.svg" src="../../_images/fme_index_14_0.svg" />
+<img alt="../../_images/fme_index_14_0.svg" src="../../_images/fme_index_14_0.svg?v=fme4" />
 </div>
 </div>
 <table class="colwidths-auto table">
@@ -1608,7 +1608,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/fme_index_15_0.svg" src="../../_images/fme_index_15_0.svg" />
+<img alt="../../_images/fme_index_15_0.svg" src="../../_images/fme_index_15_0.svg?v=fme4" />
 </div>
 </div>
 <table class="colwidths-auto table">
@@ -1660,7 +1660,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/fme_index_16_0.svg" src="../../_images/fme_index_16_0.svg" />
+<img alt="../../_images/fme_index_16_0.svg" src="../../_images/fme_index_16_0.svg?v=fme4" />
 </div>
 </div>
 <table class="colwidths-auto table">
@@ -1719,7 +1719,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/fme_index_17_0.svg" src="../../_images/fme_index_17_0.svg" />
+<img alt="../../_images/fme_index_17_0.svg" src="../../_images/fme_index_17_0.svg?v=fme4" />
 </div>
 </div>
 <table class="colwidths-auto table">
@@ -1777,7 +1777,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/fme_index_18_0.svg" src="../../_images/fme_index_18_0.svg" />
+<img alt="../../_images/fme_index_18_0.svg" src="../../_images/fme_index_18_0.svg?v=fme4" />
 </div>
 </div>
 <table class="colwidths-auto table">
@@ -1831,7 +1831,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/fme_index_19_0.svg" src="../../_images/fme_index_19_0.svg" />
+<img alt="../../_images/fme_index_19_0.svg" src="../../_images/fme_index_19_0.svg?v=fme4" />
 </div>
 </div>
 <table class="colwidths-auto table">
@@ -1862,14 +1862,14 @@ const thebe_selector_output = ".output, .cell_output"
 <span class="k">def</span> <span class="nf">differential_pair</span><span class="p">(</span><span class="n">c</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Emitter-coupled pair | Source-coupled pair&quot;&quot;&quot;</span>
     <span class="n">t1</span> <span class="o">=</span> <span class="n">c</span><span class="o">.</span><span class="n">transistor</span><span class="p">(</span><span class="s1">&#39;n&#39;</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="s1">&#39;cd&#39;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-    <span class="n">t2</span> <span class="o">=</span> <span class="n">c</span><span class="o">.</span><span class="n">transistor</span><span class="p">(</span><span class="s1">&#39;n&#39;</span><span class="p">,</span> <span class="p">(</span><span class="mi">140</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="s1">&#39;cd&#39;</span><span class="p">,</span> <span class="n">side</span><span class="o">=</span><span class="s1">&#39;right&#39;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
-    <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">(</span><span class="n">t1</span><span class="o">.</span><span class="n">bg</span><span class="p">,</span> <span class="p">(</span><span class="n">t1</span><span class="o">.</span><span class="n">bg</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="mi">30</span><span class="p">,</span> <span class="n">t1</span><span class="o">.</span><span class="n">bg</span><span class="p">[</span><span class="mi">1</span><span class="p">]));</span> <span class="n">c</span><span class="o">.</span><span class="n">port</span><span class="p">((</span><span class="n">t1</span><span class="o">.</span><span class="n">bg</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="mi">30</span><span class="p">,</span> <span class="n">t1</span><span class="o">.</span><span class="n">bg</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span> <span class="s1">&#39;V_in,p&#39;</span><span class="p">,</span> <span class="s1">&#39;l&#39;</span><span class="p">)</span>
-    <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">(</span><span class="n">t2</span><span class="o">.</span><span class="n">bg</span><span class="p">,</span> <span class="p">(</span><span class="n">t2</span><span class="o">.</span><span class="n">bg</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="mi">30</span><span class="p">,</span> <span class="n">t2</span><span class="o">.</span><span class="n">bg</span><span class="p">[</span><span class="mi">1</span><span class="p">]));</span> <span class="n">c</span><span class="o">.</span><span class="n">port</span><span class="p">((</span><span class="n">t2</span><span class="o">.</span><span class="n">bg</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="mi">30</span><span class="p">,</span> <span class="n">t2</span><span class="o">.</span><span class="n">bg</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span> <span class="s1">&#39;V_in,n&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span>
+    <span class="n">t2</span> <span class="o">=</span> <span class="n">c</span><span class="o">.</span><span class="n">transistor</span><span class="p">(</span><span class="s1">&#39;n&#39;</span><span class="p">,</span> <span class="p">(</span><span class="mi">110</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="s1">&#39;cd&#39;</span><span class="p">,</span> <span class="n">side</span><span class="o">=</span><span class="s1">&#39;right&#39;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">(</span><span class="n">t1</span><span class="o">.</span><span class="n">bg</span><span class="p">,</span> <span class="p">(</span><span class="n">t1</span><span class="o">.</span><span class="n">bg</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="mi">20</span><span class="p">,</span> <span class="n">t1</span><span class="o">.</span><span class="n">bg</span><span class="p">[</span><span class="mi">1</span><span class="p">]));</span> <span class="n">c</span><span class="o">.</span><span class="n">port</span><span class="p">((</span><span class="n">t1</span><span class="o">.</span><span class="n">bg</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="mi">20</span><span class="p">,</span> <span class="n">t1</span><span class="o">.</span><span class="n">bg</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span> <span class="s1">&#39;V_in,p&#39;</span><span class="p">,</span> <span class="s1">&#39;l&#39;</span><span class="p">)</span>
+    <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">(</span><span class="n">t2</span><span class="o">.</span><span class="n">bg</span><span class="p">,</span> <span class="p">(</span><span class="n">t2</span><span class="o">.</span><span class="n">bg</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="mi">20</span><span class="p">,</span> <span class="n">t2</span><span class="o">.</span><span class="n">bg</span><span class="p">[</span><span class="mi">1</span><span class="p">]));</span> <span class="n">c</span><span class="o">.</span><span class="n">port</span><span class="p">((</span><span class="n">t2</span><span class="o">.</span><span class="n">bg</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="mi">20</span><span class="p">,</span> <span class="n">t2</span><span class="o">.</span><span class="n">bg</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span> <span class="s1">&#39;V_in,n&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span>
     <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">(</span><span class="n">t1</span><span class="o">.</span><span class="n">cd</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">40</span><span class="p">));</span> <span class="n">c</span><span class="o">.</span><span class="n">port</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">40</span><span class="p">),</span> <span class="s1">&#39;I_out,n&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span>
-    <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">(</span><span class="n">t2</span><span class="o">.</span><span class="n">cd</span><span class="p">,</span> <span class="p">(</span><span class="mi">140</span><span class="p">,</span> <span class="o">-</span><span class="mi">40</span><span class="p">));</span> <span class="n">c</span><span class="o">.</span><span class="n">port</span><span class="p">((</span><span class="mi">140</span><span class="p">,</span> <span class="o">-</span><span class="mi">40</span><span class="p">),</span> <span class="s1">&#39;I_out,p&#39;</span><span class="p">,</span> <span class="s1">&#39;l&#39;</span><span class="p">)</span>
+    <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">(</span><span class="n">t2</span><span class="o">.</span><span class="n">cd</span><span class="p">,</span> <span class="p">(</span><span class="mi">110</span><span class="p">,</span> <span class="o">-</span><span class="mi">40</span><span class="p">));</span> <span class="n">c</span><span class="o">.</span><span class="n">port</span><span class="p">((</span><span class="mi">110</span><span class="p">,</span> <span class="o">-</span><span class="mi">40</span><span class="p">),</span> <span class="s1">&#39;I_out,p&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span>
     <span class="n">yb</span> <span class="o">=</span> <span class="n">t1</span><span class="o">.</span><span class="n">es</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="mi">20</span>
-    <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">(</span><span class="n">t1</span><span class="o">.</span><span class="n">es</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">yb</span><span class="p">),</span> <span class="p">(</span><span class="mi">140</span><span class="p">,</span> <span class="n">yb</span><span class="p">),</span> <span class="n">t2</span><span class="o">.</span><span class="n">es</span><span class="p">);</span> <span class="n">c</span><span class="o">.</span><span class="n">dot</span><span class="p">((</span><span class="mi">70</span><span class="p">,</span> <span class="n">yb</span><span class="p">))</span>
-    <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">((</span><span class="mi">70</span><span class="p">,</span> <span class="n">yb</span><span class="p">),</span> <span class="p">(</span><span class="mi">70</span><span class="p">,</span> <span class="n">yb</span> <span class="o">+</span> <span class="mi">40</span><span class="p">));</span> <span class="n">c</span><span class="o">.</span><span class="n">port</span><span class="p">((</span><span class="mi">70</span><span class="p">,</span> <span class="n">yb</span> <span class="o">+</span> <span class="mi">40</span><span class="p">),</span> <span class="s1">&#39;I_bias&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">)</span>
+    <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">(</span><span class="n">t1</span><span class="o">.</span><span class="n">es</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">yb</span><span class="p">),</span> <span class="p">(</span><span class="mi">110</span><span class="p">,</span> <span class="n">yb</span><span class="p">),</span> <span class="n">t2</span><span class="o">.</span><span class="n">es</span><span class="p">);</span> <span class="n">c</span><span class="o">.</span><span class="n">dot</span><span class="p">((</span><span class="mi">55</span><span class="p">,</span> <span class="n">yb</span><span class="p">))</span>
+    <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">((</span><span class="mi">55</span><span class="p">,</span> <span class="n">yb</span><span class="p">),</span> <span class="p">(</span><span class="mi">55</span><span class="p">,</span> <span class="n">yb</span> <span class="o">+</span> <span class="mi">40</span><span class="p">));</span> <span class="n">c</span><span class="o">.</span><span class="n">port</span><span class="p">((</span><span class="mi">55</span><span class="p">,</span> <span class="n">yb</span> <span class="o">+</span> <span class="mi">40</span><span class="p">),</span> <span class="s1">&#39;I_bias&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">)</span>
 
 
 <span class="k">def</span> <span class="nf">cross_coupled_pair</span><span class="p">(</span><span class="n">c</span><span class="p">):</span>
@@ -1889,7 +1889,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/fme_index_20_0.svg" src="../../_images/fme_index_20_0.svg" />
+<img alt="../../_images/fme_index_20_0.svg" src="../../_images/fme_index_20_0.svg?v=fme4" />
 </div>
 </div>
 <table class="colwidths-auto table">
@@ -1952,7 +1952,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/fme_index_21_0.svg" src="../../_images/fme_index_21_0.svg" />
+<img alt="../../_images/fme_index_21_0.svg" src="../../_images/fme_index_21_0.svg?v=fme4" />
 </div>
 </div>
 <table class="colwidths-auto table">
@@ -2010,7 +2010,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/fme_index_22_0.svg" src="../../_images/fme_index_22_0.svg" />
+<img alt="../../_images/fme_index_22_0.svg" src="../../_images/fme_index_22_0.svg?v=fme4" />
 </div>
 </div>
 <table class="colwidths-auto table">
@@ -2054,8 +2054,8 @@ const thebe_selector_output = ".output, .cell_output"
     <span class="n">t1</span> <span class="o">=</span> <span class="n">c</span><span class="o">.</span><span class="n">transistor</span><span class="p">(</span><span class="s1">&#39;p&#39;</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="s1">&#39;es&#39;</span><span class="p">,</span> <span class="n">side</span><span class="o">=</span><span class="s1">&#39;right&#39;</span><span class="p">,</span> <span class="n">rot</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
     <span class="n">t2</span> <span class="o">=</span> <span class="n">c</span><span class="o">.</span><span class="n">transistor</span><span class="p">(</span><span class="s1">&#39;n&#39;</span><span class="p">,</span> <span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="s1">&#39;cd&#39;</span><span class="p">,</span> <span class="n">side</span><span class="o">=</span><span class="s1">&#39;right&#39;</span><span class="p">,</span> <span class="n">rot</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
     <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">(</span><span class="n">t1</span><span class="o">.</span><span class="n">cd</span><span class="p">,</span> <span class="n">t2</span><span class="o">.</span><span class="n">cd</span><span class="p">)</span>
-    <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">(</span><span class="n">t1</span><span class="o">.</span><span class="n">es</span><span class="p">,</span> <span class="p">(</span><span class="o">-</span><span class="mi">20</span><span class="p">,</span> <span class="mi">0</span><span class="p">));</span> <span class="n">c</span><span class="o">.</span><span class="n">dot</span><span class="p">((</span><span class="o">-</span><span class="mi">20</span><span class="p">,</span> <span class="mi">0</span><span class="p">));</span> <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">((</span><span class="o">-</span><span class="mi">20</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="p">(</span><span class="o">-</span><span class="mi">50</span><span class="p">,</span> <span class="mi">0</span><span class="p">));</span> <span class="n">c</span><span class="o">.</span><span class="n">port</span><span class="p">((</span><span class="o">-</span><span class="mi">50</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="s1">&#39;V_p&#39;</span><span class="p">,</span> <span class="s1">&#39;l&#39;</span><span class="p">)</span>
-    <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">(</span><span class="n">t2</span><span class="o">.</span><span class="n">es</span><span class="p">,</span> <span class="p">(</span><span class="mi">200</span><span class="p">,</span> <span class="mi">0</span><span class="p">));</span> <span class="n">c</span><span class="o">.</span><span class="n">dot</span><span class="p">((</span><span class="mi">200</span><span class="p">,</span> <span class="mi">0</span><span class="p">));</span> <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">((</span><span class="mi">200</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="p">(</span><span class="mi">230</span><span class="p">,</span> <span class="mi">0</span><span class="p">));</span> <span class="n">c</span><span class="o">.</span><span class="n">port</span><span class="p">((</span><span class="mi">230</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="s1">&#39;V_n&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span>
+    <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">(</span><span class="n">t1</span><span class="o">.</span><span class="n">es</span><span class="p">,</span> <span class="p">(</span><span class="o">-</span><span class="mi">20</span><span class="p">,</span> <span class="mi">0</span><span class="p">));</span> <span class="n">c</span><span class="o">.</span><span class="n">dot</span><span class="p">((</span><span class="o">-</span><span class="mi">20</span><span class="p">,</span> <span class="mi">0</span><span class="p">));</span> <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">((</span><span class="o">-</span><span class="mi">20</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="p">(</span><span class="o">-</span><span class="mi">40</span><span class="p">,</span> <span class="mi">0</span><span class="p">));</span> <span class="n">c</span><span class="o">.</span><span class="n">port</span><span class="p">((</span><span class="o">-</span><span class="mi">40</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="s1">&#39;V_p&#39;</span><span class="p">,</span> <span class="s1">&#39;l&#39;</span><span class="p">)</span>
+    <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">(</span><span class="n">t2</span><span class="o">.</span><span class="n">es</span><span class="p">,</span> <span class="p">(</span><span class="mi">200</span><span class="p">,</span> <span class="mi">0</span><span class="p">));</span> <span class="n">c</span><span class="o">.</span><span class="n">dot</span><span class="p">((</span><span class="mi">200</span><span class="p">,</span> <span class="mi">0</span><span class="p">));</span> <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">((</span><span class="mi">200</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="p">(</span><span class="mi">220</span><span class="p">,</span> <span class="mi">0</span><span class="p">));</span> <span class="n">c</span><span class="o">.</span><span class="n">port</span><span class="p">((</span><span class="mi">220</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="s1">&#39;V_n&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span>
     <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">(</span><span class="n">t1</span><span class="o">.</span><span class="n">bg</span><span class="p">,</span> <span class="p">(</span><span class="n">t1</span><span class="o">.</span><span class="n">bg</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="o">-</span><span class="mi">60</span><span class="p">),</span> <span class="p">(</span><span class="mi">200</span><span class="p">,</span> <span class="o">-</span><span class="mi">60</span><span class="p">),</span> <span class="p">(</span><span class="mi">200</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
     <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">(</span><span class="n">t2</span><span class="o">.</span><span class="n">bg</span><span class="p">,</span> <span class="p">(</span><span class="n">t2</span><span class="o">.</span><span class="n">bg</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="o">-</span><span class="mi">80</span><span class="p">),</span> <span class="p">(</span><span class="o">-</span><span class="mi">20</span><span class="p">,</span> <span class="o">-</span><span class="mi">80</span><span class="p">),</span> <span class="p">(</span><span class="o">-</span><span class="mi">20</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
 
@@ -2064,7 +2064,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/fme_index_23_0.svg" src="../../_images/fme_index_23_0.svg" />
+<img alt="../../_images/fme_index_23_0.svg" src="../../_images/fme_index_23_0.svg?v=fme4" />
 </div>
 </div>
 <table class="colwidths-auto table">
@@ -2121,7 +2121,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/fme_index_24_0.svg" src="../../_images/fme_index_24_0.svg" />
+<img alt="../../_images/fme_index_24_0.svg" src="../../_images/fme_index_24_0.svg?v=fme4" />
 </div>
 </div>
 <table class="colwidths-auto table">
@@ -2181,7 +2181,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/fme_index_25_0.svg" src="../../_images/fme_index_25_0.svg" />
+<img alt="../../_images/fme_index_25_0.svg" src="../../_images/fme_index_25_0.svg?v=fme4" />
 </div>
 </div>
 <table class="colwidths-auto table">
@@ -2223,7 +2223,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/fme_index_26_0.svg" src="../../_images/fme_index_26_0.svg" />
+<img alt="../../_images/fme_index_26_0.svg" src="../../_images/fme_index_26_0.svg?v=fme4" />
 </div>
 </div>
 <table class="colwidths-auto table">
@@ -2281,7 +2281,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/fme_index_27_0.svg" src="../../_images/fme_index_27_0.svg" />
+<img alt="../../_images/fme_index_27_0.svg" src="../../_images/fme_index_27_0.svg?v=fme4" />
 </div>
 </div>
 <table class="colwidths-auto table">
@@ -2330,8 +2330,8 @@ const thebe_selector_output = ".output, .cell_output"
     <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="p">(</span><span class="n">t1</span><span class="p">,</span> <span class="n">t2</span><span class="p">):</span>
         <span class="n">g</span> <span class="o">=</span> <span class="p">(</span><span class="n">t</span><span class="o">.</span><span class="n">es</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">t</span><span class="o">.</span><span class="n">es</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="mi">20</span><span class="p">);</span> <span class="n">c</span><span class="o">.</span><span class="n">gnd</span><span class="p">(</span><span class="n">g</span><span class="p">);</span> <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">(</span><span class="n">t</span><span class="o">.</span><span class="n">es</span><span class="p">,</span> <span class="n">g</span><span class="p">)</span>
     <span class="n">mx</span> <span class="o">=</span> <span class="mi">65</span>
-    <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">(</span><span class="n">t1</span><span class="o">.</span><span class="n">bg</span><span class="p">,</span> <span class="p">(</span><span class="n">t1</span><span class="o">.</span><span class="n">bg</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="mi">30</span><span class="p">,</span> <span class="n">t1</span><span class="o">.</span><span class="n">bg</span><span class="p">[</span><span class="mi">1</span><span class="p">]));</span> <span class="n">c</span><span class="o">.</span><span class="n">port</span><span class="p">((</span><span class="n">t1</span><span class="o">.</span><span class="n">bg</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="mi">30</span><span class="p">,</span> <span class="n">t1</span><span class="o">.</span><span class="n">bg</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span> <span class="s1">&#39;V_a&#39;</span><span class="p">,</span> <span class="s1">&#39;l&#39;</span><span class="p">)</span>
-    <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">(</span><span class="n">t2</span><span class="o">.</span><span class="n">bg</span><span class="p">,</span> <span class="p">(</span><span class="n">t2</span><span class="o">.</span><span class="n">bg</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="mi">30</span><span class="p">,</span> <span class="n">t2</span><span class="o">.</span><span class="n">bg</span><span class="p">[</span><span class="mi">1</span><span class="p">]));</span> <span class="n">c</span><span class="o">.</span><span class="n">port</span><span class="p">((</span><span class="n">t2</span><span class="o">.</span><span class="n">bg</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="mi">30</span><span class="p">,</span> <span class="n">t2</span><span class="o">.</span><span class="n">bg</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span> <span class="s1">&#39;V_b&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span>
+    <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">(</span><span class="n">t1</span><span class="o">.</span><span class="n">bg</span><span class="p">,</span> <span class="p">(</span><span class="n">t1</span><span class="o">.</span><span class="n">bg</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="mi">20</span><span class="p">,</span> <span class="n">t1</span><span class="o">.</span><span class="n">bg</span><span class="p">[</span><span class="mi">1</span><span class="p">]));</span> <span class="n">c</span><span class="o">.</span><span class="n">port</span><span class="p">((</span><span class="n">t1</span><span class="o">.</span><span class="n">bg</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="mi">20</span><span class="p">,</span> <span class="n">t1</span><span class="o">.</span><span class="n">bg</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span> <span class="s1">&#39;V_a&#39;</span><span class="p">,</span> <span class="s1">&#39;l&#39;</span><span class="p">)</span>
+    <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">(</span><span class="n">t2</span><span class="o">.</span><span class="n">bg</span><span class="p">,</span> <span class="p">(</span><span class="n">t2</span><span class="o">.</span><span class="n">bg</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="mi">20</span><span class="p">,</span> <span class="n">t2</span><span class="o">.</span><span class="n">bg</span><span class="p">[</span><span class="mi">1</span><span class="p">]));</span> <span class="n">c</span><span class="o">.</span><span class="n">port</span><span class="p">((</span><span class="n">t2</span><span class="o">.</span><span class="n">bg</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="mi">20</span><span class="p">,</span> <span class="n">t2</span><span class="o">.</span><span class="n">bg</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span> <span class="s1">&#39;V_b&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span>
     <span class="n">yt</span> <span class="o">=</span> <span class="o">-</span><span class="mi">20</span>
     <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">(</span><span class="n">t1</span><span class="o">.</span><span class="n">cd</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">yt</span><span class="p">),</span> <span class="p">(</span><span class="mi">130</span><span class="p">,</span> <span class="n">yt</span><span class="p">));</span> <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">(</span><span class="n">t2</span><span class="o">.</span><span class="n">cd</span><span class="p">,</span> <span class="p">(</span><span class="mi">130</span><span class="p">,</span> <span class="n">yt</span><span class="p">));</span> <span class="n">c</span><span class="o">.</span><span class="n">dot</span><span class="p">((</span><span class="n">mx</span><span class="p">,</span> <span class="n">yt</span><span class="p">))</span>
     <span class="n">top</span> <span class="o">=</span> <span class="p">(</span><span class="n">mx</span><span class="p">,</span> <span class="o">-</span><span class="mi">40</span><span class="p">);</span> <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">((</span><span class="n">mx</span><span class="p">,</span> <span class="n">yt</span><span class="p">),</span> <span class="n">top</span><span class="p">);</span> <span class="n">c</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">top</span><span class="p">);</span> <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">(</span><span class="n">top</span><span class="p">,</span> <span class="p">(</span><span class="mi">170</span><span class="p">,</span> <span class="n">top</span><span class="p">[</span><span class="mi">1</span><span class="p">]));</span> <span class="n">c</span><span class="o">.</span><span class="n">port</span><span class="p">((</span><span class="mi">170</span><span class="p">,</span> <span class="n">top</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span> <span class="n">OUT</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span>
@@ -2342,7 +2342,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/fme_index_28_0.svg" src="../../_images/fme_index_28_0.svg" />
+<img alt="../../_images/fme_index_28_0.svg" src="../../_images/fme_index_28_0.svg?v=fme4" />
 </div>
 </div>
 <table class="colwidths-auto table">
@@ -2373,18 +2373,18 @@ const thebe_selector_output = ".output, .cell_output"
 <span class="k">def</span> <span class="nf">xnor</span><span class="p">(</span><span class="n">c</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;XNOR&quot;&quot;&quot;</span>
     <span class="n">t1</span> <span class="o">=</span> <span class="n">c</span><span class="o">.</span><span class="n">transistor</span><span class="p">(</span><span class="s1">&#39;n&#39;</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="s1">&#39;cd&#39;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-    <span class="n">t2</span> <span class="o">=</span> <span class="n">c</span><span class="o">.</span><span class="n">transistor</span><span class="p">(</span><span class="s1">&#39;n&#39;</span><span class="p">,</span> <span class="p">(</span><span class="mi">140</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="s1">&#39;cd&#39;</span><span class="p">,</span> <span class="n">side</span><span class="o">=</span><span class="s1">&#39;right&#39;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
-    <span class="n">mx</span> <span class="o">=</span> <span class="mi">70</span>
+    <span class="n">t2</span> <span class="o">=</span> <span class="n">c</span><span class="o">.</span><span class="n">transistor</span><span class="p">(</span><span class="s1">&#39;n&#39;</span><span class="p">,</span> <span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="s1">&#39;cd&#39;</span><span class="p">,</span> <span class="n">side</span><span class="o">=</span><span class="s1">&#39;right&#39;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">mx</span> <span class="o">=</span> <span class="mi">50</span>
     <span class="n">ga</span> <span class="o">=</span> <span class="p">(</span><span class="n">t1</span><span class="o">.</span><span class="n">bg</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="mi">20</span><span class="p">,</span> <span class="n">t1</span><span class="o">.</span><span class="n">bg</span><span class="p">[</span><span class="mi">1</span><span class="p">]);</span> <span class="n">gb</span> <span class="o">=</span> <span class="p">(</span><span class="n">t2</span><span class="o">.</span><span class="n">bg</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="mi">20</span><span class="p">,</span> <span class="n">t2</span><span class="o">.</span><span class="n">bg</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
-    <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">(</span><span class="n">t1</span><span class="o">.</span><span class="n">bg</span><span class="p">,</span> <span class="n">ga</span><span class="p">);</span> <span class="n">c</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">ga</span><span class="p">);</span> <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">(</span><span class="n">ga</span><span class="p">,</span> <span class="p">(</span><span class="n">ga</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="mi">30</span><span class="p">,</span> <span class="n">ga</span><span class="p">[</span><span class="mi">1</span><span class="p">]));</span> <span class="n">c</span><span class="o">.</span><span class="n">port</span><span class="p">((</span><span class="n">ga</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="mi">30</span><span class="p">,</span> <span class="n">ga</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span> <span class="s1">&#39;V_a&#39;</span><span class="p">,</span> <span class="s1">&#39;l&#39;</span><span class="p">)</span>
-    <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">(</span><span class="n">t2</span><span class="o">.</span><span class="n">bg</span><span class="p">,</span> <span class="n">gb</span><span class="p">);</span> <span class="n">c</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">gb</span><span class="p">);</span> <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">(</span><span class="n">gb</span><span class="p">,</span> <span class="p">(</span><span class="n">gb</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="mi">30</span><span class="p">,</span> <span class="n">gb</span><span class="p">[</span><span class="mi">1</span><span class="p">]));</span> <span class="n">c</span><span class="o">.</span><span class="n">port</span><span class="p">((</span><span class="n">gb</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="mi">30</span><span class="p">,</span> <span class="n">gb</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span> <span class="s1">&#39;V_b&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span>
+    <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">(</span><span class="n">t1</span><span class="o">.</span><span class="n">bg</span><span class="p">,</span> <span class="n">ga</span><span class="p">);</span> <span class="n">c</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">ga</span><span class="p">);</span> <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">(</span><span class="n">ga</span><span class="p">,</span> <span class="p">(</span><span class="n">ga</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="mi">20</span><span class="p">,</span> <span class="n">ga</span><span class="p">[</span><span class="mi">1</span><span class="p">]));</span> <span class="n">c</span><span class="o">.</span><span class="n">port</span><span class="p">((</span><span class="n">ga</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="mi">20</span><span class="p">,</span> <span class="n">ga</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span> <span class="s1">&#39;V_a&#39;</span><span class="p">,</span> <span class="s1">&#39;l&#39;</span><span class="p">)</span>
+    <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">(</span><span class="n">t2</span><span class="o">.</span><span class="n">bg</span><span class="p">,</span> <span class="n">gb</span><span class="p">);</span> <span class="n">c</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">gb</span><span class="p">);</span> <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">(</span><span class="n">gb</span><span class="p">,</span> <span class="p">(</span><span class="n">gb</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="mi">20</span><span class="p">,</span> <span class="n">gb</span><span class="p">[</span><span class="mi">1</span><span class="p">]));</span> <span class="n">c</span><span class="o">.</span><span class="n">port</span><span class="p">((</span><span class="n">gb</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="mi">20</span><span class="p">,</span> <span class="n">gb</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span> <span class="s1">&#39;V_b&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span>
     <span class="n">yt</span> <span class="o">=</span> <span class="o">-</span><span class="mi">20</span>
-    <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">(</span><span class="n">t1</span><span class="o">.</span><span class="n">cd</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">yt</span><span class="p">),</span> <span class="p">(</span><span class="n">mx</span><span class="p">,</span> <span class="n">yt</span><span class="p">));</span> <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">(</span><span class="n">t2</span><span class="o">.</span><span class="n">cd</span><span class="p">,</span> <span class="p">(</span><span class="mi">140</span><span class="p">,</span> <span class="n">yt</span><span class="p">),</span> <span class="p">(</span><span class="n">mx</span><span class="p">,</span> <span class="n">yt</span><span class="p">));</span> <span class="n">c</span><span class="o">.</span><span class="n">dot</span><span class="p">((</span><span class="n">mx</span><span class="p">,</span> <span class="n">yt</span><span class="p">))</span>
-    <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">((</span><span class="n">mx</span><span class="p">,</span> <span class="n">yt</span><span class="p">),</span> <span class="p">(</span><span class="n">mx</span><span class="p">,</span> <span class="o">-</span><span class="mi">40</span><span class="p">));</span> <span class="n">c</span><span class="o">.</span><span class="n">dot</span><span class="p">((</span><span class="n">mx</span><span class="p">,</span> <span class="o">-</span><span class="mi">40</span><span class="p">));</span> <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">((</span><span class="n">mx</span><span class="p">,</span> <span class="o">-</span><span class="mi">40</span><span class="p">),</span> <span class="p">(</span><span class="n">gb</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="mi">30</span><span class="p">,</span> <span class="o">-</span><span class="mi">40</span><span class="p">));</span> <span class="n">c</span><span class="o">.</span><span class="n">port</span><span class="p">((</span><span class="n">gb</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="mi">30</span><span class="p">,</span> <span class="o">-</span><span class="mi">40</span><span class="p">),</span> <span class="n">OUT</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span>
+    <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">(</span><span class="n">t1</span><span class="o">.</span><span class="n">cd</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">yt</span><span class="p">),</span> <span class="p">(</span><span class="n">mx</span><span class="p">,</span> <span class="n">yt</span><span class="p">));</span> <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">(</span><span class="n">t2</span><span class="o">.</span><span class="n">cd</span><span class="p">,</span> <span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="n">yt</span><span class="p">),</span> <span class="p">(</span><span class="n">mx</span><span class="p">,</span> <span class="n">yt</span><span class="p">));</span> <span class="n">c</span><span class="o">.</span><span class="n">dot</span><span class="p">((</span><span class="n">mx</span><span class="p">,</span> <span class="n">yt</span><span class="p">))</span>
+    <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">((</span><span class="n">mx</span><span class="p">,</span> <span class="n">yt</span><span class="p">),</span> <span class="p">(</span><span class="n">mx</span><span class="p">,</span> <span class="o">-</span><span class="mi">40</span><span class="p">));</span> <span class="n">c</span><span class="o">.</span><span class="n">dot</span><span class="p">((</span><span class="n">mx</span><span class="p">,</span> <span class="o">-</span><span class="mi">40</span><span class="p">));</span> <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">((</span><span class="n">mx</span><span class="p">,</span> <span class="o">-</span><span class="mi">40</span><span class="p">),</span> <span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="o">-</span><span class="mi">40</span><span class="p">));</span> <span class="n">c</span><span class="o">.</span><span class="n">port</span><span class="p">((</span><span class="mi">100</span><span class="p">,</span> <span class="o">-</span><span class="mi">40</span><span class="p">),</span> <span class="n">OUT</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span>
     <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">((</span><span class="n">mx</span><span class="p">,</span> <span class="o">-</span><span class="mi">40</span><span class="p">),</span> <span class="p">(</span><span class="n">mx</span><span class="p">,</span> <span class="o">-</span><span class="mi">70</span><span class="p">));</span> <span class="n">c</span><span class="o">.</span><span class="n">port</span><span class="p">((</span><span class="n">mx</span><span class="p">,</span> <span class="o">-</span><span class="mi">70</span><span class="p">),</span> <span class="s1">&#39;I_bias&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span>
     <span class="n">y1</span><span class="p">,</span> <span class="n">y2</span> <span class="o">=</span> <span class="n">t1</span><span class="o">.</span><span class="n">es</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="mi">20</span><span class="p">,</span> <span class="n">t1</span><span class="o">.</span><span class="n">es</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="mi">40</span>
     <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">(</span><span class="n">t1</span><span class="o">.</span><span class="n">es</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">y1</span><span class="p">),</span> <span class="p">(</span><span class="n">mx</span> <span class="o">-</span> <span class="mi">15</span><span class="p">,</span> <span class="n">y1</span><span class="p">),</span> <span class="p">(</span><span class="n">mx</span> <span class="o">+</span> <span class="mi">15</span><span class="p">,</span> <span class="n">y2</span><span class="p">),</span> <span class="p">(</span><span class="n">gb</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">y2</span><span class="p">),</span> <span class="n">gb</span><span class="p">)</span>
-    <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">(</span><span class="n">t2</span><span class="o">.</span><span class="n">es</span><span class="p">,</span> <span class="p">(</span><span class="mi">140</span><span class="p">,</span> <span class="n">y1</span><span class="p">),</span> <span class="p">(</span><span class="n">mx</span> <span class="o">+</span> <span class="mi">15</span><span class="p">,</span> <span class="n">y1</span><span class="p">),</span> <span class="p">(</span><span class="n">mx</span> <span class="o">-</span> <span class="mi">15</span><span class="p">,</span> <span class="n">y2</span><span class="p">),</span> <span class="p">(</span><span class="n">ga</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">y2</span><span class="p">),</span> <span class="n">ga</span><span class="p">)</span>
+    <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">(</span><span class="n">t2</span><span class="o">.</span><span class="n">es</span><span class="p">,</span> <span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="n">y1</span><span class="p">),</span> <span class="p">(</span><span class="n">mx</span> <span class="o">+</span> <span class="mi">15</span><span class="p">,</span> <span class="n">y1</span><span class="p">),</span> <span class="p">(</span><span class="n">mx</span> <span class="o">-</span> <span class="mi">15</span><span class="p">,</span> <span class="n">y2</span><span class="p">),</span> <span class="p">(</span><span class="n">ga</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">y2</span><span class="p">),</span> <span class="n">ga</span><span class="p">)</span>
 
 
 <span class="k">def</span> <span class="nf">mixer</span><span class="p">(</span><span class="n">c</span><span class="p">):</span>
@@ -2400,7 +2400,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/fme_index_29_0.svg" src="../../_images/fme_index_29_0.svg" />
+<img alt="../../_images/fme_index_29_0.svg" src="../../_images/fme_index_29_0.svg?v=fme4" />
 </div>
 </div>
 <table class="colwidths-auto table">
@@ -2425,7 +2425,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 <div class="section" id="symbols">
 <h2>Symbols<a class="headerlink" href="#symbols" title="Permalink to this headline">¶</a></h2>
-<p>The symbols used on this page, at one scale. Their proportions were measured from the figures of [2]. The BJT and the MOSFET share one footprint, so the two columns of every figure line up.</p>
+<p>The symbols used on this page, at one scale. Their proportions were measured from the figures of [2]. The BJT and the MOSFET share one footprint, so the two versions of every circuit line up.</p>
 <div class="cell tag_hide_input docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># HIDE/SHOW</span>
@@ -2434,7 +2434,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/fme_index_30_0.svg" src="../../_images/fme_index_30_0.svg" />
+<img alt="../../_images/fme_index_30_0.svg" src="../../_images/fme_index_30_0.svg?v=fme4" />
 </div>
 </div>
 </div>
