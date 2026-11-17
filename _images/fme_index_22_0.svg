@@ -122,17 +122,17 @@ L 319.06377 215.80125
 " clip-path="url(#pd512be1390)" style="fill: none; stroke: #000000; stroke-width: 3.375; stroke-linejoin: miter"/>
    </g>
    <g id="line2d_16">
-    <path d="M 192.80127 188.82 
-L 192.80127 164.07 
-L 210.80127 164.07 
-" clip-path="url(#pd512be1390)" style="fill: none; stroke: #000000; stroke-width: 2.025; stroke-linejoin: miter"/>
+    <path d="M 191.48877 190.3575 
+L 191.48877 164.82 
+L 200.48877 164.82 
+" clip-path="url(#pd512be1390)" style="fill: none; stroke: #e00000; stroke-width: 1.6875; stroke-linejoin: miter"/>
    </g>
    <g id="patch_4">
-    <path d="M 220.92627 164.07 
-L 210.23877 168.57 
-L 210.23877 159.57 
+    <path d="M 221.52627 164.82 
+L 199.92627 169.995 
+L 199.92627 159.645 
 z
-" clip-path="url(#pd512be1390)" style="stroke: #000000; stroke-width: 0.45; stroke-linejoin: miter"/>
+" clip-path="url(#pd512be1390)" style="fill: #e00000"/>
    </g>
    <g id="patch_5">
     <path d="M 316.36377 35.94 
@@ -809,7 +809,7 @@ z
    </g>
    <g id="text_7">
     <!-- $R_{\mathrm{in}}$ -->
-    <g transform="translate(184.34127 202.53) scale(0.12 -0.12)">
+    <g style="fill: #e00000" transform="translate(183.02877 204.0675) scale(0.12 -0.12)">
      <defs>
       <path id="Cmmi10-52" d="M 313 0 
 Q 250 0 250 84 
@@ -1004,17 +1004,17 @@ L 574.06377 215.80125
 " clip-path="url(#pd68bf14987)" style="fill: none; stroke: #000000; stroke-width: 3.375; stroke-linejoin: miter"/>
    </g>
    <g id="line2d_34">
-    <path d="M 447.80127 188.82 
-L 447.80127 164.07 
-L 465.80127 164.07 
-" clip-path="url(#pd68bf14987)" style="fill: none; stroke: #000000; stroke-width: 2.025; stroke-linejoin: miter"/>
+    <path d="M 446.48877 190.3575 
+L 446.48877 164.82 
+L 455.48877 164.82 
+" clip-path="url(#pd68bf14987)" style="fill: none; stroke: #e00000; stroke-width: 1.6875; stroke-linejoin: miter"/>
    </g>
    <g id="patch_13">
-    <path d="M 475.92627 164.07 
-L 465.23877 168.57 
-L 465.23877 159.57 
+    <path d="M 476.52627 164.82 
+L 454.92627 169.995 
+L 454.92627 159.645 
 z
-" clip-path="url(#pd68bf14987)" style="stroke: #000000; stroke-width: 0.45; stroke-linejoin: miter"/>
+" clip-path="url(#pd68bf14987)" style="fill: #e00000"/>
    </g>
    <g id="patch_14">
     <path d="M 571.36377 35.94 
@@ -1210,7 +1210,7 @@ z
    </g>
    <g id="text_15">
     <!-- $R_{\mathrm{in}}$ -->
-    <g transform="translate(439.34127 202.53) scale(0.12 -0.12)">
+    <g style="fill: #e00000" transform="translate(438.02877 204.0675) scale(0.12 -0.12)">
      <use xlink:href="#Cmmi10-52" transform="translate(0 0.6875)"/>
      <use xlink:href="#Cmr10-69" transform="translate(75.878906 -16.31875) scale(0.7)"/>
      <use xlink:href="#Cmr10-6e" transform="translate(95.258789 -16.31875) scale(0.7)"/>
