@@ -1,0 +1,19 @@
+"""razavi: circuit symbols measured from Razavi's "Fundamentals of Microelectronics",
+a tiny schematic layout layer, and renderers (matplotlib, SVG, draw.io).
+
+    from razavi import show, symbol_sheet
+    def inverter(c): ...
+    show(inverter)            # BJT panel | MOSFET panel
+"""
+from . import symbols, scene, tex, poly
+from .scene import Scene
+from .ckt import Ckt, mid
+
+__all__ = ['symbols', 'scene', 'tex', 'poly', 'Scene', 'Ckt', 'mid', 'show', 'grid', 'panels', 'build', 'draw', 'names', 'symbol_sheet']
+
+
+def __getattr__(name):          # matplotlib is imported only when a renderer is used
+    if name in ('show', 'grid', 'panels', 'build', 'draw', 'names', 'symbol_sheet'):
+        from . import mpl
+        return getattr(mpl, name)
+    raise AttributeError(name)

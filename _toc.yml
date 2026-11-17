@@ -18,6 +18,10 @@ parts:
     - file: courses/dsp/signals.ipynb    
     - file: courses/dsp/systems.ipynb
 
+  - caption: Fundamentals of Microelectronics
+    chapters:
+    - file: courses/fme/index.ipynb
+
   - caption: Medical Image Processing
     chapters:
     - file: courses/mip/intro.md     
