@@ -11,7 +11,7 @@ Coordinates are px on a 10-px grid; the main column of leads is at x = 0.
 The two-transistor circuits follow Pretl & Eberlein, "Fifty Nifty Variations of Two-Transistor
 Circuits", IEEE Solid-State Circuits Magazine 13(3), 2021.
 """
-from .ckt import mid, RED
+from .ckt import mid, RED, MOSFET
 
 IN, OUT = 'V_in', 'V_out'
 
@@ -87,6 +87,8 @@ def role_switch(c):
     c.w(t1.cd, (t1.cd[0] - 40, 0)); c.port((t1.cd[0] - 40, 0), 'V_1', 'l')
     c.w(t1.es, (t1.es[0] + 40, 0)); c.port((t1.es[0] + 40, 0), 'V_2', 'r')
     c.w(t1.bg, (t1.bg[0], t1.bg[1] - 20)); c.port((t1.bg[0], t1.bg[1] - 20), 'V_on', 't')
+    if c.device is MOSFET:                                  # only the MOSFET is a resistance when it is on
+        c.look((t1.cd[0] - 40, 0), 'r', 'd', 'R_on')
 
 
 def role_resistor(c):
@@ -166,7 +168,7 @@ def into_emitter_base_resistance(c):
 
 
 # ================================================================ one transistor: voltage gain
-# The eight stages inside the back cover of Razavi, each with its gain written underneath, as printed.
+# The eight stages inside the back cover of Razavi.  The gain, printed under each stage, is its note.
 def gain_common_emitter(c):
     """Common emitter | Common source"""
     t = c.transistor('n', (0, 0), 'cd')
@@ -177,7 +179,6 @@ def gain_common_emitter(c):
     c.w(out, (50, -20)); c.port((50, -20), 'v_out', 'r')
     c.w(t.es, (0, 100)); c.gnd((0, 100))
     c.w(t.bg, (t.bg[0] - 30, 40)); c.port((t.bg[0] - 30, 40), 'v_in', 'l')
-    c.caption(r'$A_v=-g_m(R_%s\|r_O)$' % C)
 
 
 def gain_degenerated(c):
@@ -190,7 +191,6 @@ def gain_degenerated(c):
     c.w(out, (50, -20)); c.port((50, -20), 'v_out', 'r')
     c.w(t.es, (0, 100)); c.w(c.res((0, 100), 'R_' + E), (0, 180)); c.gnd((0, 180))
     c.w(t.bg, (t.bg[0] - 30, 40)); c.port((t.bg[0] - 30, 40), 'v_in', 'l')
-    c.caption(r'$A_v=-\dfrac{R_%s}{\frac{1}{g_m}+R_%s}$' % (C, E))
 
 
 def gain_common_base(c):
@@ -205,7 +205,6 @@ def gain_common_base(c):
     c.w(t.es, (0, 100), (-20, 100))
     left = c.res((-20, 100), 'R_' + E, to='left')
     c.w(left, (left[0] - 20, 100)); c.port((left[0] - 20, 100), 'v_in', 'l')
-    c.caption(r'$A_v=\dfrac{R_%s}{\frac{1}{g_m}+R_%s}$' % (C, E))
 
 
 def gain_follower(c):
@@ -218,7 +217,6 @@ def gain_follower(c):
     c.w(out, (50, 100)); c.port((50, 100), 'v_out', 'r')
     c.w(c.res((0, 120), 'R_' + E), (0, 200)); c.gnd((0, 200))
     c.w(t.bg, (t.bg[0] - 30, 40)); c.port((t.bg[0] - 30, 40), 'v_in', 'l')
-    c.caption(r'$A_v=\dfrac{R_%s\|r_O}{\frac{1}{g_m}+R_%s\|r_O}$' % (E, E))
 
 
 # ================================================================ helpers shared by several circuits
@@ -231,10 +229,13 @@ def capacitor_to_ground(c, node):
     c.dot((node[0], yb)); c.w((node[0], yb), (node[0], yb + 10)); c.gnd((node[0], yb + 10))
 
 
-def pass_device_and_capacitor(c, control):
-    """first transistor as a pass device from the input to a node that the second one loads as a capacitor"""
+def pass_device_and_capacitor(c, control, resistance=None):
+    """first transistor as a pass device from the input to a node that the second one loads as a capacitor;
+    `resistance` names the resistance of the pass device, if the note of the circuit uses it"""
     t1 = c.transistor('n', (0, 0), 'cd', side='right', rot=3, name=1)
     c.w(t1.cd, (-30, 0)); c.port((-30, 0), IN, 'l')
+    if resistance:
+        c.look((-30, 0), 'r', 'd', resistance)
     c.w(t1.bg, (t1.bg[0], t1.bg[1] - 20)); c.port((t1.bg[0], t1.bg[1] - 20), control, 't')
     node = (130, 0)
     c.w(t1.es, node); c.dot(node); c.w(node, (180, 0)); c.port((180, 0), OUT, 'r')
@@ -323,7 +324,7 @@ def active_load(c):
     g = (0, t1.es[1] + 20); c.gnd(g); c.w(t1.es, g)
     c.w(t2.bg, (t2.bg[0] - 30, t2.bg[1])); c.port((t2.bg[0] - 30, t2.bg[1]), 'V_bias', 'l')
     c.w(t1.bg, (t1.bg[0] - 30, t1.bg[1])); c.port((t1.bg[0] - 30, t1.bg[1]), IN, 'l')
-    c.dot(j); c.w(j, (50, j[1])); c.port((50, j[1]), OUT, 'r')
+    c.dot(j); c.w(j, (50, j[1])); c.port((50, j[1]), OUT, 'r'); c.look((50, j[1]), 'l', 'd', 'R_out')
 
 
 def inverter(c):
@@ -335,6 +336,8 @@ def inverter(c):
     c.bus([p, n], xin)
     c.dot((xin, j[1])); c.w((xin, j[1]), (xin - 30, j[1])); c.port((xin - 30, j[1]), IN, 'l')
     c.dot(j); c.w(j, (50, j[1])); c.port((50, j[1]), OUT, 'r')
+    if c.device is MOSFET:                                  # the BJT version has no gain to speak of
+        c.look((50, j[1]), 'l', 'd', 'R_out')
 
 
 def diode_load(c):
@@ -379,6 +382,7 @@ def tunable_degeneration(c):
     c.w(t1.cd, (0, -50)); c.port((0, -50), 'I_out', 'r')
     c.w(t1.bg, (t1.bg[0] - 30, t1.bg[1])); c.port((t1.bg[0] - 30, t1.bg[1]), IN, 'l')
     c.w(t2.bg, (t2.bg[0] - 30, t2.bg[1])); c.port((t2.bg[0] - 30, t2.bg[1]), 'V_bias', 'l')
+    c.look(j, 'd', 'r', 'R_on2')
 
 
 # ================================================================ 3. buffers
@@ -657,7 +661,7 @@ def sample_and_hold(c):
 
 def low_pass(c):
     """- | Low-pass filter"""
-    pass_device_and_capacitor(c, 'V_bias')
+    pass_device_and_capacitor(c, 'V_bias', resistance='R_on1')
 
 
 def peak_detector(c):

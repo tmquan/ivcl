@@ -126,8 +126,9 @@ def names(circuit):
 LABEL_W, PANEL_W = 170, 340    # px: three columns of 20 % | 40 % | 40 %, the same in every figure
 HEAD_H, MARGIN = 34, 12
 LABEL, LINE, PARA = 16, 21, 9  # label column: font size, line height, space between two names (px)
+NOTE, NOTE_W, NOTE_LEAD = 15, 300, 5   # note under a drawing: font size, widest line, space between lines (px)
 RULE = '0.82'
-NOTE = '0.45'                  # grey of the note in a cell without a drawing
+GREY = '0.45'                  # grey of a cell without a drawing
 
 
 def _wrap(text, size, width):
@@ -154,45 +155,95 @@ def _label(titles):
     return out, y - PARA
 
 
+def _words(text):
+    """words of a sentence; a formula between $ signs stays in one piece"""
+    out, cur, maths = [], '', False
+    for ch in text:
+        if ch == ' ' and not maths:
+            if cur:
+                out.append(cur)
+            cur = ''
+        else:
+            maths ^= ch == '$'
+            cur += ch
+    return out + ([cur] if cur else [])
+
+
+def _note(text):
+    """a note set under a drawing: [(line, baseline below the top of the note)], height.
+    Lines are at most NOTE_W wide; a line with a fraction in it is as tall as it needs to be."""
+    if not text:
+        return [], 0
+    lines, cur = [], ''
+    for word in _words(text):
+        trial = (cur + ' ' + word).strip()
+        x0, _, x1, _ = T.extent(trial, NOTE, 'mixed')
+        if cur and x1 - x0 > NOTE_W:
+            lines.append(cur); cur = word
+        else:
+            cur = trial
+    out, y = [], 0.0
+    for line in lines + [cur]:
+        _, lo, _, hi = T.extent(line, NOTE, 'mixed')
+        up, down = max(hi, 0.72 * NOTE), max(-lo, 0.22 * NOTE)
+        out.append((line, y + up)); y += up + down + NOTE_LEAD
+    return out, y - NOTE_LEAD
+
+
 def grid(rows, heads=('BJT', 'MOSFET'), zoom=1.0):
-    """rows = [((scene, scene), (name, name)), ...]: one row per circuit.
-    Three columns, as in the tables: the names of the circuit, then one panel per technology.
-    Every drawing is centred in its cell.  A scene given as None gives a cell that says
-    "No ... version"."""
-    boxes = []
-    for scenes, _ in rows:
+    """rows = [(scenes, names, notes), ...]: one row per circuit, with one scene, one name and one note
+    per technology.  Three columns: the names of the circuit, then one cell per technology that holds
+    the drawing, centred, and its note right under it.  A scene given as None gives a cell that says
+    "No ... version"; its note says why."""
+    boxes, labels, notes = [], [], []
+    for scenes, titles, texts in rows:
         b = [sc.bounds() for sc in scenes if sc is not None]
         boxes.append((min(q[0] for q in b), min(q[1] for q in b), max(q[2] for q in b), max(q[3] for q in b)))
-    labels = [_label(titles) for _, titles in rows]
+        labels.append(_label(titles))
+        notes.append([_note(t) for t in texts])
     n = len(heads)
     pw = max([PANEL_W] + [q[2] - q[0] + 2 * MARGIN for q in boxes])
     lw = pw * LABEL_W / PANEL_W
-    hs = [max(q[3] - q[1], lab[1]) + 2 * MARGIN for q, lab in zip(boxes, labels)]
+    hd = [q[3] - q[1] + 2 * MARGIN for q in boxes]                    # height of the drawings of a row
+    hs = []
+    for (scenes, _, _), d, row, lab in zip(rows, hd, notes, labels):
+        under = max([h for sc, (_, h) in zip(scenes, row) if sc is not None] + [0])     # notes under drawings
+        alone = max([LINE + PARA + h for sc, (_, h) in zip(scenes, row) if sc is None] + [0])   # a cell of text only
+        hs.append(max(d + (under + MARGIN if under else 0), alone + 2 * MARGIN, lab[1] + 2 * MARGIN))
     W = lw + n * pw
     H = HEAD_H + sum(hs)
     fig = plt.figure(figsize=(W * zoom / 96.0, H * zoom / 96.0))
     k = PT * zoom
     reg, bold = T._fonts()
+    roman = lambda size: FontProperties(fname=reg, size=size * k, math_fontfamily='cm')
     for j, head in enumerate(heads):                                  # column heads
         fig.text((lw + j * pw + pw / 2) / W, 1 - 0.5 * HEAD_H / H, head, ha='center', va='center',
                  fontproperties=FontProperties(fname=bold, size=18 * k))
     rule = lambda xs, ys: fig.add_artist(Line2D(xs, ys, transform=fig.transFigure, color=RULE, lw=0.8))
     y = HEAD_H
-    for (scenes, titles), q, h, (lines, lh) in zip(rows, boxes, hs, labels):
+    for (scenes, titles, texts), h, d, (lines, lh), cells in zip(rows, hs, hd, labels, notes):
         rule([0, 1], [1 - y / H] * 2)
         for text, dy in lines:                                        # first column: the names of the circuit
             fig.text(MARGIN / W, 1 - (y + (h - lh) / 2 + dy + 0.5 * LINE) / H, text, ha='left', va='center',
-                     fontproperties=FontProperties(fname=reg, size=LABEL * k))
-        for j, sc in enumerate(scenes):
-            if sc is None:                                            # no such version: the cell says so
-                fig.text((lw + j * pw + pw / 2) / W, 1 - (y + h / 2) / H, 'No %s version' % heads[j], ha='center',
-                         va='center', color=NOTE, fontproperties=FontProperties(fname=reg, size=LABEL * k))
+                     fontproperties=roman(LABEL))
+        for j, (sc, (note, nh)) in enumerate(zip(scenes, cells)):
+            xc = lw + j * pw + pw / 2
+            if sc is None:                                            # no such version: the cell says so, and why,
+                top = y + (h - (LINE + PARA + nh)) / 2                # in the middle of the cell
+                fig.text(xc / W, 1 - (top + LINE / 2) / H, 'No %s version' % heads[j], ha='center', va='center',
+                         color=GREY, fontproperties=roman(LABEL))
+                for line, base in note:
+                    fig.text(xc / W, 1 - (top + LINE + PARA + base) / H, line, ha='center', va='baseline',
+                             color=GREY, fontproperties=roman(NOTE))
                 continue
+            for line, base in note:                                   # the note, right under the drawing
+                fig.text(xc / W, 1 - (y + d + base) / H, line, ha='center', va='baseline',
+                         fontproperties=roman(NOTE))
             b = sc.bounds()                                           # each drawing is centred in its own cell
             cx, cy = (b[0] + b[2]) / 2, (b[1] + b[3]) / 2
-            ax = fig.add_axes([(lw + j * pw) / W, 1 - (y + h) / H, pw / W, h / H])
+            ax = fig.add_axes([(lw + j * pw) / W, 1 - (y + d) / H, pw / W, d / H])
             ax.set_xlim(cx - pw / 2, cx + pw / 2)
-            ax.set_ylim(cy + h / 2, cy - h / 2)
+            ax.set_ylim(cy + d / 2, cy - d / 2)
             ax.axis('off')
             draw(ax, sc, k)
         y += h
@@ -202,14 +253,17 @@ def grid(rows, heads=('BJT', 'MOSFET'), zoom=1.0):
     return fig
 
 
-def show(*circuits, zoom=1.0, devices=(BJT, MOSFET)):
+def show(*circuits, notes=None, zoom=1.0, devices=(BJT, MOSFET)):
     """Three columns: the names of a circuit, the circuit drawn with BJTs, and drawn with MOSFETs.
-    One row per circuit.  A circuit whose docstring names one version as "-" exists in the other
-    technology only, and that cell says so."""
+    One row per circuit.  notes holds, for every circuit, the text that goes right under its two
+    drawings: a pair (BJT, MOSFET), or one text for both.  A circuit whose docstring names one
+    version as "-" exists in the other technology only; that cell says so, and its note says why."""
     rows = []
-    for f in circuits:
+    for i, f in enumerate(circuits):
         nm = names(f)
-        rows.append((tuple(build(f, d) if nm[j] else None for j, d in enumerate(devices)), nm))
+        note = notes[i] if notes else ''
+        note = (note, note) if isinstance(note, str) else tuple(note)
+        rows.append((tuple(build(f, d) if nm[j] else None for j, d in enumerate(devices)), nm, note))
     grid(rows, tuple(d.__name__ for d in devices), zoom)
 
 

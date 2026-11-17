@@ -55,14 +55,16 @@ def _fonts():
 
 
 def text_path(s, size, mode='math'):
-    """mode 'math': s is LaTeX maths;  'text' / 'bold': s is plain text set in Computer Modern Roman / Bold.
-    -> matplotlib Path in px, baseline at y = 0, y up."""
+    """mode 'math': s is LaTeX maths;  'text' / 'bold': s is plain text set in Computer Modern Roman / Bold;
+    'mixed': s is a sentence with $maths$ in it.  -> matplotlib Path in px, baseline at y = 0, y up."""
     key = (s, round(size, 3), mode)
     if key not in _cache:
         from matplotlib.textpath import TextPath
         from matplotlib.font_manager import FontProperties
         if mode == 'math':
             tp = TextPath((0, 0), '$%s$' % s, size=size, prop=FontProperties(family='serif', math_fontfamily='cm'))
+        elif mode == 'mixed':
+            tp = TextPath((0, 0), s, size=size, prop=FontProperties(fname=_fonts()[0], math_fontfamily='cm'))
         else:
             reg, bold = _fonts()
             tp = TextPath((0, 0), s, size=size, prop=FontProperties(fname=bold if mode == 'bold' else reg))

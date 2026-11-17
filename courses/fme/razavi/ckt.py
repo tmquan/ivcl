@@ -238,11 +238,6 @@ class Ckt:
         else:
             sc.text(label, p[0], p[1] + 17, 'middle', color=color)
 
-    def caption(self, text, gap=34):
-        """a line under the drawing, as the book writes the gain under each stage"""
-        x0, _, x1, y1 = self.sc.bounds()
-        self.sc.text(text, (x0 + x1) / 2, y1 + gap, 'middle')
-
     def w(self, *pts):
         self.sc.wire(*pts)
 
