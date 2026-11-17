@@ -14,7 +14,8 @@ The shared terminal names read "base or gate", "collector or drain", "emitter or
 """
 import math
 
-from .scene import Scene
+from . import symbols as S
+from .scene import Scene, Inst
 
 STEP = 20   # standard lead length / grid step
 
@@ -128,12 +129,39 @@ class Ckt:
         """terminal letter in this drawing: 'cd' -> C or D"""
         return self.device.pin(name)
 
-    def res(self, p, label=None):
-        """vertical resistor with its upper end at p; returns the lower end"""
-        i = self.sc.put('resistor', 'a', p)
-        if label:
+    def res(self, p, label=None, to='down'):
+        """resistor with one end at p, running 'down', 'left' or 'right'; returns the other end"""
+        want = {'down': (0, 1), 'left': (-1, 0), 'right': (1, 0)}[to]
+        rot = next(r for r in range(4) if _dir(Inst('resistor', 0, 0, r, False, S.SYM['resistor']).t, 'a', 'b') == want)
+        i = self.sc.put('resistor', 'a', p, rot)
+        if label and to == 'down':
             self.sc.text(label, p[0] + 18, p[1] + 30, 'start')
+        elif label:
+            self.sc.text(label, (p[0] + i.t['b'][0]) / 2, p[1] + 22, 'middle')
         return i.t['b']
+
+    def load(self, p):
+        """generic load, drawn as a box, with its upper end at p; returns the lower end"""
+        return self.sc.put('load', 'a', p).t['b']
+
+    def look(self, p, into, side, label=None, shift=0, gap=17):
+        """Mark the impedance seen at the point p with an arrow that has a 90-degree corner.
+        into: direction of view, 'l', 'r', 'u' or 'd'.  The arrow sits beside the lead on the
+        given side; its tail leaves towards that side and carries the label."""
+        a, b = _UNIT[into], _UNIT[side]
+        for rot, mir in ((r, m) for r in range(4) for m in (False, True)):
+            t = Inst('look', 0, 0, rot, mir, S.SYM['look']).t
+            if _dir(t, 'corner', 'tip') == a and _dir(t, 'corner', 'tail') == b:
+                break
+        back = shift - S.SYM['look']['w'] / 2 + 4
+        corner = (p[0] + a[0] * back + b[0] * gap, p[1] + a[1] * back + b[1] * gap)
+        i = self.sc.add('look', corner[0] - t['corner'][0], corner[1] - t['corner'][1], rot, mir)
+        if label:
+            x, y = i.t['tail']
+            if b[1]:
+                self.sc.text(label, x, y + 13 * b[1], 'middle')
+            else:
+                self.sc.text(label, x + 7 * b[0], y, 'start' if b[0] > 0 else 'end')
 
     # ---- rails / ports ------------------------------------------------
     def supply(self, p, side='r'):
@@ -147,10 +175,17 @@ class Ckt:
     def gnd(self, p):
         self.sc.put('ground', 't', p)
 
+    def ac(self, p):
+        """ac ground: a ground symbol marked "ac" """
+        self.sc.put('ground', 't', p)
+        self.sc.text('~ac', p[0], p[1] + 33, 'middle', 13)
+
     def port(self, p, label, side='l', dx=10):
         """open terminal with a label on the given side: 'l', 'r', 't' or 'b'"""
         sc = self.sc
         sc.dot(p, True)
+        if not label:
+            return
         if side == 'l':
             sc.text(label, p[0] - dx, p[1], 'end')
         elif side == 'r':
@@ -198,6 +233,15 @@ class Ckt:
             self.w(t.bg, (x, t.bg[1]))
         ys = [t.bg[1] for t in devs]
         self.w((x, min(ys)), (x, max(ys)))
+
+
+_UNIT = {'l': (-1, 0), 'r': (1, 0), 'u': (0, -1), 'd': (0, 1)}
+
+
+def _dir(points, a, b):
+    """unit step from point a to point b of a symbol, as (-1 | 0 | 1, -1 | 0 | 1)"""
+    sign = lambda v: (v > 1e-9) - (v < -1e-9)
+    return (sign(points[b][0] - points[a][0]), sign(points[b][1] - points[a][1]))
 
 
 def mid(a, b):

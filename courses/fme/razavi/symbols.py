@@ -54,6 +54,8 @@ DOT = dict(r=3.46)                                       # junction dot (dia 6.9
 OPA = dict(H=53.6, Wd=53.3, wt=3.2, yi=10.9, px=9.05, py=-13.5, mx=8.95, my=13.2, sw=7.9, ss=1.8)
 BULK = dict(on=3.0, off=3.0)                             # dashed substrate lead (Fig. 6.29)
 NUB = 2.0                                                # book px: stub kept on a lead-free body
+LOOK = dict(L=25.0, T=22.0, w=1.8, hL=9.5, hW=8.0)       # hooked arrow of an impedance (inside back cover): shaft, tail
+LOADBOX = dict(w=10.0, h=24.0, t=2.6)                    # generic load drawn as a box (inside back cover)
 
 
 def _tri(tip, d, L, Wd):
@@ -398,6 +400,34 @@ def opamp():
                 dict(inp=(0, -OPA['yi']), inn=(0, OPA['yi']), out=(OPA['Wd'], 0)))
 
 
+def b_load(top, bot):
+    w, h, t = LOADBOX['w'] / 2, LOADBOX['h'] / 2, LOADBOX['t']
+    pr = [('line', [(0, -h), (w, -h), (w, h), (-w, h), (-w, -h), (0, -h)], t, 'butt', 'miter')]
+    if top is not None:
+        pr += _ln([(0, top), (0, -h)], WIRE)
+    if bot is not None:
+        pr += _ln([(0, h), (0, bot)], WIRE)
+    return pr
+
+
+def load():
+    """generic load: a box between two leads"""
+    h = LOADBOX['h'] / 2
+    return _sym(20, 60, 10, 30, lambda B: b_load(B(y=0)[1], B(y=60)[1]), lambda: b_load(-h - NUB, h + NUB),
+                dict(a=(10, 0), b=(10, 60)), dict(a=(0, -h), b=(0, h)), in_book=False)
+
+
+def look():
+    """arrow with a 90-degree corner that marks an impedance: the head points into the circuit,
+    the tail leads to the label.  Corner at the origin, head along +x, tail along +y."""
+    k = LOOK
+    f = lambda *a: [('line', [(0, k['T']), (0, 0), (k['L'] - k['hL'] + 0.5, 0)], k['w'], 'butt', 'miter'),
+                    ('poly', _tri((k['L'], 0), (1, 0), k['hL'], k['hW']), 0.4, 'miter')]
+    w, h = round(S * k['L'], 3), round(S * k['T'], 3)
+    return _sym(w, h, 0, 0, f, f, dict(corner=(0, 0), tip=(w, 0), tail=(0, h)),
+                dict(corner=(0, 0), tip=(k['L'], 0), tail=(0, k['T'])), in_book=False)
+
+
 # ---------------------------------------------------------------- catalogue
 TRANSISTORS = {
     'nmos': lambda h: mos('n', h=h), 'pmos': lambda h: mos('p', h=h),
@@ -435,6 +465,8 @@ CATALOG = [
 SYM = {k: v for k, _, v in CATALOG}
 TITLE = {k: t for k, t, _ in CATALOG}
 COMPACT = {k: f(40) for k, f in TRANSISTORS.items()}      # 40 x 40 transistors with short leads
+SYM.update(load=load(), look=look())                      # used by the figures only, not part of the library
+TITLE.update(load='Load', look='Impedance arrow')
 
 
 # ---------------------------------------------------------------- transform / export
