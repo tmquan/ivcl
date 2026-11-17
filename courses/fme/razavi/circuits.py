@@ -382,14 +382,14 @@ def active_inductor(c):
 def differential_pair(c):
     """Emitter-coupled pair | Source-coupled pair"""
     t1 = c.transistor('n', (0, 0), 'cd', name=1)
-    t2 = c.transistor('n', (140, 0), 'cd', side='right', name=2)
-    c.w(t1.bg, (t1.bg[0] - 30, t1.bg[1])); c.port((t1.bg[0] - 30, t1.bg[1]), 'V_in,p', 'l')
-    c.w(t2.bg, (t2.bg[0] + 30, t2.bg[1])); c.port((t2.bg[0] + 30, t2.bg[1]), 'V_in,n', 'r')
+    t2 = c.transistor('n', (110, 0), 'cd', side='right', name=2)
+    c.w(t1.bg, (t1.bg[0] - 20, t1.bg[1])); c.port((t1.bg[0] - 20, t1.bg[1]), 'V_in,p', 'l')
+    c.w(t2.bg, (t2.bg[0] + 20, t2.bg[1])); c.port((t2.bg[0] + 20, t2.bg[1]), 'V_in,n', 'r')
     c.w(t1.cd, (0, -40)); c.port((0, -40), 'I_out,n', 'r')
-    c.w(t2.cd, (140, -40)); c.port((140, -40), 'I_out,p', 'l')
+    c.w(t2.cd, (110, -40)); c.port((110, -40), 'I_out,p', 'r')
     yb = t1.es[1] + 20
-    c.w(t1.es, (0, yb), (140, yb), t2.es); c.dot((70, yb))
-    c.w((70, yb), (70, yb + 40)); c.port((70, yb + 40), 'I_bias', 'b')
+    c.w(t1.es, (0, yb), (110, yb), t2.es); c.dot((55, yb))
+    c.w((55, yb), (55, yb + 40)); c.port((55, yb + 40), 'I_bias', 'b')
 
 
 def cross_coupled_pair(c):
@@ -475,8 +475,8 @@ def low_leakage_diode(c):
     t1 = c.transistor('p', (0, 0), 'es', side='right', rot=3, name=1)
     t2 = c.transistor('n', (100, 0), 'cd', side='right', rot=3, name=2)
     c.w(t1.cd, t2.cd)
-    c.w(t1.es, (-20, 0)); c.dot((-20, 0)); c.w((-20, 0), (-50, 0)); c.port((-50, 0), 'V_p', 'l')
-    c.w(t2.es, (200, 0)); c.dot((200, 0)); c.w((200, 0), (230, 0)); c.port((230, 0), 'V_n', 'r')
+    c.w(t1.es, (-20, 0)); c.dot((-20, 0)); c.w((-20, 0), (-40, 0)); c.port((-40, 0), 'V_p', 'l')
+    c.w(t2.es, (200, 0)); c.dot((200, 0)); c.w((200, 0), (220, 0)); c.port((220, 0), 'V_n', 'r')
     c.w(t1.bg, (t1.bg[0], -60), (200, -60), (200, 0))
     c.w(t2.bg, (t2.bg[0], -80), (-20, -80), (-20, 0))
 
@@ -585,8 +585,8 @@ def nor(c):
     for t in (t1, t2):
         g = (t.es[0], t.es[1] + 20); c.gnd(g); c.w(t.es, g)
     mx = 65
-    c.w(t1.bg, (t1.bg[0] - 30, t1.bg[1])); c.port((t1.bg[0] - 30, t1.bg[1]), 'V_a', 'l')
-    c.w(t2.bg, (t2.bg[0] + 30, t2.bg[1])); c.port((t2.bg[0] + 30, t2.bg[1]), 'V_b', 'r')
+    c.w(t1.bg, (t1.bg[0] - 20, t1.bg[1])); c.port((t1.bg[0] - 20, t1.bg[1]), 'V_a', 'l')
+    c.w(t2.bg, (t2.bg[0] + 20, t2.bg[1])); c.port((t2.bg[0] + 20, t2.bg[1]), 'V_b', 'r')
     yt = -20
     c.w(t1.cd, (0, yt), (130, yt)); c.w(t2.cd, (130, yt)); c.dot((mx, yt))
     top = (mx, -40); c.w((mx, yt), top); c.dot(top); c.w(top, (170, top[1])); c.port((170, top[1]), OUT, 'r')
@@ -596,18 +596,18 @@ def nor(c):
 def xnor(c):
     """XNOR"""
     t1 = c.transistor('n', (0, 0), 'cd', name=1)
-    t2 = c.transistor('n', (140, 0), 'cd', side='right', name=2)
-    mx = 70
+    t2 = c.transistor('n', (100, 0), 'cd', side='right', name=2)
+    mx = 50
     ga = (t1.bg[0] - 20, t1.bg[1]); gb = (t2.bg[0] + 20, t2.bg[1])
-    c.w(t1.bg, ga); c.dot(ga); c.w(ga, (ga[0] - 30, ga[1])); c.port((ga[0] - 30, ga[1]), 'V_a', 'l')
-    c.w(t2.bg, gb); c.dot(gb); c.w(gb, (gb[0] + 30, gb[1])); c.port((gb[0] + 30, gb[1]), 'V_b', 'r')
+    c.w(t1.bg, ga); c.dot(ga); c.w(ga, (ga[0] - 20, ga[1])); c.port((ga[0] - 20, ga[1]), 'V_a', 'l')
+    c.w(t2.bg, gb); c.dot(gb); c.w(gb, (gb[0] + 20, gb[1])); c.port((gb[0] + 20, gb[1]), 'V_b', 'r')
     yt = -20
-    c.w(t1.cd, (0, yt), (mx, yt)); c.w(t2.cd, (140, yt), (mx, yt)); c.dot((mx, yt))
-    c.w((mx, yt), (mx, -40)); c.dot((mx, -40)); c.w((mx, -40), (gb[0] + 30, -40)); c.port((gb[0] + 30, -40), OUT, 'r')
+    c.w(t1.cd, (0, yt), (mx, yt)); c.w(t2.cd, (100, yt), (mx, yt)); c.dot((mx, yt))
+    c.w((mx, yt), (mx, -40)); c.dot((mx, -40)); c.w((mx, -40), (100, -40)); c.port((100, -40), OUT, 'r')
     c.w((mx, -40), (mx, -70)); c.port((mx, -70), 'I_bias', 'r')
     y1, y2 = t1.es[1] + 20, t1.es[1] + 40
     c.w(t1.es, (0, y1), (mx - 15, y1), (mx + 15, y2), (gb[0], y2), gb)
-    c.w(t2.es, (140, y1), (mx + 15, y1), (mx - 15, y2), (ga[0], y2), ga)
+    c.w(t2.es, (100, y1), (mx + 15, y1), (mx - 15, y2), (ga[0], y2), ga)
 
 
 def mixer(c):

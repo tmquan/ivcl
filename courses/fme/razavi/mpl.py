@@ -1,4 +1,4 @@
-"""Matplotlib renderer: scenes -> figures with a BJT column and a MOSFET column.
+"""Matplotlib renderer: scenes -> figures with a label column, a BJT column and a MOSFET column.
 
 Everything is drawn in scene pixels; a figure is sized so that one scene px is exactly
 `zoom`/96 inch, which keeps stroke weights, symbols and labels in their true proportions.
@@ -119,59 +119,87 @@ def names(circuit):
     return tuple('' if p == '-' else p for p in (parts[0], parts[-1]))
 
 
-PANEL_W = 410                  # px; one width for every panel, so all figures share one scale
-HEAD_H, TITLE_H, MARGIN, GAP = 34, 30, 12, 30
+LABEL_W, PANEL_W = 170, 340    # px: three columns of 20 % | 40 % | 40 %, the same in every figure
+HEAD_H, MARGIN = 34, 12
+LABEL, LINE, PARA = 16, 21, 9  # label column: font size, line height, space between two names (px)
 RULE = '0.82'
 
 
-def grid(rows, heads=('BJT', 'MOSFET'), zoom=1.0, panel_w=PANEL_W):
-    """rows = [((scene, scene), (title, title)), ...]: one row per circuit, one column per technology.
+def _wrap(text, size, width):
+    """break `text` into lines of at most `width` px"""
+    lines, cur = [], ''
+    for word in text.split(' '):
+        trial = (cur + ' ' + word).strip()
+        x0, _, x1, _ = T.extent(trial, size, 'text')
+        if cur and x1 - x0 > width:
+            lines.append(cur); cur = word
+        else:
+            cur = trial
+    return lines + [cur]
+
+
+def _label(titles):
+    """label column of one row: the names of the circuit, the BJT name first, as [(text, y offset)]"""
+    names = [t for t in dict.fromkeys(titles) if t]                  # one entry if both names are the same
+    out, y = [], 0
+    for k, name in enumerate(names):
+        for line in _wrap(name, LABEL, LABEL_W - 2 * MARGIN):
+            out.append((line, y)); y += LINE
+        y += PARA
+    return out, y - PARA
+
+
+def grid(rows, heads=('BJT', 'MOSFET'), zoom=1.0):
+    """rows = [((scene, scene), (name, name)), ...]: one row per circuit.
+    Three columns, as in the tables: the names of the circuit, then one panel per technology.
     Both panels of a row show the same window, so corresponding parts sit at identical positions.
     A scene given as None leaves its panel empty."""
     boxes = []
     for scenes, _ in rows:
         b = [sc.bounds() for sc in scenes if sc is not None]
         boxes.append((min(q[0] for q in b), min(q[1] for q in b), max(q[2] for q in b), max(q[3] for q in b)))
+    labels = [_label(titles) for _, titles in rows]
     n = len(heads)
-    pw = max([panel_w] + [q[2] - q[0] + 2 * MARGIN for q in boxes])
-    hs = [q[3] - q[1] + 2 * MARGIN for q in boxes]
-    W = n * pw + (n - 1) * GAP
-    H = HEAD_H + sum(TITLE_H + h for h in hs)
+    pw = max([PANEL_W] + [q[2] - q[0] + 2 * MARGIN for q in boxes])
+    lw = pw * LABEL_W / PANEL_W
+    hs = [max(q[3] - q[1], lab[1]) + 2 * MARGIN for q, lab in zip(boxes, labels)]
+    W = lw + n * pw
+    H = HEAD_H + sum(hs)
     fig = plt.figure(figsize=(W * zoom / 96.0, H * zoom / 96.0))
     k = PT * zoom
     reg, bold = T._fonts()
     for j, head in enumerate(heads):                                  # column heads
-        fig.text((j * (pw + GAP) + pw / 2) / W, 1 - 0.5 * HEAD_H / H, head, ha='center', va='center',
+        fig.text((lw + j * pw + pw / 2) / W, 1 - 0.5 * HEAD_H / H, head, ha='center', va='center',
                  fontproperties=FontProperties(fname=bold, size=18 * k))
     rule = lambda xs, ys: fig.add_artist(Line2D(xs, ys, transform=fig.transFigure, color=RULE, lw=0.8))
     y = HEAD_H
     ux = (min(q[0] for q in boxes) + max(q[2] for q in boxes)) / 2      # one centre line for all rows, if they fit
     fits = max(q[2] for q in boxes) - min(q[0] for q in boxes) + 2 * MARGIN <= pw
-    for r, ((scenes, titles), q, h) in enumerate(zip(rows, boxes, hs)):
+    for (scenes, titles), q, h, (lines, lh) in zip(rows, boxes, hs, labels):
         rule([0, 1], [1 - y / H] * 2)
-        cx = ux if fits else (q[0] + q[2]) / 2
+        for text, dy in lines:                                        # first column: the names of the circuit
+            fig.text(MARGIN / W, 1 - (y + (h - lh) / 2 + dy + 0.5 * LINE) / H, text, ha='left', va='center',
+                     fontproperties=FontProperties(fname=reg, size=LABEL * k))
+        cx, cy = (ux if fits else (q[0] + q[2]) / 2), (q[1] + q[3]) / 2
         for j, sc in enumerate(scenes):
             if sc is None:                                            # no such version: the panel stays empty
                 continue
-            x = j * (pw + GAP)
-            fig.text((x + pw / 2) / W, 1 - (y + 0.6 * TITLE_H) / H, titles[j], ha='center', va='center',
-                     fontproperties=FontProperties(fname=reg, size=16 * k))
-            ax = fig.add_axes([x / W, 1 - (y + TITLE_H + h) / H, pw / W, h / H])
+            ax = fig.add_axes([(lw + j * pw) / W, 1 - (y + h) / H, pw / W, h / H])
             ax.set_xlim(cx - pw / 2, cx + pw / 2)
-            ax.set_ylim(q[3] + MARGIN, q[1] - MARGIN)
+            ax.set_ylim(cy + h / 2, cy - h / 2)
             ax.axis('off')
             draw(ax, sc, k)
-        y += TITLE_H + h
-    for j in range(1, n):
-        xg = (j * (pw + GAP) - GAP / 2) / W
+        y += h
+    for j in range(n):
+        xg = (lw + j * pw) / W
         rule([xg, xg], [0.0, 1 - HEAD_H / H])
     return fig
 
 
 def show(*circuits, zoom=1.0, devices=(BJT, MOSFET)):
-    """Two columns: every circuit drawn with BJTs on the left and with MOSFETs on the right.
-    One row per circuit, so  show(a, b)  gives a 2 x 2 figure.  A circuit whose docstring names
-    one version as "-" exists in the other technology only, and that panel stays empty."""
+    """Three columns: the names of a circuit, the circuit drawn with BJTs, and drawn with MOSFETs.
+    One row per circuit.  A circuit whose docstring names one version as "-" exists in the other
+    technology only, and that panel stays empty."""
     rows = []
     for f in circuits:
         nm = names(f)
