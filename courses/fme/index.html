@@ -29,7 +29,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=fme9" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=fme10" />
     
   <link rel="preload" as="script" href="../../_static/js/index.be7d3bbb2ef33a8344ce.js">
 
@@ -822,8 +822,8 @@ const thebe_selector_output = ".output, .cell_output"
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="bjt-and-mosfet-circuits">
 <h1>BJT and MOSFET Circuits<a class="headerlink" href="#bjt-and-mosfet-circuits" title="Permalink to this headline">¶</a></h1>
-<p>A bipolar transistor and a MOSFET can be wired into the same networks. Figures and tables on this page share one layout of three columns: a label, then the BJT version and the MOSFET version side by side. Both versions of a circuit are drawn by the same few lines of Python. Where a circuit exists in only one of the two technologies, the cell of the other one says so. The page goes from one transistor in eight connections to forty-two circuits of two transistors in seven families.</p>
-<p>The two-transistor circuits follow H. Pretl and M. Eberlein [1], who show the MOSFET versions. The BJT versions are obtained by swapping device for device. Circuits of [1] that use the body terminal, a thick-oxide device or the parasitic bipolar transistor of a MOSFET are left out. The symbols follow the drawing style of B. Razavi [2].</p>
+<p>A bipolar transistor and a MOSFET can be wired into the same networks. Every circuit figure on this page has three columns: the names of a circuit, then its BJT version and its MOSFET version side by side, each with its key relation right under the drawing. Both versions of a circuit are drawn by the same few lines of Python. Where a circuit exists in only one of the two technologies, the cell of the other one says so, and why. The page goes from one transistor in eight connections, through the impedance and gain summary of [2], to forty-two circuits of two transistors in seven families.</p>
+<p>The two-transistor circuits follow H. Pretl and M. Eberlein [1], who show the MOSFET versions. The BJT versions are obtained by swapping device for device. Circuits of [1] that use the body terminal, a thick-oxide device or the parasitic bipolar transistor of a MOSFET are left out. The symbols follow the drawing style of B. Razavi [2]. As in [2], an arrow with a 90-degree corner marks an impedance; here it is red, and every impedance that a note names has one.</p>
 <div class="section" id="prerequisites">
 <h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Permalink to this headline">¶</a></h2>
 <div class="cell tag_hide_input docutils container">
@@ -900,8 +900,8 @@ const thebe_selector_output = ".output, .cell_output"
 </tr>
 </tbody>
 </table>
-<p>The circuit functions use only the shared names, which read <em>base or gate</em>, <em>collector or drain</em> and <em>emitter or source</em>. <code class="docutils literal notranslate"><span class="pre">c.w(p0,</span> <span class="pre">p1,</span> <span class="pre">...)</span></code> draws a wire, <code class="docutils literal notranslate"><span class="pre">c.dot(p)</span></code> a node, <code class="docutils literal notranslate"><span class="pre">c.port(p,</span> <span class="pre">label,</span> <span class="pre">side)</span></code> an open terminal, <code class="docutils literal notranslate"><span class="pre">c.gnd(p)</span></code> a ground, <code class="docutils literal notranslate"><span class="pre">c.ac(p)</span></code> an ac ground, <code class="docutils literal notranslate"><span class="pre">c.res(p,</span> <span class="pre">label)</span></code> a resistor and <code class="docutils literal notranslate"><span class="pre">c.load(p)</span></code> a load. <code class="docutils literal notranslate"><span class="pre">c.look(p,</span> <span class="pre">into,</span> <span class="pre">side,</span> <span class="pre">label)</span></code> marks the impedance seen at <code class="docutils literal notranslate"><span class="pre">p</span></code> with a red arrow that has a 90-degree corner; <code class="docutils literal notranslate"><span class="pre">form='low'</span></code> and <code class="docutils literal notranslate"><span class="pre">form='long'</span></code> give the two other forms printed in [2]. <code class="docutils literal notranslate"><span class="pre">c.pick(a,</span> <span class="pre">b)</span></code> returns <code class="docutils literal notranslate"><span class="pre">a</span></code> in a BJT drawing and <code class="docutils literal notranslate"><span class="pre">b</span></code> in a MOSFET drawing, <code class="docutils literal notranslate"><span class="pre">t.note(t.ideal)</span></code> writes <span class="math notranslate nohighlight">\(V_A=\infty\)</span> or <span class="math notranslate nohighlight">\(\lambda=0\)</span> beside a transistor, and <code class="docutils literal notranslate"><span class="pre">c.caption(text)</span></code> writes a line under the drawing. <code class="docutils literal notranslate"><span class="pre">c.chain([...],</span> <span class="pre">x,</span> <span class="pre">y)</span></code> places a series stack of transistors, and <code class="docutils literal notranslate"><span class="pre">c.bus([...],</span> <span class="pre">x)</span></code> ties their bases or gates together. Coordinates are pixels on a 10-px grid with <span class="math notranslate nohighlight">\(y\)</span> pointing down. Before drawing, all wire pieces and symbol leads are merged into continuous connectors.</p>
-<p><code class="docutils literal notranslate"><span class="pre">show(a,</span> <span class="pre">b)</span></code> draws the circuits <code class="docutils literal notranslate"><span class="pre">a</span></code> and <code class="docutils literal notranslate"><span class="pre">b</span></code> as two rows: their names in the first column, then the drawing made with <code class="docutils literal notranslate"><span class="pre">BJT</span></code> and the drawing made with <code class="docutils literal notranslate"><span class="pre">MOSFET</span></code>. The first docstring line gives the names, as <code class="docutils literal notranslate"><span class="pre">BJT</span> <span class="pre">name</span> <span class="pre">|</span> <span class="pre">MOSFET</span> <span class="pre">name</span></code> where the two differ. A name <code class="docutils literal notranslate"><span class="pre">-</span></code> means that the circuit has no such version, and that cell says so.</p>
+<p>The circuit functions use only the shared names, which read <em>base or gate</em>, <em>collector or drain</em> and <em>emitter or source</em>. <code class="docutils literal notranslate"><span class="pre">c.w(p0,</span> <span class="pre">p1,</span> <span class="pre">...)</span></code> draws a wire, <code class="docutils literal notranslate"><span class="pre">c.dot(p)</span></code> a node, <code class="docutils literal notranslate"><span class="pre">c.port(p,</span> <span class="pre">label,</span> <span class="pre">side)</span></code> an open terminal, <code class="docutils literal notranslate"><span class="pre">c.gnd(p)</span></code> a ground, <code class="docutils literal notranslate"><span class="pre">c.ac(p)</span></code> an ac ground, <code class="docutils literal notranslate"><span class="pre">c.res(p,</span> <span class="pre">label)</span></code> a resistor and <code class="docutils literal notranslate"><span class="pre">c.load(p)</span></code> a load. <code class="docutils literal notranslate"><span class="pre">c.look(p,</span> <span class="pre">into,</span> <span class="pre">side,</span> <span class="pre">label)</span></code> marks the impedance seen at <code class="docutils literal notranslate"><span class="pre">p</span></code> with a red arrow that has a 90-degree corner; <code class="docutils literal notranslate"><span class="pre">form='low'</span></code> and <code class="docutils literal notranslate"><span class="pre">form='long'</span></code> give the two other forms printed in [2]. <code class="docutils literal notranslate"><span class="pre">c.pick(a,</span> <span class="pre">b)</span></code> returns <code class="docutils literal notranslate"><span class="pre">a</span></code> in a BJT drawing and <code class="docutils literal notranslate"><span class="pre">b</span></code> in a MOSFET drawing, and <code class="docutils literal notranslate"><span class="pre">t.note(t.ideal)</span></code> writes <span class="math notranslate nohighlight">\(V_A=\infty\)</span> or <span class="math notranslate nohighlight">\(\lambda=0\)</span> beside a transistor. <code class="docutils literal notranslate"><span class="pre">c.chain([...],</span> <span class="pre">x,</span> <span class="pre">y)</span></code> places a series stack of transistors, and <code class="docutils literal notranslate"><span class="pre">c.bus([...],</span> <span class="pre">x)</span></code> ties their bases or gates together. Coordinates are pixels on a 10-px grid with <span class="math notranslate nohighlight">\(y\)</span> pointing down. Before drawing, all wire pieces and symbol leads are merged into continuous connectors.</p>
+<p><code class="docutils literal notranslate"><span class="pre">show(a,</span> <span class="pre">b,</span> <span class="pre">notes=[...])</span></code> draws the circuits <code class="docutils literal notranslate"><span class="pre">a</span></code> and <code class="docutils literal notranslate"><span class="pre">b</span></code> as two rows: their names in the first column, then the drawing made with <code class="docutils literal notranslate"><span class="pre">BJT</span></code> and the drawing made with <code class="docutils literal notranslate"><span class="pre">MOSFET</span></code>. <code class="docutils literal notranslate"><span class="pre">notes</span></code> holds the text that goes right under the drawings, for every circuit a pair <code class="docutils literal notranslate"><span class="pre">(BJT,</span> <span class="pre">MOSFET)</span></code> or one text for both. The first docstring line gives the names, as <code class="docutils literal notranslate"><span class="pre">BJT</span> <span class="pre">name</span> <span class="pre">|</span> <span class="pre">MOSFET</span> <span class="pre">name</span></code> where the two differ. A name <code class="docutils literal notranslate"><span class="pre">-</span></code> means that the circuit has no such version; that cell says so, and its note says why.</p>
 <div class="cell tag_hide_input docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># HIDE/SHOW</span>
@@ -914,10 +914,13 @@ const thebe_selector_output = ".output, .cell_output"
     <span class="n">c</span><span class="o">.</span><span class="n">dot</span><span class="p">((</span><span class="n">node</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">yb</span><span class="p">));</span> <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">((</span><span class="n">node</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">yb</span><span class="p">),</span> <span class="p">(</span><span class="n">node</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">yb</span> <span class="o">+</span> <span class="mi">10</span><span class="p">));</span> <span class="n">c</span><span class="o">.</span><span class="n">gnd</span><span class="p">((</span><span class="n">node</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">yb</span> <span class="o">+</span> <span class="mi">10</span><span class="p">))</span>
 
 
-<span class="k">def</span> <span class="nf">pass_device_and_capacitor</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">control</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;first transistor as a pass device from the input to a node that the second one loads as a capacitor&quot;&quot;&quot;</span>
+<span class="k">def</span> <span class="nf">pass_device_and_capacitor</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">control</span><span class="p">,</span> <span class="n">resistance</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;first transistor as a pass device from the input to a node that the second one loads as a capacitor;</span>
+<span class="sd">    `resistance` names the resistance of the pass device, if the note of the circuit uses it&quot;&quot;&quot;</span>
     <span class="n">t1</span> <span class="o">=</span> <span class="n">c</span><span class="o">.</span><span class="n">transistor</span><span class="p">(</span><span class="s1">&#39;n&#39;</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="s1">&#39;cd&#39;</span><span class="p">,</span> <span class="n">side</span><span class="o">=</span><span class="s1">&#39;right&#39;</span><span class="p">,</span> <span class="n">rot</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
     <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">(</span><span class="n">t1</span><span class="o">.</span><span class="n">cd</span><span class="p">,</span> <span class="p">(</span><span class="o">-</span><span class="mi">30</span><span class="p">,</span> <span class="mi">0</span><span class="p">));</span> <span class="n">c</span><span class="o">.</span><span class="n">port</span><span class="p">((</span><span class="o">-</span><span class="mi">30</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">IN</span><span class="p">,</span> <span class="s1">&#39;l&#39;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">resistance</span><span class="p">:</span>
+        <span class="n">c</span><span class="o">.</span><span class="n">look</span><span class="p">((</span><span class="o">-</span><span class="mi">30</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="s1">&#39;d&#39;</span><span class="p">,</span> <span class="n">resistance</span><span class="p">)</span>
     <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">(</span><span class="n">t1</span><span class="o">.</span><span class="n">bg</span><span class="p">,</span> <span class="p">(</span><span class="n">t1</span><span class="o">.</span><span class="n">bg</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">t1</span><span class="o">.</span><span class="n">bg</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="mi">20</span><span class="p">));</span> <span class="n">c</span><span class="o">.</span><span class="n">port</span><span class="p">((</span><span class="n">t1</span><span class="o">.</span><span class="n">bg</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">t1</span><span class="o">.</span><span class="n">bg</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="mi">20</span><span class="p">),</span> <span class="n">control</span><span class="p">,</span> <span class="s1">&#39;t&#39;</span><span class="p">)</span>
     <span class="n">node</span> <span class="o">=</span> <span class="p">(</span><span class="mi">130</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
     <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">(</span><span class="n">t1</span><span class="o">.</span><span class="n">es</span><span class="p">,</span> <span class="n">node</span><span class="p">);</span> <span class="n">c</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">node</span><span class="p">);</span> <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">(</span><span class="n">node</span><span class="p">,</span> <span class="p">(</span><span class="mi">180</span><span class="p">,</span> <span class="mi">0</span><span class="p">));</span> <span class="n">c</span><span class="o">.</span><span class="n">port</span><span class="p">((</span><span class="mi">180</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">OUT</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span>
@@ -964,7 +967,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/fme_index_04_0.svg" src="../../_images/fme_index_04_0.svg?v=fme9" />
+<img alt="../../_images/fme_index_04_0.svg" src="../../_images/fme_index_04_0.svg?v=fme10" />
 </div>
 </div>
 <p>The two columns translate into each other term by term:</p>
@@ -1000,21 +1003,25 @@ const thebe_selector_output = ".output, .cell_output"
 <td><p><span class="math notranslate nohighlight">\(I_B=I_C/\beta\)</span></p></td>
 <td><p><span class="math notranslate nohighlight">\(I_G=0\)</span></p></td>
 </tr>
-<tr class="row-even"><td><p><strong>Size</strong></p></td>
+<tr class="row-even"><td><p><strong>Input resistance</strong></p></td>
+<td><p><span class="math notranslate nohighlight">\(r_\pi=\beta/g_m\)</span></p></td>
+<td><p>infinite</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Size</strong></p></td>
 <td><p>emitter area, through <span class="math notranslate nohighlight">\(I_S\)</span></p></td>
 <td><p><span class="math notranslate nohighlight">\(W/L\)</span></p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>Names</strong></p></td>
+<tr class="row-even"><td><p><strong>Names</strong></p></td>
 <td><p><span class="math notranslate nohighlight">\(Q_1\)</span>, <span class="math notranslate nohighlight">\(Q_2\)</span>, supply <span class="math notranslate nohighlight">\(V_{CC}\)</span></p></td>
 <td><p><span class="math notranslate nohighlight">\(M_1\)</span>, <span class="math notranslate nohighlight">\(M_2\)</span>, supply <span class="math notranslate nohighlight">\(V_{DD}\)</span></p></td>
 </tr>
 </tbody>
 </table>
-<p>All relations on this page are first-order: <span class="math notranslate nohighlight">\(r_O\)</span> and <span class="math notranslate nohighlight">\(\beta\)</span> are taken as infinite unless they appear, and the body effect is neglected.</p>
+<p><span class="math notranslate nohighlight">\(V_T=kT/q\)</span> is the thermal voltage, about 26 mV at room temperature, and <span class="math notranslate nohighlight">\(V_{TH}\)</span> is the threshold voltage of a MOSFET. All relations on this page are first-order: <span class="math notranslate nohighlight">\(r_O\)</span> and <span class="math notranslate nohighlight">\(\beta\)</span> are taken as infinite unless they appear, and the body effect is neglected.</p>
 </div>
 <div class="section" id="connections-of-one-transistor">
 <h2>Connections of One Transistor<a class="headerlink" href="#connections-of-one-transistor" title="Permalink to this headline">¶</a></h2>
-<p>One transistor can be connected in eight ways. Every circuit further down is two of these connections put together.</p>
+<p>Eight connections of one transistor are used on this page. Most circuits further down put two of them together.</p>
 <div class="section" id="amplifier-and-follower">
 <h3>Amplifier and Follower<a class="headerlink" href="#amplifier-and-follower" title="Permalink to this headline">¶</a></h3>
 <p>The input drives the base or gate. The output is taken at the collector or drain (amplifier), or at the emitter or source (follower).</p>
@@ -1042,32 +1049,18 @@ const thebe_selector_output = ".output, .cell_output"
     <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">(</span><span class="n">c</span><span class="o">.</span><span class="n">res</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="mi">120</span><span class="p">),</span> <span class="s1">&#39;R_&#39;</span> <span class="o">+</span> <span class="n">t1</span><span class="o">.</span><span class="n">pin</span><span class="p">(</span><span class="s1">&#39;es&#39;</span><span class="p">)),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">200</span><span class="p">));</span> <span class="n">c</span><span class="o">.</span><span class="n">gnd</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="mi">200</span><span class="p">))</span>
     <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">(</span><span class="n">t1</span><span class="o">.</span><span class="n">bg</span><span class="p">,</span> <span class="p">(</span><span class="n">t1</span><span class="o">.</span><span class="n">bg</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">40</span><span class="p">));</span> <span class="n">c</span><span class="o">.</span><span class="n">port</span><span class="p">((</span><span class="n">t1</span><span class="o">.</span><span class="n">bg</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">40</span><span class="p">),</span> <span class="n">IN</span><span class="p">,</span> <span class="s1">&#39;l&#39;</span><span class="p">)</span>
 
-<span class="n">show</span><span class="p">(</span><span class="n">role_amplifier</span><span class="p">,</span> <span class="n">role_follower</span><span class="p">)</span>
+<span class="n">show</span><span class="p">(</span><span class="n">role_amplifier</span><span class="p">,</span> <span class="n">role_follower</span><span class="p">,</span> <span class="n">notes</span><span class="o">=</span><span class="p">[</span>
+    <span class="p">(</span><span class="s1">&#39;$A_v=-g_mR_C$&#39;</span><span class="p">,</span>
+     <span class="s1">&#39;$A_v=-g_mR_D$&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="sa">r</span><span class="s1">&#39;The common-collector stage: $A_v=\dfrac</span><span class="si">{g_mR_E}</span><span class="s1">{1+g_mR_E}$&#39;</span><span class="p">,</span>
+     <span class="sa">r</span><span class="s1">&#39;The common-drain stage: $A_v=\dfrac</span><span class="si">{g_mR_S}</span><span class="s1">{1+g_mR_S}$&#39;</span><span class="p">)])</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/fme_index_05_0.svg" src="../../_images/fme_index_05_0.svg?v=fme9" />
+<img alt="../../_images/fme_index_05_0.svg" src="../../_images/fme_index_05_0.svg?v=fme10" />
 </div>
 </div>
-<table class="colwidths-auto table">
-<thead>
-<tr class="row-odd"><th class="head"></th>
-<th class="head"><p>BJT</p></th>
-<th class="head"><p>MOSFET</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p><strong>Amplifier</strong></p></td>
-<td><p><span class="math notranslate nohighlight">\(A_v=-g_mR_C\)</span></p></td>
-<td><p><span class="math notranslate nohighlight">\(A_v=-g_mR_D\)</span></p></td>
-</tr>
-<tr class="row-odd"><td><p><strong>Follower</strong></p></td>
-<td><p>The common-collector stage: <span class="math notranslate nohighlight">\(A_v=\dfrac{g_mR_E}{1+g_mR_E}\)</span></p></td>
-<td><p>The common-drain stage: <span class="math notranslate nohighlight">\(A_v=\dfrac{g_mR_S}{1+g_mR_S}\)</span></p></td>
-</tr>
-</tbody>
-</table>
 </div>
 <div class="section" id="current-buffer-and-current-source">
 <h3>Current Buffer and Current Source<a class="headerlink" href="#current-buffer-and-current-source" title="Permalink to this headline">¶</a></h3>
@@ -1090,32 +1083,18 @@ const thebe_selector_output = ".output, .cell_output"
     <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">(</span><span class="n">t1</span><span class="o">.</span><span class="n">es</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">));</span> <span class="n">c</span><span class="o">.</span><span class="n">gnd</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">))</span>
     <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">(</span><span class="n">t1</span><span class="o">.</span><span class="n">bg</span><span class="p">,</span> <span class="p">(</span><span class="n">t1</span><span class="o">.</span><span class="n">bg</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">40</span><span class="p">));</span> <span class="n">c</span><span class="o">.</span><span class="n">port</span><span class="p">((</span><span class="n">t1</span><span class="o">.</span><span class="n">bg</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">40</span><span class="p">),</span> <span class="s1">&#39;V_bias&#39;</span><span class="p">,</span> <span class="s1">&#39;l&#39;</span><span class="p">)</span>
 
-<span class="n">show</span><span class="p">(</span><span class="n">role_current_buffer</span><span class="p">,</span> <span class="n">role_current_source</span><span class="p">)</span>
+<span class="n">show</span><span class="p">(</span><span class="n">role_current_buffer</span><span class="p">,</span> <span class="n">role_current_source</span><span class="p">,</span> <span class="n">notes</span><span class="o">=</span><span class="p">[</span>
+    <span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$I_\mathrm</span><span class="si">{out}</span><span class="s1">=\dfrac{\beta}{\beta+1}I_\mathrm</span><span class="si">{in}</span><span class="s1">$, $R_\mathrm</span><span class="si">{in}</span><span class="s1">\approx1/g_m$&#39;</span><span class="p">,</span>
+     <span class="sa">r</span><span class="s1">&#39;$I_\mathrm</span><span class="si">{out}</span><span class="s1">=I_\mathrm</span><span class="si">{in}</span><span class="s1">$, $R_\mathrm</span><span class="si">{in}</span><span class="s1">\approx1/g_m$&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$I_\mathrm</span><span class="si">{out}</span><span class="s1">=I_S\,e^{V_\mathrm</span><span class="si">{bias}</span><span class="s1">/V_T}$, $R_\mathrm</span><span class="si">{out}</span><span class="s1">=r_O$&#39;</span><span class="p">,</span>
+     <span class="sa">r</span><span class="s1">&#39;$I_\mathrm</span><span class="si">{out}</span><span class="s1">=\frac</span><span class="si">{1}{2}</span><span class="s1">\mu_nC_</span><span class="si">{ox}</span><span class="s1">(W/L)(V_\mathrm</span><span class="si">{bias}</span><span class="s1">-V_</span><span class="si">{TH}</span><span class="s1">)^2$, $R_\mathrm</span><span class="si">{out}</span><span class="s1">=r_O$&#39;</span><span class="p">)])</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/fme_index_06_0.svg" src="../../_images/fme_index_06_0.svg?v=fme9" />
+<img alt="../../_images/fme_index_06_0.svg" src="../../_images/fme_index_06_0.svg?v=fme10" />
 </div>
 </div>
-<table class="colwidths-auto table">
-<thead>
-<tr class="row-odd"><th class="head"></th>
-<th class="head"><p>BJT</p></th>
-<th class="head"><p>MOSFET</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p><strong>Current buffer</strong></p></td>
-<td><p><span class="math notranslate nohighlight">\(I_\mathrm{out}=\dfrac{\beta}{\beta+1}I_\mathrm{in}\)</span>, <span class="math notranslate nohighlight">\(R_\mathrm{in}\approx1/g_m\)</span></p></td>
-<td><p><span class="math notranslate nohighlight">\(I_\mathrm{out}=I_\mathrm{in}\)</span>, <span class="math notranslate nohighlight">\(R_\mathrm{in}\approx1/g_m\)</span></p></td>
-</tr>
-<tr class="row-odd"><td><p><strong>Current source</strong></p></td>
-<td><p><span class="math notranslate nohighlight">\(I_\mathrm{out}=I_S\,e^{V_\mathrm{bias}/V_T}\)</span>, <span class="math notranslate nohighlight">\(R_\mathrm{out}=r_O\)</span></p></td>
-<td><p><span class="math notranslate nohighlight">\(I_\mathrm{out}=\tfrac12\mu_nC_{ox}\tfrac{W}{L}(V_\mathrm{bias}-V_{TH})^2\)</span>, <span class="math notranslate nohighlight">\(R_\mathrm{out}=r_O\)</span></p></td>
-</tr>
-</tbody>
-</table>
 </div>
 <div class="section" id="diode-and-switch">
 <h3>Diode and Switch<a class="headerlink" href="#diode-and-switch" title="Permalink to this headline">¶</a></h3>
@@ -1138,33 +1117,21 @@ const thebe_selector_output = ".output, .cell_output"
     <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">(</span><span class="n">t1</span><span class="o">.</span><span class="n">cd</span><span class="p">,</span> <span class="p">(</span><span class="n">t1</span><span class="o">.</span><span class="n">cd</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">0</span><span class="p">));</span> <span class="n">c</span><span class="o">.</span><span class="n">port</span><span class="p">((</span><span class="n">t1</span><span class="o">.</span><span class="n">cd</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="s1">&#39;V_1&#39;</span><span class="p">,</span> <span class="s1">&#39;l&#39;</span><span class="p">)</span>
     <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">(</span><span class="n">t1</span><span class="o">.</span><span class="n">es</span><span class="p">,</span> <span class="p">(</span><span class="n">t1</span><span class="o">.</span><span class="n">es</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">0</span><span class="p">));</span> <span class="n">c</span><span class="o">.</span><span class="n">port</span><span class="p">((</span><span class="n">t1</span><span class="o">.</span><span class="n">es</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="s1">&#39;V_2&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span>
     <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">(</span><span class="n">t1</span><span class="o">.</span><span class="n">bg</span><span class="p">,</span> <span class="p">(</span><span class="n">t1</span><span class="o">.</span><span class="n">bg</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">t1</span><span class="o">.</span><span class="n">bg</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="mi">20</span><span class="p">));</span> <span class="n">c</span><span class="o">.</span><span class="n">port</span><span class="p">((</span><span class="n">t1</span><span class="o">.</span><span class="n">bg</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">t1</span><span class="o">.</span><span class="n">bg</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="mi">20</span><span class="p">),</span> <span class="s1">&#39;V_on&#39;</span><span class="p">,</span> <span class="s1">&#39;t&#39;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">c</span><span class="o">.</span><span class="n">device</span> <span class="ow">is</span> <span class="n">MOSFET</span><span class="p">:</span>                                  <span class="c1"># only the MOSFET is a resistance when it is on</span>
+        <span class="n">c</span><span class="o">.</span><span class="n">look</span><span class="p">((</span><span class="n">t1</span><span class="o">.</span><span class="n">cd</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="s1">&#39;d&#39;</span><span class="p">,</span> <span class="s1">&#39;R_on&#39;</span><span class="p">)</span>
 
-<span class="n">show</span><span class="p">(</span><span class="n">role_diode</span><span class="p">,</span> <span class="n">role_switch</span><span class="p">)</span>
+<span class="n">show</span><span class="p">(</span><span class="n">role_diode</span><span class="p">,</span> <span class="n">role_switch</span><span class="p">,</span> <span class="n">notes</span><span class="o">=</span><span class="p">[</span>
+    <span class="p">(</span><span class="sa">r</span><span class="s1">&#39;Conducts at $V_</span><span class="si">{BE}</span><span class="s1">\approx0.7\,\mathrm</span><span class="si">{V}</span><span class="s1">$, small-signal resistance $R=1/g_m$&#39;</span><span class="p">,</span>
+     <span class="s1">&#39;Conducts above $V_</span><span class="si">{TH}</span><span class="s1">$, small-signal resistance $R=1/g_m$&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="sa">r</span><span class="s1">&#39;Limited: in saturation $V_</span><span class="si">{CE}</span><span class="s1">\approx0.2\,\mathrm</span><span class="si">{V}</span><span class="s1">$ remains, and the base current flows into the path&#39;</span><span class="p">,</span>
+     <span class="sa">r</span><span class="s1">&#39;On in triode: no offset, $R_\mathrm</span><span class="si">{on}</span><span class="s1">=\left[\mu_nC_</span><span class="si">{ox}</span><span class="s1">(W/L)(V_</span><span class="si">{GS}</span><span class="s1">-V_</span><span class="si">{TH}</span><span class="s1">)\right]^{-1}$&#39;</span><span class="p">)])</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/fme_index_07_0.svg" src="../../_images/fme_index_07_0.svg?v=fme9" />
+<img alt="../../_images/fme_index_07_0.svg" src="../../_images/fme_index_07_0.svg?v=fme10" />
 </div>
 </div>
-<table class="colwidths-auto table">
-<thead>
-<tr class="row-odd"><th class="head"></th>
-<th class="head"><p>BJT</p></th>
-<th class="head"><p>MOSFET</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p><strong>Diode</strong></p></td>
-<td><p>Conducts at <span class="math notranslate nohighlight">\(V_{BE}\approx0.7\,\mathrm{V}\)</span>, small-signal resistance <span class="math notranslate nohighlight">\(R=1/g_m\)</span></p></td>
-<td><p>Conducts above <span class="math notranslate nohighlight">\(V_{TH}\)</span>, small-signal resistance <span class="math notranslate nohighlight">\(R=1/g_m\)</span></p></td>
-</tr>
-<tr class="row-odd"><td><p><strong>Switch</strong></p></td>
-<td><p><em>Limited.</em> On in saturation: a few hundred millivolts of <span class="math notranslate nohighlight">\(V_{CE}\)</span> remain, and the base current flows into the path</p></td>
-<td><p>On in triode: no offset, <span class="math notranslate nohighlight">\(R_\mathrm{on}=\left[\mu_nC_{ox}\tfrac{W}{L}(V_{GS}-V_{TH})\right]^{-1}\)</span></p></td>
-</tr>
-</tbody>
-</table>
 </div>
 <div class="section" id="resistor-and-capacitor">
 <h3>Resistor and Capacitor<a class="headerlink" href="#resistor-and-capacitor" title="Permalink to this headline">¶</a></h3>
@@ -1188,37 +1155,23 @@ const thebe_selector_output = ".output, .cell_output"
     <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">(</span><span class="n">t1</span><span class="o">.</span><span class="n">cd</span><span class="p">,</span> <span class="p">(</span><span class="n">t1</span><span class="o">.</span><span class="n">cd</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">yb</span><span class="p">),</span> <span class="p">(</span><span class="n">t1</span><span class="o">.</span><span class="n">es</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">yb</span><span class="p">),</span> <span class="n">t1</span><span class="o">.</span><span class="n">es</span><span class="p">);</span> <span class="n">c</span><span class="o">.</span><span class="n">dot</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="n">yb</span><span class="p">))</span>
     <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="n">yb</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">yb</span> <span class="o">+</span> <span class="mi">40</span><span class="p">));</span> <span class="n">c</span><span class="o">.</span><span class="n">port</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="n">yb</span> <span class="o">+</span> <span class="mi">40</span><span class="p">),</span> <span class="s1">&#39;V_n&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span>
 
-<span class="n">show</span><span class="p">(</span><span class="n">role_resistor</span><span class="p">,</span> <span class="n">role_capacitor</span><span class="p">)</span>
+<span class="n">show</span><span class="p">(</span><span class="n">role_resistor</span><span class="p">,</span> <span class="n">role_capacitor</span><span class="p">,</span> <span class="n">notes</span><span class="o">=</span><span class="p">[</span>
+    <span class="p">(</span><span class="s1">&#39;A saturated BJT is not a linear resistor&#39;</span><span class="p">,</span>
+     <span class="sa">r</span><span class="s1">&#39;$R_\mathrm</span><span class="si">{on}</span><span class="s1">=\left[\mu_nC_</span><span class="si">{ox}</span><span class="s1">(W/L)(V_</span><span class="si">{GS}</span><span class="s1">-V_</span><span class="si">{TH}</span><span class="s1">)\right]^{-1}$ in the triode region, set by $V_\mathrm</span><span class="si">{bias}</span><span class="s1">$&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;Limited: junction capacitance, usable only while the junctions stay reverse biased&#39;</span><span class="p">,</span>
+     <span class="sa">r</span><span class="s1">&#39;Gate capacitance, $C\approx WLC_</span><span class="si">{ox}</span><span class="s1">$&#39;</span><span class="p">)])</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/fme_index_08_0.svg" src="../../_images/fme_index_08_0.svg?v=fme9" />
+<img alt="../../_images/fme_index_08_0.svg" src="../../_images/fme_index_08_0.svg?v=fme10" />
 </div>
 </div>
-<table class="colwidths-auto table">
-<thead>
-<tr class="row-odd"><th class="head"></th>
-<th class="head"><p>BJT</p></th>
-<th class="head"><p>MOSFET</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p><strong>Resistor</strong></p></td>
-<td><p><em>No BJT version.</em> A saturated BJT is not a linear resistor</p></td>
-<td><p>Triode region: <span class="math notranslate nohighlight">\(R_\mathrm{on}\)</span> as above, set by <span class="math notranslate nohighlight">\(V_\mathrm{bias}\)</span></p></td>
-</tr>
-<tr class="row-odd"><td><p><strong>Capacitor</strong></p></td>
-<td><p><em>Limited.</em> Junction capacitance, usable only while the junctions stay reverse biased</p></td>
-<td><p>Gate capacitance, <span class="math notranslate nohighlight">\(C\approx WLC_{ox}\)</span></p></td>
-</tr>
-</tbody>
-</table>
 </div>
 </div>
 <div class="section" id="input-and-output-impedances">
 <h2>Input and Output Impedances<a class="headerlink" href="#input-and-output-impedances" title="Permalink to this headline">¶</a></h2>
-<p>The small-signal resistance seen when looking into one terminal of a transistor. These are the ten cases of the summary inside the back cover of [2], six for the BJT and four for the MOSFET, drawn as printed there: a red arrow with a 90-degree corner points into the terminal and carries the impedance, <em>ac</em> marks a node held at a fixed voltage, a box is a load, and <span class="math notranslate nohighlight">\(V_A=\infty\)</span> or <span class="math notranslate nohighlight">\(\lambda=0\)</span> beside a transistor is the condition under which the result holds. The same red arrow marks every impedance in the figures further down.</p>
+<p>The small-signal resistance seen when looking into one terminal of a transistor. These are the ten cases of the summary inside the back cover of [2], six for the BJT and four for the MOSFET, drawn as printed there: a red arrow with a 90-degree corner points into the terminal and carries the impedance, <em>ac</em> marks a node held at a fixed voltage, a box is a load, and <span class="math notranslate nohighlight">\(V_A=\infty\)</span> or <span class="math notranslate nohighlight">\(\lambda=0\)</span> beside a transistor is the condition under which the result holds. Here <span class="math notranslate nohighlight">\(r_\pi=\beta/g_m\)</span>. The same red arrow marks every impedance in the other figures of this page.</p>
 <div class="section" id="looking-into-the-base-or-gate">
 <h3>Looking into the Base or Gate<a class="headerlink" href="#looking-into-the-base-or-gate" title="Permalink to this headline">¶</a></h3>
 <p>The emitter or source is at ac ground, directly or through a resistor. With the resistor the result holds for <span class="math notranslate nohighlight">\(V_A=\infty\)</span>, which is written beside the transistor.</p>
@@ -1242,32 +1195,17 @@ const thebe_selector_output = ".output, .cell_output"
     <span class="n">p</span> <span class="o">=</span> <span class="p">(</span><span class="n">t</span><span class="o">.</span><span class="n">bg</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">40</span><span class="p">)</span>
     <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">(</span><span class="n">t</span><span class="o">.</span><span class="n">bg</span><span class="p">,</span> <span class="n">p</span><span class="p">);</span> <span class="n">c</span><span class="o">.</span><span class="n">port</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="kc">None</span><span class="p">);</span> <span class="n">c</span><span class="o">.</span><span class="n">look</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="s1">&#39;d&#39;</span><span class="p">,</span> <span class="sa">r</span><span class="s1">&#39;$r_\pi+(\beta+1)R_E$&#39;</span><span class="p">)</span>
 
-<span class="n">show</span><span class="p">(</span><span class="n">into_base</span><span class="p">,</span> <span class="n">into_base_degenerated</span><span class="p">)</span>
+<span class="n">show</span><span class="p">(</span><span class="n">into_base</span><span class="p">,</span> <span class="n">into_base_degenerated</span><span class="p">,</span> <span class="n">notes</span><span class="o">=</span><span class="p">[</span>
+    <span class="s1">&#39;&#39;</span><span class="p">,</span>
+    <span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">,</span>
+     <span class="sa">r</span><span class="s1">&#39;The summary in [2] has no such entry: no current flows into the gate, so the resistance is $\approx\infty$ with or without a source resistor&#39;</span><span class="p">)])</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/fme_index_09_0.svg" src="../../_images/fme_index_09_0.svg?v=fme9" />
+<img alt="../../_images/fme_index_09_0.svg" src="../../_images/fme_index_09_0.svg?v=fme10" />
 </div>
 </div>
-<table class="colwidths-auto table">
-<thead>
-<tr class="row-odd"><th class="head"></th>
-<th class="head"><p>BJT</p></th>
-<th class="head"><p>MOSFET</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p><strong>Into the base or gate</strong></p></td>
-<td><p><span class="math notranslate nohighlight">\(R_\mathrm{in}=r_\pi\)</span></p></td>
-<td><p><span class="math notranslate nohighlight">\(R_\mathrm{in}\approx\infty\)</span></p></td>
-</tr>
-<tr class="row-odd"><td><p><strong>With degeneration</strong></p></td>
-<td><p><span class="math notranslate nohighlight">\(R_\mathrm{in}=r_\pi+(\beta+1)R_E\)</span>, for <span class="math notranslate nohighlight">\(V_A=\infty\)</span></p></td>
-<td><p><em>No MOSFET version.</em> The summary in [2] has no such entry: no current flows into the gate, so <span class="math notranslate nohighlight">\(R_\mathrm{in}\approx\infty\)</span> with or without a source resistor</p></td>
-</tr>
-</tbody>
-</table>
 </div>
 <div class="section" id="looking-into-the-collector-or-drain">
 <h3>Looking into the Collector or Drain<a class="headerlink" href="#looking-into-the-collector-or-drain" title="Permalink to this headline">¶</a></h3>
@@ -1293,32 +1231,16 @@ const thebe_selector_output = ".output, .cell_output"
     <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">(</span><span class="n">t</span><span class="o">.</span><span class="n">cd</span><span class="p">,</span> <span class="n">p</span><span class="p">);</span> <span class="n">c</span><span class="o">.</span><span class="n">port</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
     <span class="n">c</span><span class="o">.</span><span class="n">look</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="s1">&#39;d&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">c</span><span class="o">.</span><span class="n">pick</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$(1+g_mr_O)(R_E\|r_\pi)+r_O$&#39;</span><span class="p">,</span> <span class="sa">r</span><span class="s1">&#39;$(1+g_mr_O)R_S+r_O$&#39;</span><span class="p">),</span> <span class="n">form</span><span class="o">=</span><span class="s1">&#39;long&#39;</span><span class="p">)</span>
 
-<span class="n">show</span><span class="p">(</span><span class="n">into_collector</span><span class="p">,</span> <span class="n">into_collector_degenerated</span><span class="p">)</span>
+<span class="n">show</span><span class="p">(</span><span class="n">into_collector</span><span class="p">,</span> <span class="n">into_collector_degenerated</span><span class="p">,</span> <span class="n">notes</span><span class="o">=</span><span class="p">[</span>
+    <span class="s1">&#39;&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;&#39;</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/fme_index_10_0.svg" src="../../_images/fme_index_10_0.svg?v=fme9" />
+<img alt="../../_images/fme_index_10_0.svg" src="../../_images/fme_index_10_0.svg?v=fme10" />
 </div>
 </div>
-<table class="colwidths-auto table">
-<thead>
-<tr class="row-odd"><th class="head"></th>
-<th class="head"><p>BJT</p></th>
-<th class="head"><p>MOSFET</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p><strong>Into the collector or drain</strong></p></td>
-<td><p><span class="math notranslate nohighlight">\(R_\mathrm{out}=r_O\)</span></p></td>
-<td><p><span class="math notranslate nohighlight">\(R_\mathrm{out}=r_O\)</span></p></td>
-</tr>
-<tr class="row-odd"><td><p><strong>With degeneration</strong></p></td>
-<td><p><span class="math notranslate nohighlight">\(R_\mathrm{out}=(1+g_mr_O)(R_E\parallel r_\pi)+r_O\)</span></p></td>
-<td><p><span class="math notranslate nohighlight">\(R_\mathrm{out}=(1+g_mr_O)R_S+r_O\)</span></p></td>
-</tr>
-</tbody>
-</table>
 </div>
 <div class="section" id="looking-into-the-emitter-or-source">
 <h3>Looking into the Emitter or Source<a class="headerlink" href="#looking-into-the-emitter-or-source" title="Permalink to this headline">¶</a></h3>
@@ -1345,37 +1267,22 @@ const thebe_selector_output = ".output, .cell_output"
     <span class="n">p</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">110</span><span class="p">)</span>
     <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">(</span><span class="n">t</span><span class="o">.</span><span class="n">es</span><span class="p">,</span> <span class="n">p</span><span class="p">);</span> <span class="n">c</span><span class="o">.</span><span class="n">port</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="kc">None</span><span class="p">);</span> <span class="n">c</span><span class="o">.</span><span class="n">look</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="s1">&#39;u&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="sa">r</span><span class="s1">&#39;$\dfrac</span><span class="si">{1}{g_m}</span><span class="s1">+\dfrac</span><span class="si">{R_B}</span><span class="s1">{\beta+1}$&#39;</span><span class="p">,</span> <span class="n">form</span><span class="o">=</span><span class="s1">&#39;low&#39;</span><span class="p">)</span>
 
-<span class="n">show</span><span class="p">(</span><span class="n">into_emitter</span><span class="p">,</span> <span class="n">into_emitter_base_resistance</span><span class="p">)</span>
+<span class="n">show</span><span class="p">(</span><span class="n">into_emitter</span><span class="p">,</span> <span class="n">into_emitter_base_resistance</span><span class="p">,</span> <span class="n">notes</span><span class="o">=</span><span class="p">[</span>
+    <span class="s1">&#39;&#39;</span><span class="p">,</span>
+    <span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">,</span>
+     <span class="s1">&#39;The summary in [2] has no such entry: no current flows in a gate resistor, so the resistance is $1/g_m$ as in the row above&#39;</span><span class="p">)])</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/fme_index_11_0.svg" src="../../_images/fme_index_11_0.svg?v=fme9" />
+<img alt="../../_images/fme_index_11_0.svg" src="../../_images/fme_index_11_0.svg?v=fme10" />
 </div>
 </div>
-<table class="colwidths-auto table">
-<thead>
-<tr class="row-odd"><th class="head"></th>
-<th class="head"><p>BJT</p></th>
-<th class="head"><p>MOSFET</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p><strong>Into the emitter or source</strong></p></td>
-<td><p><span class="math notranslate nohighlight">\(R_\mathrm{out}=\dfrac{1}{g_m}\)</span>, for <span class="math notranslate nohighlight">\(V_A=\infty\)</span></p></td>
-<td><p><span class="math notranslate nohighlight">\(R_\mathrm{out}=\dfrac{1}{g_m}\)</span>, for <span class="math notranslate nohighlight">\(\lambda=0\)</span></p></td>
-</tr>
-<tr class="row-odd"><td><p><strong>With base resistance</strong></p></td>
-<td><p><span class="math notranslate nohighlight">\(R_\mathrm{out}=\dfrac{1}{g_m}+\dfrac{R_B}{\beta+1}\)</span>, for <span class="math notranslate nohighlight">\(V_A=\infty\)</span></p></td>
-<td><p><em>No MOSFET version.</em> The summary in [2] has no such entry: no current flows in a gate resistor, so <span class="math notranslate nohighlight">\(R_\mathrm{out}=1/g_m\)</span> as in the row above</p></td>
-</tr>
-</tbody>
-</table>
 </div>
 </div>
 <div class="section" id="voltage-gain-equations">
 <h2>Voltage Gain Equations<a class="headerlink" href="#voltage-gain-equations" title="Permalink to this headline">¶</a></h2>
-<p>The small-signal voltage gain <span class="math notranslate nohighlight">\(A_v=v_\mathrm{out}/v_\mathrm{in}\)</span> of the three amplifier connections. These are the eight stages of the summary inside the back cover of [2], four for each technology, drawn as printed there with the gain written under each stage.</p>
+<p>The small-signal voltage gain <span class="math notranslate nohighlight">\(A_v=v_\mathrm{out}/v_\mathrm{in}\)</span> of the three amplifier connections. These are the eight stages of the summary inside the back cover of [2], four for each technology, drawn as printed there with the gain under each stage. <span class="math notranslate nohighlight">\(V_A=\infty\)</span> or <span class="math notranslate nohighlight">\(\lambda=0\)</span> beside a transistor is the condition under which the gain holds.</p>
 <div class="section" id="common-emitter-and-common-source-stages">
 <h3>Common-Emitter and Common-Source Stages<a class="headerlink" href="#common-emitter-and-common-source-stages" title="Permalink to this headline">¶</a></h3>
 <p>The input drives the base or gate, and the output is taken at the collector or drain. A resistor in the emitter or source degenerates the stage; that gain holds for <span class="math notranslate nohighlight">\(V_A=\infty\)</span> or <span class="math notranslate nohighlight">\(\lambda=0\)</span>.</p>
@@ -1392,7 +1299,6 @@ const thebe_selector_output = ".output, .cell_output"
     <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">(</span><span class="n">out</span><span class="p">,</span> <span class="p">(</span><span class="mi">50</span><span class="p">,</span> <span class="o">-</span><span class="mi">20</span><span class="p">));</span> <span class="n">c</span><span class="o">.</span><span class="n">port</span><span class="p">((</span><span class="mi">50</span><span class="p">,</span> <span class="o">-</span><span class="mi">20</span><span class="p">),</span> <span class="s1">&#39;v_out&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span>
     <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">(</span><span class="n">t</span><span class="o">.</span><span class="n">es</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">));</span> <span class="n">c</span><span class="o">.</span><span class="n">gnd</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">))</span>
     <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">(</span><span class="n">t</span><span class="o">.</span><span class="n">bg</span><span class="p">,</span> <span class="p">(</span><span class="n">t</span><span class="o">.</span><span class="n">bg</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">40</span><span class="p">));</span> <span class="n">c</span><span class="o">.</span><span class="n">port</span><span class="p">((</span><span class="n">t</span><span class="o">.</span><span class="n">bg</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">40</span><span class="p">),</span> <span class="s1">&#39;v_in&#39;</span><span class="p">,</span> <span class="s1">&#39;l&#39;</span><span class="p">)</span>
-    <span class="n">c</span><span class="o">.</span><span class="n">caption</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$A_v=-g_m(R_</span><span class="si">%s</span><span class="s1">\|r_O)$&#39;</span> <span class="o">%</span> <span class="n">C</span><span class="p">)</span>
 
 
 <span class="k">def</span> <span class="nf">gain_degenerated</span><span class="p">(</span><span class="n">c</span><span class="p">):</span>
@@ -1405,34 +1311,19 @@ const thebe_selector_output = ".output, .cell_output"
     <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">(</span><span class="n">out</span><span class="p">,</span> <span class="p">(</span><span class="mi">50</span><span class="p">,</span> <span class="o">-</span><span class="mi">20</span><span class="p">));</span> <span class="n">c</span><span class="o">.</span><span class="n">port</span><span class="p">((</span><span class="mi">50</span><span class="p">,</span> <span class="o">-</span><span class="mi">20</span><span class="p">),</span> <span class="s1">&#39;v_out&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span>
     <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">(</span><span class="n">t</span><span class="o">.</span><span class="n">es</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">));</span> <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">(</span><span class="n">c</span><span class="o">.</span><span class="n">res</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">),</span> <span class="s1">&#39;R_&#39;</span> <span class="o">+</span> <span class="n">E</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">180</span><span class="p">));</span> <span class="n">c</span><span class="o">.</span><span class="n">gnd</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="mi">180</span><span class="p">))</span>
     <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">(</span><span class="n">t</span><span class="o">.</span><span class="n">bg</span><span class="p">,</span> <span class="p">(</span><span class="n">t</span><span class="o">.</span><span class="n">bg</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">40</span><span class="p">));</span> <span class="n">c</span><span class="o">.</span><span class="n">port</span><span class="p">((</span><span class="n">t</span><span class="o">.</span><span class="n">bg</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">40</span><span class="p">),</span> <span class="s1">&#39;v_in&#39;</span><span class="p">,</span> <span class="s1">&#39;l&#39;</span><span class="p">)</span>
-    <span class="n">c</span><span class="o">.</span><span class="n">caption</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$A_v=-\dfrac{R_</span><span class="si">%s</span><span class="s1">}{\frac</span><span class="si">{1}{g_m}</span><span class="s1">+R_</span><span class="si">%s</span><span class="s1">}$&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">C</span><span class="p">,</span> <span class="n">E</span><span class="p">))</span>
 
-<span class="n">show</span><span class="p">(</span><span class="n">gain_common_emitter</span><span class="p">,</span> <span class="n">gain_degenerated</span><span class="p">)</span>
+<span class="n">show</span><span class="p">(</span><span class="n">gain_common_emitter</span><span class="p">,</span> <span class="n">gain_degenerated</span><span class="p">,</span> <span class="n">notes</span><span class="o">=</span><span class="p">[</span>
+    <span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$A_v=-g_m(R_C\parallel r_O)$&#39;</span><span class="p">,</span>
+     <span class="sa">r</span><span class="s1">&#39;$A_v=-g_m(R_D\parallel r_O)$&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$A_v=-\dfrac</span><span class="si">{R_C}</span><span class="s1">{\dfrac</span><span class="si">{1}{g_m}</span><span class="s1">+R_E}$&#39;</span><span class="p">,</span>
+     <span class="sa">r</span><span class="s1">&#39;$A_v=-\dfrac</span><span class="si">{R_D}</span><span class="s1">{\dfrac</span><span class="si">{1}{g_m}</span><span class="s1">+R_S}$&#39;</span><span class="p">)])</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/fme_index_12_0.svg" src="../../_images/fme_index_12_0.svg?v=fme9" />
+<img alt="../../_images/fme_index_12_0.svg" src="../../_images/fme_index_12_0.svg?v=fme10" />
 </div>
 </div>
-<table class="colwidths-auto table">
-<thead>
-<tr class="row-odd"><th class="head"></th>
-<th class="head"><p>BJT</p></th>
-<th class="head"><p>MOSFET</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p><strong>Amplifier</strong></p></td>
-<td><p><span class="math notranslate nohighlight">\(A_v=-g_m(R_C\parallel r_O)\)</span></p></td>
-<td><p><span class="math notranslate nohighlight">\(A_v=-g_m(R_D\parallel r_O)\)</span></p></td>
-</tr>
-<tr class="row-odd"><td><p><strong>Degenerated amplifier</strong></p></td>
-<td><p><span class="math notranslate nohighlight">\(A_v=-\dfrac{R_C}{\dfrac{1}{g_m}+R_E}\)</span>, for <span class="math notranslate nohighlight">\(V_A=\infty\)</span></p></td>
-<td><p><span class="math notranslate nohighlight">\(A_v=-\dfrac{R_D}{\dfrac{1}{g_m}+R_S}\)</span>, for <span class="math notranslate nohighlight">\(\lambda=0\)</span></p></td>
-</tr>
-</tbody>
-</table>
 </div>
 <div class="section" id="common-base-or-common-gate-stage-and-follower">
 <h3>Common-Base or Common-Gate Stage and Follower<a class="headerlink" href="#common-base-or-common-gate-stage-and-follower" title="Permalink to this headline">¶</a></h3>
@@ -1452,7 +1343,6 @@ const thebe_selector_output = ".output, .cell_output"
     <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">(</span><span class="n">t</span><span class="o">.</span><span class="n">es</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">),</span> <span class="p">(</span><span class="o">-</span><span class="mi">20</span><span class="p">,</span> <span class="mi">100</span><span class="p">))</span>
     <span class="n">left</span> <span class="o">=</span> <span class="n">c</span><span class="o">.</span><span class="n">res</span><span class="p">((</span><span class="o">-</span><span class="mi">20</span><span class="p">,</span> <span class="mi">100</span><span class="p">),</span> <span class="s1">&#39;R_&#39;</span> <span class="o">+</span> <span class="n">E</span><span class="p">,</span> <span class="n">to</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">)</span>
     <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">(</span><span class="n">left</span><span class="p">,</span> <span class="p">(</span><span class="n">left</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">100</span><span class="p">));</span> <span class="n">c</span><span class="o">.</span><span class="n">port</span><span class="p">((</span><span class="n">left</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">100</span><span class="p">),</span> <span class="s1">&#39;v_in&#39;</span><span class="p">,</span> <span class="s1">&#39;l&#39;</span><span class="p">)</span>
-    <span class="n">c</span><span class="o">.</span><span class="n">caption</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$A_v=\dfrac{R_</span><span class="si">%s</span><span class="s1">}{\frac</span><span class="si">{1}{g_m}</span><span class="s1">+R_</span><span class="si">%s</span><span class="s1">}$&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">C</span><span class="p">,</span> <span class="n">E</span><span class="p">))</span>
 
 
 <span class="k">def</span> <span class="nf">gain_follower</span><span class="p">(</span><span class="n">c</span><span class="p">):</span>
@@ -1465,39 +1355,24 @@ const thebe_selector_output = ".output, .cell_output"
     <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">(</span><span class="n">out</span><span class="p">,</span> <span class="p">(</span><span class="mi">50</span><span class="p">,</span> <span class="mi">100</span><span class="p">));</span> <span class="n">c</span><span class="o">.</span><span class="n">port</span><span class="p">((</span><span class="mi">50</span><span class="p">,</span> <span class="mi">100</span><span class="p">),</span> <span class="s1">&#39;v_out&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span>
     <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">(</span><span class="n">c</span><span class="o">.</span><span class="n">res</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="mi">120</span><span class="p">),</span> <span class="s1">&#39;R_&#39;</span> <span class="o">+</span> <span class="n">E</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">200</span><span class="p">));</span> <span class="n">c</span><span class="o">.</span><span class="n">gnd</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="mi">200</span><span class="p">))</span>
     <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">(</span><span class="n">t</span><span class="o">.</span><span class="n">bg</span><span class="p">,</span> <span class="p">(</span><span class="n">t</span><span class="o">.</span><span class="n">bg</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">40</span><span class="p">));</span> <span class="n">c</span><span class="o">.</span><span class="n">port</span><span class="p">((</span><span class="n">t</span><span class="o">.</span><span class="n">bg</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">40</span><span class="p">),</span> <span class="s1">&#39;v_in&#39;</span><span class="p">,</span> <span class="s1">&#39;l&#39;</span><span class="p">)</span>
-    <span class="n">c</span><span class="o">.</span><span class="n">caption</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$A_v=\dfrac{R_</span><span class="si">%s</span><span class="s1">\|r_O}{\frac</span><span class="si">{1}{g_m}</span><span class="s1">+R_</span><span class="si">%s</span><span class="s1">\|r_O}$&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">E</span><span class="p">,</span> <span class="n">E</span><span class="p">))</span>
 
-<span class="n">show</span><span class="p">(</span><span class="n">gain_common_base</span><span class="p">,</span> <span class="n">gain_follower</span><span class="p">)</span>
+<span class="n">show</span><span class="p">(</span><span class="n">gain_common_base</span><span class="p">,</span> <span class="n">gain_follower</span><span class="p">,</span> <span class="n">notes</span><span class="o">=</span><span class="p">[</span>
+    <span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$A_v=\dfrac</span><span class="si">{R_C}</span><span class="s1">{\dfrac</span><span class="si">{1}{g_m}</span><span class="s1">+R_E}$&#39;</span><span class="p">,</span>
+     <span class="sa">r</span><span class="s1">&#39;$A_v=\dfrac</span><span class="si">{R_D}</span><span class="s1">{\dfrac</span><span class="si">{1}{g_m}</span><span class="s1">+R_S}$&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$A_v=\dfrac{R_E\parallel r_O}{\dfrac</span><span class="si">{1}{g_m}</span><span class="s1">+R_E\parallel r_O}$&#39;</span><span class="p">,</span>
+     <span class="sa">r</span><span class="s1">&#39;$A_v=\dfrac{R_S\parallel r_O}{\dfrac</span><span class="si">{1}{g_m}</span><span class="s1">+R_S\parallel r_O}$&#39;</span><span class="p">)])</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/fme_index_13_0.svg" src="../../_images/fme_index_13_0.svg?v=fme9" />
+<img alt="../../_images/fme_index_13_0.svg" src="../../_images/fme_index_13_0.svg?v=fme10" />
 </div>
 </div>
-<table class="colwidths-auto table">
-<thead>
-<tr class="row-odd"><th class="head"></th>
-<th class="head"><p>BJT</p></th>
-<th class="head"><p>MOSFET</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p><strong>Common base or gate</strong></p></td>
-<td><p><span class="math notranslate nohighlight">\(A_v=\dfrac{R_C}{\dfrac{1}{g_m}+R_E}\)</span>, for <span class="math notranslate nohighlight">\(V_A=\infty\)</span></p></td>
-<td><p><span class="math notranslate nohighlight">\(A_v=\dfrac{R_D}{\dfrac{1}{g_m}+R_S}\)</span>, for <span class="math notranslate nohighlight">\(\lambda=0\)</span></p></td>
-</tr>
-<tr class="row-odd"><td><p><strong>Follower</strong></p></td>
-<td><p><span class="math notranslate nohighlight">\(A_v=\dfrac{R_E\parallel r_O}{\dfrac{1}{g_m}+R_E\parallel r_O}\)</span></p></td>
-<td><p><span class="math notranslate nohighlight">\(A_v=\dfrac{R_S\parallel r_O}{\dfrac{1}{g_m}+R_S\parallel r_O}\)</span></p></td>
-</tr>
-</tbody>
-</table>
 </div>
 </div>
 <div class="section" id="circuits-of-two-transistors">
 <h2>Circuits of Two Transistors<a class="headerlink" href="#circuits-of-two-transistors" title="Permalink to this headline">¶</a></h2>
-<p>The forty-two circuits are grouped into seven families by what the pair does. Inside a family the circuits come in pairs: the second circuit of a pair is the first one with a single change. The number in parentheses is the figure number in [1].</p>
+<p>The forty-two circuits are grouped into seven families by what the pair does. Inside a family the circuits come in pairs: the second circuit of a pair is the first one with a single change.</p>
 <table class="colwidths-auto table">
 <thead>
 <tr class="row-odd"><th class="head"><p>Family</p></th>
@@ -1507,92 +1382,92 @@ const thebe_selector_output = ".output, .cell_output"
 </thead>
 <tbody>
 <tr class="row-even"><td><p><strong>Bias Circuits</strong></p></td>
-<td><p>1. Voltage divider (34), 2. PTAT generator (26)</p></td>
+<td><p>Voltage divider, PTAT generator</p></td>
 <td><p>Both bases or gates go to the top of the stack</p></td>
 </tr>
 <tr class="row-odd"><td></td>
-<td><p>3. Bias generator (24), 4. Tie cell (3)</p></td>
+<td><p>Bias generator, Tie cell</p></td>
 <td><p>The diode connection moves from the n-type to the p-type device</p></td>
 </tr>
 <tr class="row-even"><td></td>
-<td><p>5. Current mirror (7), 6. Current divider (35)</p></td>
+<td><p>Current mirror, Current divider</p></td>
 <td><p>The devices are stacked, and the current enters between them</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>Gain Stages</strong></p></td>
-<td><p>7. Active load (10), 8. Inverter (1)</p></td>
+<td><p>Active load, Inverter</p></td>
 <td><p>The load is driven by the input as well</p></td>
 </tr>
 <tr class="row-even"><td></td>
-<td><p>9. Diode load (17), 10. Folded diode load (18)</p></td>
+<td><p>Diode load, Folded diode load</p></td>
 <td><p>The load moves beside the amplifying device</p></td>
 </tr>
 <tr class="row-odd"><td></td>
-<td><p>11. Degeneration (20), 12. Tunable degeneration (21)</p></td>
+<td><p>Degeneration, Tunable degeneration</p></td>
 <td><p>The lower device gets its own bias</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>Buffers</strong></p></td>
-<td><p>13. Follower (9), 14. Push-pull follower (19)</p></td>
+<td><p>Follower, Push-pull follower</p></td>
 <td><p>A complementary follower replaces the current source</p></td>
 </tr>
 <tr class="row-odd"><td></td>
-<td><p>15. Current buffer (13), 16. Stacked current buffers (12)</p></td>
+<td><p>Current buffer, Stacked current buffers</p></td>
 <td><p>A second buffer replaces the current source</p></td>
 </tr>
 <tr class="row-even"><td></td>
-<td><p>17. Two outputs (22), 18. Two paths (23)</p></td>
+<td><p>Two outputs, Two paths</p></td>
 <td><p>The amplifier becomes a follower, and the two signal currents meet in one output</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>Feedback Pairs</strong></p></td>
-<td><p>19. Cascode (11), 20. Regulated cascode (48)</p></td>
+<td><p>Cascode, Regulated cascode</p></td>
 <td><p>An amplifier senses the emitter or source of the buffer and drives its base or gate</p></td>
 </tr>
 <tr class="row-even"><td></td>
-<td><p>21. Flipped follower (47), 22. Active inductor (33)</p></td>
+<td><p>Flipped follower, Active inductor</p></td>
 <td><p>The same loop, seen from the lower node</p></td>
 </tr>
 <tr class="row-odd"><td></td>
-<td><p>23. Differential pair (8), 24. Cross-coupled pair (28)</p></td>
+<td><p>Differential pair, Cross-coupled pair</p></td>
 <td><p>Each base or gate goes to the opposite collector or drain</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>Circuit Elements</strong></p></td>
-<td><p>25. Controlled resistor (41), 26. Large resistor (42)</p></td>
+<td><p>Controlled resistor, Large resistor</p></td>
 <td><p>The devices bias each other, without a bias current</p></td>
 </tr>
 <tr class="row-odd"><td></td>
-<td><p>27. Varactor (30), 28. Anti-parallel capacitors (32)</p></td>
+<td><p>Varactor, Anti-parallel capacitors</p></td>
 <td><p>The two capacitors are connected in parallel and in opposite directions</p></td>
 </tr>
 <tr class="row-even"><td></td>
-<td><p>29. Anti-parallel diodes (31), 30. Ultra-low-power diode (43)</p></td>
+<td><p>Anti-parallel diodes, Ultra-low-power diode</p></td>
 <td><p>The devices are put in series, each controlled from the far terminal</p></td>
 </tr>
 <tr class="row-odd"><td></td>
-<td><p>31. Level shift (44), 32. Linear I-to-V converter (45)</p></td>
+<td><p>Level shift, Linear I-to-V converter</p></td>
 <td><p>A bias voltage fixes the sum of the two control voltages</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>Switched Circuits</strong></p></td>
-<td><p>33. Transmission gate (14), 34. Multiplexer (15)</p></td>
+<td><p>Transmission gate, Multiplexer</p></td>
 <td><p>The two switches share only the output</p></td>
 </tr>
 <tr class="row-odd"><td></td>
-<td><p>35. Sample-and-hold (36), 36. Low-pass filter (38)</p></td>
+<td><p>Sample-and-hold, Low-pass filter</p></td>
 <td><p>A fixed bias replaces the clock</p></td>
 </tr>
 <tr class="row-even"><td></td>
-<td><p>37. Peak detector (39), 38. Voltage doubler (40)</p></td>
+<td><p>Peak detector, Voltage doubler</p></td>
 <td><p>Diode and capacitor change places</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>Logic Gates</strong></p></td>
-<td><p>39. NAND (5), 40. NOR (6)</p></td>
+<td><p>NAND, NOR</p></td>
 <td><p>Series becomes parallel</p></td>
 </tr>
 <tr class="row-even"><td></td>
-<td><p>41. XNOR (4), 42. Mixer (37)</p></td>
+<td><p>XNOR, Mixer</p></td>
 <td><p>Logic levels become analog signals</p></td>
 </tr>
 </tbody>
 </table>
-<p>Of the forty-two circuits, 21 carry over to the BJT unchanged and 6 with a restriction, marked <em>Limited</em> in the BJT column. The other 15 rely on a MOSFET as a linear resistor, a gate capacitor or a switch without control current. They have no working BJT version: their BJT cell says so in the figure, and says why in the table.</p>
+<p>Of the forty-two circuits, 21 carry over to the BJT unchanged and 6 with a restriction; the note under such a BJT drawing starts with <em>Limited</em>. The other 15 rely on something a BJT does not have: a gate that draws no current, a channel that acts as a linear resistor, a gate capacitance, or the square law. They have no working BJT version, and their BJT cell says so and why.</p>
 </div>
 <div class="section" id="bias-circuits">
 <h2>Bias Circuits<a class="headerlink" href="#bias-circuits" title="Permalink to this headline">¶</a></h2>
@@ -1625,32 +1500,18 @@ const thebe_selector_output = ".output, .cell_output"
     <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">(</span><span class="n">top</span><span class="p">,</span> <span class="p">(</span><span class="n">xg</span><span class="p">,</span> <span class="n">top</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span> <span class="p">(</span><span class="n">xg</span><span class="p">,</span> <span class="n">t1</span><span class="o">.</span><span class="n">bg</span><span class="p">[</span><span class="mi">1</span><span class="p">]));</span> <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">(</span><span class="n">t2</span><span class="o">.</span><span class="n">bg</span><span class="p">,</span> <span class="p">(</span><span class="n">xg</span><span class="p">,</span> <span class="n">t2</span><span class="o">.</span><span class="n">bg</span><span class="p">[</span><span class="mi">1</span><span class="p">]));</span> <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">(</span><span class="n">t1</span><span class="o">.</span><span class="n">bg</span><span class="p">,</span> <span class="p">(</span><span class="n">xg</span><span class="p">,</span> <span class="n">t1</span><span class="o">.</span><span class="n">bg</span><span class="p">[</span><span class="mi">1</span><span class="p">]));</span> <span class="n">c</span><span class="o">.</span><span class="n">dot</span><span class="p">((</span><span class="n">xg</span><span class="p">,</span> <span class="n">t2</span><span class="o">.</span><span class="n">bg</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
     <span class="n">c</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">j</span><span class="p">);</span> <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">(</span><span class="n">j</span><span class="p">,</span> <span class="p">(</span><span class="mi">60</span><span class="p">,</span> <span class="n">j</span><span class="p">[</span><span class="mi">1</span><span class="p">]));</span> <span class="n">c</span><span class="o">.</span><span class="n">port</span><span class="p">((</span><span class="mi">60</span><span class="p">,</span> <span class="n">j</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span> <span class="s1">&#39;V_ptat&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span>
 
-<span class="n">show</span><span class="p">(</span><span class="n">voltage_divider</span><span class="p">,</span> <span class="n">ptat_generator</span><span class="p">)</span>
+<span class="n">show</span><span class="p">(</span><span class="n">voltage_divider</span><span class="p">,</span> <span class="n">ptat_generator</span><span class="p">,</span> <span class="n">notes</span><span class="o">=</span><span class="p">[</span>
+    <span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$V_\mathrm</span><span class="si">{out}</span><span class="s1">=V_\mathrm</span><span class="si">{in}</span><span class="s1">/2$ for matched devices: each drops one $V_</span><span class="si">{BE}</span><span class="s1">$&#39;</span><span class="p">,</span>
+     <span class="sa">r</span><span class="s1">&#39;$V_\mathrm</span><span class="si">{out}</span><span class="s1">=V_\mathrm</span><span class="si">{in}</span><span class="s1">/2$ for matched devices: each drops one $V_</span><span class="si">{GS}</span><span class="s1">$&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;Limited: $Q_1$ saturates. Its $V_</span><span class="si">{CE}</span><span class="s1">$ is of the order of $V_T$&#39;</span><span class="p">,</span>
+     <span class="sa">r</span><span class="s1">&#39;Weak inversion: $V_\mathrm</span><span class="si">{ptat}</span><span class="s1">=V_T\ln(1+K)$ with $V_T=kT/q$&#39;</span><span class="p">)])</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/fme_index_14_0.svg" src="../../_images/fme_index_14_0.svg?v=fme9" />
+<img alt="../../_images/fme_index_14_0.svg" src="../../_images/fme_index_14_0.svg?v=fme10" />
 </div>
 </div>
-<table class="colwidths-auto table">
-<thead>
-<tr class="row-odd"><th class="head"></th>
-<th class="head"><p>BJT</p></th>
-<th class="head"><p>MOSFET</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p><strong>1. Voltage divider</strong></p></td>
-<td><p><span class="math notranslate nohighlight">\(V_\mathrm{out}=V_\mathrm{in}/2\)</span> for matched devices: each drops one <span class="math notranslate nohighlight">\(V_{BE}\)</span></p></td>
-<td><p><span class="math notranslate nohighlight">\(V_\mathrm{out}=V_\mathrm{in}/2\)</span> for matched devices: each drops one <span class="math notranslate nohighlight">\(V_{GS}\)</span></p></td>
-</tr>
-<tr class="row-odd"><td><p><strong>2. PTAT generator</strong></p></td>
-<td><p><em>Limited.</em> <span class="math notranslate nohighlight">\(Q_1\)</span> saturates. Its <span class="math notranslate nohighlight">\(V_{CE}\)</span> is of the order of <span class="math notranslate nohighlight">\(V_T\)</span></p></td>
-<td><p>Weak inversion: <span class="math notranslate nohighlight">\(V_\mathrm{ptat}=V_T\ln(1+K)\)</span> with <span class="math notranslate nohighlight">\(V_T=kT/q\)</span></p></td>
-</tr>
-</tbody>
-</table>
 </div>
 <div class="section" id="bias-generator-and-tie-cell">
 <h3>Bias Generator and Tie Cell<a class="headerlink" href="#bias-generator-and-tie-cell" title="Permalink to this headline">¶</a></h3>
@@ -1680,32 +1541,18 @@ const thebe_selector_output = ".output, .cell_output"
     <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">(</span><span class="n">n</span><span class="o">.</span><span class="n">cd</span><span class="p">,</span> <span class="p">(</span><span class="n">n</span><span class="o">.</span><span class="n">cd</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">p</span><span class="o">.</span><span class="n">cd</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span> <span class="p">(</span><span class="n">n</span><span class="o">.</span><span class="n">cd</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="mi">40</span><span class="p">,</span> <span class="n">p</span><span class="o">.</span><span class="n">cd</span><span class="p">[</span><span class="mi">1</span><span class="p">]));</span> <span class="n">c</span><span class="o">.</span><span class="n">port</span><span class="p">((</span><span class="n">n</span><span class="o">.</span><span class="n">cd</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="mi">40</span><span class="p">,</span> <span class="n">p</span><span class="o">.</span><span class="n">cd</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span> <span class="s1">&#39;V_low&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span>
     <span class="n">g</span> <span class="o">=</span> <span class="p">(</span><span class="n">n</span><span class="o">.</span><span class="n">es</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">n</span><span class="o">.</span><span class="n">es</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="mi">20</span><span class="p">);</span> <span class="n">c</span><span class="o">.</span><span class="n">gnd</span><span class="p">(</span><span class="n">g</span><span class="p">);</span> <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">(</span><span class="n">n</span><span class="o">.</span><span class="n">es</span><span class="p">,</span> <span class="n">g</span><span class="p">)</span>
 
-<span class="n">show</span><span class="p">(</span><span class="n">bias_generator</span><span class="p">,</span> <span class="n">tie_cell</span><span class="p">)</span>
+<span class="n">show</span><span class="p">(</span><span class="n">bias_generator</span><span class="p">,</span> <span class="n">tie_cell</span><span class="p">,</span> <span class="n">notes</span><span class="o">=</span><span class="p">[</span>
+    <span class="p">(</span><span class="s1">&#39;A grounded base would put the whole supply across the emitter-base junction&#39;</span><span class="p">,</span>
+     <span class="sa">r</span><span class="s1">&#39;$M_1$, with its gate at ground, feeds the diode $M_2$: $V_\mathrm</span><span class="si">{bias}</span><span class="s1">=V_</span><span class="si">{GS2}</span><span class="s1">$&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;Limited: two junctions in series lie across the supply, so a series resistor is needed&#39;</span><span class="p">,</span>
+     <span class="s1">&#39;Diode $M_1$ turns $M_2$ on, which holds the output at ground. No gate is wired to a supply rail&#39;</span><span class="p">)])</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/fme_index_15_0.svg" src="../../_images/fme_index_15_0.svg?v=fme9" />
+<img alt="../../_images/fme_index_15_0.svg" src="../../_images/fme_index_15_0.svg?v=fme10" />
 </div>
 </div>
-<table class="colwidths-auto table">
-<thead>
-<tr class="row-odd"><th class="head"></th>
-<th class="head"><p>BJT</p></th>
-<th class="head"><p>MOSFET</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p><strong>3. Bias generator</strong></p></td>
-<td><p><em>No BJT version.</em> A grounded base would put the whole supply across the emitter-base junction</p></td>
-<td><p><span class="math notranslate nohighlight">\(M_1\)</span> is a current source and <span class="math notranslate nohighlight">\(M_2\)</span> a diode: <span class="math notranslate nohighlight">\(V_\mathrm{bias}=V_{GS2}\)</span></p></td>
-</tr>
-<tr class="row-odd"><td><p><strong>4. Tie cell</strong></p></td>
-<td><p><em>Limited.</em> Two junctions in series across the supply: needs a series resistor</p></td>
-<td><p>Diode <span class="math notranslate nohighlight">\(M_1\)</span> turns <span class="math notranslate nohighlight">\(M_2\)</span> on, which holds the output at ground. No gate is wired to a supply rail</p></td>
-</tr>
-</tbody>
-</table>
 </div>
 <div class="section" id="current-mirror-and-current-divider">
 <h3>Current Mirror and Current Divider<a class="headerlink" href="#current-mirror-and-current-divider" title="Permalink to this headline">¶</a></h3>
@@ -1739,37 +1586,23 @@ const thebe_selector_output = ".output, .cell_output"
     <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">(</span><span class="n">t1</span><span class="o">.</span><span class="n">es</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">t1</span><span class="o">.</span><span class="n">es</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="mi">40</span><span class="p">));</span> <span class="n">c</span><span class="o">.</span><span class="n">port</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="n">t1</span><span class="o">.</span><span class="n">es</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="mi">40</span><span class="p">),</span> <span class="s1">&#39;I_out2&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">)</span>
     <span class="n">c</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">j</span><span class="p">);</span> <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">(</span><span class="n">j</span><span class="p">,</span> <span class="p">(</span><span class="mi">50</span><span class="p">,</span> <span class="n">j</span><span class="p">[</span><span class="mi">1</span><span class="p">]));</span> <span class="n">c</span><span class="o">.</span><span class="n">port</span><span class="p">((</span><span class="mi">50</span><span class="p">,</span> <span class="n">j</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span> <span class="s1">&#39;I_in&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span>
 
-<span class="n">show</span><span class="p">(</span><span class="n">current_mirror</span><span class="p">,</span> <span class="n">current_divider</span><span class="p">)</span>
+<span class="n">show</span><span class="p">(</span><span class="n">current_mirror</span><span class="p">,</span> <span class="n">current_divider</span><span class="p">,</span> <span class="n">notes</span><span class="o">=</span><span class="p">[</span>
+    <span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$I_\mathrm</span><span class="si">{out}</span><span class="s1">=\dfrac{I_\mathrm</span><span class="si">{in}</span><span class="s1">}{1+2/\beta}$ for equal devices. The ratio follows the emitter areas&#39;</span><span class="p">,</span>
+     <span class="sa">r</span><span class="s1">&#39;$I_\mathrm</span><span class="si">{out}</span><span class="s1">=\dfrac{(W/L)_2}{(W/L)_1}\,I_\mathrm</span><span class="si">{in}</span><span class="s1">$&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;The exponential law gives no linear split&#39;</span><span class="p">,</span>
+     <span class="sa">r</span><span class="s1">&#39;$I_\mathrm</span><span class="si">{in}</span><span class="s1">$ splits between the two outputs in a fixed ratio set by the sizes, at any signal level&#39;</span><span class="p">)])</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/fme_index_16_0.svg" src="../../_images/fme_index_16_0.svg?v=fme9" />
+<img alt="../../_images/fme_index_16_0.svg" src="../../_images/fme_index_16_0.svg?v=fme10" />
 </div>
 </div>
-<table class="colwidths-auto table">
-<thead>
-<tr class="row-odd"><th class="head"></th>
-<th class="head"><p>BJT</p></th>
-<th class="head"><p>MOSFET</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p><strong>5. Current mirror</strong></p></td>
-<td><p><span class="math notranslate nohighlight">\(I_\mathrm{out}=\dfrac{I_\mathrm{in}}{1+2/\beta}\)</span> for equal devices. The ratio follows the emitter areas</p></td>
-<td><p><span class="math notranslate nohighlight">\(I_\mathrm{out}=\dfrac{(W/L)_2}{(W/L)_1}\,I_\mathrm{in}\)</span></p></td>
-</tr>
-<tr class="row-odd"><td><p><strong>6. Current divider</strong></p></td>
-<td><p><em>No BJT version.</em> The exponential law gives no linear split</p></td>
-<td><p><span class="math notranslate nohighlight">\(I_\mathrm{in}\)</span> splits between the two outputs in a fixed ratio set by the sizes, at any signal level</p></td>
-</tr>
-</tbody>
-</table>
 </div>
 </div>
 <div class="section" id="gain-stages">
 <h2>Gain Stages<a class="headerlink" href="#gain-stages" title="Permalink to this headline">¶</a></h2>
-<p>One device amplifies. The other is its load or its degeneration.</p>
+<p>One device amplifies. The other is its load or its degeneration, or it amplifies as well.</p>
 <div class="section" id="active-load-and-inverter">
 <h3>Active Load and Inverter<a class="headerlink" href="#active-load-and-inverter" title="Permalink to this headline">¶</a></h3>
 <p>An n-type and a p-type device are stacked between the rails, with the output at their junction. With the upper base or gate at a fixed bias, the upper device is a current-source load. With both inputs tied together, both devices amplify.</p>
@@ -1783,7 +1616,7 @@ const thebe_selector_output = ".output, .cell_output"
     <span class="n">g</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">t1</span><span class="o">.</span><span class="n">es</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="mi">20</span><span class="p">);</span> <span class="n">c</span><span class="o">.</span><span class="n">gnd</span><span class="p">(</span><span class="n">g</span><span class="p">);</span> <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">(</span><span class="n">t1</span><span class="o">.</span><span class="n">es</span><span class="p">,</span> <span class="n">g</span><span class="p">)</span>
     <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">(</span><span class="n">t2</span><span class="o">.</span><span class="n">bg</span><span class="p">,</span> <span class="p">(</span><span class="n">t2</span><span class="o">.</span><span class="n">bg</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="mi">30</span><span class="p">,</span> <span class="n">t2</span><span class="o">.</span><span class="n">bg</span><span class="p">[</span><span class="mi">1</span><span class="p">]));</span> <span class="n">c</span><span class="o">.</span><span class="n">port</span><span class="p">((</span><span class="n">t2</span><span class="o">.</span><span class="n">bg</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="mi">30</span><span class="p">,</span> <span class="n">t2</span><span class="o">.</span><span class="n">bg</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span> <span class="s1">&#39;V_bias&#39;</span><span class="p">,</span> <span class="s1">&#39;l&#39;</span><span class="p">)</span>
     <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">(</span><span class="n">t1</span><span class="o">.</span><span class="n">bg</span><span class="p">,</span> <span class="p">(</span><span class="n">t1</span><span class="o">.</span><span class="n">bg</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="mi">30</span><span class="p">,</span> <span class="n">t1</span><span class="o">.</span><span class="n">bg</span><span class="p">[</span><span class="mi">1</span><span class="p">]));</span> <span class="n">c</span><span class="o">.</span><span class="n">port</span><span class="p">((</span><span class="n">t1</span><span class="o">.</span><span class="n">bg</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="mi">30</span><span class="p">,</span> <span class="n">t1</span><span class="o">.</span><span class="n">bg</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span> <span class="n">IN</span><span class="p">,</span> <span class="s1">&#39;l&#39;</span><span class="p">)</span>
-    <span class="n">c</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">j</span><span class="p">);</span> <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">(</span><span class="n">j</span><span class="p">,</span> <span class="p">(</span><span class="mi">50</span><span class="p">,</span> <span class="n">j</span><span class="p">[</span><span class="mi">1</span><span class="p">]));</span> <span class="n">c</span><span class="o">.</span><span class="n">port</span><span class="p">((</span><span class="mi">50</span><span class="p">,</span> <span class="n">j</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span> <span class="n">OUT</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span>
+    <span class="n">c</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">j</span><span class="p">);</span> <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">(</span><span class="n">j</span><span class="p">,</span> <span class="p">(</span><span class="mi">50</span><span class="p">,</span> <span class="n">j</span><span class="p">[</span><span class="mi">1</span><span class="p">]));</span> <span class="n">c</span><span class="o">.</span><span class="n">port</span><span class="p">((</span><span class="mi">50</span><span class="p">,</span> <span class="n">j</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span> <span class="n">OUT</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">);</span> <span class="n">c</span><span class="o">.</span><span class="n">look</span><span class="p">((</span><span class="mi">50</span><span class="p">,</span> <span class="n">j</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span> <span class="s1">&#39;l&#39;</span><span class="p">,</span> <span class="s1">&#39;d&#39;</span><span class="p">,</span> <span class="s1">&#39;R_out&#39;</span><span class="p">)</span>
 
 
 <span class="k">def</span> <span class="nf">inverter</span><span class="p">(</span><span class="n">c</span><span class="p">):</span>
@@ -1795,33 +1628,20 @@ const thebe_selector_output = ".output, .cell_output"
     <span class="n">c</span><span class="o">.</span><span class="n">bus</span><span class="p">([</span><span class="n">p</span><span class="p">,</span> <span class="n">n</span><span class="p">],</span> <span class="n">xin</span><span class="p">)</span>
     <span class="n">c</span><span class="o">.</span><span class="n">dot</span><span class="p">((</span><span class="n">xin</span><span class="p">,</span> <span class="n">j</span><span class="p">[</span><span class="mi">1</span><span class="p">]));</span> <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">((</span><span class="n">xin</span><span class="p">,</span> <span class="n">j</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span> <span class="p">(</span><span class="n">xin</span> <span class="o">-</span> <span class="mi">30</span><span class="p">,</span> <span class="n">j</span><span class="p">[</span><span class="mi">1</span><span class="p">]));</span> <span class="n">c</span><span class="o">.</span><span class="n">port</span><span class="p">((</span><span class="n">xin</span> <span class="o">-</span> <span class="mi">30</span><span class="p">,</span> <span class="n">j</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span> <span class="n">IN</span><span class="p">,</span> <span class="s1">&#39;l&#39;</span><span class="p">)</span>
     <span class="n">c</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">j</span><span class="p">);</span> <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">(</span><span class="n">j</span><span class="p">,</span> <span class="p">(</span><span class="mi">50</span><span class="p">,</span> <span class="n">j</span><span class="p">[</span><span class="mi">1</span><span class="p">]));</span> <span class="n">c</span><span class="o">.</span><span class="n">port</span><span class="p">((</span><span class="mi">50</span><span class="p">,</span> <span class="n">j</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span> <span class="n">OUT</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">c</span><span class="o">.</span><span class="n">device</span> <span class="ow">is</span> <span class="n">MOSFET</span><span class="p">:</span>                                  <span class="c1"># the BJT version has no gain to speak of</span>
+        <span class="n">c</span><span class="o">.</span><span class="n">look</span><span class="p">((</span><span class="mi">50</span><span class="p">,</span> <span class="n">j</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span> <span class="s1">&#39;l&#39;</span><span class="p">,</span> <span class="s1">&#39;d&#39;</span><span class="p">,</span> <span class="s1">&#39;R_out&#39;</span><span class="p">)</span>
 
-<span class="n">show</span><span class="p">(</span><span class="n">active_load</span><span class="p">,</span> <span class="n">inverter</span><span class="p">)</span>
+<span class="n">show</span><span class="p">(</span><span class="n">active_load</span><span class="p">,</span> <span class="n">inverter</span><span class="p">,</span> <span class="n">notes</span><span class="o">=</span><span class="p">[</span>
+    <span class="sa">r</span><span class="s1">&#39;$A_v=-g_</span><span class="si">{m1}</span><span class="s1">R_\mathrm</span><span class="si">{out}</span><span class="s1">$, $R_\mathrm</span><span class="si">{out}</span><span class="s1">=r_</span><span class="si">{O1}</span><span class="s1">\parallel r_</span><span class="si">{O2}</span><span class="s1">$&#39;</span><span class="p">,</span>
+    <span class="p">(</span><span class="s1">&#39;Limited: $V_</span><span class="si">{CC}</span><span class="s1">$ lies across two base-emitter junctions, so it must stay near $2V_</span><span class="si">{BE}</span><span class="s1">$&#39;</span><span class="p">,</span>
+     <span class="sa">r</span><span class="s1">&#39;$A_v=-(g_</span><span class="si">{m1}</span><span class="s1">+g_</span><span class="si">{m2}</span><span class="s1">)R_\mathrm</span><span class="si">{out}</span><span class="s1">$, $R_\mathrm</span><span class="si">{out}</span><span class="s1">=r_</span><span class="si">{O1}</span><span class="s1">\parallel r_</span><span class="si">{O2}</span><span class="s1">$ around the switching point. As a logic gate the output swings from rail to rail&#39;</span><span class="p">)])</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/fme_index_17_0.svg" src="../../_images/fme_index_17_0.svg?v=fme9" />
+<img alt="../../_images/fme_index_17_0.svg" src="../../_images/fme_index_17_0.svg?v=fme10" />
 </div>
 </div>
-<table class="colwidths-auto table">
-<thead>
-<tr class="row-odd"><th class="head"></th>
-<th class="head"><p>BJT</p></th>
-<th class="head"><p>MOSFET</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p><strong>7. Active load</strong></p></td>
-<td><p><span class="math notranslate nohighlight">\(A_v=-g_{m1}\,(r_{O1}\parallel r_{O2})\)</span></p></td>
-<td><p><span class="math notranslate nohighlight">\(A_v=-g_{m1}\,(r_{O1}\parallel r_{O2})\)</span></p></td>
-</tr>
-<tr class="row-odd"><td><p><strong>8. Inverter</strong></p></td>
-<td><p><em>Limited.</em> <span class="math notranslate nohighlight">\(V_{CC}\)</span> lies across two base-emitter junctions, so it must stay near <span class="math notranslate nohighlight">\(2V_{BE}\)</span></p></td>
-<td><p><span class="math notranslate nohighlight">\(A_v=-(g_{m1}+g_{m2})(r_{O1}\parallel r_{O2})\)</span> around the switching point. As a logic gate the output swings from rail to rail</p></td>
-</tr>
-</tbody>
-</table>
 </div>
 <div class="section" id="stacked-and-folded-diode-loads">
 <h3>Stacked and Folded Diode Loads<a class="headerlink" href="#stacked-and-folded-diode-loads" title="Permalink to this headline">¶</a></h3>
@@ -1853,32 +1673,18 @@ const thebe_selector_output = ".output, .cell_output"
     <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">(</span><span class="n">t2</span><span class="o">.</span><span class="n">cd</span><span class="p">,</span> <span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="o">-</span><span class="mi">20</span><span class="p">));</span> <span class="n">c</span><span class="o">.</span><span class="n">dot</span><span class="p">((</span><span class="mi">100</span><span class="p">,</span> <span class="o">-</span><span class="mi">20</span><span class="p">))</span>                         <span class="c1"># the second transistor is diode-connected</span>
     <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">((</span><span class="mi">40</span><span class="p">,</span> <span class="o">-</span><span class="mi">20</span><span class="p">),</span> <span class="p">(</span><span class="mi">40</span><span class="p">,</span> <span class="n">t2</span><span class="o">.</span><span class="n">bg</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span> <span class="n">t2</span><span class="o">.</span><span class="n">bg</span><span class="p">);</span> <span class="n">c</span><span class="o">.</span><span class="n">dot</span><span class="p">((</span><span class="mi">40</span><span class="p">,</span> <span class="o">-</span><span class="mi">20</span><span class="p">))</span>
 
-<span class="n">show</span><span class="p">(</span><span class="n">diode_load</span><span class="p">,</span> <span class="n">folded_diode_load</span><span class="p">)</span>
+<span class="n">show</span><span class="p">(</span><span class="n">diode_load</span><span class="p">,</span> <span class="n">folded_diode_load</span><span class="p">,</span> <span class="n">notes</span><span class="o">=</span><span class="p">[</span>
+    <span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$A_v=-\dfrac{g_</span><span class="si">{m1}</span><span class="s1">}{g_</span><span class="si">{m2}</span><span class="s1">}=-1$, because both devices carry the same current&#39;</span><span class="p">,</span>
+     <span class="sa">r</span><span class="s1">&#39;$A_v=-\dfrac{g_</span><span class="si">{m1}</span><span class="s1">}{g_</span><span class="si">{m2}</span><span class="s1">}=-\sqrt{\dfrac{(W/L)_1}{(W/L)_2}}$&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$A_v=-\dfrac{g_</span><span class="si">{m1}</span><span class="s1">}{g_</span><span class="si">{m2}</span><span class="s1">}=-\dfrac{I_</span><span class="si">{C1}</span><span class="s1">}{I_</span><span class="si">{C2}</span><span class="s1">}$&#39;</span><span class="p">,</span>
+     <span class="sa">r</span><span class="s1">&#39;$A_v=-\dfrac{g_</span><span class="si">{m1}</span><span class="s1">}{g_</span><span class="si">{m2}</span><span class="s1">}$, output referred to ground, no body effect in $M_2$&#39;</span><span class="p">)])</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/fme_index_18_0.svg" src="../../_images/fme_index_18_0.svg?v=fme9" />
+<img alt="../../_images/fme_index_18_0.svg" src="../../_images/fme_index_18_0.svg?v=fme10" />
 </div>
 </div>
-<table class="colwidths-auto table">
-<thead>
-<tr class="row-odd"><th class="head"></th>
-<th class="head"><p>BJT</p></th>
-<th class="head"><p>MOSFET</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p><strong>9. Diode load</strong></p></td>
-<td><p><span class="math notranslate nohighlight">\(A_v=-\dfrac{g_{m1}}{g_{m2}}=-1\)</span>, because both devices carry the same current</p></td>
-<td><p><span class="math notranslate nohighlight">\(A_v=-\dfrac{g_{m1}}{g_{m2}}=-\sqrt{\dfrac{(W/L)_1}{(W/L)_2}}\)</span></p></td>
-</tr>
-<tr class="row-odd"><td><p><strong>10. Folded diode load</strong></p></td>
-<td><p><span class="math notranslate nohighlight">\(A_v=-\dfrac{g_{m1}}{g_{m2}}=-\dfrac{I_{C1}}{I_{C2}}\)</span></p></td>
-<td><p><span class="math notranslate nohighlight">\(A_v=-\dfrac{g_{m1}}{g_{m2}}\)</span>, output referred to ground, no body effect in <span class="math notranslate nohighlight">\(M_2\)</span></p></td>
-</tr>
-</tbody>
-</table>
 </div>
 <div class="section" id="fixed-and-tunable-degeneration">
 <h3>Fixed and Tunable Degeneration<a class="headerlink" href="#fixed-and-tunable-degeneration" title="Permalink to this headline">¶</a></h3>
@@ -1903,33 +1709,20 @@ const thebe_selector_output = ".output, .cell_output"
     <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">(</span><span class="n">t1</span><span class="o">.</span><span class="n">cd</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">50</span><span class="p">));</span> <span class="n">c</span><span class="o">.</span><span class="n">port</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">50</span><span class="p">),</span> <span class="s1">&#39;I_out&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span>
     <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">(</span><span class="n">t1</span><span class="o">.</span><span class="n">bg</span><span class="p">,</span> <span class="p">(</span><span class="n">t1</span><span class="o">.</span><span class="n">bg</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="mi">30</span><span class="p">,</span> <span class="n">t1</span><span class="o">.</span><span class="n">bg</span><span class="p">[</span><span class="mi">1</span><span class="p">]));</span> <span class="n">c</span><span class="o">.</span><span class="n">port</span><span class="p">((</span><span class="n">t1</span><span class="o">.</span><span class="n">bg</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="mi">30</span><span class="p">,</span> <span class="n">t1</span><span class="o">.</span><span class="n">bg</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span> <span class="n">IN</span><span class="p">,</span> <span class="s1">&#39;l&#39;</span><span class="p">)</span>
     <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">(</span><span class="n">t2</span><span class="o">.</span><span class="n">bg</span><span class="p">,</span> <span class="p">(</span><span class="n">t2</span><span class="o">.</span><span class="n">bg</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="mi">30</span><span class="p">,</span> <span class="n">t2</span><span class="o">.</span><span class="n">bg</span><span class="p">[</span><span class="mi">1</span><span class="p">]));</span> <span class="n">c</span><span class="o">.</span><span class="n">port</span><span class="p">((</span><span class="n">t2</span><span class="o">.</span><span class="n">bg</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="mi">30</span><span class="p">,</span> <span class="n">t2</span><span class="o">.</span><span class="n">bg</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span> <span class="s1">&#39;V_bias&#39;</span><span class="p">,</span> <span class="s1">&#39;l&#39;</span><span class="p">)</span>
+    <span class="n">c</span><span class="o">.</span><span class="n">look</span><span class="p">(</span><span class="n">j</span><span class="p">,</span> <span class="s1">&#39;d&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="s1">&#39;R_on2&#39;</span><span class="p">)</span>
 
-<span class="n">show</span><span class="p">(</span><span class="n">degeneration</span><span class="p">,</span> <span class="n">tunable_degeneration</span><span class="p">)</span>
+<span class="n">show</span><span class="p">(</span><span class="n">degeneration</span><span class="p">,</span> <span class="n">tunable_degeneration</span><span class="p">,</span> <span class="n">notes</span><span class="o">=</span><span class="p">[</span>
+    <span class="p">(</span><span class="s1">&#39;The lower device would saturate, and a saturated BJT is not a linear resistor&#39;</span><span class="p">,</span>
+     <span class="s1">&#39;$M_2$ works in triode. The pair acts as one transistor of greater length&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;A BJT offers no bias-controlled linear resistance&#39;</span><span class="p">,</span>
+     <span class="sa">r</span><span class="s1">&#39;$G_m=\dfrac{g_</span><span class="si">{m1}</span><span class="s1">}{1+g_</span><span class="si">{m1}</span><span class="s1">R_\mathrm</span><span class="si">{on2}</span><span class="s1">}$, with $R_\mathrm</span><span class="si">{on2}</span><span class="s1">$ set by $V_\mathrm</span><span class="si">{bias}</span><span class="s1">$&#39;</span><span class="p">)])</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/fme_index_19_0.svg" src="../../_images/fme_index_19_0.svg?v=fme9" />
+<img alt="../../_images/fme_index_19_0.svg" src="../../_images/fme_index_19_0.svg?v=fme10" />
 </div>
 </div>
-<table class="colwidths-auto table">
-<thead>
-<tr class="row-odd"><th class="head"></th>
-<th class="head"><p>BJT</p></th>
-<th class="head"><p>MOSFET</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p><strong>11. Degeneration</strong></p></td>
-<td><p><em>No BJT version.</em> The lower device would saturate, and a saturated BJT is not a linear resistor</p></td>
-<td><p><span class="math notranslate nohighlight">\(M_2\)</span> works in triode. The pair acts as one transistor of greater length</p></td>
-</tr>
-<tr class="row-odd"><td><p><strong>12. Tunable degeneration</strong></p></td>
-<td><p><em>No BJT version.</em> A BJT offers no bias-controlled linear resistance</p></td>
-<td><p><span class="math notranslate nohighlight">\(G_m=\dfrac{g_{m1}}{1+g_{m1}R_\mathrm{on2}}\)</span>, with <span class="math notranslate nohighlight">\(R_\mathrm{on2}\)</span> set by <span class="math notranslate nohighlight">\(V_\mathrm{bias}\)</span></p></td>
-</tr>
-</tbody>
-</table>
 </div>
 </div>
 <div class="section" id="buffers">
@@ -1961,32 +1754,18 @@ const thebe_selector_output = ".output, .cell_output"
     <span class="n">yi</span> <span class="o">=</span> <span class="n">j</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span> <span class="n">c</span><span class="o">.</span><span class="n">dot</span><span class="p">((</span><span class="n">xin</span><span class="p">,</span> <span class="n">yi</span><span class="p">));</span> <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">((</span><span class="n">xin</span><span class="p">,</span> <span class="n">yi</span><span class="p">),</span> <span class="p">(</span><span class="n">xin</span> <span class="o">-</span> <span class="mi">30</span><span class="p">,</span> <span class="n">yi</span><span class="p">));</span> <span class="n">c</span><span class="o">.</span><span class="n">port</span><span class="p">((</span><span class="n">xin</span> <span class="o">-</span> <span class="mi">30</span><span class="p">,</span> <span class="n">yi</span><span class="p">),</span> <span class="n">IN</span><span class="p">,</span> <span class="s1">&#39;l&#39;</span><span class="p">)</span>
     <span class="n">c</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">j</span><span class="p">);</span> <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">(</span><span class="n">j</span><span class="p">,</span> <span class="p">(</span><span class="mi">50</span><span class="p">,</span> <span class="n">j</span><span class="p">[</span><span class="mi">1</span><span class="p">]));</span> <span class="n">c</span><span class="o">.</span><span class="n">port</span><span class="p">((</span><span class="mi">50</span><span class="p">,</span> <span class="n">j</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span> <span class="n">OUT</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span>
 
-<span class="n">show</span><span class="p">(</span><span class="n">follower</span><span class="p">,</span> <span class="n">push_pull</span><span class="p">)</span>
+<span class="n">show</span><span class="p">(</span><span class="n">follower</span><span class="p">,</span> <span class="n">push_pull</span><span class="p">,</span> <span class="n">notes</span><span class="o">=</span><span class="p">[</span>
+    <span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$V_\mathrm</span><span class="si">{out}</span><span class="s1">=V_\mathrm</span><span class="si">{in}</span><span class="s1">-V_</span><span class="si">{BE1}</span><span class="s1">$, $R_\mathrm</span><span class="si">{out}</span><span class="s1">\approx1/g_</span><span class="si">{m1}</span><span class="s1">$&#39;</span><span class="p">,</span>
+     <span class="sa">r</span><span class="s1">&#39;$V_\mathrm</span><span class="si">{out}</span><span class="s1">=V_\mathrm</span><span class="si">{in}</span><span class="s1">-V_</span><span class="si">{GS1}</span><span class="s1">$, $R_\mathrm</span><span class="si">{out}</span><span class="s1">\approx1/g_</span><span class="si">{m1}</span><span class="s1">$&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="sa">r</span><span class="s1">&#39;No device conducts while $|V_\mathrm</span><span class="si">{in}</span><span class="s1">-V_\mathrm</span><span class="si">{out}</span><span class="s1">|&lt;V_</span><span class="si">{BE}</span><span class="s1">$&#39;</span><span class="p">,</span>
+     <span class="sa">r</span><span class="s1">&#39;No device conducts while $|V_\mathrm</span><span class="si">{in}</span><span class="s1">-V_\mathrm</span><span class="si">{out}</span><span class="s1">|&lt;V_</span><span class="si">{TH}</span><span class="s1">$&#39;</span><span class="p">)])</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/fme_index_20_0.svg" src="../../_images/fme_index_20_0.svg?v=fme9" />
+<img alt="../../_images/fme_index_20_0.svg" src="../../_images/fme_index_20_0.svg?v=fme10" />
 </div>
 </div>
-<table class="colwidths-auto table">
-<thead>
-<tr class="row-odd"><th class="head"></th>
-<th class="head"><p>BJT</p></th>
-<th class="head"><p>MOSFET</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p><strong>13. Follower</strong></p></td>
-<td><p><span class="math notranslate nohighlight">\(V_\mathrm{out}=V_\mathrm{in}-V_{BE1}\)</span>, <span class="math notranslate nohighlight">\(R_\mathrm{out}\approx1/g_{m1}\)</span></p></td>
-<td><p><span class="math notranslate nohighlight">\(V_\mathrm{out}=V_\mathrm{in}-V_{GS1}\)</span>, <span class="math notranslate nohighlight">\(R_\mathrm{out}\approx1/g_{m1}\)</span></p></td>
-</tr>
-<tr class="row-odd"><td><p><strong>14. Push-pull follower</strong></p></td>
-<td><p>No device conducts while <span class="math notranslate nohighlight">\(\lvert V_\mathrm{in}-V_\mathrm{out}\rvert&lt;V_{BE}\)</span></p></td>
-<td><p>No device conducts while <span class="math notranslate nohighlight">\(\lvert V_\mathrm{in}-V_\mathrm{out}\rvert&lt;V_{TH}\)</span></p></td>
-</tr>
-</tbody>
-</table>
 </div>
 <div class="section" id="single-and-stacked-current-buffers">
 <h3>Single and Stacked Current Buffers<a class="headerlink" href="#single-and-stacked-current-buffers" title="Permalink to this headline">¶</a></h3>
@@ -2013,32 +1792,18 @@ const thebe_selector_output = ".output, .cell_output"
     <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">(</span><span class="n">t2</span><span class="o">.</span><span class="n">cd</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">40</span><span class="p">));</span> <span class="n">c</span><span class="o">.</span><span class="n">port</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">40</span><span class="p">),</span> <span class="s1">&#39;I_out&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">);</span> <span class="n">c</span><span class="o">.</span><span class="n">look</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">40</span><span class="p">),</span> <span class="s1">&#39;d&#39;</span><span class="p">,</span> <span class="s1">&#39;l&#39;</span><span class="p">,</span> <span class="s1">&#39;R_out&#39;</span><span class="p">)</span>
     <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">(</span><span class="n">t1</span><span class="o">.</span><span class="n">es</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">t1</span><span class="o">.</span><span class="n">es</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="mi">40</span><span class="p">));</span> <span class="n">c</span><span class="o">.</span><span class="n">port</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="n">t1</span><span class="o">.</span><span class="n">es</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="mi">40</span><span class="p">),</span> <span class="s1">&#39;I_in&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span>
 
-<span class="n">show</span><span class="p">(</span><span class="n">buffer_stage</span><span class="p">,</span> <span class="n">stacked_buffers</span><span class="p">)</span>
+<span class="n">show</span><span class="p">(</span><span class="n">buffer_stage</span><span class="p">,</span> <span class="n">stacked_buffers</span><span class="p">,</span> <span class="n">notes</span><span class="o">=</span><span class="p">[</span>
+    <span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$R_\mathrm</span><span class="si">{in}</span><span class="s1">\approx1/g_</span><span class="si">{m1}</span><span class="s1">$. The signal current reaches the output almost unchanged&#39;</span><span class="p">,</span>
+     <span class="sa">r</span><span class="s1">&#39;$R_\mathrm</span><span class="si">{in}</span><span class="s1">\approx1/g_</span><span class="si">{m1}</span><span class="s1">$. The signal current reaches the output unchanged&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="sa">r</span><span class="s1">&#39;The output resistance $R_\mathrm</span><span class="si">{out}</span><span class="s1">$ rises with each device, up to about $\beta\,r_O$&#39;</span><span class="p">,</span>
+     <span class="sa">r</span><span class="s1">&#39;The output resistance $R_\mathrm</span><span class="si">{out}</span><span class="s1">$ rises by about $g_mr_O$ with each device&#39;</span><span class="p">)])</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/fme_index_21_0.svg" src="../../_images/fme_index_21_0.svg?v=fme9" />
+<img alt="../../_images/fme_index_21_0.svg" src="../../_images/fme_index_21_0.svg?v=fme10" />
 </div>
 </div>
-<table class="colwidths-auto table">
-<thead>
-<tr class="row-odd"><th class="head"></th>
-<th class="head"><p>BJT</p></th>
-<th class="head"><p>MOSFET</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p><strong>15. Current buffer</strong></p></td>
-<td><p><span class="math notranslate nohighlight">\(R_\mathrm{in}\approx1/g_{m1}\)</span>. The signal current reaches the output almost unchanged</p></td>
-<td><p><span class="math notranslate nohighlight">\(R_\mathrm{in}\approx1/g_{m1}\)</span>. The signal current reaches the output unchanged</p></td>
-</tr>
-<tr class="row-odd"><td><p><strong>16. Stacked current buffers</strong></p></td>
-<td><p>The output resistance <span class="math notranslate nohighlight">\(R_\mathrm{out}\)</span> rises with each device, up to about <span class="math notranslate nohighlight">\(\beta\,r_O\)</span></p></td>
-<td><p>The output resistance <span class="math notranslate nohighlight">\(R_\mathrm{out}\)</span> rises by about <span class="math notranslate nohighlight">\(g_mr_O\)</span> with each device</p></td>
-</tr>
-</tbody>
-</table>
 </div>
 <div class="section" id="two-outputs-and-two-paths">
 <h3>Two Outputs and Two Paths<a class="headerlink" href="#two-outputs-and-two-paths" title="Permalink to this headline">¶</a></h3>
@@ -2072,37 +1837,21 @@ const thebe_selector_output = ".output, .cell_output"
     <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">((</span><span class="n">xl</span><span class="p">,</span> <span class="n">inp</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span> <span class="p">(</span><span class="n">xl</span><span class="p">,</span> <span class="n">t1</span><span class="o">.</span><span class="n">bg</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span> <span class="n">t1</span><span class="o">.</span><span class="n">bg</span><span class="p">)</span>
     <span class="n">c</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">j</span><span class="p">);</span> <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">(</span><span class="n">j</span><span class="p">,</span> <span class="p">(</span><span class="mi">50</span><span class="p">,</span> <span class="n">j</span><span class="p">[</span><span class="mi">1</span><span class="p">]));</span> <span class="n">c</span><span class="o">.</span><span class="n">port</span><span class="p">((</span><span class="mi">50</span><span class="p">,</span> <span class="n">j</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span> <span class="n">OUT</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span>
 
-<span class="n">show</span><span class="p">(</span><span class="n">two_outputs</span><span class="p">,</span> <span class="n">two_paths</span><span class="p">)</span>
+<span class="n">show</span><span class="p">(</span><span class="n">two_outputs</span><span class="p">,</span> <span class="n">two_paths</span><span class="p">,</span> <span class="n">notes</span><span class="o">=</span><span class="p">[</span>
+    <span class="sa">r</span><span class="s1">&#39;The output currents change by $\mp g_mV_\mathrm</span><span class="si">{in}</span><span class="s1">$ for equal $g_m$. $R_\mathrm</span><span class="si">{in}</span><span class="s1">\approx1/g_</span><span class="si">{m2}</span><span class="s1">$&#39;</span><span class="p">,</span>
+    <span class="sa">r</span><span class="s1">&#39;$A_v=1+\dfrac{g_</span><span class="si">{m2}</span><span class="s1">}{g_</span><span class="si">{m1}</span><span class="s1">}$&#39;</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/fme_index_22_0.svg" src="../../_images/fme_index_22_0.svg?v=fme9" />
+<img alt="../../_images/fme_index_22_0.svg" src="../../_images/fme_index_22_0.svg?v=fme10" />
 </div>
 </div>
-<table class="colwidths-auto table">
-<thead>
-<tr class="row-odd"><th class="head"></th>
-<th class="head"><p>BJT</p></th>
-<th class="head"><p>MOSFET</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p><strong>17. Two outputs</strong></p></td>
-<td><p>The output currents change by <span class="math notranslate nohighlight">\(\mp g_mV_\mathrm{in}\)</span> for equal <span class="math notranslate nohighlight">\(g_m\)</span>. <span class="math notranslate nohighlight">\(R_\mathrm{in}\approx1/g_{m2}\)</span></p></td>
-<td><p>The output currents change by <span class="math notranslate nohighlight">\(\mp g_mV_\mathrm{in}\)</span> for equal <span class="math notranslate nohighlight">\(g_m\)</span>. <span class="math notranslate nohighlight">\(R_\mathrm{in}\approx1/g_{m2}\)</span></p></td>
-</tr>
-<tr class="row-odd"><td><p><strong>18. Two paths</strong></p></td>
-<td><p><span class="math notranslate nohighlight">\(A_v=1+\dfrac{g_{m2}}{g_{m1}}\)</span></p></td>
-<td><p><span class="math notranslate nohighlight">\(A_v=1+\dfrac{g_{m2}}{g_{m1}}\)</span></p></td>
-</tr>
-</tbody>
-</table>
 </div>
 </div>
 <div class="section" id="feedback-pairs">
 <h2>Feedback Pairs<a class="headerlink" href="#feedback-pairs" title="Permalink to this headline">¶</a></h2>
-<p>The second device closes a loop around the first.</p>
+<p>Two devices connected in a loop. The cascode and the differential pair are the same pairs before the loop is closed.</p>
 <div class="section" id="cascode-and-regulated-cascode">
 <h3>Cascode and Regulated Cascode<a class="headerlink" href="#cascode-and-regulated-cascode" title="Permalink to this headline">¶</a></h3>
 <p>A current buffer on top of an amplifier shields its collector or drain. In the regulated cascode a second device senses the emitter or source of the buffer and drives its base or gate.</p>
@@ -2130,32 +1879,18 @@ const thebe_selector_output = ".output, .cell_output"
     <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">(</span><span class="n">t2</span><span class="o">.</span><span class="n">bg</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">t2</span><span class="o">.</span><span class="n">bg</span><span class="p">[</span><span class="mi">1</span><span class="p">]));</span> <span class="n">c</span><span class="o">.</span><span class="n">dot</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="n">t2</span><span class="o">.</span><span class="n">bg</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
     <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">(</span><span class="n">t2</span><span class="o">.</span><span class="n">es</span><span class="p">,</span> <span class="p">(</span><span class="o">-</span><span class="mi">110</span><span class="p">,</span> <span class="mi">160</span><span class="p">));</span> <span class="n">c</span><span class="o">.</span><span class="n">port</span><span class="p">((</span><span class="o">-</span><span class="mi">110</span><span class="p">,</span> <span class="mi">160</span><span class="p">),</span> <span class="s1">&#39;V_bias&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">)</span>
 
-<span class="n">show</span><span class="p">(</span><span class="n">cascode</span><span class="p">,</span> <span class="n">regulated_cascode</span><span class="p">)</span>
+<span class="n">show</span><span class="p">(</span><span class="n">cascode</span><span class="p">,</span> <span class="n">regulated_cascode</span><span class="p">,</span> <span class="n">notes</span><span class="o">=</span><span class="p">[</span>
+    <span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$R_\mathrm</span><span class="si">{out}</span><span class="s1">\approx\beta\,r_</span><span class="si">{O2}</span><span class="s1">$ at most&#39;</span><span class="p">,</span>
+     <span class="sa">r</span><span class="s1">&#39;$R_\mathrm</span><span class="si">{out}</span><span class="s1">\approx g_</span><span class="si">{m2}</span><span class="s1">r_</span><span class="si">{O2}</span><span class="s1">\,r_</span><span class="si">{O1}</span><span class="s1">$&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$R_\mathrm</span><span class="si">{out}</span><span class="s1">$ stays near $\beta\,r_</span><span class="si">{O1}</span><span class="s1">$: the base current of $Q_1$ sets the limit&#39;</span><span class="p">,</span>
+     <span class="sa">r</span><span class="s1">&#39;The loop multiplies $R_\mathrm</span><span class="si">{out}</span><span class="s1">$ once more, by about $g_</span><span class="si">{m2}</span><span class="s1">r_</span><span class="si">{O2}</span><span class="s1">$&#39;</span><span class="p">)])</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/fme_index_23_0.svg" src="../../_images/fme_index_23_0.svg?v=fme9" />
+<img alt="../../_images/fme_index_23_0.svg" src="../../_images/fme_index_23_0.svg?v=fme10" />
 </div>
 </div>
-<table class="colwidths-auto table">
-<thead>
-<tr class="row-odd"><th class="head"></th>
-<th class="head"><p>BJT</p></th>
-<th class="head"><p>MOSFET</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p><strong>19. Cascode</strong></p></td>
-<td><p><span class="math notranslate nohighlight">\(R_\mathrm{out}\approx\beta\,r_{O2}\)</span> at most</p></td>
-<td><p><span class="math notranslate nohighlight">\(R_\mathrm{out}\approx g_{m2}r_{O2}\,r_{O1}\)</span></p></td>
-</tr>
-<tr class="row-odd"><td><p><strong>20. Regulated cascode</strong></p></td>
-<td><p><span class="math notranslate nohighlight">\(R_\mathrm{out}\)</span> stays near <span class="math notranslate nohighlight">\(\beta\,r_{O1}\)</span>: the base current of <span class="math notranslate nohighlight">\(Q_1\)</span> sets the limit</p></td>
-<td><p>The loop multiplies <span class="math notranslate nohighlight">\(R_\mathrm{out}\)</span> once more, by about <span class="math notranslate nohighlight">\(g_{m2}r_{O2}\)</span></p></td>
-</tr>
-</tbody>
-</table>
 </div>
 <div class="section" id="flipped-follower-and-active-inductor">
 <h3>Flipped Follower and Active Inductor<a class="headerlink" href="#flipped-follower-and-active-inductor" title="Permalink to this headline">¶</a></h3>
@@ -2184,32 +1919,18 @@ const thebe_selector_output = ".output, .cell_output"
     <span class="n">xb</span> <span class="o">=</span> <span class="o">-</span><span class="mi">130</span>
     <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">(</span><span class="n">top</span><span class="p">,</span> <span class="p">(</span><span class="n">xb</span><span class="p">,</span> <span class="n">top</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span> <span class="p">(</span><span class="n">xb</span><span class="p">,</span> <span class="n">t1</span><span class="o">.</span><span class="n">bg</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span> <span class="n">t1</span><span class="o">.</span><span class="n">bg</span><span class="p">)</span>
 
-<span class="n">show</span><span class="p">(</span><span class="n">flipped_follower</span><span class="p">,</span> <span class="n">active_inductor</span><span class="p">)</span>
+<span class="n">show</span><span class="p">(</span><span class="n">flipped_follower</span><span class="p">,</span> <span class="n">active_inductor</span><span class="p">,</span> <span class="n">notes</span><span class="o">=</span><span class="p">[</span>
+    <span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$V_\mathrm</span><span class="si">{out}</span><span class="s1">=V_\mathrm</span><span class="si">{in}</span><span class="s1">-V_</span><span class="si">{BE1}</span><span class="s1">$, $R_\mathrm</span><span class="si">{out}</span><span class="s1">\approx\dfrac</span><span class="si">{1}</span><span class="s1">{g_</span><span class="si">{m1}</span><span class="s1">\,g_</span><span class="si">{m2}</span><span class="s1">r_</span><span class="si">{O1}</span><span class="s1">}$&#39;</span><span class="p">,</span>
+     <span class="sa">r</span><span class="s1">&#39;$V_\mathrm</span><span class="si">{out}</span><span class="s1">=V_\mathrm</span><span class="si">{in}</span><span class="s1">-V_</span><span class="si">{GS1}</span><span class="s1">$, $R_\mathrm</span><span class="si">{out}</span><span class="s1">\approx\dfrac</span><span class="si">{1}</span><span class="s1">{g_</span><span class="si">{m1}</span><span class="s1">\,g_</span><span class="si">{m2}</span><span class="s1">r_</span><span class="si">{O1}</span><span class="s1">}$&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$Z_\mathrm</span><span class="si">{in}</span><span class="s1">$ is $1/g_</span><span class="si">{m2}</span><span class="s1">$ in parallel with $L\approx\dfrac{C_{\pi1}}{g_</span><span class="si">{m1}</span><span class="s1">g_</span><span class="si">{m2}</span><span class="s1">}$&#39;</span><span class="p">,</span>
+     <span class="sa">r</span><span class="s1">&#39;$Z_\mathrm</span><span class="si">{in}</span><span class="s1">$ is $1/g_</span><span class="si">{m2}</span><span class="s1">$ in parallel with $L\approx\dfrac{C_</span><span class="si">{GS1}</span><span class="s1">}{g_</span><span class="si">{m1}</span><span class="s1">g_</span><span class="si">{m2}</span><span class="s1">}$&#39;</span><span class="p">)])</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/fme_index_24_0.svg" src="../../_images/fme_index_24_0.svg?v=fme9" />
+<img alt="../../_images/fme_index_24_0.svg" src="../../_images/fme_index_24_0.svg?v=fme10" />
 </div>
 </div>
-<table class="colwidths-auto table">
-<thead>
-<tr class="row-odd"><th class="head"></th>
-<th class="head"><p>BJT</p></th>
-<th class="head"><p>MOSFET</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p><strong>21. Flipped follower</strong></p></td>
-<td><p><span class="math notranslate nohighlight">\(V_\mathrm{out}=V_\mathrm{in}-V_{BE1}\)</span>, <span class="math notranslate nohighlight">\(R_\mathrm{out}\approx\dfrac{1}{g_{m1}\,g_{m2}r_{O1}}\)</span></p></td>
-<td><p><span class="math notranslate nohighlight">\(V_\mathrm{out}=V_\mathrm{in}-V_{GS1}\)</span>, <span class="math notranslate nohighlight">\(R_\mathrm{out}\approx\dfrac{1}{g_{m1}\,g_{m2}r_{O1}}\)</span></p></td>
-</tr>
-<tr class="row-odd"><td><p><strong>22. Active inductor</strong></p></td>
-<td><p><span class="math notranslate nohighlight">\(Z_\mathrm{in}\)</span> is <span class="math notranslate nohighlight">\(1/g_{m2}\)</span> in parallel with <span class="math notranslate nohighlight">\(L\approx\dfrac{C_{\pi1}}{g_{m1}g_{m2}}\)</span></p></td>
-<td><p><span class="math notranslate nohighlight">\(Z_\mathrm{in}\)</span> is <span class="math notranslate nohighlight">\(1/g_{m2}\)</span> in parallel with <span class="math notranslate nohighlight">\(L\approx\dfrac{C_{GS1}}{g_{m1}g_{m2}}\)</span></p></td>
-</tr>
-</tbody>
-</table>
 </div>
 <div class="section" id="differential-and-cross-coupled-pairs">
 <h3>Differential and Cross-Coupled Pairs<a class="headerlink" href="#differential-and-cross-coupled-pairs" title="Permalink to this headline">¶</a></h3>
@@ -2243,37 +1964,23 @@ const thebe_selector_output = ".output, .cell_output"
     <span class="n">ys</span> <span class="o">=</span> <span class="mi">100</span>
     <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">(</span><span class="n">t1</span><span class="o">.</span><span class="n">es</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">ys</span><span class="p">),</span> <span class="p">(</span><span class="mi">150</span><span class="p">,</span> <span class="n">ys</span><span class="p">),</span> <span class="n">t2</span><span class="o">.</span><span class="n">es</span><span class="p">);</span> <span class="n">c</span><span class="o">.</span><span class="n">dot</span><span class="p">((</span><span class="mi">75</span><span class="p">,</span> <span class="n">ys</span><span class="p">));</span> <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">((</span><span class="mi">75</span><span class="p">,</span> <span class="n">ys</span><span class="p">),</span> <span class="p">(</span><span class="mi">75</span><span class="p">,</span> <span class="n">ys</span> <span class="o">+</span> <span class="mi">40</span><span class="p">));</span> <span class="n">c</span><span class="o">.</span><span class="n">port</span><span class="p">((</span><span class="mi">75</span><span class="p">,</span> <span class="n">ys</span> <span class="o">+</span> <span class="mi">40</span><span class="p">),</span> <span class="s1">&#39;I_bias&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">)</span>
 
-<span class="n">show</span><span class="p">(</span><span class="n">differential_pair</span><span class="p">,</span> <span class="n">cross_coupled_pair</span><span class="p">)</span>
+<span class="n">show</span><span class="p">(</span><span class="n">differential_pair</span><span class="p">,</span> <span class="n">cross_coupled_pair</span><span class="p">,</span> <span class="n">notes</span><span class="o">=</span><span class="p">[</span>
+    <span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$\Delta I_\mathrm</span><span class="si">{out}</span><span class="s1">=I_\mathrm</span><span class="si">{bias}</span><span class="s1">\tanh\dfrac{\Delta V_\mathrm</span><span class="si">{in}</span><span class="s1">}</span><span class="si">{2V_T}</span><span class="s1">$, $g_m=\dfrac{I_\mathrm</span><span class="si">{bias}</span><span class="s1">}</span><span class="si">{2V_T}</span><span class="s1">$&#39;</span><span class="p">,</span>
+     <span class="sa">r</span><span class="s1">&#39;$\Delta I_\mathrm</span><span class="si">{out}</span><span class="s1">\approx g_m\,\Delta V_\mathrm</span><span class="si">{in}</span><span class="s1">$, $g_m=\sqrt{\mu_nC_</span><span class="si">{ox}</span><span class="s1">(W/L)\,I_\mathrm</span><span class="si">{bias}</span><span class="s1">}$&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;$R=-2/g_m$ between the two collectors&#39;</span><span class="p">,</span>
+     <span class="s1">&#39;$R=-2/g_m$ between the two drains&#39;</span><span class="p">)])</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/fme_index_25_0.svg" src="../../_images/fme_index_25_0.svg?v=fme9" />
+<img alt="../../_images/fme_index_25_0.svg" src="../../_images/fme_index_25_0.svg?v=fme10" />
 </div>
 </div>
-<table class="colwidths-auto table">
-<thead>
-<tr class="row-odd"><th class="head"></th>
-<th class="head"><p>BJT</p></th>
-<th class="head"><p>MOSFET</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p><strong>23. Differential pair</strong></p></td>
-<td><p><span class="math notranslate nohighlight">\(\Delta I_\mathrm{out}=I_\mathrm{bias}\tanh\dfrac{\Delta V_\mathrm{in}}{2V_T}\)</span>, <span class="math notranslate nohighlight">\(g_m=\dfrac{I_\mathrm{bias}}{2V_T}\)</span></p></td>
-<td><p><span class="math notranslate nohighlight">\(\Delta I_\mathrm{out}\approx g_m\,\Delta V_\mathrm{in}\)</span>, <span class="math notranslate nohighlight">\(g_m=\sqrt{\mu_nC_{ox}\tfrac{W}{L}\,I_\mathrm{bias}}\)</span></p></td>
-</tr>
-<tr class="row-odd"><td><p><strong>24. Cross-coupled pair</strong></p></td>
-<td><p><span class="math notranslate nohighlight">\(R=-2/g_m\)</span> between the two collectors</p></td>
-<td><p><span class="math notranslate nohighlight">\(R=-2/g_m\)</span> between the two drains</p></td>
-</tr>
-</tbody>
-</table>
 </div>
 </div>
 <div class="section" id="circuit-elements">
 <h2>Circuit Elements<a class="headerlink" href="#circuit-elements" title="Permalink to this headline">¶</a></h2>
-<p>The pair has two terminals and stands in for a resistor, a capacitor, a diode or a voltage source.</p>
+<p>The pair stands in for a two-terminal element: a resistor, a capacitor, a diode or a voltage drop.</p>
 <div class="section" id="controlled-and-large-resistors">
 <h3>Controlled and Large Resistors<a class="headerlink" href="#controlled-and-large-resistors" title="Permalink to this headline">¶</a></h3>
 <p>A MOSFET in the triode region is a resistor between source and drain. One device sets the gate voltage of the other, or two devices in series bias each other close to cutoff.</p>
@@ -2306,32 +2013,18 @@ const thebe_selector_output = ".output, .cell_output"
     <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">(</span><span class="n">t1</span><span class="o">.</span><span class="n">bg</span><span class="p">,</span> <span class="p">(</span><span class="n">t1</span><span class="o">.</span><span class="n">bg</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="o">-</span><span class="mi">60</span><span class="p">),</span> <span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="o">-</span><span class="mi">60</span><span class="p">))</span>
     <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">(</span><span class="n">t2</span><span class="o">.</span><span class="n">bg</span><span class="p">,</span> <span class="p">(</span><span class="n">t2</span><span class="o">.</span><span class="n">bg</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="o">-</span><span class="mi">60</span><span class="p">),</span> <span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="o">-</span><span class="mi">60</span><span class="p">))</span>
 
-<span class="n">show</span><span class="p">(</span><span class="n">controlled_resistor</span><span class="p">,</span> <span class="n">large_resistor</span><span class="p">)</span>
+<span class="n">show</span><span class="p">(</span><span class="n">controlled_resistor</span><span class="p">,</span> <span class="n">large_resistor</span><span class="p">,</span> <span class="n">notes</span><span class="o">=</span><span class="p">[</span>
+    <span class="p">(</span><span class="s1">&#39;A BJT is not a linear resistor&#39;</span><span class="p">,</span>
+     <span class="sa">r</span><span class="s1">&#39;$R=\dfrac{(W/L)_2}{(W/L)_1}\cdot\dfrac</span><span class="si">{1}</span><span class="s1">{g_</span><span class="si">{m2}</span><span class="s1">}$, set by $I_\mathrm</span><span class="si">{bias}</span><span class="s1">$&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;A BJT is not a linear resistor&#39;</span><span class="p">,</span>
+     <span class="s1">&#39;Both gates at the common node keep each device nearly off: very large resistance $R$ for small voltages&#39;</span><span class="p">)])</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/fme_index_26_0.svg" src="../../_images/fme_index_26_0.svg?v=fme9" />
+<img alt="../../_images/fme_index_26_0.svg" src="../../_images/fme_index_26_0.svg?v=fme10" />
 </div>
 </div>
-<table class="colwidths-auto table">
-<thead>
-<tr class="row-odd"><th class="head"></th>
-<th class="head"><p>BJT</p></th>
-<th class="head"><p>MOSFET</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p><strong>25. Controlled resistor</strong></p></td>
-<td><p><em>No BJT version.</em> A BJT is not a linear resistor</p></td>
-<td><p><span class="math notranslate nohighlight">\(R=\dfrac{(W/L)_2}{(W/L)_1}\cdot\dfrac{1}{g_{m2}}\)</span>, set by <span class="math notranslate nohighlight">\(I_\mathrm{bias}\)</span></p></td>
-</tr>
-<tr class="row-odd"><td><p><strong>26. Large resistor</strong></p></td>
-<td><p><em>No BJT version.</em> A BJT is not a linear resistor</p></td>
-<td><p>Both gates at the common node keep each device nearly off: very large resistance <span class="math notranslate nohighlight">\(R\)</span> for small voltages</p></td>
-</tr>
-</tbody>
-</table>
 </div>
 <div class="section" id="varactor-and-anti-parallel-capacitors">
 <h3>Varactor and Anti-Parallel Capacitors<a class="headerlink" href="#varactor-and-anti-parallel-capacitors" title="Permalink to this headline">¶</a></h3>
@@ -2364,32 +2057,18 @@ const thebe_selector_output = ".output, .cell_output"
     <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">(</span><span class="n">t2</span><span class="o">.</span><span class="n">cd</span><span class="p">,</span> <span class="p">(</span><span class="n">xr</span><span class="p">,</span> <span class="n">t2</span><span class="o">.</span><span class="n">cd</span><span class="p">[</span><span class="mi">1</span><span class="p">]));</span> <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">(</span><span class="n">t2</span><span class="o">.</span><span class="n">es</span><span class="p">,</span> <span class="p">(</span><span class="n">xr</span><span class="p">,</span> <span class="n">t2</span><span class="o">.</span><span class="n">es</span><span class="p">[</span><span class="mi">1</span><span class="p">]));</span> <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">(</span><span class="n">t1</span><span class="o">.</span><span class="n">bg</span><span class="p">,</span> <span class="p">(</span><span class="n">xr</span><span class="p">,</span> <span class="n">t1</span><span class="o">.</span><span class="n">bg</span><span class="p">[</span><span class="mi">1</span><span class="p">]));</span> <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">((</span><span class="n">xr</span><span class="p">,</span> <span class="n">t1</span><span class="o">.</span><span class="n">bg</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span> <span class="p">(</span><span class="n">xr</span><span class="p">,</span> <span class="n">t2</span><span class="o">.</span><span class="n">cd</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
     <span class="n">c</span><span class="o">.</span><span class="n">dot</span><span class="p">((</span><span class="n">xr</span><span class="p">,</span> <span class="o">-</span><span class="mi">90</span><span class="p">));</span> <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">((</span><span class="n">xr</span><span class="p">,</span> <span class="o">-</span><span class="mi">90</span><span class="p">),</span> <span class="p">(</span><span class="n">xr</span> <span class="o">+</span> <span class="mi">30</span><span class="p">,</span> <span class="o">-</span><span class="mi">90</span><span class="p">));</span> <span class="n">c</span><span class="o">.</span><span class="n">port</span><span class="p">((</span><span class="n">xr</span> <span class="o">+</span> <span class="mi">30</span><span class="p">,</span> <span class="o">-</span><span class="mi">90</span><span class="p">),</span> <span class="s1">&#39;V_n&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span>
 
-<span class="n">show</span><span class="p">(</span><span class="n">varactor</span><span class="p">,</span> <span class="n">antiparallel_capacitors</span><span class="p">)</span>
+<span class="n">show</span><span class="p">(</span><span class="n">varactor</span><span class="p">,</span> <span class="n">antiparallel_capacitors</span><span class="p">,</span> <span class="n">notes</span><span class="o">=</span><span class="p">[</span>
+    <span class="p">(</span><span class="s1">&#39;Limited: junction capacitances, tuned by a reverse bias&#39;</span><span class="p">,</span>
+     <span class="sa">r</span><span class="s1">&#39;Capacitance between the two gates, tuned by $V_\mathrm</span><span class="si">{bias}</span><span class="s1">$&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;For either polarity one device would have forward-biased junctions and conduct&#39;</span><span class="p">,</span>
+     <span class="s1">&#39;Two gate capacitors in opposite directions: $C(V)$ is symmetric about zero&#39;</span><span class="p">)])</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/fme_index_27_0.svg" src="../../_images/fme_index_27_0.svg?v=fme9" />
+<img alt="../../_images/fme_index_27_0.svg" src="../../_images/fme_index_27_0.svg?v=fme10" />
 </div>
 </div>
-<table class="colwidths-auto table">
-<thead>
-<tr class="row-odd"><th class="head"></th>
-<th class="head"><p>BJT</p></th>
-<th class="head"><p>MOSFET</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p><strong>27. Varactor</strong></p></td>
-<td><p><em>Limited.</em> Junction capacitances, tuned by a reverse bias</p></td>
-<td><p>Capacitance between the two gates, tuned by <span class="math notranslate nohighlight">\(V_\mathrm{bias}\)</span></p></td>
-</tr>
-<tr class="row-odd"><td><p><strong>28. Anti-parallel capacitors</strong></p></td>
-<td><p><em>No BJT version.</em> For either polarity one device would have forward-biased junctions and conduct</p></td>
-<td><p>Two gate capacitors in opposite directions: <span class="math notranslate nohighlight">\(C(V)\)</span> is symmetric about zero</p></td>
-</tr>
-</tbody>
-</table>
 </div>
 <div class="section" id="anti-parallel-and-ultra-low-power-diodes">
 <h3>Anti-Parallel and Ultra-Low-Power Diodes<a class="headerlink" href="#anti-parallel-and-ultra-low-power-diodes" title="Permalink to this headline">¶</a></h3>
@@ -2420,32 +2099,18 @@ const thebe_selector_output = ".output, .cell_output"
     <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">(</span><span class="n">t1</span><span class="o">.</span><span class="n">bg</span><span class="p">,</span> <span class="p">(</span><span class="n">t1</span><span class="o">.</span><span class="n">bg</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">y1</span><span class="p">),</span> <span class="p">(</span><span class="n">xl</span><span class="p">,</span> <span class="n">y1</span><span class="p">),</span> <span class="p">(</span><span class="n">xr</span><span class="p">,</span> <span class="n">y2</span><span class="p">),</span> <span class="p">(</span><span class="mi">200</span><span class="p">,</span> <span class="n">y2</span><span class="p">),</span> <span class="p">(</span><span class="mi">200</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
     <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">(</span><span class="n">t2</span><span class="o">.</span><span class="n">bg</span><span class="p">,</span> <span class="p">(</span><span class="n">t2</span><span class="o">.</span><span class="n">bg</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">y1</span><span class="p">),</span> <span class="p">(</span><span class="n">xr</span><span class="p">,</span> <span class="n">y1</span><span class="p">),</span> <span class="p">(</span><span class="n">xl</span><span class="p">,</span> <span class="n">y2</span><span class="p">),</span> <span class="p">(</span><span class="o">-</span><span class="mi">20</span><span class="p">,</span> <span class="n">y2</span><span class="p">),</span> <span class="p">(</span><span class="o">-</span><span class="mi">20</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
 
-<span class="n">show</span><span class="p">(</span><span class="n">antiparallel_diodes</span><span class="p">,</span> <span class="n">low_leakage_diode</span><span class="p">)</span>
+<span class="n">show</span><span class="p">(</span><span class="n">antiparallel_diodes</span><span class="p">,</span> <span class="n">low_leakage_diode</span><span class="p">,</span> <span class="n">notes</span><span class="o">=</span><span class="p">[</span>
+    <span class="p">(</span><span class="s1">&#39;Conducts when $|V_p-V_n|$ reaches $V_</span><span class="si">{BE}</span><span class="s1">$&#39;</span><span class="p">,</span>
+     <span class="s1">&#39;Conducts when $|V_p-V_n|$ exceeds $V_</span><span class="si">{TH}</span><span class="s1">$&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;Reverse bias does not turn a BJT further off&#39;</span><span class="p">,</span>
+     <span class="s1">&#39;Reverse bias drives both gate-source voltages negative, so the leakage falls far below that of one device&#39;</span><span class="p">)])</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/fme_index_28_0.svg" src="../../_images/fme_index_28_0.svg?v=fme9" />
+<img alt="../../_images/fme_index_28_0.svg" src="../../_images/fme_index_28_0.svg?v=fme10" />
 </div>
 </div>
-<table class="colwidths-auto table">
-<thead>
-<tr class="row-odd"><th class="head"></th>
-<th class="head"><p>BJT</p></th>
-<th class="head"><p>MOSFET</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p><strong>29. Anti-parallel diodes</strong></p></td>
-<td><p>Conducts when <span class="math notranslate nohighlight">\(\lvert V_p-V_n\rvert\)</span> reaches <span class="math notranslate nohighlight">\(V_{BE}\)</span></p></td>
-<td><p>Conducts when <span class="math notranslate nohighlight">\(\lvert V_p-V_n\rvert\)</span> exceeds <span class="math notranslate nohighlight">\(V_{TH}\)</span></p></td>
-</tr>
-<tr class="row-odd"><td><p><strong>30. Ultra-low-power diode</strong></p></td>
-<td><p><em>No BJT version.</em> Reverse bias does not turn a BJT further off</p></td>
-<td><p>Reverse bias drives both gate-source voltages negative, so the leakage falls far below that of one device</p></td>
-</tr>
-</tbody>
-</table>
 </div>
 <div class="section" id="level-shift-and-linear-i-to-v-converter">
 <h3>Level Shift and Linear I-to-V Converter<a class="headerlink" href="#level-shift-and-linear-i-to-v-converter" title="Permalink to this headline">¶</a></h3>
@@ -2477,32 +2142,18 @@ const thebe_selector_output = ".output, .cell_output"
     <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">(</span><span class="n">j</span><span class="p">,</span> <span class="p">(</span><span class="n">term</span><span class="p">,</span> <span class="n">j</span><span class="p">[</span><span class="mi">1</span><span class="p">]));</span> <span class="n">c</span><span class="o">.</span><span class="n">dot</span><span class="p">((</span><span class="n">tx</span><span class="p">,</span> <span class="n">j</span><span class="p">[</span><span class="mi">1</span><span class="p">]));</span> <span class="n">c</span><span class="o">.</span><span class="n">port</span><span class="p">((</span><span class="n">term</span><span class="p">,</span> <span class="n">j</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span> <span class="s1">&#39;I_in&#39;</span><span class="p">,</span> <span class="s1">&#39;l&#39;</span><span class="p">);</span> <span class="n">c</span><span class="o">.</span><span class="n">look</span><span class="p">((</span><span class="n">term</span><span class="p">,</span> <span class="n">j</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span> <span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="s1">&#39;d&#39;</span><span class="p">,</span> <span class="s1">&#39;R_in&#39;</span><span class="p">)</span>
     <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">((</span><span class="n">tx</span><span class="p">,</span> <span class="n">j</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span> <span class="p">(</span><span class="n">tx</span><span class="p">,</span> <span class="n">t2</span><span class="o">.</span><span class="n">bg</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span> <span class="n">t2</span><span class="o">.</span><span class="n">bg</span><span class="p">)</span>
 
-<span class="n">show</span><span class="p">(</span><span class="n">level_shift</span><span class="p">,</span> <span class="n">linear_i_to_v</span><span class="p">)</span>
+<span class="n">show</span><span class="p">(</span><span class="n">level_shift</span><span class="p">,</span> <span class="n">linear_i_to_v</span><span class="p">,</span> <span class="n">notes</span><span class="o">=</span><span class="p">[</span>
+    <span class="p">(</span><span class="s1">&#39;$V_p-V_n=V_</span><span class="si">{BE1}</span><span class="s1">+V_</span><span class="si">{BE2}</span><span class="s1">$&#39;</span><span class="p">,</span>
+     <span class="s1">&#39;$V_p-V_n=V_</span><span class="si">{GS1}</span><span class="s1">+V_</span><span class="si">{GS2}</span><span class="s1">$&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="sa">r</span><span class="s1">&#39;The exponential law gives a $\sinh$ characteristic, not a straight line&#39;</span><span class="p">,</span>
+     <span class="sa">r</span><span class="s1">&#39;$V_</span><span class="si">{GS1}</span><span class="s1">+V_</span><span class="si">{GS2}</span><span class="s1">=V_\mathrm</span><span class="si">{bias}</span><span class="s1">$: the square-law terms cancel and $R_\mathrm</span><span class="si">{in}</span><span class="s1">=\dfrac{dV_\mathrm</span><span class="si">{out}</span><span class="s1">}{dI_\mathrm</span><span class="si">{in}</span><span class="s1">}=\dfrac</span><span class="si">{1}</span><span class="s1">{g_</span><span class="si">{m1}</span><span class="s1">+g_</span><span class="si">{m2}</span><span class="s1">}$ is constant&#39;</span><span class="p">)])</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/fme_index_29_0.svg" src="../../_images/fme_index_29_0.svg?v=fme9" />
+<img alt="../../_images/fme_index_29_0.svg" src="../../_images/fme_index_29_0.svg?v=fme10" />
 </div>
 </div>
-<table class="colwidths-auto table">
-<thead>
-<tr class="row-odd"><th class="head"></th>
-<th class="head"><p>BJT</p></th>
-<th class="head"><p>MOSFET</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p><strong>31. Level shift</strong></p></td>
-<td><p><span class="math notranslate nohighlight">\(V_p-V_n=V_{BE1}+V_{BE2}\)</span></p></td>
-<td><p><span class="math notranslate nohighlight">\(V_p-V_n=V_{GS1}+V_{GS2}\)</span></p></td>
-</tr>
-<tr class="row-odd"><td><p><strong>32. Linear I-to-V converter</strong></p></td>
-<td><p><em>No BJT version.</em> The exponential law gives a <span class="math notranslate nohighlight">\(\sinh\)</span> characteristic, not a straight line</p></td>
-<td><p><span class="math notranslate nohighlight">\(V_{GS1}+V_{GS2}=V_\mathrm{bias}\)</span>: the square-law terms cancel and <span class="math notranslate nohighlight">\(R_\mathrm{in}=\dfrac{dV_\mathrm{out}}{dI_\mathrm{in}}=\dfrac{1}{g_{m1}+g_{m2}}\)</span> is constant</p></td>
-</tr>
-</tbody>
-</table>
 </div>
 </div>
 <div class="section" id="switched-circuits">
@@ -2537,32 +2188,18 @@ const thebe_selector_output = ".output, .cell_output"
     <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">(</span><span class="n">t1</span><span class="o">.</span><span class="n">es</span><span class="p">,</span> <span class="p">(</span><span class="n">xc</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="p">(</span><span class="n">xc</span><span class="p">,</span> <span class="n">yc</span><span class="p">));</span> <span class="n">c</span><span class="o">.</span><span class="n">dot</span><span class="p">((</span><span class="n">xc</span><span class="p">,</span> <span class="n">yc</span><span class="p">));</span> <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">(</span><span class="n">t2</span><span class="o">.</span><span class="n">es</span><span class="p">,</span> <span class="p">(</span><span class="n">xc</span><span class="p">,</span> <span class="o">-</span><span class="mi">110</span><span class="p">),</span> <span class="p">(</span><span class="n">xc</span><span class="p">,</span> <span class="n">yc</span><span class="p">))</span>
     <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">((</span><span class="n">xc</span><span class="p">,</span> <span class="n">yc</span><span class="p">),</span> <span class="p">(</span><span class="n">xc</span> <span class="o">+</span> <span class="mi">40</span><span class="p">,</span> <span class="n">yc</span><span class="p">));</span> <span class="n">c</span><span class="o">.</span><span class="n">port</span><span class="p">((</span><span class="n">xc</span> <span class="o">+</span> <span class="mi">40</span><span class="p">,</span> <span class="n">yc</span><span class="p">),</span> <span class="s1">&#39;V_com&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span>
 
-<span class="n">show</span><span class="p">(</span><span class="n">transmission_gate</span><span class="p">,</span> <span class="n">multiplexer</span><span class="p">)</span>
+<span class="n">show</span><span class="p">(</span><span class="n">transmission_gate</span><span class="p">,</span> <span class="n">multiplexer</span><span class="p">,</span> <span class="n">notes</span><span class="o">=</span><span class="p">[</span>
+    <span class="p">(</span><span class="s1">&#39;A BJT switch injects its base current into the signal path&#39;</span><span class="p">,</span>
+     <span class="s1">&#39;$M_1$ passes low levels and $M_2$ high levels, so the switch conducts from rail to rail&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;A BJT switch injects its base current into the signal path&#39;</span><span class="p">,</span>
+     <span class="sa">r</span><span class="s1">&#39;$V_\mathrm</span><span class="si">{com}</span><span class="s1">=V_1$ or $V_2$, depending on which select input is high&#39;</span><span class="p">)])</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/fme_index_30_0.svg" src="../../_images/fme_index_30_0.svg?v=fme9" />
+<img alt="../../_images/fme_index_30_0.svg" src="../../_images/fme_index_30_0.svg?v=fme10" />
 </div>
 </div>
-<table class="colwidths-auto table">
-<thead>
-<tr class="row-odd"><th class="head"></th>
-<th class="head"><p>BJT</p></th>
-<th class="head"><p>MOSFET</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p><strong>33. Transmission gate</strong></p></td>
-<td><p><em>No BJT version.</em> A BJT switch injects its base current into the signal path</p></td>
-<td><p><span class="math notranslate nohighlight">\(M_1\)</span> passes low levels and <span class="math notranslate nohighlight">\(M_2\)</span> high levels, so the switch conducts from rail to rail</p></td>
-</tr>
-<tr class="row-odd"><td><p><strong>34. Multiplexer</strong></p></td>
-<td><p><em>No BJT version.</em> A BJT switch injects its base current into the signal path</p></td>
-<td><p><span class="math notranslate nohighlight">\(V_\mathrm{com}=V_1\)</span> or <span class="math notranslate nohighlight">\(V_2\)</span>, depending on which select input is high</p></td>
-</tr>
-</tbody>
-</table>
 </div>
 <div class="section" id="sample-and-hold-and-low-pass-filter">
 <h3>Sample-and-Hold and Low-Pass Filter<a class="headerlink" href="#sample-and-hold-and-low-pass-filter" title="Permalink to this headline">¶</a></h3>
@@ -2577,34 +2214,20 @@ const thebe_selector_output = ".output, .cell_output"
 
 <span class="k">def</span> <span class="nf">low_pass</span><span class="p">(</span><span class="n">c</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;- | Low-pass filter&quot;&quot;&quot;</span>
-    <span class="n">pass_device_and_capacitor</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="s1">&#39;V_bias&#39;</span><span class="p">)</span>
+    <span class="n">pass_device_and_capacitor</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="s1">&#39;V_bias&#39;</span><span class="p">,</span> <span class="n">resistance</span><span class="o">=</span><span class="s1">&#39;R_on1&#39;</span><span class="p">)</span>
 
-<span class="n">show</span><span class="p">(</span><span class="n">sample_and_hold</span><span class="p">,</span> <span class="n">low_pass</span><span class="p">)</span>
+<span class="n">show</span><span class="p">(</span><span class="n">sample_and_hold</span><span class="p">,</span> <span class="n">low_pass</span><span class="p">,</span> <span class="n">notes</span><span class="o">=</span><span class="p">[</span>
+    <span class="p">(</span><span class="s1">&#39;There is no gate capacitance to hold the sample, and base current would disturb it&#39;</span><span class="p">,</span>
+     <span class="sa">r</span><span class="s1">&#39;$M_1$ on: $V_\mathrm</span><span class="si">{out}</span><span class="s1">$ tracks $V_\mathrm</span><span class="si">{in}</span><span class="s1">$. $M_1$ off: the gate capacitance of $M_2$ holds it&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;Neither a linear resistor nor a gate capacitance is available&#39;</span><span class="p">,</span>
+     <span class="sa">r</span><span class="s1">&#39;$f_{-3\,\mathrm</span><span class="si">{dB}</span><span class="s1">}=\dfrac</span><span class="si">{1}</span><span class="s1">{2\pi R_\mathrm</span><span class="si">{on1}</span><span class="s1">C_2}$&#39;</span><span class="p">)])</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/fme_index_31_0.svg" src="../../_images/fme_index_31_0.svg?v=fme9" />
+<img alt="../../_images/fme_index_31_0.svg" src="../../_images/fme_index_31_0.svg?v=fme10" />
 </div>
 </div>
-<table class="colwidths-auto table">
-<thead>
-<tr class="row-odd"><th class="head"></th>
-<th class="head"><p>BJT</p></th>
-<th class="head"><p>MOSFET</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p><strong>35. Sample-and-hold</strong></p></td>
-<td><p><em>No BJT version.</em> There is no gate capacitance to hold the sample, and base current would disturb it</p></td>
-<td><p><span class="math notranslate nohighlight">\(M_1\)</span> on: <span class="math notranslate nohighlight">\(V_\mathrm{out}\)</span> tracks <span class="math notranslate nohighlight">\(V_\mathrm{in}\)</span>. <span class="math notranslate nohighlight">\(M_1\)</span> off: the gate capacitance of <span class="math notranslate nohighlight">\(M_2\)</span> holds it</p></td>
-</tr>
-<tr class="row-odd"><td><p><strong>36. Low-pass filter</strong></p></td>
-<td><p><em>No BJT version.</em> Neither a linear resistor nor a gate capacitance is available</p></td>
-<td><p><span class="math notranslate nohighlight">\(f_{-3\,\mathrm{dB}}=\dfrac{1}{2\pi R_\mathrm{on1}C_2}\)</span></p></td>
-</tr>
-</tbody>
-</table>
 </div>
 <div class="section" id="peak-detector-and-voltage-doubler">
 <h3>Peak Detector and Voltage Doubler<a class="headerlink" href="#peak-detector-and-voltage-doubler" title="Permalink to this headline">¶</a></h3>
@@ -2637,37 +2260,23 @@ const thebe_selector_output = ".output, .cell_output"
     <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">(</span><span class="n">t2</span><span class="o">.</span><span class="n">cd</span><span class="p">,</span> <span class="p">(</span><span class="mi">70</span><span class="p">,</span> <span class="n">gy</span><span class="p">));</span> <span class="n">c</span><span class="o">.</span><span class="n">dot</span><span class="p">((</span><span class="mi">70</span><span class="p">,</span> <span class="n">gy</span><span class="p">));</span> <span class="n">c</span><span class="o">.</span><span class="n">gnd</span><span class="p">((</span><span class="mi">70</span><span class="p">,</span> <span class="n">gy</span><span class="p">))</span>
     <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">(</span><span class="n">t2</span><span class="o">.</span><span class="n">bg</span><span class="p">,</span> <span class="p">(</span><span class="n">t2</span><span class="o">.</span><span class="n">bg</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="mi">20</span><span class="p">,</span> <span class="n">t2</span><span class="o">.</span><span class="n">bg</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span> <span class="p">(</span><span class="n">t2</span><span class="o">.</span><span class="n">bg</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="mi">20</span><span class="p">,</span> <span class="n">gy</span><span class="p">),</span> <span class="p">(</span><span class="mi">70</span><span class="p">,</span> <span class="n">gy</span><span class="p">))</span>
 
-<span class="n">show</span><span class="p">(</span><span class="n">peak_detector</span><span class="p">,</span> <span class="n">voltage_doubler</span><span class="p">)</span>
+<span class="n">show</span><span class="p">(</span><span class="n">peak_detector</span><span class="p">,</span> <span class="n">voltage_doubler</span><span class="p">,</span> <span class="n">notes</span><span class="o">=</span><span class="p">[</span>
+    <span class="p">(</span><span class="sa">r</span><span class="s1">&#39;Limited: $V_\mathrm</span><span class="si">{peak}</span><span class="s1">=\hat V_\mathrm</span><span class="si">{in}</span><span class="s1">-V_</span><span class="si">{BE1}</span><span class="s1">$, held only on a junction capacitance&#39;</span><span class="p">,</span>
+     <span class="sa">r</span><span class="s1">&#39;$V_\mathrm</span><span class="si">{peak}</span><span class="s1">=\hat V_\mathrm</span><span class="si">{in}</span><span class="s1">-V_</span><span class="si">{GS1}</span><span class="s1">$, held on the gate capacitance of $M_2$&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;The coupling element would be a junction, which conducts in one direction&#39;</span><span class="p">,</span>
+     <span class="sa">r</span><span class="s1">&#39;$M_1$ couples the ac input and $M_2$ clamps the low side: the output peaks near $2\hat V_\mathrm</span><span class="si">{in}</span><span class="s1">-V_</span><span class="si">{GS2}</span><span class="s1">$&#39;</span><span class="p">)])</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/fme_index_32_0.svg" src="../../_images/fme_index_32_0.svg?v=fme9" />
+<img alt="../../_images/fme_index_32_0.svg" src="../../_images/fme_index_32_0.svg?v=fme10" />
 </div>
 </div>
-<table class="colwidths-auto table">
-<thead>
-<tr class="row-odd"><th class="head"></th>
-<th class="head"><p>BJT</p></th>
-<th class="head"><p>MOSFET</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p><strong>37. Peak detector</strong></p></td>
-<td><p><em>Limited.</em> <span class="math notranslate nohighlight">\(V_\mathrm{peak}=\hat V_\mathrm{in}-V_{BE1}\)</span>, held only on a junction capacitance</p></td>
-<td><p><span class="math notranslate nohighlight">\(V_\mathrm{peak}=\hat V_\mathrm{in}-V_{GS1}\)</span>, held on the gate capacitance of <span class="math notranslate nohighlight">\(M_2\)</span></p></td>
-</tr>
-<tr class="row-odd"><td><p><strong>38. Voltage doubler</strong></p></td>
-<td><p><em>No BJT version.</em> The coupling element would be a junction, which conducts in one direction</p></td>
-<td><p><span class="math notranslate nohighlight">\(M_1\)</span> couples the ac input and <span class="math notranslate nohighlight">\(M_2\)</span> clamps the low side: the output peaks near <span class="math notranslate nohighlight">\(2\hat V_\mathrm{in}-V_{GS2}\)</span></p></td>
-</tr>
-</tbody>
-</table>
 </div>
 </div>
 <div class="section" id="logic-gates">
 <h2>Logic Gates<a class="headerlink" href="#logic-gates" title="Permalink to this headline">¶</a></h2>
-<p>Each device is a switch controlled by a logic level.</p>
+<p>Each device is a switch controlled by a logic level. In the mixer the logic levels give way to analog signals.</p>
 <div class="section" id="nand-and-nor">
 <h3>NAND and NOR<a class="headerlink" href="#nand-and-nor" title="Permalink to this headline">¶</a></h3>
 <p>Two switches in series conduct only when both are on. Two switches in parallel conduct when either is on. The current source pulls the output high otherwise.</p>
@@ -2698,32 +2307,18 @@ const thebe_selector_output = ".output, .cell_output"
     <span class="n">top</span> <span class="o">=</span> <span class="p">(</span><span class="n">mx</span><span class="p">,</span> <span class="o">-</span><span class="mi">40</span><span class="p">);</span> <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">((</span><span class="n">mx</span><span class="p">,</span> <span class="n">yt</span><span class="p">),</span> <span class="n">top</span><span class="p">);</span> <span class="n">c</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">top</span><span class="p">);</span> <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">(</span><span class="n">top</span><span class="p">,</span> <span class="p">(</span><span class="mi">170</span><span class="p">,</span> <span class="n">top</span><span class="p">[</span><span class="mi">1</span><span class="p">]));</span> <span class="n">c</span><span class="o">.</span><span class="n">port</span><span class="p">((</span><span class="mi">170</span><span class="p">,</span> <span class="n">top</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span> <span class="n">OUT</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span>
     <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">(</span><span class="n">top</span><span class="p">,</span> <span class="p">(</span><span class="n">mx</span><span class="p">,</span> <span class="o">-</span><span class="mi">70</span><span class="p">));</span> <span class="n">c</span><span class="o">.</span><span class="n">port</span><span class="p">((</span><span class="n">mx</span><span class="p">,</span> <span class="o">-</span><span class="mi">70</span><span class="p">),</span> <span class="s1">&#39;I_bias&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span>
 
-<span class="n">show</span><span class="p">(</span><span class="n">nand</span><span class="p">,</span> <span class="n">nor</span><span class="p">)</span>
+<span class="n">show</span><span class="p">(</span><span class="n">nand</span><span class="p">,</span> <span class="n">nor</span><span class="p">,</span> <span class="n">notes</span><span class="o">=</span><span class="p">[</span>
+    <span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$V_\mathrm</span><span class="si">{out}</span><span class="s1">=\overline{V_a\wedge V_b}$. The inputs must supply base current&#39;</span><span class="p">,</span>
+     <span class="sa">r</span><span class="s1">&#39;$V_\mathrm</span><span class="si">{out}</span><span class="s1">=\overline{V_a\wedge V_b}$&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$V_\mathrm</span><span class="si">{out}</span><span class="s1">=\overline{V_a\vee V_b}$. The inputs must supply base current&#39;</span><span class="p">,</span>
+     <span class="sa">r</span><span class="s1">&#39;$V_\mathrm</span><span class="si">{out}</span><span class="s1">=\overline{V_a\vee V_b}$&#39;</span><span class="p">)])</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/fme_index_33_0.svg" src="../../_images/fme_index_33_0.svg?v=fme9" />
+<img alt="../../_images/fme_index_33_0.svg" src="../../_images/fme_index_33_0.svg?v=fme10" />
 </div>
 </div>
-<table class="colwidths-auto table">
-<thead>
-<tr class="row-odd"><th class="head"></th>
-<th class="head"><p>BJT</p></th>
-<th class="head"><p>MOSFET</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p><strong>39. NAND</strong></p></td>
-<td><p><span class="math notranslate nohighlight">\(V_\mathrm{out}=\overline{V_a\wedge V_b}\)</span>. The inputs must supply base current</p></td>
-<td><p><span class="math notranslate nohighlight">\(V_\mathrm{out}=\overline{V_a\wedge V_b}\)</span></p></td>
-</tr>
-<tr class="row-odd"><td><p><strong>40. NOR</strong></p></td>
-<td><p><span class="math notranslate nohighlight">\(V_\mathrm{out}=\overline{V_a\vee V_b}\)</span>. The inputs must supply base current</p></td>
-<td><p><span class="math notranslate nohighlight">\(V_\mathrm{out}=\overline{V_a\vee V_b}\)</span></p></td>
-</tr>
-</tbody>
-</table>
 </div>
 <div class="section" id="xnor-and-mixer">
 <h3>XNOR and Mixer<a class="headerlink" href="#xnor-and-mixer" title="Permalink to this headline">¶</a></h3>
@@ -2757,37 +2352,23 @@ const thebe_selector_output = ".output, .cell_output"
     <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">(</span><span class="n">t2</span><span class="o">.</span><span class="n">bg</span><span class="p">,</span> <span class="p">(</span><span class="n">t2</span><span class="o">.</span><span class="n">bg</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="mi">30</span><span class="p">,</span> <span class="n">t2</span><span class="o">.</span><span class="n">bg</span><span class="p">[</span><span class="mi">1</span><span class="p">]));</span> <span class="n">c</span><span class="o">.</span><span class="n">port</span><span class="p">((</span><span class="n">t2</span><span class="o">.</span><span class="n">bg</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="mi">30</span><span class="p">,</span> <span class="n">t2</span><span class="o">.</span><span class="n">bg</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span> <span class="s1">&#39;V_lo&#39;</span><span class="p">,</span> <span class="s1">&#39;l&#39;</span><span class="p">)</span>
     <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">(</span><span class="n">t1</span><span class="o">.</span><span class="n">bg</span><span class="p">,</span> <span class="p">(</span><span class="n">t1</span><span class="o">.</span><span class="n">bg</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="mi">30</span><span class="p">,</span> <span class="n">t1</span><span class="o">.</span><span class="n">bg</span><span class="p">[</span><span class="mi">1</span><span class="p">]));</span> <span class="n">c</span><span class="o">.</span><span class="n">port</span><span class="p">((</span><span class="n">t1</span><span class="o">.</span><span class="n">bg</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="mi">30</span><span class="p">,</span> <span class="n">t1</span><span class="o">.</span><span class="n">bg</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span> <span class="s1">&#39;V_rf&#39;</span><span class="p">,</span> <span class="s1">&#39;l&#39;</span><span class="p">)</span>
 
-<span class="n">show</span><span class="p">(</span><span class="n">xnor</span><span class="p">,</span> <span class="n">mixer</span><span class="p">)</span>
+<span class="n">show</span><span class="p">(</span><span class="n">xnor</span><span class="p">,</span> <span class="n">mixer</span><span class="p">,</span> <span class="n">notes</span><span class="o">=</span><span class="p">[</span>
+    <span class="p">(</span><span class="s1">&#39;Limited: the conducting device draws its base current from one input and returns it to the other&#39;</span><span class="p">,</span>
+     <span class="sa">r</span><span class="s1">&#39;Each input drives the gate of one device and the source of the other: $V_\mathrm</span><span class="si">{out}</span><span class="s1">=\overline{V_a\oplus V_b}$&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;In the active region the collector current does not depend on $V_</span><span class="si">{CE}</span><span class="s1">$, so an upper base would have no control&#39;</span><span class="p">,</span>
+     <span class="sa">r</span><span class="s1">&#39;$M_1$ works in triode, where $I_\mathrm</span><span class="si">{out}</span><span class="s1">\approx\mu_nC_</span><span class="si">{ox}</span><span class="s1">(W/L)(V_\mathrm</span><span class="si">{rf}</span><span class="s1">-V_</span><span class="si">{TH}</span><span class="s1">)\,V_</span><span class="si">{DS1}</span><span class="s1">$ and $V_\mathrm</span><span class="si">{lo}</span><span class="s1">$ sets $V_</span><span class="si">{DS1}</span><span class="s1">$: the output contains the product&#39;</span><span class="p">)])</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/fme_index_34_0.svg" src="../../_images/fme_index_34_0.svg?v=fme9" />
+<img alt="../../_images/fme_index_34_0.svg" src="../../_images/fme_index_34_0.svg?v=fme10" />
 </div>
 </div>
-<table class="colwidths-auto table">
-<thead>
-<tr class="row-odd"><th class="head"></th>
-<th class="head"><p>BJT</p></th>
-<th class="head"><p>MOSFET</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p><strong>41. XNOR</strong></p></td>
-<td><p><em>Limited.</em> The conducting device draws its base current from one input and returns it to the other</p></td>
-<td><p>Each input drives the gate of one device and the source of the other: <span class="math notranslate nohighlight">\(V_\mathrm{out}=\overline{V_a\oplus V_b}\)</span></p></td>
-</tr>
-<tr class="row-odd"><td><p><strong>42. Mixer</strong></p></td>
-<td><p><em>No BJT version.</em> In the active region the collector current does not depend on <span class="math notranslate nohighlight">\(V_{CE}\)</span>, so an upper base would have no control</p></td>
-<td><p><span class="math notranslate nohighlight">\(M_1\)</span> works in triode, where <span class="math notranslate nohighlight">\(I_\mathrm{out}\approx\mu_nC_{ox}\tfrac{W}{L}(V_\mathrm{rf}-V_{TH})\,V_{DS1}\)</span> and <span class="math notranslate nohighlight">\(V_\mathrm{lo}\)</span> sets <span class="math notranslate nohighlight">\(V_{DS1}\)</span>: the output contains the product</p></td>
-</tr>
-</tbody>
-</table>
 </div>
 </div>
 <div class="section" id="symbols">
 <h2>Symbols<a class="headerlink" href="#symbols" title="Permalink to this headline">¶</a></h2>
-<p>The symbols used on this page, at one scale. Their proportions were measured from the figures of [2]. The BJT and the MOSFET share one footprint, so the two versions of every circuit line up.</p>
+<p>The symbol library behind the drawings, at one scale. Its proportions were measured from the figures of [2]. This page uses the transistors, the resistor, the ground, the supply rail, the terminal and the node dot. The BJT and the MOSFET share one footprint, so the two versions of every circuit line up.</p>
 <div class="cell tag_hide_input docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># HIDE/SHOW</span>
@@ -2796,7 +2377,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/fme_index_35_0.svg" src="../../_images/fme_index_35_0.svg?v=fme9" />
+<img alt="../../_images/fme_index_35_0.svg" src="../../_images/fme_index_35_0.svg?v=fme10" />
 </div>
 </div>
 </div>
@@ -2804,7 +2385,7 @@ const thebe_selector_output = ".output, .cell_output"
 <h2>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
 <ol class="arabic simple">
 <li><p>H. Pretl and M. Eberlein, "Fifty Nifty Variations of Two-Transistor Circuits: A tribute to the versatility of MOSFETs," <em>IEEE Solid-State Circuits Magazine</em>, vol. 13, no. 3, pp. 38-46, 2021. <a class="reference external" href="https://doi.org/10.1109/MSSC.2021.3088968">doi:10.1109/MSSC.2021.3088968</a>. Web edition with the drawing code: <a class="reference external" href="https://iic-jku.github.io/fifty-nifty-circuits/">iic-jku.github.io/fifty-nifty-circuits</a>.</p></li>
-<li><p>B. Razavi, <em>Fundamentals of Microelectronics</em>, 2nd ed., Wiley, 2013.</p></li>
+<li><p>B. Razavi, <em>Fundamentals of Microelectronics</em>, 3rd ed., Wiley, 2021. The summary of impedances and gains is printed inside its back cover.</p></li>
 </ol>
 </div>
 </div>
