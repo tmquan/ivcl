@@ -743,6 +743,82 @@ def mixer(c):
     c.w(t1.bg, (t1.bg[0] - 30, t1.bg[1])); c.port((t1.bg[0] - 30, t1.bg[1]), 'V_rf', 'l')
 
 
+# ================================================================ more transistors: a two-stage op amp
+def op_amp(c, blocks):
+    """The first `blocks` blocks of a two-stage op amp.  Every block is a circuit from further up:
+    1 differential pair, 2 current source in its tail, 3 current mirror as its load,
+    4 second stage with a current-source load, 5 current mirror that supplies both bias currents."""
+    t1 = c.transistor('n', (0, 0), 'cd', name=1, lbl='r')                          # 1: the pair
+    t2 = c.transistor('n', (120, 0), 'cd', side='right', name=2, lbl='l')
+    c.w(t1.bg, (-70, 40)); c.port((-70, 40), 'V_1', 'l')
+    c.w(t2.bg, (180, 40)); c.port((180, 40), 'V_2', 'r')
+    tail = (60, 100)
+    c.w(t1.es, (0, 100), (120, 100), t2.es); c.dot(tail)
+    if blocks < 2:
+        c.w(tail, (60, 140)); c.port((60, 140), 'I_bias', 'b')
+    else:                                                                          # 2: the tail current source
+        t5 = c.transistor('n', (60, 120), 'cd', name=5)
+        c.w(tail, t5.cd); c.w(t5.es, (60, 220)); c.gnd((60, 220))
+        bias = (-10, 160)
+        c.w(t5.bg, bias)
+    if blocks < 3:
+        c.w(t1.cd, (0, -40)); c.port((0, -40), 'I_1', 'r')
+        c.w(t2.cd, (120, -40)); c.port((120, -40), 'I_2', 'r')
+    else:                                                                          # 3: the current-mirror load
+        t3 = c.transistor('p', (0, -100), 'es', side='right', name=3, lbl='l')
+        t4 = c.transistor('p', (120, -100), 'es', name=4, lbl='r')
+        c.w(t3.cd, t1.cd); c.w(t4.cd, t2.cd)
+        c.w(t3.bg, t4.bg); c.dot((60, -60)); c.w((60, -60), (60, -10), (0, -10)); c.dot((0, -10))
+        rail = 230 if blocks > 3 else 120
+        c.w(t3.es, (0, -120), (rail, -120)); c.w(t4.es, (120, -120)); c.supply((60, -120)); c.dot((60, -120))
+        first = (120, -10); c.dot(first)
+    if blocks == 3:
+        c.w(first, (215, -10)); c.port((215, -10), OUT, 'r'); c.look((215, -10), 'l', 'd', 'R_out')
+    if blocks > 3:                                                                 # 4: the second stage
+        t6 = c.transistor('p', (230, -100), 'es', name=6)
+        t7 = c.transistor('n', (230, 120), 'cd', name=7)
+        c.dot((120, -120)); c.w((230, -120), t6.es)
+        c.w(first, (165, -10), (165, -60), t6.bg)
+        c.w(t6.cd, t7.cd); c.w(t7.es, (230, 220)); c.gnd((230, 220))
+        c.w(bias, (-10, 250), (190, 250), t7.bg); c.dot(bias)
+        out = (230, 50); c.dot(out); c.w(out, (280, 50)); c.port((280, 50), OUT, 'r')
+    if blocks == 4:
+        c.look((280, 50), 'l', 'd', 'R_out')
+    if 2 <= blocks < 5:
+        c.w(bias, (-40, 160)); c.port((-40, 160), 'V_bias', 'l')
+    if blocks == 5:                                                                # 5: the bias mirror
+        t8 = c.transistor('n', (-90, 120), 'cd', side='right', name=8, lbl='l')
+        c.w(t8.es, (-90, 220)); c.gnd((-90, 220))
+        c.w(t8.bg, bias)
+        c.w(t8.cd, (-90, 70)); c.port((-90, 70), 'I_ref', 'l')
+        c.dot((-90, 110)); c.w((-90, 110), (-30, 110), (-30, 160)); c.dot((-30, 160))
+
+
+def op_amp_pair(c):
+    """Emitter-coupled pair | Source-coupled pair"""
+    op_amp(c, 1)
+
+
+def op_amp_tail(c):
+    """+ tail current source"""
+    op_amp(c, 2)
+
+
+def op_amp_mirror(c):
+    """+ current-mirror load"""
+    op_amp(c, 3)
+
+
+def op_amp_second(c):
+    """+ common-emitter stage | + common-source stage"""
+    op_amp(c, 4)
+
+
+def op_amp_bias(c):
+    """+ bias mirror"""
+    op_amp(c, 5)
+
+
 # ================================================================ registry
 def names(f):
     """(BJT name, MOSFET name) from the first docstring line; '' where the circuit has no such version"""
@@ -751,7 +827,7 @@ def names(f):
 
 
 TYPES = (n_type, p_type)
-HELPERS = (capacitor_to_ground, pass_device_and_capacitor)
+HELPERS = (capacitor_to_ground, pass_device_and_capacitor, op_amp)
 
 # one transistor: (heading, first connection, second connection)
 ROLES = [
@@ -802,6 +878,14 @@ FAMILIES = [
     ('Logic Gates', [
         ('NAND and NOR', nand, nor),
         ('XNOR and Mixer', xnor, mixer)]),
+]
+
+# more transistors: (family, [(heading, circuits...), ...]); each circuit is the one before plus one block
+BUILD = [
+    ('Building a Two-Stage Op Amp', [
+        ('Pair and Tail Source', op_amp_pair, op_amp_tail),
+        ('Mirror Load and Second Stage', op_amp_mirror, op_amp_second),
+        ('Bias Mirror', op_amp_bias)]),
 ]
 
 # figure number of each circuit in Pretl & Eberlein (2021)
