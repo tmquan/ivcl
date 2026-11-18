@@ -67,7 +67,7 @@ def role_current_buffer(c):
 def role_current_source(c):
     """Current source"""
     t1 = c.transistor('n', (0, 0), 'cd', name=1)
-    c.w(t1.cd, (0, -40)); c.port((0, -40), 'I_out', 'r'); c.look((0, -40), 'd', 'l', 'R_out')
+    c.w(t1.cd, (0, -40)); c.port((0, -40), 'I_out', 'l'); c.look((0, -40), 'd', 'r', 'R_out')
     c.w(t1.es, (0, 100)); c.gnd((0, 100))
     c.w(t1.bg, (t1.bg[0] - 30, 40)); c.port((t1.bg[0] - 30, 40), 'V_bias', 'l')
 
@@ -76,9 +76,9 @@ def role_diode(c):
     """Diode-connected transistor"""
     t1 = c.transistor('n', (0, 0), 'cd', name=1)
     top = (0, -20)
-    c.w(t1.cd, (0, -60)); c.dot(top); c.port((0, -60), 'V_p', 'r'); c.look((0, -60), 'd', 'l', 'R')
+    c.w(t1.cd, (0, -60)); c.dot(top); c.port((0, -60), 'V_p', 'l'); c.look((0, -60), 'd', 'r', 'R')
     c.w(t1.bg, (t1.bg[0] - 20, 40), (t1.bg[0] - 20, -20), top)
-    c.w(t1.es, (0, 120)); c.port((0, 120), 'V_n', 'r')
+    c.w(t1.es, (0, 120)); c.port((0, 120), 'V_n', 'l')
 
 
 def role_switch(c):
@@ -423,8 +423,8 @@ def stacked_buffers(c):
     (t2, t1), (j,) = c.chain([('n', 2), ('n', 1)], 0, 0)
     c.w(t1.bg, (t1.bg[0] - 30, t1.bg[1])); c.port((t1.bg[0] - 30, t1.bg[1]), 'V_bias1', 'l')
     c.w(t2.bg, (t2.bg[0] - 30, t2.bg[1])); c.port((t2.bg[0] - 30, t2.bg[1]), 'V_bias2', 'l')
-    c.w(t2.cd, (0, -40)); c.port((0, -40), 'I_out', 'r'); c.look((0, -40), 'd', 'l', 'R_out')
-    c.w(t1.es, (0, t1.es[1] + 40)); c.port((0, t1.es[1] + 40), 'I_in', 'r')
+    c.w(t2.cd, (0, -40)); c.port((0, -40), 'I_out', 'l'); c.look((0, -40), 'd', 'r', 'R_out')
+    c.w(t1.es, (0, t1.es[1] + 40)); c.port((0, t1.es[1] + 40), 'I_in', 'l')
 
 
 def two_outputs(c):
@@ -461,13 +461,13 @@ def cascode(c):
     g = (0, t1.es[1] + 20); c.gnd(g); c.w(t1.es, g)
     c.w(t1.bg, (t1.bg[0] - 30, t1.bg[1])); c.port((t1.bg[0] - 30, t1.bg[1]), IN, 'l')
     c.w(t2.bg, (t2.bg[0] - 30, t2.bg[1])); c.port((t2.bg[0] - 30, t2.bg[1]), 'V_bias', 'l')
-    c.w(t2.cd, (0, -40)); c.port((0, -40), 'I_out', 'r'); c.look((0, -40), 'd', 'l', 'R_out')
+    c.w(t2.cd, (0, -40)); c.port((0, -40), 'I_out', 'l'); c.look((0, -40), 'd', 'r', 'R_out')
 
 
 def regulated_cascode(c):
     """Regulated cascode"""
     t1 = c.transistor('n', (0, 0), 'cd', name=1)
-    c.w(t1.cd, (0, -60)); c.port((0, -60), 'I_out', 'r'); c.look((0, -60), 'd', 'r', 'R_out', gap=54)
+    c.w(t1.cd, (0, -60)); c.port((0, -60), 'I_out', 'l'); c.look((0, -60), 'd', 'r', 'R_out')
     c.w(t1.es, (0, 160)); c.port((0, 160), 'I_in', 'b')
     t2 = c.transistor('n', (-110, 60), 'cd', side='right', name=2, lbl='l')
     gy = t1.bg[1]
@@ -517,7 +517,7 @@ def cross_coupled_pair(c):
     t1 = c.transistor('n', (0, 0), 'cd', side='right', name=1)
     t2 = c.transistor('n', (150, 0), 'cd', name=2)
     a, b = (0, -20), (150, -20)
-    c.w(t1.cd, (0, -60)); c.dot(a); c.port((0, -60), 'V_p', 'r'); c.look((0, -60), 'd', 'l', 'R')
+    c.w(t1.cd, (0, -60)); c.dot(a); c.port((0, -60), 'V_p', 'l'); c.look((0, -60), 'd', 'r', 'R')
     c.w(t2.cd, (150, -60)); c.dot(b); c.port((150, -60), 'V_n', 'r')
     xl, xr = c.cross(75, a[1], t1.bg[1])                    # the two wires cross as an X
     c.w(a, (xl, a[1]), (xr, t2.bg[1]), t2.bg)

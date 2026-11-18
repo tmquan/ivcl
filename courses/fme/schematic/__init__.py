@@ -1,7 +1,7 @@
-"""razavi: circuit symbols measured from Razavi's "Fundamentals of Microelectronics",
+"""schematic: circuit symbols measured from Razavi's "Fundamentals of Microelectronics",
 a tiny schematic layout layer, and renderers (matplotlib, SVG, draw.io).
 
-    from razavi import show, symbol_sheet
+    from schematic import show, symbol_sheet
     def inverter(c): ...
     show(inverter)            # drawn with class BJT on the left, with class MOSFET on the right
 """
