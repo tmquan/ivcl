@@ -43,7 +43,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=fme12" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=fme13" />
     
   <link rel="preload" as="script" href="../../_static/js/index.be7d3bbb2ef33a8344ce.js">
 
@@ -545,6 +545,35 @@ const thebe_selector_output = ".output, .cell_output"
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#connections-of-more-transistors">
+   Connections of More Transistors
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#building-a-two-stage-op-amp">
+     Building a Two-Stage Op Amp
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#pair-and-tail-source">
+       Pair and Tail Source
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#mirror-load-and-second-stage">
+       Mirror Load and Second Stage
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#bias-mirror">
+       Bias Mirror
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#symbols">
    Symbols
   </a>
@@ -829,6 +858,35 @@ const thebe_selector_output = ".output, .cell_output"
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#connections-of-more-transistors">
+   Connections of More Transistors
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#building-a-two-stage-op-amp">
+     Building a Two-Stage Op Amp
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#pair-and-tail-source">
+       Pair and Tail Source
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#mirror-load-and-second-stage">
+       Mirror Load and Second Stage
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#bias-mirror">
+       Bias Mirror
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#symbols">
    Symbols
   </a>
@@ -921,7 +979,7 @@ const thebe_selector_output = ".output, .cell_output"
 </tbody>
 </table>
 <p>The circuit functions use only the shared names, which read <em>base or gate</em>, <em>collector or drain</em> and <em>emitter or source</em>. <code class="docutils literal notranslate"><span class="pre">c.w(p0,</span> <span class="pre">p1,</span> <span class="pre">...)</span></code> draws a wire, <code class="docutils literal notranslate"><span class="pre">c.dot(p)</span></code> a node, <code class="docutils literal notranslate"><span class="pre">c.port(p,</span> <span class="pre">label,</span> <span class="pre">side)</span></code> an open terminal, <code class="docutils literal notranslate"><span class="pre">c.gnd(p)</span></code> a ground, <code class="docutils literal notranslate"><span class="pre">c.ac(p)</span></code> an ac ground, <code class="docutils literal notranslate"><span class="pre">c.res(p,</span> <span class="pre">label)</span></code> a resistor and <code class="docutils literal notranslate"><span class="pre">c.load(p)</span></code> a load. <code class="docutils literal notranslate"><span class="pre">c.look(p,</span> <span class="pre">into,</span> <span class="pre">side,</span> <span class="pre">label)</span></code> marks the impedance seen at <code class="docutils literal notranslate"><span class="pre">p</span></code> with a red arrow that has a 90-degree corner; <code class="docutils literal notranslate"><span class="pre">form='low'</span></code> and <code class="docutils literal notranslate"><span class="pre">form='long'</span></code> give its two other forms. <code class="docutils literal notranslate"><span class="pre">c.pick(a,</span> <span class="pre">b)</span></code> returns <code class="docutils literal notranslate"><span class="pre">a</span></code> in a BJT drawing and <code class="docutils literal notranslate"><span class="pre">b</span></code> in a MOSFET drawing, and <code class="docutils literal notranslate"><span class="pre">t.note(t.ideal)</span></code> writes <span class="math notranslate nohighlight">\(V_A=\infty\)</span> or <span class="math notranslate nohighlight">\(\lambda=0\)</span> beside a transistor. <code class="docutils literal notranslate"><span class="pre">c.chain([...],</span> <span class="pre">x,</span> <span class="pre">y)</span></code> places a series stack of transistors, and <code class="docutils literal notranslate"><span class="pre">c.bus([...],</span> <span class="pre">x)</span></code> ties their bases or gates together. Coordinates are pixels on a 10-px grid with <span class="math notranslate nohighlight">\(y\)</span> pointing down. Before drawing, all wire pieces and symbol leads are merged into continuous connectors.</p>
-<p><code class="docutils literal notranslate"><span class="pre">show(a,</span> <span class="pre">b,</span> <span class="pre">notes=[...])</span></code> draws the circuits <code class="docutils literal notranslate"><span class="pre">a</span></code> and <code class="docutils literal notranslate"><span class="pre">b</span></code> as two rows: their names in the first column, then the drawing made with <code class="docutils literal notranslate"><span class="pre">BJT</span></code> and the drawing made with <code class="docutils literal notranslate"><span class="pre">MOSFET</span></code>. <code class="docutils literal notranslate"><span class="pre">notes</span></code> holds the text that goes right under the drawings, for every circuit a pair <code class="docutils literal notranslate"><span class="pre">(BJT,</span> <span class="pre">MOSFET)</span></code> or one text for both. The first docstring line gives the names, as <code class="docutils literal notranslate"><span class="pre">BJT</span> <span class="pre">name</span> <span class="pre">|</span> <span class="pre">MOSFET</span> <span class="pre">name</span></code> where the two differ. A name <code class="docutils literal notranslate"><span class="pre">-</span></code> means that the circuit has no such version; that cell says so, and its note says why.</p>
+<p><code class="docutils literal notranslate"><span class="pre">show(a,</span> <span class="pre">b,</span> <span class="pre">notes=[...])</span></code> draws the circuits <code class="docutils literal notranslate"><span class="pre">a</span></code> and <code class="docutils literal notranslate"><span class="pre">b</span></code> as two rows: their names in the first column, then the drawing made with <code class="docutils literal notranslate"><span class="pre">BJT</span></code> and the drawing made with <code class="docutils literal notranslate"><span class="pre">MOSFET</span></code>. <code class="docutils literal notranslate"><span class="pre">notes</span></code> holds the text that goes right under the drawings, for every circuit a pair <code class="docutils literal notranslate"><span class="pre">(BJT,</span> <span class="pre">MOSFET)</span></code> or one text for both. The first docstring line gives the names, as <code class="docutils literal notranslate"><span class="pre">BJT</span> <span class="pre">name</span> <span class="pre">|</span> <span class="pre">MOSFET</span> <span class="pre">name</span></code> where the two differ. A name <code class="docutils literal notranslate"><span class="pre">-</span></code> means that the circuit has no such version; that cell says so, and its note says why. <code class="docutils literal notranslate"><span class="pre">scale=0.7</span></code> draws the circuits of a figure smaller, for circuits of many transistors.</p>
 <div class="cell tag_hide_input docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># HIDE/SHOW</span>
@@ -945,6 +1003,56 @@ const thebe_selector_output = ".output, .cell_output"
     <span class="n">node</span> <span class="o">=</span> <span class="p">(</span><span class="mi">130</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
     <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">(</span><span class="n">t1</span><span class="o">.</span><span class="n">es</span><span class="p">,</span> <span class="n">node</span><span class="p">);</span> <span class="n">c</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">node</span><span class="p">);</span> <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">(</span><span class="n">node</span><span class="p">,</span> <span class="p">(</span><span class="mi">180</span><span class="p">,</span> <span class="mi">0</span><span class="p">));</span> <span class="n">c</span><span class="o">.</span><span class="n">port</span><span class="p">((</span><span class="mi">180</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">OUT</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span>
     <span class="n">capacitor_to_ground</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">node</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">op_amp</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">blocks</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;The first `blocks` blocks of a two-stage op amp.  Every block is a circuit from further up:</span>
+<span class="sd">    1 differential pair, 2 current source in its tail, 3 current mirror as its load,</span>
+<span class="sd">    4 second stage with a current-source load, 5 current mirror that supplies both bias currents.&quot;&quot;&quot;</span>
+    <span class="n">t1</span> <span class="o">=</span> <span class="n">c</span><span class="o">.</span><span class="n">transistor</span><span class="p">(</span><span class="s1">&#39;n&#39;</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="s1">&#39;cd&#39;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">lbl</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">)</span>                          <span class="c1"># 1: the pair</span>
+    <span class="n">t2</span> <span class="o">=</span> <span class="n">c</span><span class="o">.</span><span class="n">transistor</span><span class="p">(</span><span class="s1">&#39;n&#39;</span><span class="p">,</span> <span class="p">(</span><span class="mi">120</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="s1">&#39;cd&#39;</span><span class="p">,</span> <span class="n">side</span><span class="o">=</span><span class="s1">&#39;right&#39;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">lbl</span><span class="o">=</span><span class="s1">&#39;l&#39;</span><span class="p">)</span>
+    <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">(</span><span class="n">t1</span><span class="o">.</span><span class="n">bg</span><span class="p">,</span> <span class="p">(</span><span class="o">-</span><span class="mi">70</span><span class="p">,</span> <span class="mi">40</span><span class="p">));</span> <span class="n">c</span><span class="o">.</span><span class="n">port</span><span class="p">((</span><span class="o">-</span><span class="mi">70</span><span class="p">,</span> <span class="mi">40</span><span class="p">),</span> <span class="s1">&#39;V_1&#39;</span><span class="p">,</span> <span class="s1">&#39;l&#39;</span><span class="p">)</span>
+    <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">(</span><span class="n">t2</span><span class="o">.</span><span class="n">bg</span><span class="p">,</span> <span class="p">(</span><span class="mi">180</span><span class="p">,</span> <span class="mi">40</span><span class="p">));</span> <span class="n">c</span><span class="o">.</span><span class="n">port</span><span class="p">((</span><span class="mi">180</span><span class="p">,</span> <span class="mi">40</span><span class="p">),</span> <span class="s1">&#39;V_2&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span>
+    <span class="n">tail</span> <span class="o">=</span> <span class="p">(</span><span class="mi">60</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+    <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">(</span><span class="n">t1</span><span class="o">.</span><span class="n">es</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">),</span> <span class="p">(</span><span class="mi">120</span><span class="p">,</span> <span class="mi">100</span><span class="p">),</span> <span class="n">t2</span><span class="o">.</span><span class="n">es</span><span class="p">);</span> <span class="n">c</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">tail</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">blocks</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="p">:</span>
+        <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">(</span><span class="n">tail</span><span class="p">,</span> <span class="p">(</span><span class="mi">60</span><span class="p">,</span> <span class="mi">140</span><span class="p">));</span> <span class="n">c</span><span class="o">.</span><span class="n">port</span><span class="p">((</span><span class="mi">60</span><span class="p">,</span> <span class="mi">140</span><span class="p">),</span> <span class="s1">&#39;I_bias&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>                                                                          <span class="c1"># 2: the tail current source</span>
+        <span class="n">t5</span> <span class="o">=</span> <span class="n">c</span><span class="o">.</span><span class="n">transistor</span><span class="p">(</span><span class="s1">&#39;n&#39;</span><span class="p">,</span> <span class="p">(</span><span class="mi">60</span><span class="p">,</span> <span class="mi">120</span><span class="p">),</span> <span class="s1">&#39;cd&#39;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+        <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">(</span><span class="n">tail</span><span class="p">,</span> <span class="n">t5</span><span class="o">.</span><span class="n">cd</span><span class="p">);</span> <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">(</span><span class="n">t5</span><span class="o">.</span><span class="n">es</span><span class="p">,</span> <span class="p">(</span><span class="mi">60</span><span class="p">,</span> <span class="mi">220</span><span class="p">));</span> <span class="n">c</span><span class="o">.</span><span class="n">gnd</span><span class="p">((</span><span class="mi">60</span><span class="p">,</span> <span class="mi">220</span><span class="p">))</span>
+        <span class="n">bias</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">160</span><span class="p">)</span>
+        <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">(</span><span class="n">t5</span><span class="o">.</span><span class="n">bg</span><span class="p">,</span> <span class="n">bias</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">blocks</span> <span class="o">&lt;</span> <span class="mi">3</span><span class="p">:</span>
+        <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">(</span><span class="n">t1</span><span class="o">.</span><span class="n">cd</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">40</span><span class="p">));</span> <span class="n">c</span><span class="o">.</span><span class="n">port</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">40</span><span class="p">),</span> <span class="s1">&#39;I_1&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span>
+        <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">(</span><span class="n">t2</span><span class="o">.</span><span class="n">cd</span><span class="p">,</span> <span class="p">(</span><span class="mi">120</span><span class="p">,</span> <span class="o">-</span><span class="mi">40</span><span class="p">));</span> <span class="n">c</span><span class="o">.</span><span class="n">port</span><span class="p">((</span><span class="mi">120</span><span class="p">,</span> <span class="o">-</span><span class="mi">40</span><span class="p">),</span> <span class="s1">&#39;I_2&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>                                                                          <span class="c1"># 3: the current-mirror load</span>
+        <span class="n">t3</span> <span class="o">=</span> <span class="n">c</span><span class="o">.</span><span class="n">transistor</span><span class="p">(</span><span class="s1">&#39;p&#39;</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">100</span><span class="p">),</span> <span class="s1">&#39;es&#39;</span><span class="p">,</span> <span class="n">side</span><span class="o">=</span><span class="s1">&#39;right&#39;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">lbl</span><span class="o">=</span><span class="s1">&#39;l&#39;</span><span class="p">)</span>
+        <span class="n">t4</span> <span class="o">=</span> <span class="n">c</span><span class="o">.</span><span class="n">transistor</span><span class="p">(</span><span class="s1">&#39;p&#39;</span><span class="p">,</span> <span class="p">(</span><span class="mi">120</span><span class="p">,</span> <span class="o">-</span><span class="mi">100</span><span class="p">),</span> <span class="s1">&#39;es&#39;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">lbl</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">)</span>
+        <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">(</span><span class="n">t3</span><span class="o">.</span><span class="n">cd</span><span class="p">,</span> <span class="n">t1</span><span class="o">.</span><span class="n">cd</span><span class="p">);</span> <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">(</span><span class="n">t4</span><span class="o">.</span><span class="n">cd</span><span class="p">,</span> <span class="n">t2</span><span class="o">.</span><span class="n">cd</span><span class="p">)</span>
+        <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">(</span><span class="n">t3</span><span class="o">.</span><span class="n">bg</span><span class="p">,</span> <span class="n">t4</span><span class="o">.</span><span class="n">bg</span><span class="p">);</span> <span class="n">c</span><span class="o">.</span><span class="n">dot</span><span class="p">((</span><span class="mi">60</span><span class="p">,</span> <span class="o">-</span><span class="mi">60</span><span class="p">));</span> <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">((</span><span class="mi">60</span><span class="p">,</span> <span class="o">-</span><span class="mi">60</span><span class="p">),</span> <span class="p">(</span><span class="mi">60</span><span class="p">,</span> <span class="o">-</span><span class="mi">10</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">10</span><span class="p">));</span> <span class="n">c</span><span class="o">.</span><span class="n">dot</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">10</span><span class="p">))</span>
+        <span class="n">rail</span> <span class="o">=</span> <span class="mi">230</span> <span class="k">if</span> <span class="n">blocks</span> <span class="o">&gt;</span> <span class="mi">3</span> <span class="k">else</span> <span class="mi">120</span>
+        <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">(</span><span class="n">t3</span><span class="o">.</span><span class="n">es</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">120</span><span class="p">),</span> <span class="p">(</span><span class="n">rail</span><span class="p">,</span> <span class="o">-</span><span class="mi">120</span><span class="p">));</span> <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">(</span><span class="n">t4</span><span class="o">.</span><span class="n">es</span><span class="p">,</span> <span class="p">(</span><span class="mi">120</span><span class="p">,</span> <span class="o">-</span><span class="mi">120</span><span class="p">));</span> <span class="n">c</span><span class="o">.</span><span class="n">supply</span><span class="p">((</span><span class="mi">60</span><span class="p">,</span> <span class="o">-</span><span class="mi">120</span><span class="p">));</span> <span class="n">c</span><span class="o">.</span><span class="n">dot</span><span class="p">((</span><span class="mi">60</span><span class="p">,</span> <span class="o">-</span><span class="mi">120</span><span class="p">))</span>
+        <span class="n">first</span> <span class="o">=</span> <span class="p">(</span><span class="mi">120</span><span class="p">,</span> <span class="o">-</span><span class="mi">10</span><span class="p">);</span> <span class="n">c</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">first</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">blocks</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
+        <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">(</span><span class="n">first</span><span class="p">,</span> <span class="p">(</span><span class="mi">215</span><span class="p">,</span> <span class="o">-</span><span class="mi">10</span><span class="p">));</span> <span class="n">c</span><span class="o">.</span><span class="n">port</span><span class="p">((</span><span class="mi">215</span><span class="p">,</span> <span class="o">-</span><span class="mi">10</span><span class="p">),</span> <span class="n">OUT</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">);</span> <span class="n">c</span><span class="o">.</span><span class="n">look</span><span class="p">((</span><span class="mi">215</span><span class="p">,</span> <span class="o">-</span><span class="mi">10</span><span class="p">),</span> <span class="s1">&#39;l&#39;</span><span class="p">,</span> <span class="s1">&#39;d&#39;</span><span class="p">,</span> <span class="s1">&#39;R_out&#39;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">blocks</span> <span class="o">&gt;</span> <span class="mi">3</span><span class="p">:</span>                                                                 <span class="c1"># 4: the second stage</span>
+        <span class="n">t6</span> <span class="o">=</span> <span class="n">c</span><span class="o">.</span><span class="n">transistor</span><span class="p">(</span><span class="s1">&#39;p&#39;</span><span class="p">,</span> <span class="p">(</span><span class="mi">230</span><span class="p">,</span> <span class="o">-</span><span class="mi">100</span><span class="p">),</span> <span class="s1">&#39;es&#39;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="mi">6</span><span class="p">)</span>
+        <span class="n">t7</span> <span class="o">=</span> <span class="n">c</span><span class="o">.</span><span class="n">transistor</span><span class="p">(</span><span class="s1">&#39;n&#39;</span><span class="p">,</span> <span class="p">(</span><span class="mi">230</span><span class="p">,</span> <span class="mi">120</span><span class="p">),</span> <span class="s1">&#39;cd&#39;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="mi">7</span><span class="p">)</span>
+        <span class="n">c</span><span class="o">.</span><span class="n">dot</span><span class="p">((</span><span class="mi">120</span><span class="p">,</span> <span class="o">-</span><span class="mi">120</span><span class="p">));</span> <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">((</span><span class="mi">230</span><span class="p">,</span> <span class="o">-</span><span class="mi">120</span><span class="p">),</span> <span class="n">t6</span><span class="o">.</span><span class="n">es</span><span class="p">)</span>
+        <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">(</span><span class="n">first</span><span class="p">,</span> <span class="p">(</span><span class="mi">165</span><span class="p">,</span> <span class="o">-</span><span class="mi">10</span><span class="p">),</span> <span class="p">(</span><span class="mi">165</span><span class="p">,</span> <span class="o">-</span><span class="mi">60</span><span class="p">),</span> <span class="n">t6</span><span class="o">.</span><span class="n">bg</span><span class="p">)</span>
+        <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">(</span><span class="n">t6</span><span class="o">.</span><span class="n">cd</span><span class="p">,</span> <span class="n">t7</span><span class="o">.</span><span class="n">cd</span><span class="p">);</span> <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">(</span><span class="n">t7</span><span class="o">.</span><span class="n">es</span><span class="p">,</span> <span class="p">(</span><span class="mi">230</span><span class="p">,</span> <span class="mi">220</span><span class="p">));</span> <span class="n">c</span><span class="o">.</span><span class="n">gnd</span><span class="p">((</span><span class="mi">230</span><span class="p">,</span> <span class="mi">220</span><span class="p">))</span>
+        <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">(</span><span class="n">bias</span><span class="p">,</span> <span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">250</span><span class="p">),</span> <span class="p">(</span><span class="mi">190</span><span class="p">,</span> <span class="mi">250</span><span class="p">),</span> <span class="n">t7</span><span class="o">.</span><span class="n">bg</span><span class="p">);</span> <span class="n">c</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">bias</span><span class="p">)</span>
+        <span class="n">out</span> <span class="o">=</span> <span class="p">(</span><span class="mi">230</span><span class="p">,</span> <span class="mi">50</span><span class="p">);</span> <span class="n">c</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">out</span><span class="p">);</span> <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">(</span><span class="n">out</span><span class="p">,</span> <span class="p">(</span><span class="mi">280</span><span class="p">,</span> <span class="mi">50</span><span class="p">));</span> <span class="n">c</span><span class="o">.</span><span class="n">port</span><span class="p">((</span><span class="mi">280</span><span class="p">,</span> <span class="mi">50</span><span class="p">),</span> <span class="n">OUT</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">blocks</span> <span class="o">==</span> <span class="mi">4</span><span class="p">:</span>
+        <span class="n">c</span><span class="o">.</span><span class="n">look</span><span class="p">((</span><span class="mi">280</span><span class="p">,</span> <span class="mi">50</span><span class="p">),</span> <span class="s1">&#39;l&#39;</span><span class="p">,</span> <span class="s1">&#39;d&#39;</span><span class="p">,</span> <span class="s1">&#39;R_out&#39;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="mi">2</span> <span class="o">&lt;=</span> <span class="n">blocks</span> <span class="o">&lt;</span> <span class="mi">5</span><span class="p">:</span>
+        <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">(</span><span class="n">bias</span><span class="p">,</span> <span class="p">(</span><span class="o">-</span><span class="mi">40</span><span class="p">,</span> <span class="mi">160</span><span class="p">));</span> <span class="n">c</span><span class="o">.</span><span class="n">port</span><span class="p">((</span><span class="o">-</span><span class="mi">40</span><span class="p">,</span> <span class="mi">160</span><span class="p">),</span> <span class="s1">&#39;V_bias&#39;</span><span class="p">,</span> <span class="s1">&#39;l&#39;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">blocks</span> <span class="o">==</span> <span class="mi">5</span><span class="p">:</span>                                                                <span class="c1"># 5: the bias mirror</span>
+        <span class="n">t8</span> <span class="o">=</span> <span class="n">c</span><span class="o">.</span><span class="n">transistor</span><span class="p">(</span><span class="s1">&#39;n&#39;</span><span class="p">,</span> <span class="p">(</span><span class="o">-</span><span class="mi">90</span><span class="p">,</span> <span class="mi">120</span><span class="p">),</span> <span class="s1">&#39;cd&#39;</span><span class="p">,</span> <span class="n">side</span><span class="o">=</span><span class="s1">&#39;right&#39;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">lbl</span><span class="o">=</span><span class="s1">&#39;l&#39;</span><span class="p">)</span>
+        <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">(</span><span class="n">t8</span><span class="o">.</span><span class="n">es</span><span class="p">,</span> <span class="p">(</span><span class="o">-</span><span class="mi">90</span><span class="p">,</span> <span class="mi">220</span><span class="p">));</span> <span class="n">c</span><span class="o">.</span><span class="n">gnd</span><span class="p">((</span><span class="o">-</span><span class="mi">90</span><span class="p">,</span> <span class="mi">220</span><span class="p">))</span>
+        <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">(</span><span class="n">t8</span><span class="o">.</span><span class="n">bg</span><span class="p">,</span> <span class="n">bias</span><span class="p">)</span>
+        <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">(</span><span class="n">t8</span><span class="o">.</span><span class="n">cd</span><span class="p">,</span> <span class="p">(</span><span class="o">-</span><span class="mi">90</span><span class="p">,</span> <span class="mi">70</span><span class="p">));</span> <span class="n">c</span><span class="o">.</span><span class="n">port</span><span class="p">((</span><span class="o">-</span><span class="mi">90</span><span class="p">,</span> <span class="mi">70</span><span class="p">),</span> <span class="s1">&#39;I_ref&#39;</span><span class="p">,</span> <span class="s1">&#39;l&#39;</span><span class="p">)</span>
+        <span class="n">c</span><span class="o">.</span><span class="n">dot</span><span class="p">((</span><span class="o">-</span><span class="mi">90</span><span class="p">,</span> <span class="mi">110</span><span class="p">));</span> <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">((</span><span class="o">-</span><span class="mi">90</span><span class="p">,</span> <span class="mi">110</span><span class="p">),</span> <span class="p">(</span><span class="o">-</span><span class="mi">30</span><span class="p">,</span> <span class="mi">110</span><span class="p">),</span> <span class="p">(</span><span class="o">-</span><span class="mi">30</span><span class="p">,</span> <span class="mi">160</span><span class="p">));</span> <span class="n">c</span><span class="o">.</span><span class="n">dot</span><span class="p">((</span><span class="o">-</span><span class="mi">30</span><span class="p">,</span> <span class="mi">160</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
@@ -987,7 +1095,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/fme_index_04_0.svg" src="../../_images/fme_index_04_0.svg?v=fme12" />
+<img alt="../../_images/fme_index_04_0.svg" src="../../_images/fme_index_04_0.svg?v=fme13" />
 </div>
 </div>
 <p>The two columns translate into each other term by term:</p>
@@ -1080,7 +1188,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/fme_index_05_0.svg" src="../../_images/fme_index_05_0.svg?v=fme12" />
+<img alt="../../_images/fme_index_05_0.svg" src="../../_images/fme_index_05_0.svg?v=fme13" />
 </div>
 </div>
 </div>
@@ -1114,7 +1222,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/fme_index_06_0.svg" src="../../_images/fme_index_06_0.svg?v=fme12" />
+<img alt="../../_images/fme_index_06_0.svg" src="../../_images/fme_index_06_0.svg?v=fme13" />
 </div>
 </div>
 </div>
@@ -1151,7 +1259,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/fme_index_07_0.svg" src="../../_images/fme_index_07_0.svg?v=fme12" />
+<img alt="../../_images/fme_index_07_0.svg" src="../../_images/fme_index_07_0.svg?v=fme13" />
 </div>
 </div>
 </div>
@@ -1186,7 +1294,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/fme_index_08_0.svg" src="../../_images/fme_index_08_0.svg?v=fme12" />
+<img alt="../../_images/fme_index_08_0.svg" src="../../_images/fme_index_08_0.svg?v=fme13" />
 </div>
 </div>
 </div>
@@ -1225,7 +1333,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/fme_index_09_0.svg" src="../../_images/fme_index_09_0.svg?v=fme12" />
+<img alt="../../_images/fme_index_09_0.svg" src="../../_images/fme_index_09_0.svg?v=fme13" />
 </div>
 </div>
 </div>
@@ -1260,7 +1368,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/fme_index_10_0.svg" src="../../_images/fme_index_10_0.svg?v=fme12" />
+<img alt="../../_images/fme_index_10_0.svg" src="../../_images/fme_index_10_0.svg?v=fme13" />
 </div>
 </div>
 </div>
@@ -1297,7 +1405,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/fme_index_11_0.svg" src="../../_images/fme_index_11_0.svg?v=fme12" />
+<img alt="../../_images/fme_index_11_0.svg" src="../../_images/fme_index_11_0.svg?v=fme13" />
 </div>
 </div>
 </div>
@@ -1343,7 +1451,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/fme_index_12_0.svg" src="../../_images/fme_index_12_0.svg?v=fme12" />
+<img alt="../../_images/fme_index_12_0.svg" src="../../_images/fme_index_12_0.svg?v=fme13" />
 </div>
 </div>
 </div>
@@ -1387,7 +1495,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/fme_index_13_0.svg" src="../../_images/fme_index_13_0.svg?v=fme12" />
+<img alt="../../_images/fme_index_13_0.svg" src="../../_images/fme_index_13_0.svg?v=fme13" />
 </div>
 </div>
 </div>
@@ -1435,7 +1543,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/fme_index_14_0.svg" src="../../_images/fme_index_14_0.svg?v=fme12" />
+<img alt="../../_images/fme_index_14_0.svg" src="../../_images/fme_index_14_0.svg?v=fme13" />
 </div>
 </div>
 </div>
@@ -1476,7 +1584,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/fme_index_15_0.svg" src="../../_images/fme_index_15_0.svg?v=fme12" />
+<img alt="../../_images/fme_index_15_0.svg" src="../../_images/fme_index_15_0.svg?v=fme13" />
 </div>
 </div>
 </div>
@@ -1521,7 +1629,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/fme_index_16_0.svg" src="../../_images/fme_index_16_0.svg?v=fme12" />
+<img alt="../../_images/fme_index_16_0.svg" src="../../_images/fme_index_16_0.svg?v=fme13" />
 </div>
 </div>
 </div>
@@ -1565,7 +1673,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/fme_index_17_0.svg" src="../../_images/fme_index_17_0.svg?v=fme12" />
+<img alt="../../_images/fme_index_17_0.svg" src="../../_images/fme_index_17_0.svg?v=fme13" />
 </div>
 </div>
 </div>
@@ -1608,7 +1716,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/fme_index_18_0.svg" src="../../_images/fme_index_18_0.svg?v=fme12" />
+<img alt="../../_images/fme_index_18_0.svg" src="../../_images/fme_index_18_0.svg?v=fme13" />
 </div>
 </div>
 </div>
@@ -1646,7 +1754,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/fme_index_19_0.svg" src="../../_images/fme_index_19_0.svg?v=fme12" />
+<img alt="../../_images/fme_index_19_0.svg" src="../../_images/fme_index_19_0.svg?v=fme13" />
 </div>
 </div>
 </div>
@@ -1689,7 +1797,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/fme_index_20_0.svg" src="../../_images/fme_index_20_0.svg?v=fme12" />
+<img alt="../../_images/fme_index_20_0.svg" src="../../_images/fme_index_20_0.svg?v=fme13" />
 </div>
 </div>
 </div>
@@ -1727,7 +1835,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/fme_index_21_0.svg" src="../../_images/fme_index_21_0.svg?v=fme12" />
+<img alt="../../_images/fme_index_21_0.svg" src="../../_images/fme_index_21_0.svg?v=fme13" />
 </div>
 </div>
 </div>
@@ -1770,7 +1878,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/fme_index_22_0.svg" src="../../_images/fme_index_22_0.svg?v=fme12" />
+<img alt="../../_images/fme_index_22_0.svg" src="../../_images/fme_index_22_0.svg?v=fme13" />
 </div>
 </div>
 </div>
@@ -1814,7 +1922,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/fme_index_23_0.svg" src="../../_images/fme_index_23_0.svg?v=fme12" />
+<img alt="../../_images/fme_index_23_0.svg" src="../../_images/fme_index_23_0.svg?v=fme13" />
 </div>
 </div>
 </div>
@@ -1854,7 +1962,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/fme_index_24_0.svg" src="../../_images/fme_index_24_0.svg?v=fme12" />
+<img alt="../../_images/fme_index_24_0.svg" src="../../_images/fme_index_24_0.svg?v=fme13" />
 </div>
 </div>
 </div>
@@ -1899,7 +2007,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/fme_index_25_0.svg" src="../../_images/fme_index_25_0.svg?v=fme12" />
+<img alt="../../_images/fme_index_25_0.svg" src="../../_images/fme_index_25_0.svg?v=fme13" />
 </div>
 </div>
 </div>
@@ -1948,7 +2056,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/fme_index_26_0.svg" src="../../_images/fme_index_26_0.svg?v=fme12" />
+<img alt="../../_images/fme_index_26_0.svg" src="../../_images/fme_index_26_0.svg?v=fme13" />
 </div>
 </div>
 </div>
@@ -1992,7 +2100,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/fme_index_27_0.svg" src="../../_images/fme_index_27_0.svg?v=fme12" />
+<img alt="../../_images/fme_index_27_0.svg" src="../../_images/fme_index_27_0.svg?v=fme13" />
 </div>
 </div>
 </div>
@@ -2034,7 +2142,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/fme_index_28_0.svg" src="../../_images/fme_index_28_0.svg?v=fme12" />
+<img alt="../../_images/fme_index_28_0.svg" src="../../_images/fme_index_28_0.svg?v=fme13" />
 </div>
 </div>
 </div>
@@ -2077,7 +2185,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/fme_index_29_0.svg" src="../../_images/fme_index_29_0.svg?v=fme12" />
+<img alt="../../_images/fme_index_29_0.svg" src="../../_images/fme_index_29_0.svg?v=fme13" />
 </div>
 </div>
 </div>
@@ -2123,7 +2231,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/fme_index_30_0.svg" src="../../_images/fme_index_30_0.svg?v=fme12" />
+<img alt="../../_images/fme_index_30_0.svg" src="../../_images/fme_index_30_0.svg?v=fme13" />
 </div>
 </div>
 </div>
@@ -2151,7 +2259,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/fme_index_31_0.svg" src="../../_images/fme_index_31_0.svg?v=fme12" />
+<img alt="../../_images/fme_index_31_0.svg" src="../../_images/fme_index_31_0.svg?v=fme13" />
 </div>
 </div>
 </div>
@@ -2195,7 +2303,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/fme_index_32_0.svg" src="../../_images/fme_index_32_0.svg?v=fme12" />
+<img alt="../../_images/fme_index_32_0.svg" src="../../_images/fme_index_32_0.svg?v=fme13" />
 </div>
 </div>
 </div>
@@ -2242,7 +2350,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/fme_index_33_0.svg" src="../../_images/fme_index_33_0.svg?v=fme12" />
+<img alt="../../_images/fme_index_33_0.svg" src="../../_images/fme_index_33_0.svg?v=fme13" />
 </div>
 </div>
 </div>
@@ -2287,7 +2395,90 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/fme_index_34_0.svg" src="../../_images/fme_index_34_0.svg?v=fme12" />
+<img alt="../../_images/fme_index_34_0.svg" src="../../_images/fme_index_34_0.svg?v=fme13" />
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="connections-of-more-transistors">
+<h2>Connections of More Transistors<a class="headerlink" href="#connections-of-more-transistors" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="building-a-two-stage-op-amp">
+<h3>Building a Two-Stage Op Amp<a class="headerlink" href="#building-a-two-stage-op-amp" title="Permalink to this headline">¶</a></h3>
+<p>Each row adds one block from the sections above to the circuit of the row before. The gain is <span class="math notranslate nohighlight">\(A_v=V_\mathrm{out}/(V_1-V_2)\)</span>.</p>
+<div class="section" id="pair-and-tail-source">
+<h4>Pair and Tail Source<a class="headerlink" href="#pair-and-tail-source" title="Permalink to this headline">¶</a></h4>
+<p>The differential pair is one of the feedback pairs. The current source in its tail is one of the eight roles.</p>
+<div class="cell tag_hide_input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># HIDE/SHOW</span>
+<span class="k">def</span> <span class="nf">op_amp_pair</span><span class="p">(</span><span class="n">c</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Emitter-coupled pair | Source-coupled pair&quot;&quot;&quot;</span>
+    <span class="n">op_amp</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">op_amp_tail</span><span class="p">(</span><span class="n">c</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;+ tail current source&quot;&quot;&quot;</span>
+    <span class="n">op_amp</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+
+<span class="n">show</span><span class="p">(</span><span class="n">op_amp_pair</span><span class="p">,</span> <span class="n">op_amp_tail</span><span class="p">,</span> <span class="n">notes</span><span class="o">=</span><span class="p">[</span>
+    <span class="s1">&#39;$I_1-I_2=g_m(V_1-V_2)$ for small inputs&#39;</span><span class="p">,</span>
+    <span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$Q_5$ takes the place of $I_\mathrm</span><span class="si">{bias}</span><span class="s1">$: $I_1+I_2=I_</span><span class="si">{C5}</span><span class="s1">$, set by $V_\mathrm</span><span class="si">{bias}</span><span class="s1">$&#39;</span><span class="p">,</span>
+     <span class="sa">r</span><span class="s1">&#39;$M_5$ takes the place of $I_\mathrm</span><span class="si">{bias}</span><span class="s1">$: $I_1+I_2=I_</span><span class="si">{D5}</span><span class="s1">$, set by $V_\mathrm</span><span class="si">{bias}</span><span class="s1">$&#39;</span><span class="p">)],</span> <span class="n">scale</span><span class="o">=</span><span class="mf">0.7</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/fme_index_35_0.svg" src="../../_images/fme_index_35_0.svg?v=fme13" />
+</div>
+</div>
+</div>
+<div class="section" id="mirror-load-and-second-stage">
+<h4>Mirror Load and Second Stage<a class="headerlink" href="#mirror-load-and-second-stage" title="Permalink to this headline">¶</a></h4>
+<p>The current mirror is one of the bias circuits. The second stage is the active-load stage of the gain stages, with the two types swapped.</p>
+<div class="cell tag_hide_input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># HIDE/SHOW</span>
+<span class="k">def</span> <span class="nf">op_amp_mirror</span><span class="p">(</span><span class="n">c</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;+ current-mirror load&quot;&quot;&quot;</span>
+    <span class="n">op_amp</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">op_amp_second</span><span class="p">(</span><span class="n">c</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;+ common-emitter stage | + common-source stage&quot;&quot;&quot;</span>
+    <span class="n">op_amp</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+
+<span class="n">show</span><span class="p">(</span><span class="n">op_amp_mirror</span><span class="p">,</span> <span class="n">op_amp_second</span><span class="p">,</span> <span class="n">notes</span><span class="o">=</span><span class="p">[</span>
+    <span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$Q_3$ and $Q_4$ fold $I_1$ over to the output: $A_v=g_</span><span class="si">{m1}</span><span class="s1">R_\mathrm</span><span class="si">{out}</span><span class="s1">$, $R_\mathrm</span><span class="si">{out}</span><span class="s1">=r_</span><span class="si">{O2}</span><span class="s1">\parallel r_</span><span class="si">{O4}</span><span class="s1">$&#39;</span><span class="p">,</span>
+     <span class="sa">r</span><span class="s1">&#39;$M_3$ and $M_4$ fold $I_1$ over to the output: $A_v=g_</span><span class="si">{m1}</span><span class="s1">R_\mathrm</span><span class="si">{out}</span><span class="s1">$, $R_\mathrm</span><span class="si">{out}</span><span class="s1">=r_</span><span class="si">{O2}</span><span class="s1">\parallel r_</span><span class="si">{O4}</span><span class="s1">$&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$A_v=-g_</span><span class="si">{m1}</span><span class="s1">(r_</span><span class="si">{O2}</span><span class="s1">\parallel r_</span><span class="si">{O4}</span><span class="s1">\parallel r_{\pi6})\cdot g_</span><span class="si">{m6}</span><span class="s1">R_\mathrm</span><span class="si">{out}</span><span class="s1">$, $R_\mathrm</span><span class="si">{out}</span><span class="s1">=r_</span><span class="si">{O6}</span><span class="s1">\parallel r_</span><span class="si">{O7}</span><span class="s1">$&#39;</span><span class="p">,</span>
+     <span class="sa">r</span><span class="s1">&#39;$A_v=-g_</span><span class="si">{m1}</span><span class="s1">(r_</span><span class="si">{O2}</span><span class="s1">\parallel r_</span><span class="si">{O4}</span><span class="s1">)\cdot g_</span><span class="si">{m6}</span><span class="s1">R_\mathrm</span><span class="si">{out}</span><span class="s1">$, $R_\mathrm</span><span class="si">{out}</span><span class="s1">=r_</span><span class="si">{O6}</span><span class="s1">\parallel r_</span><span class="si">{O7}</span><span class="s1">$&#39;</span><span class="p">)],</span> <span class="n">scale</span><span class="o">=</span><span class="mf">0.7</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/fme_index_36_0.svg" src="../../_images/fme_index_36_0.svg?v=fme13" />
+</div>
+</div>
+</div>
+<div class="section" id="bias-mirror">
+<h4>Bias Mirror<a class="headerlink" href="#bias-mirror" title="Permalink to this headline">¶</a></h4>
+<p>A second current mirror supplies both bias currents from one reference current.</p>
+<div class="cell tag_hide_input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># HIDE/SHOW</span>
+<span class="k">def</span> <span class="nf">op_amp_bias</span><span class="p">(</span><span class="n">c</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;+ bias mirror&quot;&quot;&quot;</span>
+    <span class="n">op_amp</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+
+<span class="n">show</span><span class="p">(</span><span class="n">op_amp_bias</span><span class="p">,</span> <span class="n">notes</span><span class="o">=</span><span class="p">[</span>
+    <span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$Q_8$ and $I_\mathrm</span><span class="si">{ref}</span><span class="s1">$ take the place of $V_\mathrm</span><span class="si">{bias}</span><span class="s1">$: $I_</span><span class="si">{C5}</span><span class="s1">$ and $I_</span><span class="si">{C7}</span><span class="s1">$ are copies of $I_\mathrm</span><span class="si">{ref}</span><span class="s1">$, in the ratio of the emitter areas&#39;</span><span class="p">,</span>
+     <span class="sa">r</span><span class="s1">&#39;$M_8$ and $I_\mathrm</span><span class="si">{ref}</span><span class="s1">$ take the place of $V_\mathrm</span><span class="si">{bias}</span><span class="s1">$: $I_</span><span class="si">{D5}</span><span class="s1">$ and $I_</span><span class="si">{D7}</span><span class="s1">$ are copies of $I_\mathrm</span><span class="si">{ref}</span><span class="s1">$, in the ratio of the sizes $W/L$&#39;</span><span class="p">)],</span> <span class="n">scale</span><span class="o">=</span><span class="mf">0.7</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/fme_index_37_0.svg" src="../../_images/fme_index_37_0.svg?v=fme13" />
 </div>
 </div>
 </div>
@@ -2304,7 +2495,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/fme_index_35_0.svg" src="../../_images/fme_index_35_0.svg?v=fme12" />
+<img alt="../../_images/fme_index_38_0.svg" src="../../_images/fme_index_38_0.svg?v=fme13" />
 </div>
 </div>
 </div>
