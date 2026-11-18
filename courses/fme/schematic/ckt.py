@@ -36,6 +36,8 @@ class Transistor:
         self.inst = ckt.sc.put(self.symbol(kind, **options), self.terminal(anchor), at, rot, self.mir)
         t = self.inst.t
         self.bg, self.cd, self.es = (t[self.own[k]] for k in ('bg', 'cd', 'es'))
+        # the vertical line through the device: its main route if it stands upright, its middle if it lies
+        self.line = self.cd[0] if rot % 2 == 0 else (self.cd[0] + self.es[0]) / 2
 
     # -- what a subclass defines ----------------------------------------
     def symbol(self, kind, **options):
@@ -134,12 +136,28 @@ class Ckt:
 
     def __init__(self, sc, device=MOSFET):
         self.sc, self.device = sc, device
+        self.devices, self._axis = [], None
+
+    # ---- where the drawing sits in its cell -----------------------------
+    def center(self, x):
+        """align the drawing on the vertical line x instead of on its transistors"""
+        self._axis = x
+
+    @property
+    def axis(self):
+        """The vertical line that a figure aligns this drawing on: the main route, if all transistors
+        share one, else the middle between them (as in a current mirror)."""
+        if self._axis is not None:
+            return self._axis
+        lines = [t.line for t in self.devices]
+        return sum(lines) / len(lines) if lines else 0.0
 
     # ---- devices ------------------------------------------------------
     def transistor(self, kind, at, anchor, side='left', rot=0, name=None, lbl='auto', **options):
         """Place a transistor of the class of this drawing: BJT or MOSFET.
         kind 'n' or 'p'; the terminal `anchor` ('bg', 'cd', 'es') is put at the point `at`."""
         t = self.device(self, kind, at, anchor, side, rot, **options)
+        self.devices.append(t)
         if name is not None:
             t.name(name, lbl)
         return t

@@ -287,6 +287,7 @@ def tie_cell(c):
     c.w(p.bg, (p.bg[0], 100), tap); c.dot(tap)
     c.w(n.cd, (n.cd[0], p.cd[1]), (n.cd[0] + 40, p.cd[1])); c.port((n.cd[0] + 40, p.cd[1]), 'V_low', 'r')
     g = (n.es[0], n.es[1] + 20); c.gnd(g); c.w(n.es, g)
+    c.center(n.es[0])                                       # aligned on the route to ground
 
 
 def current_mirror(c):
@@ -429,6 +430,7 @@ def stacked_buffers(c):
 
 def two_outputs(c):
     """Common base + common emitter | Common gate + common source"""
+    c.center(0)                                             # aligned on the route to ground
     t1 = c.transistor('n', (0, 0), 'cd', name=1)
     t2 = c.transistor('n', (-100, 0), 'es', name=2)
     yt = -110
@@ -466,6 +468,7 @@ def cascode(c):
 
 def regulated_cascode(c):
     """Regulated cascode"""
+    c.center(0)                                             # aligned on the route from I_out to I_in
     t1 = c.transistor('n', (0, 0), 'cd', name=1)
     c.w(t1.cd, (0, -60)); c.port((0, -60), 'I_out', 'l'); c.look((0, -60), 'd', 'r', 'R_out')
     c.w(t1.es, (0, 160)); c.port((0, 160), 'I_in', 'b')
@@ -606,6 +609,7 @@ def low_leakage_diode(c):
 
 def level_shift(c):
     """Level shift"""
+    c.center(0)                                             # aligned on the route from the supply
     t2 = c.transistor('n', (0, 0), 'cd', name=2)
     c.supply((0, -20)); c.w((0, -20), t2.cd)
     node = (0, 100)
@@ -688,6 +692,7 @@ def voltage_doubler(c):
     gy = t2.cd[1] + 20
     c.w(t2.cd, (70, gy)); c.dot((70, gy)); c.gnd((70, gy))
     c.w(t2.bg, (t2.bg[0] - 20, t2.bg[1]), (t2.bg[0] - 20, gy), (70, gy))
+    c.center(70)                                            # aligned on the route to ground
 
 
 # ================================================================ 7. logic gates
@@ -748,6 +753,7 @@ def op_amp(c, blocks):
     """The first `blocks` blocks of a two-stage op amp.  Every block is a circuit from further up:
     1 differential pair, 2 current source in its tail, 3 current mirror as its load,
     4 second stage with a current-source load, 5 current mirror that supplies both bias currents."""
+    c.center(60)                                                                   # every row is aligned on the pair
     t1 = c.transistor('n', (0, 0), 'cd', name=1, lbl='r')                          # 1: the pair
     t2 = c.transistor('n', (120, 0), 'cd', side='right', name=2, lbl='l')
     c.w(t1.bg, (-70, 40)); c.port((-70, 40), 'V_1', 'l')

@@ -86,6 +86,7 @@ class Scene:
     def __init__(s, name='', title='', note=''):
         s.name, s.title, s.note = name, title, note
         s.insts, s.wires, s.dots, s.texts = [], [], [], []
+        s.axis = 0.0                # the vertical line a figure aligns this drawing on
 
     # -- building ---------------------------------------------------
     def add(s, key, x, y, rot=0, mirror=False, color=None):

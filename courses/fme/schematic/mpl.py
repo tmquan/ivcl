@@ -111,7 +111,9 @@ def panels(scenes, titles=None, zoom=1.0, margin=14, gap=30, min_w=230, same_win
 def build(circuit, device):
     """run one circuit function with the transistor class `device` (BJT or MOSFET) -> Scene"""
     sc = Scene(getattr(circuit, '__name__', ''))
-    circuit(Ckt(sc, device))
+    c = Ckt(sc, device)
+    circuit(c)
+    sc.axis = c.axis
     return sc
 
 
@@ -190,12 +192,34 @@ def _note(text):
     return out, y - NOTE_LEAD
 
 
-def grid(rows, heads=('BJT', 'MOSFET'), zoom=1.0, scale=1.0):
+def _place(rows, pw, scale, window):
+    """Where each drawing sits in its cell: for every row, the distance (px) from the left edge of a cell
+    to the axis of its drawings.  All drawings of a figure have their axes on one vertical line, which
+    is put so that the widest reach to the left and to the right are centred in the cell.  If that does
+    not fit, the two drawings of a row share a line; if that does not fit either, each is centred."""
+    if window:                                                        # an explicit window, in scene px
+        return [[scale * (sc.axis - window[0]) + (pw - scale * (window[1] - window[0])) / 2
+                 if sc is not None else None for sc in scenes] for scenes, _, _ in rows]
+    reach = [[(scale * (sc.axis - sc.bounds()[0]), scale * (sc.bounds()[2] - sc.axis)) if sc is not None else None
+              for sc in scenes] for scenes, _, _ in rows]
+    spot = lambda some: (max(l for l, _ in some), max(r for _, r in some))
+    L, R = spot([q for row in reach for q in row if q])
+    out = []
+    for row in reach:
+        l, r = (L, R) if L + R + 2 * MARGIN <= pw else spot([q for q in row if q])
+        out.append([None if q is None else (pw - l - r) / 2 + l if l + r + 2 * MARGIN <= pw
+                    else (pw - q[0] - q[1]) / 2 + q[0] for q in row])
+    return out
+
+
+def grid(rows, heads=('BJT', 'MOSFET'), zoom=1.0, scale=1.0, window=None):
     """rows = [(scenes, names, notes), ...]: one row per circuit, with one scene, one name and one note
     per technology.  Three columns: the names of the circuit, then one cell per technology that holds
-    the drawing, centred, and its note right under it.  A scene given as None gives a cell that says
-    "No ... version"; its note says why.  scale < 1 draws the circuits smaller, so that a circuit of
-    many transistors fits its cell; names and notes keep their size."""
+    the drawing and its note right under it.  The drawings of a figure are aligned on their axes: the
+    main route of their transistors, or the middle between them; the two drawings of a row sit at the
+    same height.  A scene given as None gives a cell that says "No ... version"; its note says why.
+    scale < 1 draws the circuits smaller, so that a circuit of many transistors fits its cell; names and
+    notes keep their size.  window = (x0, x1) shows that stretch of every drawing, in its own units."""
     boxes, labels, notes = [], [], []
     for scenes, titles, texts in rows:
         b = [sc.bounds() for sc in scenes if sc is not None]
@@ -222,7 +246,8 @@ def grid(rows, heads=('BJT', 'MOSFET'), zoom=1.0, scale=1.0):
                  fontproperties=FontProperties(fname=bold, size=18 * k))
     rule = lambda xs, ys: fig.add_artist(Line2D(xs, ys, transform=fig.transFigure, color=RULE, lw=0.8))
     y = HEAD_H
-    for (scenes, titles, texts), h, d, (lines, lh), cells in zip(rows, hs, hd, labels, notes):
+    spots = _place(rows, pw, scale, window)
+    for (scenes, titles, texts), q, h, d, (lines, lh), cells, spot in zip(rows, boxes, hs, hd, labels, notes, spots):
         rule([0, 1], [1 - y / H] * 2)
         for text, dy in lines:                                        # first column: the names of the circuit
             fig.text(MARGIN / W, 1 - (y + (h - lh) / 2 + dy + 0.5 * LINE) / H, text, ha='left', va='center',
@@ -240,10 +265,9 @@ def grid(rows, heads=('BJT', 'MOSFET'), zoom=1.0, scale=1.0):
             for line, base in note:                                   # the note, right under the drawing
                 fig.text(xc / W, 1 - (y + d + base) / H, line, ha='center', va='baseline',
                          fontproperties=roman(NOTE))
-            b = sc.bounds()                                           # each drawing is centred in its own cell
-            cx, cy = (b[0] + b[2]) / 2, (b[1] + b[3]) / 2
+            cy = (q[1] + q[3]) / 2                                    # both drawings of a row at one height
             ax = fig.add_axes([(lw + j * pw) / W, 1 - (y + d) / H, pw / W, d / H])
-            ax.set_xlim(cx - pw / 2 / scale, cx + pw / 2 / scale)
+            ax.set_xlim(sc.axis - spot[j] / scale, sc.axis + (pw - spot[j]) / scale)
             ax.set_ylim(cy + d / 2 / scale, cy - d / 2 / scale)
             ax.axis('off')
             draw(ax, sc, k * scale)
@@ -254,19 +278,20 @@ def grid(rows, heads=('BJT', 'MOSFET'), zoom=1.0, scale=1.0):
     return fig
 
 
-def show(*circuits, notes=None, zoom=1.0, scale=1.0, devices=(BJT, MOSFET)):
+def show(*circuits, notes=None, zoom=1.0, scale=1.0, window=None, devices=(BJT, MOSFET)):
     """Three columns: the names of a circuit, the circuit drawn with BJTs, and drawn with MOSFETs.
     One row per circuit.  notes holds, for every circuit, the text that goes right under its two
     drawings: a pair (BJT, MOSFET), or one text for both.  A circuit whose docstring names one
     version as "-" exists in the other technology only; that cell says so, and its note says why.
-    scale < 1 draws the circuits of this figure smaller."""
+    scale < 1 draws the circuits of this figure smaller; window = (x0, x1) shows the same stretch of
+    every drawing, so that a circuit which grows from row to row stays in place."""
     rows = []
     for i, f in enumerate(circuits):
         nm = names(f)
         note = notes[i] if notes else ''
         note = (note, note) if isinstance(note, str) else tuple(note)
         rows.append((tuple(build(f, d) if nm[j] else None for j, d in enumerate(devices)), nm, note))
-    grid(rows, tuple(d.__name__ for d in devices), zoom, scale)
+    grid(rows, tuple(d.__name__ for d in devices), zoom, scale, window)
 
 
 def symbol_sheet(keys=None, cols=6, zoom=1.0, compact=False):
