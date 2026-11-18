@@ -751,52 +751,55 @@ def mixer(c):
 def op_amp(c, blocks):
     """The first `blocks` blocks of a two-stage op amp.  Every block is a circuit from further up:
     1 differential pair, 2 current source in its tail, 3 current mirror as its load,
-    4 second stage with a current-source load, 5 current mirror that supplies both bias currents."""
-    c.center(60)                                                                   # every row is aligned on the pair
+    4 second stage with a current-source load, 5 current mirror that supplies both bias currents.
+    The circuit is drawn narrow, so that all of it fits a cell at the size of every other drawing."""
+    c.center(50)                                                                   # every row is aligned on the pair
     t1 = c.transistor('n', (0, 0), 'cd', name=1, lbl='r')                          # 1: the pair
-    t2 = c.transistor('n', (120, 0), 'cd', side='right', name=2, lbl='l')
-    c.w(t1.bg, (-70, 40)); c.port((-70, 40), 'V_1', 'l')
-    c.w(t2.bg, (180, 40)); c.port((180, 40), 'V_2', 'r')
-    tail = (60, 100)
-    c.w(t1.es, (0, 100), (120, 100), t2.es); c.dot(tail)
+    t2 = c.transistor('n', (100, 0), 'cd', side='right', name=2, lbl='l')
+    c.w(t1.bg, (-55, 40)); c.port((-55, 40), 'V_1', 't')
+    c.w(t2.bg, (150, 40)); c.port((150, 40), 'V_2', 't')
+    tail = (50, 100)
+    c.w(t1.es, (0, 100), (100, 100), t2.es); c.dot(tail)
     if blocks < 2:
-        c.w(tail, (60, 140)); c.port((60, 140), 'I_bias', 'b')
+        c.w(tail, (50, 140)); c.port((50, 140), 'I_bias', 'b')
     else:                                                                          # 2: the tail current source
-        t5 = c.transistor('n', (60, 120), 'cd', name=5)
-        c.w(tail, t5.cd); c.w(t5.es, (60, 220)); c.gnd((60, 220))
-        bias = (-10, 160)
+        t5 = c.transistor('n', (50, 140), 'cd', name=5)
+        c.w(tail, t5.cd); c.w(t5.es, (50, 240)); c.gnd((50, 240))
+        bias = (-10, 180)
         c.w(t5.bg, bias)
     if blocks < 3:
         c.w(t1.cd, (0, -40)); c.port((0, -40), 'I_1', 'r')
-        c.w(t2.cd, (120, -40)); c.port((120, -40), 'I_2', 'r')
+        c.w(t2.cd, (100, -40)); c.port((100, -40), 'I_2', 'r')
     else:                                                                          # 3: the current-mirror load
         t3 = c.transistor('p', (0, -100), 'es', side='right', name=3, lbl='l')
-        t4 = c.transistor('p', (120, -100), 'es', name=4, lbl='r')
+        t4 = c.transistor('p', (100, -100), 'es')
+        t4.name(4, 'r', dy=-24)
         c.w(t3.cd, t1.cd); c.w(t4.cd, t2.cd)
-        c.w(t3.bg, t4.bg); c.dot((60, -60)); c.w((60, -60), (60, -10), (0, -10)); c.dot((0, -10))
-        rail = 220 if blocks > 3 else 120
-        c.w(t3.es, (0, -120), (rail, -120)); c.w(t4.es, (120, -120)); c.supply((60, -120)); c.dot((60, -120))
-        first = (120, -10); c.dot(first)
+        c.w(t3.bg, t4.bg); c.dot((50, -60)); c.w((50, -60), (50, -10), (0, -10)); c.dot((0, -10))
+        rail = 165 if blocks > 3 else 100
+        c.w(t3.es, (0, -120), (rail, -120)); c.w(t4.es, (100, -120)); c.supply((50, -120)); c.dot((50, -120))
+        first = (100, -10); c.dot(first)
     if blocks == 3:
-        c.w(first, (215, -10)); c.port((215, -10), OUT, 'r'); c.look((215, -10), 'l', 'd', 'R_out')
+        c.w(first, (160, -10)); c.port((160, -10), OUT, 'r'); c.look((160, -10), 'l', 'u', 'R_out')
     if blocks > 3:                                                                 # 4: the second stage
-        t6 = c.transistor('p', (220, -100), 'es', name=6)
-        t7 = c.transistor('n', (220, 120), 'cd', name=7)
-        c.dot((120, -120)); c.w((220, -120), t6.es)
-        c.w(first, (162, -10), (162, -60), t6.bg)
-        c.w(t6.cd, t7.cd); c.w(t7.es, (220, 220)); c.gnd((220, 220))
-        c.w(bias, (-10, 250), (t7.bg[0], 250), t7.bg); c.dot(bias)
-        out = (220, 50); c.dot(out); c.w(out, (250, 50)); c.port((250, 50), OUT, 't')
+        t6 = c.transistor('p', (165, -100), 'es', name=6)
+        t7 = c.transistor('n', (165, 140), 'cd')
+        t7.name(7, 'r', dy=14)
+        c.dot((100, -120)); c.w((165, -120), t6.es)
+        c.w(first, (125, -10), t6.bg)
+        c.w(t6.cd, t7.cd); c.w(t7.es, (165, 240)); c.gnd((165, 240))
+        c.w(bias, (-10, 270), (125, 270), t7.bg); c.dot(bias)
+        out = (165, 100); c.dot(out); c.w(out, (180, 100)); c.port((180, 100), OUT, 't')
     if blocks == 4:
-        c.look((250, 50), 'l', 'd', 'R_out')
+        c.look((180, 100), 'l', 'd', 'R_out', nudge=-12)
     if 2 <= blocks < 5:
-        c.w(bias, (-40, 160)); c.port((-40, 160), 'V_bias', 'l')
+        c.w(bias, (-40, 180)); c.port((-40, 180), 'V_bias', 'l')
     if blocks == 5:                                                                # 5: the bias mirror
-        t8 = c.transistor('n', (-90, 120), 'cd', side='right', name=8, lbl='l')
-        c.w(t8.es, (-90, 220)); c.gnd((-90, 220))
+        t8 = c.transistor('n', (-60, 140), 'cd', side='right', name=8, lbl='l')
+        c.w(t8.es, (-60, 240)); c.gnd((-60, 240))
         c.w(t8.bg, bias)
-        c.w(t8.cd, (-90, 70)); c.port((-90, 70), 'I_ref', 'l')
-        c.dot((-90, 110)); c.w((-90, 110), (-30, 110), (-30, 160)); c.dot((-30, 160))
+        c.w(t8.cd, (-60, 90)); c.port((-60, 90), 'I_ref', 'l')
+        c.dot((-60, 130)); c.w((-60, 130), (-10, 130), bias); c.dot(bias)
 
 
 def op_amp_pair(c):

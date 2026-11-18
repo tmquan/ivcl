@@ -190,14 +190,15 @@ class Ckt:
         """generic load, drawn as a box, with its upper end at p; returns the lower end"""
         return self.sc.put('load', 'a', p).t['b']
 
-    def look(self, p, into, side, label=None, form='plain', shift=None, gap=None):
+    def look(self, p, into, side, label=None, form='plain', shift=None, gap=None, nudge=0):
         """Mark the impedance seen at the terminal p with the hooked arrow of the book, in red.
         into: direction of view, 'l', 'r', 'u' or 'd'.  The arrow runs beside the lead on the given
         side; its tail leaves towards that side and carries the label.
         form 'plain': as printed at a base or a collector, the arrow passes the terminal.
              'low':   as printed at an emitter, the arrow stops at the terminal and has a short tail.
              'long':  long shaft and short tail, as printed with a long expression.
-        shift moves the arrow along its direction, gap sets its distance from the lead (px)."""
+        shift moves the arrow along its direction, gap sets its distance from the lead, and nudge
+        moves a label that sits under or over its tail sideways (px)."""
         a, b = _UNIT[into], _UNIT[side]
         k = S.LOOK
         key = {'plain': 'look', 'low': 'look_short', 'long': 'look_long'}[form]
@@ -215,7 +216,7 @@ class Ckt:
         if b[1]:                                    # tail up or down: the label sits at its end, and a long
             x0, _, x1, _ = self.sc.text_box((label, 0, 0, 'middle', LABEL, 'math'))    # one grows away from the circuit
             over = max((x1 - x0) / 2 - 25, 0)
-            self.sc.text(label, x - a[0] * over, y + 13 * b[1], 'middle', color=RED)
+            self.sc.text(label, x - a[0] * over + nudge, y + 13 * b[1], 'middle', color=RED)
         elif form == 'long':                        # a long expression sits above the tail, so that the drawing
             self.sc.text(label, x + 10 * b[0], y - 17, 'middle', color=RED)   # stays narrow about its main route
         else:                                       # tail to the left or right: the label follows it
