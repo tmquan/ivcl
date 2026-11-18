@@ -756,8 +756,7 @@ def op_amp(c, blocks):
     c.center(50)                                                                   # every row is aligned on the pair
     t1 = c.transistor('n', (0, 0), 'cd', name=1, lbl='r')                          # 1: the pair
     t2 = c.transistor('n', (100, 0), 'cd', side='right', name=2, lbl='l')
-    c.w(t1.bg, (-55, 40)); c.port((-55, 40), 'V_1', 't')
-    c.w(t2.bg, (150, 40)); c.port((150, 40), 'V_2', 't')
+    c.port(t1.bg, 'V_1', 't'); c.port(t2.bg, 'V_2', 't')
     tail = (50, 100)
     c.w(t1.es, (0, 100), (100, 100), t2.es); c.dot(tail)
     if blocks < 2:
@@ -772,26 +771,25 @@ def op_amp(c, blocks):
         c.w(t2.cd, (100, -40)); c.port((100, -40), 'I_2', 'r')
     else:                                                                          # 3: the current-mirror load
         t3 = c.transistor('p', (0, -100), 'es', side='right', name=3, lbl='l')
-        t4 = c.transistor('p', (100, -100), 'es')
-        t4.name(4, 'r', dy=-24)
+        t4 = c.transistor('p', (100, -100), 'es', name=4, lbl='r')
         c.w(t3.cd, t1.cd); c.w(t4.cd, t2.cd)
         c.w(t3.bg, t4.bg); c.dot((50, -60)); c.w((50, -60), (50, -10), (0, -10)); c.dot((0, -10))
-        rail = 165 if blocks > 3 else 100
+        rail = 155 if blocks > 3 else 100
         c.w(t3.es, (0, -120), (rail, -120)); c.w(t4.es, (100, -120)); c.supply((50, -120)); c.dot((50, -120))
         first = (100, -10); c.dot(first)
     if blocks == 3:
         c.w(first, (160, -10)); c.port((160, -10), OUT, 'r'); c.look((160, -10), 'l', 'u', 'R_out')
     if blocks > 3:                                                                 # 4: the second stage
-        t6 = c.transistor('p', (165, -100), 'es', name=6)
-        t7 = c.transistor('n', (165, 140), 'cd')
+        t6 = c.transistor('p', (155, -50), 'es', name=6)                         # its input level with the first output
+        t7 = c.transistor('n', (155, 140), 'cd')
         t7.name(7, 'r', dy=14)
-        c.dot((100, -120)); c.w((165, -120), t6.es)
-        c.w(first, (125, -10), t6.bg)
-        c.w(t6.cd, t7.cd); c.w(t7.es, (165, 240)); c.gnd((165, 240))
-        c.w(bias, (-10, 270), (125, 270), t7.bg); c.dot(bias)
-        out = (165, 100); c.dot(out); c.w(out, (180, 100)); c.port((180, 100), OUT, 't')
+        c.dot((100, -120)); c.w((155, -120), t6.es)
+        c.w(first, t6.bg)
+        c.w(t6.cd, t7.cd); c.w(t7.es, (155, 240)); c.gnd((155, 240))
+        c.w(bias, (-10, 270), (115, 270), t7.bg); c.dot(bias)
+        out = (155, 100); c.dot(out); c.w(out, (185, 100)); c.port((185, 100), OUT, 't')
     if blocks == 4:
-        c.look((180, 100), 'l', 'd', 'R_out', nudge=-12)
+        c.look((185, 100), 'l', 'd', 'R_out', nudge=-14)             # the arrow ends short of the second stage
     if 2 <= blocks < 5:
         c.w(bias, (-40, 180)); c.port((-40, 180), 'V_bias', 'l')
     if blocks == 5:                                                                # 5: the bias mirror
