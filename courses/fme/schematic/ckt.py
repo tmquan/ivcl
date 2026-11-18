@@ -214,8 +214,10 @@ class Ckt:
         x, y = i.t['tail']
         if b[1]:                                    # tail up or down: the label sits at its end, and a long
             x0, _, x1, _ = self.sc.text_box((label, 0, 0, 'middle', LABEL, 'math'))    # one grows away from the circuit
-            over = max((x1 - x0) / 2 - 15, 0)
+            over = max((x1 - x0) / 2 - 25, 0)
             self.sc.text(label, x - a[0] * over, y + 13 * b[1], 'middle', color=RED)
+        elif form == 'long':                        # a long expression sits above the tail, so that the drawing
+            self.sc.text(label, x + 10 * b[0], y - 17, 'middle', color=RED)   # stays narrow about its main route
         else:                                       # tail to the left or right: the label follows it
             pad = 16 if 'frac' in label.split('}')[0] else 7
             self.sc.text(label, x + pad * b[0], y, 'start' if b[0] > 0 else 'end', color=RED)

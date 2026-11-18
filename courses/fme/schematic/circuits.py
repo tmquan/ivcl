@@ -287,7 +287,7 @@ def tie_cell(c):
     c.w(p.bg, (p.bg[0], 100), tap); c.dot(tap)
     c.w(n.cd, (n.cd[0], p.cd[1]), (n.cd[0] + 40, p.cd[1])); c.port((n.cd[0] + 40, p.cd[1]), 'V_low', 'r')
     g = (n.es[0], n.es[1] + 20); c.gnd(g); c.w(n.es, g)
-    c.center(n.es[0])                                       # aligned on the route to ground
+    c.center(0)                                             # aligned on the route from the supply
 
 
 def current_mirror(c):
@@ -430,7 +430,6 @@ def stacked_buffers(c):
 
 def two_outputs(c):
     """Common base + common emitter | Common gate + common source"""
-    c.center(0)                                             # aligned on the route to ground
     t1 = c.transistor('n', (0, 0), 'cd', name=1)
     t2 = c.transistor('n', (-100, 0), 'es', name=2)
     yt = -110
@@ -450,8 +449,8 @@ def two_paths(c):
     c.supply((0, -20)); c.w((0, -20), t1.cd)
     inp = (0, t2.es[1] + 20); c.w(t2.es, inp); c.dot(inp); c.w(inp, (0, inp[1] + 40)); c.port((0, inp[1] + 40), 'I_bias', 'b')
     c.w(t2.bg, (t2.bg[0] - 20, t2.bg[1])); c.port((t2.bg[0] - 20, t2.bg[1]), 'V_bias', 't', dx=8)
-    xl = -130
-    c.w(inp, (xl, inp[1])); c.dot((xl, inp[1])); c.w((xl, inp[1]), (xl - 30, inp[1])); c.port((xl - 30, inp[1]), IN, 'l')
+    xl = -100
+    c.w(inp, (xl, inp[1])); c.dot((xl, inp[1])); c.w((xl, inp[1]), (xl - 20, inp[1])); c.port((xl - 20, inp[1]), IN, 'l')
     c.w((xl, inp[1]), (xl, t1.bg[1]), t1.bg)
     c.dot(j); c.w(j, (50, j[1])); c.port((50, j[1]), OUT, 'r')
 
@@ -653,7 +652,7 @@ def multiplexer(c):
         c.w(t.cd, (t.cd[0] - 40, t.cd[1])); c.port((t.cd[0] - 40, t.cd[1]), nm, 'l')
     c.w(t1.bg, (t1.bg[0], t1.bg[1] - 20)); c.port((t1.bg[0], t1.bg[1] - 20), 'V_sel1', 't')
     c.w(t2.bg, (t2.bg[0], t2.bg[1] - 20)); c.port((t2.bg[0], t2.bg[1] - 20), 'V_sel2', 't')
-    xc, yc = 130, -55
+    xc, yc = 115, -55
     c.w(t1.es, (xc, 0), (xc, yc)); c.dot((xc, yc)); c.w(t2.es, (xc, -110), (xc, yc))
     c.w((xc, yc), (xc + 40, yc)); c.port((xc + 40, yc), 'V_com', 'r')
 
@@ -686,7 +685,7 @@ def voltage_doubler(c):
     bar = 30
     c.w(t1.es, (bar, 0), (bar, 80), t1.cd)
     c.dot((bar, 40)); c.w((bar, 40), (150, 40)); c.port((150, 40), OUT, 'r')
-    c.w(t1.bg, (-70, 40)); c.port((-70, 40), IN, 'l')
+    c.w(t1.bg, (-55, 40)); c.port((-55, 40), IN, 'l')
     t2 = c.transistor('n', (70, 100), 'es', side='right', rot=2, name=2, lbl='r')
     c.w(t2.es, (70, 40)); c.dot((70, 40))
     gy = t2.cd[1] + 20
@@ -775,21 +774,21 @@ def op_amp(c, blocks):
         t4 = c.transistor('p', (120, -100), 'es', name=4, lbl='r')
         c.w(t3.cd, t1.cd); c.w(t4.cd, t2.cd)
         c.w(t3.bg, t4.bg); c.dot((60, -60)); c.w((60, -60), (60, -10), (0, -10)); c.dot((0, -10))
-        rail = 230 if blocks > 3 else 120
+        rail = 220 if blocks > 3 else 120
         c.w(t3.es, (0, -120), (rail, -120)); c.w(t4.es, (120, -120)); c.supply((60, -120)); c.dot((60, -120))
         first = (120, -10); c.dot(first)
     if blocks == 3:
         c.w(first, (215, -10)); c.port((215, -10), OUT, 'r'); c.look((215, -10), 'l', 'd', 'R_out')
     if blocks > 3:                                                                 # 4: the second stage
-        t6 = c.transistor('p', (230, -100), 'es', name=6)
-        t7 = c.transistor('n', (230, 120), 'cd', name=7)
-        c.dot((120, -120)); c.w((230, -120), t6.es)
-        c.w(first, (165, -10), (165, -60), t6.bg)
-        c.w(t6.cd, t7.cd); c.w(t7.es, (230, 220)); c.gnd((230, 220))
-        c.w(bias, (-10, 250), (190, 250), t7.bg); c.dot(bias)
-        out = (230, 50); c.dot(out); c.w(out, (280, 50)); c.port((280, 50), OUT, 'r')
+        t6 = c.transistor('p', (220, -100), 'es', name=6)
+        t7 = c.transistor('n', (220, 120), 'cd', name=7)
+        c.dot((120, -120)); c.w((220, -120), t6.es)
+        c.w(first, (162, -10), (162, -60), t6.bg)
+        c.w(t6.cd, t7.cd); c.w(t7.es, (220, 220)); c.gnd((220, 220))
+        c.w(bias, (-10, 250), (t7.bg[0], 250), t7.bg); c.dot(bias)
+        out = (220, 50); c.dot(out); c.w(out, (250, 50)); c.port((250, 50), OUT, 't')
     if blocks == 4:
-        c.look((280, 50), 'l', 'd', 'R_out')
+        c.look((250, 50), 'l', 'd', 'R_out')
     if 2 <= blocks < 5:
         c.w(bias, (-40, 160)); c.port((-40, 160), 'V_bias', 'l')
     if blocks == 5:                                                                # 5: the bias mirror
