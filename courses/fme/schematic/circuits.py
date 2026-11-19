@@ -780,7 +780,8 @@ def op_amp(c, blocks):
         c.w(t3.cd, t1.cd); c.w(t4.cd, t2.cd)
         c.w(t3.bg, t4.bg); c.dot((50, -60)); c.w((50, -60), (50, -10), (0, -10)); c.dot((0, -10))
         rail = 155 if blocks > 3 else 100
-        c.w(t3.es, (0, -120), (rail, -120)); c.w(t4.es, (100, -120)); c.supply((50, -120)); c.dot((50, -120))
+        c.w(t3.es, (0, -120), (rail, -120)); c.w(t4.es, (100, -120)); c.dot((50, -120))
+        c.w((50, -120), (50, -150)); c.supply((50, -150))                         # as far above the rail as a ground hangs below
         first = (100, -10); c.dot(first)
     if blocks == 3:
         c.w(first, (160, -10)); c.port((160, -10), OUT, 'r'); c.look((160, -10), 'l', 'u', 'R_out')
