@@ -150,7 +150,7 @@ def into_collector_degenerated(c):
 def into_emitter(c):
     """Into the emitter | Into the source"""
     t = c.transistor('n', (0, 0), 'cd'); t.note(t.ideal)
-    c.supply((0, -100), side=None); c.w((0, -100), (0, -80)); c.w(c.load((0, -80)), t.cd)
+    c.supply((0, -110), side=None); c.w((0, -110), (0, -80)); c.w(c.load((0, -80)), t.cd)
     c.w(t.bg, (-60, 40), (-60, 100)); c.ac((-60, 100))
     p = (0, 110)
     c.w(t.es, p); c.port(p, None); c.look(p, 'u', 'r', r'$\dfrac{1}{g_m}$', form='low')
@@ -159,7 +159,7 @@ def into_emitter(c):
 def into_emitter_base_resistance(c):
     """Into the emitter, with base resistance | -"""
     t = c.transistor('n', (0, 0), 'cd'); t.note(t.ideal)
-    c.supply((0, -100), side=None); c.w((0, -100), (0, -80)); c.w(c.load((0, -80)), t.cd)
+    c.supply((0, -110), side=None); c.w((0, -110), (0, -80)); c.w(c.load((0, -80)), t.cd)
     c.w(t.bg, (t.bg[0] - 10, 40))
     left = c.res((t.bg[0] - 10, 40), 'R_' + t.pin('bg'), to='left', side='u')
     c.w(left, (left[0] - 20, 40), (left[0] - 20, 100)); c.ac((left[0] - 20, 100))
@@ -781,7 +781,7 @@ def op_amp(c, blocks):
         c.w(t3.bg, t4.bg); c.dot((50, -60)); c.w((50, -60), (50, -10), (0, -10)); c.dot((0, -10))
         rail = 155 if blocks > 3 else 100
         c.w(t3.es, (0, -120), (rail, -120)); c.w(t4.es, (100, -120)); c.dot((50, -120))
-        c.w((50, -120), (50, -150)); c.supply((50, -150))                         # as far above the rail as a ground hangs below
+        c.w((50, -120), (50, -160)); c.supply((50, -160))                         # as far above the rail as a ground hangs below
         first = (100, -10); c.dot(first)
     if blocks == 3:
         c.w(first, (160, -10)); c.port((160, -10), OUT, 'r'); c.look((160, -10), 'l', 'u', 'R_out')
