@@ -43,7 +43,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=fme18" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=fme19" />
     
   <link rel="preload" as="script" href="../../_static/js/index.be7d3bbb2ef33a8344ce.js">
 
@@ -1023,7 +1023,8 @@ const thebe_selector_output = ".output, .cell_output"
     <span class="k">else</span><span class="p">:</span>                                                                          <span class="c1"># 2: the tail current source</span>
         <span class="n">t5</span> <span class="o">=</span> <span class="n">c</span><span class="o">.</span><span class="n">transistor</span><span class="p">(</span><span class="s1">&#39;n&#39;</span><span class="p">,</span> <span class="p">(</span><span class="mi">50</span><span class="p">,</span> <span class="mi">150</span><span class="p">),</span> <span class="s1">&#39;cd&#39;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
         <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">(</span><span class="n">tail</span><span class="p">,</span> <span class="n">t5</span><span class="o">.</span><span class="n">cd</span><span class="p">);</span> <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">(</span><span class="n">t5</span><span class="o">.</span><span class="n">es</span><span class="p">,</span> <span class="p">(</span><span class="mi">50</span><span class="p">,</span> <span class="mi">250</span><span class="p">));</span> <span class="n">c</span><span class="o">.</span><span class="n">gnd</span><span class="p">((</span><span class="mi">50</span><span class="p">,</span> <span class="mi">250</span><span class="p">))</span>
-        <span class="n">bias</span><span class="p">,</span> <span class="n">line</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">190</span><span class="p">),</span> <span class="mi">125</span>                                               <span class="c1"># gate node; height of the bias line</span>
+        <span class="n">bias</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">190</span><span class="p">)</span>                                                          <span class="c1"># the gate node of the bias transistors</span>
+        <span class="n">line</span> <span class="o">=</span> <span class="p">(</span><span class="n">tail</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">t5</span><span class="o">.</span><span class="n">lead</span><span class="p">(</span><span class="s1">&#39;cd&#39;</span><span class="p">)[</span><span class="mi">1</span><span class="p">])</span> <span class="o">/</span> <span class="mi">2</span>                                    <span class="c1"># bias line: half-way down the tail lead</span>
         <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">(</span><span class="n">t5</span><span class="o">.</span><span class="n">bg</span><span class="p">,</span> <span class="n">bias</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">blocks</span> <span class="o">&lt;</span> <span class="mi">3</span><span class="p">:</span>
         <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">(</span><span class="n">t1</span><span class="o">.</span><span class="n">cd</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">40</span><span class="p">));</span> <span class="n">c</span><span class="o">.</span><span class="n">port</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">40</span><span class="p">),</span> <span class="s1">&#39;I_1&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span>
@@ -1098,7 +1099,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/fme_index_04_0.svg" src="../../_images/fme_index_04_0.svg?v=fme18" />
+<img alt="../../_images/fme_index_04_0.svg" src="../../_images/fme_index_04_0.svg?v=fme19" />
 </div>
 </div>
 <p>The two columns translate into each other term by term:</p>
@@ -1191,7 +1192,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/fme_index_05_0.svg" src="../../_images/fme_index_05_0.svg?v=fme18" />
+<img alt="../../_images/fme_index_05_0.svg" src="../../_images/fme_index_05_0.svg?v=fme19" />
 </div>
 </div>
 </div>
@@ -1225,7 +1226,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/fme_index_06_0.svg" src="../../_images/fme_index_06_0.svg?v=fme18" />
+<img alt="../../_images/fme_index_06_0.svg" src="../../_images/fme_index_06_0.svg?v=fme19" />
 </div>
 </div>
 </div>
@@ -1262,7 +1263,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/fme_index_07_0.svg" src="../../_images/fme_index_07_0.svg?v=fme18" />
+<img alt="../../_images/fme_index_07_0.svg" src="../../_images/fme_index_07_0.svg?v=fme19" />
 </div>
 </div>
 </div>
@@ -1297,7 +1298,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/fme_index_08_0.svg" src="../../_images/fme_index_08_0.svg?v=fme18" />
+<img alt="../../_images/fme_index_08_0.svg" src="../../_images/fme_index_08_0.svg?v=fme19" />
 </div>
 </div>
 </div>
@@ -1336,7 +1337,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/fme_index_09_0.svg" src="../../_images/fme_index_09_0.svg?v=fme18" />
+<img alt="../../_images/fme_index_09_0.svg" src="../../_images/fme_index_09_0.svg?v=fme19" />
 </div>
 </div>
 </div>
@@ -1371,7 +1372,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/fme_index_10_0.svg" src="../../_images/fme_index_10_0.svg?v=fme18" />
+<img alt="../../_images/fme_index_10_0.svg" src="../../_images/fme_index_10_0.svg?v=fme19" />
 </div>
 </div>
 </div>
@@ -1408,7 +1409,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/fme_index_11_0.svg" src="../../_images/fme_index_11_0.svg?v=fme18" />
+<img alt="../../_images/fme_index_11_0.svg" src="../../_images/fme_index_11_0.svg?v=fme19" />
 </div>
 </div>
 </div>
@@ -1454,7 +1455,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/fme_index_12_0.svg" src="../../_images/fme_index_12_0.svg?v=fme18" />
+<img alt="../../_images/fme_index_12_0.svg" src="../../_images/fme_index_12_0.svg?v=fme19" />
 </div>
 </div>
 </div>
@@ -1498,7 +1499,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/fme_index_13_0.svg" src="../../_images/fme_index_13_0.svg?v=fme18" />
+<img alt="../../_images/fme_index_13_0.svg" src="../../_images/fme_index_13_0.svg?v=fme19" />
 </div>
 </div>
 </div>
@@ -1546,7 +1547,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/fme_index_14_0.svg" src="../../_images/fme_index_14_0.svg?v=fme18" />
+<img alt="../../_images/fme_index_14_0.svg" src="../../_images/fme_index_14_0.svg?v=fme19" />
 </div>
 </div>
 </div>
@@ -1588,7 +1589,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/fme_index_15_0.svg" src="../../_images/fme_index_15_0.svg?v=fme18" />
+<img alt="../../_images/fme_index_15_0.svg" src="../../_images/fme_index_15_0.svg?v=fme19" />
 </div>
 </div>
 </div>
@@ -1633,7 +1634,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/fme_index_16_0.svg" src="../../_images/fme_index_16_0.svg?v=fme18" />
+<img alt="../../_images/fme_index_16_0.svg" src="../../_images/fme_index_16_0.svg?v=fme19" />
 </div>
 </div>
 </div>
@@ -1677,7 +1678,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/fme_index_17_0.svg" src="../../_images/fme_index_17_0.svg?v=fme18" />
+<img alt="../../_images/fme_index_17_0.svg" src="../../_images/fme_index_17_0.svg?v=fme19" />
 </div>
 </div>
 </div>
@@ -1720,7 +1721,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/fme_index_18_0.svg" src="../../_images/fme_index_18_0.svg?v=fme18" />
+<img alt="../../_images/fme_index_18_0.svg" src="../../_images/fme_index_18_0.svg?v=fme19" />
 </div>
 </div>
 </div>
@@ -1758,7 +1759,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/fme_index_19_0.svg" src="../../_images/fme_index_19_0.svg?v=fme18" />
+<img alt="../../_images/fme_index_19_0.svg" src="../../_images/fme_index_19_0.svg?v=fme19" />
 </div>
 </div>
 </div>
@@ -1801,7 +1802,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/fme_index_20_0.svg" src="../../_images/fme_index_20_0.svg?v=fme18" />
+<img alt="../../_images/fme_index_20_0.svg" src="../../_images/fme_index_20_0.svg?v=fme19" />
 </div>
 </div>
 </div>
@@ -1839,7 +1840,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/fme_index_21_0.svg" src="../../_images/fme_index_21_0.svg?v=fme18" />
+<img alt="../../_images/fme_index_21_0.svg" src="../../_images/fme_index_21_0.svg?v=fme19" />
 </div>
 </div>
 </div>
@@ -1882,7 +1883,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/fme_index_22_0.svg" src="../../_images/fme_index_22_0.svg?v=fme18" />
+<img alt="../../_images/fme_index_22_0.svg" src="../../_images/fme_index_22_0.svg?v=fme19" />
 </div>
 </div>
 </div>
@@ -1927,7 +1928,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/fme_index_23_0.svg" src="../../_images/fme_index_23_0.svg?v=fme18" />
+<img alt="../../_images/fme_index_23_0.svg" src="../../_images/fme_index_23_0.svg?v=fme19" />
 </div>
 </div>
 </div>
@@ -1967,7 +1968,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/fme_index_24_0.svg" src="../../_images/fme_index_24_0.svg?v=fme18" />
+<img alt="../../_images/fme_index_24_0.svg" src="../../_images/fme_index_24_0.svg?v=fme19" />
 </div>
 </div>
 </div>
@@ -2012,7 +2013,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/fme_index_25_0.svg" src="../../_images/fme_index_25_0.svg?v=fme18" />
+<img alt="../../_images/fme_index_25_0.svg" src="../../_images/fme_index_25_0.svg?v=fme19" />
 </div>
 </div>
 </div>
@@ -2061,7 +2062,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/fme_index_26_0.svg" src="../../_images/fme_index_26_0.svg?v=fme18" />
+<img alt="../../_images/fme_index_26_0.svg" src="../../_images/fme_index_26_0.svg?v=fme19" />
 </div>
 </div>
 </div>
@@ -2105,7 +2106,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/fme_index_27_0.svg" src="../../_images/fme_index_27_0.svg?v=fme18" />
+<img alt="../../_images/fme_index_27_0.svg" src="../../_images/fme_index_27_0.svg?v=fme19" />
 </div>
 </div>
 </div>
@@ -2147,7 +2148,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/fme_index_28_0.svg" src="../../_images/fme_index_28_0.svg?v=fme18" />
+<img alt="../../_images/fme_index_28_0.svg" src="../../_images/fme_index_28_0.svg?v=fme19" />
 </div>
 </div>
 </div>
@@ -2191,7 +2192,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/fme_index_29_0.svg" src="../../_images/fme_index_29_0.svg?v=fme18" />
+<img alt="../../_images/fme_index_29_0.svg" src="../../_images/fme_index_29_0.svg?v=fme19" />
 </div>
 </div>
 </div>
@@ -2237,7 +2238,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/fme_index_30_0.svg" src="../../_images/fme_index_30_0.svg?v=fme18" />
+<img alt="../../_images/fme_index_30_0.svg" src="../../_images/fme_index_30_0.svg?v=fme19" />
 </div>
 </div>
 </div>
@@ -2265,7 +2266,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/fme_index_31_0.svg" src="../../_images/fme_index_31_0.svg?v=fme18" />
+<img alt="../../_images/fme_index_31_0.svg" src="../../_images/fme_index_31_0.svg?v=fme19" />
 </div>
 </div>
 </div>
@@ -2310,7 +2311,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/fme_index_32_0.svg" src="../../_images/fme_index_32_0.svg?v=fme18" />
+<img alt="../../_images/fme_index_32_0.svg" src="../../_images/fme_index_32_0.svg?v=fme19" />
 </div>
 </div>
 </div>
@@ -2357,7 +2358,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/fme_index_33_0.svg" src="../../_images/fme_index_33_0.svg?v=fme18" />
+<img alt="../../_images/fme_index_33_0.svg" src="../../_images/fme_index_33_0.svg?v=fme19" />
 </div>
 </div>
 </div>
@@ -2402,7 +2403,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/fme_index_34_0.svg" src="../../_images/fme_index_34_0.svg?v=fme18" />
+<img alt="../../_images/fme_index_34_0.svg" src="../../_images/fme_index_34_0.svg?v=fme19" />
 </div>
 </div>
 </div>
@@ -2436,7 +2437,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/fme_index_35_0.svg" src="../../_images/fme_index_35_0.svg?v=fme18" />
+<img alt="../../_images/fme_index_35_0.svg" src="../../_images/fme_index_35_0.svg?v=fme19" />
 </div>
 </div>
 </div>
@@ -2464,7 +2465,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/fme_index_36_0.svg" src="../../_images/fme_index_36_0.svg?v=fme18" />
+<img alt="../../_images/fme_index_36_0.svg" src="../../_images/fme_index_36_0.svg?v=fme19" />
 </div>
 </div>
 </div>
@@ -2485,7 +2486,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/fme_index_37_0.svg" src="../../_images/fme_index_37_0.svg?v=fme18" />
+<img alt="../../_images/fme_index_37_0.svg" src="../../_images/fme_index_37_0.svg?v=fme19" />
 </div>
 </div>
 </div>
@@ -2502,7 +2503,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/fme_index_38_0.svg" src="../../_images/fme_index_38_0.svg?v=fme18" />
+<img alt="../../_images/fme_index_38_0.svg" src="../../_images/fme_index_38_0.svg?v=fme19" />
 </div>
 </div>
 </div>
