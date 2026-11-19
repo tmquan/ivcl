@@ -766,7 +766,8 @@ def op_amp(c, blocks):
     else:                                                                          # 2: the tail current source
         t5 = c.transistor('n', (50, 150), 'cd', name=5)
         c.w(tail, t5.cd); c.w(t5.es, (50, 250)); c.gnd((50, 250))
-        bias, line = (-10, 190), 125                                               # gate node; height of the bias line
+        bias = (-10, 190)                                                          # the gate node of the bias transistors
+        line = (tail[1] + t5.lead('cd')[1]) / 2                                    # bias line: half-way down the tail lead
         c.w(t5.bg, bias)
     if blocks < 3:
         c.w(t1.cd, (0, -40)); c.port((0, -40), 'I_1', 'r')

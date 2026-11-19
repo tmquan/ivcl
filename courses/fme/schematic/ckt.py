@@ -57,6 +57,10 @@ class Transistor:
         """terminal letter as printed in a drawing: 'cd' -> C or D"""
         return cls.terminal(name).upper()
 
+    def lead(self, name):
+        """the point where the lead of a terminal ('bg', 'cd', 'es') meets the body of the device"""
+        return self.inst.a[self.terminal(name)]
+
     @property
     def top(self):
         """the terminal on the supply side of an upright device"""
