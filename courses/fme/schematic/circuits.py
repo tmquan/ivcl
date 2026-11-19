@@ -37,9 +37,9 @@ def p_type(c):
 def role_amplifier(c):
     """Common emitter | Common source"""
     t1 = c.transistor('n', (0, 0), 'cd', name=1)
-    c.supply((0, -120)); c.w((0, -120), (0, -100))
+    c.supply((0, -130)); c.w((0, -130), (0, -110))
     out = (0, -20)
-    c.w(c.res((0, -100), 'R_' + t1.pin('cd')), t1.cd); c.dot(out)
+    c.w(c.res((0, -110), 'R_' + t1.pin('cd')), t1.cd); c.dot(out)
     c.w(out, (50, -20)); c.port((50, -20), OUT, 'r')
     c.w(t1.es, (0, 100)); c.gnd((0, 100))
     c.w(t1.bg, (t1.bg[0] - 30, 40)); c.port((t1.bg[0] - 30, 40), IN, 'l')
@@ -50,9 +50,9 @@ def role_follower(c):
     t1 = c.transistor('n', (0, 0), 'cd', name=1)
     c.supply((0, -20)); c.w((0, -20), t1.cd)
     out = (0, 100)
-    c.w(t1.es, (0, 120)); c.dot(out)
+    c.w(t1.es, (0, 130)); c.dot(out)
     c.w(out, (50, 100)); c.port((50, 100), OUT, 'r')
-    c.w(c.res((0, 120), 'R_' + t1.pin('es')), (0, 200)); c.gnd((0, 200))
+    c.w(c.res((0, 130), 'R_' + t1.pin('es')), (0, 210)); c.gnd((0, 210))
     c.w(t1.bg, (t1.bg[0] - 30, 40)); c.port((t1.bg[0] - 30, 40), IN, 'l')
 
 
@@ -76,7 +76,7 @@ def role_diode(c):
     """Diode-connected transistor"""
     t1 = c.transistor('n', (0, 0), 'cd', name=1)
     top = (0, -20)
-    c.w(t1.cd, (0, -60)); c.dot(top); c.port((0, -60), 'V_p', 'l'); c.look((0, -60), 'd', 'r', 'R')
+    c.w(t1.cd, (0, -70)); c.dot(top); c.port((0, -70), 'V_p', 'l'); c.look((0, -70), 'd', 'r', 'R')
     c.w(t1.bg, (t1.bg[0] - 20, 40), (t1.bg[0] - 20, -20), top)
     c.w(t1.es, (0, 120)); c.port((0, 120), 'V_n', 'l')
 
@@ -173,9 +173,9 @@ def gain_common_emitter(c):
     """Common emitter | Common source"""
     t = c.transistor('n', (0, 0), 'cd')
     C = t.pin('cd')
-    c.supply((0, -120)); c.w((0, -120), (0, -100))
+    c.supply((0, -130)); c.w((0, -130), (0, -110))
     out = (0, -20)
-    c.w(c.res((0, -100), 'R_' + C, side='l'), t.cd); c.dot(out)
+    c.w(c.res((0, -110), 'R_' + C, side='l'), t.cd); c.dot(out)
     c.w(out, (50, -20)); c.port((50, -20), 'v_out', 'r')
     c.w(t.es, (0, 100)); c.gnd((0, 100))
     c.w(t.bg, (t.bg[0] - 30, 40)); c.port((t.bg[0] - 30, 40), 'v_in', 'l')
@@ -185,9 +185,9 @@ def gain_degenerated(c):
     """Degenerated common emitter | Degenerated common source"""
     t = c.transistor('n', (0, 0), 'cd'); t.note(t.ideal)
     C, E = t.pin('cd'), t.pin('es')
-    c.supply((0, -120)); c.w((0, -120), (0, -100))
+    c.supply((0, -130)); c.w((0, -130), (0, -110))
     out = (0, -20)
-    c.w(c.res((0, -100), 'R_' + C, side='l'), t.cd); c.dot(out)
+    c.w(c.res((0, -110), 'R_' + C, side='l'), t.cd); c.dot(out)
     c.w(out, (50, -20)); c.port((50, -20), 'v_out', 'r')
     c.w(t.es, (0, 100)); c.w(c.res((0, 100), 'R_' + E), (0, 180)); c.gnd((0, 180))
     c.w(t.bg, (t.bg[0] - 30, 40)); c.port((t.bg[0] - 30, 40), 'v_in', 'l')
@@ -197,9 +197,9 @@ def gain_common_base(c):
     """Common base | Common gate"""
     t = c.transistor('n', (0, 0), 'cd', side='right'); t.note(t.ideal)
     C, E = t.pin('cd'), t.pin('es')
-    c.supply((0, -120)); c.w((0, -120), (0, -100))
+    c.supply((0, -130)); c.w((0, -130), (0, -110))
     out = (0, -20)
-    c.w(c.res((0, -100), 'R_' + C, side='l'), t.cd); c.dot(out)
+    c.w(c.res((0, -110), 'R_' + C, side='l'), t.cd); c.dot(out)
     c.w(out, (50, -20)); c.port((50, -20), 'v_out', 'r')
     c.w(t.bg, (t.bg[0] + 10, 40)); c.port((t.bg[0] + 10, 40), 'V_b', 'r', solid=True)
     c.w(t.es, (0, 100), (-20, 100))
@@ -213,9 +213,9 @@ def gain_follower(c):
     E = t.pin('es')
     c.supply((0, -20)); c.w((0, -20), t.cd)
     out = (0, 100)
-    c.w(t.es, (0, 120)); c.dot(out)
+    c.w(t.es, (0, 130)); c.dot(out)
     c.w(out, (50, 100)); c.port((50, 100), 'v_out', 'r')
-    c.w(c.res((0, 120), 'R_' + E), (0, 200)); c.gnd((0, 200))
+    c.w(c.res((0, 130), 'R_' + E), (0, 210)); c.gnd((0, 210))
     c.w(t.bg, (t.bg[0] - 30, 40)); c.port((t.bg[0] - 30, 40), 'v_in', 'l')
 
 
@@ -237,7 +237,7 @@ def pass_device_and_capacitor(c, control, resistance=None):
     if resistance:
         c.look((-30, 0), 'r', 'd', resistance)
     c.w(t1.bg, (t1.bg[0], t1.bg[1] - 20)); c.port((t1.bg[0], t1.bg[1] - 20), control, 't')
-    node = (130, 0)
+    node = (115, 0)
     c.w(t1.es, node); c.dot(node); c.w(node, (180, 0)); c.port((180, 0), OUT, 'r')
     capacitor_to_ground(c, node)
 
@@ -247,12 +247,12 @@ def voltage_divider(c):
     """Voltage divider"""
     (t1, t2), (j,) = c.chain([('n', 1), ('n', 2)], 0, 0, side='right')
     top = (0, -20)
-    c.port((0, -60), IN, 't'); c.w((0, -60), top, t1.cd); c.dot(top)
+    c.port((0, -70), IN, 't'); c.w((0, -70), top, t1.cd); c.dot(top)
     g = (0, t2.es[1] + 20); c.gnd(g); c.w(t2.es, g)
-    xt = 70
+    xt = 55
     c.w(t1.bg, (xt, t1.bg[1]), (xt, top[1]), top)
     c.w(t2.bg, (xt, t2.bg[1]), (xt, j[1]), j); c.dot((xt, j[1])); c.dot(j)
-    c.w((xt, j[1]), (xt + 40, j[1])); c.port((xt + 40, j[1]), OUT, 'r')
+    c.w((xt, j[1]), (xt + 55, j[1])); c.port((xt + 55, j[1]), OUT, 'r')
 
 
 def ptat_generator(c):
@@ -260,7 +260,7 @@ def ptat_generator(c):
     (t2, t1), (j,) = c.chain([('n', 2), ('n', 1)], 0, 0)
     t2.size('K·(W/L)'); t1.size('(W/L)')
     g = (0, t1.es[1] + 20); c.gnd(g); c.w(t1.es, g)
-    top = (0, -20); c.w(t2.cd, top); c.dot(top); c.w(top, (0, -60)); c.port((0, -60), 'I_bias', 'r')
+    top = (0, -20); c.w(t2.cd, top); c.dot(top); c.w(top, (0, -70)); c.port((0, -70), 'I_bias', 'r')
     xg = -70
     c.w(top, (xg, top[1]), (xg, t1.bg[1])); c.w(t2.bg, (xg, t2.bg[1])); c.w(t1.bg, (xg, t1.bg[1])); c.dot((xg, t2.bg[1]))
     c.dot(j); c.w(j, (60, j[1])); c.port((60, j[1]), 'V_ptat', 'r')
@@ -281,7 +281,7 @@ def tie_cell(c):
     """Tie cell"""
     p = c.transistor('p', (0, 0), 'es', side='right', name=1)
     c.supply((0, -20)); c.w((0, -20), p.es)
-    n = c.transistor('n', (30, 140), 'bg', name=2)
+    n = c.transistor('n', (30, 145), 'bg', name=2)
     c.w(n.bg, (0, n.bg[1]), p.cd)
     tap = (0, 100)
     c.w(p.bg, (p.bg[0], 100), tap); c.dot(tap)
@@ -296,8 +296,8 @@ def current_mirror(c):
     t2 = c.transistor('n', (140, 0), 'cd', name=2, lbl='r')
     t1.size('(W/L)_1'); t2.size('(W/L)_2')
     top = (0, -20)
-    c.w(t1.cd, top); c.dot(top); c.w(top, (0, -60)); c.port((0, -60), 'I_in', 'r')
-    c.w(t2.cd, (140, -60)); c.port((140, -60), 'I_out', 'r')
+    c.w(t1.cd, top); c.dot(top); c.w(top, (0, -70)); c.port((0, -70), 'I_in', 'r')
+    c.w(t2.cd, (140, -70)); c.port((140, -70), 'I_out', 'r')
     gy = t1.bg[1]
     c.w(t1.bg, t2.bg); mx = (t1.bg[0] + t2.bg[0]) / 2
     c.dot((mx, gy)); c.w((mx, gy), (mx, top[1]), top)
@@ -345,7 +345,7 @@ def diode_load(c):
     """Common emitter with diode load | Common source with diode load"""
     (t2, t1), (j,) = c.chain([('n', 2), ('n', 1)], 0, 0)
     t2.size('(W/L)_2'); t1.size('(W/L)_1')
-    top = (0, -20); c.supply((0, -40)); c.w((0, -40), top, t2.cd); c.dot(top)
+    top = (0, -20); c.supply((0, -55)); c.w((0, -55), top, t2.cd); c.dot(top)
     c.w(t2.bg, (t2.bg[0] - 20, t2.bg[1]), (t2.bg[0] - 20, top[1]), top)
     g = (0, t1.es[1] + 20); c.gnd(g); c.w(t1.es, g)
     c.w(t1.bg, (t1.bg[0] - 30, t1.bg[1])); c.port((t1.bg[0] - 30, t1.bg[1]), IN, 'l')
@@ -360,10 +360,10 @@ def folded_diode_load(c):
         g = (t.es[0], t.es[1] + 20); c.gnd(g); c.w(t.es, g)
     c.w(t1.bg, (t1.bg[0] - 30, t1.bg[1])); c.port((t1.bg[0] - 30, t1.bg[1]), IN, 'l')
     node = (0, -20)
-    c.w(t1.cd, (0, -60)); c.dot(node); c.port((0, -60), 'I_bias', 'r')
+    c.w(t1.cd, (0, -70)); c.dot(node); c.port((0, -70), 'I_bias', 'r')
     c.w(node, (150, -20)); c.port((150, -20), OUT, 'r')
     c.w(t2.cd, (100, -20)); c.dot((100, -20))                         # the second transistor is diode-connected
-    c.w((40, -20), (40, t2.bg[1]), t2.bg); c.dot((40, -20))
+    c.w((50, -20), (50, t2.bg[1]), t2.bg); c.dot((50, -20))
 
 
 def degeneration(c):
@@ -373,7 +373,7 @@ def degeneration(c):
     c.w(t1.cd, (0, -50)); c.port((0, -50), 'I_out', 'r')
     xin = -70
     c.bus([t1, t2], xin)
-    yi = t1.bg[1]; c.dot((xin, yi)); c.w((xin, yi), (xin - 30, yi)); c.port((xin - 30, yi), IN, 'l')
+    yi = j[1]; c.dot((xin, yi)); c.w((xin, yi), (xin - 30, yi)); c.port((xin - 30, yi), IN, 'l')
 
 
 def tunable_degeneration(c):
@@ -431,27 +431,28 @@ def stacked_buffers(c):
 def two_outputs(c):
     """Common base + common emitter | Common gate + common source"""
     t1 = c.transistor('n', (0, 0), 'cd', name=1)
-    t2 = c.transistor('n', (-100, 0), 'es', name=2)
+    t2 = c.transistor('n', (-80, 0), 'es', name=2)
     yt = -110
     c.w(t1.cd, (0, yt)); c.port((0, yt), 'I_out,n', 'r')
-    c.w(t2.cd, (-100, yt)); c.port((-100, yt), 'I_out,p', 'r')
+    c.w(t2.cd, (-80, yt)); c.port((-80, yt), 'I_out,p', 'r')
     g = (0, t1.es[1] + 20); c.gnd(g); c.w(t1.es, g)
-    c.w(t2.bg, (t2.bg[0] - 30, t2.bg[1])); c.port((t2.bg[0] - 30, t2.bg[1]), 'V_bias', 'l')
-    nd = (-100, t1.bg[1])
+    c.w(t2.bg, (t2.bg[0] - 25, t2.bg[1])); c.port((t2.bg[0] - 25, t2.bg[1]), 'V_bias', 'l')
+    nd = (-80, t1.bg[1])
     c.w(t2.es, nd); c.dot(nd); c.w(nd, t1.bg)
-    c.w(nd, (-150, nd[1])); c.port((-150, nd[1]), IN, 'l'); c.look((-150, nd[1]), 'r', 'd', 'R_in')
-    c.w(nd, (-100, nd[1] + 40)); c.port((-100, nd[1] + 40), 'I_bias', 'b')
+    c.w(nd, (-135, nd[1])); c.port((-135, nd[1]), IN, 'l'); c.look((-135, nd[1]), 'r', 'd', 'R_in')
+    c.w(nd, (-80, nd[1] + 70)); c.port((-80, nd[1] + 70), 'I_bias', 'b')
 
 
 def two_paths(c):
     """Emitter follower + common base | Source follower + common gate"""
     (t1, t2), (j,) = c.chain([('n', 1), ('n', 2)], 0, 0)
     c.supply((0, -20)); c.w((0, -20), t1.cd)
-    inp = (0, t2.es[1] + 20); c.w(t2.es, inp); c.dot(inp); c.w(inp, (0, inp[1] + 40)); c.port((0, inp[1] + 40), 'I_bias', 'b')
+    inp = (0, t2.es[1] + 20); c.w(t2.es, inp); c.dot(inp); c.w(inp, (0, inp[1] + 50)); c.port((0, inp[1] + 50), 'I_bias', 'b')
     c.w(t2.bg, (t2.bg[0] - 20, t2.bg[1])); c.port((t2.bg[0] - 20, t2.bg[1]), 'V_bias', 't', dx=8)
     xl = -100
-    c.w(inp, (xl, inp[1])); c.dot((xl, inp[1])); c.w((xl, inp[1]), (xl - 20, inp[1])); c.port((xl - 20, inp[1]), IN, 'l')
-    c.w((xl, inp[1]), (xl, t1.bg[1]), t1.bg)
+    c.w(inp, (xl, inp[1]), (xl, t1.bg[1]), t1.bg)
+    tap = (xl, (inp[1] + t1.bg[1]) / 2)
+    c.dot(tap); c.w(tap, (xl - 30, tap[1])); c.port((xl - 30, tap[1]), IN, 't')
     c.dot(j); c.w(j, (50, j[1])); c.port((50, j[1]), OUT, 'r')
 
 
@@ -470,20 +471,20 @@ def regulated_cascode(c):
     c.center(0)                                             # aligned on the route from I_out to I_in
     t1 = c.transistor('n', (0, 0), 'cd', name=1)
     c.w(t1.cd, (0, -60)); c.port((0, -60), 'I_out', 'l'); c.look((0, -60), 'd', 'r', 'R_out')
-    c.w(t1.es, (0, 160)); c.port((0, 160), 'I_in', 'b')
+    c.w(t1.es, (0, 150)); c.port((0, 150), 'I_in', 'b')
     t2 = c.transistor('n', (-110, 60), 'cd', side='right', name=2, lbl='l')
     gy = t1.bg[1]
     c.w(t2.cd, (-110, gy)); c.dot((-110, gy)); c.w((-110, gy), t1.bg)
-    c.w((-110, gy), (-110, -60)); c.port((-110, -60), 'I_bias', 'r')
+    c.w((-110, gy), (-110, -10)); c.port((-110, -10), 'I_bias', 'r')
     c.w(t2.bg, (0, t2.bg[1])); c.dot((0, t2.bg[1]))
-    c.w(t2.es, (-110, 160)); c.port((-110, 160), 'V_bias', 'b')
+    c.w(t2.es, (-110, 150)); c.port((-110, 150), 'V_bias', 'b')
 
 
 def flipped_follower(c):
     """Flipped voltage follower"""
     (t1, t2), (j,) = c.chain([('n', 1), ('n', 2)], 0, 0)
     g = (0, t2.es[1] + 20); c.gnd(g); c.w(t2.es, g)
-    top = (0, -20); c.w(t1.cd, top); c.dot(top); c.w(top, (0, -60)); c.port((0, -60), 'I_bias', 'r')
+    top = (0, -20); c.w(t1.cd, top); c.dot(top); c.w(top, (0, -70)); c.port((0, -70), 'I_bias', 'r')
     c.w(t1.bg, (t1.bg[0] - 40, t1.bg[1])); c.port((t1.bg[0] - 40, t1.bg[1]), IN, 'l')
     c.dot(j); c.w(j, (50, j[1])); c.port((50, j[1]), OUT, 'r'); c.look((50, j[1]), 'l', 'd', 'R_out')
     xb = -130
@@ -494,7 +495,7 @@ def active_inductor(c):
     """Active inductor"""
     (t2, t1), (j,) = c.chain([('n', 2), ('n', 1)], 0, 0)
     g = (0, t1.es[1] + 20); c.gnd(g); c.w(t1.es, g)
-    top = (0, -20); c.w(t2.cd, top); c.dot(top); c.w(top, (0, -60)); c.port((0, -60), 'I_bias', 'r')
+    top = (0, -20); c.w(t2.cd, top); c.dot(top); c.w(top, (0, -70)); c.port((0, -70), 'I_bias', 'r')
     c.w(t2.bg, (t2.bg[0] - 40, t2.bg[1])); c.port((t2.bg[0] - 40, t2.bg[1]), 'V_bias', 'l')
     c.dot(j); c.w(j, (50, j[1])); c.port((50, j[1]), 'Z_in', 'r', color=RED); c.look((50, j[1]), 'l', 'd')
     xb = -130
@@ -519,8 +520,8 @@ def cross_coupled_pair(c):
     t1 = c.transistor('n', (0, 0), 'cd', side='right', name=1)
     t2 = c.transistor('n', (150, 0), 'cd', name=2)
     a, b = (0, -20), (150, -20)
-    c.w(t1.cd, (0, -60)); c.dot(a); c.port((0, -60), 'V_p', 'l'); c.look((0, -60), 'd', 'r', 'R')
-    c.w(t2.cd, (150, -60)); c.dot(b); c.port((150, -60), 'V_n', 'r')
+    c.w(t1.cd, (0, -70)); c.dot(a); c.port((0, -70), 'V_p', 'l'); c.look((0, -70), 'd', 'r', 'R')
+    c.w(t2.cd, (150, -70)); c.dot(b); c.port((150, -70), 'V_n', 'r')
     xl, xr = c.cross(75, a[1], t1.bg[1])                    # the two wires cross as an X
     c.w(a, (xl, a[1]), (xr, t2.bg[1]), t2.bg)
     c.w(b, (xr, b[1]), (xl, t1.bg[1]), t1.bg)
@@ -533,15 +534,15 @@ def controlled_resistor(c):
     """- | Controlled resistor"""
     t1 = c.transistor('n', (0, 0), 'es', rot=1, name=1)
     tap = (-40, 0)
-    c.w(t1.es, tap); c.dot(tap); c.w(tap, (-90, 0)); c.port((-90, 0), 'V_p', 'l'); c.look((-90, 0), 'r', 'd', 'R')
+    c.w(t1.es, tap); c.dot(tap); c.w(tap, (-115, 0)); c.port((-115, 0), 'V_p', 'l'); c.look((-115, 0), 'r', 'd', 'R')
     c.w(t1.cd, (130, 0)); c.port((130, 0), 'V_n', 'r')
     t2 = c.transistor('n', (-40, -40), 'es', side='right', name=2)
     c.w(tap, t2.es)
     gn = (40, -80)
     c.w(t2.bg, gn); c.dot(gn); c.w(gn, t1.bg)
-    tp = (-40, -140)
-    c.w(t2.cd, tp); c.dot(tp); c.w(tp, (-40, -180)); c.port((-40, -180), 'I_bias', 'r')
-    c.w(tp, (40, -140), gn)
+    tp = (-40, -130)
+    c.w(t2.cd, tp); c.dot(tp); c.w(tp, (-40, -170)); c.port((-40, -170), 'I_bias', 'r')
+    c.w(tp, (40, -130), gn)
 
 
 def large_resistor(c):
@@ -577,7 +578,7 @@ def antiparallel_capacitors(c):
     t2.name(2, 'l', dy=-14)
     xl, xr = -30, 120
     c.w(t1.cd, (xl, 0)); c.w(t1.es, (xl, 80)); c.w(t2.bg, (xl, t2.bg[1])); c.w((xl, t2.bg[1]), (xl, 80))
-    c.dot((xl, -20)); c.w((xl, -20), (xl - 30, -20)); c.port((xl - 30, -20), 'V_p', 'l')
+    c.dot((xl, -45)); c.w((xl, -45), (xl - 30, -45)); c.port((xl - 30, -45), 'V_p', 'l')
     c.w(t2.cd, (xr, t2.cd[1])); c.w(t2.es, (xr, t2.es[1])); c.w(t1.bg, (xr, t1.bg[1])); c.w((xr, t1.bg[1]), (xr, t2.cd[1]))
     c.dot((xr, -90)); c.w((xr, -90), (xr + 30, -90)); c.port((xr + 30, -90), 'V_n', 'r')
 
@@ -598,12 +599,13 @@ def low_leakage_diode(c):
     t1 = c.transistor('p', (0, 0), 'es', side='right', rot=3, name=1)
     t2 = c.transistor('n', (100, 0), 'cd', side='right', rot=3, name=2)
     c.w(t1.cd, t2.cd)
-    c.w(t1.es, (-20, 0)); c.dot((-20, 0)); c.w((-20, 0), (-40, 0)); c.port((-40, 0), 'V_p', 'l')
-    c.w(t2.es, (200, 0)); c.dot((200, 0)); c.w((200, 0), (220, 0)); c.port((220, 0), 'V_n', 'r')
+    a, b = (-5, 0), (t2.es[0] + 5, 0)                        # half-way between the terminal and the device
+    c.w(t1.es, (-40, 0)); c.dot(a); c.port((-40, 0), 'V_p', 'l')
+    c.w(t2.es, (220, 0)); c.dot(b); c.port((220, 0), 'V_n', 'r')
     y1, y2 = -60, -90
     xl, xr = c.cross(90, y1, y2)                            # the two wires cross as an X
-    c.w(t1.bg, (t1.bg[0], y1), (xl, y1), (xr, y2), (200, y2), (200, 0))
-    c.w(t2.bg, (t2.bg[0], y1), (xr, y1), (xl, y2), (-20, y2), (-20, 0))
+    c.w(t1.bg, (t1.bg[0], y1), (xl, y1), (xr, y2), (b[0], y2), b)
+    c.w(t2.bg, (t2.bg[0], y1), (xr, y1), (xl, y2), (a[0], y2), a)
 
 
 def level_shift(c):
@@ -612,12 +614,12 @@ def level_shift(c):
     t2 = c.transistor('n', (0, 0), 'cd', name=2)
     c.supply((0, -20)); c.w((0, -20), t2.cd)
     node = (0, 100)
-    c.w(t2.es, node); c.dot(node); c.w(node, (0, 160)); c.port((0, 160), 'I_bias', 'b')
-    t1 = c.transistor('n', (-50, 100), 'bg', side='right', name=1)
+    c.w(t2.es, node); c.dot(node); c.w(node, (0, 150)); c.port((0, 150), 'I_bias', 'b')
+    t1 = c.transistor('n', (-30, 100), 'bg', side='right', name=1)
     c.w(t1.bg, node)
-    c.w(t1.cd, (t1.cd[0], 40)); c.dot((t1.cd[0], 40)); c.w((t1.cd[0], 40), (t1.cd[0] - 40, 40)); c.port((t1.cd[0] - 40, 40), 'V_p', 'l')
+    c.w(t1.cd, (t1.cd[0], 40)); c.dot((t1.cd[0], 40)); c.w((t1.cd[0], 40), (t1.cd[0] - 50, 40)); c.port((t1.cd[0] - 50, 40), 'V_p', 'l')
     c.w((t1.cd[0], 40), t2.bg)
-    c.w(t1.es, (t1.es[0], 160), (t1.es[0] - 40, 160)); c.port((t1.es[0] - 40, 160), 'V_n', 'l')
+    c.w(t1.es, (t1.es[0], 160), (t1.es[0] - 50, 160)); c.port((t1.es[0] - 50, 160), 'V_n', 'l')
 
 
 def linear_i_to_v(c):
@@ -627,7 +629,7 @@ def linear_i_to_v(c):
     g = (0, t2.es[1] + 20); c.gnd(g); c.w(t2.es, g)
     term, tx = -120, -60
     c.w(t1.bg, (term, t1.bg[1])); c.port((term, t1.bg[1]), 'V_bias', 'l')
-    c.dot(j); c.w(j, (50, j[1])); c.port((50, j[1]), OUT, 'r')
+    c.dot(j); c.w(j, (60, j[1])); c.port((60, j[1]), OUT, 'r')
     c.w(j, (term, j[1])); c.dot((tx, j[1])); c.port((term, j[1]), 'I_in', 'l'); c.look((term, j[1]), 'r', 'd', 'R_in')
     c.w((tx, j[1]), (tx, t2.bg[1]), t2.bg)
 
@@ -671,10 +673,10 @@ def peak_detector(c):
     """Peak detector"""
     t1 = c.transistor('n', (0, 0), 'cd', name=1)
     top = (0, -20)
-    c.w(t1.cd, top); c.dot(top); c.w(top, (0, -60)); c.port((0, -60), IN, 'r')
+    c.w(t1.cd, top); c.dot(top); c.w(top, (0, -70)); c.port((0, -70), IN, 'r')
     c.w(top, (-60, -20), (-60, t1.bg[1]), t1.bg)
-    pk = (0, 100)
-    c.w(t1.es, pk); c.dot(pk); c.w(pk, (60, 100)); c.port((60, 100), 'V_peak', 'r')
+    pk = (0, 107)
+    c.w(t1.es, pk); c.dot(pk); c.w(pk, (60, pk[1])); c.port((60, pk[1]), 'V_peak', 'r')
     capacitor_to_ground(c, pk)
 
 
@@ -684,13 +686,13 @@ def voltage_doubler(c):
     t1.name(1, 'l', dy=-14)
     bar = 30
     c.w(t1.es, (bar, 0), (bar, 80), t1.cd)
-    c.dot((bar, 40)); c.w((bar, 40), (150, 40)); c.port((150, 40), OUT, 'r')
+    c.dot((bar, 40)); c.w((bar, 40), (110, 40)); c.port((110, 40), OUT, 'r')
     c.w(t1.bg, (-55, 40)); c.port((-55, 40), IN, 'l')
     t2 = c.transistor('n', (70, 100), 'es', side='right', rot=2, name=2, lbl='r')
     c.w(t2.es, (70, 40)); c.dot((70, 40))
-    gy = t2.cd[1] + 20
-    c.w(t2.cd, (70, gy)); c.dot((70, gy)); c.gnd((70, gy))
-    c.w(t2.bg, (t2.bg[0] - 20, t2.bg[1]), (t2.bg[0] - 20, gy), (70, gy))
+    join = (70, t2.cd[1] + 10)                               # half-way between the transistor and the ground
+    c.w(t2.cd, (70, join[1] + 30)); c.dot(join); c.gnd((70, join[1] + 30))
+    c.w(t2.bg, (t2.bg[0] - 20, t2.bg[1]), (t2.bg[0] - 20, join[1]), join)
     c.center(70)                                            # aligned on the route to ground
 
 
@@ -702,7 +704,7 @@ def nand(c):
     for t, nm in ((t1, 'V_a'), (t2, 'V_b')):
         c.w(t.bg, (t.bg[0] - 30, t.bg[1])); c.port((t.bg[0] - 30, t.bg[1]), nm, 'l')
     top = (0, -20); c.w(t2.cd, top); c.dot(top); c.w(top, (50, top[1])); c.port((50, top[1]), OUT, 'r')
-    c.w(top, (0, -50)); c.port((0, -50), 'I_bias', 'r')
+    c.w(top, (0, -70)); c.port((0, -70), 'I_bias', 'r')
 
 
 def nor(c):
@@ -716,8 +718,8 @@ def nor(c):
     c.w(t2.bg, (t2.bg[0] + 20, t2.bg[1])); c.port((t2.bg[0] + 20, t2.bg[1]), 'V_b', 'r')
     yt = -20
     c.w(t1.cd, (0, yt), (130, yt)); c.w(t2.cd, (130, yt)); c.dot((mx, yt))
-    top = (mx, -40); c.w((mx, yt), top); c.dot(top); c.w(top, (170, top[1])); c.port((170, top[1]), OUT, 'r')
-    c.w(top, (mx, -70)); c.port((mx, -70), 'I_bias', 'r')
+    top = (mx, -50); c.w((mx, yt), top); c.dot(top); c.w(top, (170, top[1])); c.port((170, top[1]), OUT, 'r')
+    c.w(top, (mx, -80)); c.port((mx, -80), 'I_bias', 'r')
 
 
 def xnor(c):
@@ -725,13 +727,13 @@ def xnor(c):
     t1 = c.transistor('n', (0, 0), 'cd', name=1)
     t2 = c.transistor('n', (100, 0), 'cd', side='right', name=2)
     mx = 50
-    ga = (t1.bg[0] - 20, t1.bg[1]); gb = (t2.bg[0] + 20, t2.bg[1])
-    c.w(t1.bg, ga); c.dot(ga); c.w(ga, (ga[0] - 20, ga[1])); c.port((ga[0] - 20, ga[1]), 'V_a', 'l')
-    c.w(t2.bg, gb); c.dot(gb); c.w(gb, (gb[0] + 20, gb[1])); c.port((gb[0] + 20, gb[1]), 'V_b', 'r')
+    ga = (t1.bg[0] - 10, t1.bg[1]); gb = (t2.bg[0] + 10, t2.bg[1])
+    c.w(t1.bg, ga); c.dot(ga); c.w(ga, (ga[0] - 30, ga[1])); c.port((ga[0] - 30, ga[1]), 'V_a', 'l')
+    c.w(t2.bg, gb); c.dot(gb); c.w(gb, (gb[0] + 30, gb[1])); c.port((gb[0] + 30, gb[1]), 'V_b', 'r')
     yt = -20
     c.w(t1.cd, (0, yt), (mx, yt)); c.w(t2.cd, (100, yt), (mx, yt)); c.dot((mx, yt))
-    c.w((mx, yt), (mx, -40)); c.dot((mx, -40)); c.w((mx, -40), (100, -40)); c.port((100, -40), OUT, 'r')
-    c.w((mx, -40), (mx, -70)); c.port((mx, -70), 'I_bias', 'r')
+    c.w((mx, yt), (mx, -50)); c.dot((mx, -50)); c.w((mx, -50), (100, -50)); c.port((100, -50), OUT, 'r')
+    c.w((mx, -50), (mx, -80)); c.port((mx, -80), 'I_bias', 'r')
     y1, y2 = t1.es[1] + 20, t1.es[1] + 50
     xl, xr = c.cross(mx, y1, y2)                            # the two wires cross as an X
     c.w(t1.es, (0, y1), (xl, y1), (xr, y2), (gb[0], y2), gb)
@@ -766,7 +768,7 @@ def op_amp(c, blocks):
     else:                                                                          # 2: the tail current source
         t5 = c.transistor('n', (50, 150), 'cd', name=5)
         c.w(tail, t5.cd); c.w(t5.es, (50, 250)); c.gnd((50, 250))
-        bias = (-10, 190)                                                          # the gate node of the bias transistors
+        bias = (-5, 190)                                                           # the gate node of the bias transistors
         line = (tail[1] + t5.lead('cd')[1]) / 2                                    # bias line: half-way down the tail lead
         c.w(t5.bg, bias)
     if blocks < 3:
@@ -788,10 +790,10 @@ def op_amp(c, blocks):
         c.dot((100, -120)); c.w((155, -120), t6.es)
         c.w(first, t6.bg)
         c.w(t6.cd, t7.cd); c.w(t7.es, (155, 250)); c.gnd((155, 250))
-        c.w(bias, (-10, line), (115, line), t7.bg); c.dot(bias)                    # up, across above the lowest row, down
-        out = (155, 100); c.dot(out); c.w(out, (185, 100)); c.port((185, 100), OUT, 't')
+        c.w(bias, (bias[0], line), (115, line), t7.bg); c.dot(bias)                # up, across above the lowest row, down
+        out = (155, 90); c.dot(out); c.w(out, (185, 90)); c.port((185, 90), OUT, 't')    # half-way between 6 and 7
     if blocks == 4:
-        c.look((185, 100), 'l', 'd', 'R_out', nudge=-14)             # the arrow ends short of the second stage
+        c.look((185, 90), 'l', 'd', 'R_out', nudge=-14)             # the arrow ends short of the second stage
     if 2 <= blocks < 5:
         c.w(bias, (-40, 190)); c.port((-40, 190), 'V_bias', 'l')
     if blocks == 5:                                                                # 5: the bias mirror
@@ -799,7 +801,7 @@ def op_amp(c, blocks):
         c.w(t8.es, (-60, 250)); c.gnd((-60, 250))
         c.w(t8.bg, bias)
         c.w(t8.cd, (-60, 90)); c.port((-60, 90), 'I_ref', 'l')
-        c.dot((-60, line)); c.w((-60, line), (-10, line)); c.dot((-10, line))      # the bias line starts at the diode
+        c.dot((-60, line)); c.w((-60, line), (bias[0], line)); c.dot((bias[0], line))    # the bias line starts at the diode
 
 
 def op_amp_pair(c):
