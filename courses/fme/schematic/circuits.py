@@ -683,7 +683,7 @@ def peak_detector(c):
 def voltage_doubler(c):
     """- | Voltage doubler"""
     t1 = c.transistor('p', (0, 0), 'es')
-    t1.name(1, 'l', dy=-14)
+    t1.name(1, 'l', dy=-24)                                # clear of the name of the input
     bar = 30
     c.w(t1.es, (bar, 0), (bar, 80), t1.cd)
     c.dot((bar, 40)); c.w((bar, 40), (110, 40)); c.port((110, 40), OUT, 'r')
