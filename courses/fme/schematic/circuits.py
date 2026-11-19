@@ -752,7 +752,9 @@ def op_amp(c, blocks):
     """The first `blocks` blocks of a two-stage op amp.  Every block is a circuit from further up:
     1 differential pair, 2 current source in its tail, 3 current mirror as its load,
     4 second stage with a current-source load, 5 current mirror that supplies both bias currents.
-    The circuit is drawn narrow, so that all of it fits a cell at the size of every other drawing."""
+    The circuit is drawn narrow, so that all of it fits a cell at the size of every other drawing.
+    The bias line runs above the lowest transistors and crosses the lead of the tail source;
+    no wire runs below the ground symbols."""
     c.center(50)                                                                   # every row is aligned on the pair
     t1 = c.transistor('n', (0, 0), 'cd', name=1, lbl='r')                          # 1: the pair
     t2 = c.transistor('n', (100, 0), 'cd', side='right', name=2, lbl='l')
@@ -762,9 +764,9 @@ def op_amp(c, blocks):
     if blocks < 2:
         c.w(tail, (50, 140)); c.port((50, 140), 'I_bias', 'b')
     else:                                                                          # 2: the tail current source
-        t5 = c.transistor('n', (50, 140), 'cd', name=5)
-        c.w(tail, t5.cd); c.w(t5.es, (50, 240)); c.gnd((50, 240))
-        bias = (-10, 180)
+        t5 = c.transistor('n', (50, 150), 'cd', name=5)
+        c.w(tail, t5.cd); c.w(t5.es, (50, 250)); c.gnd((50, 250))
+        bias, line = (-10, 190), 125                                               # gate node; height of the bias line
         c.w(t5.bg, bias)
     if blocks < 3:
         c.w(t1.cd, (0, -40)); c.port((0, -40), 'I_1', 'r')
@@ -781,23 +783,22 @@ def op_amp(c, blocks):
         c.w(first, (160, -10)); c.port((160, -10), OUT, 'r'); c.look((160, -10), 'l', 'u', 'R_out')
     if blocks > 3:                                                                 # 4: the second stage
         t6 = c.transistor('p', (155, -50), 'es', name=6)                         # its input level with the first output
-        t7 = c.transistor('n', (155, 140), 'cd')
-        t7.name(7, 'r', dy=14)
+        t7 = c.transistor('n', (155, 150), 'cd', name=7)
         c.dot((100, -120)); c.w((155, -120), t6.es)
         c.w(first, t6.bg)
-        c.w(t6.cd, t7.cd); c.w(t7.es, (155, 240)); c.gnd((155, 240))
-        c.w(bias, (-10, 270), (115, 270), t7.bg); c.dot(bias)
+        c.w(t6.cd, t7.cd); c.w(t7.es, (155, 250)); c.gnd((155, 250))
+        c.w(bias, (-10, line), (115, line), t7.bg); c.dot(bias)                    # up, across above the lowest row, down
         out = (155, 100); c.dot(out); c.w(out, (185, 100)); c.port((185, 100), OUT, 't')
     if blocks == 4:
         c.look((185, 100), 'l', 'd', 'R_out', nudge=-14)             # the arrow ends short of the second stage
     if 2 <= blocks < 5:
-        c.w(bias, (-40, 180)); c.port((-40, 180), 'V_bias', 'l')
+        c.w(bias, (-40, 190)); c.port((-40, 190), 'V_bias', 'l')
     if blocks == 5:                                                                # 5: the bias mirror
-        t8 = c.transistor('n', (-60, 140), 'cd', side='right', name=8, lbl='l')
-        c.w(t8.es, (-60, 240)); c.gnd((-60, 240))
+        t8 = c.transistor('n', (-60, 150), 'cd', side='right', name=8, lbl='l')
+        c.w(t8.es, (-60, 250)); c.gnd((-60, 250))
         c.w(t8.bg, bias)
         c.w(t8.cd, (-60, 90)); c.port((-60, 90), 'I_ref', 'l')
-        c.dot((-60, 130)); c.w((-60, 130), (-10, 130), bias); c.dot(bias)
+        c.dot((-60, line)); c.w((-60, line), (-10, line)); c.dot((-10, line))      # the bias line starts at the diode
 
 
 def op_amp_pair(c):
