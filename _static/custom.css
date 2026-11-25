@@ -225,3 +225,16 @@ p {
     font-weight: 600;
     margin-bottom: 0.5em;
 }
+
+/* courses/fme (Transistor Gallery): one large sheet of circuits.  The page has no table of contents
+   worth a column, so the right column goes and the sheet takes the whole width beside the navigation. */
+.bd-main:has(#transistor-gallery) .bd-sidebar-secondary {
+    display: none;
+}
+.bd-main:has(#transistor-gallery) .bd-article-container,
+.bd-main:has(#transistor-gallery) .bd-article {
+    max-width: none;
+}
+#transistor-gallery .cell_output {
+    padding-left: 0;
+}
