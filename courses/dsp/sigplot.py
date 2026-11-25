@@ -372,7 +372,8 @@ ZERO = '0.70'                  # the lines t = 0 and x = 0
 BLUE = 'b'                     # the signal, and its envelope at half strength
 GREY = '0.62'                  # the reference signal
 HIGHLIGHT = '#d62728'          # a selected point
-FONT = '"Computer Modern Serif", "New Computer Modern", "Latin Modern Roman", "CMU Serif", serif'   # of an interactive figure: the font of the page
+TEXT_FONT = '"NVIDIA Sans", "NVIDIASans", -apple-system, "Segoe UI", "Helvetica Neue", Arial, sans-serif'   # names and heads of an interactive figure
+MATH_FONT = '"Computer Modern Serif", "Latin Modern Roman", "CMU Serif", serif'                              # its maths: axis names, numbers, values
 CURVE_W, STEM_W, DOT_R, AXIS_W = 1.7, 1.2, 2.5, 0.9
 
 
@@ -700,17 +701,23 @@ class InteractivePlot(Plot):
         style = self.marks(role, 12)
         style['marker']['symbol'] = 'triangle-up' if area >= 0 else 'triangle-down'
         self.trace([x], [area], role, name, value='area', mode='markers+text', text=['(%g)' % area],
-                   textposition='middle right', textfont=dict(color=self.colors[role]), **style)
+                   textposition='middle right', textfont=dict(color=self.colors[role], family=MATH_FONT, size=16), **style)
 
     def frame(self):
         (t0, t1), (v0, v1) = self.time.span, self.ylim
         x0, x1 = (float(self.time.coordinate(t)) for t in (t0, t1))
         pad_x, pad_y = 0.025 * (x1 - x0), 0.04 * (v1 - v0)
+        maths = dict(family=MATH_FONT, size=16)
         axis = dict(showgrid=False, showline=True, linecolor='black', ticks='outside', mirror=False,
+                    tickfont=maths, title_font=dict(family=MATH_FONT, size=18),
                     zeroline=True, zerolinecolor='rgb(178,178,178)', zerolinewidth=1, title_standoff=6,
                     row=self.row, col=self.col)
         self.figure.update_xaxes(range=[x0 - pad_x, x1 + pad_x], title_text='<i>%s</i>' % self.time.variable, **axis)
-        self.figure.update_yaxes(range=[v0 - pad_y, v1 + pad_y], title_text=self.time.html(self.symbol), **axis)
+        self.figure.update_yaxes(range=[v0 - pad_y, v1 + pad_y], **axis)
+        # the name of the signal stands above its axis, clear of the tick labels and of the names of the rows
+        self.figure.add_annotation(row=self.row, col=self.col, xref='x domain', yref='y domain', x=0, y=1,
+                                   xanchor='center', yanchor='bottom', yshift=10, showarrow=False,
+                                   text=self.time.html(self.symbol), font=dict(family=MATH_FONT, size=18))
 
 
 # ================================================================ the figure
@@ -786,7 +793,9 @@ class InteractiveSheet(Sheet):
     values; a click selects it and pins the values beside it; a double click clears the pins
     and the zoom.  Dragging zooms in."""
 
-    ROW_H, GAP, LEFT, TOP_H, BOTTOM_H = 190, 78, 150, 46, 52       # px
+    ROW_H, GAP, LEFT, TOP_H, BOTTOM_H = 190, 96, 190, 96, 52       # px
+    HEAD_UP = 40                                                    # px: the column heads stand above the names of the signals
+    NAME_W = 16                                                     # characters in one line of a name in the first column
     count = 0                                                       # figures drawn so far: gives every figure its id
 
     # runs in the page: a click pins the values of the point, a double click removes the pins
@@ -801,7 +810,7 @@ class InteractiveSheet(Sheet):
         pins.push({x: p.x, y: p.y, xref: p.data.xaxis || 'x', yref: p.data.yaxis || 'y',
                    text: '<i>' + m.variable + '</i> = ' + num(p.x) + ',  ' + m.value + ' = ' + num(p.y),
                    showarrow: true, arrowhead: 0, arrowcolor: '#d62728', ax: 28, ay: -28,
-                   font: {color: '#d62728', size: 14, family: gd.layout.font.family}, bgcolor: 'rgba(255,255,255,0.9)',
+                   font: {color: '#d62728', size: 14, family: gd.layout.hoverlabel.font.family}, bgcolor: 'rgba(255,255,255,0.9)',
                    bordercolor: '#d62728', borderpad: 3});
         Plotly.relayout(gd, {annotations: fixed.concat(pins)});
     });
@@ -816,6 +825,17 @@ class InteractiveSheet(Sheet):
         """a name with $maths$ in it, as HTML"""
         return re.sub(r'\$([^$]+)\$', r'<i>\1</i>', text)
 
+    def wrap(self, name):
+        """a name in lines short enough for the first column; a formula between $ signs stays in one piece"""
+        lines, cur = [], ''
+        for word in _words(name):
+            trial = (cur + ' ' + word).strip()
+            if cur and len(trial.replace('$', '')) > self.NAME_W:
+                lines.append(cur); cur = word
+            else:
+                cur = trial
+        return lines + [cur]
+
     def figure(self):
         """the Plotly figure"""
         from plotly.subplots import make_subplots
@@ -824,19 +844,20 @@ class InteractiveSheet(Sheet):
         fig = make_subplots(rows=n, cols=len(self.axes), horizontal_spacing=0.11,
                             vertical_spacing=self.GAP / (height - self.TOP_H - self.BOTTOM_H) if n > 1 else 0,
                             column_titles=['<b>%s</b>' % time.head for time in self.axes])
-        fig.update_annotations(font=dict(family=FONT, size=19))      # the column heads
+        fig.update_annotations(font=dict(family=TEXT_FONT, size=18), yshift=self.HEAD_UP)   # the column heads
         for i, (signal, reference, symbol, _) in enumerate(self.rows, 1):
             for j, time in enumerate(self.axes, 1):
                 InteractivePlot(time, self.ylim, symbol, fig, i, j).show(signal, reference)
             lo, hi = fig.get_subplot(i, 1).yaxis.domain
             fig.add_annotation(xref='paper', yref='paper', x=0, y=(lo + hi) / 2, xanchor='left', yanchor='middle',
-                               xshift=-self.LEFT + 4, showarrow=False, align='left', font=dict(size=17),
-                               text='<br>'.join(self.markup(name) for name in dict.fromkeys(signal.names())))
+                               xshift=-self.LEFT + 4, showarrow=False, align='left', font=dict(family=TEXT_FONT, size=15),
+                               text='<br>'.join(self.markup(line) for name in dict.fromkeys(signal.names())
+                                                for line in self.wrap(name)))
         fig.update_layout(template='simple_white', height=round(height * self.zoom), autosize=True,
-                          font=dict(family=FONT, size=15, color='black'),
+                          font=dict(family=TEXT_FONT, size=15, color='black'),
                           margin=dict(l=self.LEFT, r=24, t=self.TOP_H, b=self.BOTTOM_H),
                           clickmode='event+select', hovermode='closest', dragmode='zoom',
-                          hoverlabel=dict(bgcolor='white', font=dict(family=FONT, size=15)), paper_bgcolor='white', plot_bgcolor='white')
+                          hoverlabel=dict(bgcolor='white', font=dict(family=MATH_FONT, size=15)), paper_bgcolor='white', plot_bgcolor='white')
         return fig
 
     def html(self):
