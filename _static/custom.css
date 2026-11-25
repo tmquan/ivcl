@@ -31,3 +31,44 @@ p {
 /* the overview table: family, circuits, the one change */
 #circuits-of-two-transistors table th:nth-child(1) { width: 18%; }
 #circuits-of-two-transistors table th:nth-child(3) { width: 36%; }
+
+/* courses/sim (IsaacSim101): text in table cells is set left, not justified,
+   so that short cells keep an even word spacing. */
+#isaacsim101 td p,
+#isaacsim101 th p {
+    text-align: left;
+}
+
+/* courses/dsp (Signals and Sequences, Systems and Transformations): continuous-time and
+   discrete-time columns of equal width.  As on the FME page, figures and tables share three
+   columns over the text width: a label (20 %), then continuous time and discrete time (40 % each). */
+#signals-and-sequences table,
+#systems-and-transformations table {
+    display: table;
+    width: 100%;
+    table-layout: fixed;
+}
+#signals-and-sequences td,
+#signals-and-sequences th,
+#systems-and-transformations td,
+#systems-and-transformations th {
+    overflow-x: auto;
+    vertical-align: top;
+}
+#signals-and-sequences td p,
+#signals-and-sequences th p,
+#systems-and-transformations td p,
+#systems-and-transformations th p {
+    text-align: left;
+}
+#signals-and-sequences .cell_output,
+#systems-and-transformations .cell_output {
+    padding-left: 0;
+}
+#signals-and-sequences .cell_output img,
+#systems-and-transformations .cell_output img {
+    width: 100%;
+}
+/* the label column; the remaining columns share the rest equally */
+#signals-and-sequences table th:nth-child(1),
+#systems-and-transformations table th:nth-child(1) { width: 20%; }
