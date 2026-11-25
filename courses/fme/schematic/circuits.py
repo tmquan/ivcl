@@ -863,10 +863,7 @@ def bias_self(c):
     c.w(top, (-20, -20))                                    # the resistor from the output back to the input
     left = c.res((-20, -20), 'R_' + t1.pin('bg'), to='left', side='u')
     c.w(left, (left[0] - 10, -20), (left[0] - 10, 40), t1.bg)
-    if c.pick(False, True):                                 # the MOS stage of the example has a source resistor
-        c.w(t1.es, (0, 100)); c.w(c.res((0, 100), 'R_S'), (0, 180)); c.gnd((0, 180))
-    else:
-        c.w(t1.es, (0, 100)); c.gnd((0, 100))
+    c.w(t1.es, (0, 100)); c.gnd((0, 100))                  # emitter or source grounded: the same circuit for both
 
 
 def stage_signal(c):
