@@ -1,0 +1,960 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>BJT and MOSFET Problem Bank: Other Items &#8212; Intelligent Visual Computing</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=6a604523" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=d273a9f0" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script data-sd-tabs-storage-prefix="sphinx-design-tab-id-" src="../../_static/design-tabs.js?v=fcb327ea"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'courses/fme/bank_other';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Introduction" href="../mip/intro.html" />
+    <link rel="prev" title="BJT and MOSFET Problem Bank: Differential Pairs" href="bank_pairs.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../home.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/gpgpu.png" class="logo__image only-light" alt="Intelligent Visual Computing - Home"/>
+    <img src="../../_static/gpgpu.png" class="logo__image only-dark pst-js-only" alt="Intelligent Visual Computing - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../home.html">
+                    Welcome
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Digital Signal Processing</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../dsp/signals.html">Signals and Sequences</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dsp/systems.html">Systems and Transformations</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Fundamentals of Microelectronics</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="index.html">BJT and MOSFET Circuits</a></li>
+<li class="toctree-l1"><a class="reference internal" href="problems.html">BJT and MOSFET Problem Sets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bank_one.html">BJT and MOSFET Problem Bank: One Transistor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bank_bias.html">BJT and MOSFET Problem Bank: Bias</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bank_stages.html">BJT and MOSFET Problem Bank: Amplifier Stages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bank_mirrors.html">BJT and MOSFET Problem Bank: Cascodes and Current Mirrors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bank_pairs.html">BJT and MOSFET Problem Bank: Differential Pairs</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">BJT and MOSFET Problem Bank: Other Items</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Medical Image Processing</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../mip/intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mip/sigsys.html">Signals and Systems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mip/xr.html">X-ray (XR) Imaging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mip/ct.html">Computed Tomography (CT)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mip/mr.html">Magnetic Resonance (MR) Imaging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mip/pt.html">Positron Emission Tomography (PET)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mip/es.html">Endoscopy (ES) Imaging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mip/histo.html">Histology / Histopathology Imaging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mip/em.html">Electron Microscopy (EM) Imaging</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Simulation</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../sim/isaacsim101.html">IsaacSim101</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sim/chapter0.html">Isaac Sim on a DGX Spark</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sim/chapter1.html">Overview of Visualization</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Research</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../research/connectome/index.html">Connectome Agent</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../research/connectome/representation.html">Representation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../research/connectome/supervision.html">Supervision</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../research/connectome/features.html">Features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../research/connectome/multiscale.html">Multi-scale</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../research/connectome/agent.html">Agent</a></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/tmquan/ivcl" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/tmquan/ivcl/issues/new?title=Issue%20on%20page%20%2Fcourses/fme/bank_other.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/courses/fme/bank_other.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button pst-navbar-icon"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm pst-navbar-icon" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>BJT and MOSFET Problem Bank: Other Items</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#other-circuits">Other Circuits</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="bjt-and-mosfet-problem-bank-other-items">
+<h1>BJT and MOSFET Problem Bank: Other Items<a class="headerlink" href="#bjt-and-mosfet-problem-bank-other-items" title="Link to this heading">#</a></h1>
+<p>Every worked example and every problem of this kind in two textbooks, each solved step by step: Razavi, <em>Fundamentals of Microelectronics</em> (chapters 4 to 7, 9 and 10) and Sedra/Smith, <em>Microelectronic Circuits</em>, eighth international edition (chapters 4 to 8). The statements are in our words and the numbers of an item are those of the book. This page holds 31 of the 1219 items; the natures and their solution patterns are introduced on <a class="reference internal" href="problems.html"><span class="std std-doc">BJT and MOSFET Problem Sets</span></a>.</p>
+<p>Inside a nature, the items whose circuit we have drawn come under that drawing; the others describe their circuit in words. An item that repeats another with other values follows it and says so. Every numeric result was recomputed by a program. The last line of an item says how it was checked: against the answer the book or its solutions manual publishes, or, where none is published, by computation alone. An item marked <em>needs review</em> rests on a reading of the book that we could not confirm.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Nature</p></th>
+<th class="head"><p>Razavi, examples</p></th>
+<th class="head"><p>Razavi, problems</p></th>
+<th class="head"><p>Sedra/Smith, exercises</p></th>
+<th class="head"><p>Sedra/Smith, problems</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Other Items</p></td>
+<td><p>4</p></td>
+<td><p>15</p></td>
+<td><p>2</p></td>
+<td><p>10</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># HIDE/SHOW</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">warnings</span>
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s1">'ignore'</span><span class="p">)</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="o">%</span><span class="k">config</span> InlineBackend.figure_formats = ['svg']
+<span class="o">%</span><span class="k">config</span> InlineBackend.print_figure_kwargs = {'bbox_inches': None}   # keep every figure at its full width
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">'svg.hashsalt'</span><span class="p">]</span> <span class="o">=</span> <span class="s1">'fme'</span>            <span class="c1"># reproducible SVG output</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">schematic</span><span class="w"> </span><span class="kn">import</span> <span class="n">show</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">schematic</span><span class="w"> </span><span class="kn">import</span> <span class="n">circuits</span> <span class="k">as</span> <span class="n">C</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<section id="other-circuits">
+<h2>Other Circuits<a class="headerlink" href="#other-circuits" title="Link to this heading">#</a></h2>
+<p><strong>Razavi, Example 5.1</strong> (no transistor)</p>
+<p>A voltage amplifier with a gain of 10 listens to a microphone and drives a speaker. The microphone is a source of <span class="math notranslate nohighlight">\(10\,\mathrm{mV}\)</span> peak-to-peak with a series resistance of <span class="math notranslate nohighlight">\(200\,\Omega\)</span>; the speaker is an <span class="math notranslate nohighlight">\(8\,\Omega\)</span> resistor. The amplifier has an input resistance <span class="math notranslate nohighlight">\(R_{in}\)</span> to ground and an output resistance <span class="math notranslate nohighlight">\(R_{amp}\)</span> in series with its ideal output voltage. (a) How much of the microphone signal appears across the amplifier input if <span class="math notranslate nohighlight">\(R_{in}=2\,\mathrm{k}\Omega\)</span> or <span class="math notranslate nohighlight">\(500\,\Omega\)</span>? (b) What fraction of the amplifier output voltage reaches the speaker if <span class="math notranslate nohighlight">\(R_{amp}=10\,\Omega\)</span> or <span class="math notranslate nohighlight">\(2\,\Omega\)</span>?</p>
+<p>Given: <span class="math notranslate nohighlight">\(v_m=10\,\mathrm{mV_{pp}}\)</span>, <span class="math notranslate nohighlight">\(R_S=200\,\Omega\)</span>, <span class="math notranslate nohighlight">\(R_L=8\,\Omega\)</span>, <span class="math notranslate nohighlight">\(A_v=10\)</span>, <span class="math notranslate nohighlight">\(R_{in}=2\,\mathrm{k}\Omega\)</span> or <span class="math notranslate nohighlight">\(500\,\Omega\)</span>, <span class="math notranslate nohighlight">\(R_{amp}=10\,\Omega\)</span> or <span class="math notranslate nohighlight">\(2\,\Omega\)</span></p>
+<ol class="arabic simple">
+<li><p><strong>Input interface.</strong> The microphone resistance <span class="math notranslate nohighlight">\(R_S\)</span> and the amplifier input resistance <span class="math notranslate nohighlight">\(R_{in}\)</span> form a voltage divider: <span class="math notranslate nohighlight">\(v_{in}=\dfrac{R_{in}}{R_{in}+R_S}\,v_m\)</span>.</p></li>
+<li><p><strong>(a) <span class="math notranslate nohighlight">\(R_{in}=2\,\mathrm{k}\Omega\)</span>.</strong> <span class="math notranslate nohighlight">\(v_{in}=\dfrac{2000}{2000+200}v_m=0.909\,v_m\)</span>, i.e. <span class="math notranslate nohighlight">\(9.09\,\mathrm{mV_{pp}}\)</span> of the <span class="math notranslate nohighlight">\(10\,\mathrm{mV_{pp}}\)</span>: a loss of only about 9 %.</p></li>
+<li><p><strong>(a) <span class="math notranslate nohighlight">\(R_{in}=500\,\Omega\)</span>.</strong> <span class="math notranslate nohighlight">\(v_{in}=\dfrac{500}{500+200}v_m=0.714\,v_m\)</span>, i.e. <span class="math notranslate nohighlight">\(7.14\,\mathrm{mV_{pp}}\)</span>: nearly 30 % is lost. A large input resistance is desirable.</p></li>
+<li><p><strong>Output interface.</strong> The ideal amplifier output <span class="math notranslate nohighlight">\(v_{amp}\)</span> sits behind <span class="math notranslate nohighlight">\(R_{amp}\)</span> and drives the speaker <span class="math notranslate nohighlight">\(R_L\)</span>: <span class="math notranslate nohighlight">\(v_{out}=\dfrac{R_L}{R_L+R_{amp}}\,v_{amp}\)</span>.</p></li>
+<li><p><strong>(b) <span class="math notranslate nohighlight">\(R_{amp}=10\,\Omega\)</span>.</strong> <span class="math notranslate nohighlight">\(v_{out}=\dfrac{8}{8+10}v_{amp}=0.444\,v_{amp}\)</span>: more than half of the signal is lost.</p></li>
+<li><p><strong>(b) <span class="math notranslate nohighlight">\(R_{amp}=2\,\Omega\)</span>.</strong> <span class="math notranslate nohighlight">\(v_{out}=\dfrac{8}{8+2}v_{amp}=0.800\,v_{amp}\)</span>. A small output resistance is desirable.</p></li>
+<li><p><strong>Numerical illustration.</strong> With an ideal input (<span class="math notranslate nohighlight">\(v_{amp}=10\times10\,\mathrm{mV_{pp}}=100\,\mathrm{mV_{pp}}\)</span>) the speaker would see <span class="math notranslate nohighlight">\(44.4\,\mathrm{mV_{pp}}\)</span> or <span class="math notranslate nohighlight">\(80.0\,\mathrm{mV_{pp}}\)</span> respectively.</p></li>
+</ol>
+<p><strong>Result.</strong> (a) <span class="math notranslate nohighlight">\(0.909\,v_m\)</span> for <span class="math notranslate nohighlight">\(2\,\mathrm{k}\Omega\)</span>, <span class="math notranslate nohighlight">\(0.714\,v_m\)</span> for <span class="math notranslate nohighlight">\(500\,\Omega\)</span>; (b) <span class="math notranslate nohighlight">\(0.444\,v_{amp}\)</span> for <span class="math notranslate nohighlight">\(10\,\Omega\)</span>, <span class="math notranslate nohighlight">\(0.800\,v_{amp}\)</span> for <span class="math notranslate nohighlight">\(2\,\Omega\)</span></p>
+<p>Checked: agrees with the answer in the book.</p>
+<p><strong>Razavi, Example 6.4</strong> (MOSFET)</p>
+<p>A cordless telephone uses a single antenna for both reception and transmission. Explain how the system must be configured.</p>
+<p>Given: Phone receives half the time and transmits the other half; switching interval e.g. <span class="math notranslate nohighlight">\(20\,\mathrm{ms}\)</span>.</p>
+<ol class="arabic simple">
+<li><p><strong>Only one path at a time.</strong> Since the phone receives half of the time and transmits the other half, the antenna is needed by only one of the two circuits at any instant.</p></li>
+<li><p><strong>Connection.</strong> The antenna is alternately connected to the receiver and to the transmitter at regular intervals, for example every <span class="math notranslate nohighlight">\(20\,\mathrm{ms}\)</span>.</p></li>
+<li><p><strong>Component.</strong> An electronic antenna switch therefore sits between the antenna and the pair (receiver, transmitter); a MOSFET operated as a switch can serve here (see Example 6-5).</p></li>
+</ol>
+<p><strong>Result.</strong> Antenna connected through an electronic switch alternately to the receiver and to the transmitter (e.g. every <span class="math notranslate nohighlight">\(20\,\mathrm{ms}\)</span>)</p>
+<p>Checked by computation; the book gives no answer.</p>
+<p><strong>Razavi, Example 10.1</strong> (BJT)</p>
+<p>A microphone signal is amplified by a single common-emitter stage (collector resistor <span class="math notranslate nohighlight">\(R_C\)</span>, collector current <span class="math notranslate nohighlight">\(I_C\)</span>) whose supply <span class="math notranslate nohighlight">\(V_{CC}\)</span> comes from a rectifier. The rectifier output is not perfectly constant but carries a ripple <span class="math notranslate nohighlight">\(v_r\)</span> at twice the line frequency. The loudspeaker plays a loud steady low-frequency hum. Explain where it comes from and how strongly the ripple reaches the output.</p>
+<p>Given: <span class="math notranslate nohighlight">\(V_{CC}\)</span> with ripple <span class="math notranslate nohighlight">\(v_r\)</span> (frequency <span class="math notranslate nohighlight">\(2f_\mathrm{line}\)</span>); <span class="math notranslate nohighlight">\(V_{out}=V_{CC}-R_CI_C\)</span></p>
+<ol class="arabic simple">
+<li><p><strong>Output voltage of the stage.</strong> The collector node sits at the supply minus the drop across the load: <span class="math notranslate nohighlight">\(V_{out}=V_{CC}-R_CI_C\)</span>.</p></li>
+<li><p><strong>Bias current is set by the input.</strong> <span class="math notranslate nohighlight">\(I_C\)</span> is fixed by the base bias, not by <span class="math notranslate nohighlight">\(V_{CC}\)</span> (ignoring the Early effect), so a change of <span class="math notranslate nohighlight">\(V_{CC}\)</span> leaves <span class="math notranslate nohighlight">\(R_CI_C\)</span> unchanged.</p></li>
+<li><p><strong>Effect of the ripple.</strong> If <span class="math notranslate nohighlight">\(V_{CC}\)</span> moves by <span class="math notranslate nohighlight">\(v_r\)</span>, then <span class="math notranslate nohighlight">\(V_{out}\)</span> moves by <span class="math notranslate nohighlight">\(v_r\)</span> as well: <span class="math notranslate nohighlight">\(\Delta V_{out}/\Delta V_{CC}=1\)</span>. The output therefore follows the supply with unity gain.</p></li>
+<li><p><strong>Two components at the output.</strong> <span class="math notranslate nohighlight">\(v_{out}=A_vv_{in}+v_r\)</span>: the amplified microphone signal plus the whole ripple.</p></li>
+<li><p><strong>Source of the hum.</strong> The ripple is a steady component at <span class="math notranslate nohighlight">\(2f_\mathrm{line}\)</span> (100 or 120 Hz), which the loudspeaker reproduces as hum. The cause is that <span class="math notranslate nohighlight">\(V_{out}\)</span> is measured against ground while <span class="math notranslate nohighlight">\(V_{CC}\)</span> is not constant; the output is not insensitive to the supply.</p></li>
+<li><p><strong>Remedy hinted by the book.</strong> Measure the output between this node and a second node that carries the same ripple (a duplicate stage), so the ripple cancels in the difference: this is the idea of the differential amplifier.</p></li>
+</ol>
+<p><strong>Result.</strong> Hum comes from supply ripple reaching <span class="math notranslate nohighlight">\(V_{out}\)</span> with gain <span class="math notranslate nohighlight">\(1\)</span>: <span class="math notranslate nohighlight">\(v_{out}=A_vv_{in}+v_r\)</span></p>
+<p>Checked: agrees with the answer in the book.</p>
+<p><strong>Razavi, Example 10.2</strong> (no transistor)</p>
+<p>A transformer with a center-tapped secondary delivers two signals <span class="math notranslate nohighlight">\(+v_{in}\)</span> and <span class="math notranslate nohighlight">\(-v_{in}\)</span> that are equal and opposite about the center tap. With the tap grounded their common-mode (average) level is 0 V. How must the transformer be connected so the two outputs have a common-mode level of <span class="math notranslate nohighlight">\(+2\,\mathrm{V}\)</span>?</p>
+<p>Given: Required common-mode level <span class="math notranslate nohighlight">\(V_{CM}=2\,\mathrm{V}\)</span></p>
+<ol class="arabic simple">
+<li><p><strong>Common-mode level.</strong> The CM level of two outputs <span class="math notranslate nohighlight">\(V_1,V_2\)</span> that swing equally and oppositely is their dc average, which is the dc level of the center tap.</p></li>
+<li><p><strong>Outputs with the tap grounded.</strong> <span class="math notranslate nohighlight">\(V_1=+v_{in}\)</span>, <span class="math notranslate nohighlight">\(V_2=-v_{in}\)</span>, so <span class="math notranslate nohighlight">\((V_1+V_2)/2=0\)</span>.</p></li>
+<li><p><strong>Raise the tap.</strong> The windings only fix the voltage of each end relative to the tap. Tying the center tap to <span class="math notranslate nohighlight">\(+2\,\mathrm{V}\)</span> shifts both ends by <span class="math notranslate nohighlight">\(2\,\mathrm{V}\)</span>: <span class="math notranslate nohighlight">\(V_1=2\,\mathrm{V}+v_{in}\)</span>, <span class="math notranslate nohighlight">\(V_2=2\,\mathrm{V}-v_{in}\)</span>.</p></li>
+<li><p><strong>Check.</strong> Average <span class="math notranslate nohighlight">\(=2\,\mathrm{V}\)</span> and difference <span class="math notranslate nohighlight">\(V_1-V_2=2v_{in}\)</span> unchanged.</p></li>
+</ol>
+<p><strong>Result.</strong> Connect the center tap to a <span class="math notranslate nohighlight">\(+2\,\mathrm{V}\)</span> source: <span class="math notranslate nohighlight">\(V_{CM}=2\,\mathrm{V}\)</span></p>
+<p>Checked: agrees with the answer in the book.</p>
+<p><strong>Razavi, Problem 5.1</strong> (no transistor)</p>
+<p>An antenna is modelled by its Thevenin equivalent: a sinusoidal source <span class="math notranslate nohighlight">\(V_0\cos\omega t\)</span> in series with an output resistance <span class="math notranslate nohighlight">\(R_{out}\)</span>. A load resistor <span class="math notranslate nohighlight">\(R_L\)</span> is connected across it. Find the average power delivered to <span class="math notranslate nohighlight">\(R_L\)</span> and sketch it as a function of <span class="math notranslate nohighlight">\(R_L\)</span>.</p>
+<p>Given: <span class="math notranslate nohighlight">\(v_s=V_0\cos\omega t\)</span>, source resistance <span class="math notranslate nohighlight">\(R_{out}\)</span>, load <span class="math notranslate nohighlight">\(R_L\)</span></p>
+<ol class="arabic simple">
+<li><p><strong>Voltage divider.</strong> The load voltage is <span class="math notranslate nohighlight">\(v_L=\dfrac{R_L}{R_{out}+R_L}V_0\cos\omega t\)</span>.</p></li>
+<li><p><strong>Instantaneous power.</strong> <span class="math notranslate nohighlight">\(p(t)=\dfrac{v_L^2}{R_L}=\dfrac{R_LV_0^2}{(R_{out}+R_L)^2}\cos^2\omega t\)</span>.</p></li>
+<li><p><strong>Average over a period.</strong> The mean of <span class="math notranslate nohighlight">\(\cos^2\omega t\)</span> is <span class="math notranslate nohighlight">\(1/2\)</span>, so <span class="math notranslate nohighlight">\(P_{av}=\dfrac{V_0^2R_L}{2(R_{out}+R_L)^2}\)</span>.</p></li>
+<li><p><strong>Maximum.</strong> <span class="math notranslate nohighlight">\(\dfrac{dP_{av}}{dR_L}\propto (R_{out}+R_L)-2R_L=0\)</span> gives <span class="math notranslate nohighlight">\(R_L=R_{out}\)</span> and <span class="math notranslate nohighlight">\(P_{max}=\dfrac{V_0^2}{8R_{out}}\)</span>.</p></li>
+<li><p><strong>Shape of the plot.</strong> <span class="math notranslate nohighlight">\(P_{av}=0\)</span> at <span class="math notranslate nohighlight">\(R_L=0\)</span>, rises linearly (<span class="math notranslate nohighlight">\(\approx V_0^2R_L/2R_{out}^2\)</span>) for <span class="math notranslate nohighlight">\(R_L\ll R_{out}\)</span>, peaks at <span class="math notranslate nohighlight">\(R_L=R_{out}\)</span>, then falls as <span class="math notranslate nohighlight">\(\approx V_0^2/2R_L\)</span> for <span class="math notranslate nohighlight">\(R_L\gg R_{out}\)</span>. It is symmetric on a logarithmic <span class="math notranslate nohighlight">\(R_L\)</span> axis: <span class="math notranslate nohighlight">\(P_{av}(R_L)=P_{av}(R_{out}^2/R_L)\)</span>.</p></li>
+</ol>
+<p><strong>Result.</strong> <span class="math notranslate nohighlight">\(P_{av}=\dfrac{V_0^2R_L}{2(R_{out}+R_L)^2}\)</span>, maximum <span class="math notranslate nohighlight">\(V_0^2/(8R_{out})\)</span> at <span class="math notranslate nohighlight">\(R_L=R_{out}\)</span></p>
+<p>Checked by computation; the book gives no answer.</p>
+<p><strong>Razavi, Problem 5.2</strong> (no transistor)</p>
+<p>Find the small-signal input resistance of three diode networks, all diodes forward-biased (each diode is a small-signal resistance <span class="math notranslate nohighlight">\(r_D=V_T/I_D\)</span>). (a) Input through diode <span class="math notranslate nohighlight">\(D_1\)</span>, then <span class="math notranslate nohighlight">\(R_1\)</span> to ground. (b) Input through <span class="math notranslate nohighlight">\(D_1\)</span> to a node X; from X, <span class="math notranslate nohighlight">\(R_1\)</span> to ground and diode <span class="math notranslate nohighlight">\(D_2\)</span> (anode at X) to ground. (c) Input through a diode to node X; between X and node Y, <span class="math notranslate nohighlight">\(R_1\)</span> in parallel with diode <span class="math notranslate nohighlight">\(D_2\)</span> (anode at X); from Y a second diode <span class="math notranslate nohighlight">\(D_1\)</span> (anode at Y) to ground.</p>
+<p>Given: Diodes forward-biased; <span class="math notranslate nohighlight">\(r_{D}=V_T/I_D\)</span></p>
+<ol class="arabic simple">
+<li><p><strong>Diode model.</strong> Each forward-biased diode is replaced by <span class="math notranslate nohighlight">\(r_{Dj}=V_T/I_{Dj}\)</span>; a constant voltage source is not needed for small signals.</p></li>
+<li><p><strong>(a) Series path.</strong> <span class="math notranslate nohighlight">\(R_{in}=r_{D1}+R_1\)</span>.</p></li>
+<li><p><strong>(b) Series then parallel.</strong> <span class="math notranslate nohighlight">\(R_{in}=r_{D1}+(R_1\parallel r_{D2})\)</span>.</p></li>
+<li><p><strong>(c) Same current in the two series diodes.</strong> The input diode and the diode to ground carry the same current, so both have <span class="math notranslate nohighlight">\(r_{D1}=V_T/I_{D1}\)</span>.</p></li>
+<li><p><strong>(c) Total.</strong> <span class="math notranslate nohighlight">\(R_{in}=2r_{D1}+(R_1\parallel r_{D2})\)</span>.</p></li>
+<li><p><strong>Numerical check.</strong> With <span class="math notranslate nohighlight">\(I_{D1}=1\,\mathrm{mA}\)</span>, <span class="math notranslate nohighlight">\(I_{D2}=0.4\,\mathrm{mA}\)</span>, <span class="math notranslate nohighlight">\(R_1=100\,\Omega\)</span>: <span class="math notranslate nohighlight">\(r_{D1}=26\,\Omega\)</span>, <span class="math notranslate nohighlight">\(r_{D2}=65\,\Omega\)</span>, (c) gives <span class="math notranslate nohighlight">\(91.4\,\Omega\)</span> by formula and by nodal analysis.</p></li>
+</ol>
+<p><strong>Result.</strong> (a) <span class="math notranslate nohighlight">\(r_{D1}+R_1\)</span>; (b) <span class="math notranslate nohighlight">\(r_{D1}+R_1\parallel r_{D2}\)</span>; (c) <span class="math notranslate nohighlight">\(2r_{D1}+R_1\parallel r_{D2}\)</span></p>
+<p>Checked by computation; the book gives no answer.</p>
+<p><strong>Razavi, Problem 6.2</strong> (MOSFET)</p>
+<p>A MOSFET is in pinch-off near the drain. The relation <span class="math notranslate nohighlight">\(I=Q_d\,v\)</span> (current = mobile charge per unit length times carrier velocity) implies that if the current is constant, charge density and velocity change in opposite directions. How should this be interpreted at the pinch-off point, where the charge density tends to zero?</p>
+<p>Given: <span class="math notranslate nohighlight">\(I_D=Q_d(x)\,v(x)\)</span> constant along the channel</p>
+<ol class="arabic simple">
+<li><p><strong>What the equation says.</strong> Since <span class="math notranslate nohighlight">\(I_D=Q_d v\)</span> is the same at every <span class="math notranslate nohighlight">\(x\)</span>, a falling <span class="math notranslate nohighlight">\(Q_d\)</span> must be compensated by a rising <span class="math notranslate nohighlight">\(v\)</span>; as <span class="math notranslate nohighlight">\(Q_d\to 0\)</span> at pinch-off, <span class="math notranslate nohighlight">\(v=I_D/Q_d\)</span> would have to tend to infinity.</p></li>
+<li><p><strong>Why that cannot be literal.</strong> Carrier velocity is limited (it saturates near <span class="math notranslate nohighlight">\(10^7\,\mathrm{cm/s}\)</span> in silicon), so the charge density never truly reaches zero: a small but finite density of electrons moving very fast carries the same current.</p></li>
+<li><p><strong>Where the model breaks.</strong> The relation <span class="math notranslate nohighlight">\(Q_d=WC_{ox}(V_{GS}-V-V_{TH})\)</span> assumes the vertical field dominates (gradual-channel approximation). Near pinch-off the lateral field becomes large, the approximation fails, and the “zero charge” is an artifact of the simple model.</p></li>
+<li><p><strong>Beyond pinch-off.</strong> Past the pinch-off point the electrons leave the inversion layer and are swept through the depletion region to the drain by the strong lateral field, much as carriers cross the collector junction of a bipolar transistor; the current is set by how many electrons reach the pinch-off point, which is why <span class="math notranslate nohighlight">\(I_D\)</span> barely depends on <span class="math notranslate nohighlight">\(V_{DS}\)</span>.</p></li>
+</ol>
+<p><strong>Result.</strong> The charge density becomes very small but not zero, and the carriers move very fast (up to the saturation velocity), so <span class="math notranslate nohighlight">\(Q_d v\)</span> stays equal to <span class="math notranslate nohighlight">\(I_D\)</span>; beyond pinch-off the high lateral field sweeps the carriers to the drain.</p>
+<p>Checked by computation; the book gives no answer.</p>
+<p><strong>Razavi, Problem 6.4</strong> (MOSFET)</p>
+<p>For the NMOS channel of Fig. 6.11 (source at <span class="math notranslate nohighlight">\(x=0\)</span>, drain at <span class="math notranslate nohighlight">\(x=L\)</span>, gate above threshold) with a positive drain voltage <span class="math notranslate nohighlight">\(V_D\)</span> that keeps the device in triode, (a) sketch the electron density in the channel versus <span class="math notranslate nohighlight">\(x\)</span>; (b) sketch the local channel resistance per unit length versus <span class="math notranslate nohighlight">\(x\)</span>.</p>
+<p>Given: <span class="math notranslate nohighlight">\(V_S=0\)</span>, <span class="math notranslate nohighlight">\(0&lt; V_D&lt; V_{GS}-V_{TH}\)</span> (triode); <span class="math notranslate nohighlight">\(Q_d(x)=WC_{ox}[V_{GS}-V(x)-V_{TH}]\)</span></p>
+<ol class="arabic simple">
+<li><p><strong>Channel potential.</strong> Solving the channel equation at constant <span class="math notranslate nohighlight">\(I_D\)</span> (Problem 6.5) gives <span class="math notranslate nohighlight">\(V(x)=V_{ov}-\sqrt{V_{ov}^2-\dfrac{2I_Dx}{\mu_nC_{ox}W}}\)</span> with <span class="math notranslate nohighlight">\(V_{ov}=V_{GS}-V_{TH}\)</span>; <span class="math notranslate nohighlight">\(V\)</span> rises from 0 to <span class="math notranslate nohighlight">\(V_D\)</span>, slowly at first and faster near the drain.</p></li>
+<li><p><strong>(a) Electron density.</strong> <span class="math notranslate nohighlight">\(n(x)=Q_d(x)/q=\dfrac{WC_{ox}}{q}\sqrt{V_{ov}^2-\dfrac{2I_Dx}{\mu_nC_{ox}W}}\)</span> (per unit length): maximum <span class="math notranslate nohighlight">\(WC_{ox}V_{ov}/q\)</span> at the source, falling along <span class="math notranslate nohighlight">\(x\)</span> as a square root, to <span class="math notranslate nohighlight">\(WC_{ox}(V_{ov}-V_D)/q\)</span> at the drain. The fall is steepest near the drain.</p></li>
+<li><p><strong>(a) Limit.</strong> At the edge of saturation (<span class="math notranslate nohighlight">\(V_D=V_{ov}\)</span>) the density falls to zero at <span class="math notranslate nohighlight">\(x=L\)</span> with a vertical tangent: pinch-off.</p></li>
+<li><p><strong>(b) Local resistance.</strong> A slice <span class="math notranslate nohighlight">\(dx\)</span> has resistance <span class="math notranslate nohighlight">\(dR=\dfrac{dx}{\mu_nQ_d(x)}\)</span>, so <span class="math notranslate nohighlight">\(\dfrac{dR}{dx}=\dfrac{1}{\mu_nWC_{ox}[V_{ov}-V(x)]}\)</span>: minimum <span class="math notranslate nohighlight">\(1/(\mu_nWC_{ox}V_{ov})\)</span> at the source, rising along the channel (as one over a square root) to <span class="math notranslate nohighlight">\(1/(\mu_nWC_{ox}(V_{ov}-V_D))\)</span> at the drain, and tending to infinity there at pinch-off.</p></li>
+<li><p><strong>Consistency.</strong> <span class="math notranslate nohighlight">\(dV/dx=I_D\,dR/dx\)</span>: the potential climbs fastest where the local resistance is highest, near the drain.</p></li>
+</ol>
+<p><strong>Result.</strong> (a) Electron density largest at the source, decreasing as <span class="math notranslate nohighlight">\(\sqrt{V_{ov}^2-2I_Dx/(\mu_nC_{ox}W)}\)</span> to <span class="math notranslate nohighlight">\(WC_{ox}(V_{ov}-V_D)/q\)</span> at the drain; (b) resistance per unit length <span class="math notranslate nohighlight">\(1/(\mu_nWC_{ox}[V_{ov}-V(x)])\)</span>, smallest at the source, rising toward the drain</p>
+<p>Checked by computation; the book gives no answer.</p>
+<p><strong>Razavi, Problem 6.5</strong> (MOSFET)</p>
+<p>With the drain current <span class="math notranslate nohighlight">\(I_D\)</span> constant along the channel, solve the channel equation <span class="math notranslate nohighlight">\(I_D=WC_{ox}[V_{GS}-V(x)-V_{TH}]\,\mu_n\,dV/dx\)</span> (Eq. 6.7) for the channel potential <span class="math notranslate nohighlight">\(V(x)\)</span>, with <span class="math notranslate nohighlight">\(V(0)=0\)</span>. Plot <span class="math notranslate nohighlight">\(V(x)\)</span> and <span class="math notranslate nohighlight">\(dV/dx\)</span> versus <span class="math notranslate nohighlight">\(x\)</span> for different values of <span class="math notranslate nohighlight">\(W\)</span> or <span class="math notranslate nohighlight">\(V_{TH}\)</span>.</p>
+<p>Given: <span class="math notranslate nohighlight">\(I_D=\mu_nC_{ox}W[V_{GS}-V(x)-V_{TH}]\,dV/dx\)</span>, <span class="math notranslate nohighlight">\(V(0)=0\)</span></p>
+<ol class="arabic simple">
+<li><p><strong>Separate variables.</strong> <span class="math notranslate nohighlight">\(I_D\,dx=\mu_nC_{ox}W\,(V_{ov}-V)\,dV\)</span> with <span class="math notranslate nohighlight">\(V_{ov}=V_{GS}-V_{TH}\)</span>.</p></li>
+<li><p><strong>Integrate from the source.</strong> <span class="math notranslate nohighlight">\(I_Dx=\mu_nC_{ox}W\left(V_{ov}V-\tfrac12V^2\right)\)</span>.</p></li>
+<li><p><strong>Solve the quadratic.</strong> <span class="math notranslate nohighlight">\(V(x)=V_{ov}-\sqrt{V_{ov}^2-\dfrac{2I_Dx}{\mu_nC_{ox}W}}\)</span> (the root with <span class="math notranslate nohighlight">\(V(0)=0\)</span>).</p></li>
+<li><p><strong>Slope.</strong> <span class="math notranslate nohighlight">\(\dfrac{dV}{dx}=\dfrac{I_D}{\mu_nC_{ox}W\sqrt{V_{ov}^2-2I_Dx/(\mu_nC_{ox}W)}}=\dfrac{I_D}{\mu_nC_{ox}W\,[V_{ov}-V(x)]}\)</span>.</p></li>
+<li><p><strong>Shapes.</strong> <span class="math notranslate nohighlight">\(V(x)\)</span> starts at 0 with slope <span class="math notranslate nohighlight">\(I_D/(\mu_nC_{ox}WV_{ov})\)</span> and curves upward (concave up); <span class="math notranslate nohighlight">\(dV/dx\)</span> grows along <span class="math notranslate nohighlight">\(x\)</span> and diverges where <span class="math notranslate nohighlight">\(V\to V_{ov}\)</span> (pinch-off).</p></li>
+<li><p><strong>Effect of <span class="math notranslate nohighlight">\(W\)</span>.</strong> For a given <span class="math notranslate nohighlight">\(I_D\)</span>, a larger <span class="math notranslate nohighlight">\(W\)</span> lowers <span class="math notranslate nohighlight">\(2I_Dx/(\mu_nC_{ox}W)\)</span>: <span class="math notranslate nohighlight">\(V(x)\)</span> rises more slowly and <span class="math notranslate nohighlight">\(dV/dx\)</span> is smaller everywhere (a wider channel needs less field to carry the same current).</p></li>
+<li><p><strong>Effect of <span class="math notranslate nohighlight">\(V_{TH}\)</span>.</strong> A larger <span class="math notranslate nohighlight">\(V_{TH}\)</span> lowers <span class="math notranslate nohighlight">\(V_{ov}\)</span>: the curve starts steeper (<span class="math notranslate nohighlight">\(dV/dx\)</span> at <span class="math notranslate nohighlight">\(x=0\)</span> is <span class="math notranslate nohighlight">\(I_D/(\mu_nC_{ox}WV_{ov})\)</span>) and approaches the pinch-off limit <span class="math notranslate nohighlight">\(V=V_{ov}\)</span> sooner, so <span class="math notranslate nohighlight">\(V(x)\)</span> rises faster and <span class="math notranslate nohighlight">\(dV/dx\)</span> is larger.</p></li>
+</ol>
+<p><strong>Result.</strong> <span class="math notranslate nohighlight">\(V(x)=V_{GS}-V_{TH}-\sqrt{(V_{GS}-V_{TH})^2-\dfrac{2I_Dx}{\mu_nC_{ox}W}}\)</span>, <span class="math notranslate nohighlight">\(\dfrac{dV}{dx}=\dfrac{I_D}{\mu_nC_{ox}W[V_{GS}-V_{TH}-V(x)]}\)</span></p>
+<p>Checked by computation; the book gives no answer.</p>
+<p><strong>Razavi, Problem 6.12</strong> (MOSFET)</p>
+<p>For a MOSFET used as a resistor (deep triode), define the intrinsic time constant <span class="math notranslate nohighlight">\(\tau=R_{on}C_{GS}\)</span> with <span class="math notranslate nohighlight">\(C_{GS}=WLC_{ox}\)</span>. Find an expression for <span class="math notranslate nohighlight">\(\tau\)</span> and say what the designer must do to minimize it.</p>
+<p>Given: <span class="math notranslate nohighlight">\(R_{on}=\dfrac{1}{\mu_nC_{ox}(W/L)(V_{GS}-V_{TH})}\)</span>, <span class="math notranslate nohighlight">\(C_{GS}=WLC_{ox}\)</span></p>
+<ol class="arabic simple">
+<li><p><strong>Multiply.</strong> <span class="math notranslate nohighlight">\(\tau=\dfrac{WLC_{ox}}{\mu_nC_{ox}(W/L)(V_{GS}-V_{TH})}\)</span>.</p></li>
+<li><p><strong>Simplify.</strong> <span class="math notranslate nohighlight">\(\tau=\dfrac{L^2}{\mu_n(V_{GS}-V_{TH})}\)</span>: independent of <span class="math notranslate nohighlight">\(W\)</span> and of <span class="math notranslate nohighlight">\(C_{ox}\)</span>.</p></li>
+<li><p><strong>Minimize.</strong> Use the shortest channel length available (<span class="math notranslate nohighlight">\(\tau\propto L^2\)</span>) and the largest overdrive <span class="math notranslate nohighlight">\(V_{GS}-V_{TH}\)</span> (drive the gate as high as possible); higher carrier mobility also helps (an NMOS rather than a PMOS). Changing <span class="math notranslate nohighlight">\(W\)</span> does not help: it lowers <span class="math notranslate nohighlight">\(R_{on}\)</span> and raises <span class="math notranslate nohighlight">\(C_{GS}\)</span> by the same factor.</p></li>
+</ol>
+<p><strong>Result.</strong> <span class="math notranslate nohighlight">\(\tau=\dfrac{L^2}{\mu_n(V_{GS}-V_{TH})}\)</span>; minimize with small <span class="math notranslate nohighlight">\(L\)</span> and large <span class="math notranslate nohighlight">\(V_{GS}-V_{TH}\)</span></p>
+<p>Checked by computation; the book gives no answer.</p>
+<p><strong>Razavi, Problem 9.38</strong> (BJT)</p>
+<p>An op amp has its non-inverting input grounded; a resistor <span class="math notranslate nohighlight">\(R_1\)</span> runs from <span class="math notranslate nohighlight">\(V_{REF}\)</span> to the inverting input; npn <span class="math notranslate nohighlight">\(Q_1\)</span> has its base grounded, its collector at the inverting input and its emitter at the op-amp output <span class="math notranslate nohighlight">\(V_1\)</span> (a logarithmic amplifier). <span class="math notranslate nohighlight">\(V_1\)</span> drives the base of npn <span class="math notranslate nohighlight">\(Q_2\)</span>, whose emitter sits at the negative terminal of a battery <span class="math notranslate nohighlight">\(V_B\)</span> (positive terminal grounded) and whose collector draws <span class="math notranslate nohighlight">\(I_X\)</span>. Explain what the circuit does.</p>
+<p>Given: <span class="math notranslate nohighlight">\(I_{REF}=V_{REF}/R_1\)</span>, <span class="math notranslate nohighlight">\(Q_1\)</span>, <span class="math notranslate nohighlight">\(Q_2\)</span> with saturation currents <span class="math notranslate nohighlight">\(I_{S1}\)</span>, <span class="math notranslate nohighlight">\(I_{S2}\)</span>, battery <span class="math notranslate nohighlight">\(V_B\)</span></p>
+<ol class="arabic simple">
+<li><p><strong>Log amplifier.</strong> The inverting input is a virtual ground, so <span class="math notranslate nohighlight">\(I_{REF}=V_{REF}/R_1\)</span> flows into the collector of <span class="math notranslate nohighlight">\(Q_1\)</span> (op-amp input current zero). With base at 0 and emitter at <span class="math notranslate nohighlight">\(V_1\)</span>: <span class="math notranslate nohighlight">\(V_{BE1}=-V_1=V_T\ln\dfrac{I_{REF}}{I_{S1}}\)</span>, so <span class="math notranslate nohighlight">\(V_1=-V_T\ln\dfrac{I_{REF}}{I_{S1}}\)</span>.</p></li>
+<li><p><strong>Base-emitter voltage of <span class="math notranslate nohighlight">\(Q_2\)</span>.</strong> <span class="math notranslate nohighlight">\(V_{BE2}=V_1-(-V_B)=V_B-V_T\ln\dfrac{I_{REF}}{I_{S1}}\)</span></p></li>
+<li><p><strong>Output current.</strong> <span class="math notranslate nohighlight">\(I_X=I_{S2}\exp\dfrac{V_{BE2}}{V_T}=\dfrac{I_{S1}I_{S2}}{I_{REF}}\exp\dfrac{V_B}{V_T}\)</span></p></li>
+<li><p><strong>What happens.</strong> This is not a current copy. <span class="math notranslate nohighlight">\(I_X\)</span> is inversely proportional to <span class="math notranslate nohighlight">\(I_{REF}\)</span> and depends exponentially on the battery voltage and on <span class="math notranslate nohighlight">\(I_S^2\)</span> (hence strongly on temperature). Without the battery <span class="math notranslate nohighlight">\(V_{BE2}=V_1&lt;0\)</span> and <span class="math notranslate nohighlight">\(Q_2\)</span> is off. The emitter of <span class="math notranslate nohighlight">\(Q_2\)</span> would have to be at ground (and its base at <span class="math notranslate nohighlight">\(-V_{BE1}\)</span> referred to ground, as in Problem 9.39) for <span class="math notranslate nohighlight">\(V_{BE2}=V_{BE1}\)</span>.</p></li>
+<li><p><strong>Numerical check.</strong> With <span class="math notranslate nohighlight">\(I_S=6\times10^{-17}\,\mathrm{A}\)</span>, <span class="math notranslate nohighlight">\(I_{REF}=0.1\,\mathrm{mA}\)</span>, <span class="math notranslate nohighlight">\(V_B=1.4\,\mathrm{V}\)</span>: <span class="math notranslate nohighlight">\(V_1=-0.732\,\mathrm{V}\)</span>, <span class="math notranslate nohighlight">\(V_{BE2}=0.668\,\mathrm{V}\)</span>, <span class="math notranslate nohighlight">\(I_X=8.74\,\mu\mathrm{A}\)</span>; doubling <span class="math notranslate nohighlight">\(I_{REF}\)</span> halves <span class="math notranslate nohighlight">\(I_X\)</span>.</p></li>
+</ol>
+<p><strong>Result.</strong> <span class="math notranslate nohighlight">\(I_X=\dfrac{I_{S1}I_{S2}}{I_{REF}}e^{V_B/V_T}\)</span>: inversely proportional to <span class="math notranslate nohighlight">\(I_{REF}\)</span>, set by the battery and temperature; not a mirror</p>
+<p>Checked by computation; the book gives no answer. Note: Read from the figure: the battery has its positive terminal at ground and its negative terminal at the emitter of <span class="math notranslate nohighlight">\(Q_2\)</span>. Numbers are illustrative only. If the battery polarity were the other way, <span class="math notranslate nohighlight">\(V_{BE2}\)</span> would be even more negative and <span class="math notranslate nohighlight">\(Q_2\)</span> simply off.</p>
+<p><strong>Razavi, Problem 10.4</strong> (no transistor)</p>
+<p>In Fig. 10.62, current source <span class="math notranslate nohighlight">\(I_1\)</span> flows from <span class="math notranslate nohighlight">\(V_{CC}\)</span> into node <span class="math notranslate nohighlight">\(X\)</span>, and <span class="math notranslate nohighlight">\(R_C\)</span> connects <span class="math notranslate nohighlight">\(X\)</span> to ground; likewise <span class="math notranslate nohighlight">\(I_2\)</span> flows from <span class="math notranslate nohighlight">\(V_{CC}\)</span> into <span class="math notranslate nohighlight">\(Y\)</span> and a second <span class="math notranslate nohighlight">\(R_C\)</span> connects <span class="math notranslate nohighlight">\(Y\)</span> to ground. With <span class="math notranslate nohighlight">\(I_1=I_0\cos\omega t+I_0\)</span> and <span class="math notranslate nohighlight">\(I_2=-I_0\cos\omega t+I_0\)</span>, sketch <span class="math notranslate nohighlight">\(V_X\)</span> and <span class="math notranslate nohighlight">\(V_Y\)</span> and give their peak-to-peak swings and common-mode level.</p>
+<p>Given: <span class="math notranslate nohighlight">\(I_1=I_0\cos\omega t+I_0\)</span>, <span class="math notranslate nohighlight">\(I_2=-I_0\cos\omega t+I_0\)</span>, equal <span class="math notranslate nohighlight">\(R_C\)</span></p>
+<ol class="arabic simple">
+<li><p><strong>Node X.</strong> All of <span class="math notranslate nohighlight">\(I_1\)</span> flows down through <span class="math notranslate nohighlight">\(R_C\)</span>: <span class="math notranslate nohighlight">\(V_X=R_CI_1=I_0R_C(1+\cos\omega t)\)</span>.</p></li>
+<li><p><strong>Node Y.</strong> <span class="math notranslate nohighlight">\(V_Y=R_CI_2=I_0R_C(1-\cos\omega t)\)</span>.</p></li>
+<li><p><strong>Waveforms.</strong> <span class="math notranslate nohighlight">\(V_X\)</span> is a cosine between <span class="math notranslate nohighlight">\(0\)</span> and <span class="math notranslate nohighlight">\(2I_0R_C\)</span> (maximum at <span class="math notranslate nohighlight">\(t=0\)</span>); <span class="math notranslate nohighlight">\(V_Y\)</span> is the same cosine inverted, between <span class="math notranslate nohighlight">\(2I_0R_C\)</span> and <span class="math notranslate nohighlight">\(0\)</span>.</p></li>
+<li><p><strong>Swings.</strong> Each node swings <span class="math notranslate nohighlight">\(2I_0R_C\)</span> peak to peak; <span class="math notranslate nohighlight">\(V_X-V_Y=2I_0R_C\cos\omega t\)</span> swings <span class="math notranslate nohighlight">\(4I_0R_C\)</span>.</p></li>
+<li><p><strong>CM level.</strong> <span class="math notranslate nohighlight">\((V_X+V_Y)/2=I_0R_C\)</span>, constant.</p></li>
+</ol>
+<p><strong>Result.</strong> <span class="math notranslate nohighlight">\(V_{X,Y}=I_0R_C(1\pm\cos\omega t)\)</span>; each <span class="math notranslate nohighlight">\(2I_0R_C\)</span> pp, CM level <span class="math notranslate nohighlight">\(I_0R_C\)</span>, differential swing <span class="math notranslate nohighlight">\(4I_0R_C\)</span></p>
+<p>Checked by computation; the book gives no answer.</p>
+<p><strong>Razavi, Problem 10.5</strong> (no transistor), the same as Razavi, Problem 10.4 with other values</p>
+<p>Fig. 10.63: resistor <span class="math notranslate nohighlight">\(R_1\)</span> from <span class="math notranslate nohighlight">\(V_{CC}\)</span> to node <span class="math notranslate nohighlight">\(P\)</span>; from <span class="math notranslate nohighlight">\(P\)</span> two resistors <span class="math notranslate nohighlight">\(R_C\)</span> go down to nodes <span class="math notranslate nohighlight">\(X\)</span> and <span class="math notranslate nohighlight">\(Y\)</span>; current source <span class="math notranslate nohighlight">\(I_1\)</span> sinks from <span class="math notranslate nohighlight">\(X\)</span> to ground and <span class="math notranslate nohighlight">\(I_2\)</span> from <span class="math notranslate nohighlight">\(Y\)</span> to ground. With <span class="math notranslate nohighlight">\(I_1=I_0\cos\omega t+I_0\)</span> and <span class="math notranslate nohighlight">\(I_2=-I_0\cos\omega t+I_0\)</span>, sketch <span class="math notranslate nohighlight">\(V_X\)</span>, <span class="math notranslate nohighlight">\(V_Y\)</span> and <span class="math notranslate nohighlight">\(V_P\)</span> versus time and give the swings and the CM level.</p>
+<p>Given: <span class="math notranslate nohighlight">\(I_1=I_0\cos\omega t+I_0\)</span>, <span class="math notranslate nohighlight">\(I_2=-I_0\cos\omega t+I_0\)</span>, <span class="math notranslate nohighlight">\(R_1\)</span>, equal <span class="math notranslate nohighlight">\(R_C\)</span></p>
+<ol class="arabic simple">
+<li><p><strong>Current in R1.</strong> KCL at <span class="math notranslate nohighlight">\(P\)</span>: <span class="math notranslate nohighlight">\(I_{R1}=I_1+I_2=2I_0\)</span>, constant.</p></li>
+<li><p><strong>Node P.</strong> <span class="math notranslate nohighlight">\(V_P=V_{CC}-2I_0R_1\)</span>: a constant (flat line).</p></li>
+<li><p><strong>Node X.</strong> <span class="math notranslate nohighlight">\(V_X=V_P-R_CI_1=V_{CC}-2I_0R_1-I_0R_C(1+\cos\omega t)\)</span>.</p></li>
+<li><p><strong>Node Y.</strong> <span class="math notranslate nohighlight">\(V_Y=V_{CC}-2I_0R_1-I_0R_C(1-\cos\omega t)\)</span>.</p></li>
+<li><p><strong>Swings and CM.</strong> Each swings <span class="math notranslate nohighlight">\(2I_0R_C\)</span> pp, in opposite phase; CM level <span class="math notranslate nohighlight">\(V_{CC}-2I_0R_1-I_0R_C\)</span>; <span class="math notranslate nohighlight">\(V_X-V_Y=-2I_0R_C\cos\omega t\)</span>.</p></li>
+</ol>
+<p><strong>Result.</strong> <span class="math notranslate nohighlight">\(V_P=V_{CC}-2I_0R_1\)</span> (constant); <span class="math notranslate nohighlight">\(V_{X,Y}=V_{CC}-2I_0R_1-I_0R_C(1\pm\cos\omega t)\)</span>; <span class="math notranslate nohighlight">\(2I_0R_C\)</span> pp each; CM <span class="math notranslate nohighlight">\(V_{CC}-2I_0R_1-I_0R_C\)</span></p>
+<p>Checked by computation; the book gives no answer.</p>
+<p><strong>Razavi, Problem 10.6</strong> (no transistor), the same as Razavi, Problem 10.4 with other values</p>
+<p>Fig. 10.64: <span class="math notranslate nohighlight">\(R_C\)</span> from <span class="math notranslate nohighlight">\(V_{CC}\)</span> to node <span class="math notranslate nohighlight">\(X\)</span> with current source <span class="math notranslate nohighlight">\(I_1\)</span> from <span class="math notranslate nohighlight">\(X\)</span> to ground; a second <span class="math notranslate nohighlight">\(R_C\)</span> from <span class="math notranslate nohighlight">\(V_{CC}\)</span> to <span class="math notranslate nohighlight">\(Y\)</span> with <span class="math notranslate nohighlight">\(I_2\)</span> from <span class="math notranslate nohighlight">\(Y\)</span> to ground. With <span class="math notranslate nohighlight">\(I_1=I_0\cos\omega t+I_0\)</span> and <span class="math notranslate nohighlight">\(I_2=-I_0\cos\omega t+I_0\)</span>, sketch <span class="math notranslate nohighlight">\(V_X\)</span>, <span class="math notranslate nohighlight">\(V_Y\)</span> and give their swings and CM level.</p>
+<p>Given: <span class="math notranslate nohighlight">\(I_1=I_0\cos\omega t+I_0\)</span>, <span class="math notranslate nohighlight">\(I_2=-I_0\cos\omega t+I_0\)</span>, equal <span class="math notranslate nohighlight">\(R_C\)</span></p>
+<ol class="arabic simple">
+<li><p><strong>Node X.</strong> <span class="math notranslate nohighlight">\(V_X=V_{CC}-R_CI_1=V_{CC}-I_0R_C(1+\cos\omega t)\)</span>.</p></li>
+<li><p><strong>Node Y.</strong> <span class="math notranslate nohighlight">\(V_Y=V_{CC}-R_CI_2=V_{CC}-I_0R_C(1-\cos\omega t)\)</span>.</p></li>
+<li><p><strong>Waveforms.</strong> <span class="math notranslate nohighlight">\(V_X\)</span> is an inverted cosine between <span class="math notranslate nohighlight">\(V_{CC}-2I_0R_C\)</span> and <span class="math notranslate nohighlight">\(V_{CC}\)</span>; <span class="math notranslate nohighlight">\(V_Y\)</span> is its mirror image.</p></li>
+<li><p><strong>Swings and CM.</strong> Each swings <span class="math notranslate nohighlight">\(2I_0R_C\)</span> pp; CM level <span class="math notranslate nohighlight">\(V_{CC}-I_0R_C\)</span>; differential swing <span class="math notranslate nohighlight">\(4I_0R_C\)</span>.</p></li>
+</ol>
+<p><strong>Result.</strong> <span class="math notranslate nohighlight">\(V_{X,Y}=V_{CC}-I_0R_C(1\pm\cos\omega t)\)</span>; <span class="math notranslate nohighlight">\(2I_0R_C\)</span> pp each; CM <span class="math notranslate nohighlight">\(V_{CC}-I_0R_C\)</span></p>
+<p>Checked by computation; the book gives no answer.</p>
+<p><strong>Razavi, Problem 10.7</strong> (no transistor), the same as Razavi, Problem 10.4 with other values</p>
+<p>Fig. 10.65: current source <span class="math notranslate nohighlight">\(I_1\)</span> from <span class="math notranslate nohighlight">\(V_{CC}\)</span> into <span class="math notranslate nohighlight">\(X\)</span> and <span class="math notranslate nohighlight">\(I_2\)</span> from <span class="math notranslate nohighlight">\(V_{CC}\)</span> into <span class="math notranslate nohighlight">\(Y\)</span>; a resistor <span class="math notranslate nohighlight">\(R_C\)</span> from <span class="math notranslate nohighlight">\(X\)</span> and another <span class="math notranslate nohighlight">\(R_C\)</span> from <span class="math notranslate nohighlight">\(Y\)</span> join at a node that is held by a battery <span class="math notranslate nohighlight">\(V_b\)</span> (positive terminal up) to ground. With <span class="math notranslate nohighlight">\(I_1=I_0\cos\omega t+I_0\)</span> and <span class="math notranslate nohighlight">\(I_2=-I_0\cos\omega t+I_0\)</span>, sketch <span class="math notranslate nohighlight">\(V_X\)</span>, <span class="math notranslate nohighlight">\(V_Y\)</span> and give their swings and CM level.</p>
+<p>Given: <span class="math notranslate nohighlight">\(I_1=I_0\cos\omega t+I_0\)</span>, <span class="math notranslate nohighlight">\(I_2=-I_0\cos\omega t+I_0\)</span>, equal <span class="math notranslate nohighlight">\(R_C\)</span>, battery <span class="math notranslate nohighlight">\(V_b\)</span></p>
+<ol class="arabic simple">
+<li><p><strong>Common node.</strong> The battery fixes the joined bottom of the two resistors at <span class="math notranslate nohighlight">\(V_b\)</span> whatever current it absorbs (<span class="math notranslate nohighlight">\(I_1+I_2=2I_0\)</span>).</p></li>
+<li><p><strong>Node X.</strong> <span class="math notranslate nohighlight">\(V_X=V_b+R_CI_1=V_b+I_0R_C(1+\cos\omega t)\)</span>.</p></li>
+<li><p><strong>Node Y.</strong> <span class="math notranslate nohighlight">\(V_Y=V_b+I_0R_C(1-\cos\omega t)\)</span>.</p></li>
+<li><p><strong>Swings and CM.</strong> Each swings <span class="math notranslate nohighlight">\(2I_0R_C\)</span> pp in opposite phase; CM level <span class="math notranslate nohighlight">\(V_b+I_0R_C\)</span>.</p></li>
+</ol>
+<p><strong>Result.</strong> <span class="math notranslate nohighlight">\(V_{X,Y}=V_b+I_0R_C(1\pm\cos\omega t)\)</span>; <span class="math notranslate nohighlight">\(2I_0R_C\)</span> pp each; CM <span class="math notranslate nohighlight">\(V_b+I_0R_C\)</span></p>
+<p>Checked by computation; the book gives no answer.</p>
+<p><strong>Razavi, Problem 10.8</strong> (no transistor), the same as Razavi, Problem 10.4 with other values</p>
+<p>Repeat Problem 10.4 (current sources <span class="math notranslate nohighlight">\(I_1\)</span>, <span class="math notranslate nohighlight">\(I_2\)</span> from <span class="math notranslate nohighlight">\(V_{CC}\)</span> into <span class="math notranslate nohighlight">\(X\)</span> and <span class="math notranslate nohighlight">\(Y\)</span>, each node loaded by <span class="math notranslate nohighlight">\(R_C\)</span> to ground) with <span class="math notranslate nohighlight">\(I_1=I_0\cos\omega t+I_0\)</span> but <span class="math notranslate nohighlight">\(I_2=-I_0\cos\omega t+0.8I_0\)</span>. Sketch <span class="math notranslate nohighlight">\(V_X\)</span>, <span class="math notranslate nohighlight">\(V_Y\)</span>, give swings and levels, and decide whether <span class="math notranslate nohighlight">\(V_X\)</span> and <span class="math notranslate nohighlight">\(V_Y\)</span> are truly differential signals.</p>
+<p>Given: <span class="math notranslate nohighlight">\(I_1=I_0\cos\omega t+I_0\)</span>, <span class="math notranslate nohighlight">\(I_2=-I_0\cos\omega t+0.8I_0\)</span>, equal <span class="math notranslate nohighlight">\(R_C\)</span></p>
+<ol class="arabic simple">
+<li><p><strong>Node X.</strong> <span class="math notranslate nohighlight">\(V_X=I_0R_C(1+\cos\omega t)\)</span>: swings <span class="math notranslate nohighlight">\(0\)</span> to <span class="math notranslate nohighlight">\(2I_0R_C\)</span>, average <span class="math notranslate nohighlight">\(I_0R_C\)</span>.</p></li>
+<li><p><strong>Node Y.</strong> <span class="math notranslate nohighlight">\(V_Y=I_0R_C(0.8-\cos\omega t)\)</span>: swings <span class="math notranslate nohighlight">\(-0.2I_0R_C\)</span> to <span class="math notranslate nohighlight">\(1.8I_0R_C\)</span>, average <span class="math notranslate nohighlight">\(0.8I_0R_C\)</span>.</p></li>
+<li><p><strong>Swings.</strong> Both swing <span class="math notranslate nohighlight">\(2I_0R_C\)</span> pp in opposite phase; <span class="math notranslate nohighlight">\(V_X-V_Y=2I_0R_C\cos\omega t+0.2I_0R_C\)</span>.</p></li>
+<li><p><strong>Definition.</strong> Differential signals must vary by equal and opposite amounts around the same average (CM) level.</p></li>
+<li><p><strong>Verdict.</strong> The varying parts are equal and opposite, but the average levels differ by <span class="math notranslate nohighlight">\(0.2I_0R_C\)</span>, so <span class="math notranslate nohighlight">\(V_X-V_Y\)</span> carries a dc offset of <span class="math notranslate nohighlight">\(0.2I_0R_C\)</span>: strictly, <span class="math notranslate nohighlight">\(X\)</span> and <span class="math notranslate nohighlight">\(Y\)</span> are not true differential signals.</p></li>
+</ol>
+<p><strong>Result.</strong> <span class="math notranslate nohighlight">\(V_X=I_0R_C(1+\cos\omega t)\)</span>, <span class="math notranslate nohighlight">\(V_Y=I_0R_C(0.8-\cos\omega t)\)</span>; both <span class="math notranslate nohighlight">\(2I_0R_C\)</span> pp; averages <span class="math notranslate nohighlight">\(I_0R_C\)</span> and <span class="math notranslate nohighlight">\(0.8I_0R_C\)</span>, so not truly differential</p>
+<p>Checked by computation; the book gives no answer. Note: V_Y goes slightly negative because the sources are ideal. One may also say the pair carries a differential signal plus a dc differential offset of 0.2 I0 RC; under the book definition (same average level) they are not truly differential.</p>
+<p><strong>Razavi, Problem 10.9</strong> (no transistor)</p>
+<p>Each circuit of Fig. 10.66 has <span class="math notranslate nohighlight">\(R_C\)</span> from <span class="math notranslate nohighlight">\(V_{CC}\)</span> to node <span class="math notranslate nohighlight">\(X\)</span> and another <span class="math notranslate nohighlight">\(R_C\)</span> from <span class="math notranslate nohighlight">\(V_{CC}\)</span> to node <span class="math notranslate nohighlight">\(Y\)</span>, a current source <span class="math notranslate nohighlight">\(I_1=I_0\cos\omega t+I_0\)</span> from <span class="math notranslate nohighlight">\(X\)</span> to ground and <span class="math notranslate nohighlight">\(I_2=-I_0\cos\omega t+I_0\)</span> from <span class="math notranslate nohighlight">\(Y\)</span> to ground (<span class="math notranslate nohighlight">\(I_0\)</span> constant), plus: (a) an extra constant source <span class="math notranslate nohighlight">\(I_T\)</span> from <span class="math notranslate nohighlight">\(Y\)</span> to ground; (b) a constant source <span class="math notranslate nohighlight">\(I_T\)</span> from <span class="math notranslate nohighlight">\(X\)</span> to <span class="math notranslate nohighlight">\(Y\)</span>; (c) a resistor <span class="math notranslate nohighlight">\(R_P\)</span> between <span class="math notranslate nohighlight">\(X\)</span> and <span class="math notranslate nohighlight">\(Y\)</span>; (d) a resistor <span class="math notranslate nohighlight">\(R_P\)</span> from <span class="math notranslate nohighlight">\(Y\)</span> to ground. Plot <span class="math notranslate nohighlight">\(V_X\)</span> and <span class="math notranslate nohighlight">\(V_Y\)</span> versus time.</p>
+<p>Given: <span class="math notranslate nohighlight">\(I_1=I_0\cos\omega t+I_0\)</span>, <span class="math notranslate nohighlight">\(I_2=-I_0\cos\omega t+I_0\)</span>, equal <span class="math notranslate nohighlight">\(R_C\)</span>, constant <span class="math notranslate nohighlight">\(I_T\)</span>, resistor <span class="math notranslate nohighlight">\(R_P\)</span></p>
+<ol class="arabic simple">
+<li><p><strong>(a) Node X.</strong> <span class="math notranslate nohighlight">\(V_X=V_{CC}-I_0R_C(1+\cos\omega t)\)</span>, as in Problem 10.6.</p></li>
+<li><p><strong>(a) Node Y.</strong> <span class="math notranslate nohighlight">\(R_C\)</span> now carries <span class="math notranslate nohighlight">\(I_2+I_T\)</span>: <span class="math notranslate nohighlight">\(V_Y=V_{CC}-I_TR_C-I_0R_C(1-\cos\omega t)\)</span>; same swing <span class="math notranslate nohighlight">\(2I_0R_C\)</span> pp, shifted down by <span class="math notranslate nohighlight">\(I_TR_C\)</span>.</p></li>
+<li><p><strong>(b) KCL at X and Y.</strong> <span class="math notranslate nohighlight">\(I_{RC,X}=I_1+I_T\)</span>, <span class="math notranslate nohighlight">\(I_{RC,Y}=I_2-I_T\)</span>.</p></li>
+<li><p><strong>(b) Waveforms.</strong> <span class="math notranslate nohighlight">\(V_X=V_{CC}-I_TR_C-I_0R_C(1+\cos\omega t)\)</span>, <span class="math notranslate nohighlight">\(V_Y=V_{CC}+I_TR_C-I_0R_C(1-\cos\omega t)\)</span>: swings unchanged, averages split by <span class="math notranslate nohighlight">\(2I_TR_C\)</span>, CM level still <span class="math notranslate nohighlight">\(V_{CC}-I_0R_C\)</span>.</p></li>
+<li><p><strong>(c) Sum of KCLs.</strong> <span class="math notranslate nohighlight">\(2V_{CC}-V_X-V_Y=R_C(I_1+I_2)=2I_0R_C\)</span>: CM level <span class="math notranslate nohighlight">\(V_{CC}-I_0R_C\)</span> unchanged (<span class="math notranslate nohighlight">\(R_P\)</span> carries no CM current).</p></li>
+<li><p><strong>(c) Difference.</strong> <span class="math notranslate nohighlight">\((V_X-V_Y)\left(\dfrac{1}{R_C}+\dfrac{2}{R_P}\right)=-(I_1-I_2)\)</span>, so <span class="math notranslate nohighlight">\(V_X-V_Y=-2I_0\cos\omega t\,\left(R_C\parallel\dfrac{R_P}{2}\right)\)</span>.</p></li>
+<li><p><strong>(c) Waveforms.</strong> <span class="math notranslate nohighlight">\(V_{X,Y}=V_{CC}-I_0R_C\mp I_0\left(R_C\parallel\dfrac{R_P}{2}\right)\cos\omega t\)</span>: smaller swing, same CM.</p></li>
+<li><p><strong>(d) Node Y.</strong> KCL: <span class="math notranslate nohighlight">\(\dfrac{V_{CC}-V_Y}{R_C}=I_2+\dfrac{V_Y}{R_P}\)</span>, so <span class="math notranslate nohighlight">\(V_Y=\dfrac{R_P}{R_C+R_P}\left[V_{CC}-I_0R_C(1-\cos\omega t)\right]\)</span>.</p></li>
+<li><p><strong>(d) Waveforms.</strong> <span class="math notranslate nohighlight">\(V_X\)</span> as in (a); <span class="math notranslate nohighlight">\(V_Y\)</span> has amplitude scaled by <span class="math notranslate nohighlight">\(R_P/(R_C+R_P)\)</span> and a lower average <span class="math notranslate nohighlight">\(\dfrac{R_P}{R_C+R_P}(V_{CC}-I_0R_C)\)</span>, so <span class="math notranslate nohighlight">\(X\)</span> and <span class="math notranslate nohighlight">\(Y\)</span> are no longer symmetric.</p></li>
+<li><p><strong>Numeric check.</strong> With <span class="math notranslate nohighlight">\(V_{CC}=2.5\,\mathrm{V}\)</span>, <span class="math notranslate nohighlight">\(I_0=0.5\,\mathrm{mA}\)</span>, <span class="math notranslate nohighlight">\(R_C=1\,\mathrm{k}\Omega\)</span>, <span class="math notranslate nohighlight">\(I_T=0.2\,\mathrm{mA}\)</span>, <span class="math notranslate nohighlight">\(R_P=2\,\mathrm{k}\Omega\)</span>, solving the node equations at several instants reproduces every formula above.</p></li>
+</ol>
+<p><strong>Result.</strong> (a) <span class="math notranslate nohighlight">\(V_Y\)</span> shifted down by <span class="math notranslate nohighlight">\(I_TR_C\)</span>; (b) <span class="math notranslate nohighlight">\(V_X\)</span> down, <span class="math notranslate nohighlight">\(V_Y\)</span> up by <span class="math notranslate nohighlight">\(I_TR_C\)</span>; (c) swing reduced to <span class="math notranslate nohighlight">\(I_0(R_C\parallel R_P/2)\)</span> amplitude, CM <span class="math notranslate nohighlight">\(V_{CC}-I_0R_C\)</span>; (d) <span class="math notranslate nohighlight">\(V_Y=\frac{R_P}{R_C+R_P}[V_{CC}-I_0R_C(1-\cos\omega t)]\)</span></p>
+<p>Checked by computation; the book gives no answer. Note: Direction of I_T in (b) read from the figure: from X to Y. Check values are illustrative.</p>
+<p><strong>Razavi, Problem 10.10</strong> (no transistor)</p>
+<p>Fig. 10.67: source <span class="math notranslate nohighlight">\(V_1\)</span> (to ground) drives node <span class="math notranslate nohighlight">\(P\)</span> through a resistor <span class="math notranslate nohighlight">\(R_C\)</span>, and source <span class="math notranslate nohighlight">\(V_2\)</span> (to ground) drives <span class="math notranslate nohighlight">\(P\)</span> through another <span class="math notranslate nohighlight">\(R_C\)</span>. In (a) nothing else is connected to <span class="math notranslate nohighlight">\(P\)</span>; in (b) a resistor <span class="math notranslate nohighlight">\(R_1\)</span> goes from <span class="math notranslate nohighlight">\(P\)</span> to ground; in (c) a constant current source (labelled <span class="math notranslate nohighlight">\(I_1\)</span>, called <span class="math notranslate nohighlight">\(I_T\)</span> in the text) sinks current from <span class="math notranslate nohighlight">\(P\)</span> to ground. With <span class="math notranslate nohighlight">\(V_1=V_0\cos\omega t+V_0\)</span> and <span class="math notranslate nohighlight">\(V_2=-V_0\cos\omega t+V_0\)</span>, plot <span class="math notranslate nohighlight">\(V_P\)</span> versus time.</p>
+<p>Given: <span class="math notranslate nohighlight">\(V_1=V_0\cos\omega t+V_0\)</span>, <span class="math notranslate nohighlight">\(V_2=-V_0\cos\omega t+V_0\)</span>, equal <span class="math notranslate nohighlight">\(R_C\)</span>, <span class="math notranslate nohighlight">\(R_1\)</span>, constant <span class="math notranslate nohighlight">\(I_T\)</span></p>
+<ol class="arabic simple">
+<li><p><strong>(a) Divider.</strong> No current leaves <span class="math notranslate nohighlight">\(P\)</span>, so the same current flows from <span class="math notranslate nohighlight">\(V_1\)</span> to <span class="math notranslate nohighlight">\(V_2\)</span> and <span class="math notranslate nohighlight">\(V_P=\dfrac{V_1+V_2}{2}=V_0\)</span>: constant.</p></li>
+<li><p><strong>(b) KCL at P.</strong> <span class="math notranslate nohighlight">\(\dfrac{V_1-V_P}{R_C}+\dfrac{V_2-V_P}{R_C}=\dfrac{V_P}{R_1}\)</span></p></li>
+<li><p><strong>(b) Result.</strong> <span class="math notranslate nohighlight">\(V_P=\dfrac{(V_1+V_2)R_1}{2R_1+R_C}=\dfrac{2R_1}{2R_1+R_C}V_0\)</span>: constant.</p></li>
+<li><p><strong>(c) KCL at P.</strong> <span class="math notranslate nohighlight">\(\dfrac{V_1-V_P}{R_C}+\dfrac{V_2-V_P}{R_C}=I_T\)</span>, so <span class="math notranslate nohighlight">\(V_P=V_0-\dfrac{I_TR_C}{2}\)</span>: constant.</p></li>
+<li><p><strong>Interpretation.</strong> In every case <span class="math notranslate nohighlight">\(V_P\)</span> depends only on <span class="math notranslate nohighlight">\(V_1+V_2=2V_0\)</span>, which does not vary: the differential components cancel at <span class="math notranslate nohighlight">\(P\)</span>, the basis of the virtual ground of a differential pair.</p></li>
+</ol>
+<p><strong>Result.</strong> (a) <span class="math notranslate nohighlight">\(V_P=V_0\)</span>; (b) <span class="math notranslate nohighlight">\(V_P=2R_1V_0/(2R_1+R_C)\)</span>; (c) <span class="math notranslate nohighlight">\(V_P=V_0-I_TR_C/2\)</span>; all constant in time</p>
+<p>Checked by computation; the book gives no answer.</p>
+<p><strong>Razavi, Problem 10.41</strong> (MOSFET)</p>
+<p>A single NMOS <span class="math notranslate nohighlight">\(M_1\)</span> has its drain to <span class="math notranslate nohighlight">\(V_{DD}\)</span> through <span class="math notranslate nohighlight">\(R_D\)</span> (output <span class="math notranslate nohighlight">\(V_{out}\)</span> at the drain), its gate driven by <span class="math notranslate nohighlight">\(V_{in2}\)</span> and its source driven directly by <span class="math notranslate nohighlight">\(V_{in1}\)</span> (Fig. 10.75). Its builder calls it a differential amplifier because its current depends on the difference of the two inputs. Explain which properties of differential signals and differential amplifiers it lacks.</p>
+<p>Given: <span class="math notranslate nohighlight">\(I_D=\frac12\mu_nC_{ox}\frac WL(V_{in2}-V_{in1}-V_{TH})^2\)</span> in saturation</p>
+<ol class="arabic simple">
+<li><p><strong>What is true.</strong> Ignoring body effect, <span class="math notranslate nohighlight">\(I_D\)</span> depends only on <span class="math notranslate nohighlight">\(V_{GS}=V_{in2}-V_{in1}\)</span>, so the current does respond to the difference of the inputs</p></li>
+<li><p><strong>Single-ended output.</strong> There is only one output referred to ground; a differential amplifier gives two outputs moving in opposite directions about a fixed common-mode level, so supply noise on <span class="math notranslate nohighlight">\(V_{DD}\)</span> appears fully at <span class="math notranslate nohighlight">\(V_{out}\)</span> instead of cancelling</p></li>
+<li><p><strong>Unequal inputs.</strong> The gate input draws no current, but the source input must sink the whole <span class="math notranslate nohighlight">\(I_D\)</span> and presents only about <span class="math notranslate nohighlight">\(1/(g_m+g_{mb})\)</span>; the gains differ too: <span class="math notranslate nohighlight">\(-g_mR_D\)</span> from <span class="math notranslate nohighlight">\(V_{in2}\)</span> but <span class="math notranslate nohighlight">\(+(g_m+g_{mb})R_D\)</span> from <span class="math notranslate nohighlight">\(V_{in1}\)</span>, e.g. <span class="math notranslate nohighlight">\(-5\)</span> and <span class="math notranslate nohighlight">\(+6\)</span> for <span class="math notranslate nohighlight">\(g_m=1\,\mathrm{mS}\)</span>, <span class="math notranslate nohighlight">\(g_{mb}=0.2\,\mathrm{mS}\)</span>, <span class="math notranslate nohighlight">\(R_D=5\,\mathrm{k}\Omega\)</span></p></li>
+<li><p><strong>Common-mode sensitivity.</strong> Raising both inputs together changes <span class="math notranslate nohighlight">\(V_{SB}\)</span> and hence <span class="math notranslate nohighlight">\(V_{TH}\)</span> (body effect), so <span class="math notranslate nohighlight">\(I_D\)</span> and <span class="math notranslate nohighlight">\(V_{out}\)</span> move with a common-mode change, and the bias current itself is not fixed by a tail source but by the input levels</p></li>
+<li><p><strong>Linearity and range.</strong> The output follows the square law of <span class="math notranslate nohighlight">\(V_{in2}-V_{in1}\)</span>, not a symmetric odd function of it; for <span class="math notranslate nohighlight">\(V_{in2}-V_{in1}&lt;V_{TH}\)</span> the device is off, and negative differences produce no response</p></li>
+</ol>
+<p><strong>Result.</strong> It is not a true differential amplifier: single-ended output (no rejection of supply or common-mode noise), unequal input impedances and gains for the two inputs, bias current set by the inputs, common-mode sensitivity through body effect, and a one-sided square-law response</p>
+<p>Checked by computation; the book gives no answer. Note: Qualitative item; the numeric values are mine and only show the asymmetry. The book writes the proportionality loosely; the current actually goes with <span class="math notranslate nohighlight">\((V_{in2}-V_{in1}-V_{TH})^2\)</span>.</p>
+<p><strong>Sedra/Smith, Exercise 4.33</strong> (BJT)</p>
+<p>The collector-base junction of a transistor is reverse biased: the collector is at <span class="math notranslate nohighlight">\(+10\,\mathrm{V}\)</span>, the emitter is open and the base node is pulled negative until the junction breaks down. The collector-base breakdown voltage is <span class="math notranslate nohighlight">\(BV_{CBO}=70\,\mathrm{V}\)</span>. Find the voltage <span class="math notranslate nohighlight">\(V_O\)</span> at the base node.</p>
+<p>Given: <span class="math notranslate nohighlight">\(V_C=+10\,\mathrm{V}\)</span>, <span class="math notranslate nohighlight">\(BV_{CBO}=70\,\mathrm{V}\)</span></p>
+<ol class="arabic simple">
+<li><p><strong>Breakdown condition.</strong> At breakdown <span class="math notranslate nohighlight">\(V_C-V_O=BV_{CBO}\)</span>.</p></li>
+<li><p><strong>Solve.</strong> <span class="math notranslate nohighlight">\(V_O=V_C-BV_{CBO}=10-70=-60\,\mathrm{V}\)</span></p></li>
+</ol>
+<p><strong>Result.</strong> <span class="math notranslate nohighlight">\(V_O=-60\,\mathrm{V}\)</span></p>
+<p>Checked: agrees with the answer in the solutions manual. <em>Needs review.</em> Note: The manual gives only VO = +10 - BVCBO = 10 - 70 = -60 V; the circuit is not shown. Statement reconstructed from the formula (collector at +10 V, base node taken to breakdown with emitter open); the real figure could differ (e.g. which terminal is at +10 V).</p>
+<p><strong>Sedra/Smith, Exercise 5.16</strong> (MOSFET)</p>
+<p>An NMOS transistor has zero-bias threshold <span class="math notranslate nohighlight">\(V_{t0}=0.8\,\mathrm{V}\)</span>, body-effect parameter <span class="math notranslate nohighlight">\(\gamma=0.4\,\mathrm{V^{1/2}}\)</span> and <span class="math notranslate nohighlight">\(2\phi_f=0.7\,\mathrm{V}\)</span>. Find its threshold <span class="math notranslate nohighlight">\(V_t\)</span> when the source-to-body voltage is <span class="math notranslate nohighlight">\(V_{SB}=3\,\mathrm{V}\)</span>.</p>
+<p>Given: <span class="math notranslate nohighlight">\(V_{t0}=0.8\,\mathrm{V}\)</span>, <span class="math notranslate nohighlight">\(\gamma=0.4\,\mathrm{V^{1/2}}\)</span>, <span class="math notranslate nohighlight">\(2\phi_f=0.7\,\mathrm{V}\)</span>, <span class="math notranslate nohighlight">\(V_{SB}=3\,\mathrm{V}\)</span></p>
+<ol class="arabic simple">
+<li><p><strong>Body-effect formula.</strong> <span class="math notranslate nohighlight">\(V_t=V_{t0}+\gamma\left(\sqrt{2\phi_f+V_{SB}}-\sqrt{2\phi_f}\right)\)</span></p></li>
+<li><p><strong>Square roots.</strong> <span class="math notranslate nohighlight">\(\sqrt{0.7+3}=1.924\)</span>, <span class="math notranslate nohighlight">\(\sqrt{0.7}=0.837\)</span></p></li>
+<li><p><strong>Threshold.</strong> <span class="math notranslate nohighlight">\(V_t=0.8+0.4(1.924-0.837)=1.23\,\mathrm{V}\)</span></p></li>
+</ol>
+<p><strong>Result.</strong> <span class="math notranslate nohighlight">\(V_t=1.23\,\mathrm{V}\)</span></p>
+<p>Checked: agrees with the answer in the solutions manual.</p>
+<p><strong>Sedra/Smith, Problem 4.41</strong> (BJT)</p>
+<p>The reverse leakage current <span class="math notranslate nohighlight">\(I_{CBO}\)</span> of a transistor is <span class="math notranslate nohighlight">\(10\,\mathrm{nA}\)</span> at <span class="math notranslate nohighlight">\(25^\circ\mathrm{C}\)</span> and doubles for every <span class="math notranslate nohighlight">\(10^\circ\mathrm{C}\)</span> rise of temperature. Find <span class="math notranslate nohighlight">\(I_{CBO}\)</span> at <span class="math notranslate nohighlight">\(125^\circ\mathrm{C}\)</span>.</p>
+<p>Given: <span class="math notranslate nohighlight">\(I_{CBO}(25^\circ\mathrm{C})=10\,\mathrm{nA}\)</span>, doubling per <span class="math notranslate nohighlight">\(10^\circ\mathrm{C}\)</span></p>
+<ol class="arabic simple">
+<li><p><strong>Temperature rise.</strong> <span class="math notranslate nohighlight">\(\Delta T=125-25=100^\circ\mathrm{C}\)</span>.</p></li>
+<li><p><strong>Number of doublings.</strong> <span class="math notranslate nohighlight">\(100/10=10\)</span> doublings, a factor <span class="math notranslate nohighlight">\(2^{10}=1024\)</span>.</p></li>
+<li><p><strong>Leakage at 125 C.</strong> <span class="math notranslate nohighlight">\(I_{CBO}=10\,\mathrm{nA}\times1024=10.24\,\mu\mathrm{A}\)</span>.</p></li>
+</ol>
+<p><strong>Result.</strong> <span class="math notranslate nohighlight">\(I_{CBO}(125^\circ\mathrm{C})=10.24\,\mu\mathrm{A}\)</span></p>
+<p>Checked: agrees with the answer in the solutions manual.</p>
+<p><strong>Sedra/Smith, Problem 4.42</strong> (BJT)</p>
+<p>An npn transistor is modelled with a leakage current <span class="math notranslate nohighlight">\(I_{CBO}\)</span> from collector to base, so that <span class="math notranslate nohighlight">\(i_B=\dfrac{I_S}{\beta}e^{v_{BE}/V_T}-I_{CBO}\)</span>, <span class="math notranslate nohighlight">\(i_C=I_Se^{v_{BE}/V_T}+I_{CBO}\)</span> and <span class="math notranslate nohighlight">\(i_E=I_S\left(1+\dfrac1\beta\right)e^{v_{BE}/V_T}\)</span>. Show that with the base open the collector and emitter currents are <span class="math notranslate nohighlight">\(i_C=i_E=(\beta+1)I_{CBO}\)</span>.</p>
+<p>Given: <span class="math notranslate nohighlight">\(i_B=\dfrac{I_S}{\beta}e^{v_{BE}/V_T}-I_{CBO}\)</span>, <span class="math notranslate nohighlight">\(i_C=I_Se^{v_{BE}/V_T}+I_{CBO}\)</span>, <span class="math notranslate nohighlight">\(i_E=I_S\left(1+\dfrac1\beta\right)e^{v_{BE}/V_T}\)</span>, <span class="math notranslate nohighlight">\(i_B=0\)</span></p>
+<ol class="arabic simple">
+<li><p><strong>Model equations.</strong> (1) <span class="math notranslate nohighlight">\(i_B=\dfrac{I_S}{\beta}e^{v_{BE}/V_T}-I_{CBO}\)</span>; (2) <span class="math notranslate nohighlight">\(i_C=I_Se^{v_{BE}/V_T}+I_{CBO}\)</span>; (3) <span class="math notranslate nohighlight">\(i_E=I_S\left(1+\dfrac1\beta\right)e^{v_{BE}/V_T}\)</span>.</p></li>
+<li><p><strong>Open base.</strong> Setting <span class="math notranslate nohighlight">\(i_B=0\)</span> in (1): <span class="math notranslate nohighlight">\(\dfrac{I_S}{\beta}e^{v_{BE}/V_T}=I_{CBO}\)</span>.</p></li>
+<li><p><strong>The exponential term.</strong> Multiply by <span class="math notranslate nohighlight">\(\beta\)</span>: <span class="math notranslate nohighlight">\(I_Se^{v_{BE}/V_T}=\beta I_{CBO}\)</span> (4).</p></li>
+<li><p><strong>Collector current.</strong> Insert (4) in (2): <span class="math notranslate nohighlight">\(i_C=\beta I_{CBO}+I_{CBO}=(\beta+1)I_{CBO}\)</span>.</p></li>
+<li><p><strong>Emitter current.</strong> Insert (4) in (3): <span class="math notranslate nohighlight">\(i_E=\beta I_{CBO}\left(1+\dfrac1\beta\right)=(\beta+1)I_{CBO}\)</span>.</p></li>
+<li><p><strong>Consistency.</strong> <span class="math notranslate nohighlight">\(i_E=i_C+i_B\)</span> with <span class="math notranslate nohighlight">\(i_B=0\)</span> gives <span class="math notranslate nohighlight">\(i_E=i_C\)</span>, as found.</p></li>
+</ol>
+<p><strong>Result.</strong> <span class="math notranslate nohighlight">\(i_C=i_E=(\beta+1)I_{CBO}\)</span> with the base open</p>
+<p>Checked by computation; the solutions manual gives no answer.</p>
+<p><strong>Sedra/Smith, Problem 5.6</strong> (MOSFET)</p>
+<p>A gate capacitor of <span class="math notranslate nohighlight">\(10\,\mathrm{pF}\)</span> is to be made from the gate oxide of a process whose oxide thickness may lie between <span class="math notranslate nohighlight">\(2\,\mathrm{nm}\)</span> and <span class="math notranslate nohighlight">\(10\,\mathrm{nm}\)</span> (<span class="math notranslate nohighlight">\(\epsilon_{ox}=34.5\,\mathrm{pF/m}\)</span>). Find the range of <span class="math notranslate nohighlight">\(C_{ox}\)</span>, the plate area needed and the side of a square plate.</p>
+<p>Given: <span class="math notranslate nohighlight">\(C=10\,\mathrm{pF}\)</span>, <span class="math notranslate nohighlight">\(t_{ox}=2\ldots10\,\mathrm{nm}\)</span>, <span class="math notranslate nohighlight">\(\epsilon_{ox}=34.5\,\mathrm{pF/m}\)</span></p>
+<ol class="arabic simple">
+<li><p><strong>Oxide capacitance per area.</strong> <span class="math notranslate nohighlight">\(C_{ox}=\epsilon_{ox}/t_{ox}\)</span>: <span class="math notranslate nohighlight">\(17.25\,\mathrm{fF/\mu m^2}\)</span> at <span class="math notranslate nohighlight">\(2\,\mathrm{nm}\)</span> down to <span class="math notranslate nohighlight">\(3.45\,\mathrm{fF/\mu m^2}\)</span> at <span class="math notranslate nohighlight">\(10\,\mathrm{nm}\)</span></p></li>
+<li><p><strong>Area.</strong> <span class="math notranslate nohighlight">\(A=C/C_{ox}\)</span>: <span class="math notranslate nohighlight">\(\dfrac{10\,\mathrm{pF}}{17.25\,\mathrm{fF/\mu m^2}}=580\,\mu\mathrm{m^2}\)</span> and <span class="math notranslate nohighlight">\(\dfrac{10\,\mathrm{pF}}{3.45\,\mathrm{fF/\mu m^2}}=2900\,\mu\mathrm{m^2}\)</span></p></li>
+<li><p><strong>Side of a square.</strong> <span class="math notranslate nohighlight">\(d=\sqrt A\)</span>: <span class="math notranslate nohighlight">\(24.1\,\mu\mathrm{m}\)</span> to <span class="math notranslate nohighlight">\(53.8\,\mu\mathrm{m}\)</span></p></li>
+</ol>
+<p><strong>Result.</strong> <span class="math notranslate nohighlight">\(C_{ox}=3.45\)</span> to <span class="math notranslate nohighlight">\(17.25\,\mathrm{fF/\mu m^2}\)</span>; area <span class="math notranslate nohighlight">\(580\)</span> to <span class="math notranslate nohighlight">\(2900\,\mu\mathrm{m^2}\)</span>; side <span class="math notranslate nohighlight">\(24\)</span> to <span class="math notranslate nohighlight">\(54\,\mu\mathrm{m}\)</span></p>
+<p>Checked: agrees with the answer in the solutions manual.</p>
+<p><strong>Sedra/Smith, Problem 5.7</strong> (MOSFET)</p>
+<p>An NMOS transistor with <span class="math notranslate nohighlight">\(C_{ox}=25\,\mathrm{fF/\mu m^2}\)</span>, <span class="math notranslate nohighlight">\(L=65\,\mathrm{nm}\)</span> and <span class="math notranslate nohighlight">\(W=0.65\,\mu\mathrm{m}\)</span> is biased with <span class="math notranslate nohighlight">\(v_{OV}=0.15\,\mathrm{V}\)</span> and <span class="math notranslate nohighlight">\(v_{DS}=0\)</span>. Find the charge stored in the channel.</p>
+<p>Given: <span class="math notranslate nohighlight">\(C_{ox}=25\,\mathrm{fF/\mu m^2}\)</span>, <span class="math notranslate nohighlight">\(W=0.65\,\mu\mathrm{m}\)</span>, <span class="math notranslate nohighlight">\(L=0.065\,\mu\mathrm{m}\)</span>, <span class="math notranslate nohighlight">\(v_{OV}=0.15\,\mathrm{V}\)</span>, <span class="math notranslate nohighlight">\(v_{DS}=0\)</span></p>
+<ol class="arabic simple">
+<li><p><strong>Gate capacitance.</strong> <span class="math notranslate nohighlight">\(C_{ox}WL=25\times0.65\times0.065=1.056\,\mathrm{fF}\)</span></p></li>
+<li><p><strong>Channel charge.</strong> With <span class="math notranslate nohighlight">\(v_{DS}=0\)</span> the channel is uniform, so <span class="math notranslate nohighlight">\(Q=C_{ox}WL\,v_{OV}=1.056\,\mathrm{fF}\times0.15\,\mathrm{V}=0.158\,\mathrm{fC}\approx0.16\,\mathrm{fC}\)</span></p></li>
+</ol>
+<p><strong>Result.</strong> <span class="math notranslate nohighlight">\(Q\approx0.16\,\mathrm{fC}\)</span></p>
+<p>Checked: agrees with the answer in the solutions manual.</p>
+<p><strong>Sedra/Smith, Problem 5.61</strong> (MOSFET)</p>
+<p>Complete the table of four CMOS technology generations. Given: minimum length <span class="math notranslate nohighlight">\(L=0.5,\,0.25,\,0.18,\,0.13\,\mu\mathrm{m}\)</span>; oxide thickness <span class="math notranslate nohighlight">\(t_{ox}=10,\,5,\,3.6,\,2.6\,\mathrm{nm}\)</span>; <span class="math notranslate nohighlight">\(V_{DD}=5,\,2.5,\,1.8,\,1.3\,\mathrm{V}\)</span>; <span class="math notranslate nohighlight">\(V_t=0.7,\,0.5,\,0.4,\,0.4\,\mathrm{V}\)</span>; <span class="math notranslate nohighlight">\(\epsilon_{ox}=34.5\,\mathrm{pF/m}\)</span>; <span class="math notranslate nohighlight">\(\mu_n=500\,\mathrm{cm^2/V\cdot s}\)</span>; <span class="math notranslate nohighlight">\(W/L=10\)</span> with <span class="math notranslate nohighlight">\(L=L_{min}\)</span>. Find <span class="math notranslate nohighlight">\(C_{ox}\)</span>, <span class="math notranslate nohighlight">\(k_n^\prime\)</span>, <span class="math notranslate nohighlight">\(k_n=k_n^\prime W/L\)</span>, device area <span class="math notranslate nohighlight">\(A=WL\)</span>, saturation current <span class="math notranslate nohighlight">\(I_D\)</span> at <span class="math notranslate nohighlight">\(V_{GS}=V_{DS}=V_{DD}\)</span>, power <span class="math notranslate nohighlight">\(P=V_{DD}I_D\)</span>, power density <span class="math notranslate nohighlight">\(P/A\)</span> and the relative number of devices on a chip of fixed area.</p>
+<p>Given: <span class="math notranslate nohighlight">\(\epsilon_{ox}=34.5\,\mathrm{pF/m}\)</span>, <span class="math notranslate nohighlight">\(\mu_n=500\,\mathrm{cm^2/V\,s}\)</span>, <span class="math notranslate nohighlight">\(W/L=10\)</span>, <span class="math notranslate nohighlight">\(L,\,t_{ox},\,V_{DD},\,V_t\)</span> as listed</p>
+<ol class="arabic simple">
+<li><p><strong>Oxide capacitance.</strong> <span class="math notranslate nohighlight">\(C_{ox}=\epsilon_{ox}/t_{ox}=34.5/t_{ox}(\mathrm{nm})\ \mathrm{fF/\mu m^2}\)</span>: <span class="math notranslate nohighlight">\(3.45,\,6.90,\,9.58,\,13.3\)</span>.</p></li>
+<li><p><strong>Process transconductance.</strong> <span class="math notranslate nohighlight">\(k_n^\prime=\mu_nC_{ox}=500\times C_{ox}\times10^{-1}\ \mu\mathrm{A/V^2}\)</span>: <span class="math notranslate nohighlight">\(173,\,345,\,479,\,665\)</span> (using <span class="math notranslate nohighlight">\(\mu_n=500\)</span> and the rounded <span class="math notranslate nohighlight">\(C_{ox}\)</span> of the table: <span class="math notranslate nohighlight">\(172.5\to173\)</span>).</p></li>
+<li><p><strong>Device transconductance.</strong> <span class="math notranslate nohighlight">\(k_n=k_n^\prime(W/L)=10k_n^\prime\)</span>: <span class="math notranslate nohighlight">\(1.73,\,3.45,\,4.79,\,6.65\ \mathrm{mA/V^2}\)</span>.</p></li>
+<li><p><strong>Area.</strong> <span class="math notranslate nohighlight">\(A=W\cdot L=10L^2\)</span>: <span class="math notranslate nohighlight">\(2.50,\,0.625,\,0.324,\,0.169\,\mu\mathrm{m^2}\)</span>.</p></li>
+<li><p><strong>Drain current.</strong> <span class="math notranslate nohighlight">\(I_D=\tfrac12k_n(V_{DD}-V_t)^2\)</span>: <span class="math notranslate nohighlight">\(16.0,\,6.90,\,4.69,\,2.69\,\mathrm{mA}\)</span>.</p></li>
+<li><p><strong>Power.</strong> <span class="math notranslate nohighlight">\(P=V_{DD}I_D\)</span>: <span class="math notranslate nohighlight">\(80,\,17.3,\,8.44,\,3.50\,\mathrm{mW}\)</span>.</p></li>
+<li><p><strong>Power density.</strong> <span class="math notranslate nohighlight">\(P/A\)</span>: <span class="math notranslate nohighlight">\(32,\,27.7,\,26.0,\,20.7\,\mathrm{mW/\mu m^2}\)</span>.</p></li>
+<li><p><strong>Devices per chip.</strong> For equal chip area the count scales as <span class="math notranslate nohighlight">\(1/A\)</span> relative to the <span class="math notranslate nohighlight">\(0.5\,\mu\mathrm{m}\)</span> process (<span class="math notranslate nohighlight">\(n\)</span>): <span class="math notranslate nohighlight">\(n,\,4n,\,7.72n,\,14.8n\)</span>.</p></li>
+</ol>
+<p><strong>Result.</strong> <span class="math notranslate nohighlight">\(C_{ox}=3.45,\,6.90,\,9.58,\,13.3\,\mathrm{fF/\mu m^2}\)</span>; <span class="math notranslate nohighlight">\(k_n^\prime=173,\,345,\,479,\,665\,\mu\mathrm{A/V^2}\)</span>; <span class="math notranslate nohighlight">\(k_n=1.73,\,3.45,\,4.79,\,6.65\,\mathrm{mA/V^2}\)</span>; <span class="math notranslate nohighlight">\(A=2.50,\,0.625,\,0.324,\,0.169\,\mu\mathrm{m^2}\)</span>; <span class="math notranslate nohighlight">\(I_D=16.0,\,6.90,\,4.69,\,2.69\,\mathrm{mA}\)</span>; <span class="math notranslate nohighlight">\(P=80,\,17.3,\,8.44,\,3.50\,\mathrm{mW}\)</span>; <span class="math notranslate nohighlight">\(P/A=32,\,27.7,\,26.0,\,20.7\,\mathrm{mW/\mu m^2}\)</span>; devices <span class="math notranslate nohighlight">\(n,\,4n,\,7.72n,\,14.8n\)</span></p>
+<p>Checked: agrees with the answer in the solutions manual.</p>
+<p><strong>Sedra/Smith, Problem 5.62</strong> (MOSFET)</p>
+<p>An NMOS transistor has <span class="math notranslate nohighlight">\(V_{t0}=1\,\mathrm{V}\)</span>, <span class="math notranslate nohighlight">\(\gamma=0.5\,\mathrm{V^{1/2}}\)</span> and <span class="math notranslate nohighlight">\(2\phi_f=0.6\,\mathrm{V}\)</span>. Find the threshold voltage when the source-body voltage <span class="math notranslate nohighlight">\(V_{SB}\)</span> goes from <span class="math notranslate nohighlight">\(0\)</span> to <span class="math notranslate nohighlight">\(4\,\mathrm{V}\)</span>. Then find <span class="math notranslate nohighlight">\(V_t\)</span> at <span class="math notranslate nohighlight">\(V_{SB}=4\,\mathrm{V}\)</span> if the oxide thickness is increased by a factor of 4.</p>
+<p>Given: <span class="math notranslate nohighlight">\(V_{t0}=1\,\mathrm{V}\)</span>, <span class="math notranslate nohighlight">\(\gamma=0.5\,\mathrm{V^{1/2}}\)</span>, <span class="math notranslate nohighlight">\(2\phi_f=0.6\,\mathrm{V}\)</span>, <span class="math notranslate nohighlight">\(V_{SB}=0\ldots4\,\mathrm{V}\)</span></p>
+<ol class="arabic simple">
+<li><p><strong>Body-effect formula.</strong> <span class="math notranslate nohighlight">\(V_t=V_{t0}+\gamma\left(\sqrt{2\phi_f+V_{SB}}-\sqrt{2\phi_f}\right)\)</span>.</p></li>
+<li><p><strong>At <span class="math notranslate nohighlight">\(V_{SB}=0\)</span>.</strong> <span class="math notranslate nohighlight">\(V_t=V_{t0}=1.0\,\mathrm{V}\)</span>.</p></li>
+<li><p><strong>At <span class="math notranslate nohighlight">\(V_{SB}=4\,\mathrm{V}\)</span>.</strong> <span class="math notranslate nohighlight">\(V_t=1+0.5\left(\sqrt{4.6}-\sqrt{0.6}\right)=1+0.5(2.145-0.775)=1.69\,\mathrm{V}\)</span>.</p></li>
+<li><p><strong>Thicker oxide.</strong> <span class="math notranslate nohighlight">\(\gamma=\sqrt{2q\epsilon_sN_A}/C_{ox}\)</span>, and <span class="math notranslate nohighlight">\(C_{ox}\propto1/t_{ox}\)</span>, so <span class="math notranslate nohighlight">\(\gamma\)</span> becomes <span class="math notranslate nohighlight">\(4\times0.5=2\,\mathrm{V^{1/2}}\)</span>.</p></li>
+<li><p><strong>New threshold.</strong> <span class="math notranslate nohighlight">\(V_t=1+2\left(\sqrt{4.6}-\sqrt{0.6}\right)=1+2(1.370)=3.74\,\mathrm{V}\)</span>.</p></li>
+</ol>
+<p><strong>Result.</strong> <span class="math notranslate nohighlight">\(V_t\)</span> rises from <span class="math notranslate nohighlight">\(1\,\mathrm{V}\)</span> to <span class="math notranslate nohighlight">\(1.69\,\mathrm{V}\)</span>; with <span class="math notranslate nohighlight">\(4\times t_{ox}\)</span> it reaches <span class="math notranslate nohighlight">\(3.74\,\mathrm{V}\)</span></p>
+<p>Checked: agrees with the answer in the solutions manual.</p>
+<p><strong>Sedra/Smith, Problem 5.65</strong> (MOSFET)</p>
+<p>Moore-type scaling: a chip made in a <span class="math notranslate nohighlight">\(5\,\mu\mathrm{m}\)</span> process holds <span class="math notranslate nohighlight">\(20{,}000\)</span> transistors. By how much does the transistor count grow on a chip of the same area if the process is scaled to <span class="math notranslate nohighlight">\(32\,\mathrm{nm}\)</span> (device area shrinks as the square of the linear scaling factor)?</p>
+<p>Given: Process <span class="math notranslate nohighlight">\(5\,\mu\mathrm{m}\to32\,\mathrm{nm}\)</span>, <span class="math notranslate nohighlight">\(N_0=20{,}000\)</span> transistors on the same chip area</p>
+<ol class="arabic simple">
+<li><p><strong>Scaling factor.</strong> <span class="math notranslate nohighlight">\(S=\dfrac{5\,\mu\mathrm{m}}{32\,\mathrm{nm}}=\dfrac{5000}{32}=156.25\)</span>.</p></li>
+<li><p><strong>Device area.</strong> Each device occupies <span class="math notranslate nohighlight">\(1/S^2\)</span> of the old area, so <span class="math notranslate nohighlight">\(S^2=24{,}414\)</span> times as many devices fit on the same area.</p></li>
+<li><p><strong>Transistor count.</strong> <span class="math notranslate nohighlight">\(N=20{,}000\times S^2=20{,}000\times156.25^2=4.88\times10^8\)</span>, about <span class="math notranslate nohighlight">\(488\)</span> million.</p></li>
+</ol>
+<p><strong>Result.</strong> <span class="math notranslate nohighlight">\(N\approx4.88\times10^8\)</span> (488 million) transistors</p>
+<p>Checked: agrees with the answer in the solutions manual. Note: The starting count of <span class="math notranslate nohighlight">\(20{,}000\)</span> transistors and the “same chip area” are taken from the manual calculation (<span class="math notranslate nohighlight">\(20{,}000\times S^2\)</span>); the original statement is not in the manual.</p>
+<p><strong>Sedra/Smith, Problem 5.66</strong> (MOSFET)</p>
+<p>A PMOS transistor has <span class="math notranslate nohighlight">\(\lvert V_{t0}\rvert=0.7\,\mathrm{V}\)</span>, <span class="math notranslate nohighlight">\(\gamma=0.5\,\mathrm{V^{1/2}}\)</span>, <span class="math notranslate nohighlight">\(2\phi_f=0.75\,\mathrm{V}\)</span>. Find its threshold voltage when <span class="math notranslate nohighlight">\(V_{BS}\)</span> is such that <span class="math notranslate nohighlight">\(\lvert V_{SB}\rvert=3\,\mathrm{V}\)</span>.</p>
+<p>Given: <span class="math notranslate nohighlight">\(\lvert V_{t0}\rvert=0.7\,\mathrm{V}\)</span>, <span class="math notranslate nohighlight">\(\gamma=0.5\,\mathrm{V^{1/2}}\)</span>, <span class="math notranslate nohighlight">\(2\phi_f=0.75\,\mathrm{V}\)</span>, <span class="math notranslate nohighlight">\(\lvert V_{SB}\rvert=3\,\mathrm{V}\)</span></p>
+<ol class="arabic simple">
+<li><p><strong>Body-effect formula.</strong> For a PMOS the magnitudes obey <span class="math notranslate nohighlight">\(\lvert V_t\rvert=\lvert V_{t0}\rvert+\gamma\left(\sqrt{2\phi_f+\lvert V_{SB}\rvert}-\sqrt{2\phi_f}\right)\)</span>.</p></li>
+<li><p><strong>Substitute.</strong> <span class="math notranslate nohighlight">\(\lvert V_t\rvert=0.7+0.5\left(\sqrt{3.75}-\sqrt{0.75}\right)=0.7+0.5(1.936-0.866)\)</span>.</p></li>
+<li><p><strong>Result.</strong> <span class="math notranslate nohighlight">\(\lvert V_t\rvert=1.235\approx1.24\,\mathrm{V}\)</span>, so <span class="math notranslate nohighlight">\(V_t=-1.24\,\mathrm{V}\)</span> (the PMOS threshold is negative).</p></li>
+</ol>
+<p><strong>Result.</strong> <span class="math notranslate nohighlight">\(V_t=-1.24\,\mathrm{V}\)</span></p>
+<p>Checked: agrees with the answer in the solutions manual.</p>
+<p><strong>Sedra/Smith, Problem 6.73</strong> (no transistor)</p>
+<p>A transconductance stage has an input resistor <span class="math notranslate nohighlight">\(R_1\)</span> to ground, a feedback resistor <span class="math notranslate nohighlight">\(R_f\)</span> from the input to the output node, a controlled source <span class="math notranslate nohighlight">\(g_mv_i\)</span> from the output node to ground in parallel with <span class="math notranslate nohighlight">\(R_2\)</span>, and a load <span class="math notranslate nohighlight">\(R_L\)</span>. Derive <span class="math notranslate nohighlight">\(R_{in}\)</span>, <span class="math notranslate nohighlight">\(A_{vo}\)</span> and <span class="math notranslate nohighlight">\(R_o\)</span>. Evaluate with <span class="math notranslate nohighlight">\(R_1=100\,\mathrm{k\Omega}\)</span>, <span class="math notranslate nohighlight">\(R_f=1\,\mathrm{M\Omega}\)</span>, <span class="math notranslate nohighlight">\(g_m=100\,\mathrm{mA/V}\)</span>, <span class="math notranslate nohighlight">\(R_2=100\,\Omega\)</span>, <span class="math notranslate nohighlight">\(R_L=1\,\mathrm{k\Omega}\)</span> and a source with <span class="math notranslate nohighlight">\(R_{sig}=100\,\mathrm{k\Omega}\)</span>; compare with <span class="math notranslate nohighlight">\(R_f\)</span> removed.</p>
+<p>Given: <span class="math notranslate nohighlight">\(R_1=100\,\mathrm{k}\Omega\)</span>, <span class="math notranslate nohighlight">\(R_f=1\,\mathrm{M}\Omega\)</span>, <span class="math notranslate nohighlight">\(g_m=100\,\mathrm{mA/V}\)</span>, <span class="math notranslate nohighlight">\(R_2=100\,\Omega\)</span>, <span class="math notranslate nohighlight">\(R_L=1\,\mathrm{k}\Omega\)</span>, <span class="math notranslate nohighlight">\(R_{sig}=100\,\mathrm{k}\Omega\)</span></p>
+<ol class="arabic simple">
+<li><p><strong>Input resistance.</strong> <span class="math notranslate nohighlight">\(v_i=i_fR_f+(i_f-g_mv_i)(R_2\parallel R_L)\)</span> gives <span class="math notranslate nohighlight">\(R_{in}'=\dfrac{v_i}{i_f}=\dfrac{R_f+R_2\parallel R_L}{1+g_m(R_2\parallel R_L)}\)</span>; <span class="math notranslate nohighlight">\(R_{in}=R_1\parallel R_{in}'\)</span>.</p></li>
+<li><p><strong>Open-circuit gain.</strong> With <span class="math notranslate nohighlight">\(R_L\)</span> open: <span class="math notranslate nohighlight">\(i_f=g_mv_i+v_o/R_2\)</span> and <span class="math notranslate nohighlight">\(v_i=i_fR_f+v_o\)</span>, so <span class="math notranslate nohighlight">\(v_i(1-g_mR_f)=v_o(1+R_f/R_2)\)</span> and <span class="math notranslate nohighlight">\(A_{vo}=\dfrac{1-g_mR_f}{1+R_f/R_2}\)</span>.</p></li>
+<li><p><strong>Output resistance.</strong> With <span class="math notranslate nohighlight">\(v_i=0\)</span> the source is off: <span class="math notranslate nohighlight">\(R_o=R_2\parallel R_f\)</span>.</p></li>
+<li><p><strong>Numbers: <span class="math notranslate nohighlight">\(R_{in}\)</span>.</strong> <span class="math notranslate nohighlight">\(R_2\parallel R_L=0.0909\,\mathrm{k\Omega}\)</span>; <span class="math notranslate nohighlight">\(R_{in}'=\dfrac{1000.09}{1+9.09}=99.1\,\mathrm{k\Omega}\)</span>; <span class="math notranslate nohighlight">\(R_{in}=100\parallel99.1=49.8\,\mathrm{k\Omega}\)</span>.</p></li>
+<li><p><strong>Numbers: <span class="math notranslate nohighlight">\(A_{vo}\)</span>, <span class="math notranslate nohighlight">\(R_o\)</span>.</strong> <span class="math notranslate nohighlight">\(A_{vo}=\dfrac{1-10^5}{1+10^4}=-10.0\,\mathrm{V/V}\)</span>; <span class="math notranslate nohighlight">\(R_o=0.1\parallel1000=100\,\Omega\)</span>.</p></li>
+<li><p><strong>Overall gain.</strong> <span class="math notranslate nohighlight">\(G_v=\dfrac{49.8}{49.8+100}(-10)\dfrac{1}{1+0.1}=-3.02\,\mathrm{V/V}\)</span>.</p></li>
+<li><p><strong>Without <span class="math notranslate nohighlight">\(R_f\)</span>.</strong> <span class="math notranslate nohighlight">\(R_{in}=100\,\mathrm{k\Omega}\)</span>, <span class="math notranslate nohighlight">\(A_{vo}=-g_mR_2=-10\)</span>, <span class="math notranslate nohighlight">\(R_o=100\,\Omega\)</span>, <span class="math notranslate nohighlight">\(G_v=\dfrac{100}{200}(-10)\dfrac1{1.1}=-4.55\,\mathrm{V/V}\)</span>: only <span class="math notranslate nohighlight">\(R_{in}\)</span> is changed noticeably.</p></li>
+</ol>
+<p><strong>Result.</strong> <span class="math notranslate nohighlight">\(R_{in}=49.8\,\mathrm{k\Omega}\)</span>, <span class="math notranslate nohighlight">\(A_{vo}=-10\,\mathrm{V/V}\)</span>, <span class="math notranslate nohighlight">\(R_o=100\,\Omega\)</span>, <span class="math notranslate nohighlight">\(G_v=-3.02\,\mathrm{V/V}\)</span> (without <span class="math notranslate nohighlight">\(R_f\)</span>: <span class="math notranslate nohighlight">\(-4.55\)</span>)</p>
+<p>Checked: agrees with the answer in the solutions manual. Note: Circuit read from the manual figure (Rf from input to output node, gm*vi and R2||RL at the output). Rsig=100k comes from the manual gain arithmetic. The nodal check at the end reproduces Rin.</p>
+<p><strong>Sedra/Smith, Problem 6.137</strong> (BJT)</p>
+<p>A common-emitter amplifier biased at <span class="math notranslate nohighlight">\(I_C=1\,\mathrm{mA}\)</span> has midband gain <span class="math notranslate nohighlight">\(100\,\mathrm{V/V}\)</span>, lower 3-dB frequency <span class="math notranslate nohighlight">\(f_L=100\,\mathrm{Hz}\)</span> and upper 3-dB frequency <span class="math notranslate nohighlight">\(f_H=500\,\mathrm{kHz}\)</span>. A small emitter resistance <span class="math notranslate nohighlight">\(R_e\)</span> is added to raise <span class="math notranslate nohighlight">\(f_H\)</span> to <span class="math notranslate nohighlight">\(2\,\mathrm{MHz}\)</span>. Assume the usual single-pole feedback behavior: gain is divided by <span class="math notranslate nohighlight">\(1+g_mR_e\)</span> while both band edges are scaled by this factor (gain falls, <span class="math notranslate nohighlight">\(f_H\)</span> rises, <span class="math notranslate nohighlight">\(f_L\)</span> falls). Find <span class="math notranslate nohighlight">\(R_e\)</span>, the new <span class="math notranslate nohighlight">\(f_L\)</span> and the new midband gain (<span class="math notranslate nohighlight">\(V_T=25\,\mathrm{mV}\)</span>).</p>
+<p>Given: <span class="math notranslate nohighlight">\(I_C=1\,\mathrm{mA}\)</span>, <span class="math notranslate nohighlight">\(\lvert A_M\rvert=100\)</span>, <span class="math notranslate nohighlight">\(f_L=100\,\mathrm{Hz}\)</span>, <span class="math notranslate nohighlight">\(f_H=500\,\mathrm{kHz}\to2\,\mathrm{MHz}\)</span></p>
+<ol class="arabic simple">
+<li><p><strong>Required factor.</strong> <span class="math notranslate nohighlight">\(\dfrac{f_H^{\prime}}{f_H}=\dfrac{2\,\mathrm{MHz}}{500\,\mathrm{kHz}}=4=1+g_mR_e\)</span>.</p></li>
+<li><p><strong>Transconductance.</strong> <span class="math notranslate nohighlight">\(g_m=\dfrac{I_C}{V_T}=\dfrac{1}{0.025}=40\,\mathrm{mA/V}\)</span>.</p></li>
+<li><p><strong>Emitter resistance.</strong> <span class="math notranslate nohighlight">\(R_e=\dfrac{4-1}{g_m}=\dfrac{3}{0.04\,\mathrm{S}}=75\,\Omega\)</span>.</p></li>
+<li><p><strong>New lower cutoff.</strong> <span class="math notranslate nohighlight">\(f_L^{\prime}=\dfrac{100\,\mathrm{Hz}}{1+g_mR_e}=\dfrac{100}{4}=25\,\mathrm{Hz}\)</span>.</p></li>
+<li><p><strong>New midband gain.</strong> <span class="math notranslate nohighlight">\(\lvert A_M^{\prime}\rvert=\dfrac{100}{4}=25\,\mathrm{V/V}\)</span> The product <span class="math notranslate nohighlight">\(A_Mf_H=5\times10^7\,\mathrm{Hz}\)</span> is the same before (<span class="math notranslate nohighlight">\(100\times500\,\mathrm{kHz}\)</span>) and after (<span class="math notranslate nohighlight">\(25\times2\,\mathrm{MHz}\)</span>).</p></li>
+</ol>
+<p><strong>Result.</strong> <span class="math notranslate nohighlight">\(R_e=75\,\Omega\)</span>, <span class="math notranslate nohighlight">\(f_L=25\,\mathrm{Hz}\)</span>, <span class="math notranslate nohighlight">\(\lvert A_M\rvert=25\,\mathrm{V/V}\)</span></p>
+<p>Checked: agrees with the answer in the solutions manual. <em>Needs review.</em> Note: The manual gives only the solution; the scaling of <span class="math notranslate nohighlight">\(f_L\)</span> by <span class="math notranslate nohighlight">\(1/(1+g_mR_e)\)</span> is its assumption (strictly, the low-frequency pole depends on which capacitor dominates), and <span class="math notranslate nohighlight">\(A_M=100\)</span>, <span class="math notranslate nohighlight">\(f_L=100\)</span> Hz are read from its numbers. Gain falls by the same factor 4, so <span class="math notranslate nohighlight">\(A_Mf_H\)</span> is constant.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./courses/fme"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="bank_pairs.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">BJT and MOSFET Problem Bank: Differential Pairs</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../mip/intro.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Introduction</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item"><div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#other-circuits">Other Circuits</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Tran Minh Quan
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

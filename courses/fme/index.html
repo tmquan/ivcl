@@ -37,7 +37,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=6a604523" />
-    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=7b9e58ef" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=d273a9f0" />
   
   <!-- So that users can add custom icons -->
   <script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
@@ -66,7 +66,7 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'courses/fme/index';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Introduction" href="../mip/intro.html" />
+    <link rel="next" title="BJT and MOSFET Problem Sets" href="problems.html" />
     <link rel="prev" title="Systems and Transformations" href="../dsp/systems.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -179,6 +179,13 @@
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Fundamentals of Microelectronics</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">BJT and MOSFET Circuits</a></li>
+<li class="toctree-l1"><a class="reference internal" href="problems.html">BJT and MOSFET Problem Sets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bank_one.html">BJT and MOSFET Problem Bank: One Transistor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bank_bias.html">BJT and MOSFET Problem Bank: Bias</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bank_stages.html">BJT and MOSFET Problem Bank: Amplifier Stages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bank_mirrors.html">BJT and MOSFET Problem Bank: Cascodes and Current Mirrors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bank_pairs.html">BJT and MOSFET Problem Bank: Differential Pairs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bank_other.html">BJT and MOSFET Problem Bank: Other Items</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Medical Image Processing</span></p>
 <ul class="nav bd-sidenav">
@@ -584,7 +591,7 @@
 </table>
 </div>
 <p>The circuit functions use only the shared names, which read <em>base or gate</em>, <em>collector or drain</em> and <em>emitter or source</em>. <code class="docutils literal notranslate"><span class="pre">c.w(p0,</span> <span class="pre">p1,</span> <span class="pre">...)</span></code> draws a wire, <code class="docutils literal notranslate"><span class="pre">c.dot(p)</span></code> a node, <code class="docutils literal notranslate"><span class="pre">c.port(p,</span> <span class="pre">label,</span> <span class="pre">side)</span></code> an open terminal, <code class="docutils literal notranslate"><span class="pre">c.gnd(p)</span></code> a ground, <code class="docutils literal notranslate"><span class="pre">c.ac(p)</span></code> an ac ground, <code class="docutils literal notranslate"><span class="pre">c.res(p,</span> <span class="pre">label)</span></code> a resistor and <code class="docutils literal notranslate"><span class="pre">c.load(p)</span></code> a load. <code class="docutils literal notranslate"><span class="pre">c.look(p,</span> <span class="pre">into,</span> <span class="pre">side,</span> <span class="pre">label)</span></code> marks the impedance seen at <code class="docutils literal notranslate"><span class="pre">p</span></code> with a red arrow that has a 90-degree corner; <code class="docutils literal notranslate"><span class="pre">form='low'</span></code> and <code class="docutils literal notranslate"><span class="pre">form='long'</span></code> give its two other forms. <code class="docutils literal notranslate"><span class="pre">c.pick(a,</span> <span class="pre">b)</span></code> returns <code class="docutils literal notranslate"><span class="pre">a</span></code> in a BJT drawing and <code class="docutils literal notranslate"><span class="pre">b</span></code> in a MOSFET drawing, and <code class="docutils literal notranslate"><span class="pre">t.note(t.ideal)</span></code> writes <span class="math notranslate nohighlight">\(V_A=\infty\)</span> or <span class="math notranslate nohighlight">\(\lambda=0\)</span> beside a transistor. <code class="docutils literal notranslate"><span class="pre">c.chain([...],</span> <span class="pre">x,</span> <span class="pre">y)</span></code> places a series stack of transistors, and <code class="docutils literal notranslate"><span class="pre">c.bus([...],</span> <span class="pre">x)</span></code> ties their bases or gates together. Coordinates are pixels on a 10-px grid with <span class="math notranslate nohighlight">\(y\)</span> pointing down. Before drawing, all wire pieces and symbol leads are merged into continuous connectors.</p>
-<p><code class="docutils literal notranslate"><span class="pre">show(a,</span> <span class="pre">b,</span> <span class="pre">notes=[...])</span></code> draws the circuits <code class="docutils literal notranslate"><span class="pre">a</span></code> and <code class="docutils literal notranslate"><span class="pre">b</span></code> as two rows: their names in the first column, then the drawing made with <code class="docutils literal notranslate"><span class="pre">BJT</span></code> and the drawing made with <code class="docutils literal notranslate"><span class="pre">MOSFET</span></code>. <code class="docutils literal notranslate"><span class="pre">notes</span></code> holds the text that goes right under the drawings, for every circuit a pair <code class="docutils literal notranslate"><span class="pre">(BJT,</span> <span class="pre">MOSFET)</span></code> or one text for both. The first docstring line gives the names, as <code class="docutils literal notranslate"><span class="pre">BJT</span> <span class="pre">name</span> <span class="pre">|</span> <span class="pre">MOSFET</span> <span class="pre">name</span></code> where the two differ. A name <code class="docutils literal notranslate"><span class="pre">-</span></code> means that the circuit has no such version; that cell says so, and its note says why. Every drawing is centred in its cell on one vertical line: the main route of its transistors or, where two transistors stand side by side, the middle between them; <code class="docutils literal notranslate"><span class="pre">c.center(x)</span></code> picks another line. The cells are equally wide in every figure and every drawing has the same size, so the drawings line up down the whole page.</p>
+<p><code class="docutils literal notranslate"><span class="pre">show(a,</span> <span class="pre">b)</span></code> draws the circuits <code class="docutils literal notranslate"><span class="pre">a</span></code> and <code class="docutils literal notranslate"><span class="pre">b</span></code> as two rows: their names in the first column, then the drawing made with <code class="docutils literal notranslate"><span class="pre">BJT</span></code> and the drawing made with <code class="docutils literal notranslate"><span class="pre">MOSFET</span></code>. The formulas of a figure follow it in a table with the same three columns. The first docstring line gives the names, as <code class="docutils literal notranslate"><span class="pre">BJT</span> <span class="pre">name</span> <span class="pre">|</span> <span class="pre">MOSFET</span> <span class="pre">name</span></code> where the two differ. A name <code class="docutils literal notranslate"><span class="pre">-</span></code> means that the circuit has no such version; that cell says so, and the table says why. Every drawing is centred in its cell on one vertical line: the main route of its transistors or, where two transistors stand side by side, the middle between them; <code class="docutils literal notranslate"><span class="pre">c.center(x)</span></code> picks another line. The cells are equally wide in every figure and every drawing has the same size, so the drawings line up down the whole page.</p>
 <div class="cell tag_hide-input docutils container">
 <details class="admonition hide above-input">
 <summary aria-label="Toggle hidden content">
@@ -717,7 +724,7 @@
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="../../_images/c6be8e1d987b9a9f1364639f1bcf5fbd995413ad34c51c00332ba34174b7ea62.svg" src="../../_images/c6be8e1d987b9a9f1364639f1bcf5fbd995413ad34c51c00332ba34174b7ea62.svg" />
+<img alt="../../_images/a57fd9fdc824a974b01a937fad67d9b663a34edbedca1104030bb431ae523fe5.svg" src="../../_images/a57fd9fdc824a974b01a937fad67d9b663a34edbedca1104030bb431ae523fe5.svg" />
 </div>
 </div>
 <p>The two columns translate into each other term by term:</p>
@@ -807,18 +814,33 @@
     <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">(</span><span class="n">c</span><span class="o">.</span><span class="n">res</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="mi">130</span><span class="p">),</span> <span class="s1">'R_'</span> <span class="o">+</span> <span class="n">t1</span><span class="o">.</span><span class="n">pin</span><span class="p">(</span><span class="s1">'es'</span><span class="p">)),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">210</span><span class="p">));</span> <span class="n">c</span><span class="o">.</span><span class="n">gnd</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="mi">210</span><span class="p">))</span>
     <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">(</span><span class="n">t1</span><span class="o">.</span><span class="n">bg</span><span class="p">,</span> <span class="p">(</span><span class="n">t1</span><span class="o">.</span><span class="n">bg</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">40</span><span class="p">));</span> <span class="n">c</span><span class="o">.</span><span class="n">port</span><span class="p">((</span><span class="n">t1</span><span class="o">.</span><span class="n">bg</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">40</span><span class="p">),</span> <span class="n">IN</span><span class="p">,</span> <span class="s1">'l'</span><span class="p">)</span>
 
-<span class="n">show</span><span class="p">(</span><span class="n">role_amplifier</span><span class="p">,</span> <span class="n">role_follower</span><span class="p">,</span> <span class="n">notes</span><span class="o">=</span><span class="p">[</span>
-    <span class="p">(</span><span class="s1">'$A_v=-g_mR_C$'</span><span class="p">,</span>
-     <span class="s1">'$A_v=-g_mR_D$'</span><span class="p">),</span>
-    <span class="p">(</span><span class="sa">r</span><span class="s1">'The common-collector stage: $A_v=\dfrac</span><span class="si">{g_mR_E}</span><span class="s1">{1+g_mR_E}$'</span><span class="p">,</span>
-     <span class="sa">r</span><span class="s1">'The common-drain stage: $A_v=\dfrac</span><span class="si">{g_mR_S}</span><span class="s1">{1+g_mR_S}$'</span><span class="p">)])</span>
+<span class="n">show</span><span class="p">(</span><span class="n">role_amplifier</span><span class="p">,</span> <span class="n">role_follower</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="../../_images/5fd19876f798a3fde5389b03b642a837ba79ec8badbbb039d79306af98b7acd7.svg" src="../../_images/5fd19876f798a3fde5389b03b642a837ba79ec8badbbb039d79306af98b7acd7.svg" />
+<img alt="../../_images/5a14243f03dcd61fd9e0756087e1cc902719845cffe39168ea1a5fc4a92f1b3f.svg" src="../../_images/5a14243f03dcd61fd9e0756087e1cc902719845cffe39168ea1a5fc4a92f1b3f.svg" />
 </div>
+</div>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p></p></th>
+<th class="head"><p>BJT</p></th>
+<th class="head"><p>MOSFET</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Common emitter / Common source</strong></p></td>
+<td><p><span class="math notranslate nohighlight">\(A_v=-g_mR_C\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(A_v=-g_mR_D\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Emitter follower / Source follower</strong></p></td>
+<td><p>The common-collector stage: <span class="math notranslate nohighlight">\(A_v=\dfrac{g_mR_E}{1+g_mR_E}\)</span></p></td>
+<td><p>The common-drain stage: <span class="math notranslate nohighlight">\(A_v=\dfrac{g_mR_S}{1+g_mR_S}\)</span></p></td>
+</tr>
+</tbody>
+</table>
 </div>
 </section>
 <section id="current-buffer-and-current-source">
@@ -847,18 +869,33 @@
     <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">(</span><span class="n">t1</span><span class="o">.</span><span class="n">es</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">));</span> <span class="n">c</span><span class="o">.</span><span class="n">gnd</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">))</span>
     <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">(</span><span class="n">t1</span><span class="o">.</span><span class="n">bg</span><span class="p">,</span> <span class="p">(</span><span class="n">t1</span><span class="o">.</span><span class="n">bg</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">40</span><span class="p">));</span> <span class="n">c</span><span class="o">.</span><span class="n">port</span><span class="p">((</span><span class="n">t1</span><span class="o">.</span><span class="n">bg</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">40</span><span class="p">),</span> <span class="s1">'V_bias'</span><span class="p">,</span> <span class="s1">'l'</span><span class="p">)</span>
 
-<span class="n">show</span><span class="p">(</span><span class="n">role_current_buffer</span><span class="p">,</span> <span class="n">role_current_source</span><span class="p">,</span> <span class="n">notes</span><span class="o">=</span><span class="p">[</span>
-    <span class="p">(</span><span class="sa">r</span><span class="s1">'$I_\mathrm</span><span class="si">{out}</span><span class="s1">=\dfrac{\beta}{\beta+1}I_\mathrm</span><span class="si">{in}</span><span class="s1">$, $R_\mathrm</span><span class="si">{in}</span><span class="s1">\approx1/g_m$'</span><span class="p">,</span>
-     <span class="sa">r</span><span class="s1">'$I_\mathrm</span><span class="si">{out}</span><span class="s1">=I_\mathrm</span><span class="si">{in}</span><span class="s1">$, $R_\mathrm</span><span class="si">{in}</span><span class="s1">\approx1/g_m$'</span><span class="p">),</span>
-    <span class="p">(</span><span class="sa">r</span><span class="s1">'$I_\mathrm</span><span class="si">{out}</span><span class="s1">=I_S\,e^{V_\mathrm</span><span class="si">{bias}</span><span class="s1">/V_T}$, $R_\mathrm</span><span class="si">{out}</span><span class="s1">=r_O$'</span><span class="p">,</span>
-     <span class="sa">r</span><span class="s1">'$I_\mathrm</span><span class="si">{out}</span><span class="s1">=\frac</span><span class="si">{1}{2}</span><span class="s1">\mu_nC_</span><span class="si">{ox}</span><span class="s1">(W/L)(V_\mathrm</span><span class="si">{bias}</span><span class="s1">-V_</span><span class="si">{TH}</span><span class="s1">)^2$, $R_\mathrm</span><span class="si">{out}</span><span class="s1">=r_O$'</span><span class="p">)])</span>
+<span class="n">show</span><span class="p">(</span><span class="n">role_current_buffer</span><span class="p">,</span> <span class="n">role_current_source</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="../../_images/115668bb63b6e5c175e007699b58aaa2c5c11cef0d2fa656f7ac80709042d2f2.svg" src="../../_images/115668bb63b6e5c175e007699b58aaa2c5c11cef0d2fa656f7ac80709042d2f2.svg" />
+<img alt="../../_images/1c68c140a99005ec0813dd236493a4d6ba623021abb4173042898c1a68c2e0f8.svg" src="../../_images/1c68c140a99005ec0813dd236493a4d6ba623021abb4173042898c1a68c2e0f8.svg" />
 </div>
+</div>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p></p></th>
+<th class="head"><p>BJT</p></th>
+<th class="head"><p>MOSFET</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Common base / Common gate</strong></p></td>
+<td><p><span class="math notranslate nohighlight">\(I_\mathrm{out}=\dfrac{\beta}{\beta+1}I_\mathrm{in}\)</span>, <span class="math notranslate nohighlight">\(R_\mathrm{in}\approx1/g_m\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(I_\mathrm{out}=I_\mathrm{in}\)</span>, <span class="math notranslate nohighlight">\(R_\mathrm{in}\approx1/g_m\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Current source</strong></p></td>
+<td><p><span class="math notranslate nohighlight">\(I_\mathrm{out}=I_S\,e^{V_\mathrm{bias}/V_T}\)</span>, <span class="math notranslate nohighlight">\(R_\mathrm{out}=r_O\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(I_\mathrm{out}=\frac{1}{2}\mu_nC_{ox}(W/L)(V_\mathrm{bias}-V_{TH})^2\)</span>, <span class="math notranslate nohighlight">\(R_\mathrm{out}=r_O\)</span></p></td>
+</tr>
+</tbody>
+</table>
 </div>
 </section>
 <section id="diode-and-switch">
@@ -890,18 +927,33 @@
     <span class="k">if</span> <span class="n">c</span><span class="o">.</span><span class="n">device</span> <span class="ow">is</span> <span class="n">MOSFET</span><span class="p">:</span>                                  <span class="c1"># only the MOSFET is a resistance when it is on</span>
         <span class="n">c</span><span class="o">.</span><span class="n">look</span><span class="p">((</span><span class="n">t1</span><span class="o">.</span><span class="n">cd</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="s1">'r'</span><span class="p">,</span> <span class="s1">'d'</span><span class="p">,</span> <span class="s1">'R_on'</span><span class="p">)</span>
 
-<span class="n">show</span><span class="p">(</span><span class="n">role_diode</span><span class="p">,</span> <span class="n">role_switch</span><span class="p">,</span> <span class="n">notes</span><span class="o">=</span><span class="p">[</span>
-    <span class="p">(</span><span class="sa">r</span><span class="s1">'Conducts at $V_</span><span class="si">{BE}</span><span class="s1">\approx0.7\,\mathrm</span><span class="si">{V}</span><span class="s1">$, small-signal resistance $R=1/g_m$'</span><span class="p">,</span>
-     <span class="s1">'Conducts above $V_</span><span class="si">{TH}</span><span class="s1">$, small-signal resistance $R=1/g_m$'</span><span class="p">),</span>
-    <span class="p">(</span><span class="sa">r</span><span class="s1">'Limited: in saturation $V_</span><span class="si">{CE}</span><span class="s1">\approx0.2\,\mathrm</span><span class="si">{V}</span><span class="s1">$ remains, and the base current flows into the path'</span><span class="p">,</span>
-     <span class="sa">r</span><span class="s1">'On in triode: no offset, $R_\mathrm</span><span class="si">{on}</span><span class="s1">=\left[\mu_nC_</span><span class="si">{ox}</span><span class="s1">(W/L)(V_</span><span class="si">{GS}</span><span class="s1">-V_</span><span class="si">{TH}</span><span class="s1">)\right]^{-1}$'</span><span class="p">)])</span>
+<span class="n">show</span><span class="p">(</span><span class="n">role_diode</span><span class="p">,</span> <span class="n">role_switch</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="../../_images/2f7380dc3101079d763604945792de04723ef77eb87e0eb69032c3f8d25cda7d.svg" src="../../_images/2f7380dc3101079d763604945792de04723ef77eb87e0eb69032c3f8d25cda7d.svg" />
+<img alt="../../_images/3e33c4b8181f666a81b8715c6408c62d25422d2f762fd59fac4cd41ec26201be.svg" src="../../_images/3e33c4b8181f666a81b8715c6408c62d25422d2f762fd59fac4cd41ec26201be.svg" />
 </div>
+</div>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p></p></th>
+<th class="head"><p>BJT</p></th>
+<th class="head"><p>MOSFET</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Diode-connected transistor</strong></p></td>
+<td><p>Conducts at <span class="math notranslate nohighlight">\(V_{BE}\approx0.7\,\mathrm{V}\)</span>, small-signal resistance <span class="math notranslate nohighlight">\(R=1/g_m\)</span></p></td>
+<td><p>Conducts above <span class="math notranslate nohighlight">\(V_{TH}\)</span>, small-signal resistance <span class="math notranslate nohighlight">\(R=1/g_m\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Switch</strong></p></td>
+<td><p>Limited: in saturation <span class="math notranslate nohighlight">\(V_{CE}\approx0.2\,\mathrm{V}\)</span> remains, and the base current flows into the path</p></td>
+<td><p>On in triode: no offset, <span class="math notranslate nohighlight">\(R_\mathrm{on}=\left[\mu_nC_{ox}(W/L)(V_{GS}-V_{TH})\right]^{-1}\)</span></p></td>
+</tr>
+</tbody>
+</table>
 </div>
 </section>
 <section id="resistor-and-capacitor">
@@ -931,18 +983,33 @@
     <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">(</span><span class="n">t1</span><span class="o">.</span><span class="n">cd</span><span class="p">,</span> <span class="p">(</span><span class="n">t1</span><span class="o">.</span><span class="n">cd</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">yb</span><span class="p">),</span> <span class="p">(</span><span class="n">t1</span><span class="o">.</span><span class="n">es</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">yb</span><span class="p">),</span> <span class="n">t1</span><span class="o">.</span><span class="n">es</span><span class="p">);</span> <span class="n">c</span><span class="o">.</span><span class="n">dot</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="n">yb</span><span class="p">))</span>
     <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="n">yb</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">yb</span> <span class="o">+</span> <span class="mi">40</span><span class="p">));</span> <span class="n">c</span><span class="o">.</span><span class="n">port</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="n">yb</span> <span class="o">+</span> <span class="mi">40</span><span class="p">),</span> <span class="s1">'V_n'</span><span class="p">,</span> <span class="s1">'r'</span><span class="p">)</span>
 
-<span class="n">show</span><span class="p">(</span><span class="n">role_resistor</span><span class="p">,</span> <span class="n">role_capacitor</span><span class="p">,</span> <span class="n">notes</span><span class="o">=</span><span class="p">[</span>
-    <span class="p">(</span><span class="s1">'A saturated BJT is not a linear resistor'</span><span class="p">,</span>
-     <span class="sa">r</span><span class="s1">'$R_\mathrm</span><span class="si">{on}</span><span class="s1">=\left[\mu_nC_</span><span class="si">{ox}</span><span class="s1">(W/L)(V_</span><span class="si">{GS}</span><span class="s1">-V_</span><span class="si">{TH}</span><span class="s1">)\right]^{-1}$ in the triode region, set by $V_\mathrm</span><span class="si">{bias}</span><span class="s1">$'</span><span class="p">),</span>
-    <span class="p">(</span><span class="s1">'Limited: junction capacitance, usable only while the junctions stay reverse biased'</span><span class="p">,</span>
-     <span class="sa">r</span><span class="s1">'Gate capacitance, $C\approx WLC_</span><span class="si">{ox}</span><span class="s1">$'</span><span class="p">)])</span>
+<span class="n">show</span><span class="p">(</span><span class="n">role_resistor</span><span class="p">,</span> <span class="n">role_capacitor</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="../../_images/87740faf1b7fc8dc150c6f84329c15f813dea03e587740178141392f5e7d1fe5.svg" src="../../_images/87740faf1b7fc8dc150c6f84329c15f813dea03e587740178141392f5e7d1fe5.svg" />
+<img alt="../../_images/fb3678adcdce12fa7806c6677c89cc288edfe5d208b775e25f5fe5f68f4c5199.svg" src="../../_images/fb3678adcdce12fa7806c6677c89cc288edfe5d208b775e25f5fe5f68f4c5199.svg" />
 </div>
+</div>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p></p></th>
+<th class="head"><p>BJT</p></th>
+<th class="head"><p>MOSFET</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Resistor</strong></p></td>
+<td><p>No BJT version. A saturated BJT is not a linear resistor</p></td>
+<td><p><span class="math notranslate nohighlight">\(R_\mathrm{on}=\left[\mu_nC_{ox}(W/L)(V_{GS}-V_{TH})\right]^{-1}\)</span> in the triode region, set by <span class="math notranslate nohighlight">\(V_\mathrm{bias}\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Capacitor</strong></p></td>
+<td><p>Limited: junction capacitance, usable only while the junctions stay reverse biased</p></td>
+<td><p>Gate capacitance, <span class="math notranslate nohighlight">\(C\approx WLC_{ox}\)</span></p></td>
+</tr>
+</tbody>
+</table>
 </div>
 </section>
 </section>
@@ -977,17 +1044,33 @@
     <span class="n">p</span> <span class="o">=</span> <span class="p">(</span><span class="n">t</span><span class="o">.</span><span class="n">bg</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">40</span><span class="p">)</span>
     <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">(</span><span class="n">t</span><span class="o">.</span><span class="n">bg</span><span class="p">,</span> <span class="n">p</span><span class="p">);</span> <span class="n">c</span><span class="o">.</span><span class="n">port</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="kc">None</span><span class="p">);</span> <span class="n">c</span><span class="o">.</span><span class="n">look</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="s1">'r'</span><span class="p">,</span> <span class="s1">'d'</span><span class="p">,</span> <span class="sa">r</span><span class="s1">'$r_\pi+(\beta+1)R_E$'</span><span class="p">)</span>
 
-<span class="n">show</span><span class="p">(</span><span class="n">into_base</span><span class="p">,</span> <span class="n">into_base_degenerated</span><span class="p">,</span> <span class="n">notes</span><span class="o">=</span><span class="p">[</span>
-    <span class="s1">''</span><span class="p">,</span>
-    <span class="p">(</span><span class="s1">''</span><span class="p">,</span>
-     <span class="sa">r</span><span class="s1">'No current flows into the gate, so the resistance is $\approx\infty$ with or without a source resistor'</span><span class="p">)])</span>
+<span class="n">show</span><span class="p">(</span><span class="n">into_base</span><span class="p">,</span> <span class="n">into_base_degenerated</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="../../_images/724360ec873a921fa394149d49bc8489e61b7335177849834e309448bcd473c3.svg" src="../../_images/724360ec873a921fa394149d49bc8489e61b7335177849834e309448bcd473c3.svg" />
+<img alt="../../_images/131d9fdd36e2b2227b702c26281b7cca91a4d615971044c5de21bdd651d1212c.svg" src="../../_images/131d9fdd36e2b2227b702c26281b7cca91a4d615971044c5de21bdd651d1212c.svg" />
 </div>
+</div>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p></p></th>
+<th class="head"><p>BJT</p></th>
+<th class="head"><p>MOSFET</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Into the base / Into the gate</strong></p></td>
+<td><p></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Into the base, with emitter degeneration</strong></p></td>
+<td><p></p></td>
+<td><p>No MOSFET version. No current flows into the gate, so the resistance is <span class="math notranslate nohighlight">\(\approx\infty\)</span> with or without a source resistor</p></td>
+</tr>
+</tbody>
+</table>
 </div>
 </section>
 <section id="looking-into-the-collector-or-drain">
@@ -1019,16 +1102,33 @@
     <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">(</span><span class="n">t</span><span class="o">.</span><span class="n">cd</span><span class="p">,</span> <span class="n">p</span><span class="p">);</span> <span class="n">c</span><span class="o">.</span><span class="n">port</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
     <span class="n">c</span><span class="o">.</span><span class="n">look</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="s1">'d'</span><span class="p">,</span> <span class="s1">'r'</span><span class="p">,</span> <span class="n">c</span><span class="o">.</span><span class="n">pick</span><span class="p">(</span><span class="sa">r</span><span class="s1">'$(1+g_mr_O)(R_E\|r_\pi)+r_O$'</span><span class="p">,</span> <span class="sa">r</span><span class="s1">'$(1+g_mr_O)R_S+r_O$'</span><span class="p">),</span> <span class="n">form</span><span class="o">=</span><span class="s1">'long'</span><span class="p">)</span>
 
-<span class="n">show</span><span class="p">(</span><span class="n">into_collector</span><span class="p">,</span> <span class="n">into_collector_degenerated</span><span class="p">,</span> <span class="n">notes</span><span class="o">=</span><span class="p">[</span>
-    <span class="s1">''</span><span class="p">,</span>
-    <span class="s1">''</span><span class="p">])</span>
+<span class="n">show</span><span class="p">(</span><span class="n">into_collector</span><span class="p">,</span> <span class="n">into_collector_degenerated</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="../../_images/26ec6e059f905511b0c9f3d2eeff62c89a47aad506292cae032221a4811d9ea0.svg" src="../../_images/26ec6e059f905511b0c9f3d2eeff62c89a47aad506292cae032221a4811d9ea0.svg" />
+<img alt="../../_images/49a28c55c9a8ec5c45a636305fa25cf96bf376d5568df6a8067b58d152200d2a.svg" src="../../_images/49a28c55c9a8ec5c45a636305fa25cf96bf376d5568df6a8067b58d152200d2a.svg" />
 </div>
+</div>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p></p></th>
+<th class="head"><p>BJT</p></th>
+<th class="head"><p>MOSFET</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Into the collector / Into the drain</strong></p></td>
+<td><p></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Into the collector, with emitter degeneration / Into the drain, with source degeneration</strong></p></td>
+<td><p></p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
 </div>
 </section>
 <section id="looking-into-the-emitter-or-source">
@@ -1061,17 +1161,33 @@
     <span class="n">p</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">110</span><span class="p">)</span>
     <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">(</span><span class="n">t</span><span class="o">.</span><span class="n">es</span><span class="p">,</span> <span class="n">p</span><span class="p">);</span> <span class="n">c</span><span class="o">.</span><span class="n">port</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="kc">None</span><span class="p">);</span> <span class="n">c</span><span class="o">.</span><span class="n">look</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="s1">'u'</span><span class="p">,</span> <span class="s1">'r'</span><span class="p">,</span> <span class="sa">r</span><span class="s1">'$\dfrac</span><span class="si">{1}{g_m}</span><span class="s1">+\dfrac</span><span class="si">{R_B}</span><span class="s1">{\beta+1}$'</span><span class="p">,</span> <span class="n">form</span><span class="o">=</span><span class="s1">'low'</span><span class="p">)</span>
 
-<span class="n">show</span><span class="p">(</span><span class="n">into_emitter</span><span class="p">,</span> <span class="n">into_emitter_base_resistance</span><span class="p">,</span> <span class="n">notes</span><span class="o">=</span><span class="p">[</span>
-    <span class="s1">''</span><span class="p">,</span>
-    <span class="p">(</span><span class="s1">''</span><span class="p">,</span>
-     <span class="s1">'No current flows in a gate resistor, so the resistance is $1/g_m$ as in the row above'</span><span class="p">)])</span>
+<span class="n">show</span><span class="p">(</span><span class="n">into_emitter</span><span class="p">,</span> <span class="n">into_emitter_base_resistance</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="../../_images/e3c7380a7433616c2db597cde2c26585ad9fd1a60442db20371836d73e7bf73f.svg" src="../../_images/e3c7380a7433616c2db597cde2c26585ad9fd1a60442db20371836d73e7bf73f.svg" />
+<img alt="../../_images/e7c4295da8d5134402ae29c04a6f4a56c666d7e59002595d89a78567c2cdc4e6.svg" src="../../_images/e7c4295da8d5134402ae29c04a6f4a56c666d7e59002595d89a78567c2cdc4e6.svg" />
 </div>
+</div>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p></p></th>
+<th class="head"><p>BJT</p></th>
+<th class="head"><p>MOSFET</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Into the emitter / Into the source</strong></p></td>
+<td><p></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Into the emitter, with base resistance</strong></p></td>
+<td><p></p></td>
+<td><p>No MOSFET version. No current flows in a gate resistor, so the resistance is <span class="math notranslate nohighlight">\(1/g_m\)</span> as in the row above</p></td>
+</tr>
+</tbody>
+</table>
 </div>
 </section>
 </section>
@@ -1112,18 +1228,33 @@
     <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">(</span><span class="n">t</span><span class="o">.</span><span class="n">es</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">));</span> <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">(</span><span class="n">c</span><span class="o">.</span><span class="n">res</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">),</span> <span class="s1">'R_'</span> <span class="o">+</span> <span class="n">E</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">180</span><span class="p">));</span> <span class="n">c</span><span class="o">.</span><span class="n">gnd</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="mi">180</span><span class="p">))</span>
     <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">(</span><span class="n">t</span><span class="o">.</span><span class="n">bg</span><span class="p">,</span> <span class="p">(</span><span class="n">t</span><span class="o">.</span><span class="n">bg</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">40</span><span class="p">));</span> <span class="n">c</span><span class="o">.</span><span class="n">port</span><span class="p">((</span><span class="n">t</span><span class="o">.</span><span class="n">bg</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">40</span><span class="p">),</span> <span class="s1">'v_in'</span><span class="p">,</span> <span class="s1">'l'</span><span class="p">)</span>
 
-<span class="n">show</span><span class="p">(</span><span class="n">gain_common_emitter</span><span class="p">,</span> <span class="n">gain_degenerated</span><span class="p">,</span> <span class="n">notes</span><span class="o">=</span><span class="p">[</span>
-    <span class="p">(</span><span class="sa">r</span><span class="s1">'$A_v=-g_m(R_C\parallel r_O)$'</span><span class="p">,</span>
-     <span class="sa">r</span><span class="s1">'$A_v=-g_m(R_D\parallel r_O)$'</span><span class="p">),</span>
-    <span class="p">(</span><span class="sa">r</span><span class="s1">'$A_v=-\dfrac</span><span class="si">{R_C}</span><span class="s1">{\dfrac</span><span class="si">{1}{g_m}</span><span class="s1">+R_E}$'</span><span class="p">,</span>
-     <span class="sa">r</span><span class="s1">'$A_v=-\dfrac</span><span class="si">{R_D}</span><span class="s1">{\dfrac</span><span class="si">{1}{g_m}</span><span class="s1">+R_S}$'</span><span class="p">)])</span>
+<span class="n">show</span><span class="p">(</span><span class="n">gain_common_emitter</span><span class="p">,</span> <span class="n">gain_degenerated</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="../../_images/d6b1e353a4babef7f3d68581ceaea0250a73f058c10a01e8c8d1c53cc2faa645.svg" src="../../_images/d6b1e353a4babef7f3d68581ceaea0250a73f058c10a01e8c8d1c53cc2faa645.svg" />
+<img alt="../../_images/1912d239a9c0a97354ee6eceadca6f6fba0bb5ecf37ce3b4cfcf10c5a91e92c9.svg" src="../../_images/1912d239a9c0a97354ee6eceadca6f6fba0bb5ecf37ce3b4cfcf10c5a91e92c9.svg" />
 </div>
+</div>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p></p></th>
+<th class="head"><p>BJT</p></th>
+<th class="head"><p>MOSFET</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Common emitter / Common source</strong></p></td>
+<td><p><span class="math notranslate nohighlight">\(A_v=-g_m(R_C\parallel r_O)\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(A_v=-g_m(R_D\parallel r_O)\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Degenerated common emitter / Degenerated common source</strong></p></td>
+<td><p><span class="math notranslate nohighlight">\(A_v=-\dfrac{R_C}{\dfrac{1}{g_m}+R_E}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(A_v=-\dfrac{R_D}{\dfrac{1}{g_m}+R_S}\)</span></p></td>
+</tr>
+</tbody>
+</table>
 </div>
 </section>
 <section id="common-base-or-common-gate-stage-and-follower">
@@ -1162,18 +1293,33 @@
     <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">(</span><span class="n">c</span><span class="o">.</span><span class="n">res</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="mi">130</span><span class="p">),</span> <span class="s1">'R_'</span> <span class="o">+</span> <span class="n">E</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">210</span><span class="p">));</span> <span class="n">c</span><span class="o">.</span><span class="n">gnd</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="mi">210</span><span class="p">))</span>
     <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">(</span><span class="n">t</span><span class="o">.</span><span class="n">bg</span><span class="p">,</span> <span class="p">(</span><span class="n">t</span><span class="o">.</span><span class="n">bg</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">40</span><span class="p">));</span> <span class="n">c</span><span class="o">.</span><span class="n">port</span><span class="p">((</span><span class="n">t</span><span class="o">.</span><span class="n">bg</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">40</span><span class="p">),</span> <span class="s1">'v_in'</span><span class="p">,</span> <span class="s1">'l'</span><span class="p">)</span>
 
-<span class="n">show</span><span class="p">(</span><span class="n">gain_common_base</span><span class="p">,</span> <span class="n">gain_follower</span><span class="p">,</span> <span class="n">notes</span><span class="o">=</span><span class="p">[</span>
-    <span class="p">(</span><span class="sa">r</span><span class="s1">'$A_v=\dfrac</span><span class="si">{R_C}</span><span class="s1">{\dfrac</span><span class="si">{1}{g_m}</span><span class="s1">+R_E}$'</span><span class="p">,</span>
-     <span class="sa">r</span><span class="s1">'$A_v=\dfrac</span><span class="si">{R_D}</span><span class="s1">{\dfrac</span><span class="si">{1}{g_m}</span><span class="s1">+R_S}$'</span><span class="p">),</span>
-    <span class="p">(</span><span class="sa">r</span><span class="s1">'$A_v=\dfrac{R_E\parallel r_O}{\dfrac</span><span class="si">{1}{g_m}</span><span class="s1">+R_E\parallel r_O}$'</span><span class="p">,</span>
-     <span class="sa">r</span><span class="s1">'$A_v=\dfrac{R_S\parallel r_O}{\dfrac</span><span class="si">{1}{g_m}</span><span class="s1">+R_S\parallel r_O}$'</span><span class="p">)])</span>
+<span class="n">show</span><span class="p">(</span><span class="n">gain_common_base</span><span class="p">,</span> <span class="n">gain_follower</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="../../_images/1eb84e481f7a9c192006256b5c190568e42bdc4d38b4b78cd544bb2efcdf473d.svg" src="../../_images/1eb84e481f7a9c192006256b5c190568e42bdc4d38b4b78cd544bb2efcdf473d.svg" />
+<img alt="../../_images/5c114f444b860691e84778a55462c366690708b17681bf4bc16862158eb518eb.svg" src="../../_images/5c114f444b860691e84778a55462c366690708b17681bf4bc16862158eb518eb.svg" />
 </div>
+</div>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p></p></th>
+<th class="head"><p>BJT</p></th>
+<th class="head"><p>MOSFET</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Common base / Common gate</strong></p></td>
+<td><p><span class="math notranslate nohighlight">\(A_v=\dfrac{R_C}{\dfrac{1}{g_m}+R_E}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(A_v=\dfrac{R_D}{\dfrac{1}{g_m}+R_S}\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Emitter follower / Source follower</strong></p></td>
+<td><p><span class="math notranslate nohighlight">\(A_v=\dfrac{R_E\parallel r_O}{\dfrac{1}{g_m}+R_E\parallel r_O}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(A_v=\dfrac{R_S\parallel r_O}{\dfrac{1}{g_m}+R_S\parallel r_O}\)</span></p></td>
+</tr>
+</tbody>
+</table>
 </div>
 </section>
 </section>
@@ -1216,18 +1362,33 @@
     <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">(</span><span class="n">top</span><span class="p">,</span> <span class="p">(</span><span class="n">xg</span><span class="p">,</span> <span class="n">top</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span> <span class="p">(</span><span class="n">xg</span><span class="p">,</span> <span class="n">t1</span><span class="o">.</span><span class="n">bg</span><span class="p">[</span><span class="mi">1</span><span class="p">]));</span> <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">(</span><span class="n">t2</span><span class="o">.</span><span class="n">bg</span><span class="p">,</span> <span class="p">(</span><span class="n">xg</span><span class="p">,</span> <span class="n">t2</span><span class="o">.</span><span class="n">bg</span><span class="p">[</span><span class="mi">1</span><span class="p">]));</span> <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">(</span><span class="n">t1</span><span class="o">.</span><span class="n">bg</span><span class="p">,</span> <span class="p">(</span><span class="n">xg</span><span class="p">,</span> <span class="n">t1</span><span class="o">.</span><span class="n">bg</span><span class="p">[</span><span class="mi">1</span><span class="p">]));</span> <span class="n">c</span><span class="o">.</span><span class="n">dot</span><span class="p">((</span><span class="n">xg</span><span class="p">,</span> <span class="n">t2</span><span class="o">.</span><span class="n">bg</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
     <span class="n">c</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">j</span><span class="p">);</span> <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">(</span><span class="n">j</span><span class="p">,</span> <span class="p">(</span><span class="mi">60</span><span class="p">,</span> <span class="n">j</span><span class="p">[</span><span class="mi">1</span><span class="p">]));</span> <span class="n">c</span><span class="o">.</span><span class="n">port</span><span class="p">((</span><span class="mi">60</span><span class="p">,</span> <span class="n">j</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span> <span class="s1">'V_ptat'</span><span class="p">,</span> <span class="s1">'r'</span><span class="p">)</span>
 
-<span class="n">show</span><span class="p">(</span><span class="n">voltage_divider</span><span class="p">,</span> <span class="n">ptat_generator</span><span class="p">,</span> <span class="n">notes</span><span class="o">=</span><span class="p">[</span>
-    <span class="p">(</span><span class="sa">r</span><span class="s1">'$V_\mathrm</span><span class="si">{out}</span><span class="s1">=V_\mathrm</span><span class="si">{in}</span><span class="s1">/2$ for matched devices: each drops one $V_</span><span class="si">{BE}</span><span class="s1">$'</span><span class="p">,</span>
-     <span class="sa">r</span><span class="s1">'$V_\mathrm</span><span class="si">{out}</span><span class="s1">=V_\mathrm</span><span class="si">{in}</span><span class="s1">/2$ for matched devices: each drops one $V_</span><span class="si">{GS}</span><span class="s1">$'</span><span class="p">),</span>
-    <span class="p">(</span><span class="s1">'Limited: $Q_1$ saturates. Its $V_</span><span class="si">{CE}</span><span class="s1">$ is of the order of $V_T$'</span><span class="p">,</span>
-     <span class="sa">r</span><span class="s1">'Weak inversion: $V_\mathrm</span><span class="si">{ptat}</span><span class="s1">=V_T\ln(1+K)$ with $V_T=kT/q$'</span><span class="p">)])</span>
+<span class="n">show</span><span class="p">(</span><span class="n">voltage_divider</span><span class="p">,</span> <span class="n">ptat_generator</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="../../_images/f5a1e7986e4609eff5d23a67ecb02851aa6893497594156748362d9b816cffda.svg" src="../../_images/f5a1e7986e4609eff5d23a67ecb02851aa6893497594156748362d9b816cffda.svg" />
+<img alt="../../_images/4946b5d4016f66319fd8d4708baa282aa43a0cf3f20031ba5307d2925bf2a200.svg" src="../../_images/4946b5d4016f66319fd8d4708baa282aa43a0cf3f20031ba5307d2925bf2a200.svg" />
 </div>
+</div>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p></p></th>
+<th class="head"><p>BJT</p></th>
+<th class="head"><p>MOSFET</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Voltage divider</strong></p></td>
+<td><p><span class="math notranslate nohighlight">\(V_\mathrm{out}=V_\mathrm{in}/2\)</span> for matched devices: each drops one <span class="math notranslate nohighlight">\(V_{BE}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(V_\mathrm{out}=V_\mathrm{in}/2\)</span> for matched devices: each drops one <span class="math notranslate nohighlight">\(V_{GS}\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>PTAT generator</strong></p></td>
+<td><p>Limited: <span class="math notranslate nohighlight">\(Q_1\)</span> saturates. Its <span class="math notranslate nohighlight">\(V_{CE}\)</span> is of the order of <span class="math notranslate nohighlight">\(V_T\)</span></p></td>
+<td><p>Weak inversion: <span class="math notranslate nohighlight">\(V_\mathrm{ptat}=V_T\ln(1+K)\)</span> with <span class="math notranslate nohighlight">\(V_T=kT/q\)</span></p></td>
+</tr>
+</tbody>
+</table>
 </div>
 </section>
 <section id="bias-generator-and-tie-cell">
@@ -1264,18 +1425,33 @@
     <span class="n">g</span> <span class="o">=</span> <span class="p">(</span><span class="n">n</span><span class="o">.</span><span class="n">es</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">n</span><span class="o">.</span><span class="n">es</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="mi">20</span><span class="p">);</span> <span class="n">c</span><span class="o">.</span><span class="n">gnd</span><span class="p">(</span><span class="n">g</span><span class="p">);</span> <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">(</span><span class="n">n</span><span class="o">.</span><span class="n">es</span><span class="p">,</span> <span class="n">g</span><span class="p">)</span>
     <span class="n">c</span><span class="o">.</span><span class="n">center</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>                                             <span class="c1"># aligned on the route from the supply</span>
 
-<span class="n">show</span><span class="p">(</span><span class="n">bias_generator</span><span class="p">,</span> <span class="n">tie_cell</span><span class="p">,</span> <span class="n">notes</span><span class="o">=</span><span class="p">[</span>
-    <span class="p">(</span><span class="s1">'A grounded base would put the whole supply across the emitter-base junction'</span><span class="p">,</span>
-     <span class="sa">r</span><span class="s1">'$M_1$, with its gate at ground, feeds the diode $M_2$: $V_\mathrm</span><span class="si">{bias}</span><span class="s1">=V_</span><span class="si">{GS2}</span><span class="s1">$'</span><span class="p">),</span>
-    <span class="p">(</span><span class="s1">'Limited: two junctions in series lie across the supply, so a series resistor is needed'</span><span class="p">,</span>
-     <span class="s1">'Diode $M_1$ turns $M_2$ on, which holds the output at ground. No gate is wired to a supply rail'</span><span class="p">)])</span>
+<span class="n">show</span><span class="p">(</span><span class="n">bias_generator</span><span class="p">,</span> <span class="n">tie_cell</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="../../_images/6cf90612ca2005ca83a607078136a67bca29844ad6d38f15831c83dfb08c29ce.svg" src="../../_images/6cf90612ca2005ca83a607078136a67bca29844ad6d38f15831c83dfb08c29ce.svg" />
+<img alt="../../_images/2f12bbe1c3d845a46839c9b5e6410e6cd130edfe6c92f4b0b18c36f861be705f.svg" src="../../_images/2f12bbe1c3d845a46839c9b5e6410e6cd130edfe6c92f4b0b18c36f861be705f.svg" />
 </div>
+</div>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p></p></th>
+<th class="head"><p>BJT</p></th>
+<th class="head"><p>MOSFET</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Bias generator</strong></p></td>
+<td><p>No BJT version. A grounded base would put the whole supply across the emitter-base junction</p></td>
+<td><p><span class="math notranslate nohighlight">\(M_1\)</span>, with its gate at ground, feeds the diode <span class="math notranslate nohighlight">\(M_2\)</span>: <span class="math notranslate nohighlight">\(V_\mathrm{bias}=V_{GS2}\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Tie cell</strong></p></td>
+<td><p>Limited: two junctions in series lie across the supply, so a series resistor is needed</p></td>
+<td><p>Diode <span class="math notranslate nohighlight">\(M_1\)</span> turns <span class="math notranslate nohighlight">\(M_2\)</span> on, which holds the output at ground. No gate is wired to a supply rail</p></td>
+</tr>
+</tbody>
+</table>
 </div>
 </section>
 <section id="current-mirror-and-current-divider">
@@ -1315,18 +1491,33 @@
     <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">(</span><span class="n">t1</span><span class="o">.</span><span class="n">es</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">t1</span><span class="o">.</span><span class="n">es</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="mi">40</span><span class="p">));</span> <span class="n">c</span><span class="o">.</span><span class="n">port</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="n">t1</span><span class="o">.</span><span class="n">es</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="mi">40</span><span class="p">),</span> <span class="s1">'I_out2'</span><span class="p">,</span> <span class="s1">'b'</span><span class="p">)</span>
     <span class="n">c</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">j</span><span class="p">);</span> <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">(</span><span class="n">j</span><span class="p">,</span> <span class="p">(</span><span class="mi">50</span><span class="p">,</span> <span class="n">j</span><span class="p">[</span><span class="mi">1</span><span class="p">]));</span> <span class="n">c</span><span class="o">.</span><span class="n">port</span><span class="p">((</span><span class="mi">50</span><span class="p">,</span> <span class="n">j</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span> <span class="s1">'I_in'</span><span class="p">,</span> <span class="s1">'r'</span><span class="p">)</span>
 
-<span class="n">show</span><span class="p">(</span><span class="n">current_mirror</span><span class="p">,</span> <span class="n">current_divider</span><span class="p">,</span> <span class="n">notes</span><span class="o">=</span><span class="p">[</span>
-    <span class="p">(</span><span class="sa">r</span><span class="s1">'$I_\mathrm</span><span class="si">{out}</span><span class="s1">=\dfrac{I_\mathrm</span><span class="si">{in}</span><span class="s1">}{1+2/\beta}$ for equal devices. The ratio follows the emitter areas'</span><span class="p">,</span>
-     <span class="sa">r</span><span class="s1">'$I_\mathrm</span><span class="si">{out}</span><span class="s1">=\dfrac{(W/L)_2}{(W/L)_1}\,I_\mathrm</span><span class="si">{in}</span><span class="s1">$'</span><span class="p">),</span>
-    <span class="p">(</span><span class="s1">'The exponential law gives no linear split'</span><span class="p">,</span>
-     <span class="sa">r</span><span class="s1">'$I_\mathrm</span><span class="si">{in}</span><span class="s1">$ splits between the two outputs in a fixed ratio set by the sizes, at any signal level'</span><span class="p">)])</span>
+<span class="n">show</span><span class="p">(</span><span class="n">current_mirror</span><span class="p">,</span> <span class="n">current_divider</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="../../_images/2cd33e3d6747ea30ca497f09d27d988883616f08d4144efa25cfcb5f213171da.svg" src="../../_images/2cd33e3d6747ea30ca497f09d27d988883616f08d4144efa25cfcb5f213171da.svg" />
+<img alt="../../_images/b26d8d43b745c0cb10f1d8159d970ad4c6ee68b911f7c03950c09bb86f40e1ed.svg" src="../../_images/b26d8d43b745c0cb10f1d8159d970ad4c6ee68b911f7c03950c09bb86f40e1ed.svg" />
 </div>
+</div>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p></p></th>
+<th class="head"><p>BJT</p></th>
+<th class="head"><p>MOSFET</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Current mirror</strong></p></td>
+<td><p><span class="math notranslate nohighlight">\(I_\mathrm{out}=\dfrac{I_\mathrm{in}}{1+2/\beta}\)</span> for equal devices. The ratio follows the emitter areas</p></td>
+<td><p><span class="math notranslate nohighlight">\(I_\mathrm{out}=\dfrac{(W/L)_2}{(W/L)_1}\,I_\mathrm{in}\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Current divider</strong></p></td>
+<td><p>No BJT version. The exponential law gives no linear split</p></td>
+<td><p><span class="math notranslate nohighlight">\(I_\mathrm{in}\)</span> splits between the two outputs in a fixed ratio set by the sizes, at any signal level</p></td>
+</tr>
+</tbody>
+</table>
 </div>
 </section>
 </section>
@@ -1366,17 +1557,33 @@
     <span class="k">if</span> <span class="n">c</span><span class="o">.</span><span class="n">device</span> <span class="ow">is</span> <span class="n">MOSFET</span><span class="p">:</span>                                  <span class="c1"># the BJT version has no gain to speak of</span>
         <span class="n">c</span><span class="o">.</span><span class="n">look</span><span class="p">((</span><span class="mi">50</span><span class="p">,</span> <span class="n">j</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span> <span class="s1">'l'</span><span class="p">,</span> <span class="s1">'d'</span><span class="p">,</span> <span class="s1">'R_out'</span><span class="p">)</span>
 
-<span class="n">show</span><span class="p">(</span><span class="n">active_load</span><span class="p">,</span> <span class="n">inverter</span><span class="p">,</span> <span class="n">notes</span><span class="o">=</span><span class="p">[</span>
-    <span class="sa">r</span><span class="s1">'$A_v=-g_</span><span class="si">{m1}</span><span class="s1">R_\mathrm</span><span class="si">{out}</span><span class="s1">$, $R_\mathrm</span><span class="si">{out}</span><span class="s1">=r_</span><span class="si">{O1}</span><span class="s1">\parallel r_</span><span class="si">{O2}</span><span class="s1">$'</span><span class="p">,</span>
-    <span class="p">(</span><span class="s1">'Limited: $V_</span><span class="si">{CC}</span><span class="s1">$ lies across two base-emitter junctions, so it must stay near $2V_</span><span class="si">{BE}</span><span class="s1">$'</span><span class="p">,</span>
-     <span class="sa">r</span><span class="s1">'$A_v=-(g_</span><span class="si">{m1}</span><span class="s1">+g_</span><span class="si">{m2}</span><span class="s1">)R_\mathrm</span><span class="si">{out}</span><span class="s1">$, $R_\mathrm</span><span class="si">{out}</span><span class="s1">=r_</span><span class="si">{O1}</span><span class="s1">\parallel r_</span><span class="si">{O2}</span><span class="s1">$ around the switching point. As a logic gate the output swings from rail to rail'</span><span class="p">)])</span>
+<span class="n">show</span><span class="p">(</span><span class="n">active_load</span><span class="p">,</span> <span class="n">inverter</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="../../_images/8945ab7a662b9ada64a315250c8dfca0de00d7667075cbbc48fe64ec2abe2dce.svg" src="../../_images/8945ab7a662b9ada64a315250c8dfca0de00d7667075cbbc48fe64ec2abe2dce.svg" />
+<img alt="../../_images/9ecbfadfa1d712945463675c2cbe2fd4018fc45b6ae33ca35a5b70c7512ed151.svg" src="../../_images/9ecbfadfa1d712945463675c2cbe2fd4018fc45b6ae33ca35a5b70c7512ed151.svg" />
 </div>
+</div>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p></p></th>
+<th class="head"><p>BJT</p></th>
+<th class="head"><p>MOSFET</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Common emitter with active load / Common source with active load</strong></p></td>
+<td><p><span class="math notranslate nohighlight">\(A_v=-g_{m1}R_\mathrm{out}\)</span>, <span class="math notranslate nohighlight">\(R_\mathrm{out}=r_{O1}\parallel r_{O2}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(A_v=-g_{m1}R_\mathrm{out}\)</span>, <span class="math notranslate nohighlight">\(R_\mathrm{out}=r_{O1}\parallel r_{O2}\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Inverter</strong></p></td>
+<td><p>Limited: <span class="math notranslate nohighlight">\(V_{CC}\)</span> lies across two base-emitter junctions, so it must stay near <span class="math notranslate nohighlight">\(2V_{BE}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(A_v=-(g_{m1}+g_{m2})R_\mathrm{out}\)</span>, <span class="math notranslate nohighlight">\(R_\mathrm{out}=r_{O1}\parallel r_{O2}\)</span> around the switching point. As a logic gate the output swings from rail to rail</p></td>
+</tr>
+</tbody>
+</table>
 </div>
 </section>
 <section id="stacked-and-folded-diode-loads">
@@ -1414,18 +1621,33 @@
     <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">(</span><span class="n">t2</span><span class="o">.</span><span class="n">cd</span><span class="p">,</span> <span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="o">-</span><span class="mi">20</span><span class="p">));</span> <span class="n">c</span><span class="o">.</span><span class="n">dot</span><span class="p">((</span><span class="mi">100</span><span class="p">,</span> <span class="o">-</span><span class="mi">20</span><span class="p">))</span>                         <span class="c1"># the second transistor is diode-connected</span>
     <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">((</span><span class="mi">50</span><span class="p">,</span> <span class="o">-</span><span class="mi">20</span><span class="p">),</span> <span class="p">(</span><span class="mi">50</span><span class="p">,</span> <span class="n">t2</span><span class="o">.</span><span class="n">bg</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span> <span class="n">t2</span><span class="o">.</span><span class="n">bg</span><span class="p">);</span> <span class="n">c</span><span class="o">.</span><span class="n">dot</span><span class="p">((</span><span class="mi">50</span><span class="p">,</span> <span class="o">-</span><span class="mi">20</span><span class="p">))</span>
 
-<span class="n">show</span><span class="p">(</span><span class="n">diode_load</span><span class="p">,</span> <span class="n">folded_diode_load</span><span class="p">,</span> <span class="n">notes</span><span class="o">=</span><span class="p">[</span>
-    <span class="p">(</span><span class="sa">r</span><span class="s1">'$A_v=-\dfrac{g_</span><span class="si">{m1}</span><span class="s1">}{g_</span><span class="si">{m2}</span><span class="s1">}=-1$, because both devices carry the same current'</span><span class="p">,</span>
-     <span class="sa">r</span><span class="s1">'$A_v=-\dfrac{g_</span><span class="si">{m1}</span><span class="s1">}{g_</span><span class="si">{m2}</span><span class="s1">}=-\sqrt{\dfrac{(W/L)_1}{(W/L)_2}}$'</span><span class="p">),</span>
-    <span class="p">(</span><span class="sa">r</span><span class="s1">'$A_v=-\dfrac{g_</span><span class="si">{m1}</span><span class="s1">}{g_</span><span class="si">{m2}</span><span class="s1">}=-\dfrac{I_</span><span class="si">{C1}</span><span class="s1">}{I_</span><span class="si">{C2}</span><span class="s1">}$'</span><span class="p">,</span>
-     <span class="sa">r</span><span class="s1">'$A_v=-\dfrac{g_</span><span class="si">{m1}</span><span class="s1">}{g_</span><span class="si">{m2}</span><span class="s1">}$, output referred to ground, no body effect in $M_2$'</span><span class="p">)])</span>
+<span class="n">show</span><span class="p">(</span><span class="n">diode_load</span><span class="p">,</span> <span class="n">folded_diode_load</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="../../_images/ea1dcc89cc1ee597d19c9db54dcd579ad5443fe28583c06656e52eaf38fcb669.svg" src="../../_images/ea1dcc89cc1ee597d19c9db54dcd579ad5443fe28583c06656e52eaf38fcb669.svg" />
+<img alt="../../_images/61a1019a30b2bef90cd078cec098c12bfa6c6de74357b306a3c519b38ca88d7f.svg" src="../../_images/61a1019a30b2bef90cd078cec098c12bfa6c6de74357b306a3c519b38ca88d7f.svg" />
 </div>
+</div>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p></p></th>
+<th class="head"><p>BJT</p></th>
+<th class="head"><p>MOSFET</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Common emitter with diode load / Common source with diode load</strong></p></td>
+<td><p><span class="math notranslate nohighlight">\(A_v=-\dfrac{g_{m1}}{g_{m2}}=-1\)</span>, because both devices carry the same current</p></td>
+<td><p><span class="math notranslate nohighlight">\(A_v=-\dfrac{g_{m1}}{g_{m2}}=-\sqrt{\dfrac{(W/L)_1}{(W/L)_2}}\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Folded diode load</strong></p></td>
+<td><p><span class="math notranslate nohighlight">\(A_v=-\dfrac{g_{m1}}{g_{m2}}=-\dfrac{I_{C1}}{I_{C2}}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(A_v=-\dfrac{g_{m1}}{g_{m2}}\)</span>, output referred to ground, no body effect in <span class="math notranslate nohighlight">\(M_2\)</span></p></td>
+</tr>
+</tbody>
+</table>
 </div>
 </section>
 <section id="fixed-and-tunable-degeneration">
@@ -1458,18 +1680,33 @@
     <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">(</span><span class="n">t2</span><span class="o">.</span><span class="n">bg</span><span class="p">,</span> <span class="p">(</span><span class="n">t2</span><span class="o">.</span><span class="n">bg</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="mi">30</span><span class="p">,</span> <span class="n">t2</span><span class="o">.</span><span class="n">bg</span><span class="p">[</span><span class="mi">1</span><span class="p">]));</span> <span class="n">c</span><span class="o">.</span><span class="n">port</span><span class="p">((</span><span class="n">t2</span><span class="o">.</span><span class="n">bg</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="mi">30</span><span class="p">,</span> <span class="n">t2</span><span class="o">.</span><span class="n">bg</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span> <span class="s1">'V_bias'</span><span class="p">,</span> <span class="s1">'l'</span><span class="p">)</span>
     <span class="n">c</span><span class="o">.</span><span class="n">look</span><span class="p">(</span><span class="n">j</span><span class="p">,</span> <span class="s1">'d'</span><span class="p">,</span> <span class="s1">'r'</span><span class="p">,</span> <span class="s1">'R_on2'</span><span class="p">)</span>
 
-<span class="n">show</span><span class="p">(</span><span class="n">degeneration</span><span class="p">,</span> <span class="n">tunable_degeneration</span><span class="p">,</span> <span class="n">notes</span><span class="o">=</span><span class="p">[</span>
-    <span class="p">(</span><span class="s1">'The lower device would saturate, and a saturated BJT is not a linear resistor'</span><span class="p">,</span>
-     <span class="s1">'$M_2$ works in triode. The pair acts as one transistor of greater length'</span><span class="p">),</span>
-    <span class="p">(</span><span class="s1">'A BJT offers no bias-controlled linear resistance'</span><span class="p">,</span>
-     <span class="sa">r</span><span class="s1">'$G_m=\dfrac{g_</span><span class="si">{m1}</span><span class="s1">}{1+g_</span><span class="si">{m1}</span><span class="s1">R_\mathrm</span><span class="si">{on2}</span><span class="s1">}$, with $R_\mathrm</span><span class="si">{on2}</span><span class="s1">$ set by $V_\mathrm</span><span class="si">{bias}</span><span class="s1">$'</span><span class="p">)])</span>
+<span class="n">show</span><span class="p">(</span><span class="n">degeneration</span><span class="p">,</span> <span class="n">tunable_degeneration</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="../../_images/640becc69f70a5837927c912ed672db1ae5740e5345d40d79934c8da631de2c0.svg" src="../../_images/640becc69f70a5837927c912ed672db1ae5740e5345d40d79934c8da631de2c0.svg" />
+<img alt="../../_images/ff623fa54b2757aa138029719ed54d9413f1bc9e92625f506bc39bd0321bdf2f.svg" src="../../_images/ff623fa54b2757aa138029719ed54d9413f1bc9e92625f506bc39bd0321bdf2f.svg" />
 </div>
+</div>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p></p></th>
+<th class="head"><p>BJT</p></th>
+<th class="head"><p>MOSFET</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Degenerated common source</strong></p></td>
+<td><p>No BJT version. The lower device would saturate, and a saturated BJT is not a linear resistor</p></td>
+<td><p><span class="math notranslate nohighlight">\(M_2\)</span> works in triode. The pair acts as one transistor of greater length</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Tunable degeneration</strong></p></td>
+<td><p>No BJT version. A BJT offers no bias-controlled linear resistance</p></td>
+<td><p><span class="math notranslate nohighlight">\(G_m=\dfrac{g_{m1}}{1+g_{m1}R_\mathrm{on2}}\)</span>, with <span class="math notranslate nohighlight">\(R_\mathrm{on2}\)</span> set by <span class="math notranslate nohighlight">\(V_\mathrm{bias}\)</span></p></td>
+</tr>
+</tbody>
+</table>
 </div>
 </section>
 </section>
@@ -1507,18 +1744,33 @@
     <span class="n">yi</span> <span class="o">=</span> <span class="n">j</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span> <span class="n">c</span><span class="o">.</span><span class="n">dot</span><span class="p">((</span><span class="n">xin</span><span class="p">,</span> <span class="n">yi</span><span class="p">));</span> <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">((</span><span class="n">xin</span><span class="p">,</span> <span class="n">yi</span><span class="p">),</span> <span class="p">(</span><span class="n">xin</span> <span class="o">-</span> <span class="mi">30</span><span class="p">,</span> <span class="n">yi</span><span class="p">));</span> <span class="n">c</span><span class="o">.</span><span class="n">port</span><span class="p">((</span><span class="n">xin</span> <span class="o">-</span> <span class="mi">30</span><span class="p">,</span> <span class="n">yi</span><span class="p">),</span> <span class="n">IN</span><span class="p">,</span> <span class="s1">'l'</span><span class="p">)</span>
     <span class="n">c</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">j</span><span class="p">);</span> <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">(</span><span class="n">j</span><span class="p">,</span> <span class="p">(</span><span class="mi">50</span><span class="p">,</span> <span class="n">j</span><span class="p">[</span><span class="mi">1</span><span class="p">]));</span> <span class="n">c</span><span class="o">.</span><span class="n">port</span><span class="p">((</span><span class="mi">50</span><span class="p">,</span> <span class="n">j</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span> <span class="n">OUT</span><span class="p">,</span> <span class="s1">'r'</span><span class="p">)</span>
 
-<span class="n">show</span><span class="p">(</span><span class="n">follower</span><span class="p">,</span> <span class="n">push_pull</span><span class="p">,</span> <span class="n">notes</span><span class="o">=</span><span class="p">[</span>
-    <span class="p">(</span><span class="sa">r</span><span class="s1">'$V_\mathrm</span><span class="si">{out}</span><span class="s1">=V_\mathrm</span><span class="si">{in}</span><span class="s1">-V_</span><span class="si">{BE1}</span><span class="s1">$, $R_\mathrm</span><span class="si">{out}</span><span class="s1">\approx1/g_</span><span class="si">{m1}</span><span class="s1">$'</span><span class="p">,</span>
-     <span class="sa">r</span><span class="s1">'$V_\mathrm</span><span class="si">{out}</span><span class="s1">=V_\mathrm</span><span class="si">{in}</span><span class="s1">-V_</span><span class="si">{GS1}</span><span class="s1">$, $R_\mathrm</span><span class="si">{out}</span><span class="s1">\approx1/g_</span><span class="si">{m1}</span><span class="s1">$'</span><span class="p">),</span>
-    <span class="p">(</span><span class="sa">r</span><span class="s1">'No device conducts while $|V_\mathrm</span><span class="si">{in}</span><span class="s1">-V_\mathrm</span><span class="si">{out}</span><span class="s1">|&lt;V_</span><span class="si">{BE}</span><span class="s1">$'</span><span class="p">,</span>
-     <span class="sa">r</span><span class="s1">'No device conducts while $|V_\mathrm</span><span class="si">{in}</span><span class="s1">-V_\mathrm</span><span class="si">{out}</span><span class="s1">|&lt;V_</span><span class="si">{TH}</span><span class="s1">$'</span><span class="p">)])</span>
+<span class="n">show</span><span class="p">(</span><span class="n">follower</span><span class="p">,</span> <span class="n">push_pull</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="../../_images/70670e743711923ee44a1af350ff23f4ef3a30dbcc35a08dda6604b6f46390f3.svg" src="../../_images/70670e743711923ee44a1af350ff23f4ef3a30dbcc35a08dda6604b6f46390f3.svg" />
+<img alt="../../_images/4e386505d45e73d832466e1963242c3cc7905bbafcb733c5b6816f1b27e940ba.svg" src="../../_images/4e386505d45e73d832466e1963242c3cc7905bbafcb733c5b6816f1b27e940ba.svg" />
 </div>
+</div>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p></p></th>
+<th class="head"><p>BJT</p></th>
+<th class="head"><p>MOSFET</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Emitter follower / Source follower</strong></p></td>
+<td><p><span class="math notranslate nohighlight">\(V_\mathrm{out}=V_\mathrm{in}-V_{BE1}\)</span>, <span class="math notranslate nohighlight">\(R_\mathrm{out}\approx1/g_{m1}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(V_\mathrm{out}=V_\mathrm{in}-V_{GS1}\)</span>, <span class="math notranslate nohighlight">\(R_\mathrm{out}\approx1/g_{m1}\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Push-pull emitter follower / Push-pull source follower</strong></p></td>
+<td><p>No device conducts while <span class="math notranslate nohighlight">\(\lvert V_\mathrm{in}-V_\mathrm{out}\rvert &lt;V_{BE}\)</span></p></td>
+<td><p>No device conducts while <span class="math notranslate nohighlight">\(\lvert V_\mathrm{in}-V_\mathrm{out}\rvert &lt;V_{TH}\)</span></p></td>
+</tr>
+</tbody>
+</table>
 </div>
 </section>
 <section id="single-and-stacked-current-buffers">
@@ -1551,18 +1803,33 @@
     <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">(</span><span class="n">t2</span><span class="o">.</span><span class="n">cd</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">40</span><span class="p">));</span> <span class="n">c</span><span class="o">.</span><span class="n">port</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">40</span><span class="p">),</span> <span class="s1">'I_out'</span><span class="p">,</span> <span class="s1">'l'</span><span class="p">);</span> <span class="n">c</span><span class="o">.</span><span class="n">look</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">40</span><span class="p">),</span> <span class="s1">'d'</span><span class="p">,</span> <span class="s1">'r'</span><span class="p">,</span> <span class="s1">'R_out'</span><span class="p">)</span>
     <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">(</span><span class="n">t1</span><span class="o">.</span><span class="n">es</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">t1</span><span class="o">.</span><span class="n">es</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="mi">40</span><span class="p">));</span> <span class="n">c</span><span class="o">.</span><span class="n">port</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="n">t1</span><span class="o">.</span><span class="n">es</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="mi">40</span><span class="p">),</span> <span class="s1">'I_in'</span><span class="p">,</span> <span class="s1">'l'</span><span class="p">)</span>
 
-<span class="n">show</span><span class="p">(</span><span class="n">buffer_stage</span><span class="p">,</span> <span class="n">stacked_buffers</span><span class="p">,</span> <span class="n">notes</span><span class="o">=</span><span class="p">[</span>
-    <span class="p">(</span><span class="sa">r</span><span class="s1">'$R_\mathrm</span><span class="si">{in}</span><span class="s1">\approx1/g_</span><span class="si">{m1}</span><span class="s1">$. The signal current reaches the output almost unchanged'</span><span class="p">,</span>
-     <span class="sa">r</span><span class="s1">'$R_\mathrm</span><span class="si">{in}</span><span class="s1">\approx1/g_</span><span class="si">{m1}</span><span class="s1">$. The signal current reaches the output unchanged'</span><span class="p">),</span>
-    <span class="p">(</span><span class="sa">r</span><span class="s1">'The output resistance $R_\mathrm</span><span class="si">{out}</span><span class="s1">$ rises with each device, up to about $\beta\,r_O$'</span><span class="p">,</span>
-     <span class="sa">r</span><span class="s1">'The output resistance $R_\mathrm</span><span class="si">{out}</span><span class="s1">$ rises by about $g_mr_O$ with each device'</span><span class="p">)])</span>
+<span class="n">show</span><span class="p">(</span><span class="n">buffer_stage</span><span class="p">,</span> <span class="n">stacked_buffers</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="../../_images/0546318856a5356af02d82fa03fe8bf24c4a3fd87c0b82634e018423b919d3ea.svg" src="../../_images/0546318856a5356af02d82fa03fe8bf24c4a3fd87c0b82634e018423b919d3ea.svg" />
+<img alt="../../_images/e9d29f634b922b5747898428d8e27a30915c7a7851c9f24f8a95183788d0a4e0.svg" src="../../_images/e9d29f634b922b5747898428d8e27a30915c7a7851c9f24f8a95183788d0a4e0.svg" />
 </div>
+</div>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p></p></th>
+<th class="head"><p>BJT</p></th>
+<th class="head"><p>MOSFET</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Common-base stage / Common-gate stage</strong></p></td>
+<td><p><span class="math notranslate nohighlight">\(R_\mathrm{in}\approx1/g_{m1}\)</span>. The signal current reaches the output almost unchanged</p></td>
+<td><p><span class="math notranslate nohighlight">\(R_\mathrm{in}\approx1/g_{m1}\)</span>. The signal current reaches the output unchanged</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Cascoded common base / Cascoded common gate</strong></p></td>
+<td><p>The output resistance <span class="math notranslate nohighlight">\(R_\mathrm{out}\)</span> rises with each device, up to about <span class="math notranslate nohighlight">\(\beta\,r_O\)</span></p></td>
+<td><p>The output resistance <span class="math notranslate nohighlight">\(R_\mathrm{out}\)</span> rises by about <span class="math notranslate nohighlight">\(g_mr_O\)</span> with each device</p></td>
+</tr>
+</tbody>
+</table>
 </div>
 </section>
 <section id="two-outputs-and-two-paths">
@@ -1603,16 +1870,33 @@
     <span class="n">c</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">tap</span><span class="p">);</span> <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">(</span><span class="n">tap</span><span class="p">,</span> <span class="p">(</span><span class="n">xl</span> <span class="o">-</span> <span class="mi">30</span><span class="p">,</span> <span class="n">tap</span><span class="p">[</span><span class="mi">1</span><span class="p">]));</span> <span class="n">c</span><span class="o">.</span><span class="n">port</span><span class="p">((</span><span class="n">xl</span> <span class="o">-</span> <span class="mi">30</span><span class="p">,</span> <span class="n">tap</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span> <span class="n">IN</span><span class="p">,</span> <span class="s1">'t'</span><span class="p">)</span>
     <span class="n">c</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">j</span><span class="p">);</span> <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">(</span><span class="n">j</span><span class="p">,</span> <span class="p">(</span><span class="mi">50</span><span class="p">,</span> <span class="n">j</span><span class="p">[</span><span class="mi">1</span><span class="p">]));</span> <span class="n">c</span><span class="o">.</span><span class="n">port</span><span class="p">((</span><span class="mi">50</span><span class="p">,</span> <span class="n">j</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span> <span class="n">OUT</span><span class="p">,</span> <span class="s1">'r'</span><span class="p">)</span>
 
-<span class="n">show</span><span class="p">(</span><span class="n">two_outputs</span><span class="p">,</span> <span class="n">two_paths</span><span class="p">,</span> <span class="n">notes</span><span class="o">=</span><span class="p">[</span>
-    <span class="sa">r</span><span class="s1">'The output currents change by $\mp g_mV_\mathrm</span><span class="si">{in}</span><span class="s1">$ for equal $g_m$. $R_\mathrm</span><span class="si">{in}</span><span class="s1">\approx1/g_</span><span class="si">{m2}</span><span class="s1">$'</span><span class="p">,</span>
-    <span class="sa">r</span><span class="s1">'$A_v=1+\dfrac{g_</span><span class="si">{m2}</span><span class="s1">}{g_</span><span class="si">{m1}</span><span class="s1">}$'</span><span class="p">])</span>
+<span class="n">show</span><span class="p">(</span><span class="n">two_outputs</span><span class="p">,</span> <span class="n">two_paths</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="../../_images/56c0f24f14114dc6a273c1c9fba4fccc5850357b31c69ea60c2086240c9daed2.svg" src="../../_images/56c0f24f14114dc6a273c1c9fba4fccc5850357b31c69ea60c2086240c9daed2.svg" />
+<img alt="../../_images/4ed3e183274c39bd49177a9cc6128945e626b046b180bc086c94e946a03abbd4.svg" src="../../_images/4ed3e183274c39bd49177a9cc6128945e626b046b180bc086c94e946a03abbd4.svg" />
 </div>
+</div>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p></p></th>
+<th class="head"><p>BJT</p></th>
+<th class="head"><p>MOSFET</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Common base + common emitter / Common gate + common source</strong></p></td>
+<td><p>The output currents change by <span class="math notranslate nohighlight">\(\mp g_mV_\mathrm{in}\)</span> for equal <span class="math notranslate nohighlight">\(g_m\)</span>. <span class="math notranslate nohighlight">\(R_\mathrm{in}\approx1/g_{m2}\)</span></p></td>
+<td><p>The output currents change by <span class="math notranslate nohighlight">\(\mp g_mV_\mathrm{in}\)</span> for equal <span class="math notranslate nohighlight">\(g_m\)</span>. <span class="math notranslate nohighlight">\(R_\mathrm{in}\approx1/g_{m2}\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Emitter follower + common base / Source follower + common gate</strong></p></td>
+<td><p><span class="math notranslate nohighlight">\(A_v=1+\dfrac{g_{m2}}{g_{m1}}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(A_v=1+\dfrac{g_{m2}}{g_{m1}}\)</span></p></td>
+</tr>
+</tbody>
+</table>
 </div>
 </section>
 </section>
@@ -1652,18 +1936,33 @@
     <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">(</span><span class="n">t2</span><span class="o">.</span><span class="n">bg</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">t2</span><span class="o">.</span><span class="n">bg</span><span class="p">[</span><span class="mi">1</span><span class="p">]));</span> <span class="n">c</span><span class="o">.</span><span class="n">dot</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="n">t2</span><span class="o">.</span><span class="n">bg</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
     <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">(</span><span class="n">t2</span><span class="o">.</span><span class="n">es</span><span class="p">,</span> <span class="p">(</span><span class="o">-</span><span class="mi">110</span><span class="p">,</span> <span class="mi">150</span><span class="p">));</span> <span class="n">c</span><span class="o">.</span><span class="n">port</span><span class="p">((</span><span class="o">-</span><span class="mi">110</span><span class="p">,</span> <span class="mi">150</span><span class="p">),</span> <span class="s1">'V_bias'</span><span class="p">,</span> <span class="s1">'b'</span><span class="p">)</span>
 
-<span class="n">show</span><span class="p">(</span><span class="n">cascode</span><span class="p">,</span> <span class="n">regulated_cascode</span><span class="p">,</span> <span class="n">notes</span><span class="o">=</span><span class="p">[</span>
-    <span class="p">(</span><span class="sa">r</span><span class="s1">'$R_\mathrm</span><span class="si">{out}</span><span class="s1">\approx\beta\,r_</span><span class="si">{O2}</span><span class="s1">$ at most'</span><span class="p">,</span>
-     <span class="sa">r</span><span class="s1">'$R_\mathrm</span><span class="si">{out}</span><span class="s1">\approx g_</span><span class="si">{m2}</span><span class="s1">r_</span><span class="si">{O2}</span><span class="s1">\,r_</span><span class="si">{O1}</span><span class="s1">$'</span><span class="p">),</span>
-    <span class="p">(</span><span class="sa">r</span><span class="s1">'$R_\mathrm</span><span class="si">{out}</span><span class="s1">$ stays near $\beta\,r_</span><span class="si">{O1}</span><span class="s1">$: the base current of $Q_1$ sets the limit'</span><span class="p">,</span>
-     <span class="sa">r</span><span class="s1">'The loop multiplies $R_\mathrm</span><span class="si">{out}</span><span class="s1">$ once more, by about $g_</span><span class="si">{m2}</span><span class="s1">r_</span><span class="si">{O2}</span><span class="s1">$'</span><span class="p">)])</span>
+<span class="n">show</span><span class="p">(</span><span class="n">cascode</span><span class="p">,</span> <span class="n">regulated_cascode</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="../../_images/5336f4524b4dec08ef5a8b7a8515a0e7c40300bf95f7b69dad262c6fa6a57a34.svg" src="../../_images/5336f4524b4dec08ef5a8b7a8515a0e7c40300bf95f7b69dad262c6fa6a57a34.svg" />
+<img alt="../../_images/df343c24c9231ec3b5a1bc0f6ca527e7d32520c47fbbd1c8bef330e77ab4326f.svg" src="../../_images/df343c24c9231ec3b5a1bc0f6ca527e7d32520c47fbbd1c8bef330e77ab4326f.svg" />
 </div>
+</div>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p></p></th>
+<th class="head"><p>BJT</p></th>
+<th class="head"><p>MOSFET</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Cascode</strong></p></td>
+<td><p><span class="math notranslate nohighlight">\(R_\mathrm{out}\approx\beta\,r_{O2}\)</span> at most</p></td>
+<td><p><span class="math notranslate nohighlight">\(R_\mathrm{out}\approx g_{m2}r_{O2}\,r_{O1}\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Regulated cascode</strong></p></td>
+<td><p><span class="math notranslate nohighlight">\(R_\mathrm{out}\)</span> stays near <span class="math notranslate nohighlight">\(\beta\,r_{O1}\)</span>: the base current of <span class="math notranslate nohighlight">\(Q_1\)</span> sets the limit</p></td>
+<td><p>The loop multiplies <span class="math notranslate nohighlight">\(R_\mathrm{out}\)</span> once more, by about <span class="math notranslate nohighlight">\(g_{m2}r_{O2}\)</span></p></td>
+</tr>
+</tbody>
+</table>
 </div>
 </section>
 <section id="flipped-follower-and-active-inductor">
@@ -1698,18 +1997,33 @@
     <span class="n">xb</span> <span class="o">=</span> <span class="o">-</span><span class="mi">130</span>
     <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">(</span><span class="n">top</span><span class="p">,</span> <span class="p">(</span><span class="n">xb</span><span class="p">,</span> <span class="n">top</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span> <span class="p">(</span><span class="n">xb</span><span class="p">,</span> <span class="n">t1</span><span class="o">.</span><span class="n">bg</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span> <span class="n">t1</span><span class="o">.</span><span class="n">bg</span><span class="p">)</span>
 
-<span class="n">show</span><span class="p">(</span><span class="n">flipped_follower</span><span class="p">,</span> <span class="n">active_inductor</span><span class="p">,</span> <span class="n">notes</span><span class="o">=</span><span class="p">[</span>
-    <span class="p">(</span><span class="sa">r</span><span class="s1">'$V_\mathrm</span><span class="si">{out}</span><span class="s1">=V_\mathrm</span><span class="si">{in}</span><span class="s1">-V_</span><span class="si">{BE1}</span><span class="s1">$, $R_\mathrm</span><span class="si">{out}</span><span class="s1">\approx\dfrac</span><span class="si">{1}</span><span class="s1">{g_</span><span class="si">{m1}</span><span class="s1">\,g_</span><span class="si">{m2}</span><span class="s1">r_</span><span class="si">{O1}</span><span class="s1">}$'</span><span class="p">,</span>
-     <span class="sa">r</span><span class="s1">'$V_\mathrm</span><span class="si">{out}</span><span class="s1">=V_\mathrm</span><span class="si">{in}</span><span class="s1">-V_</span><span class="si">{GS1}</span><span class="s1">$, $R_\mathrm</span><span class="si">{out}</span><span class="s1">\approx\dfrac</span><span class="si">{1}</span><span class="s1">{g_</span><span class="si">{m1}</span><span class="s1">\,g_</span><span class="si">{m2}</span><span class="s1">r_</span><span class="si">{O1}</span><span class="s1">}$'</span><span class="p">),</span>
-    <span class="p">(</span><span class="sa">r</span><span class="s1">'$Z_\mathrm</span><span class="si">{in}</span><span class="s1">$ is $1/g_</span><span class="si">{m2}</span><span class="s1">$ in parallel with $L\approx\dfrac{C_{\pi1}}{g_</span><span class="si">{m1}</span><span class="s1">g_</span><span class="si">{m2}</span><span class="s1">}$'</span><span class="p">,</span>
-     <span class="sa">r</span><span class="s1">'$Z_\mathrm</span><span class="si">{in}</span><span class="s1">$ is $1/g_</span><span class="si">{m2}</span><span class="s1">$ in parallel with $L\approx\dfrac{C_</span><span class="si">{GS1}</span><span class="s1">}{g_</span><span class="si">{m1}</span><span class="s1">g_</span><span class="si">{m2}</span><span class="s1">}$'</span><span class="p">)])</span>
+<span class="n">show</span><span class="p">(</span><span class="n">flipped_follower</span><span class="p">,</span> <span class="n">active_inductor</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="../../_images/951875d438f43e2d3ee0265bcf60de6c4c841a50c3993e20231c1de7bb75391a.svg" src="../../_images/951875d438f43e2d3ee0265bcf60de6c4c841a50c3993e20231c1de7bb75391a.svg" />
+<img alt="../../_images/a70632a62915628cc063b69b7db6313837d1d5d626a40a1106a1078650a6accc.svg" src="../../_images/a70632a62915628cc063b69b7db6313837d1d5d626a40a1106a1078650a6accc.svg" />
 </div>
+</div>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p></p></th>
+<th class="head"><p>BJT</p></th>
+<th class="head"><p>MOSFET</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Flipped voltage follower</strong></p></td>
+<td><p><span class="math notranslate nohighlight">\(V_\mathrm{out}=V_\mathrm{in}-V_{BE1}\)</span>, <span class="math notranslate nohighlight">\(R_\mathrm{out}\approx\dfrac{1}{g_{m1}\,g_{m2}r_{O1}}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(V_\mathrm{out}=V_\mathrm{in}-V_{GS1}\)</span>, <span class="math notranslate nohighlight">\(R_\mathrm{out}\approx\dfrac{1}{g_{m1}\,g_{m2}r_{O1}}\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Active inductor</strong></p></td>
+<td><p><span class="math notranslate nohighlight">\(Z_\mathrm{in}\)</span> is <span class="math notranslate nohighlight">\(1/g_{m2}\)</span> in parallel with <span class="math notranslate nohighlight">\(L\approx\dfrac{C_{\pi1}}{g_{m1}g_{m2}}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(Z_\mathrm{in}\)</span> is <span class="math notranslate nohighlight">\(1/g_{m2}\)</span> in parallel with <span class="math notranslate nohighlight">\(L\approx\dfrac{C_{GS1}}{g_{m1}g_{m2}}\)</span></p></td>
+</tr>
+</tbody>
+</table>
 </div>
 </section>
 <section id="differential-and-cross-coupled-pairs">
@@ -1749,18 +2063,33 @@
     <span class="n">ys</span> <span class="o">=</span> <span class="mi">100</span>
     <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">(</span><span class="n">t1</span><span class="o">.</span><span class="n">es</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">ys</span><span class="p">),</span> <span class="p">(</span><span class="mi">150</span><span class="p">,</span> <span class="n">ys</span><span class="p">),</span> <span class="n">t2</span><span class="o">.</span><span class="n">es</span><span class="p">);</span> <span class="n">c</span><span class="o">.</span><span class="n">dot</span><span class="p">((</span><span class="mi">75</span><span class="p">,</span> <span class="n">ys</span><span class="p">));</span> <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">((</span><span class="mi">75</span><span class="p">,</span> <span class="n">ys</span><span class="p">),</span> <span class="p">(</span><span class="mi">75</span><span class="p">,</span> <span class="n">ys</span> <span class="o">+</span> <span class="mi">40</span><span class="p">));</span> <span class="n">c</span><span class="o">.</span><span class="n">port</span><span class="p">((</span><span class="mi">75</span><span class="p">,</span> <span class="n">ys</span> <span class="o">+</span> <span class="mi">40</span><span class="p">),</span> <span class="s1">'I_bias'</span><span class="p">,</span> <span class="s1">'b'</span><span class="p">)</span>
 
-<span class="n">show</span><span class="p">(</span><span class="n">differential_pair</span><span class="p">,</span> <span class="n">cross_coupled_pair</span><span class="p">,</span> <span class="n">notes</span><span class="o">=</span><span class="p">[</span>
-    <span class="p">(</span><span class="sa">r</span><span class="s1">'$\Delta I_\mathrm</span><span class="si">{out}</span><span class="s1">=I_\mathrm</span><span class="si">{bias}</span><span class="s1">\tanh\dfrac{\Delta V_\mathrm</span><span class="si">{in}</span><span class="s1">}</span><span class="si">{2V_T}</span><span class="s1">$, $g_m=\dfrac{I_\mathrm</span><span class="si">{bias}</span><span class="s1">}</span><span class="si">{2V_T}</span><span class="s1">$'</span><span class="p">,</span>
-     <span class="sa">r</span><span class="s1">'$\Delta I_\mathrm</span><span class="si">{out}</span><span class="s1">\approx g_m\,\Delta V_\mathrm</span><span class="si">{in}</span><span class="s1">$, $g_m=\sqrt{\mu_nC_</span><span class="si">{ox}</span><span class="s1">(W/L)\,I_\mathrm</span><span class="si">{bias}</span><span class="s1">}$'</span><span class="p">),</span>
-    <span class="p">(</span><span class="s1">'$R=-2/g_m$ between the two collectors'</span><span class="p">,</span>
-     <span class="s1">'$R=-2/g_m$ between the two drains'</span><span class="p">)])</span>
+<span class="n">show</span><span class="p">(</span><span class="n">differential_pair</span><span class="p">,</span> <span class="n">cross_coupled_pair</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="../../_images/9a69d5d05b941f71c5147b9c047a08378762271ef0c7eec78d2c625235330d8b.svg" src="../../_images/9a69d5d05b941f71c5147b9c047a08378762271ef0c7eec78d2c625235330d8b.svg" />
+<img alt="../../_images/4eeab48c8e2aae573d1a9af05aab30637b908e2ea5e074db065a6490ca2c62c3.svg" src="../../_images/4eeab48c8e2aae573d1a9af05aab30637b908e2ea5e074db065a6490ca2c62c3.svg" />
 </div>
+</div>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p></p></th>
+<th class="head"><p>BJT</p></th>
+<th class="head"><p>MOSFET</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Emitter-coupled pair / Source-coupled pair</strong></p></td>
+<td><p><span class="math notranslate nohighlight">\(\Delta I_\mathrm{out}=I_\mathrm{bias}\tanh\dfrac{\Delta V_\mathrm{in}}{2V_T}\)</span>, <span class="math notranslate nohighlight">\(g_m=\dfrac{I_\mathrm{bias}}{2V_T}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\Delta I_\mathrm{out}\approx g_m\,\Delta V_\mathrm{in}\)</span>, <span class="math notranslate nohighlight">\(g_m=\sqrt{\mu_nC_{ox}(W/L)\,I_\mathrm{bias}}\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Cross-coupled pair</strong></p></td>
+<td><p><span class="math notranslate nohighlight">\(R=-2/g_m\)</span> between the two collectors</p></td>
+<td><p><span class="math notranslate nohighlight">\(R=-2/g_m\)</span> between the two drains</p></td>
+</tr>
+</tbody>
+</table>
 </div>
 </section>
 </section>
@@ -1804,18 +2133,33 @@
     <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">(</span><span class="n">t1</span><span class="o">.</span><span class="n">bg</span><span class="p">,</span> <span class="p">(</span><span class="n">t1</span><span class="o">.</span><span class="n">bg</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="o">-</span><span class="mi">60</span><span class="p">),</span> <span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="o">-</span><span class="mi">60</span><span class="p">))</span>
     <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">(</span><span class="n">t2</span><span class="o">.</span><span class="n">bg</span><span class="p">,</span> <span class="p">(</span><span class="n">t2</span><span class="o">.</span><span class="n">bg</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="o">-</span><span class="mi">60</span><span class="p">),</span> <span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="o">-</span><span class="mi">60</span><span class="p">))</span>
 
-<span class="n">show</span><span class="p">(</span><span class="n">controlled_resistor</span><span class="p">,</span> <span class="n">large_resistor</span><span class="p">,</span> <span class="n">notes</span><span class="o">=</span><span class="p">[</span>
-    <span class="p">(</span><span class="s1">'A BJT is not a linear resistor'</span><span class="p">,</span>
-     <span class="sa">r</span><span class="s1">'$R=\dfrac{(W/L)_2}{(W/L)_1}\cdot\dfrac</span><span class="si">{1}</span><span class="s1">{g_</span><span class="si">{m2}</span><span class="s1">}$, set by $I_\mathrm</span><span class="si">{bias}</span><span class="s1">$'</span><span class="p">),</span>
-    <span class="p">(</span><span class="s1">'A BJT is not a linear resistor'</span><span class="p">,</span>
-     <span class="s1">'Both gates at the common node keep each device nearly off: very large resistance $R$ for small voltages'</span><span class="p">)])</span>
+<span class="n">show</span><span class="p">(</span><span class="n">controlled_resistor</span><span class="p">,</span> <span class="n">large_resistor</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="../../_images/a67d05fdac23c98e6fd8399bad1d55027f8dbd87a0a2328796fde6a76f7d6a32.svg" src="../../_images/a67d05fdac23c98e6fd8399bad1d55027f8dbd87a0a2328796fde6a76f7d6a32.svg" />
+<img alt="../../_images/6e9a1cbb560b980cbedf3ac25ba71005d3be19f6b8a816a82b0c1959f3134aa3.svg" src="../../_images/6e9a1cbb560b980cbedf3ac25ba71005d3be19f6b8a816a82b0c1959f3134aa3.svg" />
 </div>
+</div>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p></p></th>
+<th class="head"><p>BJT</p></th>
+<th class="head"><p>MOSFET</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Controlled resistor</strong></p></td>
+<td><p>No BJT version. A BJT is not a linear resistor</p></td>
+<td><p><span class="math notranslate nohighlight">\(R=\dfrac{(W/L)_2}{(W/L)_1}\cdot\dfrac{1}{g_{m2}}\)</span>, set by <span class="math notranslate nohighlight">\(I_\mathrm{bias}\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Large resistor</strong></p></td>
+<td><p>No BJT version. A BJT is not a linear resistor</p></td>
+<td><p>Both gates at the common node keep each device nearly off: very large resistance <span class="math notranslate nohighlight">\(R\)</span> for small voltages</p></td>
+</tr>
+</tbody>
+</table>
 </div>
 </section>
 <section id="varactor-and-anti-parallel-capacitors">
@@ -1856,18 +2200,33 @@
     <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">(</span><span class="n">t2</span><span class="o">.</span><span class="n">cd</span><span class="p">,</span> <span class="p">(</span><span class="n">xr</span><span class="p">,</span> <span class="n">t2</span><span class="o">.</span><span class="n">cd</span><span class="p">[</span><span class="mi">1</span><span class="p">]));</span> <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">(</span><span class="n">t2</span><span class="o">.</span><span class="n">es</span><span class="p">,</span> <span class="p">(</span><span class="n">xr</span><span class="p">,</span> <span class="n">t2</span><span class="o">.</span><span class="n">es</span><span class="p">[</span><span class="mi">1</span><span class="p">]));</span> <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">(</span><span class="n">t1</span><span class="o">.</span><span class="n">bg</span><span class="p">,</span> <span class="p">(</span><span class="n">xr</span><span class="p">,</span> <span class="n">t1</span><span class="o">.</span><span class="n">bg</span><span class="p">[</span><span class="mi">1</span><span class="p">]));</span> <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">((</span><span class="n">xr</span><span class="p">,</span> <span class="n">t1</span><span class="o">.</span><span class="n">bg</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span> <span class="p">(</span><span class="n">xr</span><span class="p">,</span> <span class="n">t2</span><span class="o">.</span><span class="n">cd</span><span class="p">[</span><span class="mi">1</span><span class="p">]));</span> <span class="n">c</span><span class="o">.</span><span class="n">dot</span><span class="p">((</span><span class="n">xr</span><span class="p">,</span> <span class="n">t2</span><span class="o">.</span><span class="n">es</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
     <span class="n">c</span><span class="o">.</span><span class="n">dot</span><span class="p">((</span><span class="n">xr</span><span class="p">,</span> <span class="o">-</span><span class="mi">40</span><span class="p">));</span> <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">((</span><span class="n">xr</span><span class="p">,</span> <span class="o">-</span><span class="mi">40</span><span class="p">),</span> <span class="p">(</span><span class="n">xr</span> <span class="o">+</span> <span class="mi">30</span><span class="p">,</span> <span class="o">-</span><span class="mi">40</span><span class="p">));</span> <span class="n">c</span><span class="o">.</span><span class="n">port</span><span class="p">((</span><span class="n">xr</span> <span class="o">+</span> <span class="mi">30</span><span class="p">,</span> <span class="o">-</span><span class="mi">40</span><span class="p">),</span> <span class="s1">'V_n'</span><span class="p">,</span> <span class="s1">'r'</span><span class="p">)</span>
 
-<span class="n">show</span><span class="p">(</span><span class="n">varactor</span><span class="p">,</span> <span class="n">antiparallel_capacitors</span><span class="p">,</span> <span class="n">notes</span><span class="o">=</span><span class="p">[</span>
-    <span class="p">(</span><span class="s1">'Limited: junction capacitances, tuned by a reverse bias'</span><span class="p">,</span>
-     <span class="sa">r</span><span class="s1">'Capacitance between the two gates, tuned by $V_\mathrm</span><span class="si">{bias}</span><span class="s1">$'</span><span class="p">),</span>
-    <span class="p">(</span><span class="s1">'For either polarity one device would have forward-biased junctions and conduct'</span><span class="p">,</span>
-     <span class="s1">'Two gate capacitors in opposite directions: $C(V)$ is symmetric about zero'</span><span class="p">)])</span>
+<span class="n">show</span><span class="p">(</span><span class="n">varactor</span><span class="p">,</span> <span class="n">antiparallel_capacitors</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="../../_images/84ac8f9ba2624aeeefffad0ee468ee782dd08dbe208c2cbbefd49e5a0fb95745.svg" src="../../_images/84ac8f9ba2624aeeefffad0ee468ee782dd08dbe208c2cbbefd49e5a0fb95745.svg" />
+<img alt="../../_images/ab29607c1d35053459954486028515b3aa0a508d572d957170ff9a4b23cca3fe.svg" src="../../_images/ab29607c1d35053459954486028515b3aa0a508d572d957170ff9a4b23cca3fe.svg" />
 </div>
+</div>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p></p></th>
+<th class="head"><p>BJT</p></th>
+<th class="head"><p>MOSFET</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Varactor</strong></p></td>
+<td><p>Limited: junction capacitances, tuned by a reverse bias</p></td>
+<td><p>Capacitance between the two gates, tuned by <span class="math notranslate nohighlight">\(V_\mathrm{bias}\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Anti-parallel capacitors</strong></p></td>
+<td><p>No BJT version. For either polarity one device would have forward-biased junctions and conduct</p></td>
+<td><p>Two gate capacitors in opposite directions: <span class="math notranslate nohighlight">\(C(V)\)</span> is symmetric about zero</p></td>
+</tr>
+</tbody>
+</table>
 </div>
 </section>
 <section id="anti-parallel-and-ultra-low-power-diodes">
@@ -1905,18 +2264,33 @@
     <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">(</span><span class="n">t1</span><span class="o">.</span><span class="n">bg</span><span class="p">,</span> <span class="p">(</span><span class="n">t1</span><span class="o">.</span><span class="n">bg</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">y1</span><span class="p">),</span> <span class="p">(</span><span class="n">xl</span><span class="p">,</span> <span class="n">y1</span><span class="p">),</span> <span class="p">(</span><span class="n">xr</span><span class="p">,</span> <span class="n">y2</span><span class="p">),</span> <span class="p">(</span><span class="n">b</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">y2</span><span class="p">),</span> <span class="n">b</span><span class="p">)</span>
     <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">(</span><span class="n">t2</span><span class="o">.</span><span class="n">bg</span><span class="p">,</span> <span class="p">(</span><span class="n">t2</span><span class="o">.</span><span class="n">bg</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">y1</span><span class="p">),</span> <span class="p">(</span><span class="n">xr</span><span class="p">,</span> <span class="n">y1</span><span class="p">),</span> <span class="p">(</span><span class="n">xl</span><span class="p">,</span> <span class="n">y2</span><span class="p">),</span> <span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">y2</span><span class="p">),</span> <span class="n">a</span><span class="p">)</span>
 
-<span class="n">show</span><span class="p">(</span><span class="n">antiparallel_diodes</span><span class="p">,</span> <span class="n">low_leakage_diode</span><span class="p">,</span> <span class="n">notes</span><span class="o">=</span><span class="p">[</span>
-    <span class="p">(</span><span class="s1">'Conducts when $|V_p-V_n|$ reaches $V_</span><span class="si">{BE}</span><span class="s1">$'</span><span class="p">,</span>
-     <span class="s1">'Conducts when $|V_p-V_n|$ exceeds $V_</span><span class="si">{TH}</span><span class="s1">$'</span><span class="p">),</span>
-    <span class="p">(</span><span class="s1">'Reverse bias does not turn a BJT further off'</span><span class="p">,</span>
-     <span class="s1">'Reverse bias drives both gate-source voltages negative, so the leakage falls far below that of one device'</span><span class="p">)])</span>
+<span class="n">show</span><span class="p">(</span><span class="n">antiparallel_diodes</span><span class="p">,</span> <span class="n">low_leakage_diode</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="../../_images/9eeeb963b1b98ee2189421f18b47d4b361199e2466635c1e2a5bfc63e8a836c6.svg" src="../../_images/9eeeb963b1b98ee2189421f18b47d4b361199e2466635c1e2a5bfc63e8a836c6.svg" />
+<img alt="../../_images/41068fe82050dd41ad62c9fecafeba452507684716a294c5cd97d98ed3f12c48.svg" src="../../_images/41068fe82050dd41ad62c9fecafeba452507684716a294c5cd97d98ed3f12c48.svg" />
 </div>
+</div>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p></p></th>
+<th class="head"><p>BJT</p></th>
+<th class="head"><p>MOSFET</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Anti-parallel diodes</strong></p></td>
+<td><p>Conducts when <span class="math notranslate nohighlight">\(\lvert V_p-V_n\rvert \)</span> reaches <span class="math notranslate nohighlight">\(V_{BE}\)</span></p></td>
+<td><p>Conducts when <span class="math notranslate nohighlight">\(\lvert V_p-V_n\rvert \)</span> exceeds <span class="math notranslate nohighlight">\(V_{TH}\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Ultra-low-power diode</strong></p></td>
+<td><p>No BJT version. Reverse bias does not turn a BJT further off</p></td>
+<td><p>Reverse bias drives both gate-source voltages negative, so the leakage falls far below that of one device</p></td>
+</tr>
+</tbody>
+</table>
 </div>
 </section>
 <section id="level-shift-and-linear-i-to-v-converter">
@@ -1955,18 +2329,33 @@
     <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">(</span><span class="n">j</span><span class="p">,</span> <span class="p">(</span><span class="n">term</span><span class="p">,</span> <span class="n">j</span><span class="p">[</span><span class="mi">1</span><span class="p">]));</span> <span class="n">c</span><span class="o">.</span><span class="n">dot</span><span class="p">((</span><span class="n">tx</span><span class="p">,</span> <span class="n">j</span><span class="p">[</span><span class="mi">1</span><span class="p">]));</span> <span class="n">c</span><span class="o">.</span><span class="n">port</span><span class="p">((</span><span class="n">term</span><span class="p">,</span> <span class="n">j</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span> <span class="s1">'I_in'</span><span class="p">,</span> <span class="s1">'l'</span><span class="p">);</span> <span class="n">c</span><span class="o">.</span><span class="n">look</span><span class="p">((</span><span class="n">term</span><span class="p">,</span> <span class="n">j</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span> <span class="s1">'r'</span><span class="p">,</span> <span class="s1">'d'</span><span class="p">,</span> <span class="s1">'R_in'</span><span class="p">)</span>
     <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">((</span><span class="n">tx</span><span class="p">,</span> <span class="n">j</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span> <span class="p">(</span><span class="n">tx</span><span class="p">,</span> <span class="n">t2</span><span class="o">.</span><span class="n">bg</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span> <span class="n">t2</span><span class="o">.</span><span class="n">bg</span><span class="p">)</span>
 
-<span class="n">show</span><span class="p">(</span><span class="n">level_shift</span><span class="p">,</span> <span class="n">linear_i_to_v</span><span class="p">,</span> <span class="n">notes</span><span class="o">=</span><span class="p">[</span>
-    <span class="p">(</span><span class="s1">'$V_p-V_n=V_</span><span class="si">{BE1}</span><span class="s1">+V_</span><span class="si">{BE2}</span><span class="s1">$'</span><span class="p">,</span>
-     <span class="s1">'$V_p-V_n=V_</span><span class="si">{GS1}</span><span class="s1">+V_</span><span class="si">{GS2}</span><span class="s1">$'</span><span class="p">),</span>
-    <span class="p">(</span><span class="sa">r</span><span class="s1">'The exponential law gives a $\sinh$ characteristic, not a straight line'</span><span class="p">,</span>
-     <span class="sa">r</span><span class="s1">'$V_</span><span class="si">{GS1}</span><span class="s1">+V_</span><span class="si">{GS2}</span><span class="s1">=V_\mathrm</span><span class="si">{bias}</span><span class="s1">$: the square-law terms cancel and $R_\mathrm</span><span class="si">{in}</span><span class="s1">=\dfrac{dV_\mathrm</span><span class="si">{out}</span><span class="s1">}{dI_\mathrm</span><span class="si">{in}</span><span class="s1">}=\dfrac</span><span class="si">{1}</span><span class="s1">{g_</span><span class="si">{m1}</span><span class="s1">+g_</span><span class="si">{m2}</span><span class="s1">}$ is constant'</span><span class="p">)])</span>
+<span class="n">show</span><span class="p">(</span><span class="n">level_shift</span><span class="p">,</span> <span class="n">linear_i_to_v</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="../../_images/e32a53aea567ce96d529e6307330757964c9b3e5eda548227adb732f9a8f570e.svg" src="../../_images/e32a53aea567ce96d529e6307330757964c9b3e5eda548227adb732f9a8f570e.svg" />
+<img alt="../../_images/4db9b491f56c6b310ca9e0c5f675900b9e900b7b05dcedf6e876536c7a2c1f16.svg" src="../../_images/4db9b491f56c6b310ca9e0c5f675900b9e900b7b05dcedf6e876536c7a2c1f16.svg" />
 </div>
+</div>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p></p></th>
+<th class="head"><p>BJT</p></th>
+<th class="head"><p>MOSFET</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Level shift</strong></p></td>
+<td><p><span class="math notranslate nohighlight">\(V_p-V_n=V_{BE1}+V_{BE2}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(V_p-V_n=V_{GS1}+V_{GS2}\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Linear I-to-V converter</strong></p></td>
+<td><p>No BJT version. The exponential law gives a <span class="math notranslate nohighlight">\(\sinh\)</span> characteristic, not a straight line</p></td>
+<td><p><span class="math notranslate nohighlight">\(V_{GS1}+V_{GS2}=V_\mathrm{bias}\)</span>: the square-law terms cancel and <span class="math notranslate nohighlight">\(R_\mathrm{in}=\dfrac{dV_\mathrm{out}}{dI_\mathrm{in}}=\dfrac{1}{g_{m1}+g_{m2}}\)</span> is constant</p></td>
+</tr>
+</tbody>
+</table>
 </div>
 </section>
 </section>
@@ -2007,18 +2396,33 @@
     <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">(</span><span class="n">t1</span><span class="o">.</span><span class="n">es</span><span class="p">,</span> <span class="p">(</span><span class="n">xc</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="p">(</span><span class="n">xc</span><span class="p">,</span> <span class="n">yc</span><span class="p">));</span> <span class="n">c</span><span class="o">.</span><span class="n">dot</span><span class="p">((</span><span class="n">xc</span><span class="p">,</span> <span class="n">yc</span><span class="p">));</span> <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">(</span><span class="n">t2</span><span class="o">.</span><span class="n">es</span><span class="p">,</span> <span class="p">(</span><span class="n">xc</span><span class="p">,</span> <span class="o">-</span><span class="mi">110</span><span class="p">),</span> <span class="p">(</span><span class="n">xc</span><span class="p">,</span> <span class="n">yc</span><span class="p">))</span>
     <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">((</span><span class="n">xc</span><span class="p">,</span> <span class="n">yc</span><span class="p">),</span> <span class="p">(</span><span class="n">xc</span> <span class="o">+</span> <span class="mi">40</span><span class="p">,</span> <span class="n">yc</span><span class="p">));</span> <span class="n">c</span><span class="o">.</span><span class="n">port</span><span class="p">((</span><span class="n">xc</span> <span class="o">+</span> <span class="mi">40</span><span class="p">,</span> <span class="n">yc</span><span class="p">),</span> <span class="s1">'V_com'</span><span class="p">,</span> <span class="s1">'r'</span><span class="p">)</span>
 
-<span class="n">show</span><span class="p">(</span><span class="n">transmission_gate</span><span class="p">,</span> <span class="n">multiplexer</span><span class="p">,</span> <span class="n">notes</span><span class="o">=</span><span class="p">[</span>
-    <span class="p">(</span><span class="s1">'A BJT switch injects its base current into the signal path'</span><span class="p">,</span>
-     <span class="s1">'$M_1$ passes low levels and $M_2$ high levels, so the switch conducts from rail to rail'</span><span class="p">),</span>
-    <span class="p">(</span><span class="s1">'A BJT switch injects its base current into the signal path'</span><span class="p">,</span>
-     <span class="sa">r</span><span class="s1">'$V_\mathrm</span><span class="si">{com}</span><span class="s1">=V_1$ or $V_2$, depending on which select input is high'</span><span class="p">)])</span>
+<span class="n">show</span><span class="p">(</span><span class="n">transmission_gate</span><span class="p">,</span> <span class="n">multiplexer</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="../../_images/569c63ee79d3ee19836e0c8df9294eb77f0f79c41707d5efb64872001f582510.svg" src="../../_images/569c63ee79d3ee19836e0c8df9294eb77f0f79c41707d5efb64872001f582510.svg" />
+<img alt="../../_images/ed61170515690d5b71c9181e5c1f37a26fbd399af2e443148e753a557a90e7ff.svg" src="../../_images/ed61170515690d5b71c9181e5c1f37a26fbd399af2e443148e753a557a90e7ff.svg" />
 </div>
+</div>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p></p></th>
+<th class="head"><p>BJT</p></th>
+<th class="head"><p>MOSFET</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Transmission gate</strong></p></td>
+<td><p>No BJT version. A BJT switch injects its base current into the signal path</p></td>
+<td><p><span class="math notranslate nohighlight">\(M_1\)</span> passes low levels and <span class="math notranslate nohighlight">\(M_2\)</span> high levels, so the switch conducts from rail to rail</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Multiplexer</strong></p></td>
+<td><p>No BJT version. A BJT switch injects its base current into the signal path</p></td>
+<td><p><span class="math notranslate nohighlight">\(V_\mathrm{com}=V_1\)</span> or <span class="math notranslate nohighlight">\(V_2\)</span>, depending on which select input is high</p></td>
+</tr>
+</tbody>
+</table>
 </div>
 </section>
 <section id="sample-and-hold-and-low-pass-filter">
@@ -2041,18 +2445,33 @@
 <span class="w">    </span><span class="sd">"""- | Low-pass filter"""</span>
     <span class="n">pass_device_and_capacitor</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="s1">'V_bias'</span><span class="p">,</span> <span class="n">resistance</span><span class="o">=</span><span class="s1">'R_on1'</span><span class="p">)</span>
 
-<span class="n">show</span><span class="p">(</span><span class="n">sample_and_hold</span><span class="p">,</span> <span class="n">low_pass</span><span class="p">,</span> <span class="n">notes</span><span class="o">=</span><span class="p">[</span>
-    <span class="p">(</span><span class="s1">'There is no gate capacitance to hold the sample, and base current would disturb it'</span><span class="p">,</span>
-     <span class="sa">r</span><span class="s1">'$M_1$ on: $V_\mathrm</span><span class="si">{out}</span><span class="s1">$ tracks $V_\mathrm</span><span class="si">{in}</span><span class="s1">$. $M_1$ off: the gate capacitance of $M_2$ holds it'</span><span class="p">),</span>
-    <span class="p">(</span><span class="s1">'Neither a linear resistor nor a gate capacitance is available'</span><span class="p">,</span>
-     <span class="sa">r</span><span class="s1">'$f_{-3\,\mathrm</span><span class="si">{dB}</span><span class="s1">}=\dfrac</span><span class="si">{1}</span><span class="s1">{2\pi R_\mathrm</span><span class="si">{on1}</span><span class="s1">C_2}$'</span><span class="p">)])</span>
+<span class="n">show</span><span class="p">(</span><span class="n">sample_and_hold</span><span class="p">,</span> <span class="n">low_pass</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="../../_images/a3f69a7db2b3c945413cbb67e2a2d93e6ac95ca01ba847de09bc8f9a55c7e2b2.svg" src="../../_images/a3f69a7db2b3c945413cbb67e2a2d93e6ac95ca01ba847de09bc8f9a55c7e2b2.svg" />
+<img alt="../../_images/207d8d64f7ac9908c6a5ef0f2489f60667da6d9d1b5c6083227a7b233fd06b73.svg" src="../../_images/207d8d64f7ac9908c6a5ef0f2489f60667da6d9d1b5c6083227a7b233fd06b73.svg" />
 </div>
+</div>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p></p></th>
+<th class="head"><p>BJT</p></th>
+<th class="head"><p>MOSFET</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Sample-and-hold</strong></p></td>
+<td><p>No BJT version. There is no gate capacitance to hold the sample, and base current would disturb it</p></td>
+<td><p><span class="math notranslate nohighlight">\(M_1\)</span> on: <span class="math notranslate nohighlight">\(V_\mathrm{out}\)</span> tracks <span class="math notranslate nohighlight">\(V_\mathrm{in}\)</span>. <span class="math notranslate nohighlight">\(M_1\)</span> off: the gate capacitance of <span class="math notranslate nohighlight">\(M_2\)</span> holds it</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Low-pass filter</strong></p></td>
+<td><p>No BJT version. Neither a linear resistor nor a gate capacitance is available</p></td>
+<td><p><span class="math notranslate nohighlight">\(f_{-3\,\mathrm{dB}}=\dfrac{1}{2\pi R_\mathrm{on1}C_2}\)</span></p></td>
+</tr>
+</tbody>
+</table>
 </div>
 </section>
 <section id="peak-detector-and-voltage-doubler">
@@ -2092,18 +2511,33 @@
     <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">(</span><span class="n">t2</span><span class="o">.</span><span class="n">bg</span><span class="p">,</span> <span class="p">(</span><span class="n">t2</span><span class="o">.</span><span class="n">bg</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="mi">20</span><span class="p">,</span> <span class="n">t2</span><span class="o">.</span><span class="n">bg</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span> <span class="p">(</span><span class="n">t2</span><span class="o">.</span><span class="n">bg</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="mi">20</span><span class="p">,</span> <span class="n">join</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span> <span class="n">join</span><span class="p">)</span>
     <span class="n">c</span><span class="o">.</span><span class="n">center</span><span class="p">(</span><span class="mi">70</span><span class="p">)</span>                                            <span class="c1"># aligned on the route to ground</span>
 
-<span class="n">show</span><span class="p">(</span><span class="n">peak_detector</span><span class="p">,</span> <span class="n">voltage_doubler</span><span class="p">,</span> <span class="n">notes</span><span class="o">=</span><span class="p">[</span>
-    <span class="p">(</span><span class="sa">r</span><span class="s1">'Limited: $V_\mathrm</span><span class="si">{peak}</span><span class="s1">=\hat V_\mathrm</span><span class="si">{in}</span><span class="s1">-V_</span><span class="si">{BE1}</span><span class="s1">$, held only on a junction capacitance'</span><span class="p">,</span>
-     <span class="sa">r</span><span class="s1">'$V_\mathrm</span><span class="si">{peak}</span><span class="s1">=\hat V_\mathrm</span><span class="si">{in}</span><span class="s1">-V_</span><span class="si">{GS1}</span><span class="s1">$, held on the gate capacitance of $M_2$'</span><span class="p">),</span>
-    <span class="p">(</span><span class="s1">'The coupling element would be a junction, which conducts in one direction'</span><span class="p">,</span>
-     <span class="sa">r</span><span class="s1">'$M_1$ couples the ac input and $M_2$ clamps the low side: the output peaks near $2\hat V_\mathrm</span><span class="si">{in}</span><span class="s1">-V_</span><span class="si">{GS2}</span><span class="s1">$'</span><span class="p">)])</span>
+<span class="n">show</span><span class="p">(</span><span class="n">peak_detector</span><span class="p">,</span> <span class="n">voltage_doubler</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="../../_images/0a9b5899e86b43fa04df25dbc1c67fb7ac473161c579c0133dbfc8616a9a16b0.svg" src="../../_images/0a9b5899e86b43fa04df25dbc1c67fb7ac473161c579c0133dbfc8616a9a16b0.svg" />
+<img alt="../../_images/482f31979ec6ed0e88047b8714d1ec925a7fdb7d899ebe1dc935838a73ca09ff.svg" src="../../_images/482f31979ec6ed0e88047b8714d1ec925a7fdb7d899ebe1dc935838a73ca09ff.svg" />
 </div>
+</div>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p></p></th>
+<th class="head"><p>BJT</p></th>
+<th class="head"><p>MOSFET</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Peak detector</strong></p></td>
+<td><p>Limited: <span class="math notranslate nohighlight">\(V_\mathrm{peak}=\hat V_\mathrm{in}-V_{BE1}\)</span>, held only on a junction capacitance</p></td>
+<td><p><span class="math notranslate nohighlight">\(V_\mathrm{peak}=\hat V_\mathrm{in}-V_{GS1}\)</span>, held on the gate capacitance of <span class="math notranslate nohighlight">\(M_2\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Voltage doubler</strong></p></td>
+<td><p>No BJT version. The coupling element would be a junction, which conducts in one direction</p></td>
+<td><p><span class="math notranslate nohighlight">\(M_1\)</span> couples the ac input and <span class="math notranslate nohighlight">\(M_2\)</span> clamps the low side: the output peaks near <span class="math notranslate nohighlight">\(2\hat V_\mathrm{in}-V_{GS2}\)</span></p></td>
+</tr>
+</tbody>
+</table>
 </div>
 </section>
 </section>
@@ -2145,18 +2579,33 @@
     <span class="n">top</span> <span class="o">=</span> <span class="p">(</span><span class="n">mx</span><span class="p">,</span> <span class="o">-</span><span class="mi">50</span><span class="p">);</span> <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">((</span><span class="n">mx</span><span class="p">,</span> <span class="n">yt</span><span class="p">),</span> <span class="n">top</span><span class="p">);</span> <span class="n">c</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">top</span><span class="p">);</span> <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">(</span><span class="n">top</span><span class="p">,</span> <span class="p">(</span><span class="mi">170</span><span class="p">,</span> <span class="n">top</span><span class="p">[</span><span class="mi">1</span><span class="p">]));</span> <span class="n">c</span><span class="o">.</span><span class="n">port</span><span class="p">((</span><span class="mi">170</span><span class="p">,</span> <span class="n">top</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span> <span class="n">OUT</span><span class="p">,</span> <span class="s1">'r'</span><span class="p">)</span>
     <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">(</span><span class="n">top</span><span class="p">,</span> <span class="p">(</span><span class="n">mx</span><span class="p">,</span> <span class="o">-</span><span class="mi">80</span><span class="p">));</span> <span class="n">c</span><span class="o">.</span><span class="n">port</span><span class="p">((</span><span class="n">mx</span><span class="p">,</span> <span class="o">-</span><span class="mi">80</span><span class="p">),</span> <span class="s1">'I_bias'</span><span class="p">,</span> <span class="s1">'r'</span><span class="p">)</span>
 
-<span class="n">show</span><span class="p">(</span><span class="n">nand</span><span class="p">,</span> <span class="n">nor</span><span class="p">,</span> <span class="n">notes</span><span class="o">=</span><span class="p">[</span>
-    <span class="p">(</span><span class="sa">r</span><span class="s1">'$V_\mathrm</span><span class="si">{out}</span><span class="s1">=\overline{V_a\wedge V_b}$. The inputs must supply base current'</span><span class="p">,</span>
-     <span class="sa">r</span><span class="s1">'$V_\mathrm</span><span class="si">{out}</span><span class="s1">=\overline{V_a\wedge V_b}$'</span><span class="p">),</span>
-    <span class="p">(</span><span class="sa">r</span><span class="s1">'$V_\mathrm</span><span class="si">{out}</span><span class="s1">=\overline{V_a\vee V_b}$. The inputs must supply base current'</span><span class="p">,</span>
-     <span class="sa">r</span><span class="s1">'$V_\mathrm</span><span class="si">{out}</span><span class="s1">=\overline{V_a\vee V_b}$'</span><span class="p">)])</span>
+<span class="n">show</span><span class="p">(</span><span class="n">nand</span><span class="p">,</span> <span class="n">nor</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="../../_images/5d3a875b9a4d629e4ab8f0d5148774de8dc8dc3dde0151df687150b3d8ab1f7d.svg" src="../../_images/5d3a875b9a4d629e4ab8f0d5148774de8dc8dc3dde0151df687150b3d8ab1f7d.svg" />
+<img alt="../../_images/9e48b050431ce426100fafed7a03309b323392753cae88ccf4cf677660b398b4.svg" src="../../_images/9e48b050431ce426100fafed7a03309b323392753cae88ccf4cf677660b398b4.svg" />
 </div>
+</div>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p></p></th>
+<th class="head"><p>BJT</p></th>
+<th class="head"><p>MOSFET</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>NAND</strong></p></td>
+<td><p><span class="math notranslate nohighlight">\(V_\mathrm{out}=\overline{V_a\wedge V_b}\)</span>. The inputs must supply base current</p></td>
+<td><p><span class="math notranslate nohighlight">\(V_\mathrm{out}=\overline{V_a\wedge V_b}\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>NOR</strong></p></td>
+<td><p><span class="math notranslate nohighlight">\(V_\mathrm{out}=\overline{V_a\vee V_b}\)</span>. The inputs must supply base current</p></td>
+<td><p><span class="math notranslate nohighlight">\(V_\mathrm{out}=\overline{V_a\vee V_b}\)</span></p></td>
+</tr>
+</tbody>
+</table>
 </div>
 </section>
 <section id="xnor-and-mixer">
@@ -2196,18 +2645,33 @@
     <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">(</span><span class="n">t2</span><span class="o">.</span><span class="n">bg</span><span class="p">,</span> <span class="p">(</span><span class="n">t2</span><span class="o">.</span><span class="n">bg</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="mi">30</span><span class="p">,</span> <span class="n">t2</span><span class="o">.</span><span class="n">bg</span><span class="p">[</span><span class="mi">1</span><span class="p">]));</span> <span class="n">c</span><span class="o">.</span><span class="n">port</span><span class="p">((</span><span class="n">t2</span><span class="o">.</span><span class="n">bg</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="mi">30</span><span class="p">,</span> <span class="n">t2</span><span class="o">.</span><span class="n">bg</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span> <span class="s1">'V_lo'</span><span class="p">,</span> <span class="s1">'l'</span><span class="p">)</span>
     <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">(</span><span class="n">t1</span><span class="o">.</span><span class="n">bg</span><span class="p">,</span> <span class="p">(</span><span class="n">t1</span><span class="o">.</span><span class="n">bg</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="mi">30</span><span class="p">,</span> <span class="n">t1</span><span class="o">.</span><span class="n">bg</span><span class="p">[</span><span class="mi">1</span><span class="p">]));</span> <span class="n">c</span><span class="o">.</span><span class="n">port</span><span class="p">((</span><span class="n">t1</span><span class="o">.</span><span class="n">bg</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="mi">30</span><span class="p">,</span> <span class="n">t1</span><span class="o">.</span><span class="n">bg</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span> <span class="s1">'V_rf'</span><span class="p">,</span> <span class="s1">'l'</span><span class="p">)</span>
 
-<span class="n">show</span><span class="p">(</span><span class="n">xnor</span><span class="p">,</span> <span class="n">mixer</span><span class="p">,</span> <span class="n">notes</span><span class="o">=</span><span class="p">[</span>
-    <span class="p">(</span><span class="s1">'Limited: the conducting device draws its base current from one input and returns it to the other'</span><span class="p">,</span>
-     <span class="sa">r</span><span class="s1">'Each input drives the gate of one device and the source of the other: $V_\mathrm</span><span class="si">{out}</span><span class="s1">=\overline{V_a\oplus V_b}$'</span><span class="p">),</span>
-    <span class="p">(</span><span class="s1">'In the active region the collector current does not depend on $V_</span><span class="si">{CE}</span><span class="s1">$, so an upper base would have no control'</span><span class="p">,</span>
-     <span class="sa">r</span><span class="s1">'$M_1$ works in triode, where $I_\mathrm</span><span class="si">{out}</span><span class="s1">\approx\mu_nC_</span><span class="si">{ox}</span><span class="s1">(W/L)(V_\mathrm</span><span class="si">{rf}</span><span class="s1">-V_</span><span class="si">{TH}</span><span class="s1">)\,V_</span><span class="si">{DS1}</span><span class="s1">$ and $V_\mathrm</span><span class="si">{lo}</span><span class="s1">$ sets $V_</span><span class="si">{DS1}</span><span class="s1">$: the output contains the product'</span><span class="p">)])</span>
+<span class="n">show</span><span class="p">(</span><span class="n">xnor</span><span class="p">,</span> <span class="n">mixer</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="../../_images/ec04d0f04106f22d6db1b0bf853a777df23d6c25b59806b6e095c23fdcedfa46.svg" src="../../_images/ec04d0f04106f22d6db1b0bf853a777df23d6c25b59806b6e095c23fdcedfa46.svg" />
+<img alt="../../_images/ba2c6428e454ec47f6630fcaef005223f43959198a818098dad977cd6070bfef.svg" src="../../_images/ba2c6428e454ec47f6630fcaef005223f43959198a818098dad977cd6070bfef.svg" />
 </div>
+</div>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p></p></th>
+<th class="head"><p>BJT</p></th>
+<th class="head"><p>MOSFET</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>XNOR</strong></p></td>
+<td><p>Limited: the conducting device draws its base current from one input and returns it to the other</p></td>
+<td><p>Each input drives the gate of one device and the source of the other: <span class="math notranslate nohighlight">\(V_\mathrm{out}=\overline{V_a\oplus V_b}\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Mixer</strong></p></td>
+<td><p>No BJT version. In the active region the collector current does not depend on <span class="math notranslate nohighlight">\(V_{CE}\)</span>, so an upper base would have no control</p></td>
+<td><p><span class="math notranslate nohighlight">\(M_1\)</span> works in triode, where <span class="math notranslate nohighlight">\(I_\mathrm{out}\approx\mu_nC_{ox}(W/L)(V_\mathrm{rf}-V_{TH})\,V_{DS1}\)</span> and <span class="math notranslate nohighlight">\(V_\mathrm{lo}\)</span> sets <span class="math notranslate nohighlight">\(V_{DS1}\)</span>: the output contains the product</p></td>
+</tr>
+</tbody>
+</table>
 </div>
 </section>
 </section>
@@ -2237,17 +2701,33 @@
 <span class="w">    </span><span class="sd">"""+ tail current source"""</span>
     <span class="n">op_amp</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
 
-<span class="n">show</span><span class="p">(</span><span class="n">op_amp_pair</span><span class="p">,</span> <span class="n">op_amp_tail</span><span class="p">,</span> <span class="n">notes</span><span class="o">=</span><span class="p">[</span>
-    <span class="s1">'$I_1-I_2=g_m(V_1-V_2)$ for small inputs'</span><span class="p">,</span>
-    <span class="p">(</span><span class="sa">r</span><span class="s1">'$Q_5$ takes the place of $I_\mathrm</span><span class="si">{bias}</span><span class="s1">$: $I_1+I_2=I_</span><span class="si">{C5}</span><span class="s1">$, set by $V_\mathrm</span><span class="si">{bias}</span><span class="s1">$'</span><span class="p">,</span>
-     <span class="sa">r</span><span class="s1">'$M_5$ takes the place of $I_\mathrm</span><span class="si">{bias}</span><span class="s1">$: $I_1+I_2=I_</span><span class="si">{D5}</span><span class="s1">$, set by $V_\mathrm</span><span class="si">{bias}</span><span class="s1">$'</span><span class="p">)])</span>
+<span class="n">show</span><span class="p">(</span><span class="n">op_amp_pair</span><span class="p">,</span> <span class="n">op_amp_tail</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="../../_images/b38eed2277d8b497d4dd20389915c986b2f4fcb6cc7382e6c5348a0a98ffba88.svg" src="../../_images/b38eed2277d8b497d4dd20389915c986b2f4fcb6cc7382e6c5348a0a98ffba88.svg" />
+<img alt="../../_images/d5bfbc385c76a4a2cca1805d8f34377ff3193657c531ece8fafcf3b9e87ae7e2.svg" src="../../_images/d5bfbc385c76a4a2cca1805d8f34377ff3193657c531ece8fafcf3b9e87ae7e2.svg" />
 </div>
+</div>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p></p></th>
+<th class="head"><p>BJT</p></th>
+<th class="head"><p>MOSFET</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Emitter-coupled pair / Source-coupled pair</strong></p></td>
+<td><p><span class="math notranslate nohighlight">\(I_1-I_2=g_m(V_1-V_2)\)</span> for small inputs</p></td>
+<td><p><span class="math notranslate nohighlight">\(I_1-I_2=g_m(V_1-V_2)\)</span> for small inputs</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>+ tail current source</strong></p></td>
+<td><p><span class="math notranslate nohighlight">\(Q_5\)</span> takes the place of <span class="math notranslate nohighlight">\(I_\mathrm{bias}\)</span>: <span class="math notranslate nohighlight">\(I_1+I_2=I_{C5}\)</span>, set by <span class="math notranslate nohighlight">\(V_\mathrm{bias}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(M_5\)</span> takes the place of <span class="math notranslate nohighlight">\(I_\mathrm{bias}\)</span>: <span class="math notranslate nohighlight">\(I_1+I_2=I_{D5}\)</span>, set by <span class="math notranslate nohighlight">\(V_\mathrm{bias}\)</span></p></td>
+</tr>
+</tbody>
+</table>
 </div>
 </section>
 <section id="mirror-load-and-second-stage">
@@ -2270,18 +2750,33 @@
 <span class="w">    </span><span class="sd">"""+ common-emitter stage | + common-source stage"""</span>
     <span class="n">op_amp</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
 
-<span class="n">show</span><span class="p">(</span><span class="n">op_amp_mirror</span><span class="p">,</span> <span class="n">op_amp_second</span><span class="p">,</span> <span class="n">notes</span><span class="o">=</span><span class="p">[</span>
-    <span class="p">(</span><span class="sa">r</span><span class="s1">'$Q_3$ and $Q_4$ fold $I_1$ over to the output: $A_v=g_</span><span class="si">{m1}</span><span class="s1">R_\mathrm</span><span class="si">{out}</span><span class="s1">$, $R_\mathrm</span><span class="si">{out}</span><span class="s1">=r_</span><span class="si">{O2}</span><span class="s1">\parallel r_</span><span class="si">{O4}</span><span class="s1">$'</span><span class="p">,</span>
-     <span class="sa">r</span><span class="s1">'$M_3$ and $M_4$ fold $I_1$ over to the output: $A_v=g_</span><span class="si">{m1}</span><span class="s1">R_\mathrm</span><span class="si">{out}</span><span class="s1">$, $R_\mathrm</span><span class="si">{out}</span><span class="s1">=r_</span><span class="si">{O2}</span><span class="s1">\parallel r_</span><span class="si">{O4}</span><span class="s1">$'</span><span class="p">),</span>
-    <span class="p">(</span><span class="sa">r</span><span class="s1">'$A_v=-g_</span><span class="si">{m1}</span><span class="s1">(r_</span><span class="si">{O2}</span><span class="s1">\parallel r_</span><span class="si">{O4}</span><span class="s1">\parallel r_{\pi6})\cdot g_</span><span class="si">{m6}</span><span class="s1">R_\mathrm</span><span class="si">{out}</span><span class="s1">$, $R_\mathrm</span><span class="si">{out}</span><span class="s1">=r_</span><span class="si">{O6}</span><span class="s1">\parallel r_</span><span class="si">{O7}</span><span class="s1">$'</span><span class="p">,</span>
-     <span class="sa">r</span><span class="s1">'$A_v=-g_</span><span class="si">{m1}</span><span class="s1">(r_</span><span class="si">{O2}</span><span class="s1">\parallel r_</span><span class="si">{O4}</span><span class="s1">)\cdot g_</span><span class="si">{m6}</span><span class="s1">R_\mathrm</span><span class="si">{out}</span><span class="s1">$, $R_\mathrm</span><span class="si">{out}</span><span class="s1">=r_</span><span class="si">{O6}</span><span class="s1">\parallel r_</span><span class="si">{O7}</span><span class="s1">$'</span><span class="p">)])</span>
+<span class="n">show</span><span class="p">(</span><span class="n">op_amp_mirror</span><span class="p">,</span> <span class="n">op_amp_second</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="../../_images/9c4e2c9beb3f17be4811777350af2665b4b5c438c2141dcf3977c5ec0287d120.svg" src="../../_images/9c4e2c9beb3f17be4811777350af2665b4b5c438c2141dcf3977c5ec0287d120.svg" />
+<img alt="../../_images/83280ad9312a015068cae42e94868a9e97ed5793ec660cca6d04668c68399add.svg" src="../../_images/83280ad9312a015068cae42e94868a9e97ed5793ec660cca6d04668c68399add.svg" />
 </div>
+</div>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p></p></th>
+<th class="head"><p>BJT</p></th>
+<th class="head"><p>MOSFET</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>+ current-mirror load</strong></p></td>
+<td><p><span class="math notranslate nohighlight">\(Q_3\)</span> and <span class="math notranslate nohighlight">\(Q_4\)</span> fold <span class="math notranslate nohighlight">\(I_1\)</span> over to the output: <span class="math notranslate nohighlight">\(A_v=g_{m1}R_\mathrm{out}\)</span>, <span class="math notranslate nohighlight">\(R_\mathrm{out}=r_{O2}\parallel r_{O4}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(M_3\)</span> and <span class="math notranslate nohighlight">\(M_4\)</span> fold <span class="math notranslate nohighlight">\(I_1\)</span> over to the output: <span class="math notranslate nohighlight">\(A_v=g_{m1}R_\mathrm{out}\)</span>, <span class="math notranslate nohighlight">\(R_\mathrm{out}=r_{O2}\parallel r_{O4}\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>+ common-emitter stage / + common-source stage</strong></p></td>
+<td><p><span class="math notranslate nohighlight">\(A_v=-g_{m1}(r_{O2}\parallel r_{O4}\parallel r_{\pi6})\cdot g_{m6}R_\mathrm{out}\)</span>, <span class="math notranslate nohighlight">\(R_\mathrm{out}=r_{O6}\parallel r_{O7}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(A_v=-g_{m1}(r_{O2}\parallel r_{O4})\cdot g_{m6}R_\mathrm{out}\)</span>, <span class="math notranslate nohighlight">\(R_\mathrm{out}=r_{O6}\parallel r_{O7}\)</span></p></td>
+</tr>
+</tbody>
+</table>
 </div>
 </section>
 <section id="bias-mirror">
@@ -2299,16 +2794,29 @@
 <span class="w">    </span><span class="sd">"""+ bias mirror"""</span>
     <span class="n">op_amp</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
 
-<span class="n">show</span><span class="p">(</span><span class="n">op_amp_bias</span><span class="p">,</span> <span class="n">notes</span><span class="o">=</span><span class="p">[</span>
-    <span class="p">(</span><span class="sa">r</span><span class="s1">'$Q_8$ and $I_\mathrm</span><span class="si">{ref}</span><span class="s1">$ take the place of $V_\mathrm</span><span class="si">{bias}</span><span class="s1">$: $I_</span><span class="si">{C5}</span><span class="s1">$ and $I_</span><span class="si">{C7}</span><span class="s1">$ are copies of $I_\mathrm</span><span class="si">{ref}</span><span class="s1">$, in the ratio of the emitter areas'</span><span class="p">,</span>
-     <span class="sa">r</span><span class="s1">'$M_8$ and $I_\mathrm</span><span class="si">{ref}</span><span class="s1">$ take the place of $V_\mathrm</span><span class="si">{bias}</span><span class="s1">$: $I_</span><span class="si">{D5}</span><span class="s1">$ and $I_</span><span class="si">{D7}</span><span class="s1">$ are copies of $I_\mathrm</span><span class="si">{ref}</span><span class="s1">$, in the ratio of the sizes $W/L$'</span><span class="p">)])</span>
+<span class="n">show</span><span class="p">(</span><span class="n">op_amp_bias</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="../../_images/15d49594ff19ed2f9387aaeaf81483a5cc9861d10a2d42ec1f376a6d2e5efb4a.svg" src="../../_images/15d49594ff19ed2f9387aaeaf81483a5cc9861d10a2d42ec1f376a6d2e5efb4a.svg" />
+<img alt="../../_images/1f88a9ea3f7f3cb3adba72b6f9a1c31e570cef37358f19113cbbe798a972d2b3.svg" src="../../_images/1f88a9ea3f7f3cb3adba72b6f9a1c31e570cef37358f19113cbbe798a972d2b3.svg" />
 </div>
+</div>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p></p></th>
+<th class="head"><p>BJT</p></th>
+<th class="head"><p>MOSFET</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>+ bias mirror</strong></p></td>
+<td><p><span class="math notranslate nohighlight">\(Q_8\)</span> and <span class="math notranslate nohighlight">\(I_\mathrm{ref}\)</span> take the place of <span class="math notranslate nohighlight">\(V_\mathrm{bias}\)</span>: <span class="math notranslate nohighlight">\(I_{C5}\)</span> and <span class="math notranslate nohighlight">\(I_{C7}\)</span> are copies of <span class="math notranslate nohighlight">\(I_\mathrm{ref}\)</span>, in the ratio of the emitter areas</p></td>
+<td><p><span class="math notranslate nohighlight">\(M_8\)</span> and <span class="math notranslate nohighlight">\(I_\mathrm{ref}\)</span> take the place of <span class="math notranslate nohighlight">\(V_\mathrm{bias}\)</span>: <span class="math notranslate nohighlight">\(I_{D5}\)</span> and <span class="math notranslate nohighlight">\(I_{D7}\)</span> are copies of <span class="math notranslate nohighlight">\(I_\mathrm{ref}\)</span>, in the ratio of the sizes <span class="math notranslate nohighlight">\(W/L\)</span></p></td>
+</tr>
+</tbody>
+</table>
 </div>
 </section>
 </section>
@@ -2330,7 +2838,7 @@
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="../../_images/c366d9dd50f337ff7b0c45d89325e2599b0a150dd8842a203b12b117d7c5e516.svg" src="../../_images/c366d9dd50f337ff7b0c45d89325e2599b0a150dd8842a203b12b117d7c5e516.svg" />
+<img alt="../../_images/6b4aae874c9133957d45d5fe11a4df4c7e12078b0aa5b2c9593325b77afadf2f.svg" src="../../_images/6b4aae874c9133957d45d5fe11a4df4c7e12078b0aa5b2c9593325b77afadf2f.svg" />
 </div>
 </div>
 </section>
@@ -2376,11 +2884,11 @@
       </div>
     </a>
     <a class="right-next"
-       href="../mip/intro.html"
+       href="problems.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Introduction</p>
+        <p class="prev-next-title">BJT and MOSFET Problem Sets</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>

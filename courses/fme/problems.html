@@ -1,0 +1,2519 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>BJT and MOSFET Problem Sets &#8212; Intelligent Visual Computing</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=6a604523" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=d273a9f0" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script data-sd-tabs-storage-prefix="sphinx-design-tab-id-" src="../../_static/design-tabs.js?v=fcb327ea"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'courses/fme/problems';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="BJT and MOSFET Problem Bank: One Transistor" href="bank_one.html" />
+    <link rel="prev" title="BJT and MOSFET Circuits" href="index.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../home.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/gpgpu.png" class="logo__image only-light" alt="Intelligent Visual Computing - Home"/>
+    <img src="../../_static/gpgpu.png" class="logo__image only-dark pst-js-only" alt="Intelligent Visual Computing - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../home.html">
+                    Welcome
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Digital Signal Processing</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../dsp/signals.html">Signals and Sequences</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dsp/systems.html">Systems and Transformations</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Fundamentals of Microelectronics</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="index.html">BJT and MOSFET Circuits</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">BJT and MOSFET Problem Sets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bank_one.html">BJT and MOSFET Problem Bank: One Transistor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bank_bias.html">BJT and MOSFET Problem Bank: Bias</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bank_stages.html">BJT and MOSFET Problem Bank: Amplifier Stages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bank_mirrors.html">BJT and MOSFET Problem Bank: Cascodes and Current Mirrors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bank_pairs.html">BJT and MOSFET Problem Bank: Differential Pairs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bank_other.html">BJT and MOSFET Problem Bank: Other Items</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Medical Image Processing</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../mip/intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mip/sigsys.html">Signals and Systems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mip/xr.html">X-ray (XR) Imaging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mip/ct.html">Computed Tomography (CT)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mip/mr.html">Magnetic Resonance (MR) Imaging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mip/pt.html">Positron Emission Tomography (PET)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mip/es.html">Endoscopy (ES) Imaging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mip/histo.html">Histology / Histopathology Imaging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mip/em.html">Electron Microscopy (EM) Imaging</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Simulation</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../sim/isaacsim101.html">IsaacSim101</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sim/chapter0.html">Isaac Sim on a DGX Spark</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sim/chapter1.html">Overview of Visualization</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Research</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../research/connectome/index.html">Connectome Agent</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../research/connectome/representation.html">Representation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../research/connectome/supervision.html">Supervision</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../research/connectome/features.html">Features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../research/connectome/multiscale.html">Multi-scale</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../research/connectome/agent.html">Agent</a></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/tmquan/ivcl" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/tmquan/ivcl/issues/new?title=Issue%20on%20page%20%2Fcourses/fme/problems.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/courses/fme/problems.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button pst-navbar-icon"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm pst-navbar-icon" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>BJT and MOSFET Problem Sets</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#one-transistor">One Transistor</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bias-point-and-region-of-operation">Bias Point and Region of Operation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#device-law-and-scaling">Device Law and Scaling</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#small-signal-parameters">Small-Signal Parameters</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bias">Bias</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#divider-bias-with-degeneration">Divider Bias with Degeneration</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#self-bias">Self-Bias</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#amplifier-stages">Amplifier Stages</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#common-emitter-and-common-source-stage">Common-Emitter and Common-Source Stage</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#stage-with-emitter-or-source-degeneration">Stage with Emitter or Source Degeneration</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#stage-with-a-transistor-as-its-load">Stage with a Transistor as its Load</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#common-base-and-common-gate-stage">Common-Base and Common-Gate Stage</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#emitter-follower-and-source-follower">Emitter Follower and Source Follower</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#resistance-seen-at-a-node">Resistance Seen at a Node</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#complete-stage-with-bias-source-and-load">Complete Stage with Bias, Source and Load</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cascodes-and-current-mirrors">Cascodes and Current Mirrors</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cascode">Cascode</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#current-mirror">Current Mirror</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#differential-pairs">Differential Pairs</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#differential-pair-bias-and-input-range">Differential Pair: Bias and Input Range</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#differential-pair-differential-gain">Differential Pair: Differential Gain</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#differential-pair-with-degeneration">Differential Pair with Degeneration</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#differential-pair-common-mode-rejection">Differential Pair: Common-Mode Rejection</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#differential-pair-with-current-mirror-load">Differential Pair with Current-Mirror Load</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#in-one-of-the-two-books-only">In One of the Two Books Only</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="bjt-and-mosfet-problem-sets">
+<h1>BJT and MOSFET Problem Sets<a class="headerlink" href="#bjt-and-mosfet-problem-sets" title="Link to this heading">#</a></h1>
+<p>Two textbooks were read for every worked example and every problem on transistor circuits: Razavi, <em>Fundamentals of Microelectronics</em> (chapters 4 to 7, 9 and 10: worked examples and end-of-chapter problems), and Sedra/Smith, <em>Microelectronic Circuits</em>, eighth international edition (chapters 4 to 8: in-chapter exercises and end-of-chapter problems). That gives 1219 items. Each was sorted by what it asks. The 19 natures below are asked of both transistors in both books.</p>
+<p>Every nature starts with the circuit, drawn with a BJT and with a MOSFET. Then comes one solution as a table: each row is one step, with the BJT line next to the matching MOSFET line. The numbers are those of one example or exercise per transistor, named under the table, and every result agrees with the one the book states. The last table of a section lists every example and problem of that nature.</p>
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># HIDE/SHOW</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">warnings</span>
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s1">'ignore'</span><span class="p">)</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="o">%</span><span class="k">config</span> InlineBackend.figure_formats = ['svg']
+<span class="o">%</span><span class="k">config</span> InlineBackend.print_figure_kwargs = {'bbox_inches': None}   # keep every figure at its full width
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">'svg.hashsalt'</span><span class="p">]</span> <span class="o">=</span> <span class="s1">'fme'</span>            <span class="c1"># reproducible SVG output</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">schematic</span><span class="w"> </span><span class="kn">import</span> <span class="n">show</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">schematic</span><span class="w"> </span><span class="kn">import</span> <span class="n">circuits</span> <span class="k">as</span> <span class="n">C</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<section id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Link to this heading">#</a></h2>
+<p>The number of examples and problems of each nature, by book and transistor.</p>
+<p>Every one of these examples and problems is solved step by step in the problem bank: <a class="reference internal" href="bank_one.html"><span class="std std-doc">One Transistor</span></a>, <a class="reference internal" href="bank_bias.html"><span class="std std-doc">Bias</span></a>, <a class="reference internal" href="bank_stages.html"><span class="std std-doc">Amplifier Stages</span></a>, <a class="reference internal" href="bank_mirrors.html"><span class="std std-doc">Cascodes and Current Mirrors</span></a>, <a class="reference internal" href="bank_pairs.html"><span class="std std-doc">Differential Pairs</span></a>, <a class="reference internal" href="bank_other.html"><span class="std std-doc">Other Items</span></a>.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Nature</p></th>
+<th class="head"><p>Razavi, BJT</p></th>
+<th class="head"><p>Razavi, MOSFET</p></th>
+<th class="head"><p>Sedra/Smith, BJT</p></th>
+<th class="head"><p>Sedra/Smith, MOSFET</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Bias Point and Region of Operation</p></td>
+<td><p>57</p></td>
+<td><p>20</p></td>
+<td><p>48</p></td>
+<td><p>28</p></td>
+</tr>
+<tr class="row-odd"><td><p>Device Law and Scaling</p></td>
+<td><p>12</p></td>
+<td><p>15</p></td>
+<td><p>30</p></td>
+<td><p>24</p></td>
+</tr>
+<tr class="row-even"><td><p>Small-Signal Parameters</p></td>
+<td><p>29</p></td>
+<td><p>27</p></td>
+<td><p>36</p></td>
+<td><p>38</p></td>
+</tr>
+<tr class="row-odd"><td><p>Divider Bias with Degeneration</p></td>
+<td><p>9</p></td>
+<td><p>10</p></td>
+<td><p>22</p></td>
+<td><p>23</p></td>
+</tr>
+<tr class="row-even"><td><p>Self-Bias</p></td>
+<td><p>6</p></td>
+<td><p>5</p></td>
+<td><p>5</p></td>
+<td><p>6</p></td>
+</tr>
+<tr class="row-odd"><td><p>Common-Emitter and Common-Source Stage</p></td>
+<td><p>7</p></td>
+<td><p>6</p></td>
+<td><p>18</p></td>
+<td><p>12</p></td>
+</tr>
+<tr class="row-even"><td><p>Stage with Emitter or Source Degeneration</p></td>
+<td><p>9</p></td>
+<td><p>5</p></td>
+<td><p>8</p></td>
+<td><p>6</p></td>
+</tr>
+<tr class="row-odd"><td><p>Stage with a Transistor as its Load</p></td>
+<td><p>4</p></td>
+<td><p>15</p></td>
+<td><p>3</p></td>
+<td><p>9</p></td>
+</tr>
+<tr class="row-even"><td><p>Common-Base and Common-Gate Stage</p></td>
+<td><p>11</p></td>
+<td><p>5</p></td>
+<td><p>16</p></td>
+<td><p>12</p></td>
+</tr>
+<tr class="row-odd"><td><p>Emitter Follower and Source Follower</p></td>
+<td><p>11</p></td>
+<td><p>5</p></td>
+<td><p>9</p></td>
+<td><p>7</p></td>
+</tr>
+<tr class="row-even"><td><p>Resistance Seen at a Node</p></td>
+<td><p>15</p></td>
+<td><p>5</p></td>
+<td><p>5</p></td>
+<td><p>3</p></td>
+</tr>
+<tr class="row-odd"><td><p>Complete Stage with Bias, Source and Load</p></td>
+<td><p>49</p></td>
+<td><p>40</p></td>
+<td><p>20</p></td>
+<td><p>18</p></td>
+</tr>
+<tr class="row-even"><td><p>Cascode</p></td>
+<td><p>40</p></td>
+<td><p>25</p></td>
+<td><p>9</p></td>
+<td><p>20</p></td>
+</tr>
+<tr class="row-odd"><td><p>Current Mirror</p></td>
+<td><p>22</p></td>
+<td><p>10</p></td>
+<td><p>15</p></td>
+<td><p>15</p></td>
+</tr>
+<tr class="row-even"><td><p>Differential Pair: Bias and Input Range</p></td>
+<td><p>19</p></td>
+<td><p>19</p></td>
+<td><p>11</p></td>
+<td><p>15</p></td>
+</tr>
+<tr class="row-odd"><td><p>Differential Pair: Differential Gain</p></td>
+<td><p>9</p></td>
+<td><p>10</p></td>
+<td><p>9</p></td>
+<td><p>11</p></td>
+</tr>
+<tr class="row-even"><td><p>Differential Pair with Degeneration</p></td>
+<td><p>10</p></td>
+<td><p>3</p></td>
+<td><p>14</p></td>
+<td><p>3</p></td>
+</tr>
+<tr class="row-odd"><td><p>Differential Pair: Common-Mode Rejection</p></td>
+<td><p>8</p></td>
+<td><p>5</p></td>
+<td><p>19</p></td>
+<td><p>15</p></td>
+</tr>
+<tr class="row-even"><td><p>Differential Pair with Current-Mirror Load</p></td>
+<td><p>2</p></td>
+<td><p>9</p></td>
+<td><p>6</p></td>
+<td><p>17</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>All</strong></p></td>
+<td><p><strong>329</strong></p></td>
+<td><p><strong>239</strong></p></td>
+<td><p><strong>303</strong></p></td>
+<td><p><strong>282</strong></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="one-transistor">
+<h2>One Transistor<a class="headerlink" href="#one-transistor" title="Link to this heading">#</a></h2>
+<section id="bias-point-and-region-of-operation">
+<h3>Bias Point and Region of Operation<a class="headerlink" href="#bias-point-and-region-of-operation" title="Link to this heading">#</a></h3>
+<p>The input voltage is fixed. Find the currents and the output voltage, and decide whether the transistor is in its amplifying region: the active region of a BJT, the saturation region of a MOSFET. Stages with pnp or PMOS devices and dc circuits of several transistors are solved with the same lines.</p>
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># HIDE/SHOW</span>
+<span class="n">show</span><span class="p">(</span><span class="n">C</span><span class="o">.</span><span class="n">role_amplifier</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="../../_images/76c772581feeec76b71630ef05b2c0043476af0889a38b8f80a1f3f0a7d7b3d9.svg" src="../../_images/76c772581feeec76b71630ef05b2c0043476af0889a38b8f80a1f3f0a7d7b3d9.svg" />
+</div>
+</div>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p></p></th>
+<th class="head"><p>BJT</p></th>
+<th class="head"><p>MOSFET</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Given</p></td>
+<td><p><span class="math notranslate nohighlight">\(V_{CC}=2\,\mathrm{V}\)</span>, <span class="math notranslate nohighlight">\(R_C=500\,\Omega\)</span>, <span class="math notranslate nohighlight">\(V_{in}=V_{BE}=800\,\mathrm{mV}\)</span>, <span class="math notranslate nohighlight">\(I_S=5\times10^{-17}\,\mathrm{A}\)</span>, <span class="math notranslate nohighlight">\(\beta=100\)</span>, <span class="math notranslate nohighlight">\(V_T=26\,\mathrm{mV}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(V_{DD}=1.8\,\mathrm{V}\)</span>, <span class="math notranslate nohighlight">\(R_D=5\,\mathrm{k}\Omega\)</span>, <span class="math notranslate nohighlight">\(V_{in}=V_{GS}=1\,\mathrm{V}\)</span>, <span class="math notranslate nohighlight">\(\mu_nC_{ox}=100\,\mu\mathrm{A/V^2}\)</span>, <span class="math notranslate nohighlight">\(W/L=2/0.18\)</span>, <span class="math notranslate nohighlight">\(V_{TH}=0.4\,\mathrm{V}\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>Is the device on?</p></td>
+<td><p><span class="math notranslate nohighlight">\(V_{BE}\approx0.8\,\mathrm{V}\)</span>: the base-emitter junction conducts</p></td>
+<td><p><span class="math notranslate nohighlight">\(V_{GS}-V_{TH}=0.6\,\mathrm{V}&gt;0\)</span>: a channel exists</p></td>
+</tr>
+<tr class="row-even"><td><p>Current, assuming the amplifying region</p></td>
+<td><p><span class="math notranslate nohighlight">\(I_C=I_S\,e^{V_{BE}/V_T}\)</span> <span class="math notranslate nohighlight">\(=1.153\,\mathrm{mA}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(I_D=\frac{1}{2}\mu_nC_{ox}\frac{W}{L}(V_{GS}-V_{TH})^2\)</span> <span class="math notranslate nohighlight">\(=200\,\mu\mathrm{A}\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>Current into the input</p></td>
+<td><p><span class="math notranslate nohighlight">\(I_B=I_C/\beta\)</span> <span class="math notranslate nohighlight">\(=11.5\,\mu\mathrm{A}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(I_G=0\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p>Output voltage</p></td>
+<td><p><span class="math notranslate nohighlight">\(V_{out}=V_{CC}-I_CR_C\)</span> <span class="math notranslate nohighlight">\(=1.42\,\mathrm{V}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(V_{out}=V_{DD}-I_DR_D\)</span> <span class="math notranslate nohighlight">\(=800\,\mathrm{mV}\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>Check the assumption</p></td>
+<td><p>active if <span class="math notranslate nohighlight">\(V_{out}\geq V_{in}\)</span>: <span class="math notranslate nohighlight">\(1.42\geq0.8\)</span>, true</p></td>
+<td><p>saturated if <span class="math notranslate nohighlight">\(V_{out}\geq V_{in}-V_{TH}\)</span>: <span class="math notranslate nohighlight">\(0.8\geq0.6\)</span>, true</p></td>
+</tr>
+<tr class="row-even"><td><p>Largest load resistor</p></td>
+<td><p><span class="math notranslate nohighlight">\(R_C\leq\dfrac{V_{CC}-V_{BE}}{I_C}\)</span> <span class="math notranslate nohighlight">\(=1.04\,\mathrm{k}\Omega\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(R_D\leq\dfrac{V_{DD}-V_{GS}+V_{TH}}{I_D}\)</span> <span class="math notranslate nohighlight">\(=6\,\mathrm{k}\Omega\)</span></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Data and results: Razavi, Example 4.7 (BJT); Razavi, Example 6.6 (MOSFET).</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>In the books</p></th>
+<th class="head"><p>BJT</p></th>
+<th class="head"><p>MOSFET</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Razavi, worked examples</p></td>
+<td><p>4.5, 4.7, 4.15–4.17, 5.5–5.9, 5.15–5.18, 5.47</p></td>
+<td><p>6.6, 6.8, 6.15</p></td>
+</tr>
+<tr class="row-odd"><td><p>Razavi, problems</p></td>
+<td><p>4.9, 4.10, 4.14–4.17, 4.26, 4.32–4.42, 4.45, 4.48, 4.51–4.56, 5.7, 5.9, 5.11, 5.12, 5.18, 5.19, 5.25, 5.26, 5.28, 5.30–5.33, 9.2, 9.3, 9.35</p></td>
+<td><p>6.19, 6.20, 6.22, 6.24, 6.25, 6.30, 6.39–6.43, 7.1, 7.9, 7.13, 9.15, 9.36, 9.37</p></td>
+</tr>
+<tr class="row-even"><td><p>Sedra/Smith, exercises</p></td>
+<td><p>4.6, 4.8, 4.9, 4.13, 4.14, 4.19–4.22, 4.24, 4.25, 4.29–4.32</p></td>
+<td><p>5.4, 5.7, 5.11, 5.14, 5.15, 5.17, 6.1, 6.32, 7.20</p></td>
+</tr>
+<tr class="row-odd"><td><p>Sedra/Smith, problems</p></td>
+<td><p>4.1, 4.7, 4.8, 4.23, 4.25, 4.28, 4.29, 4.35, 4.36, 4.38–4.40, 4.46, 4.51–4.55, 4.57–4.60, 4.63, 4.64, 4.66, 4.67, 4.69, 6.17, 6.21, 6.100, 6.108, 6.109, 6.115</p></td>
+<td><p>5.4, 5.5, 5.20, 5.24, 5.25, 5.28, 5.32, 5.39, 5.42, 5.47, 5.48, 5.51, 5.57, 5.58, 5.60, 6.1, 6.94, 7.37, 7.74</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="device-law-and-scaling">
+<h3>Device Law and Scaling<a class="headerlink" href="#device-law-and-scaling" title="Link to this heading">#</a></h3>
+<p>One point of the characteristic is known. Find the current at another control voltage, or the control voltage for another current, and what a larger device changes.</p>
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># HIDE/SHOW</span>
+<span class="n">show</span><span class="p">(</span><span class="n">C</span><span class="o">.</span><span class="n">n_type</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="../../_images/330ce8f4d98e25ffa3bc749fee84b2e6f982be3a0990c1bbc0fd7800be7188a1.svg" src="../../_images/330ce8f4d98e25ffa3bc749fee84b2e6f982be3a0990c1bbc0fd7800be7188a1.svg" />
+</div>
+</div>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p></p></th>
+<th class="head"><p>BJT</p></th>
+<th class="head"><p>MOSFET</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Given</p></td>
+<td><p><span class="math notranslate nohighlight">\(I_C=1\,\mathrm{mA}\)</span> at <span class="math notranslate nohighlight">\(V_{BE}=700\,\mathrm{mV}\)</span>, <span class="math notranslate nohighlight">\(V_T=25\,\mathrm{mV}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(k_n=k_n^\prime\,W/L=4\,\mathrm{mA/V^2}\)</span>, <span class="math notranslate nohighlight">\(V_t=0.5\,\mathrm{V}\)</span>, <span class="math notranslate nohighlight">\(V_{GS}=1\,\mathrm{V}\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>Law in the amplifying region</p></td>
+<td><p><span class="math notranslate nohighlight">\(I_C=I_S\,e^{V_{BE}/V_T}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(I_D=\frac{1}{2}k_n(V_{GS}-V_t)^2\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p>The known point</p></td>
+<td><p><span class="math notranslate nohighlight">\(I_S=I_C\,e^{-V_{BE}/V_T}\)</span> <span class="math notranslate nohighlight">\(=6.9\times10^{-16}\,\mathrm{A}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(V_{OV}=V_{GS}-V_t=0.5\,\mathrm{V}\)</span>, <span class="math notranslate nohighlight">\(I_D=500\,\mu\mathrm{A}\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>Control voltage for another current</p></td>
+<td><p><span class="math notranslate nohighlight">\(V_{BE2}=V_{BE1}+V_T\ln\dfrac{I_{C2}}{I_{C1}}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(V_{GS2}=V_t+V_{OV1}\sqrt{\dfrac{I_{D2}}{I_{D1}}}\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p>Ten times the current</p></td>
+<td><p><span class="math notranslate nohighlight">\(700\,\mathrm{mV}+V_T\ln10\)</span> <span class="math notranslate nohighlight">\(=758\,\mathrm{mV}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(0.5\,\mathrm{V}+0.5\,\mathrm{V}\cdot\sqrt{10}\)</span> <span class="math notranslate nohighlight">\(=2.08\,\mathrm{V}\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>A tenth of the current</p></td>
+<td><p><span class="math notranslate nohighlight">\(700\,\mathrm{mV}-V_T\ln10\)</span> <span class="math notranslate nohighlight">\(=642\,\mathrm{mV}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(0.5\,\mathrm{V}+0.5\,\mathrm{V}/\sqrt{10}\)</span> <span class="math notranslate nohighlight">\(=658\,\mathrm{mV}\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p>A device <span class="math notranslate nohighlight">\(n\)</span> times as large</p></td>
+<td><p><span class="math notranslate nohighlight">\(I_S\rightarrow nI_S\)</span>: <span class="math notranslate nohighlight">\(n\)</span> times the current at the same <span class="math notranslate nohighlight">\(V_{BE}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(W/L\rightarrow nW/L\)</span>: <span class="math notranslate nohighlight">\(n\)</span> times the current at the same <span class="math notranslate nohighlight">\(V_{GS}\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>Where the law holds</p></td>
+<td><p>active region: <span class="math notranslate nohighlight">\(V_{CE}\geq V_{BE}\)</span></p></td>
+<td><p>saturation: <span class="math notranslate nohighlight">\(V_{DS}\geq V_{OV}=0.5\,\mathrm{V}\)</span></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Data and results: Sedra/Smith, Exercise 4.1 (BJT); Sedra/Smith, Problem 5.12 (MOSFET).</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>In the books</p></th>
+<th class="head"><p>BJT</p></th>
+<th class="head"><p>MOSFET</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Razavi, worked examples</p></td>
+<td><p>4.2–4.4, 4.6, 4.13</p></td>
+<td><p>6.1, 6.5, 6.12</p></td>
+</tr>
+<tr class="row-odd"><td><p>Razavi, problems</p></td>
+<td><p>4.4–4.8, 4.12, 4.13</p></td>
+<td><p>6.1, 6.3, 6.6, 6.7, 6.9–6.11, 6.13, 6.14, 6.23, 7.10, 7.12</p></td>
+</tr>
+<tr class="row-even"><td><p>Sedra/Smith, exercises</p></td>
+<td><p>4.1–4.5, 4.7, 4.10, 4.11, 4.15</p></td>
+<td><p>5.1–5.3, 5.5</p></td>
+</tr>
+<tr class="row-odd"><td><p>Sedra/Smith, problems</p></td>
+<td><p>4.2–4.6, 4.9–4.19, 4.22, 4.24, 4.32, 4.43, 6.30</p></td>
+<td><p>5.1–5.3, 5.8, 5.10, 5.12–5.18, 5.27, 5.29, 5.33, 5.40, 5.41, 5.46, 5.63, 5.67</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="small-signal-parameters">
+<h3>Small-Signal Parameters<a class="headerlink" href="#small-signal-parameters" title="Link to this heading">#</a></h3>
+<p>The bias current is known. Find the transconductance, the input and output resistances of the device and its intrinsic gain, and draw the small-signal model.</p>
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># HIDE/SHOW</span>
+<span class="n">show</span><span class="p">(</span><span class="n">C</span><span class="o">.</span><span class="n">n_type</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="../../_images/4e493770199dc6d146028fd536c7f8b9e030f5a06e21c7f7c1b056343d3eb8ef.svg" src="../../_images/4e493770199dc6d146028fd536c7f8b9e030f5a06e21c7f7c1b056343d3eb8ef.svg" />
+</div>
+</div>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p></p></th>
+<th class="head"><p>BJT</p></th>
+<th class="head"><p>MOSFET</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Given</p></td>
+<td><p><span class="math notranslate nohighlight">\(I_C=1\,\mathrm{mA}\)</span>, <span class="math notranslate nohighlight">\(\beta=100\)</span>, <span class="math notranslate nohighlight">\(V_A=15\,\mathrm{V}\)</span>, <span class="math notranslate nohighlight">\(V_T=26\,\mathrm{mV}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(I_D=0.5\,\mathrm{mA}\)</span>, <span class="math notranslate nohighlight">\(\mu_nC_{ox}=100\,\mu\mathrm{A/V^2}\)</span>, <span class="math notranslate nohighlight">\(W/L=10\)</span>, <span class="math notranslate nohighlight">\(\lambda=0.1\,\mathrm{V^{-1}}\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>Transconductance</p></td>
+<td><p><span class="math notranslate nohighlight">\(g_m=\dfrac{I_C}{V_T}\)</span> <span class="math notranslate nohighlight">\(=\dfrac{1}{26\,\Omega}\)</span> <span class="math notranslate nohighlight">\(=38.5\,\mathrm{mS}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(g_m=\sqrt{2\mu_nC_{ox}\frac{W}{L}I_D}\)</span> <span class="math notranslate nohighlight">\(=\dfrac{1}{1\,\mathrm{k}\Omega}\)</span> <span class="math notranslate nohighlight">\(=1\,\mathrm{mS}\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p>What sets it</p></td>
+<td><p>the current alone</p></td>
+<td><p>current and size: <span class="math notranslate nohighlight">\(g_m=\dfrac{2I_D}{V_{GS}-V_{TH}}\)</span>, <span class="math notranslate nohighlight">\(V_{GS}-V_{TH}=1\,\mathrm{V}\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>Resistance seen at the input</p></td>
+<td><p><span class="math notranslate nohighlight">\(r_\pi=\dfrac{\beta}{g_m}\)</span> <span class="math notranslate nohighlight">\(=2.6\,\mathrm{k}\Omega\)</span></p></td>
+<td><p>infinite: no gate current</p></td>
+</tr>
+<tr class="row-even"><td><p>Output resistance</p></td>
+<td><p><span class="math notranslate nohighlight">\(r_O=\dfrac{V_A}{I_C}\)</span> <span class="math notranslate nohighlight">\(=15\,\mathrm{k}\Omega\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(r_O=\dfrac{1}{\lambda I_D}\)</span> <span class="math notranslate nohighlight">\(=20\,\mathrm{k}\Omega\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>Intrinsic gain</p></td>
+<td><p><span class="math notranslate nohighlight">\(g_mr_O=\dfrac{V_A}{V_T}\)</span> <span class="math notranslate nohighlight">\(=577\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(g_mr_O=\dfrac{2}{\lambda(V_{GS}-V_{TH})}\)</span> <span class="math notranslate nohighlight">\(=20\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p>Model</p></td>
+<td><p><span class="math notranslate nohighlight">\(r_\pi\)</span> from B to E, source <span class="math notranslate nohighlight">\(g_mv_\pi\)</span> and <span class="math notranslate nohighlight">\(r_O\)</span> from C to E</p></td>
+<td><p>gate open, source <span class="math notranslate nohighlight">\(g_mv_{gs}\)</span> and <span class="math notranslate nohighlight">\(r_O\)</span> from D to S</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Data and results: Razavi, Example 4.14 (BJT); Razavi, Example 6.14 (MOSFET).</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>In the books</p></th>
+<th class="head"><p>BJT</p></th>
+<th class="head"><p>MOSFET</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Razavi, worked examples</p></td>
+<td><p>4.8–4.10, 4.14, 4.20, 4.21</p></td>
+<td><p>6.2, 6.3, 6.9–6.11, 6.13, 6.14</p></td>
+</tr>
+<tr class="row-odd"><td><p>Razavi, problems</p></td>
+<td><p>4.18–4.25, 4.27–4.31, 4.43, 4.44, 4.46, 4.47, 4.49, 4.50, 5.8, 5.10, 5.27, 5.29</p></td>
+<td><p>6.8, 6.15–6.18, 6.21, 6.28, 6.31–6.38, 6.44, 6.45, 7.11, 7.14, 7.16</p></td>
+</tr>
+<tr class="row-even"><td><p>Sedra/Smith, exercises</p></td>
+<td><p>4.16–4.18, 6.12–6.15, 6.17, 6.18</p></td>
+<td><p>5.6, 6.5–6.9, 7.7</p></td>
+</tr>
+<tr class="row-odd"><td><p>Sedra/Smith, problems</p></td>
+<td><p>4.20, 4.26, 4.27, 4.33, 4.34, 4.44, 4.45, 4.47–4.49, 6.20, 6.22, 6.29, 6.31, 6.42–6.45, 6.48–6.51, 6.55, 7.26, 7.35, 7.38, 7.41</p></td>
+<td><p>5.9, 5.11, 5.19, 5.21–5.23, 5.26, 5.30, 5.31, 5.34–5.38, 5.64, 5.68, 5.69, 6.39, 6.41, 7.26, 7.28, 7.29, 7.36, 7.38–7.45</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</section>
+<section id="bias">
+<h2>Bias<a class="headerlink" href="#bias" title="Link to this heading">#</a></h2>
+<section id="divider-bias-with-degeneration">
+<h3>Divider Bias with Degeneration<a class="headerlink" href="#divider-bias-with-degeneration" title="Link to this heading">#</a></h3>
+<p>A resistive divider sets the base or gate voltage, and a resistor in the emitter or source makes the current insensitive to the device. Find the bias current and check the region. A design problem runs the same lines backwards: choose the current and the drop across the lower resistor, then the resistors.</p>
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># HIDE/SHOW</span>
+<span class="n">show</span><span class="p">(</span><span class="n">C</span><span class="o">.</span><span class="n">bias_divider</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="../../_images/5b8aca9f7dc858f93c2ab6ef724c54257a165224c89d7e1f5809111116408d04.svg" src="../../_images/5b8aca9f7dc858f93c2ab6ef724c54257a165224c89d7e1f5809111116408d04.svg" />
+</div>
+</div>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p></p></th>
+<th class="head"><p>BJT</p></th>
+<th class="head"><p>MOSFET</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Given</p></td>
+<td><p><span class="math notranslate nohighlight">\(V_{CC}=2.5\,\mathrm{V}\)</span>, <span class="math notranslate nohighlight">\(R_1=16\,\mathrm{k}\Omega\)</span>, <span class="math notranslate nohighlight">\(R_2=9\,\mathrm{k}\Omega\)</span>, <span class="math notranslate nohighlight">\(R_C=1\,\mathrm{k}\Omega\)</span>, <span class="math notranslate nohighlight">\(R_E=100\,\Omega\)</span>, <span class="math notranslate nohighlight">\(I_S=5\times10^{-17}\,\mathrm{A}\)</span>, <span class="math notranslate nohighlight">\(\beta=100\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(V_{DD}=1.8\,\mathrm{V}\)</span>, <span class="math notranslate nohighlight">\(R_1=4\,\mathrm{k}\Omega\)</span>, <span class="math notranslate nohighlight">\(R_2=10\,\mathrm{k}\Omega\)</span>, <span class="math notranslate nohighlight">\(R_S=1\,\mathrm{k}\Omega\)</span>, <span class="math notranslate nohighlight">\(\mu_nC_{ox}=100\,\mu\mathrm{A/V^2}\)</span>, <span class="math notranslate nohighlight">\(W/L=5/0.18\)</span>, <span class="math notranslate nohighlight">\(V_{TH}=0.5\,\mathrm{V}\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>Voltage of the divider</p></td>
+<td><p><span class="math notranslate nohighlight">\(V_X\approx\dfrac{R_2}{R_1+R_2}V_{CC}\)</span> <span class="math notranslate nohighlight">\(=900\,\mathrm{mV}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(V_X=\dfrac{R_2}{R_1+R_2}V_{DD}\)</span> <span class="math notranslate nohighlight">\(=1.286\,\mathrm{V}\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p>Loop through the input</p></td>
+<td><p><span class="math notranslate nohighlight">\(V_X=V_{BE}+I_ER_E\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(V_X=V_{GS}+I_DR_S\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>Device law</p></td>
+<td><p><span class="math notranslate nohighlight">\(V_{BE}=V_T\ln\dfrac{I_C}{I_S}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(I_D=\frac{1}{2}\mu_nC_{ox}\frac{W}{L}(V_{GS}-V_{TH})^2\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p>Solve</p></td>
+<td><p>guess <span class="math notranslate nohighlight">\(V_{BE}=0.8\,\mathrm{V}\)</span>: <span class="math notranslate nohighlight">\(I_C\approx\dfrac{V_X-V_{BE}}{R_E}\)</span> <span class="math notranslate nohighlight">\(=1\,\mathrm{mA}\)</span></p></td>
+<td><p>quadratic in <span class="math notranslate nohighlight">\(V_{GS}\)</span>: <span class="math notranslate nohighlight">\(V_{GS}=974\,\mathrm{mV}\)</span>, <span class="math notranslate nohighlight">\(I_D=312\,\mu\mathrm{A}\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>Check the solution</p></td>
+<td><p><span class="math notranslate nohighlight">\(V_{BE}=V_T\ln(I_C/I_S)\)</span> <span class="math notranslate nohighlight">\(=796\,\mathrm{mV}\)</span>: the guess holds</p></td>
+<td><p><span class="math notranslate nohighlight">\(V_{GS}+I_DR_S\)</span> <span class="math notranslate nohighlight">\(=1.286\,\mathrm{V}\)</span> <span class="math notranslate nohighlight">\(=V_X\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p>Is the divider loaded?</p></td>
+<td><p><span class="math notranslate nohighlight">\(I_B=10\,\mu\mathrm{A}\)</span> against <span class="math notranslate nohighlight">\(100\,\mu\mathrm{A}\)</span> in the divider: barely</p></td>
+<td><p>no: <span class="math notranslate nohighlight">\(I_G=0\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>Region</p></td>
+<td><p><span class="math notranslate nohighlight">\(V_Y=V_{CC}-I_CR_C\)</span> <span class="math notranslate nohighlight">\(=1.5\,\mathrm{V}\)</span> <span class="math notranslate nohighlight">\(\geq V_X\)</span>: active</p></td>
+<td><p>saturated if <span class="math notranslate nohighlight">\(V_D\geq V_X-V_{TH}\)</span>: <span class="math notranslate nohighlight">\(R_D\leq3.25\,\mathrm{k}\Omega\)</span></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Data and results: Razavi, Example 5.10 (BJT); Razavi, Example 7.1 (MOSFET).</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>In the books</p></th>
+<th class="head"><p>BJT</p></th>
+<th class="head"><p>MOSFET</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Razavi, worked examples</p></td>
+<td><p>5.10–5.12, 5.14</p></td>
+<td><p>6.7, 7.1, 7.2</p></td>
+</tr>
+<tr class="row-odd"><td><p>Razavi, problems</p></td>
+<td><p>4.11, 5.13, 5.14, 5.16, 5.17</p></td>
+<td><p>6.26, 7.2–7.5, 7.7, 7.29</p></td>
+</tr>
+<tr class="row-even"><td><p>Sedra/Smith, exercises</p></td>
+<td><p>4.12, 4.23, 4.26–4.28, 6.35, 6.41</p></td>
+<td><p>5.8, 5.12, 5.13, 6.33, 6.38</p></td>
+</tr>
+<tr class="row-odd"><td><p>Sedra/Smith, problems</p></td>
+<td><p>4.21, 4.30, 4.31, 4.50, 4.56, 4.61, 4.62, 4.65, 4.68, 6.96, 6.97, 6.99, 6.110–6.112</p></td>
+<td><p>5.43, 5.45, 5.50, 5.52–5.56, 6.40, 6.91–6.93, 6.101–6.105, 8.8</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="self-bias">
+<h3>Self-Bias<a class="headerlink" href="#self-bias" title="Link to this heading">#</a></h3>
+<p>A resistor from the output node back to the input sets the bias. Find the current. The transistor cannot leave its amplifying region.</p>
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># HIDE/SHOW</span>
+<span class="n">show</span><span class="p">(</span><span class="n">C</span><span class="o">.</span><span class="n">bias_self</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="../../_images/b8fd676f99822e7905626a48d404aa5e736297907a7140dbae8e301863f2cfe8.svg" src="../../_images/b8fd676f99822e7905626a48d404aa5e736297907a7140dbae8e301863f2cfe8.svg" />
+</div>
+</div>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p></p></th>
+<th class="head"><p>BJT</p></th>
+<th class="head"><p>MOSFET</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Given</p></td>
+<td><p><span class="math notranslate nohighlight">\(V_{CC}=2.5\,\mathrm{V}\)</span>, <span class="math notranslate nohighlight">\(R_C=1\,\mathrm{k}\Omega\)</span>, <span class="math notranslate nohighlight">\(R_B=10\,\mathrm{k}\Omega\)</span>, <span class="math notranslate nohighlight">\(I_S=5\times10^{-17}\,\mathrm{A}\)</span>, <span class="math notranslate nohighlight">\(\beta=100\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(V_{DD}=1.8\,\mathrm{V}\)</span>, <span class="math notranslate nohighlight">\(R_D=1\,\mathrm{k}\Omega\)</span>, <span class="math notranslate nohighlight">\(R_G=20\,\mathrm{k}\Omega\)</span>, <span class="math notranslate nohighlight">\(R_S=200\,\Omega\)</span>, <span class="math notranslate nohighlight">\(\mu_nC_{ox}=100\,\mu\mathrm{A/V^2}\)</span>, <span class="math notranslate nohighlight">\(W/L=5/0.18\)</span>, <span class="math notranslate nohighlight">\(V_{TH}=0.5\,\mathrm{V}\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>Current in the feedback resistor</p></td>
+<td><p><span class="math notranslate nohighlight">\(I_B=I_C/\beta\)</span></p></td>
+<td><p>none: <span class="math notranslate nohighlight">\(V_G=V_D\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p>Loop from the supply to ground</p></td>
+<td><p><span class="math notranslate nohighlight">\(V_{CC}=R_CI_C+R_BI_B+V_{BE}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(V_{DD}=R_DI_D+V_{GS}+R_SI_D\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>Solve</p></td>
+<td><p>guess <span class="math notranslate nohighlight">\(V_{BE}=0.8\,\mathrm{V}\)</span>: <span class="math notranslate nohighlight">\(I_C=\dfrac{V_{CC}-V_{BE}}{R_C+R_B/\beta}\)</span> <span class="math notranslate nohighlight">\(=1.545\,\mathrm{mA}\)</span></p></td>
+<td><p>with <span class="math notranslate nohighlight">\(I_D=\frac{1}{2}\mu_nC_{ox}\frac{W}{L}(V_{GS}-V_{TH})^2\)</span>: <span class="math notranslate nohighlight">\(I_D=556\,\mu\mathrm{A}\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p>Control voltage</p></td>
+<td><p><span class="math notranslate nohighlight">\(V_{BE}=V_T\ln(I_C/I_S)\)</span> <span class="math notranslate nohighlight">\(=807.6\,\mathrm{mV}\)</span>: the guess holds</p></td>
+<td><p><span class="math notranslate nohighlight">\(V_{GS}=V_{DD}-(R_D+R_S)I_D\)</span> <span class="math notranslate nohighlight">\(=1.133\,\mathrm{V}\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>Output node</p></td>
+<td><p><span class="math notranslate nohighlight">\(V_Y=V_{BE}+R_BI_B\)</span> <span class="math notranslate nohighlight">\(=962\,\mathrm{mV}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(V_D=V_{DD}-R_DI_D\)</span> <span class="math notranslate nohighlight">\(=1.244\,\mathrm{V}\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p>Region</p></td>
+<td><p><span class="math notranslate nohighlight">\(V_Y&gt;V_{BE}\)</span> by <span class="math notranslate nohighlight">\(R_BI_B\)</span>: always active</p></td>
+<td><p><span class="math notranslate nohighlight">\(V_D=V_G&gt;V_G-V_{TH}\)</span>: always saturated</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Data and results: Razavi, Example 5.13 (BJT); Razavi, Example 7.3 (MOSFET).</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>In the books</p></th>
+<th class="head"><p>BJT</p></th>
+<th class="head"><p>MOSFET</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Razavi, worked examples</p></td>
+<td><p>5.13</p></td>
+<td><p>7.3</p></td>
+</tr>
+<tr class="row-odd"><td><p>Razavi, problems</p></td>
+<td><p>5.20–5.24</p></td>
+<td><p>6.27, 6.29, 7.6, 7.8</p></td>
+</tr>
+<tr class="row-even"><td><p>Sedra/Smith, exercises</p></td>
+<td><p>6.37</p></td>
+<td><p>5.9, 6.34</p></td>
+</tr>
+<tr class="row-odd"><td><p>Sedra/Smith, problems</p></td>
+<td><p>4.37, 6.98, 6.113, 6.114</p></td>
+<td><p>5.59, 6.95, 6.106, 6.107</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</section>
+<section id="amplifier-stages">
+<h2>Amplifier Stages<a class="headerlink" href="#amplifier-stages" title="Link to this heading">#</a></h2>
+<section id="common-emitter-and-common-source-stage">
+<h3>Common-Emitter and Common-Source Stage<a class="headerlink" href="#common-emitter-and-common-source-stage" title="Link to this heading">#</a></h3>
+<p>The input drives the base or gate, the output is taken at the collector or drain. Find the gain and the input and output resistances, then the gain with a load and with the resistance of the signal source.</p>
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># HIDE/SHOW</span>
+<span class="n">show</span><span class="p">(</span><span class="n">C</span><span class="o">.</span><span class="n">gain_common_emitter</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="../../_images/2ff26327fdb0eeea2f5d23edbcb887daab2daccf54e60a4b027de3bdc459f94c.svg" src="../../_images/2ff26327fdb0eeea2f5d23edbcb887daab2daccf54e60a4b027de3bdc459f94c.svg" />
+</div>
+</div>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p></p></th>
+<th class="head"><p>BJT</p></th>
+<th class="head"><p>MOSFET</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Given</p></td>
+<td><p><span class="math notranslate nohighlight">\(I_C=0.5\,\mathrm{mA}\)</span>, <span class="math notranslate nohighlight">\(\beta=100\)</span>, <span class="math notranslate nohighlight">\(R_C=10\,\mathrm{k}\Omega\)</span>, load <span class="math notranslate nohighlight">\(R_L=5\,\mathrm{k}\Omega\)</span>, source <span class="math notranslate nohighlight">\(R_{sig}=5\,\mathrm{k}\Omega\)</span>, <span class="math notranslate nohighlight">\(V_T=25\,\mathrm{mV}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(I_D=0.25\,\mathrm{mA}\)</span>, <span class="math notranslate nohighlight">\(V_{OV}=0.25\,\mathrm{V}\)</span>, <span class="math notranslate nohighlight">\(R_D=20\,\mathrm{k}\Omega\)</span>, load <span class="math notranslate nohighlight">\(R_L=20\,\mathrm{k}\Omega\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>Transconductance</p></td>
+<td><p><span class="math notranslate nohighlight">\(g_m=\dfrac{I_C}{V_T}\)</span> <span class="math notranslate nohighlight">\(=20\,\mathrm{mA/V}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(g_m=\dfrac{2I_D}{V_{OV}}\)</span> <span class="math notranslate nohighlight">\(=2\,\mathrm{mA/V}\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p>Input resistance</p></td>
+<td><p><span class="math notranslate nohighlight">\(R_{in}=r_\pi=\dfrac{\beta}{g_m}\)</span> <span class="math notranslate nohighlight">\(=5\,\mathrm{k}\Omega\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(R_{in}=\infty\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>Gain without load</p></td>
+<td><p><span class="math notranslate nohighlight">\(A_{vo}=-g_mR_C\)</span> <span class="math notranslate nohighlight">\(=-200\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(A_{vo}=-g_mR_D\)</span> <span class="math notranslate nohighlight">\(=-40\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p>Output resistance</p></td>
+<td><p><span class="math notranslate nohighlight">\(R_{out}=R_C\)</span> <span class="math notranslate nohighlight">\(=10\,\mathrm{k}\Omega\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(R_{out}=R_D\)</span> <span class="math notranslate nohighlight">\(=20\,\mathrm{k}\Omega\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>Gain with the load</p></td>
+<td><p><span class="math notranslate nohighlight">\(A_v=-g_m(R_C\parallel R_L)\)</span> <span class="math notranslate nohighlight">\(=-66.7\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(A_v=-g_m(R_D\parallel R_L)\)</span> <span class="math notranslate nohighlight">\(=-20\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p>Gain from the signal source</p></td>
+<td><p><span class="math notranslate nohighlight">\(G_v=\dfrac{R_{in}}{R_{in}+R_{sig}}A_v\)</span> <span class="math notranslate nohighlight">\(=-33.3\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(G_v=A_v\)</span> <span class="math notranslate nohighlight">\(=-20\)</span>: nothing is lost at the gate</p></td>
+</tr>
+<tr class="row-odd"><td><p>With the output resistance of the device</p></td>
+<td><p><span class="math notranslate nohighlight">\(R_C\rightarrow R_C\parallel r_O\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(R_D\rightarrow R_D\parallel r_O\)</span></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Data and results: Sedra/Smith, Exercise 6.22 (BJT); Sedra/Smith, Exercise 6.21 (MOSFET).</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>In the books</p></th>
+<th class="head"><p>BJT</p></th>
+<th class="head"><p>MOSFET</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Razavi, worked examples</p></td>
+<td><p>4.11, 4.12, 4.18, 5.20, 5.21</p></td>
+<td><p>7.4, 9.7</p></td>
+</tr>
+<tr class="row-odd"><td><p>Razavi, problems</p></td>
+<td><p>5.37, 10.1</p></td>
+<td><p>7.17, 7.18, 7.34, 7.35</p></td>
+</tr>
+<tr class="row-even"><td><p>Sedra/Smith, exercises</p></td>
+<td><p>6.16, 6.20, 6.22</p></td>
+<td><p>6.4, 6.21</p></td>
+</tr>
+<tr class="row-odd"><td><p>Sedra/Smith, problems</p></td>
+<td><p>6.4–6.6, 6.14, 6.18, 6.19, 6.28, 6.33, 6.46, 6.52, 6.54, 6.62, 6.76, 6.88, 6.90</p></td>
+<td><p>6.2, 6.9, 6.10, 6.12, 6.23, 6.37, 6.38, 6.60, 6.74, 6.75</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="stage-with-emitter-or-source-degeneration">
+<h3>Stage with Emitter or Source Degeneration<a class="headerlink" href="#stage-with-emitter-or-source-degeneration" title="Link to this heading">#</a></h3>
+<p>A resistor in the emitter or source trades gain for linearity and, in the BJT, for input resistance. Find the gain, the input resistance and the largest input signal.</p>
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># HIDE/SHOW</span>
+<span class="n">show</span><span class="p">(</span><span class="n">C</span><span class="o">.</span><span class="n">gain_degenerated</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="../../_images/29687eb38e5d4c8007d4affb2dc8ef411171c7eb50d38198210bd5ffc16b9089.svg" src="../../_images/29687eb38e5d4c8007d4affb2dc8ef411171c7eb50d38198210bd5ffc16b9089.svg" />
+</div>
+</div>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p></p></th>
+<th class="head"><p>BJT</p></th>
+<th class="head"><p>MOSFET</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Given</p></td>
+<td><p><span class="math notranslate nohighlight">\(I_C=0.5\,\mathrm{mA}\)</span>, <span class="math notranslate nohighlight">\(\beta=100\)</span>, <span class="math notranslate nohighlight">\(R_E=350\,\Omega\)</span>, <span class="math notranslate nohighlight">\(R_C\parallel R_L=10\,\mathrm{k}\Omega\)</span>, source <span class="math notranslate nohighlight">\(R_{sig}=10\,\mathrm{k}\Omega\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(g_m=2\,\mathrm{mA/V}\)</span>, <span class="math notranslate nohighlight">\(R_S=1.5\,\mathrm{k}\Omega\)</span>, <span class="math notranslate nohighlight">\(R_D\parallel R_L=10\,\mathrm{k}\Omega\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>Resistance of the device itself</p></td>
+<td><p><span class="math notranslate nohighlight">\(r_e=\dfrac{V_T}{I_E}\approx\dfrac{1}{g_m}\)</span> <span class="math notranslate nohighlight">\(=50\,\Omega\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\dfrac{1}{g_m}\)</span> <span class="math notranslate nohighlight">\(=500\,\Omega\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p>Input resistance</p></td>
+<td><p><span class="math notranslate nohighlight">\(R_{in}=(\beta+1)(r_e+R_E)\)</span> <span class="math notranslate nohighlight">\(=40.4\,\mathrm{k}\Omega\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(R_{in}=\infty\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>Gain from the input</p></td>
+<td><p><span class="math notranslate nohighlight">\(A_v\approx-\dfrac{R_C\parallel R_L}{r_e+R_E}\)</span> <span class="math notranslate nohighlight">\(=-25\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(A_v=-\dfrac{R_D\parallel R_L}{1/g_m+R_S}\)</span> <span class="math notranslate nohighlight">\(=-5\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p>Gain from the signal source</p></td>
+<td><p><span class="math notranslate nohighlight">\(G_v=-\dfrac{\beta(R_C\parallel R_L)}{R_{sig}+(\beta+1)(r_e+R_E)}\)</span> <span class="math notranslate nohighlight">\(=-19.8\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(G_v=A_v\)</span> <span class="math notranslate nohighlight">\(=-5\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>Share of the input across the device</p></td>
+<td><p><span class="math notranslate nohighlight">\(\dfrac{v_\pi}{v_{in}}=\dfrac{r_e}{r_e+R_E}\)</span> <span class="math notranslate nohighlight">\(=\dfrac{1}{8}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\dfrac{v_{gs}}{v_{in}}=\dfrac{1}{1+g_mR_S}\)</span> <span class="math notranslate nohighlight">\(=\dfrac{1}{4}\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p>Largest source signal</p></td>
+<td><p><span class="math notranslate nohighlight">\(v_\pi\leq10\,\mathrm{mV}\)</span>: <span class="math notranslate nohighlight">\(v_{sig}\leq99.8\,\mathrm{mV}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(v_{gs}\leq50\,\mathrm{mV}\)</span>: <span class="math notranslate nohighlight">\(v_{sig}\leq200\,\mathrm{mV}\)</span></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Data and results: Sedra/Smith, Exercise 6.24 (BJT); Sedra/Smith, Exercise 6.23 (MOSFET).</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>In the books</p></th>
+<th class="head"><p>BJT</p></th>
+<th class="head"><p>MOSFET</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Razavi, worked examples</p></td>
+<td><p>5.22–5.25, 5.27</p></td>
+<td><p>7.8, 7.20, 7.21</p></td>
+</tr>
+<tr class="row-odd"><td><p>Razavi, problems</p></td>
+<td><p>5.40, 5.41, 5.44, 5.45</p></td>
+<td><p>7.31, 7.32</p></td>
+</tr>
+<tr class="row-even"><td><p>Sedra/Smith, exercises</p></td>
+<td><p>6.24, 6.43</p></td>
+<td><p>6.23, 6.40</p></td>
+</tr>
+<tr class="row-odd"><td><p>Sedra/Smith, problems</p></td>
+<td><p>6.57, 6.64, 6.70, 6.80, 6.81, 6.121</p></td>
+<td><p>6.25, 6.63, 6.78, 6.79</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="stage-with-a-transistor-as-its-load">
+<h3>Stage with a Transistor as its Load<a class="headerlink" href="#stage-with-a-transistor-as-its-load" title="Link to this heading">#</a></h3>
+<p>The load is a current source made of a second transistor, so the gain is set by the output resistances of the two devices. Find the intrinsic gain and the gain of the stage.</p>
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># HIDE/SHOW</span>
+<span class="n">show</span><span class="p">(</span><span class="n">C</span><span class="o">.</span><span class="n">active_load</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="../../_images/24de1dd43585391014868059a35550f347edfe60a80ea2f33c4b48e32fa8ade3.svg" src="../../_images/24de1dd43585391014868059a35550f347edfe60a80ea2f33c4b48e32fa8ade3.svg" />
+</div>
+</div>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p></p></th>
+<th class="head"><p>BJT</p></th>
+<th class="head"><p>MOSFET</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Given</p></td>
+<td><p><span class="math notranslate nohighlight">\(I=100\,\mu\mathrm{A}\)</span>, <span class="math notranslate nohighlight">\(\beta=100\)</span>, <span class="math notranslate nohighlight">\(\lvert V_A\rvert =50\,\mathrm{V}\)</span> for both devices, <span class="math notranslate nohighlight">\(V_T=25\,\mathrm{mV}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(I=100\,\mu\mathrm{A}\)</span>, <span class="math notranslate nohighlight">\(\mu_nC_{ox}=387\,\mu\mathrm{A/V^2}\)</span>, <span class="math notranslate nohighlight">\(W/L=7.2/0.36\)</span>, <span class="math notranslate nohighlight">\(V_{An}^\prime=5\,\mathrm{V/\mu m}\)</span>, <span class="math notranslate nohighlight">\(\lvert V_{Ap}^\prime\rvert =6\,\mathrm{V/\mu m}\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>Transconductance</p></td>
+<td><p><span class="math notranslate nohighlight">\(g_{m1}=\dfrac{I}{V_T}\)</span> <span class="math notranslate nohighlight">\(=4\,\mathrm{mA/V}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(g_{m1}=\sqrt{2\mu_nC_{ox}\frac{W}{L}I}\)</span> <span class="math notranslate nohighlight">\(=1.24\,\mathrm{mA/V}\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p>Input resistance</p></td>
+<td><p><span class="math notranslate nohighlight">\(r_{\pi1}=\dfrac{\beta}{g_{m1}}\)</span> <span class="math notranslate nohighlight">\(=25\,\mathrm{k}\Omega\)</span></p></td>
+<td><p>infinite</p></td>
+</tr>
+<tr class="row-odd"><td><p>Output resistance of the amplifying device</p></td>
+<td><p><span class="math notranslate nohighlight">\(r_{O1}=\dfrac{V_A}{I}\)</span> <span class="math notranslate nohighlight">\(=500\,\mathrm{k}\Omega\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(r_{O1}=\dfrac{V_{An}^\prime L}{I}\)</span> <span class="math notranslate nohighlight">\(=18\,\mathrm{k}\Omega\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p>Intrinsic gain</p></td>
+<td><p><span class="math notranslate nohighlight">\(g_{m1}r_{O1}=\dfrac{V_A}{V_T}\)</span> <span class="math notranslate nohighlight">\(=2000\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(g_{m1}r_{O1}\)</span> <span class="math notranslate nohighlight">\(=22.4\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>Output resistance of the load</p></td>
+<td><p><span class="math notranslate nohighlight">\(r_{O2}=\dfrac{\lvert V_A\rvert }{I}\)</span> <span class="math notranslate nohighlight">\(=500\,\mathrm{k}\Omega\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(r_{O2}=\dfrac{\lvert V_{Ap}^\prime\rvert L}{I}\)</span> <span class="math notranslate nohighlight">\(=21.6\,\mathrm{k}\Omega\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p>Output resistance of the stage</p></td>
+<td><p><span class="math notranslate nohighlight">\(R_{out}=r_{O1}\parallel r_{O2}\)</span> <span class="math notranslate nohighlight">\(=250\,\mathrm{k}\Omega\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(R_{out}=r_{O1}\parallel r_{O2}\)</span> <span class="math notranslate nohighlight">\(=9.82\,\mathrm{k}\Omega\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>Gain</p></td>
+<td><p><span class="math notranslate nohighlight">\(A_v=-g_{m1}(r_{O1}\parallel r_{O2})\)</span> <span class="math notranslate nohighlight">\(=-1000\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(A_v=-g_{m1}(r_{O1}\parallel r_{O2})\)</span> <span class="math notranslate nohighlight">\(=-12.2\)</span></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Data and results: Sedra/Smith, Exercise 7.9 (BJT); Sedra/Smith, Exercise 7.8 (MOSFET).</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>In the books</p></th>
+<th class="head"><p>BJT</p></th>
+<th class="head"><p>MOSFET</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Razavi, worked examples</p></td>
+<td><p>9.8</p></td>
+<td><p>7.5–7.7, 7.19</p></td>
+</tr>
+<tr class="row-odd"><td><p>Razavi, problems</p></td>
+<td><p>5.36, 5.38, 5.39</p></td>
+<td><p>6.46, 7.20–7.28, 7.64</p></td>
+</tr>
+<tr class="row-even"><td><p>Sedra/Smith, exercises</p></td>
+<td><p>7.9</p></td>
+<td><p>7.8</p></td>
+</tr>
+<tr class="row-odd"><td><p>Sedra/Smith, problems</p></td>
+<td><p>7.27, 7.34</p></td>
+<td><p>6.13, 6.26, 7.24, 7.30, 7.32, 7.33, 7.46, 7.48</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="common-base-and-common-gate-stage">
+<h3>Common-Base and Common-Gate Stage<a class="headerlink" href="#common-base-and-common-gate-stage" title="Link to this heading">#</a></h3>
+<p>The input drives the emitter or source, the base or gate is held at a fixed voltage. The resistor in series with the input is the resistance of the signal source. Find the input resistance and the gain.</p>
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># HIDE/SHOW</span>
+<span class="n">show</span><span class="p">(</span><span class="n">C</span><span class="o">.</span><span class="n">gain_common_base</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="../../_images/d1aac178a4178a3c618b4a98fb66ae89b0487ff1eb153af22659930c4debf4cf.svg" src="../../_images/d1aac178a4178a3c618b4a98fb66ae89b0487ff1eb153af22659930c4debf4cf.svg" />
+</div>
+</div>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p></p></th>
+<th class="head"><p>BJT</p></th>
+<th class="head"><p>MOSFET</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Given</p></td>
+<td><p><span class="math notranslate nohighlight">\(I_C=1\,\mathrm{mA}\)</span>, <span class="math notranslate nohighlight">\(R_C=5\,\mathrm{k}\Omega\)</span>, load <span class="math notranslate nohighlight">\(R_L=5\,\mathrm{k}\Omega\)</span>, source <span class="math notranslate nohighlight">\(R_E=R_{sig}=5\,\mathrm{k}\Omega\)</span>, <span class="math notranslate nohighlight">\(V_T=25\,\mathrm{mV}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(g_m=10\,\mathrm{mA/V}\)</span> (<span class="math notranslate nohighlight">\(I_D=1\,\mathrm{mA}\)</span>, <span class="math notranslate nohighlight">\(V_{OV}=0.2\,\mathrm{V}\)</span>), <span class="math notranslate nohighlight">\(R_D=2\,\mathrm{k}\Omega\)</span>, source <span class="math notranslate nohighlight">\(R_S=R_{sig}=100\,\Omega\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>Input resistance</p></td>
+<td><p><span class="math notranslate nohighlight">\(R_{in}=r_e\approx\dfrac{1}{g_m}\)</span> <span class="math notranslate nohighlight">\(=25\,\Omega\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(R_{in}=\dfrac{1}{g_m}\)</span> <span class="math notranslate nohighlight">\(=100\,\Omega\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p>Gain without load</p></td>
+<td><p><span class="math notranslate nohighlight">\(A_{vo}=g_mR_C\)</span> <span class="math notranslate nohighlight">\(=200\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(A_{vo}=g_mR_D\)</span> <span class="math notranslate nohighlight">\(=20\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>Output resistance</p></td>
+<td><p><span class="math notranslate nohighlight">\(R_{out}=R_C\)</span> <span class="math notranslate nohighlight">\(=5\,\mathrm{k}\Omega\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(R_{out}=R_D\)</span> <span class="math notranslate nohighlight">\(=2\,\mathrm{k}\Omega\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p>Gain with the load</p></td>
+<td><p><span class="math notranslate nohighlight">\(A_v=g_m(R_C\parallel R_L)\)</span> <span class="math notranslate nohighlight">\(=100\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(A_v=g_mR_D\)</span> <span class="math notranslate nohighlight">\(=20\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>Gain from the signal source</p></td>
+<td><p><span class="math notranslate nohighlight">\(G_v=\dfrac{R_C\parallel R_L}{R_{sig}+r_e}\)</span> <span class="math notranslate nohighlight">\(=0.5\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(G_v=\dfrac{R_D}{R_{sig}+1/g_m}\)</span> <span class="math notranslate nohighlight">\(=10\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p>What the source resistance costs</p></td>
+<td><p><span class="math notranslate nohighlight">\(\dfrac{r_e}{r_e+R_{sig}}\)</span> <span class="math notranslate nohighlight">\(=0.005\)</span> of the signal reaches the emitter</p></td>
+<td><p><span class="math notranslate nohighlight">\(\dfrac{1/g_m}{1/g_m+R_{sig}}\)</span> <span class="math notranslate nohighlight">\(=0.5\)</span>: matched to the source</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Data and results: Sedra/Smith, Exercise 6.26 (BJT); Sedra/Smith, Exercise 6.25 (MOSFET).</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>In the books</p></th>
+<th class="head"><p>BJT</p></th>
+<th class="head"><p>MOSFET</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Razavi, worked examples</p></td>
+<td><p>5.35–5.37, 5.51, 5.52</p></td>
+<td><p>7.12, 7.13</p></td>
+</tr>
+<tr class="row-odd"><td><p>Razavi, problems</p></td>
+<td><p>5.54–5.57, 5.62, 5.64</p></td>
+<td><p>7.42, 7.44, 7.47</p></td>
+</tr>
+<tr class="row-even"><td><p>Sedra/Smith, exercises</p></td>
+<td><p>6.19, 6.26, 6.27, 7.15–7.17</p></td>
+<td><p>6.25, 7.11–7.14</p></td>
+</tr>
+<tr class="row-odd"><td><p>Sedra/Smith, problems</p></td>
+<td><p>6.32, 6.35, 6.56, 6.66, 6.83, 6.84, 6.122, 7.54, 7.59, 7.60</p></td>
+<td><p>6.65, 6.82, 6.128, 7.50, 7.53, 7.57, 7.58</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="emitter-follower-and-source-follower">
+<h3>Emitter Follower and Source Follower<a class="headerlink" href="#emitter-follower-and-source-follower" title="Link to this heading">#</a></h3>
+<p>The output is taken at the emitter or source and follows the input. The resistor to ground is the load. Find the gain and the input and output resistances.</p>
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># HIDE/SHOW</span>
+<span class="n">show</span><span class="p">(</span><span class="n">C</span><span class="o">.</span><span class="n">gain_follower</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="../../_images/18778a347130e5e348d6b96227153f9e79bbb02da8fc13bd6e935d891fa67906.svg" src="../../_images/18778a347130e5e348d6b96227153f9e79bbb02da8fc13bd6e935d891fa67906.svg" />
+</div>
+</div>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p></p></th>
+<th class="head"><p>BJT</p></th>
+<th class="head"><p>MOSFET</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Given</p></td>
+<td><p><span class="math notranslate nohighlight">\(I_C=5\,\mathrm{mA}\)</span>, <span class="math notranslate nohighlight">\(\beta=100\)</span>, load <span class="math notranslate nohighlight">\(R_E=R_L=1\,\mathrm{k}\Omega\)</span>, source <span class="math notranslate nohighlight">\(R_{sig}=10\,\mathrm{k}\Omega\)</span>, <span class="math notranslate nohighlight">\(V_T=25\,\mathrm{mV}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(g_m=5\,\mathrm{mA/V}\)</span> (<span class="math notranslate nohighlight">\(I_D=0.625\,\mathrm{mA}\)</span>, <span class="math notranslate nohighlight">\(V_{OV}=0.25\,\mathrm{V}\)</span>), load <span class="math notranslate nohighlight">\(R_S=R_L=1\,\mathrm{k}\Omega\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>Resistance of the device itself</p></td>
+<td><p><span class="math notranslate nohighlight">\(r_e=\dfrac{V_T}{I_E}\)</span> <span class="math notranslate nohighlight">\(=5\,\Omega\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\dfrac{1}{g_m}\)</span> <span class="math notranslate nohighlight">\(=200\,\Omega\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p>Input resistance</p></td>
+<td><p><span class="math notranslate nohighlight">\(R_{in}=(\beta+1)(r_e+R_L)\)</span> <span class="math notranslate nohighlight">\(=101.5\,\mathrm{k}\Omega\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(R_{in}=\infty\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>Gain from the input</p></td>
+<td><p><span class="math notranslate nohighlight">\(A_v=\dfrac{R_L}{R_L+r_e}\)</span> <span class="math notranslate nohighlight">\(=0.995\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(A_v=\dfrac{R_L}{R_L+1/g_m}\)</span> <span class="math notranslate nohighlight">\(=0.833\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p>Gain from the signal source</p></td>
+<td><p><span class="math notranslate nohighlight">\(G_v=\dfrac{(\beta+1)R_L}{R_{sig}+(\beta+1)(r_e+R_L)}\)</span> <span class="math notranslate nohighlight">\(=0.906\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(G_v=A_v\)</span> <span class="math notranslate nohighlight">\(=0.833\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>Output resistance</p></td>
+<td><p><span class="math notranslate nohighlight">\(R_{out}=r_e+\dfrac{R_{sig}}{\beta+1}\)</span> <span class="math notranslate nohighlight">\(=104\,\Omega\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(R_{out}=\dfrac{1}{g_m}\)</span> <span class="math notranslate nohighlight">\(=200\,\Omega\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p>Gain without load</p></td>
+<td><p><span class="math notranslate nohighlight">\(1\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(1\)</span></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Data and results: Sedra/Smith, Exercise 6.30 (BJT); Sedra/Smith, Exercise 6.29 (MOSFET).</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>In the books</p></th>
+<th class="head"><p>BJT</p></th>
+<th class="head"><p>MOSFET</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Razavi, worked examples</p></td>
+<td><p>5.43, 5.44, 5.46, 5.53</p></td>
+<td><p>7.16</p></td>
+</tr>
+<tr class="row-odd"><td><p>Razavi, problems</p></td>
+<td><p>5.65–5.68, 5.70, 5.71, 10.3</p></td>
+<td><p>7.36, 7.49, 7.55, 10.3</p></td>
+</tr>
+<tr class="row-even"><td><p>Sedra/Smith, exercises</p></td>
+<td><p>6.30, 6.45</p></td>
+<td><p>6.28, 6.29, 7.25</p></td>
+</tr>
+<tr class="row-odd"><td><p>Sedra/Smith, problems</p></td>
+<td><p>6.53, 6.68, 6.86, 6.87, 6.123, 6.134, 6.135</p></td>
+<td><p>6.67, 6.85, 6.89, 7.80</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="resistance-seen-at-a-node">
+<h3>Resistance Seen at a Node<a class="headerlink" href="#resistance-seen-at-a-node" title="Link to this heading">#</a></h3>
+<p>Find the small-signal resistance looking into a terminal. The diode-connected transistor is the standard case: apply a test voltage, add up the currents, divide.</p>
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># HIDE/SHOW</span>
+<span class="n">show</span><span class="p">(</span><span class="n">C</span><span class="o">.</span><span class="n">role_diode</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="../../_images/897aadfbbdb60284670e4cd12b8a469c5de58e8d7bcdae776a64e295feed13c6.svg" src="../../_images/897aadfbbdb60284670e4cd12b8a469c5de58e8d7bcdae776a64e295feed13c6.svg" />
+</div>
+</div>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p></p></th>
+<th class="head"><p>BJT</p></th>
+<th class="head"><p>MOSFET</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Given</p></td>
+<td><p>the device of Small-Signal Parameters: <span class="math notranslate nohighlight">\(g_m=1/(26\,\Omega)\)</span>, <span class="math notranslate nohighlight">\(r_\pi=2.6\,\mathrm{k}\Omega\)</span>, <span class="math notranslate nohighlight">\(r_O=15\,\mathrm{k}\Omega\)</span></p></td>
+<td><p>the device of Small-Signal Parameters: <span class="math notranslate nohighlight">\(g_m=1/(1\,\mathrm{k}\Omega)\)</span>, <span class="math notranslate nohighlight">\(r_O=20\,\mathrm{k}\Omega\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>Test voltage across the device</p></td>
+<td><p><span class="math notranslate nohighlight">\(v_\pi=v_x\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(v_{gs}=v_x\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p>Current drawn</p></td>
+<td><p><span class="math notranslate nohighlight">\(i_x=\dfrac{v_x}{r_\pi}+g_mv_x+\dfrac{v_x}{r_O}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(i_x=g_mv_x+\dfrac{v_x}{r_O}\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>Resistance</p></td>
+<td><p><span class="math notranslate nohighlight">\(R=\dfrac{v_x}{i_x}=\dfrac{1}{g_m}\parallel r_\pi\parallel r_O\)</span> <span class="math notranslate nohighlight">\(=25.7\,\Omega\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(R=\dfrac{v_x}{i_x}=\dfrac{1}{g_m}\parallel r_O\)</span> <span class="math notranslate nohighlight">\(=952\,\Omega\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p>To a good approximation</p></td>
+<td><p><span class="math notranslate nohighlight">\(R\approx\dfrac{1}{g_m}\)</span> <span class="math notranslate nohighlight">\(=26\,\Omega\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(R\approx\dfrac{1}{g_m}\)</span> <span class="math notranslate nohighlight">\(=1\,\mathrm{k}\Omega\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>Into the other terminals, by inspection</p></td>
+<td><p>emitter: <span class="math notranslate nohighlight">\(\dfrac{1}{g_m}\parallel r_\pi\)</span>; base: <span class="math notranslate nohighlight">\(r_\pi\)</span>; collector: <span class="math notranslate nohighlight">\(r_O\)</span></p></td>
+<td><p>source: <span class="math notranslate nohighlight">\(\dfrac{1}{g_m}\)</span>; gate: <span class="math notranslate nohighlight">\(\infty\)</span>; drain: <span class="math notranslate nohighlight">\(r_O\)</span></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Data and results: Razavi, Example 4.19 (BJT); Razavi, Example 6.16 (MOSFET).</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>In the books</p></th>
+<th class="head"><p>BJT</p></th>
+<th class="head"><p>MOSFET</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Razavi, worked examples</p></td>
+<td><p>4.19, 5.2–5.4, 5.28, 5.29, 5.38, 5.39</p></td>
+<td><p>6.16, 7.9, 7.10</p></td>
+</tr>
+<tr class="row-odd"><td><p>Razavi, problems</p></td>
+<td><p>5.3–5.6, 5.48–5.50</p></td>
+<td><p>7.15, 7.33</p></td>
+</tr>
+<tr class="row-even"><td><p>Sedra/Smith, exercises</p></td>
+<td><p>7.18</p></td>
+<td><p>6.11</p></td>
+</tr>
+<tr class="row-odd"><td><p>Sedra/Smith, problems</p></td>
+<td><p>6.34, 7.55, 7.56, 7.61</p></td>
+<td><p>7.51, 7.52</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="complete-stage-with-bias-source-and-load">
+<h3>Complete Stage with Bias, Source and Load<a class="headerlink" href="#complete-stage-with-bias-source-and-load" title="Link to this heading">#</a></h3>
+<p>The stage is biased by a divider, driven by a source with resistance and loaded by a resistor, with capacitors between them. For signals the supply and the capacitors are short circuits, which leaves the circuit drawn here; the resistor in the emitter or source is bypassed. Find the input resistance, the overall gain and the output resistance. Design problems, and cascades of two stages, use the same lines stage by stage.</p>
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># HIDE/SHOW</span>
+<span class="n">show</span><span class="p">(</span><span class="n">C</span><span class="o">.</span><span class="n">stage_signal</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="../../_images/32de868b15a00c40e7543999016aa37313607d3d4f486330f3be7a45e1d3190e.svg" src="../../_images/32de868b15a00c40e7543999016aa37313607d3d4f486330f3be7a45e1d3190e.svg" />
+</div>
+</div>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p></p></th>
+<th class="head"><p>BJT</p></th>
+<th class="head"><p>MOSFET</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Given</p></td>
+<td><p><span class="math notranslate nohighlight">\(g_m=20\,\mathrm{mA/V}\)</span>, <span class="math notranslate nohighlight">\(r_\pi=5\,\mathrm{k}\Omega\)</span>, <span class="math notranslate nohighlight">\(r_O=200\,\mathrm{k}\Omega\)</span>, divider <span class="math notranslate nohighlight">\(182\,\mathrm{k}\Omega\)</span> and <span class="math notranslate nohighlight">\(100\,\mathrm{k}\Omega\)</span>, <span class="math notranslate nohighlight">\(R_C=18\,\mathrm{k}\Omega\)</span>, <span class="math notranslate nohighlight">\(R_L=20\,\mathrm{k}\Omega\)</span>, <span class="math notranslate nohighlight">\(R_{sig}=10\,\mathrm{k}\Omega\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(g_m=2\,\mathrm{mA/V}\)</span>, <span class="math notranslate nohighlight">\(r_O=200\,\mathrm{k}\Omega\)</span>, divider <span class="math notranslate nohighlight">\(5\,\mathrm{M}\Omega\)</span> and <span class="math notranslate nohighlight">\(2.5\,\mathrm{M}\Omega\)</span>, <span class="math notranslate nohighlight">\(R_D=18\,\mathrm{k}\Omega\)</span>, <span class="math notranslate nohighlight">\(R_L=20\,\mathrm{k}\Omega\)</span>, <span class="math notranslate nohighlight">\(R_{sig}=100\,\mathrm{k}\Omega\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>Bias resistors, in parallel for signals</p></td>
+<td><p><span class="math notranslate nohighlight">\(R_B=R_{B1}\parallel R_{B2}\)</span> <span class="math notranslate nohighlight">\(=64.5\,\mathrm{k}\Omega\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(R_G=R_{G1}\parallel R_{G2}\)</span> <span class="math notranslate nohighlight">\(=1.67\,\mathrm{M}\Omega\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p>Input resistance</p></td>
+<td><p><span class="math notranslate nohighlight">\(R_{in}=R_B\parallel r_\pi\)</span> <span class="math notranslate nohighlight">\(=4.64\,\mathrm{k}\Omega\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(R_{in}=R_G\)</span> <span class="math notranslate nohighlight">\(=1.67\,\mathrm{M}\Omega\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>Share of the source that reaches the input</p></td>
+<td><p><span class="math notranslate nohighlight">\(\dfrac{R_{in}}{R_{in}+R_{sig}}\)</span> <span class="math notranslate nohighlight">\(=0.317\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\dfrac{R_{in}}{R_{in}+R_{sig}}\)</span> <span class="math notranslate nohighlight">\(=0.943\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p>Resistance at the output node</p></td>
+<td><p><span class="math notranslate nohighlight">\(r_O\parallel R_C\parallel R_L\)</span> <span class="math notranslate nohighlight">\(=9.05\,\mathrm{k}\Omega\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(r_O\parallel R_D\parallel R_L\)</span> <span class="math notranslate nohighlight">\(=9.05\,\mathrm{k}\Omega\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>Overall gain</p></td>
+<td><p><span class="math notranslate nohighlight">\(G_v=-\dfrac{R_{in}}{R_{in}+R_{sig}}\,g_m(r_O\parallel R_C\parallel R_L)\)</span> <span class="math notranslate nohighlight">\(=-57.3\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(G_v=-\dfrac{R_{in}}{R_{in}+R_{sig}}\,g_m(r_O\parallel R_D\parallel R_L)\)</span> <span class="math notranslate nohighlight">\(=-17.1\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p>Output resistance</p></td>
+<td><p><span class="math notranslate nohighlight">\(R_{out}=R_C\parallel r_O\)</span> <span class="math notranslate nohighlight">\(=16.5\,\mathrm{k}\Omega\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(R_{out}=R_D\parallel r_O\)</span> <span class="math notranslate nohighlight">\(=16.5\,\mathrm{k}\Omega\)</span></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Data and results: Sedra/Smith, Exercises 6.41 and 6.42 (BJT); Sedra/Smith, Exercises 6.38 and 6.39 (MOSFET).</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>In the books</p></th>
+<th class="head"><p>BJT</p></th>
+<th class="head"><p>MOSFET</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Razavi, worked examples</p></td>
+<td><p>5.19, 5.26, 5.31–5.34, 5.40–5.42, 5.45, 5.48–5.50, 5.54</p></td>
+<td><p>7.11, 7.14, 7.15, 7.17, 7.18, 7.22, 7.23</p></td>
+</tr>
+<tr class="row-odd"><td><p>Razavi, problems</p></td>
+<td><p>5.15, 5.34, 5.35, 5.42, 5.43, 5.46, 5.47, 5.51–5.53, 5.58–5.61, 5.63, 5.69, 5.72–5.90</p></td>
+<td><p>7.19, 7.30, 7.37–7.41, 7.43, 7.45, 7.46, 7.48, 7.50–7.54, 7.56–7.63, 7.65–7.73</p></td>
+</tr>
+<tr class="row-even"><td><p>Sedra/Smith, exercises</p></td>
+<td><p>6.3, 6.31, 6.36, 6.42, 6.44</p></td>
+<td><p>6.2, 6.10, 6.39</p></td>
+</tr>
+<tr class="row-odd"><td><p>Sedra/Smith, problems</p></td>
+<td><p>6.7, 6.15, 6.16, 6.36, 6.47, 6.69, 6.77, 6.119, 6.120, 6.129–6.133, 6.136</p></td>
+<td><p>6.3, 6.8, 6.11, 6.24, 6.27, 6.61, 6.116–6.118, 6.124, 6.125, 6.127, 7.31, 7.47, 7.49</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</section>
+<section id="cascodes-and-current-mirrors">
+<h2>Cascodes and Current Mirrors<a class="headerlink" href="#cascodes-and-current-mirrors" title="Link to this heading">#</a></h2>
+<section id="cascode">
+<h3>Cascode<a class="headerlink" href="#cascode" title="Link to this heading">#</a></h3>
+<p>A second transistor on top of the first multiplies the output resistance. Find the output resistance of the stack and the gain it gives as an amplifier. Each half of a cascode differential stage is this circuit.</p>
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># HIDE/SHOW</span>
+<span class="n">show</span><span class="p">(</span><span class="n">C</span><span class="o">.</span><span class="n">cascode</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="../../_images/4744ace0b7ee829d7df54ce41be0387826375cc7c55f6ea3e9d2a7cc0d366dfd.svg" src="../../_images/4744ace0b7ee829d7df54ce41be0387826375cc7c55f6ea3e9d2a7cc0d366dfd.svg" />
+</div>
+</div>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p></p></th>
+<th class="head"><p>BJT</p></th>
+<th class="head"><p>MOSFET</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Given</p></td>
+<td><p><span class="math notranslate nohighlight">\(I_C=1\,\mathrm{mA}\)</span>, <span class="math notranslate nohighlight">\(\beta=100\)</span>, <span class="math notranslate nohighlight">\(V_A=5\,\mathrm{V}\)</span>, <span class="math notranslate nohighlight">\(V_T=26\,\mathrm{mV}\)</span>, both devices alike</p></td>
+<td><p><span class="math notranslate nohighlight">\(I_D=0.5\,\mathrm{mA}\)</span>, <span class="math notranslate nohighlight">\(\mu_nC_{ox}=100\,\mu\mathrm{A/V^2}\)</span>, <span class="math notranslate nohighlight">\(W/L=15.6\)</span>, <span class="math notranslate nohighlight">\(\lambda=0.1\,\mathrm{V^{-1}}\)</span>, both devices alike</p></td>
+</tr>
+<tr class="row-odd"><td><p>Transconductance</p></td>
+<td><p><span class="math notranslate nohighlight">\(g_m=\dfrac{I_C}{V_T}\)</span> <span class="math notranslate nohighlight">\(=\dfrac{1}{26\,\Omega}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(g_m=\sqrt{2\mu_nC_{ox}\frac{W}{L}I_D}\)</span> <span class="math notranslate nohighlight">\(=\dfrac{1}{800\,\Omega}\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p>Output resistance of one device</p></td>
+<td><p><span class="math notranslate nohighlight">\(r_O=\dfrac{V_A}{I_C}\)</span> <span class="math notranslate nohighlight">\(=5\,\mathrm{k}\Omega\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(r_O=\dfrac{1}{\lambda I_D}\)</span> <span class="math notranslate nohighlight">\(=20\,\mathrm{k}\Omega\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>Resistance under the upper device</p></td>
+<td><p><span class="math notranslate nohighlight">\(r_{O1}\parallel r_{\pi2}\)</span> <span class="math notranslate nohighlight">\(=1.71\,\mathrm{k}\Omega\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(r_{O1}\)</span> <span class="math notranslate nohighlight">\(=20\,\mathrm{k}\Omega\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p>Output resistance of the stack</p></td>
+<td><p><span class="math notranslate nohighlight">\(R_{out}\approx g_{m2}r_{O2}(r_{O1}\parallel r_{\pi2})\)</span> <span class="math notranslate nohighlight">\(=329\,\mathrm{k}\Omega\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(R_{out}\approx g_{m2}r_{O2}r_{O1}\)</span> <span class="math notranslate nohighlight">\(=500\,\mathrm{k}\Omega\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>Against one device</p></td>
+<td><p><span class="math notranslate nohighlight">\(66\)</span> times <span class="math notranslate nohighlight">\(r_O\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(25\)</span> times <span class="math notranslate nohighlight">\(r_O\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p>Limit</p></td>
+<td><p><span class="math notranslate nohighlight">\(R_{out}&lt;\beta r_{O2}\)</span> <span class="math notranslate nohighlight">\(=500\,\mathrm{k}\Omega\)</span>, however large <span class="math notranslate nohighlight">\(r_{O1}\)</span></p></td>
+<td><p>none: a third device multiplies again</p></td>
+</tr>
+<tr class="row-odd"><td><p>Gain with an ideal current-source load</p></td>
+<td><p><span class="math notranslate nohighlight">\(A_v\approx-g_{m1}R_{out}\)</span> <span class="math notranslate nohighlight">\(=-12650\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(A_v\approx-g_{m1}R_{out}\)</span> <span class="math notranslate nohighlight">\(=-625\)</span></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Data and results: Razavi, Examples 9.1 and 9.9 (BJT); Razavi, Example 9.5 (MOSFET).</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>In the books</p></th>
+<th class="head"><p>BJT</p></th>
+<th class="head"><p>MOSFET</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Razavi, worked examples</p></td>
+<td><p>5.30, 9.1–9.4, 9.9, 9.10, 10.25</p></td>
+<td><p>9.5, 9.6, 9.11, 10.26</p></td>
+</tr>
+<tr class="row-odd"><td><p>Razavi, problems</p></td>
+<td><p>9.1, 9.4–9.11, 9.13, 9.20–9.27, 9.54, 9.55, 9.57, 9.58, 10.54–10.61, 10.88, 10.89</p></td>
+<td><p>9.12–9.14, 9.16–9.20, 9.28–9.34, 9.56, 9.59, 10.62–10.64, 10.90</p></td>
+</tr>
+<tr class="row-even"><td><p>Sedra/Smith, exercises</p></td>
+<td><p>7.23, 7.24</p></td>
+<td><p>7.19, 7.21, 7.22, 8.6</p></td>
+</tr>
+<tr class="row-odd"><td><p>Sedra/Smith, problems</p></td>
+<td><p>7.68, 7.69, 7.77–7.79, 8.90, 8.98</p></td>
+<td><p>6.126, 7.62–7.67, 7.70–7.73, 7.75, 7.76, 7.79, 8.9, 8.95</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="current-mirror">
+<h3>Current Mirror<a class="headerlink" href="#current-mirror" title="Link to this heading">#</a></h3>
+<p>A diode-connected transistor turns the reference current into a voltage, and a second transistor turns the voltage back into a current. Find the copy, and what makes it differ from the ideal ratio. Circuits that distribute bias currents repeat this pair.</p>
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># HIDE/SHOW</span>
+<span class="n">show</span><span class="p">(</span><span class="n">C</span><span class="o">.</span><span class="n">current_mirror</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="../../_images/9ae7f64dba1cdf49b1ace6f2b4586b354fd4a3ac3458132690698d0b603b9da4.svg" src="../../_images/9ae7f64dba1cdf49b1ace6f2b4586b354fd4a3ac3458132690698d0b603b9da4.svg" />
+</div>
+</div>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p></p></th>
+<th class="head"><p>BJT</p></th>
+<th class="head"><p>MOSFET</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Given</p></td>
+<td><p><span class="math notranslate nohighlight">\(I_{in}=200\,\mu\mathrm{A}\)</span>; <span class="math notranslate nohighlight">\(Q_1\)</span> is 4 unit transistors, <span class="math notranslate nohighlight">\(Q_2\)</span> is 10; <span class="math notranslate nohighlight">\(\beta=100\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(I_{in}=0.3\,\mathrm{mA}\)</span>; <span class="math notranslate nohighlight">\((W/L)_1=3\,(W/L)\)</span>, <span class="math notranslate nohighlight">\((W/L)_2=5\,(W/L)\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>Same control voltage</p></td>
+<td><p><span class="math notranslate nohighlight">\(V_{BE1}=V_{BE2}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(V_{GS1}=V_{GS2}\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p>Ratio of the currents</p></td>
+<td><p><span class="math notranslate nohighlight">\(\dfrac{I_{C2}}{I_{C1}}=\dfrac{I_{S2}}{I_{S1}}\)</span>, the ratio of the areas</p></td>
+<td><p><span class="math notranslate nohighlight">\(\dfrac{I_{D2}}{I_{D1}}=\dfrac{(W/L)_2}{(W/L)_1}\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>Ideal copy</p></td>
+<td><p><span class="math notranslate nohighlight">\(I_{out}=\dfrac{10}{4}\cdot200\,\mu\mathrm{A}\)</span> <span class="math notranslate nohighlight">\(=500\,\mu\mathrm{A}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(I_{out}=\dfrac{5}{3}\cdot0.3\,\mathrm{mA}\)</span> <span class="math notranslate nohighlight">\(=500\,\mu\mathrm{A}\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p>Current lost at the input node</p></td>
+<td><p><span class="math notranslate nohighlight">\(I_{in}=I_{C1}+I_{B1}+I_{B2}\)</span></p></td>
+<td><p>none: <span class="math notranslate nohighlight">\(I_{in}=I_{D1}\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>Copy with that loss</p></td>
+<td><p><span class="math notranslate nohighlight">\(I_{out}=\dfrac{n\,I_{in}}{1+(1+n)/\beta}\)</span>, <span class="math notranslate nohighlight">\(n=\dfrac{10}{4}\)</span>: <span class="math notranslate nohighlight">\(483\,\mu\mathrm{A}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(I_{out}=500\,\mu\mathrm{A}\)</span>, unchanged</p></td>
+</tr>
+<tr class="row-even"><td><p>Effect of the output voltage</p></td>
+<td><p>factor <span class="math notranslate nohighlight">\(\dfrac{1+V_{CE2}/V_A}{1+V_{CE1}/V_A}\)</span></p></td>
+<td><p>factor <span class="math notranslate nohighlight">\(\dfrac{1+\lambda V_{DS2}}{1+\lambda V_{DS1}}\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>Output resistance</p></td>
+<td><p><span class="math notranslate nohighlight">\(r_{O2}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(r_{O2}\)</span></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Data and results: Razavi, Examples 9.15 and 9.16 (BJT); Razavi, Example 9.21 (MOSFET).</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>In the books</p></th>
+<th class="head"><p>BJT</p></th>
+<th class="head"><p>MOSFET</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Razavi, worked examples</p></td>
+<td><p>9.12–9.19</p></td>
+<td><p>9.20, 9.21</p></td>
+</tr>
+<tr class="row-odd"><td><p>Razavi, problems</p></td>
+<td><p>9.40–9.48, 9.60–9.64</p></td>
+<td><p>9.49–9.53, 9.65–9.67</p></td>
+</tr>
+<tr class="row-even"><td><p>Sedra/Smith, exercises</p></td>
+<td><p>7.3–7.5</p></td>
+<td><p>5.10, 7.1, 7.2, 7.6</p></td>
+</tr>
+<tr class="row-odd"><td><p>Sedra/Smith, problems</p></td>
+<td><p>7.5–7.7, 7.14–7.20, 7.25, 7.87</p></td>
+<td><p>5.44, 7.1–7.4, 7.9–7.13, 7.23</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</section>
+<section id="differential-pairs">
+<h2>Differential Pairs<a class="headerlink" href="#differential-pairs" title="Link to this heading">#</a></h2>
+<section id="differential-pair-bias-and-input-range">
+<h3>Differential Pair: Bias and Input Range<a class="headerlink" href="#differential-pair-bias-and-input-range" title="Link to this heading">#</a></h3>
+<p>With equal inputs the tail current divides equally. Find the output level and the limit that keeps both transistors in the amplifying region, then how an input difference steers the current.</p>
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># HIDE/SHOW</span>
+<span class="n">show</span><span class="p">(</span><span class="n">C</span><span class="o">.</span><span class="n">pair_loaded</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="../../_images/f857837ce0f3fc92c90bfbb916ca06e25e98d1a82cee444df0395a2e913c91f4.svg" src="../../_images/f857837ce0f3fc92c90bfbb916ca06e25e98d1a82cee444df0395a2e913c91f4.svg" />
+</div>
+</div>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p></p></th>
+<th class="head"><p>BJT</p></th>
+<th class="head"><p>MOSFET</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Given</p></td>
+<td><p><span class="math notranslate nohighlight">\(R_C=1\,\mathrm{k}\Omega\)</span>, <span class="math notranslate nohighlight">\(I_{EE}=1\,\mathrm{mA}\)</span>, both inputs at <span class="math notranslate nohighlight">\(V_{CM}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(V_{DD}=1.8\,\mathrm{V}\)</span>, <span class="math notranslate nohighlight">\(I_{SS}=0.5\,\mathrm{mA}\)</span>, <span class="math notranslate nohighlight">\(V_{TH}=0.5\,\mathrm{V}\)</span>, both inputs at <span class="math notranslate nohighlight">\(V_{CM}=1.6\,\mathrm{V}\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>Equal inputs</p></td>
+<td><p><span class="math notranslate nohighlight">\(I_{C1}=I_{C2}=\dfrac{I_{EE}}{2}\)</span> <span class="math notranslate nohighlight">\(=0.5\,\mathrm{mA}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(I_{D1}=I_{D2}=\dfrac{I_{SS}}{2}\)</span> <span class="math notranslate nohighlight">\(=0.25\,\mathrm{mA}\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p>Output level</p></td>
+<td><p><span class="math notranslate nohighlight">\(V_X=V_Y=V_{CC}-R_C\dfrac{I_{EE}}{2}\)</span> <span class="math notranslate nohighlight">\(=V_{CC}-0.5\,\mathrm{V}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(V_X=V_Y=V_{DD}-R_D\dfrac{I_{SS}}{2}\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>Condition for the amplifying region</p></td>
+<td><p><span class="math notranslate nohighlight">\(V_X\geq V_{CM}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(V_X\geq V_{CM}-V_{TH}\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p>Result</p></td>
+<td><p><span class="math notranslate nohighlight">\(V_{CM}\leq V_{CC}-0.5\,\mathrm{V}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(R_D\leq\dfrac{V_{DD}-V_{CM}+V_{TH}}{I_{SS}/2}\)</span> <span class="math notranslate nohighlight">\(=2.8\,\mathrm{k}\Omega\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>Unequal inputs steer the current</p></td>
+<td><p><span class="math notranslate nohighlight">\(I_{C1}-I_{C2}=I_{EE}\tanh\dfrac{V_1-V_2}{2V_T}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(I_{D1}-I_{D2}=\frac{1}{2}\mu_nC_{ox}\frac{W}{L}\Delta V\sqrt{\dfrac{4I_{SS}}{\mu_nC_{ox}W/L}-\Delta V^2}\)</span>, <span class="math notranslate nohighlight">\(\Delta V=V_1-V_2\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p>All of it flows in one side</p></td>
+<td><p>beyond about <span class="math notranslate nohighlight">\(4V_T\approx100\,\mathrm{mV}\)</span></p></td>
+<td><p>beyond <span class="math notranslate nohighlight">\(\sqrt{2}\,(V_{GS}-V_{TH})\)</span> at equal inputs</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Data and results: Razavi, Example 10.4 (BJT); Razavi, Example 10.15 (MOSFET).</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>In the books</p></th>
+<th class="head"><p>BJT</p></th>
+<th class="head"><p>MOSFET</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Razavi, worked examples</p></td>
+<td><p>10.3–10.5, 10.8, 10.9</p></td>
+<td><p>10.15, 10.17, 10.19, 10.20</p></td>
+</tr>
+<tr class="row-odd"><td><p>Razavi, problems</p></td>
+<td><p>10.14–10.26, 10.80</p></td>
+<td><p>10.35–10.38, 10.40, 10.43–10.50, 10.84, 10.85</p></td>
+</tr>
+<tr class="row-even"><td><p>Sedra/Smith, exercises</p></td>
+<td><p>8.7–8.9</p></td>
+<td><p>8.1–8.3</p></td>
+</tr>
+<tr class="row-odd"><td><p>Sedra/Smith, problems</p></td>
+<td><p>8.26–8.28, 8.37–8.39, 8.41, 8.43</p></td>
+<td><p>5.49, 8.1–8.3, 8.10–8.16, 8.94</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="differential-pair-differential-gain">
+<h3>Differential Pair: Differential Gain<a class="headerlink" href="#differential-pair-differential-gain" title="Link to this heading">#</a></h3>
+<p>For a small difference between the inputs the tail node does not move, so each side is a common-emitter or common-source stage that amplifies half of the difference. Find the differential gain.</p>
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># HIDE/SHOW</span>
+<span class="n">show</span><span class="p">(</span><span class="n">C</span><span class="o">.</span><span class="n">pair_loaded</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="../../_images/ccd5381232dee75bf845900280bee80477a22e0ac93a2606c1bb2656abf4ac55.svg" src="../../_images/ccd5381232dee75bf845900280bee80477a22e0ac93a2606c1bb2656abf4ac55.svg" />
+</div>
+</div>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p></p></th>
+<th class="head"><p>BJT</p></th>
+<th class="head"><p>MOSFET</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Given</p></td>
+<td><p><span class="math notranslate nohighlight">\(I_{EE}=1\,\mathrm{mA}\)</span>, <span class="math notranslate nohighlight">\(R_C=10\,\mathrm{k}\Omega\)</span>, <span class="math notranslate nohighlight">\(V_T=25\,\mathrm{mV}\)</span>, <span class="math notranslate nohighlight">\(r_O\)</span> neglected</p></td>
+<td><p><span class="math notranslate nohighlight">\(I_{SS}=0.8\,\mathrm{mA}\)</span>, <span class="math notranslate nohighlight">\(k_n=20\,\mathrm{mA/V^2}\)</span>, <span class="math notranslate nohighlight">\(R_D=5\,\mathrm{k}\Omega\)</span>, <span class="math notranslate nohighlight">\(V_A=20\,\mathrm{V}\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>Bias of each side</p></td>
+<td><p><span class="math notranslate nohighlight">\(I_C=\dfrac{I_{EE}}{2}\)</span> <span class="math notranslate nohighlight">\(=0.5\,\mathrm{mA}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(I_D=\dfrac{I_{SS}}{2}\)</span> <span class="math notranslate nohighlight">\(=0.4\,\mathrm{mA}\)</span>, <span class="math notranslate nohighlight">\(V_{OV}=\sqrt{2I_D/k_n}\)</span> <span class="math notranslate nohighlight">\(=200\,\mathrm{mV}\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p>Transconductance</p></td>
+<td><p><span class="math notranslate nohighlight">\(g_m=\dfrac{I_C}{V_T}\)</span> <span class="math notranslate nohighlight">\(=20\,\mathrm{mA/V}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(g_m=\dfrac{2I_D}{V_{OV}}\)</span> <span class="math notranslate nohighlight">\(=4\,\mathrm{mA/V}\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>Half circuit</p></td>
+<td><p>tail node at signal ground: a common-emitter stage with input <span class="math notranslate nohighlight">\(\frac{1}{2}(v_1-v_2)\)</span></p></td>
+<td><p>tail node at signal ground: a common-source stage with input <span class="math notranslate nohighlight">\(\frac{1}{2}(v_1-v_2)\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p>Output resistance of the device</p></td>
+<td><p>neglected</p></td>
+<td><p><span class="math notranslate nohighlight">\(r_O=\dfrac{V_A}{I_D}\)</span> <span class="math notranslate nohighlight">\(=50\,\mathrm{k}\Omega\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>Differential gain</p></td>
+<td><p><span class="math notranslate nohighlight">\(\dfrac{v_X-v_Y}{v_1-v_2}=-g_mR_C\)</span> <span class="math notranslate nohighlight">\(=-200\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\dfrac{v_X-v_Y}{v_1-v_2}=-g_m(R_D\parallel r_O)\)</span> <span class="math notranslate nohighlight">\(=-18.2\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p>One output alone</p></td>
+<td><p>half of it: <span class="math notranslate nohighlight">\(-100\)</span></p></td>
+<td><p>half of it: <span class="math notranslate nohighlight">\(-9.09\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>Resistance between the inputs</p></td>
+<td><p><span class="math notranslate nohighlight">\(R_{id}=2r_\pi\)</span></p></td>
+<td><p>infinite</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Data and results: Sedra/Smith, Exercise 8.10 (BJT); Sedra/Smith, Exercise 8.4 (MOSFET).</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>In the books</p></th>
+<th class="head"><p>BJT</p></th>
+<th class="head"><p>MOSFET</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Razavi, worked examples</p></td>
+<td><p>10.6, 10.7, 10.10, 10.11</p></td>
+<td><p>10.16, 10.18, 10.21, 10.22</p></td>
+</tr>
+<tr class="row-odd"><td><p>Razavi, problems</p></td>
+<td><p>10.27–10.29, 10.79, 10.82</p></td>
+<td><p>10.39, 10.42, 10.51, 10.52, 10.86, 10.87</p></td>
+</tr>
+<tr class="row-even"><td><p>Sedra/Smith, exercises</p></td>
+<td><p>8.10</p></td>
+<td><p>8.4</p></td>
+</tr>
+<tr class="row-odd"><td><p>Sedra/Smith, problems</p></td>
+<td><p>8.30, 8.31, 8.34, 8.42, 8.47–8.49, 8.66</p></td>
+<td><p>8.4–8.6, 8.17–8.22, 8.25</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="differential-pair-with-degeneration">
+<h3>Differential Pair with Degeneration<a class="headerlink" href="#differential-pair-with-degeneration" title="Link to this heading">#</a></h3>
+<p>A resistor in each emitter or source widens the range of input difference that the pair handles linearly, at the cost of gain. Find the gain and the resistance between the inputs.</p>
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># HIDE/SHOW</span>
+<span class="n">show</span><span class="p">(</span><span class="n">C</span><span class="o">.</span><span class="n">pair_degenerated</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="../../_images/5a22db23da671a0b844f72dab11ed3b1b7cb439f073276a1b16fd3787ec868d1.svg" src="../../_images/5a22db23da671a0b844f72dab11ed3b1b7cb439f073276a1b16fd3787ec868d1.svg" />
+</div>
+</div>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p></p></th>
+<th class="head"><p>BJT</p></th>
+<th class="head"><p>MOSFET</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Given</p></td>
+<td><p><span class="math notranslate nohighlight">\(I_E=0.1\,\mathrm{mA}\)</span> in each side, <span class="math notranslate nohighlight">\(R_E=250\,\Omega\)</span>, <span class="math notranslate nohighlight">\(R_C=10\,\mathrm{k}\Omega\)</span>, <span class="math notranslate nohighlight">\(\beta=100\)</span>, <span class="math notranslate nohighlight">\(V_T=25\,\mathrm{mV}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(g_m=4\,\mathrm{mA/V}\)</span>, <span class="math notranslate nohighlight">\(R_S=250\,\Omega\)</span> in each side, <span class="math notranslate nohighlight">\(R_D=5\,\mathrm{k}\Omega\)</span>, <span class="math notranslate nohighlight">\(r_O\)</span> neglected</p></td>
+</tr>
+<tr class="row-odd"><td><p>Resistance of the device itself</p></td>
+<td><p><span class="math notranslate nohighlight">\(r_e=\dfrac{V_T}{I_E}\)</span> <span class="math notranslate nohighlight">\(=250\,\Omega\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\dfrac{1}{g_m}\)</span> <span class="math notranslate nohighlight">\(=250\,\Omega\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p>Half circuit</p></td>
+<td><p>a degenerated common-emitter stage</p></td>
+<td><p>a degenerated common-source stage</p></td>
+</tr>
+<tr class="row-odd"><td><p>Differential gain</p></td>
+<td><p><span class="math notranslate nohighlight">\(\dfrac{v_X-v_Y}{v_1-v_2}\approx-\dfrac{R_C}{r_e+R_E}\)</span> <span class="math notranslate nohighlight">\(=-20\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\dfrac{v_X-v_Y}{v_1-v_2}=-\dfrac{R_D}{1/g_m+R_S}\)</span> <span class="math notranslate nohighlight">\(=-10\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p>Without the resistors</p></td>
+<td><p><span class="math notranslate nohighlight">\(-\dfrac{R_C}{r_e}\)</span> <span class="math notranslate nohighlight">\(=-40\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(-g_mR_D\)</span> <span class="math notranslate nohighlight">\(=-20\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>Resistance between the inputs</p></td>
+<td><p><span class="math notranslate nohighlight">\(R_{id}=(\beta+1)(2r_e+2R_E)\)</span> <span class="math notranslate nohighlight">\(=101\,\mathrm{k}\Omega\)</span></p></td>
+<td><p>infinite</p></td>
+</tr>
+<tr class="row-even"><td><p>Linear input range</p></td>
+<td><p>grows by <span class="math notranslate nohighlight">\(1+R_E/r_e\)</span> <span class="math notranslate nohighlight">\(=2\)</span></p></td>
+<td><p>grows by <span class="math notranslate nohighlight">\(1+g_mR_S\)</span> <span class="math notranslate nohighlight">\(=2\)</span></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Data and results: Sedra/Smith, Problem 8.53 (BJT); Sedra/Smith, Problem 8.7, with the pair of Exercise 8.4 (MOSFET).</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>In the books</p></th>
+<th class="head"><p>BJT</p></th>
+<th class="head"><p>MOSFET</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Razavi, worked examples</p></td>
+<td><p>10.12–10.14</p></td>
+<td><p>10.23, 10.24</p></td>
+</tr>
+<tr class="row-odd"><td><p>Razavi, problems</p></td>
+<td><p>10.30–10.34, 10.81, 10.83</p></td>
+<td><p>10.53</p></td>
+</tr>
+<tr class="row-even"><td><p>Sedra/Smith, problems</p></td>
+<td><p>8.29, 8.32, 8.33, 8.35, 8.36, 8.45, 8.46, 8.51–8.54, 8.59, 8.67, 8.74</p></td>
+<td><p>8.7, 8.23, 8.24</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="differential-pair-common-mode-rejection">
+<h3>Differential Pair: Common-Mode Rejection<a class="headerlink" href="#differential-pair-common-mode-rejection" title="Link to this heading">#</a></h3>
+<p>A real tail source has a finite resistance, so a voltage common to both inputs reaches the outputs. With matched loads it appears equally at both; a mismatch turns part of it into a difference. Find the common-mode gain and the rejection ratio.</p>
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># HIDE/SHOW</span>
+<span class="n">show</span><span class="p">(</span><span class="n">C</span><span class="o">.</span><span class="n">pair_tail_resistance</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="../../_images/98b18d0a98c3c49129871a0b51bf0eb5a06a2be8b207fd0648cb6bececbaf787.svg" src="../../_images/98b18d0a98c3c49129871a0b51bf0eb5a06a2be8b207fd0648cb6bececbaf787.svg" />
+</div>
+</div>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p></p></th>
+<th class="head"><p>BJT</p></th>
+<th class="head"><p>MOSFET</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Given</p></td>
+<td><p><span class="math notranslate nohighlight">\(I_C=0.1\,\mathrm{mA}\)</span> in each side, <span class="math notranslate nohighlight">\(R_C=25\,\mathrm{k}\Omega\)</span> with <span class="math notranslate nohighlight">\(\Delta R_C/R_C=1\,\%\)</span>, <span class="math notranslate nohighlight">\(R_{EE}=500\,\mathrm{k}\Omega\)</span>, <span class="math notranslate nohighlight">\(V_T=25\,\mathrm{mV}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(g_m=4\,\mathrm{mA/V}\)</span>, <span class="math notranslate nohighlight">\(R_D=5\,\mathrm{k}\Omega\)</span> with <span class="math notranslate nohighlight">\(\Delta R_D/R_D=1\,\%\)</span>, <span class="math notranslate nohighlight">\(R_{SS}=25\,\mathrm{k}\Omega\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>Transconductance</p></td>
+<td><p><span class="math notranslate nohighlight">\(g_m=\dfrac{I_C}{V_T}\)</span> <span class="math notranslate nohighlight">\(=4\,\mathrm{mA/V}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(g_m\)</span> <span class="math notranslate nohighlight">\(=4\,\mathrm{mA/V}\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p>Differential gain</p></td>
+<td><p><span class="math notranslate nohighlight">\(\lvert A_d\rvert =g_mR_C\)</span> <span class="math notranslate nohighlight">\(=100\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\lvert A_d\rvert =g_mR_D\)</span> <span class="math notranslate nohighlight">\(=20\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>Half circuit for a common input</p></td>
+<td><p>each side carries <span class="math notranslate nohighlight">\(2R_{EE}\)</span> in its emitter</p></td>
+<td><p>each side carries <span class="math notranslate nohighlight">\(2R_{SS}\)</span> in its source</p></td>
+</tr>
+<tr class="row-even"><td><p>Common input to each output</p></td>
+<td><p><span class="math notranslate nohighlight">\(-\dfrac{R_C}{r_e+2R_{EE}}\approx-\dfrac{R_C}{2R_{EE}}\)</span> <span class="math notranslate nohighlight">\(=-0.025\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(-\dfrac{R_D}{1/g_m+2R_{SS}}\approx-\dfrac{R_D}{2R_{SS}}\)</span> <span class="math notranslate nohighlight">\(=-0.1\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>Common input to the difference of the outputs</p></td>
+<td><p><span class="math notranslate nohighlight">\(\lvert A_{cm}\rvert =\dfrac{R_C}{2R_{EE}}\cdot\dfrac{\Delta R_C}{R_C}\)</span> <span class="math notranslate nohighlight">\(=2.5\times10^{-4}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\lvert A_{cm}\rvert =\dfrac{R_D}{2R_{SS}}\cdot\dfrac{\Delta R_D}{R_D}\)</span> <span class="math notranslate nohighlight">\(=0.001\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p>Rejection ratio</p></td>
+<td><p><span class="math notranslate nohighlight">\(\dfrac{\lvert A_d\rvert }{\lvert A_{cm}\rvert }=\dfrac{2g_mR_{EE}}{\Delta R_C/R_C}\)</span> <span class="math notranslate nohighlight">\(=400000\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\dfrac{\lvert A_d\rvert }{\lvert A_{cm}\rvert }=\dfrac{2g_mR_{SS}}{\Delta R_D/R_D}\)</span> <span class="math notranslate nohighlight">\(=20000\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>In decibels</p></td>
+<td><p><span class="math notranslate nohighlight">\(112\,\mathrm{dB}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(86\,\mathrm{dB}\)</span></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Data and results: Sedra/Smith, Problem 8.58 (BJT); Sedra/Smith, Exercise 8.11 (MOSFET).</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>In the books</p></th>
+<th class="head"><p>BJT</p></th>
+<th class="head"><p>MOSFET</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Razavi, worked examples</p></td>
+<td><p>10.27, 10.28</p></td>
+<td><p>–</p></td>
+</tr>
+<tr class="row-odd"><td><p>Razavi, problems</p></td>
+<td><p>10.2, 10.11–10.13, 10.65, 10.66</p></td>
+<td><p>10.67–10.70, 10.91</p></td>
+</tr>
+<tr class="row-even"><td><p>Sedra/Smith, exercises</p></td>
+<td><p>8.16</p></td>
+<td><p>8.11–8.13, 8.15</p></td>
+</tr>
+<tr class="row-odd"><td><p>Sedra/Smith, problems</p></td>
+<td><p>8.40, 8.44, 8.57, 8.58, 8.64, 8.65, 8.68, 8.69, 8.72, 8.73, 8.75, 8.76, 8.79–8.84</p></td>
+<td><p>8.55, 8.56, 8.60–8.63, 8.70, 8.71, 8.77, 8.78, 8.80</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="differential-pair-with-current-mirror-load">
+<h3>Differential Pair with Current-Mirror Load<a class="headerlink" href="#differential-pair-with-current-mirror-load" title="Link to this heading">#</a></h3>
+<p>A current mirror as the load brings the signal current of the left side to the single output, where it adds to that of the right side. Find the transconductance, the output resistance and the gain.</p>
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># HIDE/SHOW</span>
+<span class="n">show</span><span class="p">(</span><span class="n">C</span><span class="o">.</span><span class="n">pair_mirror_load</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="../../_images/e47285e1678caa1cf95e6acde8af8ace955c9d34045d68325bee121f12731e7e.svg" src="../../_images/e47285e1678caa1cf95e6acde8af8ace955c9d34045d68325bee121f12731e7e.svg" />
+</div>
+</div>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p></p></th>
+<th class="head"><p>BJT</p></th>
+<th class="head"><p>MOSFET</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Given</p></td>
+<td><p>tail current <span class="math notranslate nohighlight">\(0.8\,\mathrm{mA}\)</span>, <span class="math notranslate nohighlight">\(\beta=160\)</span>, <span class="math notranslate nohighlight">\(\lvert V_A\rvert =100\,\mathrm{V}\)</span>, <span class="math notranslate nohighlight">\(V_T=25\,\mathrm{mV}\)</span></p></td>
+<td><p>tail current <span class="math notranslate nohighlight">\(0.8\,\mathrm{mA}\)</span>, <span class="math notranslate nohighlight">\(k_n=20\,\mathrm{mA/V^2}\)</span>, <span class="math notranslate nohighlight">\(\lvert V_A\rvert =20\,\mathrm{V}\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>Bias of each side</p></td>
+<td><p><span class="math notranslate nohighlight">\(I_C=0.4\,\mathrm{mA}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(I_D=0.4\,\mathrm{mA}\)</span>, <span class="math notranslate nohighlight">\(V_{OV}=\sqrt{2I_D/k_n}\)</span> <span class="math notranslate nohighlight">\(=0.2\,\mathrm{V}\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p>Transconductance of each device</p></td>
+<td><p><span class="math notranslate nohighlight">\(g_m=\dfrac{I_C}{V_T}\)</span> <span class="math notranslate nohighlight">\(=16\,\mathrm{mA/V}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(g_m=\dfrac{2I_D}{V_{OV}}\)</span> <span class="math notranslate nohighlight">\(=4\,\mathrm{mA/V}\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>Current into a shorted output</p></td>
+<td><p><span class="math notranslate nohighlight">\(g_m\frac{v_1-v_2}{2}\)</span> from each side: <span class="math notranslate nohighlight">\(G_m=g_m\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(g_m\frac{v_1-v_2}{2}\)</span> from each side: <span class="math notranslate nohighlight">\(G_m=g_m\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p>Output resistance of each device</p></td>
+<td><p><span class="math notranslate nohighlight">\(r_O=\dfrac{\lvert V_A\rvert }{I_C}\)</span> <span class="math notranslate nohighlight">\(=250\,\mathrm{k}\Omega\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(r_O=\dfrac{\lvert V_A\rvert }{I_D}\)</span> <span class="math notranslate nohighlight">\(=50\,\mathrm{k}\Omega\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>Output resistance</p></td>
+<td><p><span class="math notranslate nohighlight">\(R_{out}=r_{O2}\parallel r_{O4}\)</span> <span class="math notranslate nohighlight">\(=125\,\mathrm{k}\Omega\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(R_{out}=r_{O2}\parallel r_{O4}\)</span> <span class="math notranslate nohighlight">\(=25\,\mathrm{k}\Omega\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p>Gain</p></td>
+<td><p><span class="math notranslate nohighlight">\(A_d=G_mR_{out}\)</span> <span class="math notranslate nohighlight">\(=2000\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(A_d=G_mR_{out}\)</span> <span class="math notranslate nohighlight">\(=100\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>Resistance between the inputs</p></td>
+<td><p><span class="math notranslate nohighlight">\(R_{id}=2r_\pi\)</span> <span class="math notranslate nohighlight">\(=20\,\mathrm{k}\Omega\)</span></p></td>
+<td><p>infinite</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Data and results: Sedra/Smith, Exercise 8.18 (BJT); Sedra/Smith, Exercise 8.17 (MOSFET).</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>In the books</p></th>
+<th class="head"><p>BJT</p></th>
+<th class="head"><p>MOSFET</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Razavi, worked examples</p></td>
+<td><p>–</p></td>
+<td><p>10.29</p></td>
+</tr>
+<tr class="row-odd"><td><p>Razavi, problems</p></td>
+<td><p>10.75, 10.92</p></td>
+<td><p>10.71–10.74, 10.76–10.78, 10.93</p></td>
+</tr>
+<tr class="row-even"><td><p>Sedra/Smith, exercises</p></td>
+<td><p>8.14, 8.18</p></td>
+<td><p>8.5, 8.17, 8.19</p></td>
+</tr>
+<tr class="row-odd"><td><p>Sedra/Smith, problems</p></td>
+<td><p>8.50, 8.89, 8.99, 8.100</p></td>
+<td><p>8.85–8.88, 8.91–8.93, 8.96, 8.97, 8.100–8.103, 8.116</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</section>
+<section id="in-one-of-the-two-books-only">
+<h2>In One of the Two Books Only<a class="headerlink" href="#in-one-of-the-two-books-only" title="Link to this heading">#</a></h2>
+<p>These natures are asked of both transistors, but only in Sedra/Smith.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Nature</p></th>
+<th class="head"><p>BJT</p></th>
+<th class="head"><p>MOSFET</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Improved current mirrors: base-current compensation, cascode mirror, Wilson, Widlar</p></td>
+<td><p>7.8, 7.21, 7.22, 7.27, 7.28, 7.82, 7.84, 7.88, 7.89, 7.92–7.94</p></td>
+<td><p>7.26, 7.81, 7.83, 7.85, 7.86, 7.90, 7.91, 7.94</p></td>
+</tr>
+<tr class="row-odd"><td><p>Multistage amplifiers and op amps</p></td>
+<td><p>8.21, 8.22, 8.106–8.109, 8.114, 8.115</p></td>
+<td><p>8.20, 8.104, 8.105, 8.110–8.113</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./courses/fme"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="index.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">BJT and MOSFET Circuits</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="bank_one.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">BJT and MOSFET Problem Bank: One Transistor</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item"><div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#one-transistor">One Transistor</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bias-point-and-region-of-operation">Bias Point and Region of Operation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#device-law-and-scaling">Device Law and Scaling</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#small-signal-parameters">Small-Signal Parameters</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bias">Bias</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#divider-bias-with-degeneration">Divider Bias with Degeneration</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#self-bias">Self-Bias</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#amplifier-stages">Amplifier Stages</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#common-emitter-and-common-source-stage">Common-Emitter and Common-Source Stage</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#stage-with-emitter-or-source-degeneration">Stage with Emitter or Source Degeneration</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#stage-with-a-transistor-as-its-load">Stage with a Transistor as its Load</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#common-base-and-common-gate-stage">Common-Base and Common-Gate Stage</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#emitter-follower-and-source-follower">Emitter Follower and Source Follower</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#resistance-seen-at-a-node">Resistance Seen at a Node</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#complete-stage-with-bias-source-and-load">Complete Stage with Bias, Source and Load</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cascodes-and-current-mirrors">Cascodes and Current Mirrors</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cascode">Cascode</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#current-mirror">Current Mirror</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#differential-pairs">Differential Pairs</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#differential-pair-bias-and-input-range">Differential Pair: Bias and Input Range</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#differential-pair-differential-gain">Differential Pair: Differential Gain</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#differential-pair-with-degeneration">Differential Pair with Degeneration</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#differential-pair-common-mode-rejection">Differential Pair: Common-Mode Rejection</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#differential-pair-with-current-mirror-load">Differential Pair with Current-Mirror Load</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#in-one-of-the-two-books-only">In One of the Two Books Only</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Tran Minh Quan
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
