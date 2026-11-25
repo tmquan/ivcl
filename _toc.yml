@@ -24,11 +24,17 @@ parts:
     - file: courses/fme/gallery.ipynb
     - file: courses/fme/problems.ipynb
     - file: courses/fme/bank_one.ipynb
+      title: One Transistor
     - file: courses/fme/bank_bias.ipynb
+      title: Bias
     - file: courses/fme/bank_stages.ipynb
+      title: Amplifier Stages
     - file: courses/fme/bank_mirrors.ipynb
+      title: Cascodes and Current Mirrors
     - file: courses/fme/bank_pairs.ipynb
+      title: Differential Pairs
     - file: courses/fme/bank_other.ipynb
+      title: Other Items
 
   - caption: Simulation
     chapters:
