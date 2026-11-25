@@ -334,12 +334,44 @@ def _normals(shape):
     return face / np.maximum(np.linalg.norm(face, axis=1, keepdims=True), 1e-12)
 
 
-def _surfaces(scene, studio):
-    """Every triangle of a scene and of the floor under it: its corners in the world (N, 3, 3) and, for each corner,
-    seven numbers: the colour of the surface, the direction it faces, and its kind (0 a line or marker that is
-    not lit, 1 a surface, 2 the floor of the studio, 3 a flat floor piece of the scene)."""
+AXES = (("x", (1.00, 0.20, 0.32), (0.80, 0.10, 0.22)),          # the colours a 3D program gives its axes: of the arrow, of its letter
+        ("y", (0.55, 0.86, 0.00), (0.33, 0.55, 0.00)),
+        ("z", (0.16, 0.56, 1.00), (0.08, 0.40, 0.85)))
+
+
+def _axes(scene):
+    """The coordinate axes of a picture, as a 3D program draws them: three arrows from a dot on the origin, x in red,
+    y in green, z in blue. Returns the shapes and, for each letter, the place where it stands."""
+    away = float(np.linalg.norm(scene.view.eye))                    # from the camera to the origin
+    length = max([m for m in (0.1, 0.2, 0.25, 0.5, 1.0, 2.0, 5.0) if m <= 0.16 * away] or [0.05])   # a round number of metres
+    shapes, letters = [], []
+    for k, (name, rgb, _ink) in enumerate(AXES):
+        tip = np.eye(3)[k] * length
+        shapes.append(look.arrows(f"axis {name}", [(0.0, 0.0, 0.0)], [tip], rgb, 0.035 * length, 0.24 * length))
+        letters.append(tip * 1.17)
+    dot = look.sphere("origin", (0.0, 0.0, 0.0), 0.055 * length, (0.25, 0.25, 0.25), n=8)
+    dot["lit"] = False
+    return shapes + [dot], letters
+
+
+def _lettered(flat, aspect):
+    """Which axes get their letter. flat: where each letter and, last, the origin stand in the picture, in picture heights
+    from the middle (None: behind the camera). A letter is left out if it is outside the picture or would stand on a
+    letter of a longer arrow, as happens when two axes point the same way on the screen."""
+    origin, shown = flat[-1], []
+    reach = [math.hypot(p[0] - origin[0], p[1] - origin[1]) if p and origin else 0.0 for p in flat[:-1]]
+    for k in sorted(range(len(reach)), key=lambda k: -reach[k]):
+        p = flat[k]
+        if p and abs(p[0]) < aspect / 2 and abs(p[1]) < 0.5 and all(math.hypot(p[0] - flat[j][0], p[1] - flat[j][1]) >= 0.07 for j in shown):
+            shown.append(k)
+    return sorted(shown)
+
+
+def _corners(shapes):
+    """Every triangle of some shapes: its corners in the world (N, 3, 3) and, for each corner, seven numbers:
+    the colour of the surface, the direction it faces, and its kind (see _kind)."""
     corners, values = [], []
-    for s in scene.shapes():
+    for s in shapes:
         tris, normal, rgb = s["tris"], _normals(s), np.asarray(s.get("rgb", s["colors"]), dtype=float)
         if s["per"] == "face":
             rgb, normal = np.repeat(rgb[:, None], 3, axis=1), np.repeat(normal[:, None], 3, axis=1)
@@ -348,11 +380,16 @@ def _surfaces(scene, studio):
         kind = np.full((len(tris), 3, 1), float(_kind(s)))
         corners.append(look.world_points(s)[tris])
         values.append(np.concatenate([rgb, normal, kind], axis=2))
+    return np.concatenate(corners), np.concatenate(values)
+
+
+def _surfaces(scene, studio):
+    """Every triangle of a scene and of the floor under it (kind 2), as _corners() gives them."""
+    world, values = _corners(scene.shapes())
     (cx, cy, _), z, r = studio["centre"], studio["floor"], studio["fade"][1]
     quad = np.array([[cx - r, cy - r, z], [cx + r, cy - r, z], [cx + r, cy + r, z], [cx - r, cy + r, z]])
-    corners.append(quad[[[0, 1, 2], [0, 2, 3]]])
-    values.append(np.tile(np.r_[STUDIO["floor"], 0.0, 0.0, 1.0, 2.0], (2, 3, 1)))
-    return np.concatenate(corners), np.concatenate(values)
+    return (np.concatenate([world, quad[[[0, 1, 2], [0, 2, 3]]]]),
+            np.concatenate([values, np.tile(np.r_[STUDIO["floor"], 0.0, 0.0, 1.0, 2.0], (2, 3, 1))]))
 
 
 class Still(Renderer):
@@ -405,9 +442,30 @@ class Still(Renderer):
         image = np.empty((H * W, 3), np.float32)
         image[:] = back
         image[hit] = out
+        shapes, letters = _axes(scene)                              # the coordinate axes go on top of everything
+        over, front = self._raster(self._from(_corners(shapes)[0], eye, r, u, f), _corners(shapes)[1], t * H / W, t, W, H)
+        top = np.flatnonzero(front > 0)
+        image[top] = 1 - (1 - over[top, :3]) * (1 - STUDIO["pastel"])
         s = self.oversample
         image = image.reshape(H // s, s, W // s, s, 3).mean(axis=(1, 3))
-        return np.rint(np.clip(image, 0, 1) * 255).astype(np.uint8)
+        image = np.rint(np.clip(image, 0, 1) * 255).astype(np.uint8)
+        places = self._from(np.array(letters + [(0.0, 0.0, 0.0)]), eye, r, u, f)
+        flat = [(p[0] * t / p[2] / 2, p[1] * t / p[2] / 2) if p[2] > self.NEAR else None for p in places]   # in picture heights, from the middle
+        return self._letters(image, [(AXES[k][0], AXES[k][2], (0.5 + flat[k][0] * H / W, 0.5 - flat[k][1])) for k in _lettered(flat, W / H)])
+
+
+    @staticmethod
+    def _letters(image, letters):
+        """Writes the names of the axes into the picture: (letter, colour, place as fractions of width and height)."""
+        import matplotlib
+        from PIL import Image, ImageDraw, ImageFont
+        picture = Image.fromarray(image)
+        pen = ImageDraw.Draw(picture)
+        font = ImageFont.truetype(str(Path(matplotlib.get_data_path()) / "fonts" / "ttf" / "cmmi10.ttf"), round(0.047 * image.shape[0]))
+        for letter, ink, (x, y) in letters:                         # Computer Modern italic, as LaTeX sets a variable
+            pen.text((x * image.shape[1], y * image.shape[0]), letter, font=font, anchor="mm", fill=tuple(int(round(255 * v)) for v in ink),
+                     stroke_width=max(1, round(0.004 * image.shape[0])), stroke_fill=(255, 255, 255))
+        return np.asarray(picture)
 
     @staticmethod
     def _from(world, eye, r, u, f):
@@ -555,6 +613,8 @@ class Canvas(Renderer):
         picture = base64.b64encode(png_bytes(small)).decode("ascii")
         label = scene.caption.replace("&", "&amp;").replace('"', "&quot;").replace("<", "&lt;")
         data = self.data(scene)
+        names = "".join(f'<span class="simscene-axis" style="color:#%02x%02x%02x" hidden>{name}</span>' % tuple(int(round(255 * v)) for v in ink)
+                        for name, _rgb, ink in AXES)                # the letters of the axes, placed by the viewer
         clock = ('<div class="simscene-time" hidden><button type="button">Play</button>'
                  '<input type="range" min="0" max="1" step="1" value="1" aria-label="Time"><output></output></div>') if "time" in data else ""
         return (f'<figure class="simscene"><style>{_CSS}</style><div class="simscene-stage">'
@@ -563,7 +623,7 @@ class Canvas(Renderer):
                 'plus and minus zoom, 0 resets."></canvas>'
                 '<div class="simscene-tools" hidden><button type="button" data-act="in" aria-label="Zoom in">+</button>'
                 '<button type="button" data-act="out" aria-label="Zoom out">&minus;</button>'
-                f'<button type="button" data-act="reset">Reset view</button></div></div>{clock}'
+                f'<button type="button" data-act="reset">Reset view</button></div>{names}</div>{clock}'
                 f'<script type="application/json">{json.dumps(data, separators=(",", ":"))}</script></figure>'
                 f'<script>{_VIEWER}</script><script>window.simsceneBoot();</script>')
 
@@ -573,21 +633,23 @@ class Canvas(Renderer):
         and the direction it faces, and the studio around it (the lamp, the floor, the colours of the light)."""
         shapes, studio = scene.shapes(), _studio(scene)
         points = [look.world_points(s) for s in shapes]
-        lo = np.min([p.min(axis=0) for p in points], axis=0)
-        size = float(np.max([p.max(axis=0) for p in points], axis=0).__sub__(lo).max())
+        everything = points + [look.world_points(a) for a in _axes(scene)[0]]
+        lo = np.min([p.min(axis=0) for p in everything], axis=0)
+        size = float(np.max([p.max(axis=0) for p in everything], axis=0).__sub__(lo).max())
         code = lambda array: base64.b64encode(array.tobytes()).decode("ascii")   # noqa: E731
+        axes, letters = _axes(scene)
         meshes = []
-        for s, p in zip(shapes, points):
+        for s, p in zip(shapes + axes, points + [look.world_points(a) for a in axes]):
             wide = len(p) > 65535
             meshes.append(dict(
-                name=s["name"], per=s["per"], ntri=int(len(s["tris"])), wide=wide, kind=_kind(s),
+                name=s["name"], per=s["per"], ntri=int(len(s["tris"])), wide=wide, kind=_kind(s), top=int(any(s is a for a in axes)),
                 pos=code(np.rint((p - lo) / size * 65535).astype("<u2")),
                 idx=code(s["tris"].astype("<u4" if wide else "<u2")),
                 col=code(np.rint(np.clip(s.get("rgb", s["colors"]), 0, 1) * 255).astype(np.uint8)),
                 nrm=code(np.rint(_normals(s) * 127).astype(np.int8))))
         numbers = lambda values: [float(v) for v in values]                       # noqa: E731
         out = dict(name=type(scene).__name__, eye=numbers(scene.view.eye), target=numbers(scene.view.target), fov=look.FOV,
-                   lo=numbers(lo), size=size, meshes=meshes,
+                   lo=numbers(lo), size=size, meshes=meshes, letters=[numbers(p) for p in letters],
                    studio=dict(lamp=numbers(studio["lamp"]), aim=numbers(studio["aim"]), centre=numbers(studio["centre"]), light=numbers(look.LIGHT),
                                half=studio["half"], near=studio["near"], far=studio["far"], lift=studio["lift"], slack=studio["slack"],
                                floor=studio["floor"], fade=numbers(studio["fade"]), back=numbers(_background()),
@@ -635,6 +697,9 @@ _CSS = (".simscene{margin:0 0 .5em}"
         ".simscene-tools{position:absolute;top:10px;right:10px;display:flex;gap:6px}"
         ".simscene-tools button{font:inherit;font-size:13px;line-height:1;min-width:34px;padding:8px 10px;border:1px solid #d9d9d9;"
         "border-radius:6px;background:rgba(255,255,255,.92);color:#1a1a1a;cursor:pointer}"
+        '.simscene-axis{position:absolute;transform:translate(-50%,-50%);pointer-events:none;line-height:1;font-size:clamp(11px,2.4vw,17px);'
+        'font-style:italic;font-family:var(--math-font,"Computer Modern Serif","Latin Modern Roman","CMU Serif",serif);'
+        "text-shadow:0 0 2px #fff,0 0 2px #fff,0 0 3px #fff}"
         ).replace("@@BACK@@", "#%02x%02x%02x" % tuple(int(round(v * 255)) for v in _background())) + _TIME_CSS
 
 # The viewer: WebGL 1, no library. It starts every figure.simscene of the page when it scrolls into view,
@@ -653,9 +718,9 @@ _VIEWER = r"""(function () {
     var total = 6, m, i, a, st = scene.studio;
     for (i = 0; i < scene.meshes.length; i++) total += scene.meshes[i].ntri * 3;
     var pos = new Float32Array(total * 3), col = new Uint8Array(total * 4), nrm = new Int8Array(total * 3), o = 0, ranges = [];
-    for (i = 0; i < scene.meshes.length; i++) {
+    function add(i) {
       m = scene.meshes[i];
-      ranges.push({ start: o, count: m.ntri * 3, kind: m.kind });
+      ranges[i] = { start: o, count: m.ntri * 3, top: !!m.top };
       var q = new Uint16Array(bytes(m.pos).buffer);
       var raw = bytes(m.idx).buffer;
       var idx = m.wide ? new Uint32Array(raw) : new Uint16Array(raw);
@@ -673,15 +738,18 @@ _VIEWER = r"""(function () {
         }
       }
     }
-    var r = st.fade[1], x = st.centre[0], y = st.centre[1], z = st.floor;
+    for (i = 0; i < scene.meshes.length; i++) if (!scene.meshes[i].top) add(i);     // the scene first
+    var r = st.fade[1], x = st.centre[0], y = st.centre[1], z = st.floor;           // then the floor of the studio
     var quad = [[x - r, y - r], [x + r, y - r], [x + r, y + r], [x - r, y - r], [x + r, y + r], [x - r, y + r]];
-    ranges.push({ start: o, count: 6, kind: 2 });
+    ranges[scene.meshes.length] = { start: o, count: 6, top: false };
     for (i = 0; i < 6; i++, o++) {
       pos[o * 3] = quad[i][0]; pos[o * 3 + 1] = quad[i][1]; pos[o * 3 + 2] = z;
       for (a = 0; a < 3; a++) col[o * 4 + a] = Math.round(st.colour[a] * 255);
       col[o * 4 + 3] = 170; nrm[o * 3 + 2] = 127;
     }
-    return { pos: pos, col: col, nrm: nrm, count: total, ranges: ranges };
+    var under = o;
+    for (i = 0; i < scene.meshes.length; i++) if (scene.meshes[i].top) add(i);      // the coordinate axes last: they are drawn on top
+    return { pos: pos, col: col, nrm: nrm, count: total, under: under, ranges: ranges };
   }
 
   // ---------- camera: Z is up, the eye orbits the target
@@ -819,13 +887,37 @@ _VIEWER = r"""(function () {
     set(seen, 'lift', st.lift); set(seen, 'slack', st.slack); set(seen, 'pastel', st.pastel); set(seen, 'cells', cells);
     gl.uniform1i(gl.getUniformLocation(seen, 'map'), 0);
 
-    function all(prog) {                                // every mesh where the time puts it, as much of it as is there yet
+    var names = figure.querySelectorAll('.simscene-axis');
+    function some(prog, top) {                          // the scene, or the axes on top of it; every mesh where the time puts it
       var at = gl.getUniformLocation(prog, 'o');
-      if (!T || frame < 0) { gl.uniform3f(at, 0, 0, 0); gl.drawArrays(gl.TRIANGLES, 0, data.count); return; }
+      gl.uniform3f(at, 0, 0, 0);
+      if (top) { gl.drawArrays(gl.TRIANGLES, data.under, data.count - data.under); return; }
+      if (!T || frame < 0) { gl.drawArrays(gl.TRIANGLES, 0, data.under); return; }
       for (var i = 0; i < data.ranges.length; i++) {
+        if (data.ranges[i].top) continue;
         var path = paths[i], n = T.show[i] ? T.show[i][frame] * 3 : data.ranges[i].count;
         if (path) gl.uniform3f(at, path[frame * 3], path[frame * 3 + 1], path[frame * 3 + 2]); else gl.uniform3f(at, 0, 0, 0);
         if (n) gl.drawArrays(gl.TRIANGLES, data.ranges[i].start, n);
+      }
+    }
+    function place(M, aspect) {                         // the letters of the axes, where their arrows point
+      var flat = scene.letters.concat([[0, 0, 0]]).map(function (p) {      // in picture heights, from the middle
+        var w = M[3] * p[0] + M[7] * p[1] + M[11] * p[2] + M[15];
+        return w > 0 ? [(M[0] * p[0] + M[4] * p[1] + M[8] * p[2] + M[12]) / w / 2 * aspect, (M[1] * p[0] + M[5] * p[1] + M[9] * p[2] + M[13]) / w / 2] : null;
+      });
+      var origin = flat[3], shown = [], order = [0, 1, 2], reach = [0, 1, 2].map(function (k) {
+        return flat[k] && origin ? Math.sqrt(Math.pow(flat[k][0] - origin[0], 2) + Math.pow(flat[k][1] - origin[1], 2)) : 0;
+      });
+      order.sort(function (a, b) { return reach[b] - reach[a] || a - b; });
+      order.forEach(function (k) {                      // a letter is left out if it would stand on the letter of a longer arrow
+        var p = flat[k];
+        if (p && Math.abs(p[0]) < aspect / 2 && Math.abs(p[1]) < 0.5 && shown.every(function (j) {
+          return Math.sqrt(Math.pow(p[0] - flat[j][0], 2) + Math.pow(p[1] - flat[j][1], 2)) >= 0.07;
+        })) shown.push(k);
+      });
+      for (var i = 0; i < names.length; i++) {
+        names[i].hidden = shown.indexOf(i) < 0;
+        if (!names[i].hidden) { names[i].style.left = (50 + 100 * flat[i][0] / aspect) + '%'; names[i].style.top = (50 - 100 * flat[i][1]) + '%'; }
       }
     }
     function draw() {
@@ -835,7 +927,7 @@ _VIEWER = r"""(function () {
         gl.viewport(0, 0, cells, cells);
         gl.clearColor(1, 1, 1, 1);
         gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
-        gl.useProgram(cast); all(cast);
+        gl.useProgram(cast); some(cast, false);
         gl.bindFramebuffer(gl.FRAMEBUFFER, null);
         mapped = frame;
       }
@@ -846,9 +938,13 @@ _VIEWER = r"""(function () {
       gl.clearColor(st.back[0], st.back[1], st.back[2], 1);
       gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
       gl.useProgram(seen);
-      set(seen, 'm', matrix(cam, w / h)); set(seen, 'eye', eyeOf(cam));
+      var M = matrix(cam, w / h);
+      set(seen, 'm', M); set(seen, 'eye', eyeOf(cam));
       gl.activeTexture(gl.TEXTURE0); gl.bindTexture(gl.TEXTURE_2D, map);
-      all(seen);
+      some(seen, false);
+      gl.clear(gl.DEPTH_BUFFER_BIT);                    // the coordinate axes go on top of everything
+      some(seen, true);
+      place(M, w / h);
     }
     function redraw() { if (!queued) { queued = true; window.requestAnimationFrame(draw); } }
     function zoom(factor) {

@@ -186,16 +186,17 @@ LAB07_CENTRE = (0.0, 0.0, 0.1)
 
 
 def lab07_axes(tensor=None):
-    """Three rods along the principal axes, length ~ moment."""
+    """Three arrows from the centre of the box along the principal
+    axes, length ~ moment."""
     if tensor is None:
         tensor = vc.box_inertia(LAB07_MASS, *LAB07_EDGES)
     vals, vecs = vc.principal_axes(tensor)
-    c = np.array(LAB07_CENTRE) + [0.0, 0.0, 0.3]
+    c = np.array(LAB07_CENTRE)
     prims = []
     for k, rgb in enumerate(((0.85, 0.1, 0.1), (0.1, 0.65, 0.1),
                              (0.1, 0.2, 0.9))):
-        tip = c + vecs[:, k] * vals[k] / vals.max() * 0.5
-        prims.append(look.tubes(f"axis{k + 1}", [c], [tip], rgb, 0.02))
+        tip = c + vecs[:, k] * vals[k] / vals.max() * 0.85
+        prims.append(look.arrows(f"axis{k + 1}", [c], [tip], rgb, 0.02))
     return prims
 
 

@@ -57,7 +57,7 @@ print("wrote out/inertia.npz")
 app_utils.stop()
 app.update()
 
-# The principal axes, as three rods above the box.
+# The principal axes, as three arrows from the centre of the box.
 look.usd_author(stage, scenes.lab07_axes(measured))
 save("lab07.usda")
 finish(app, args.stream)

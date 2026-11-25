@@ -219,6 +219,46 @@ def tubes(name, starts, ends, rgb, width=0.02):
                 lit=False)
 
 
+def arrows(name, starts, ends, rgb, width=0.02, head=None, n=12):
+    """Arrows from starts to ends: a thin square rod with a cone at
+    its end. head is the length of the cone (6 widths if not
+    given). Drawn in their own colour (not shaded), like tubes()."""
+    a = np.asarray(starts, dtype=float).reshape(-1, 3)
+    b = np.asarray(ends, dtype=float).reshape(-1, 3)
+    col = np.broadcast_to(np.asarray(rgb, dtype=float), (len(a), 3))
+    head = 6.0 * width if head is None else head
+    ang = np.linspace(0, 2 * np.pi, n, endpoint=False)
+    pts, tris, cols = [], [], []
+    for p, q, c in zip(a, b, col):
+        d = q - p
+        length = np.linalg.norm(d)
+        if length < 1e-9:
+            continue
+        d = d / length
+        ref = [0.0, 0.0, 1.0] if abs(d[2]) < 0.9 else [1.0, 0.0, 0.0]
+        u = np.cross(d, ref)
+        u /= np.linalg.norm(u)
+        v = np.cross(d, u)
+        neck = q - d * min(head, length)       # the rod ends here
+        o, w = len(pts), width / 2
+        ring = [u * w + v * w, -u * w + v * w, -u * w - v * w,
+                u * w - v * w]
+        pts += [p + r for r in ring] + [neck + r for r in ring]
+        for k in range(4):
+            m = (k + 1) % 4
+            tris += [(o + k, o + m, o + 4 + m), (o + k, o + 4 + m, o + 4 + k)]
+        tris += [(o, o + 2, o + 1), (o, o + 3, o + 2)]
+        o, r = len(pts), 0.3 * min(head, length)
+        pts += [neck + r * (np.cos(t) * u + np.sin(t) * v) for t in ang]
+        pts += [q, neck]               # the tip, the middle of the base
+        for k in range(n):
+            m = (k + 1) % n
+            tris += [(o + k, o + m, o + n), (o + m, o + k, o + n + 1)]
+        cols += [c] * (10 + 2 * n)
+    return mesh(name, np.array(pts), np.array(tris), np.array(cols),
+                lit=False)
+
+
 def cone_shape(radius=0.02, n=12):
     """A cone of height 1 standing on the origin, pointing along +Z.
     Returns points and triangles."""
