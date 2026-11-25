@@ -35,35 +35,85 @@ p {
     text-align: left;
 }
 
-/* courses/fme (BJT and MOSFET Circuits): BJT and MOSFET columns of equal width.
-   The theme shows tables as scrollable blocks whose columns follow their content.
-   On this page figures and tables share three columns over the text width:
-   a label (20 %), then BJT and MOSFET (40 % each). */
-#bjt-and-mosfet-circuits table {
+/* courses/fme, every page (BJT and MOSFET Circuits, Problem Sets, the six Problem Bank pages).
+   The theme shows tables as scrollable blocks whose columns follow their content.  On the FME pages
+   every table and every figure has the same three columns over the text width: a label (20 %),
+   then BJT and MOSFET, exactly 40 % each.  The label column is wide enough for "Answer 12" on one
+   line; on a screen too narrow for that the table keeps its width and scrolls sideways. */
+:is(#bjt-and-mosfet-circuits, #bjt-and-mosfet-problem-sets, #bjt-and-mosfet-problem-bank-one-transistor,
+    #bjt-and-mosfet-problem-bank-bias, #bjt-and-mosfet-problem-bank-amplifier-stages,
+    #bjt-and-mosfet-problem-bank-cascodes-and-current-mirrors, #bjt-and-mosfet-problem-bank-differential-pairs,
+    #bjt-and-mosfet-problem-bank-other-items) table {
     display: table;
     width: 100%;
+    min-width: 640px;
     table-layout: fixed;
 }
-#bjt-and-mosfet-circuits td,
-#bjt-and-mosfet-circuits th {
+:is(#bjt-and-mosfet-circuits, #bjt-and-mosfet-problem-sets, #bjt-and-mosfet-problem-bank-one-transistor,
+    #bjt-and-mosfet-problem-bank-bias, #bjt-and-mosfet-problem-bank-amplifier-stages,
+    #bjt-and-mosfet-problem-bank-cascodes-and-current-mirrors, #bjt-and-mosfet-problem-bank-differential-pairs,
+    #bjt-and-mosfet-problem-bank-other-items) :is(td, th) {
     overflow-x: auto;
     vertical-align: top;
 }
-#bjt-and-mosfet-circuits td p,
-#bjt-and-mosfet-circuits th p {
+:is(#bjt-and-mosfet-circuits, #bjt-and-mosfet-problem-sets, #bjt-and-mosfet-problem-bank-one-transistor,
+    #bjt-and-mosfet-problem-bank-bias, #bjt-and-mosfet-problem-bank-amplifier-stages,
+    #bjt-and-mosfet-problem-bank-cascodes-and-current-mirrors, #bjt-and-mosfet-problem-bank-differential-pairs,
+    #bjt-and-mosfet-problem-bank-other-items) :is(td, th) p {
     text-align: left;
 }
-#bjt-and-mosfet-circuits .cell_output {
+:is(#bjt-and-mosfet-circuits, #bjt-and-mosfet-problem-sets, #bjt-and-mosfet-problem-bank-one-transistor,
+    #bjt-and-mosfet-problem-bank-bias, #bjt-and-mosfet-problem-bank-amplifier-stages,
+    #bjt-and-mosfet-problem-bank-cascodes-and-current-mirrors, #bjt-and-mosfet-problem-bank-differential-pairs,
+    #bjt-and-mosfet-problem-bank-other-items) .cell_output {
     padding-left: 0;
 }
-#bjt-and-mosfet-circuits .cell_output img {
+:is(#bjt-and-mosfet-circuits, #bjt-and-mosfet-problem-sets, #bjt-and-mosfet-problem-bank-one-transistor,
+    #bjt-and-mosfet-problem-bank-bias, #bjt-and-mosfet-problem-bank-amplifier-stages,
+    #bjt-and-mosfet-problem-bank-cascodes-and-current-mirrors, #bjt-and-mosfet-problem-bank-differential-pairs,
+    #bjt-and-mosfet-problem-bank-other-items) .cell_output img {
     width: 100%;
 }
-/* the label column; the two remaining columns share the rest equally */
-#bjt-and-mosfet-circuits table th:nth-child(1) { width: 20%; }
-/* the overview table: family, circuits, the one change */
-#circuits-of-two-transistors table th:nth-child(1) { width: 18%; }
-#circuits-of-two-transistors table th:nth-child(3) { width: 36%; }
+/* the three columns: 20 % | 40 % | 40 % */
+:is(#bjt-and-mosfet-circuits, #bjt-and-mosfet-problem-sets, #bjt-and-mosfet-problem-bank-one-transistor,
+    #bjt-and-mosfet-problem-bank-bias, #bjt-and-mosfet-problem-bank-amplifier-stages,
+    #bjt-and-mosfet-problem-bank-cascodes-and-current-mirrors, #bjt-and-mosfet-problem-bank-differential-pairs,
+    #bjt-and-mosfet-problem-bank-other-items) table :is(th, td):nth-child(1) { width: 20%; }
+:is(#bjt-and-mosfet-circuits, #bjt-and-mosfet-problem-sets, #bjt-and-mosfet-problem-bank-one-transistor,
+    #bjt-and-mosfet-problem-bank-bias, #bjt-and-mosfet-problem-bank-amplifier-stages,
+    #bjt-and-mosfet-problem-bank-cascodes-and-current-mirrors, #bjt-and-mosfet-problem-bank-differential-pairs,
+    #bjt-and-mosfet-problem-bank-other-items) table :is(th, td):nth-child(2),
+:is(#bjt-and-mosfet-circuits, #bjt-and-mosfet-problem-sets, #bjt-and-mosfet-problem-bank-one-transistor,
+    #bjt-and-mosfet-problem-bank-bias, #bjt-and-mosfet-problem-bank-amplifier-stages,
+    #bjt-and-mosfet-problem-bank-cascodes-and-current-mirrors, #bjt-and-mosfet-problem-bank-differential-pairs,
+    #bjt-and-mosfet-problem-bank-other-items) table :is(th, td):nth-child(3) { width: 40%; }
+/* nothing in the label column is clipped or put behind a scroll bar: its text wraps between words */
+:is(#bjt-and-mosfet-circuits, #bjt-and-mosfet-problem-sets, #bjt-and-mosfet-problem-bank-one-transistor,
+    #bjt-and-mosfet-problem-bank-bias, #bjt-and-mosfet-problem-bank-amplifier-stages,
+    #bjt-and-mosfet-problem-bank-cascodes-and-current-mirrors, #bjt-and-mosfet-problem-bank-differential-pairs,
+    #bjt-and-mosfet-problem-bank-other-items) table :is(th, td):nth-child(1) {
+    overflow: visible;
+    overflow-wrap: normal;
+    word-break: normal;
+    hyphens: none;
+}
+/* the column heads BJT and MOSFET sit in the middle of their cells, as they do above the drawings */
+:is(#bjt-and-mosfet-circuits, #bjt-and-mosfet-problem-sets, #bjt-and-mosfet-problem-bank-one-transistor,
+    #bjt-and-mosfet-problem-bank-bias, #bjt-and-mosfet-problem-bank-amplifier-stages,
+    #bjt-and-mosfet-problem-bank-cascodes-and-current-mirrors, #bjt-and-mosfet-problem-bank-differential-pairs,
+    #bjt-and-mosfet-problem-bank-other-items) table th:is(:nth-child(2), :nth-child(3)),
+:is(#bjt-and-mosfet-circuits, #bjt-and-mosfet-problem-sets, #bjt-and-mosfet-problem-bank-one-transistor,
+    #bjt-and-mosfet-problem-bank-bias, #bjt-and-mosfet-problem-bank-amplifier-stages,
+    #bjt-and-mosfet-problem-bank-cascodes-and-current-mirrors, #bjt-and-mosfet-problem-bank-differential-pairs,
+    #bjt-and-mosfet-problem-bank-other-items) table th:is(:nth-child(2), :nth-child(3)) p {
+    text-align: center;
+}
+/* the row labels of the problem pages (Problem, Given, Answer 1, ..., Result, Check) stay on one line */
+:is(#bjt-and-mosfet-problem-sets, #bjt-and-mosfet-problem-bank-one-transistor, #bjt-and-mosfet-problem-bank-bias,
+    #bjt-and-mosfet-problem-bank-amplifier-stages, #bjt-and-mosfet-problem-bank-cascodes-and-current-mirrors,
+    #bjt-and-mosfet-problem-bank-differential-pairs, #bjt-and-mosfet-problem-bank-other-items) td:first-child strong {
+    white-space: nowrap;
+}
 
 /* courses/sim (IsaacSim101): text in table cells is set left, not justified,
    so that short cells keep an even word spacing. */
@@ -105,30 +155,6 @@ p {
 /* the label column; the remaining columns share the rest equally */
 #signals-and-sequences table th:nth-child(1),
 #systems-and-transformations table th:nth-child(1) { width: 20%; }
-
-/* courses/fme (BJT and MOSFET Problem Sets): as on the circuits page, figures and tables share
-   three columns over the text width: a label (20 %), then BJT and MOSFET (40 % each). */
-#bjt-and-mosfet-problem-sets table {
-    display: table;
-    width: 100%;
-    table-layout: fixed;
-}
-#bjt-and-mosfet-problem-sets td,
-#bjt-and-mosfet-problem-sets th {
-    overflow-x: auto;
-    vertical-align: top;
-}
-#bjt-and-mosfet-problem-sets td p,
-#bjt-and-mosfet-problem-sets th p {
-    text-align: left;
-}
-#bjt-and-mosfet-problem-sets .cell_output {
-    padding-left: 0;
-}
-#bjt-and-mosfet-problem-sets .cell_output img {
-    width: 100%;
-}
-#bjt-and-mosfet-problem-sets table th:nth-child(1) { width: 20%; }
 
 /* courses/sim (Isaac Sim on a DGX Spark, Overview of Visualization): tables and figures over
    the text width, as on the DSP and FME pages; text in table cells set left. */
