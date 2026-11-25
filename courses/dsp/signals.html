@@ -444,7 +444,7 @@
 </section>
 <section id="visualization-in-python">
 <h2>Visualization in Python<a class="headerlink" href="#visualization-in-python" title="Link to this heading">#</a></h2>
-<p>The folder of this notebook holds a small module, <code class="docutils literal notranslate"><span class="pre">sigplot</span></code>, with the elementary signals and a matplotlib renderer. Labels are set in Computer Modern through matplotlib’s mathtext, so no TeX installation is needed.</p>
+<p>The folder of this notebook holds a small module, <code class="docutils literal notranslate"><span class="pre">sigplot</span></code>, with classes for signals, systems and time axes, and a matplotlib renderer. Labels are set in Computer Modern through matplotlib’s mathtext, so no TeX installation is needed.</p>
 <div class="cell tag_hide_input docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># HIDE/SHOW</span>
@@ -458,7 +458,7 @@
 <span class="o">%</span><span class="k">config</span> InlineBackend.print_figure_kwargs = {'bbox_inches': None}   # keep every figure at its full width
 <span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">'svg.hashsalt'</span><span class="p">]</span> <span class="o">=</span> <span class="s1">'dsp'</span>            <span class="c1"># reproducible SVG output</span>
 
-<span class="kn">from</span><span class="w"> </span><span class="nn">sigplot</span><span class="w"> </span><span class="kn">import</span> <span class="n">show</span><span class="p">,</span> <span class="n">step</span><span class="p">,</span> <span class="n">ramp</span><span class="p">,</span> <span class="n">rect</span><span class="p">,</span> <span class="n">tri</span><span class="p">,</span> <span class="n">sinc</span><span class="p">,</span> <span class="n">delta</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sigplot</span><span class="w"> </span><span class="kn">import</span> <span class="n">Signal</span><span class="p">,</span> <span class="n">Step</span><span class="p">,</span> <span class="n">Ramp</span><span class="p">,</span> <span class="n">Rect</span><span class="p">,</span> <span class="n">Tri</span><span class="p">,</span> <span class="n">Sinc</span><span class="p">,</span> <span class="n">Impulse</span><span class="p">,</span> <span class="n">ComplexExponential</span><span class="p">,</span> <span class="n">Sinusoid</span><span class="p">,</span> <span class="n">Exponential</span><span class="p">,</span> <span class="n">show</span>
 </pre></div>
 </div>
 </div>
@@ -466,12 +466,40 @@
 </section>
 <section id="utilizations">
 <h2>Utilizations<a class="headerlink" href="#utilizations" title="Link to this heading">#</a></h2>
-<p>A signal is a function of an array of time values <code class="docutils literal notranslate"><span class="pre">t</span></code>. The same function is drawn twice: as a curve over continuous time and as a sequence over discrete time, so one function draws both columns.</p>
+<p>The module is built from three small class families. Each has one method that its subclasses override, so the same call does the right thing for every member.</p>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p></p></th>
-<th class="head"><p>Continuous time</p></th>
-<th class="head"><p>Discrete time</p></th>
+<th class="head"><p>Base class</p></th>
+<th class="head"><p>Subclasses</p></th>
+<th class="head"><p>Overridden</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Signal</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Signal</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Step</span></code>, <code class="docutils literal notranslate"><span class="pre">Ramp</span></code>, <code class="docutils literal notranslate"><span class="pre">Rect</span></code>, <code class="docutils literal notranslate"><span class="pre">Tri</span></code>, <code class="docutils literal notranslate"><span class="pre">Sinc</span></code>, <code class="docutils literal notranslate"><span class="pre">Impulse</span></code>, <code class="docutils literal notranslate"><span class="pre">ComplexExponential</span></code>, <code class="docutils literal notranslate"><span class="pre">Sinusoid</span></code>, <code class="docutils literal notranslate"><span class="pre">Exponential</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">values(t)</span></code>: the values at the times <code class="docutils literal notranslate"><span class="pre">t</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>System</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">System</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">AmplitudeScaling</span></code>, <code class="docutils literal notranslate"><span class="pre">AmplitudeReversal</span></code>, <code class="docutils literal notranslate"><span class="pre">TimeShift</span></code>, <code class="docutils literal notranslate"><span class="pre">TimeScaling</span></code>, <code class="docutils literal notranslate"><span class="pre">TimeReversal</span></code>, <code class="docutils literal notranslate"><span class="pre">Cascade</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">apply(x)</span></code>: the output signal for the input <code class="docutils literal notranslate"><span class="pre">x</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Time axis</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Time</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ContinuousTime</span></code>, <code class="docutils literal notranslate"><span class="pre">DiscreteTime</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">draw(plot,</span> <span class="pre">signal)</span></code>: a curve, or stems</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>A signal is an object that is called with an array of time values. A new signal is a subclass of <code class="docutils literal notranslate"><span class="pre">Signal</span></code> with its own <code class="docutils literal notranslate"><span class="pre">values</span></code>; its first docstring line is its name, written as <code class="docutils literal notranslate"><span class="pre">continuous-time</span> <span class="pre">name</span> <span class="pre">|</span> <span class="pre">discrete-time</span> <span class="pre">name</span></code> where the two differ. Signals add, subtract and scale like numbers, and <code class="docutils literal notranslate"><span class="pre">shift</span></code>, <code class="docutils literal notranslate"><span class="pre">scale</span></code>, <code class="docutils literal notranslate"><span class="pre">reverse</span></code>, <code class="docutils literal notranslate"><span class="pre">even</span></code>, <code class="docutils literal notranslate"><span class="pre">odd</span></code>, <code class="docutils literal notranslate"><span class="pre">repeat</span></code> and <code class="docutils literal notranslate"><span class="pre">quantize</span></code> return new signals, which <code class="docutils literal notranslate"><span class="pre">named</span></code> gives a name. One signal is drawn on both time axes, so one object fills both columns:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p></p></th>
+<th class="head"><p><code class="docutils literal notranslate"><span class="pre">ContinuousTime</span></code></p></th>
+<th class="head"><p><code class="docutils literal notranslate"><span class="pre">DiscreteTime</span></code></p></th>
 </tr>
 </thead>
 <tbody>
@@ -479,7 +507,7 @@
 <td><p><span class="math notranslate nohighlight">\(t\)</span>, a real number</p></td>
 <td><p><span class="math notranslate nohighlight">\(n\)</span>, an integer</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>Notation</strong></p></td>
+<tr class="row-odd"><td><p><strong>Notation</strong> <code class="docutils literal notranslate"><span class="pre">label</span></code></p></td>
 <td><p><span class="math notranslate nohighlight">\(x(t)\)</span></p></td>
 <td><p><span class="math notranslate nohighlight">\(x[n]\)</span></p></td>
 </tr>
@@ -487,44 +515,19 @@
 <td><p><code class="docutils literal notranslate"><span class="pre">x(t)</span></code> for every <code class="docutils literal notranslate"><span class="pre">t</span></code> in <code class="docutils literal notranslate"><span class="pre">span</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">x(n*T)</span></code> for the integers <code class="docutils literal notranslate"><span class="pre">n</span></code> with <code class="docutils literal notranslate"><span class="pre">n*T</span></code> in <code class="docutils literal notranslate"><span class="pre">span</span></code></p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>Drawn as</strong></p></td>
+<tr class="row-odd"><td><p><strong>Drawn as</strong> <code class="docutils literal notranslate"><span class="pre">draw</span></code></p></td>
 <td><p>a curve</p></td>
 <td><p>a stem with a dot for every sample</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>Impulse</strong> <code class="docutils literal notranslate"><span class="pre">impulses={0:</span> <span class="pre">1}</span></code></p></td>
+<tr class="row-even"><td><p><strong>Impulse</strong> <code class="docutils literal notranslate"><span class="pre">impulses</span></code></p></td>
 <td><p>an arrow that carries its area</p></td>
 <td><p>the sample itself</p></td>
 </tr>
 </tbody>
 </table>
 </div>
-<p>The sequence is made of samples of the function, <span class="math notranslate nohighlight">\(x[n]=x(nT)\)</span>. The sampling period is <code class="docutils literal notranslate"><span class="pre">T=1</span></code> unless a figure sets another one, and the discrete-time axis always counts samples. <code class="docutils literal notranslate"><span class="pre">step</span></code>, <code class="docutils literal notranslate"><span class="pre">ramp</span></code>, <code class="docutils literal notranslate"><span class="pre">rect</span></code>, <code class="docutils literal notranslate"><span class="pre">tri</span></code>, <code class="docutils literal notranslate"><span class="pre">sinc</span></code> and <code class="docutils literal notranslate"><span class="pre">delta</span></code> are the elementary signals of the last section; they accept arrays, so a signal is built from them by ordinary arithmetic. A signal can carry two attributes: <code class="docutils literal notranslate"><span class="pre">envelope</span></code>, a function that is drawn dashed above and below an oscillation, and <code class="docutils literal notranslate"><span class="pre">impulses</span></code>, the times and areas of its impulses.</p>
-<p><code class="docutils literal notranslate"><span class="pre">show(a,</span> <span class="pre">b,</span> <span class="pre">notes=[...])</span></code> draws the signals <code class="docutils literal notranslate"><span class="pre">a</span></code> and <code class="docutils literal notranslate"><span class="pre">b</span></code> as two rows: their names in the first column, then the plot over continuous time and the plot over discrete time. <code class="docutils literal notranslate"><span class="pre">notes</span></code> holds the text that goes right under the plots, for every signal a pair <code class="docutils literal notranslate"><span class="pre">(continuous,</span> <span class="pre">discrete)</span></code> or one text for both. The first docstring line gives the names, as <code class="docutils literal notranslate"><span class="pre">continuous-time</span> <span class="pre">name</span> <span class="pre">|</span> <span class="pre">discrete-time</span> <span class="pre">name</span></code> where the two differ. <code class="docutils literal notranslate"><span class="pre">span</span></code> and <code class="docutils literal notranslate"><span class="pre">ylim</span></code> set the time axis and the amplitude axis of a figure, and <code class="docutils literal notranslate"><span class="pre">reference</span></code> draws a second signal in grey behind every signal. The cells are equally wide in every figure and every plot has the same size, so the plots line up down the whole page.</p>
-<div class="cell tag_hide_input docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># HIDE/SHOW</span>
-<span class="k">def</span><span class="w"> </span><span class="nf">even_part</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">"""the even part of the signal `x`"""</span>
-    <span class="k">return</span> <span class="k">lambda</span> <span class="n">t</span><span class="p">:</span> <span class="p">(</span><span class="n">x</span><span class="p">(</span><span class="n">t</span><span class="p">)</span> <span class="o">+</span> <span class="n">x</span><span class="p">(</span><span class="o">-</span><span class="n">t</span><span class="p">))</span> <span class="o">/</span> <span class="mi">2</span>
-
-
-<span class="k">def</span><span class="w"> </span><span class="nf">odd_part</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">"""the odd part of the signal `x`"""</span>
-    <span class="k">return</span> <span class="k">lambda</span> <span class="n">t</span><span class="p">:</span> <span class="p">(</span><span class="n">x</span><span class="p">(</span><span class="n">t</span><span class="p">)</span> <span class="o">-</span> <span class="n">x</span><span class="p">(</span><span class="o">-</span><span class="n">t</span><span class="p">))</span> <span class="o">/</span> <span class="mi">2</span>
-
-
-<span class="k">def</span><span class="w"> </span><span class="nf">repeated</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">period</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">"""the signal `x`, of which only the part on 0 &lt;= t &lt; period is used, repeated every `period`"""</span>
-    <span class="k">return</span> <span class="k">lambda</span> <span class="n">t</span><span class="p">:</span> <span class="n">x</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mod</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">period</span><span class="p">))</span>
-
-
-<span class="k">def</span><span class="w"> </span><span class="nf">quantized</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">delta</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">"""the signal `x` rounded to the nearest multiple of `delta`"""</span>
-    <span class="k">return</span> <span class="k">lambda</span> <span class="n">t</span><span class="p">:</span> <span class="n">delta</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">x</span><span class="p">(</span><span class="n">t</span><span class="p">)</span> <span class="o">/</span> <span class="n">delta</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
+<p>The sequence is made of samples of the signal, <span class="math notranslate nohighlight">\(x[n]=x(nT)\)</span>. The sampling period is <code class="docutils literal notranslate"><span class="pre">T=1</span></code> unless a figure sets another one, and the discrete-time axis always counts samples.</p>
+<p><code class="docutils literal notranslate"><span class="pre">show(a,</span> <span class="pre">b,</span> <span class="pre">notes=[...])</span></code> draws the signals <code class="docutils literal notranslate"><span class="pre">a</span></code> and <code class="docutils literal notranslate"><span class="pre">b</span></code> as two rows: their names in the first column, then one plot per time axis. <code class="docutils literal notranslate"><span class="pre">notes</span></code> holds the text that goes right under the plots, for every signal a pair <code class="docutils literal notranslate"><span class="pre">(continuous,</span> <span class="pre">discrete)</span></code> or one text for both. <code class="docutils literal notranslate"><span class="pre">span</span></code> and <code class="docutils literal notranslate"><span class="pre">ylim</span></code> set the time axis and the amplitude axis of a figure, and <code class="docutils literal notranslate"><span class="pre">reference</span></code> draws a second signal in grey behind every signal. The cells are equally wide in every figure and every plot has the same size, so the plots line up down the whole page.</p>
 </section>
 <section id="what-are-signals">
 <h2>What are Signals?<a class="headerlink" href="#what-are-signals" title="Link to this heading">#</a></h2>
@@ -545,14 +548,15 @@
 <div class="cell tag_hide_input docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># HIDE/SHOW</span>
-<span class="k">def</span><span class="w"> </span><span class="nf">analog</span><span class="p">(</span><span class="n">t</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">Wave</span><span class="p">(</span><span class="n">Signal</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">"""Continuous amplitude"""</span>
-    <span class="k">return</span> <span class="n">t</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">t</span> <span class="o">/</span> <span class="mf">1.7</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">values</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">t</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">t</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">t</span> <span class="o">/</span> <span class="mf">1.7</span><span class="p">)</span>
 
 
-<span class="k">def</span><span class="w"> </span><span class="nf">stepped</span><span class="p">(</span><span class="n">t</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">"""Quantized amplitude"""</span>
-    <span class="k">return</span> <span class="n">quantized</span><span class="p">(</span><span class="n">analog</span><span class="p">,</span> <span class="mi">5</span><span class="p">)(</span><span class="n">t</span><span class="p">)</span>
+<span class="n">analog</span> <span class="o">=</span> <span class="n">Wave</span><span class="p">()</span>
+<span class="n">stepped</span> <span class="o">=</span> <span class="n">analog</span><span class="o">.</span><span class="n">quantize</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span><span class="o">.</span><span class="n">named</span><span class="p">(</span><span class="s1">'Quantized amplitude'</span><span class="p">)</span>
 
 <span class="n">show</span><span class="p">(</span><span class="n">analog</span><span class="p">,</span> <span class="n">stepped</span><span class="p">,</span> <span class="n">span</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">15</span><span class="p">),</span> <span class="n">ylim</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">15</span><span class="p">),</span> <span class="n">T</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">notes</span><span class="o">=</span><span class="p">[</span>
     <span class="p">(</span><span class="sa">r</span><span class="s1">'Analog signal: $x(t)=t\sin(t/1.7)$'</span><span class="p">,</span>
@@ -563,7 +567,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/638d1d7783d2ba6dba5a90ac5e8f1bf86f0283f843565f0bc3e5c252b73aea35.svg" src="../../_images/638d1d7783d2ba6dba5a90ac5e8f1bf86f0283f843565f0bc3e5c252b73aea35.svg" />
+<img alt="../../_images/8e763e73416419f3c53c71af1048dbb51d3250c5c5d15eccf856ad8c164fdcee.svg" src="../../_images/8e763e73416419f3c53c71af1048dbb51d3250c5c5d15eccf856ad8c164fdcee.svg" />
 </div>
 </div>
 <p>The two columns translate into each other term by term:</p>
@@ -584,16 +588,16 @@
 <td><p>sampling: <span class="math notranslate nohighlight">\(x[n]=x(nT)\)</span></p></td>
 </tr>
 <tr class="row-even"><td><p><strong>Running sum</strong></p></td>
-<td><p>integral <span class="math notranslate nohighlight">\(\int_{-\infty}^{t}x(\tau)\,d\tau\)</span></p></td>
-<td><p>sum <span class="math notranslate nohighlight">\(\sum_{k=-\infty}^{n}x[k]\)</span></p></td>
+<td><p>integral <span class="math notranslate nohighlight">\(\displaystyle \int_{-\infty}^{t}x(\tau)\,d\tau\)</span></p></td>
+<td><p>sum <span class="math notranslate nohighlight">\(\displaystyle \sum_{k=-\infty}^{n}x[k]\)</span></p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>Rate of change</strong></p></td>
 <td><p>derivative <span class="math notranslate nohighlight">\(\dfrac{dx(t)}{dt}\)</span></p></td>
 <td><p>first difference <span class="math notranslate nohighlight">\(x[n]-x[n-1]\)</span></p></td>
 </tr>
 <tr class="row-even"><td><p><strong>Energy</strong></p></td>
-<td><p><span class="math notranslate nohighlight">\(E=\int_{-\infty}^{\infty}\lvert x(t)\rvert^2\,dt\)</span></p></td>
-<td><p><span class="math notranslate nohighlight">\(E=\sum_{n=-\infty}^{\infty}\lvert x[n]\rvert^2\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\displaystyle E=\int_{-\infty}^{\infty}\lvert x(t)\rvert^2\,dt\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\displaystyle E=\sum_{n=-\infty}^{\infty}\lvert x[n]\rvert^2\)</span></p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>Period</strong></p></td>
 <td><p><span class="math notranslate nohighlight">\(x(t+T_0)=x(t)\)</span>, <span class="math notranslate nohighlight">\(T_0\)</span> real</p></td>
@@ -625,19 +629,16 @@
 <div class="cell tag_hide_input docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># HIDE/SHOW</span>
-<span class="k">def</span><span class="w"> </span><span class="nf">pulse</span><span class="p">(</span><span class="n">t</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">"""flat from 0 to 5, then down to zero at 10; the value at the jump is the mean of both sides"""</span>
-    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">t</span> <span class="o">==</span> <span class="mi">0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">((</span><span class="n">t</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">t</span> <span class="o">&lt;=</span> <span class="mi">5</span><span class="p">),</span> <span class="mf">2.0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="p">(</span><span class="mi">10</span> <span class="o">-</span> <span class="n">t</span><span class="p">)</span> <span class="o">/</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">t</span> <span class="o">&gt;</span> <span class="mi">5</span><span class="p">)))</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">Pulse</span><span class="p">(</span><span class="n">Signal</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""One-sided pulse: flat from 0 to 5, then down to zero at 10"""</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">values</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">t</span><span class="p">):</span>                 <span class="c1"># the value at the jump is the mean of both sides</span>
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">t</span> <span class="o">==</span> <span class="mi">0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">((</span><span class="n">t</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">t</span> <span class="o">&lt;=</span> <span class="mi">5</span><span class="p">),</span> <span class="mf">2.0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="p">(</span><span class="mi">10</span> <span class="o">-</span> <span class="n">t</span><span class="p">)</span> <span class="o">/</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">t</span> <span class="o">&gt;</span> <span class="mi">5</span><span class="p">)))</span>
 
 
-<span class="k">def</span><span class="w"> </span><span class="nf">even</span><span class="p">(</span><span class="n">t</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">"""Even signal"""</span>
-    <span class="k">return</span> <span class="n">even_part</span><span class="p">(</span><span class="n">pulse</span><span class="p">)(</span><span class="n">t</span><span class="p">)</span>
-
-
-<span class="k">def</span><span class="w"> </span><span class="nf">odd</span><span class="p">(</span><span class="n">t</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">"""Odd signal"""</span>
-    <span class="k">return</span> <span class="n">odd_part</span><span class="p">(</span><span class="n">pulse</span><span class="p">)(</span><span class="n">t</span><span class="p">)</span>
+<span class="n">pulse</span> <span class="o">=</span> <span class="n">Pulse</span><span class="p">()</span>
+<span class="n">even</span> <span class="o">=</span> <span class="n">pulse</span><span class="o">.</span><span class="n">even</span><span class="p">()</span><span class="o">.</span><span class="n">named</span><span class="p">(</span><span class="s1">'Even signal'</span><span class="p">)</span>
+<span class="n">odd</span> <span class="o">=</span> <span class="n">pulse</span><span class="o">.</span><span class="n">odd</span><span class="p">()</span><span class="o">.</span><span class="n">named</span><span class="p">(</span><span class="s1">'Odd signal'</span><span class="p">)</span>
 
 <span class="n">show</span><span class="p">(</span><span class="n">even</span><span class="p">,</span> <span class="n">odd</span><span class="p">,</span> <span class="n">span</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">20</span><span class="p">,</span> <span class="mi">20</span><span class="p">),</span> <span class="n">ylim</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="n">notes</span><span class="o">=</span><span class="p">[</span>
     <span class="p">(</span><span class="s1">'$x(-t)=x(t)$'</span><span class="p">,</span>
@@ -648,7 +649,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/ede9f8782f215d4d442497b0eefc78eb01ce09ddd8dc03cb811ae8ccaf10c067.svg" src="../../_images/ede9f8782f215d4d442497b0eefc78eb01ce09ddd8dc03cb811ae8ccaf10c067.svg" />
+<img alt="../../_images/5204c8329821715f290aaaa6c77929800830c0004c3a14a7fb48d0b82caa8f5f.svg" src="../../_images/5204c8329821715f290aaaa6c77929800830c0004c3a14a7fb48d0b82caa8f5f.svg" />
 </div>
 </div>
 </section>
@@ -658,19 +659,16 @@
 <div class="cell tag_hide_input docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># HIDE/SHOW</span>
-<span class="k">def</span><span class="w"> </span><span class="nf">sawtooth</span><span class="p">(</span><span class="n">t</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">"""one tooth: from 1 at t = 0 down to zero at t = 5"""</span>
-    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">((</span><span class="n">t</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">t</span> <span class="o">&lt;</span> <span class="mi">5</span><span class="p">),</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">t</span> <span class="o">/</span> <span class="mi">5</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">Tooth</span><span class="p">(</span><span class="n">Signal</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""One tooth: from 1 at t = 0 down to zero at t = 5"""</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">values</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">t</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">((</span><span class="n">t</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">t</span> <span class="o">&lt;</span> <span class="mi">5</span><span class="p">),</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">t</span> <span class="o">/</span> <span class="mi">5</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span>
 
 
-<span class="k">def</span><span class="w"> </span><span class="nf">aperiodic</span><span class="p">(</span><span class="n">t</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">"""Aperiodic signal"""</span>
-    <span class="k">return</span> <span class="n">sawtooth</span><span class="p">(</span><span class="n">t</span> <span class="o">+</span> <span class="mi">2</span><span class="p">)</span>
-
-
-<span class="k">def</span><span class="w"> </span><span class="nf">periodic</span><span class="p">(</span><span class="n">t</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">"""Periodic signal"""</span>
-    <span class="k">return</span> <span class="n">repeated</span><span class="p">(</span><span class="n">sawtooth</span><span class="p">,</span> <span class="mi">5</span><span class="p">)(</span><span class="n">t</span> <span class="o">+</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">tooth</span> <span class="o">=</span> <span class="n">Tooth</span><span class="p">()</span>
+<span class="n">aperiodic</span> <span class="o">=</span> <span class="n">tooth</span><span class="o">.</span><span class="n">shift</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">named</span><span class="p">(</span><span class="s1">'Aperiodic signal'</span><span class="p">)</span>
+<span class="n">periodic</span> <span class="o">=</span> <span class="n">tooth</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span><span class="o">.</span><span class="n">shift</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">named</span><span class="p">(</span><span class="s1">'Periodic signal'</span><span class="p">)</span>
 
 <span class="n">show</span><span class="p">(</span><span class="n">aperiodic</span><span class="p">,</span> <span class="n">periodic</span><span class="p">,</span> <span class="n">span</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">20</span><span class="p">,</span> <span class="mi">20</span><span class="p">),</span> <span class="n">ylim</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="n">notes</span><span class="o">=</span><span class="p">[</span>
     <span class="p">(</span><span class="s1">'No shift $T_0$ gives $x(t+T_0)=x(t)$'</span><span class="p">,</span>
@@ -681,7 +679,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/78e39611bc594c453f5724d7835473798e1915d458ca6008b528496bcd30471d.svg" src="../../_images/78e39611bc594c453f5724d7835473798e1915d458ca6008b528496bcd30471d.svg" />
+<img alt="../../_images/0389540940c3867dae43beaf0e252fe671cbf6c297c5c34d7075b1641849b72b.svg" src="../../_images/0389540940c3867dae43beaf0e252fe671cbf6c297c5c34d7075b1641849b72b.svg" />
 </div>
 </div>
 </section>
@@ -691,14 +689,8 @@
 <div class="cell tag_hide_input docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># HIDE/SHOW</span>
-<span class="k">def</span><span class="w"> </span><span class="nf">sine</span><span class="p">(</span><span class="n">t</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">"""Sine"""</span>
-    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">t</span> <span class="o">/</span> <span class="mi">8</span><span class="p">)</span>
-
-
-<span class="k">def</span><span class="w"> </span><span class="nf">cosine</span><span class="p">(</span><span class="n">t</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">"""Cosine"""</span>
-    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">t</span> <span class="o">/</span> <span class="mi">8</span><span class="p">)</span>
+<span class="n">sine</span> <span class="o">=</span> <span class="n">Sinusoid</span><span class="p">(</span><span class="n">omega</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">/</span> <span class="mi">8</span><span class="p">,</span> <span class="n">phi</span><span class="o">=-</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">'Sine'</span><span class="p">)</span>
+<span class="n">cosine</span> <span class="o">=</span> <span class="n">Sinusoid</span><span class="p">(</span><span class="n">omega</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">/</span> <span class="mi">8</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">'Cosine'</span><span class="p">)</span>
 
 <span class="n">show</span><span class="p">(</span><span class="n">sine</span><span class="p">,</span> <span class="n">cosine</span><span class="p">,</span> <span class="n">span</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">20</span><span class="p">,</span> <span class="mi">20</span><span class="p">),</span> <span class="n">ylim</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="n">notes</span><span class="o">=</span><span class="p">[</span>
     <span class="p">(</span><span class="sa">r</span><span class="s1">'$x(t)=\sin(\omega_0t)$, $\omega_0=\pi/8$, $T_0=2\pi/\omega_0=16$'</span><span class="p">,</span>
@@ -709,7 +701,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/7e57ebba8478120e870e6e955a43b83090d630e453805dc5fc48d54dffda9695.svg" src="../../_images/7e57ebba8478120e870e6e955a43b83090d630e453805dc5fc48d54dffda9695.svg" />
+<img alt="../../_images/b1360d516290329400f4bd15546d247a0b4f35176a735df3536799f66d99f8f4.svg" src="../../_images/b1360d516290329400f4bd15546d247a0b4f35176a735df3536799f66d99f8f4.svg" />
 </div>
 </div>
 </section>
@@ -719,14 +711,8 @@
 <div class="cell tag_hide_input docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># HIDE/SHOW</span>
-<span class="k">def</span><span class="w"> </span><span class="nf">growth</span><span class="p">(</span><span class="n">t</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">"""Growing exponential"""</span>
-    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">t</span> <span class="o">/</span> <span class="mi">5</span><span class="p">)</span>
-
-
-<span class="k">def</span><span class="w"> </span><span class="nf">decay</span><span class="p">(</span><span class="n">t</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">"""Decaying exponential"""</span>
-    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">t</span> <span class="o">/</span> <span class="mi">5</span><span class="p">)</span>
+<span class="n">growth</span> <span class="o">=</span> <span class="n">Exponential</span><span class="p">(</span><span class="n">a</span><span class="o">=</span><span class="mi">1</span> <span class="o">/</span> <span class="mi">5</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">'Growing exponential'</span><span class="p">)</span>
+<span class="n">decay</span> <span class="o">=</span> <span class="n">Exponential</span><span class="p">(</span><span class="n">a</span><span class="o">=-</span><span class="mi">1</span> <span class="o">/</span> <span class="mi">5</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">'Decaying exponential'</span><span class="p">)</span>
 
 <span class="n">show</span><span class="p">(</span><span class="n">growth</span><span class="p">,</span> <span class="n">decay</span><span class="p">,</span> <span class="n">span</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span> <span class="n">ylim</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">8</span><span class="p">),</span> <span class="n">T</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">notes</span><span class="o">=</span><span class="p">[</span>
     <span class="p">(</span><span class="sa">r</span><span class="s1">'$x(t)=Ce^</span><span class="si">{at}</span><span class="s1">$, $a=1/5&gt;0$'</span><span class="p">,</span>
@@ -737,7 +723,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/c8476f2ed390d746d61f78d510f48f988ba9da042137077318e7cb97b37a3f8a.svg" src="../../_images/c8476f2ed390d746d61f78d510f48f988ba9da042137077318e7cb97b37a3f8a.svg" />
+<img alt="../../_images/6a25b87b2fc188a5dad3bbe3d108008ecf4da1f600469d302d61bdc045fe889c.svg" src="../../_images/6a25b87b2fc188a5dad3bbe3d108008ecf4da1f600469d302d61bdc045fe889c.svg" />
 </div>
 </div>
 </section>
@@ -747,18 +733,8 @@
 <div class="cell tag_hide_input docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># HIDE/SHOW</span>
-<span class="k">def</span><span class="w"> </span><span class="nf">growing</span><span class="p">(</span><span class="n">t</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">"""Growing oscillation"""</span>
-    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">t</span> <span class="o">/</span> <span class="mi">10</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">t</span> <span class="o">/</span> <span class="mi">5</span><span class="p">)</span>
-
-<span class="n">growing</span><span class="o">.</span><span class="n">envelope</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">t</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">t</span> <span class="o">/</span> <span class="mi">10</span><span class="p">)</span>
-
-
-<span class="k">def</span><span class="w"> </span><span class="nf">decaying</span><span class="p">(</span><span class="n">t</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">"""Decaying oscillation"""</span>
-    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">t</span> <span class="o">/</span> <span class="mi">10</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">t</span> <span class="o">/</span> <span class="mi">5</span><span class="p">)</span>
-
-<span class="n">decaying</span><span class="o">.</span><span class="n">envelope</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">t</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">t</span> <span class="o">/</span> <span class="mi">10</span><span class="p">)</span>
+<span class="n">growing</span> <span class="o">=</span> <span class="n">ComplexExponential</span><span class="p">(</span><span class="n">r</span><span class="o">=</span><span class="mi">1</span> <span class="o">/</span> <span class="mi">10</span><span class="p">,</span> <span class="n">omega</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">/</span> <span class="mi">5</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">'Growing oscillation'</span><span class="p">)</span>
+<span class="n">decaying</span> <span class="o">=</span> <span class="n">ComplexExponential</span><span class="p">(</span><span class="n">r</span><span class="o">=-</span><span class="mi">1</span> <span class="o">/</span> <span class="mi">10</span><span class="p">,</span> <span class="n">omega</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">/</span> <span class="mi">5</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">'Decaying oscillation'</span><span class="p">)</span>
 
 <span class="n">show</span><span class="p">(</span><span class="n">growing</span><span class="p">,</span> <span class="n">decaying</span><span class="p">,</span> <span class="n">span</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span> <span class="n">ylim</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="n">T</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">notes</span><span class="o">=</span><span class="p">[</span>
     <span class="p">(</span><span class="sa">r</span><span class="s1">'$x(t)=e^</span><span class="si">{rt}</span><span class="s1">\cos(\omega_0t)$, $r=1/10&gt;0$'</span><span class="p">,</span>
@@ -769,7 +745,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/5f2dfa8e90fe49134547f09488ceb80b098de4c92382eb8aed7246448d329690.svg" src="../../_images/5f2dfa8e90fe49134547f09488ceb80b098de4c92382eb8aed7246448d329690.svg" />
+<img alt="../../_images/eaba2facd04cfdbef181a2600e9b2aee2462a2a965d0881c73cc5309dcb6b774.svg" src="../../_images/eaba2facd04cfdbef181a2600e9b2aee2462a2a965d0881c73cc5309dcb6b774.svg" />
 </div>
 </div>
 </section>
@@ -783,16 +759,7 @@
 <div class="cell tag_hide_input docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># HIDE/SHOW</span>
-<span class="k">def</span><span class="w"> </span><span class="nf">unit_step</span><span class="p">(</span><span class="n">t</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">"""Unit step"""</span>
-    <span class="k">return</span> <span class="n">step</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
-
-
-<span class="k">def</span><span class="w"> </span><span class="nf">unit_ramp</span><span class="p">(</span><span class="n">t</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">"""Unit ramp"""</span>
-    <span class="k">return</span> <span class="n">ramp</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
-
-<span class="n">show</span><span class="p">(</span><span class="n">unit_step</span><span class="p">,</span> <span class="n">unit_ramp</span><span class="p">,</span> <span class="n">span</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="n">ylim</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="n">T</span><span class="o">=</span><span class="mf">0.25</span><span class="p">,</span> <span class="n">notes</span><span class="o">=</span><span class="p">[</span>
+<span class="n">show</span><span class="p">(</span><span class="n">Step</span><span class="p">(),</span> <span class="n">Ramp</span><span class="p">(),</span> <span class="n">span</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="n">ylim</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="n">T</span><span class="o">=</span><span class="mf">0.25</span><span class="p">,</span> <span class="n">notes</span><span class="o">=</span><span class="p">[</span>
     <span class="p">(</span><span class="sa">r</span><span class="s1">'$u(t)=1$ for $t\geq0$, else $0$'</span><span class="p">,</span>
      <span class="sa">r</span><span class="s1">'$u[n]=1$ for $n\geq0$, else $0$'</span><span class="p">),</span>
     <span class="p">(</span><span class="sa">r</span><span class="s1">'$r(t)=t\,u(t)$'</span><span class="p">,</span>
@@ -801,7 +768,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/d40e73832031a12353e511560b512d765616b351315c67a96156fae8dc8a77d2.svg" src="../../_images/d40e73832031a12353e511560b512d765616b351315c67a96156fae8dc8a77d2.svg" />
+<img alt="../../_images/e4de64ae2350c42fb211409ccde6c900656813f4ca3e69c74e5704499fe700c1.svg" src="../../_images/e4de64ae2350c42fb211409ccde6c900656813f4ca3e69c74e5704499fe700c1.svg" />
 </div>
 </div>
 </section>
@@ -811,16 +778,7 @@
 <div class="cell tag_hide_input docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># HIDE/SHOW</span>
-<span class="k">def</span><span class="w"> </span><span class="nf">unit_rectangle</span><span class="p">(</span><span class="n">t</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">"""Unit rectangle"""</span>
-    <span class="k">return</span> <span class="n">rect</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
-
-
-<span class="k">def</span><span class="w"> </span><span class="nf">unit_triangle</span><span class="p">(</span><span class="n">t</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">"""Unit triangle"""</span>
-    <span class="k">return</span> <span class="n">tri</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
-
-<span class="n">show</span><span class="p">(</span><span class="n">unit_rectangle</span><span class="p">,</span> <span class="n">unit_triangle</span><span class="p">,</span> <span class="n">span</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="n">ylim</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="n">T</span><span class="o">=</span><span class="mf">0.25</span><span class="p">,</span> <span class="n">notes</span><span class="o">=</span><span class="p">[</span>
+<span class="n">show</span><span class="p">(</span><span class="n">Rect</span><span class="p">(),</span> <span class="n">Tri</span><span class="p">(),</span> <span class="n">span</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="n">ylim</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="n">T</span><span class="o">=</span><span class="mf">0.25</span><span class="p">,</span> <span class="n">notes</span><span class="o">=</span><span class="p">[</span>
     <span class="p">(</span><span class="sa">r</span><span class="s1">'$\mathrm</span><span class="si">{rect}</span><span class="s1">(t)=1$ for $|t|\leq1/2$, else $0$'</span><span class="p">,</span>
      <span class="sa">r</span><span class="s1">'$\mathrm</span><span class="si">{rect}</span><span class="s1">(nT)=1$ for $|n|\leq2$, else $0$'</span><span class="p">),</span>
     <span class="p">(</span><span class="sa">r</span><span class="s1">'$\mathrm</span><span class="si">{tri}</span><span class="s1">(t)=1-|t|$ for $|t|\leq1$, else $0$'</span><span class="p">,</span>
@@ -829,7 +787,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/1532718a455a3686a4684b27eae18dd81498ba23c36cc2dd152b06b65665f18c.svg" src="../../_images/1532718a455a3686a4684b27eae18dd81498ba23c36cc2dd152b06b65665f18c.svg" />
+<img alt="../../_images/59265acfe4105c3b0e4ec1e81f83773be1730fc70c0a8f3f1a54e2e99a2b0995.svg" src="../../_images/59265acfe4105c3b0e4ec1e81f83773be1730fc70c0a8f3f1a54e2e99a2b0995.svg" />
 </div>
 </div>
 </section>
@@ -839,18 +797,7 @@
 <div class="cell tag_hide_input docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># HIDE/SHOW</span>
-<span class="k">def</span><span class="w"> </span><span class="nf">unit_sinc</span><span class="p">(</span><span class="n">t</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">"""Unit sinc"""</span>
-    <span class="k">return</span> <span class="n">sinc</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
-
-
-<span class="k">def</span><span class="w"> </span><span class="nf">unit_impulse</span><span class="p">(</span><span class="n">t</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">"""Unit impulse | Unit sample"""</span>
-    <span class="k">return</span> <span class="n">delta</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
-
-<span class="n">unit_impulse</span><span class="o">.</span><span class="n">impulses</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">:</span> <span class="mi">1</span><span class="p">}</span>
-
-<span class="n">show</span><span class="p">(</span><span class="n">unit_sinc</span><span class="p">,</span> <span class="n">unit_impulse</span><span class="p">,</span> <span class="n">span</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="n">ylim</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="n">T</span><span class="o">=</span><span class="mf">0.25</span><span class="p">,</span> <span class="n">notes</span><span class="o">=</span><span class="p">[</span>
+<span class="n">show</span><span class="p">(</span><span class="n">Sinc</span><span class="p">(),</span> <span class="n">Impulse</span><span class="p">(),</span> <span class="n">span</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="n">ylim</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="n">T</span><span class="o">=</span><span class="mf">0.25</span><span class="p">,</span> <span class="n">notes</span><span class="o">=</span><span class="p">[</span>
     <span class="p">(</span><span class="sa">r</span><span class="s1">'$\mathrm</span><span class="si">{sinc}</span><span class="s1">(t)=\dfrac{\sin(\pi t)}{\pi t}$, zero at $t=\pm1,\pm2,\ldots$'</span><span class="p">,</span>
      <span class="sa">r</span><span class="s1">'$\mathrm</span><span class="si">{sinc}</span><span class="s1">(nT)$, zero at $n=\pm4,\pm8,\ldots$'</span><span class="p">),</span>
     <span class="p">(</span><span class="sa">r</span><span class="s1">'$\delta(t)=0$ for $t\neq0$, and its area is $1$'</span><span class="p">,</span>
@@ -859,7 +806,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/8beaf0bbb5d8ffc7bf78a95a30e03cb3153f8b67aded848fa4b02b368a4fb288.svg" src="../../_images/8beaf0bbb5d8ffc7bf78a95a30e03cb3153f8b67aded848fa4b02b368a4fb288.svg" />
+<img alt="../../_images/06602acd0d58821a7ea7691956b459828eb638d86b16f7241b170382497dd488.svg" src="../../_images/06602acd0d58821a7ea7691956b459828eb638d86b16f7241b170382497dd488.svg" />
 </div>
 </div>
 <p>The six signals are related to each other:</p>
@@ -872,15 +819,15 @@
 </thead>
 <tbody>
 <tr class="row-even"><td><p><strong>Step from impulse</strong></p></td>
-<td><p><span class="math notranslate nohighlight">\(u(t)=\int_{-\infty}^{t}\delta(\tau)\,d\tau\)</span></p></td>
-<td><p><span class="math notranslate nohighlight">\(u[n]=\sum_{k=-\infty}^{n}\delta[k]\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\displaystyle u(t)=\int_{-\infty}^{t}\delta(\tau)\,d\tau\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\displaystyle u[n]=\sum_{k=-\infty}^{n}\delta[k]\)</span></p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>Impulse from step</strong></p></td>
 <td><p><span class="math notranslate nohighlight">\(\delta(t)=\dfrac{du(t)}{dt}\)</span></p></td>
 <td><p><span class="math notranslate nohighlight">\(\delta[n]=u[n]-u[n-1]\)</span></p></td>
 </tr>
 <tr class="row-even"><td><p><strong>Ramp from step</strong></p></td>
-<td><p><span class="math notranslate nohighlight">\(r(t)=\int_{-\infty}^{t}u(\tau)\,d\tau=t\,u(t)\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\displaystyle r(t)=\int_{-\infty}^{t}u(\tau)\,d\tau=t\,u(t)\)</span></p></td>
 <td><p><span class="math notranslate nohighlight">\(r[n]=n\,u[n]\)</span></p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>Rectangle from steps</strong></p></td>
@@ -892,8 +839,8 @@
 <td><p>the same sum of three shifted ramps</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>Sampling property</strong></p></td>
-<td><p><span class="math notranslate nohighlight">\(\int_{-\infty}^{\infty}x(t)\,\delta(t-t_0)\,dt=x(t_0)\)</span></p></td>
-<td><p><span class="math notranslate nohighlight">\(\sum_{n=-\infty}^{\infty}x[n]\,\delta[n-n_0]=x[n_0]\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\displaystyle \int_{-\infty}^{\infty}x(t)\,\delta(t-t_0)\,dt=x(t_0)\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\displaystyle \sum_{n=-\infty}^{\infty}x[n]\,\delta[n-n_0]=x[n_0]\)</span></p></td>
 </tr>
 </tbody>
 </table>
