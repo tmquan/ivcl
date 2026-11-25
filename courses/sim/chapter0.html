@@ -1,0 +1,2141 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Isaac Sim on a DGX Spark &#8212; Intelligent Visual Computing</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=6a604523" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=64581afb" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script data-sd-tabs-storage-prefix="sphinx-design-tab-id-" src="../../_static/design-tabs.js?v=fcb327ea"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'courses/sim/chapter0';</script>
+    <link rel="author" title="About these documents" href="../../about.html" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Overview of Visualization" href="chapter1.html" />
+    <link rel="prev" title="IsaacSim101" href="isaacsim101.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../home.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/gpgpu.png" class="logo__image only-light" alt="Intelligent Visual Computing - Home"/>
+    <img src="../../_static/gpgpu.png" class="logo__image only-dark pst-js-only" alt="Intelligent Visual Computing - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../home.html">
+                    Welcome
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Digital Signal Processing</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../dsp/signals.html">Signals and Sequences</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dsp/systems.html">Systems and Transformations</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Fundamentals of Microelectronics</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../fme/index.html">BJT and MOSFET Circuits</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Medical Image Processing</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../mip/intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mip/sigsys.html">Signals and Systems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mip/xr.html">X-ray (XR) Imaging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mip/ct.html">Computed Tomography (CT)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mip/mr.html">Magnetic Resonance (MR) Imaging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mip/pt.html">Positron Emission Tomography (PET)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mip/es.html">Endoscopy (ES) Imaging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mip/histo.html">Histology / Histopathology Imaging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mip/em.html">Electron Microscopy (EM) Imaging</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Simulation</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="isaacsim101.html">IsaacSim101</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Isaac Sim on a DGX Spark</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter1.html">Overview of Visualization</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Research</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../research/connectome/index.html">Connectome Agent</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../research/connectome/representation.html">Representation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../research/connectome/supervision.html">Supervision</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../research/connectome/features.html">Features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../research/connectome/multiscale.html">Multi-scale</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../research/connectome/agent.html">Agent</a></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/tmquan/ivcl" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/tmquan/ivcl/issues/new?title=Issue%20on%20page%20%2Fcourses/sim/chapter0.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/courses/sim/chapter0.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button pst-navbar-icon"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm pst-navbar-icon" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Isaac Sim on a DGX Spark</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prerequisites">Prerequisites</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualization-in-python">Visualization in Python</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#utilizations">Utilizations</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-isaac-sim">What is Isaac Sim?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#before-you-start">Before You Start</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setup">Setup</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reach-the-spark-from-the-mac">Reach the Spark from the Mac</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#check-the-spark">Check the Spark</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#install-conda-on-the-spark">Install conda on the Spark</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#put-the-lab-files-on-the-spark">Put the Lab Files on the Spark</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-nine-steps">The Nine Steps</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-create-the-environment">Step 1: Create the Environment</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-check-that-it-works">Step 2: Check That It Works</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-put-a-cube-on-the-stage">Step 3: Put a Cube on the Stage</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-4-see-it-from-the-macbook">Step 4: See It from the MacBook</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-5-make-the-cube-fall">Step 5: Make the Cube Fall</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-6-check-the-fall-against-the-formula">Step 6: Check the Fall Against the Formula</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-7-look-inside-the-stage">Step 7: Look Inside the Stage</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-8-change-it-while-it-is-running">Step 8: Change It While It Is Running</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-9-shut-down-cleanly">Step 9: Shut Down Cleanly</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-you-just-saw">What You Just Saw</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#troubleshooting">Troubleshooting</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#checklist">Checklist</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#if-you-built-isaac-sim-from-source">If You Built Isaac Sim from Source</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sources">Sources</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="isaac-sim-on-a-dgx-spark">
+<h1>Isaac Sim on a DGX Spark<a class="headerlink" href="#isaac-sim-on-a-dgx-spark" title="Link to this heading">#</a></h1>
+<section id="prerequisites">
+<h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Link to this heading">#</a></h2>
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># HIDE/SHOW</span>
+<span class="c1"># ! pip install -U numpy</span>
+<span class="c1"># ! pip install -U matplotlib</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+</section>
+<section id="visualization-in-python">
+<h2>Visualization in Python<a class="headerlink" href="#visualization-in-python" title="Link to this heading">#</a></h2>
+<p>The folder of this notebook holds a small module, <code class="docutils literal notranslate"><span class="pre">simscene</span></code>, with the scenes of this course, two renderers and the charts. It needs NumPy and matplotlib only: every picture on this page is drawn by the notebook, not by Isaac Sim. Labels are set in Computer Modern through matplotlib’s mathtext, so no TeX installation is needed.</p>
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># HIDE/SHOW</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">warnings</span>
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s1">'ignore'</span><span class="p">)</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">simscene</span><span class="w"> </span><span class="kn">import</span> <span class="n">show</span><span class="p">,</span> <span class="n">look</span><span class="p">,</span> <span class="n">HelloCube</span><span class="p">,</span> <span class="n">CubeAtRest</span><span class="p">,</span> <span class="n">SetupDiagram</span><span class="p">,</span> <span class="n">FallChart</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+</section>
+<section id="utilizations">
+<h2>Utilizations<a class="headerlink" href="#utilizations" title="Link to this heading">#</a></h2>
+<p>The module is built from four small class families. Each has one method that its subclasses override, so one call, <code class="docutils literal notranslate"><span class="pre">show(...)</span></code>, does the right thing for every member.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p></p></th>
+<th class="head"><p>Base class</p></th>
+<th class="head"><p>Subclasses</p></th>
+<th class="head"><p>Overridden</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Picture</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Picture</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Scene</span></code>, <code class="docutils literal notranslate"><span class="pre">Chart</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">bundle()</span></code>: what the cell displays</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Scene</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Scene</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">HelloCube</span></code>, <code class="docutils literal notranslate"><span class="pre">CubeAtRest</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">shapes()</span></code>: the triangle meshes of the scene</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Renderer</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Renderer</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Still</span></code>, <code class="docutils literal notranslate"><span class="pre">Canvas</span></code>, <code class="docutils literal notranslate"><span class="pre">Stage</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">draw(scene)</span></code>: a still picture, a canvas for the page, or prims on a USD stage</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Chart</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Chart</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">FallChart</span></code>, <code class="docutils literal notranslate"><span class="pre">Diagram</span></code>, <code class="docutils literal notranslate"><span class="pre">SetupDiagram</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">plot(fig)</span></code>: the drawing on a matplotlib figure</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>A scene is a list of shapes and a camera. Both come from <code class="docutils literal notranslate"><span class="pre">labs/scene.py</span></code>, the file that the lab scripts read on the DGX Spark, so this page and the simulator are given the same scene. A new scene is a subclass of <code class="docutils literal notranslate"><span class="pre">Scene</span></code> with its own <code class="docutils literal notranslate"><span class="pre">shapes</span></code>; its first docstring line is its caption.</p>
+<p>A 3D picture on this page can be turned. Drag it to turn the scene, Shift-drag to move it, click and then scroll to zoom, double-click to go back to the scene’s own camera. Where the page cannot run scripts, the same scene appears as a still picture.</p>
+</section>
+<section id="what-is-isaac-sim">
+<h2>What is Isaac Sim?<a class="headerlink" href="#what-is-isaac-sim" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Isaac Sim is a robot simulator: a physics engine, a renderer and sensor models that work on one shared scene.</p></li>
+<li><p>The scene is a USD stage: a tree of typed <em>prims</em> with attributes.</p></li>
+<li><p>On this page Isaac Sim runs on a DGX Spark, and a MacBook shows the picture.</p></li>
+</ul>
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># HIDE/SHOW</span>
+<span class="n">show</span><span class="p">(</span><span class="n">SetupDiagram</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="../../_images/36e9f628681a639b8b63b0a743482f42de597080bf1e8e6f1b051c32566ba134.svg" src="../../_images/36e9f628681a639b8b63b0a743482f42de597080bf1e8e6f1b051c32566ba134.svg" />
+</div>
+</div>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p></p></th>
+<th class="head"><p>DGX Spark</p></th>
+<th class="head"><p>MacBook</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Role</strong></p></td>
+<td><p>simulates and renders every frame</p></td>
+<td><p>shows the picture, sends mouse and keyboard</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Processor</strong></p></td>
+<td><p>aarch64, with an NVIDIA GPU</p></td>
+<td><p>Apple silicon or Intel</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Link</strong></p></td>
+<td><p>TCP 49100 for signalling, UDP 47998 for video and input</p></td>
+<td><p>the Isaac Sim WebRTC Streaming Client</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Commands</strong></p></td>
+<td><p>blocks marked <code class="docutils literal notranslate"><span class="pre">#</span> <span class="pre">Spark</span></code></p></td>
+<td><p>blocks marked <code class="docutils literal notranslate"><span class="pre">#</span> <span class="pre">Mac</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>In nine small steps you install Isaac Sim on the Spark, put a cube on its stage, look at it from the MacBook, make it fall, check the fall against the formula, and read what the scene is made of. Every step is a command to type and a result to check. Allow about two hours, most of it waiting for the download.</p>
+</section>
+<section id="before-you-start">
+<h2>Before You Start<a class="headerlink" href="#before-you-start" title="Link to this heading">#</a></h2>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p></p></th>
+<th class="head"><p>You need</p></th>
+<th class="head"><p>Details</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Spark</strong></p></td>
+<td><p>a DGX Spark on your network</p></td>
+<td><p>DGX OS 7. It is the only aarch64 machine that Isaac Sim supports.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Mac</strong></p></td>
+<td><p>a MacBook</p></td>
+<td><p>Apple silicon or Intel. It never simulates or renders.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Network</strong></p></td>
+<td><p>both on the same LAN or VPN</p></td>
+<td><p>The stream uses UDP, which an SSH tunnel cannot carry.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Files</strong></p></td>
+<td><p>the folder <code class="docutils literal notranslate"><span class="pre">ivcl/courses/sim</span></code></p></td>
+<td><p>The notebooks of this course, with <code class="docutils literal notranslate"><span class="pre">env/</span></code>, <code class="docutils literal notranslate"><span class="pre">labs/</span></code> and <code class="docutils literal notranslate"><span class="pre">simscene.py</span></code> beside them.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>Where to type.</strong> Each command block says where it is typed. <code class="docutils literal notranslate"><span class="pre">#</span> <span class="pre">Mac</span></code> is the Terminal of the MacBook, <code class="docutils literal notranslate"><span class="pre">#</span> <span class="pre">Spark</span></code> is a shell on the Spark, and <code class="docutils literal notranslate"><span class="pre">#</span> <span class="pre">Spark</span> <span class="pre">(isaac)</span></code> is a shell on the Spark with the <code class="docutils literal notranslate"><span class="pre">isaac</span></code> environment active.</p>
+<p><strong>What is folded.</strong> Commands to type are always visible. Longer listings and expected outputs are folded: click a line with a triangle to open it. The code that draws the pictures of this page is folded in the same way.</p>
+<p><strong>One look for every picture.</strong> The cube is not built inside the scripts. <code class="docutils literal notranslate"><span class="pre">labs/scene.py</span></code> says what is in the scene and <code class="docutils literal notranslate"><span class="pre">labs/look.py</span></code> says how it is drawn: the points, the triangles, the colours (with the shading already in them), the light and the camera. Every script takes <code class="docutils literal notranslate"><span class="pre">--theme</span> <span class="pre">light</span></code> (the default) or <code class="docutils literal notranslate"><span class="pre">--theme</span> <span class="pre">dark</span></code> for the background; use one theme throughout. This page uses light.</p>
+<p><strong>Two ways to install.</strong> The page IsaacSim101 of this course builds Isaac Sim from source and connects an editor. This page takes the Python package instead, which needs no compiler, and goes on to a first scene. If your Spark already has a build from source, read the last section of this page first.</p>
+<aside>
+<p><strong>What was tested, and where the pictures come from.</strong> No Isaac Sim was available while writing this course. The scripts were checked against the Isaac Sim 6.2.0.0 Python source and documentation, and run against real OpenUSD with a stand-in for the simulator. That exercises the script logic and everything written to the stage; it does not exercise the physics engine, the RTX renderer or the stream. So this page tells you what each script should print instead of quoting numbers.</p>
+<p>The 3D pictures on this page are <em>previews</em>, not Isaac Sim screenshots: each one is the scene of <code class="docutils literal notranslate"><span class="pre">labs/scene.py</span></code>, drawn by the notebook. Step 4 shows how to make the real picture and compare.</p>
+</aside></section>
+<section id="setup">
+<h2>Setup<a class="headerlink" href="#setup" title="Link to this heading">#</a></h2>
+<section id="reach-the-spark-from-the-mac">
+<h3>Reach the Spark from the Mac<a class="headerlink" href="#reach-the-spark-from-the-mac" title="Link to this heading">#</a></h3>
+<ol class="arabic">
+<li><p>Create an SSH key if you do not have one, and copy it to the Spark.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Mac</span>
+ls<span class="w"> </span>~/.ssh/id_ed25519.pub<span class="w"> </span><span class="o">||</span><span class="w"> </span>ssh-keygen<span class="w"> </span>-t<span class="w"> </span>ed25519
+ssh-copy-id<span class="w"> </span>&lt;user&gt;@&lt;spark-ip&gt;
+</pre></div>
+</div>
+</li>
+<li><p>Give the Spark a short name. Add this to <code class="docutils literal notranslate"><span class="pre">~/.ssh/config</span></code> on the Mac:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Host spark
+    HostName &lt;spark-ip&gt;
+    User &lt;user&gt;
+</pre></div>
+</div>
+</li>
+<li><p>Test it. You should get a prompt on the Spark without typing a password.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Mac</span>
+ssh<span class="w"> </span>spark
+</pre></div>
+</div>
+</li>
+</ol>
+</section>
+<section id="check-the-spark">
+<h3>Check the Spark<a class="headerlink" href="#check-the-spark" title="Link to this heading">#</a></h3>
+<p>Run these on the Spark and compare with the comments.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Spark</span>
+uname<span class="w"> </span>-m<span class="w">                      </span><span class="c1"># aarch64</span>
+ldd<span class="w"> </span>--version<span class="w"> </span><span class="p">|</span><span class="w"> </span>head<span class="w"> </span>-1<span class="w">       </span><span class="c1"># GLIBC 2.35 or newer (pip needs it)</span>
+nvidia-smi<span class="w"> </span>--query-gpu<span class="o">=</span>name,driver_version<span class="w"> </span>--format<span class="o">=</span>csv
+df<span class="w"> </span>-h<span class="w"> </span>~<span class="w">                       </span><span class="c1"># free space in your home folder</span>
+</pre></div>
+</div>
+<p>The Isaac Sim documentation lists driver 580.159.03 on DGX OS 7 as the tested configuration. The packages are large; NVIDIA’s DGX Spark playbook asks for 50 GB free for a source build, and the same margin is sensible here.</p>
+</section>
+<section id="install-conda-on-the-spark">
+<h3>Install conda on the Spark<a class="headerlink" href="#install-conda-on-the-spark" title="Link to this heading">#</a></h3>
+<p>Miniforge is a small conda installer that uses the conda-forge channel and has an aarch64 build.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Spark</span>
+curl<span class="w"> </span>-L<span class="w"> </span>-O<span class="w"> </span>https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-Linux-aarch64.sh
+bash<span class="w"> </span>Miniforge3-Linux-aarch64.sh<span class="w"> </span>-b<span class="w"> </span>-p<span class="w"> </span><span class="nv">$HOME</span>/miniforge3
+<span class="nv">$HOME</span>/miniforge3/bin/conda<span class="w"> </span>init<span class="w"> </span>bash
+<span class="nb">exec</span><span class="w"> </span>bash
+conda<span class="w"> </span>--version
+</pre></div>
+</div>
+<aside>
+<p><strong>Checkpoint:</strong> <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">--version</span></code> prints a version number and your prompt starts with <code class="docutils literal notranslate"><span class="pre">(base)</span></code>.</p>
+</aside></section>
+<section id="put-the-lab-files-on-the-spark">
+<h3>Put the Lab Files on the Spark<a class="headerlink" href="#put-the-lab-files-on-the-spark" title="Link to this heading">#</a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Mac, from the folder that contains ivcl/</span>
+ssh<span class="w"> </span>spark<span class="w"> </span>mkdir<span class="w"> </span>-p<span class="w"> </span>ivcl/courses/sim
+rsync<span class="w"> </span>-av<span class="w"> </span>ivcl/courses/sim/<span class="w"> </span>spark:ivcl/courses/sim/
+</pre></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Spark</span>
+<span class="nb">cd</span><span class="w"> </span>~/ivcl/courses/sim
+ls<span class="w">            </span><span class="c1"># env  labs  simscene.py  and the notebooks</span>
+</pre></div>
+</div>
+<p>Stay in this folder. Every command below is run from here, and every script writes into <code class="docutils literal notranslate"><span class="pre">out/</span></code> next to <code class="docutils literal notranslate"><span class="pre">labs/</span></code>. If your connection is unreliable, start <code class="docutils literal notranslate"><span class="pre">tmux</span></code> first so a dropped connection does not kill a running job.</p>
+</section>
+</section>
+<section id="the-nine-steps">
+<h2>The Nine Steps<a class="headerlink" href="#the-nine-steps" title="Link to this heading">#</a></h2>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p></p></th>
+<th class="head"><p>Step</p></th>
+<th class="head"><p>You run</p></th>
+<th class="head"><p>You check</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>1</strong></p></td>
+<td><p>Create the environment</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">env</span> <span class="pre">create</span></code>, then <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span></code> twice</p></td>
+<td><p>the size of what was installed</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>2</strong></p></td>
+<td><p>Check that it works</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">show</span> <span class="pre">isaacsim</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Version:</span> <span class="pre">6.2.0.0</span></code> and <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">ok</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><strong>3</strong></p></td>
+<td><p>Put a cube on the stage</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">labs/s3_hello_cube.py</span></code></p></td>
+<td><p>the prim tree, and <code class="docutils literal notranslate"><span class="pre">out/hello_cube.usda</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>4</strong></p></td>
+<td><p>See it from the MacBook</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">labs/s4_stream.py</span></code>, <code class="docutils literal notranslate"><span class="pre">labs/s4_shot.py</span></code></p></td>
+<td><p>the viewport on the Mac, and <code class="docutils literal notranslate"><span class="pre">out/hello_cube.png</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><strong>5</strong></p></td>
+<td><p>Make the cube fall</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">labs/s5_falling_cube.py</span></code></p></td>
+<td><p>a final height close to 0.15 m</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>6</strong></p></td>
+<td><p>Check the fall against the formula</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">labs/s6_check_fall.py</span></code></p></td>
+<td><p>the impact time against 0.4163 s</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>7</strong></p></td>
+<td><p>Look inside the stage</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">labs/s7_inspect.py</span></code></p></td>
+<td><p>the schemas before and after physics</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>8</strong></p></td>
+<td><p>Change it while it is running</p></td>
+<td><p>the streaming client</p></td>
+<td><p>a red cube that falls on <strong>Play</strong></p></td>
+</tr>
+<tr class="row-even"><td><p><strong>9</strong></p></td>
+<td><p>Shut down cleanly</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">nvidia-smi</span></code></p></td>
+<td><p>no Python process remains</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<section id="step-1-create-the-environment">
+<h3>Step 1: Create the Environment<a class="headerlink" href="#step-1-create-the-environment" title="Link to this heading">#</a></h3>
+<ol class="arabic">
+<li><p>Create the environment. The file only prepares Python 3.12 and a recent C++ runtime.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Spark</span>
+conda<span class="w"> </span>env<span class="w"> </span>create<span class="w"> </span>-f<span class="w"> </span>env/isaac.yml
+conda<span class="w"> </span>activate<span class="w"> </span>isaac
+</pre></div>
+</div>
+ <details>
+ <summary>Listing: env/isaac.yml</summary>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">isaac</span>
+<span class="nt">channels</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">conda-forge</span>
+<span class="nt">dependencies</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">python=3.12</span><span class="w">          </span><span class="c1"># Isaac Sim 6.2 requires Python 3.12</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pip</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">libstdcxx-ng&gt;=13</span><span class="w">     </span><span class="c1"># Isaac Sim docs: conda needs CXXABI_1.3.15</span>
+</pre></div>
+</div>
+ </details>
+</li>
+<li><p>Install PyTorch and Isaac Sim with pip. These are the commands from the Isaac Sim documentation, with the CUDA 13 build of PyTorch that the Spark needs.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Spark (isaac)</span>
+pip<span class="w"> </span>install<span class="w"> </span>--upgrade<span class="w"> </span>pip
+pip<span class="w"> </span>install<span class="w"> </span><span class="nv">torch</span><span class="o">==</span><span class="m">2</span>.11.0<span class="w"> </span>--index-url<span class="w"> </span>https://download.pytorch.org/whl/cu130
+pip<span class="w"> </span>install<span class="w"> </span><span class="s2">"isaacsim[all,extscache]==6.2.0.0"</span><span class="w"> </span>--extra-index-url<span class="w"> </span>https://pypi.nvidia.com
+</pre></div>
+</div>
+</li>
+<li><p>Set two variables that apply only inside this environment, then re-activate it.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Spark (isaac)</span>
+conda<span class="w"> </span>env<span class="w"> </span>config<span class="w"> </span>vars<span class="w"> </span><span class="nb">set</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span><span class="nv">OMNI_KIT_ACCEPT_EULA</span><span class="o">=</span>YES<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span><span class="nv">LD_PRELOAD</span><span class="o">=</span>/lib/aarch64-linux-gnu/libgomp.so.1
+conda<span class="w"> </span>deactivate<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>conda<span class="w"> </span>activate<span class="w"> </span>isaac
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">OMNI_KIT_ACCEPT_EULA=YES</span></code> means you accept the NVIDIA Omniverse License Agreement. Read it first (link in Sources); if you leave the variable out, Isaac Sim asks you the first time it starts. <code class="docutils literal notranslate"><span class="pre">LD_PRELOAD</span></code> is specific to the Spark: without it some Isaac Sim modules fail to load with a <code class="docutils literal notranslate"><span class="pre">libgomp</span></code> error.</p>
+</li>
+<li><p>Measure what you got, and write the two numbers down.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Spark (isaac)</span>
+du<span class="w"> </span>-sh<span class="w"> </span><span class="nv">$CONDA_PREFIX</span>
+pip<span class="w"> </span>list<span class="w"> </span><span class="p">|</span><span class="w"> </span>wc<span class="w"> </span>-l
+</pre></div>
+</div>
+</li>
+</ol>
+<aside>
+<p><strong>What to notice.</strong> You installed a renderer, a physics engine, a scene database and several hundred extensions. For scale, a plain Python environment with NumPy and a plotting library is about 0.4 GB.</p>
+</aside></section>
+<section id="step-2-check-that-it-works">
+<h3>Step 2: Check That It Works<a class="headerlink" href="#step-2-check-that-it-works" title="Link to this heading">#</a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Spark (isaac)</span>
+pip<span class="w"> </span>show<span class="w"> </span>isaacsim<span class="w"> </span><span class="p">|</span><span class="w"> </span>sed<span class="w"> </span>-n<span class="w"> </span><span class="m">1</span>,2p
+python<span class="w"> </span>-c<span class="w"> </span><span class="s2">"import isaacsim; print('import ok')"</span>
+</pre></div>
+</div>
+<p>You should see <code class="docutils literal notranslate"><span class="pre">Version:</span> <span class="pre">6.2.0.0</span></code> and then <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">ok</span></code>. If Isaac Sim prints an instruction about preloading <code class="docutils literal notranslate"><span class="pre">libgomp</span></code>, the <code class="docutils literal notranslate"><span class="pre">LD_PRELOAD</span></code> variable from Step 1 is not active: run <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">deactivate</span> <span class="pre">&amp;&amp;</span> <span class="pre">conda</span> <span class="pre">activate</span> <span class="pre">isaac</span></code> and try again.</p>
+<aside>
+<p><strong>Checkpoint:</strong> both lines print without an error. Do not continue until they do.</p>
+</aside></section>
+<section id="step-3-put-a-cube-on-the-stage">
+<h3>Step 3: Put a Cube on the Stage<a class="headerlink" href="#step-3-put-a-cube-on-the-stage" title="Link to this heading">#</a></h3>
+<p>The scene is a 0.3 m cube whose centre is 1 m above a 3 m square of ground.</p>
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># HIDE/SHOW</span>
+<span class="n">cube</span> <span class="o">=</span> <span class="n">HelloCube</span><span class="p">()</span>                 <span class="c1"># the scene of labs/scene.py</span>
+<span class="n">show</span><span class="p">(</span><span class="n">cube</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output text_html"><figure class="simscene"><style>.simscene{margin:0 0 .5em}.simscene-stage{position:relative;border:1px solid #d9d9d9;border-radius:8px;overflow:hidden;background:#fff}.simscene-stage::before{content:"";display:block;padding-top:56.25%}.simscene-stage img,.simscene-stage canvas{position:absolute;left:0;top:0;display:block;width:100%;height:100%;margin:0;border:0;border-radius:0;max-width:none}.simscene-stage canvas{cursor:grab;touch-action:pan-y}.simscene-stage canvas:active{cursor:grabbing}.simscene [hidden]{display:none !important}.simscene.active .simscene-stage{border-color:#76B900;box-shadow:0 0 0 2px #76B900}.simscene-tools{position:absolute;top:10px;right:10px;display:flex;gap:6px}.simscene-tools button{font:13px/1 sans-serif;min-width:34px;padding:8px 10px;border:1px solid #d9d9d9;border-radius:6px;background:rgba(255,255,255,.92);color:#1a1a1a;cursor:pointer}</style><div class="simscene-stage"><img alt="A cube above the ground" src="data:image/png;base64,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"><canvas hidden tabindex="0" role="img" aria-label="A cube above the ground. Drag to turn it, arrow keys also turn it, plus and minus zoom, 0 resets."></canvas><div class="simscene-tools" hidden><button type="button" data-act="in" aria-label="Zoom in">+</button><button type="button" data-act="out" aria-label="Zoom out">&minus;</button><button type="button" data-act="reset">Reset view</button></div></div><script type="application/json">{"name":"HelloCube","eye":[2.2,-2.7,1.9],"target":[0.0,0.0,0.5],"fov":45.0,"lo":[-1.5,-1.5,0.0],"size":3.0,"bg":[255,255,255],"meshes":[{"name":"ground","per":"face","ntri":2,"wide":false,"pos":"AAAAAAAA//8AAAAA/////wAAAAD//wAA","idx":"AAABAAIAAAACAAMA","col":"sbGxsbGx"},{"name":"cube","per":"face","ntri":12,"wide":false,"pos":"M3Mzc4hIM3MzcyJiM3PMjIhIM3PMjCJizIwzc4hIzIwzcyJizIzMjIhIzIzMjCJi","idx":"AAABAAMAAAADAAIABAAGAAcABAAHAAUAAAAEAAUAAAAFAAEAAgADAAcAAgAHAAYAAAACAAYAAAAGAAQAAQAFAAcAAQAHAAMA","col":"NVMANVMATHcATHcAWYsAWYsANVMANVMANVMANVMAZqAAZqAA"}]}</script></figure><script>(function () {
+  'use strict';
+  if (window.simsceneBoot) return;                      // defined once per page, however many figures there are
+
+  // ---------- data: base64 -> typed arrays -> one flat list of coloured triangles
+  function bytes(b64) {
+    var s = atob(b64), n = s.length, u = new Uint8Array(n);
+    for (var i = 0; i < n; i++) u[i] = s.charCodeAt(i);
+    return u;
+  }
+  function build(scene) {
+    var total = 0, m, i;
+    for (i = 0; i < scene.meshes.length; i++) total += scene.meshes[i].ntri * 3;
+    var pos = new Float32Array(total * 3), col = new Uint8Array(total * 3), o = 0;
+    for (i = 0; i < scene.meshes.length; i++) {
+      m = scene.meshes[i];
+      var q = new Uint16Array(bytes(m.pos).buffer);
+      var raw = bytes(m.idx).buffer;
+      var idx = m.wide ? new Uint32Array(raw) : new Uint16Array(raw);
+      var c = bytes(m.col), face = m.per === 'face';
+      for (var t = 0; t < m.ntri; t++) {
+        for (var k = 0; k < 3; k++) {
+          var v = idx[t * 3 + k], from = face ? t : v;
+          for (var a = 0; a < 3; a++) {
+            pos[o * 3 + a] = scene.lo[a] + q[v * 3 + a] / 65535 * scene.size;
+            col[o * 3 + a] = c[from * 3 + a];
+          }
+          o++;
+        }
+      }
+    }
+    return { pos: pos, col: col, count: total };
+  }
+
+  // ---------- camera: Z is up, the eye orbits the target
+  function sub(a, b) { return [a[0] - b[0], a[1] - b[1], a[2] - b[2]]; }
+  function cross(a, b) { return [a[1] * b[2] - a[2] * b[1], a[2] * b[0] - a[0] * b[2], a[0] * b[1] - a[1] * b[0]]; }
+  function dot(a, b) { return a[0] * b[0] + a[1] * b[1] + a[2] * b[2]; }
+  function unit(a) { var l = Math.sqrt(dot(a, a)); return [a[0] / l, a[1] / l, a[2] / l]; }
+  function startCamera(scene) {
+    var d = sub(scene.eye, scene.target), dist = Math.sqrt(dot(d, d));
+    return { target: scene.target.slice(), dist: dist, az: Math.atan2(d[1], d[0]), el: Math.asin(d[2] / dist), fov: scene.fov, size: scene.size };
+  }
+  function eyeOf(cam) {
+    var ce = Math.cos(cam.el);
+    return [cam.target[0] + cam.dist * ce * Math.cos(cam.az), cam.target[1] + cam.dist * ce * Math.sin(cam.az), cam.target[2] + cam.dist * Math.sin(cam.el)];
+  }
+  function axes(cam) {                       // right, up, forward of the camera
+    var f = unit(sub(cam.target, eyeOf(cam))), r = unit(cross(f, [0, 0, 1])), u = cross(r, f);
+    return { r: r, u: u, f: f };
+  }
+  function matrix(cam, aspect) {             // projection * view, column-major
+    var e = eyeOf(cam), x = axes(cam), r = x.r, u = x.u, f = x.f;
+    var near = Math.max(0.01, cam.dist * 0.02), far = cam.dist + 3 * cam.size;
+    var t = 1 / Math.tan(cam.fov * Math.PI / 360);
+    var A = (far + near) / (near - far), B = 2 * far * near / (near - far);
+    var sx = t / aspect, sy = t;
+    return new Float32Array([
+      sx * r[0], sy * u[0], -A * f[0], f[0],
+      sx * r[1], sy * u[1], -A * f[1], f[1],
+      sx * r[2], sy * u[2], -A * f[2], f[2],
+      -sx * dot(r, e), -sy * dot(u, e), A * dot(f, e) + B, -dot(f, e)]);
+  }
+
+  // ---------- drawing
+  var VS = 'attribute vec3 p; attribute vec3 c; uniform mat4 m; varying vec3 v;' +
+           'void main() { v = c; gl_Position = m * vec4(p, 1.0); }';
+  var FS = 'precision mediump float; varying vec3 v;' +
+           'void main() { gl_FragColor = vec4(v, 1.0); }';
+  function shader(gl, type, source) {
+    var s = gl.createShader(type);
+    gl.shaderSource(s, source); gl.compileShader(s);
+    if (!gl.getShaderParameter(s, gl.COMPILE_STATUS)) throw new Error(gl.getShaderInfoLog(s));
+    return s;
+  }
+  function start(figure) {
+    var canvas = figure.querySelector('canvas'), still = figure.querySelector('img');
+    var tools = figure.querySelector('.simscene-tools');
+    var scene = JSON.parse(figure.querySelector('script[type="application/json"]').textContent);
+    var gl = canvas.getContext('webgl', { antialias: true }) || canvas.getContext('experimental-webgl', { antialias: true });
+    if (!gl) throw new Error('no WebGL');
+    var data = build(scene), cam = startCamera(scene), home = startCamera(scene), queued = false;
+
+    var prog = gl.createProgram();
+    gl.attachShader(prog, shader(gl, gl.VERTEX_SHADER, VS));
+    gl.attachShader(prog, shader(gl, gl.FRAGMENT_SHADER, FS));
+    gl.linkProgram(prog);
+    if (!gl.getProgramParameter(prog, gl.LINK_STATUS)) throw new Error(gl.getProgramInfoLog(prog));
+    gl.useProgram(prog);
+    function attribute(name, array, size, type, normalised) {
+      var loc = gl.getAttribLocation(prog, name);
+      gl.bindBuffer(gl.ARRAY_BUFFER, gl.createBuffer());
+      gl.bufferData(gl.ARRAY_BUFFER, array, gl.STATIC_DRAW);
+      gl.enableVertexAttribArray(loc);
+      gl.vertexAttribPointer(loc, size, type, normalised, 0, 0);
+    }
+    attribute('p', data.pos, 3, gl.FLOAT, false);
+    attribute('c', data.col, 3, gl.UNSIGNED_BYTE, true);
+    var uM = gl.getUniformLocation(prog, 'm');
+    gl.enable(gl.DEPTH_TEST);
+    gl.clearColor(scene.bg[0] / 255, scene.bg[1] / 255, scene.bg[2] / 255, 1);
+
+    function draw() {
+      queued = false;
+      var ratio = Math.min(window.devicePixelRatio || 1, 2);
+      var w = Math.max(1, Math.round(canvas.clientWidth * ratio)), h = Math.max(1, Math.round(canvas.clientHeight * ratio));
+      if (canvas.width !== w || canvas.height !== h) { canvas.width = w; canvas.height = h; }
+      gl.viewport(0, 0, w, h);
+      gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
+      gl.uniformMatrix4fv(uM, false, matrix(cam, w / h));
+      gl.drawArrays(gl.TRIANGLES, 0, data.count);
+    }
+    function redraw() { if (!queued) { queued = true; window.requestAnimationFrame(draw); } }
+    function zoom(factor) {
+      cam.dist = Math.min(home.dist * 6, Math.max(home.dist * 0.15, cam.dist * factor)); redraw();
+    }
+    function reset() { cam = startCamera(scene); redraw(); }
+
+    // drag turns, Shift-drag (or the right button) moves; touch turns sideways only
+    var last = null, active = false;
+    canvas.addEventListener('pointerdown', function (e) {
+      last = { x: e.clientX, y: e.clientY, move: e.shiftKey || e.button === 2 };
+      active = true; figure.classList.add('active');
+      if (canvas.setPointerCapture) canvas.setPointerCapture(e.pointerId);
+    });
+    canvas.addEventListener('pointermove', function (e) {
+      if (!last) return;
+      var dx = e.clientX - last.x, dy = e.clientY - last.y;
+      last.x = e.clientX; last.y = e.clientY;
+      if (last.move) {
+        var x = axes(cam), k = 2 * cam.dist * Math.tan(cam.fov * Math.PI / 360) / canvas.clientHeight;
+        for (var a = 0; a < 3; a++) cam.target[a] += (-dx * x.r[a] + dy * x.u[a]) * k;
+      } else {
+        cam.az -= dx * 0.008;
+        if (e.pointerType !== 'touch') cam.el = Math.min(1.55, Math.max(-1.55, cam.el + dy * 0.008));
+      }
+      redraw();
+    });
+    function release() { last = null; }
+    canvas.addEventListener('pointerup', release);
+    canvas.addEventListener('pointercancel', release);
+    canvas.addEventListener('pointerleave', function () { if (!last) { active = false; figure.classList.remove('active'); } });
+    canvas.addEventListener('contextmenu', function (e) { e.preventDefault(); });
+    canvas.addEventListener('dblclick', reset);
+    canvas.addEventListener('wheel', function (e) {     // only after a click, so the page still scrolls
+      if (!active && !e.ctrlKey && !e.metaKey) return;
+      e.preventDefault(); zoom(Math.exp(e.deltaY * 0.0015));
+    }, { passive: false });
+    canvas.addEventListener('keydown', function (e) {     // arrows turn, + and - zoom, 0 resets
+      var k = e.key, used = true;
+      if (k === 'ArrowLeft') cam.az += 0.1; else if (k === 'ArrowRight') cam.az -= 0.1;
+      else if (k === 'ArrowUp') cam.el = Math.min(1.55, cam.el + 0.1); else if (k === 'ArrowDown') cam.el = Math.max(-1.55, cam.el - 0.1);
+      else if (k === '+' || k === '=') zoom(0.8); else if (k === '-') zoom(1.25); else if (k === '0') reset(); else used = false;
+      if (used) { e.preventDefault(); redraw(); }
+    });
+    tools.addEventListener('click', function (e) {
+      var act = e.target.getAttribute('data-act');
+      if (act === 'in') zoom(0.8); else if (act === 'out') zoom(1.25); else if (act === 'reset') reset();
+    });
+    if (window.ResizeObserver) new window.ResizeObserver(redraw).observe(canvas); else window.addEventListener('resize', redraw);
+
+    still.hidden = true; canvas.hidden = false; tools.hidden = false;
+    figure.classList.add('live');
+    draw();
+  }
+
+  function boot() {
+    var figures = document.querySelectorAll('figure.simscene');
+    function open(figure) {
+      if (figure.getAttribute('data-started')) return;
+      figure.setAttribute('data-started', '1');
+      try { start(figure); } catch (err) {                // keep the still picture
+        var c = figure.querySelector('canvas'), s = figure.querySelector('img'), t = figure.querySelector('.simscene-tools');
+        if (c) c.hidden = true; if (t) t.hidden = true; if (s) s.hidden = false;
+        figure.classList.remove('live');
+        if (window.console) window.console.warn('scene viewer: ' + err.message);
+      }
+    }
+    if (window.IntersectionObserver) {                    // start a scene when it scrolls into view
+      var watch = new window.IntersectionObserver(function (entries) {
+        entries.forEach(function (en) { if (en.isIntersecting) { watch.unobserve(en.target); open(en.target); } });
+      }, { rootMargin: '300px' });
+      Array.prototype.forEach.call(figures, function (f) { watch.observe(f); });
+    } else Array.prototype.forEach.call(figures, open);
+  }
+
+  window.simsceneBoot = boot;
+})();
+</script><script>window.simsceneBoot();</script></div></div>
+</div>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p></p></th>
+<th class="head"><p>In the picture</p></th>
+<th class="head"><p>On the stage</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Cube</strong></p></td>
+<td><p>green, edge 0.3 m, centre 1 m above the ground</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">/World/Look/cube</span></code>, a mesh of 8 points and 12 triangles</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Ground</strong></p></td>
+<td><p>grey, 3 m on a side, at height <span class="math notranslate nohighlight">\(z = 0\)</span></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">/World/Look/ground</span></code>, a mesh of 4 points and 2 triangles</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Camera</strong></p></td>
+<td><p>the view of this picture, <span class="math notranslate nohighlight">\(45^\circ\)</span> high</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">/World/Camera</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Light</strong></p></td>
+<td><p>even, from all sides</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">/World/Dome</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>The picture is a preview of <code class="docutils literal notranslate"><span class="pre">out/hello_cube.usda</span></code>, the scene this step saves. Step 4 makes the real picture.</p>
+<ol class="arabic">
+<li><p>Read the scene. It is the whole of <code class="docutils literal notranslate"><span class="pre">labs/scene.py</span></code>.</p>
+ <details>
+ <summary>Listing: labs/scene.py</summary>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">look</span>
+
+<span class="n">SIZE</span> <span class="o">=</span> <span class="mf">0.3</span>                      <span class="c1"># cube edge, metres</span>
+<span class="n">START</span> <span class="o">=</span> <span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span>         <span class="c1"># cube centre at the start, metres</span>
+<span class="n">VIEW</span> <span class="o">=</span> <span class="n">look</span><span class="o">.</span><span class="n">View</span><span class="p">(</span><span class="n">eye</span><span class="o">=</span><span class="p">(</span><span class="mf">2.2</span><span class="p">,</span> <span class="o">-</span><span class="mf">2.7</span><span class="p">,</span> <span class="mf">1.9</span><span class="p">),</span> <span class="n">target</span><span class="o">=</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">))</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">build</span><span class="p">(</span><span class="n">centre</span><span class="o">=</span><span class="n">START</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""A 3 m square of ground and a green cube above it."""</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">look</span><span class="o">.</span><span class="n">ground</span><span class="p">(</span><span class="n">half</span><span class="o">=</span><span class="mf">1.5</span><span class="p">),</span>
+            <span class="n">look</span><span class="o">.</span><span class="n">box</span><span class="p">(</span><span class="s2">"cube"</span><span class="p">,</span> <span class="n">centre</span><span class="p">,</span> <span class="n">SIZE</span><span class="p">,</span> <span class="n">look</span><span class="o">.</span><span class="n">GREEN_RGB</span><span class="p">)]</span>
+</pre></div>
+</div>
+ </details>
+<p><code class="docutils literal notranslate"><span class="pre">look.box()</span></code> turns “a box of this size here” into 8 points and 12 triangles and gives each triangle its shaded colour. <code class="docutils literal notranslate"><span class="pre">look.View</span></code> is the camera: where the eye is and what it looks at, in metres.</p>
+</li>
+<li><p>Read the script. An Isaac Sim script always starts the application first and imports the rest afterwards. Then it makes an empty stage and writes the scene onto it.</p>
+ <details>
+ <summary>Listing: labs/s3_hello_cube.py, the two parts that matter</summary>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">isaacsim</span><span class="w"> </span><span class="kn">import</span> <span class="n">SimulationApp</span>
+
+<span class="c1"># Start the simulator first. Every other isaacsim / pxr import</span>
+<span class="c1"># must come after this line.</span>
+<span class="n">app</span> <span class="o">=</span> <span class="n">SimulationApp</span><span class="p">({</span><span class="s2">"headless"</span><span class="p">:</span> <span class="kc">True</span><span class="p">})</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">isaacsim.core.experimental.utils.stage</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">stage_utils</span>
+
+<span class="n">stage_utils</span><span class="o">.</span><span class="n">create_new_stage</span><span class="p">()</span>
+<span class="n">stage</span> <span class="o">=</span> <span class="n">stage_utils</span><span class="o">.</span><span class="n">get_current_stage</span><span class="p">()</span>
+
+<span class="n">prims</span> <span class="o">=</span> <span class="n">scene</span><span class="o">.</span><span class="n">build</span><span class="p">()</span>            <span class="c1"># ground + cube, from scene.py</span>
+<span class="n">look</span><span class="o">.</span><span class="n">usd_scene</span><span class="p">(</span><span class="n">stage</span><span class="p">,</span> <span class="n">prims</span><span class="p">,</span> <span class="n">scene</span><span class="o">.</span><span class="n">VIEW</span><span class="p">,</span> <span class="n">THEME</span><span class="p">)</span>
+</pre></div>
+</div>
+ </details>
+</li>
+<li><p>Run it.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Spark (isaac)</span>
+python<span class="w"> </span>labs/s3_hello_cube.py
+</pre></div>
+</div>
+<p>The first start takes several minutes while Isaac Sim caches extensions and shaders. The script prints the stage as a tree: under <code class="docutils literal notranslate"><span class="pre">World</span></code> you should find <code class="docutils literal notranslate"><span class="pre">Look</span></code> with <code class="docutils literal notranslate"><span class="pre">ground</span></code>, <code class="docutils literal notranslate"><span class="pre">cube</span></code> and a <code class="docutils literal notranslate"><span class="pre">Matte</span></code> material, then <code class="docutils literal notranslate"><span class="pre">Camera</span></code> and <code class="docutils literal notranslate"><span class="pre">Dome</span></code>. The last line is <code class="docutils literal notranslate"><span class="pre">wrote</span></code> followed by the path of <code class="docutils literal notranslate"><span class="pre">out/hello_cube.usda</span></code>.</p>
+</li>
+<li><p>Open the file it saved. It is text.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Spark</span>
+grep<span class="w"> </span>-n<span class="w"> </span><span class="s2">"def "</span><span class="w"> </span>out/hello_cube.usda
+less<span class="w"> </span>out/hello_cube.usda
+</pre></div>
+</div>
+<p>Find <code class="docutils literal notranslate"><span class="pre">def</span> <span class="pre">Mesh</span> <span class="pre">&quot;cube&quot;</span></code> and, under it, <code class="docutils literal notranslate"><span class="pre">points</span></code> (8 of them) and <code class="docutils literal notranslate"><span class="pre">faceVertexIndices</span></code> (12 triangles).</p>
+</li>
+</ol>
+<aside>
+<p><strong>What to notice.</strong> The script’s output is not a picture. It is a <em>stage</em>: a tree of typed <em>prims</em> with attributes. The camera and the light are prims in the same tree as the cube.</p>
+</aside>
+<p><strong>How the look is fixed.</strong> Four things are decided in <code class="docutils literal notranslate"><span class="pre">labs/look.py</span></code>, not by the renderer. Open the file and find each function; each is a few lines.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p></p></th>
+<th class="head"><p>Where</p></th>
+<th class="head"><p>How</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Camera</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">usd_camera()</span></code></p></td>
+<td><p>A USD camera at <code class="docutils literal notranslate"><span class="pre">View.eye</span></code> looking at <code class="docutils literal notranslate"><span class="pre">View.target</span></code>. The vertical field of view is <span class="math notranslate nohighlight">\(45^\circ\)</span> and the picture is 1280 by 720 pixels.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Coordinates</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">usd_mesh()</span></code></p></td>
+<td><p>Metres, with Z up and the ground at height <span class="math notranslate nohighlight">\(z = 0\)</span> in every scene.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Colour</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">linear()</span></code></p></td>
+<td><p>Colours are defined as screen colours. USD stores colours in linear light, so they are converted on the way in.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Shading</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">shade()</span></code></p></td>
+<td><p>The brightness of every face is computed from one light direction and stored in the face’s colour. The material is matte and the light is an even dome, so the renderer should add nothing.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>The same rules as formulas. A face with unit normal <span class="math notranslate nohighlight">\(\mathbf{n}\)</span> and colour <span class="math notranslate nohighlight">\(\mathbf{c}\)</span> is stored in the colour</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbf{c}_{\text{shaded}} = \mathbf{c}\,\bigl(0.45 + 0.55\,\max(0,\ \mathbf{n}\cdot\boldsymbol{\ell})\bigr)
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(\boldsymbol{\ell}\)</span> is the unit vector towards the light. Each screen colour value <span class="math notranslate nohighlight">\(c\)</span> between 0 and 1 is converted to linear light for USD:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+c_{\text{linear}} =
+\begin{cases}
+c / 12.92 &amp; \text{if } c \le 0.04045 \\
+\bigl((c + 0.055) / 1.055\bigr)^{2.4} &amp; \text{otherwise}
+\end{cases}
+\end{split}\]</div>
+<p>The focal length <span class="math notranslate nohighlight">\(f\)</span> of the camera follows from the field of view <span class="math notranslate nohighlight">\(\theta = 45^\circ\)</span> and the vertical aperture <span class="math notranslate nohighlight">\(h = 20.25\)</span> mm:</p>
+<div class="math notranslate nohighlight">
+\[
+f = \frac{h}{2\tan(\theta / 2)} = \frac{20.25}{2\tan 22.5^\circ} = 24.44\ \text{mm}
+\]</div>
+</section>
+<section id="step-4-see-it-from-the-macbook">
+<h3>Step 4: See It from the MacBook<a class="headerlink" href="#step-4-see-it-from-the-macbook" title="Link to this heading">#</a></h3>
+<p><strong>Part A: stream the live application.</strong></p>
+<ol class="arabic">
+<li><p>Find the Spark’s address, then start a streaming session that opens your scene.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Spark (isaac)</span>
+hostname<span class="w"> </span>-I<span class="w"> </span><span class="p">|</span><span class="w"> </span>awk<span class="w"> </span><span class="s1">'{print $1}'</span>
+python<span class="w"> </span>labs/s4_stream.py<span class="w"> </span>out/hello_cube.usda
+</pre></div>
+</div>
+<p>The script is NVIDIA’s <code class="docutils literal notranslate"><span class="pre">livestream.py</span></code> example plus two things: it opens your file, and it looks through the scene’s camera.</p>
+ <details>
+ <summary>Listing: labs/s4_stream.py, the configuration and the stream</summary>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">CONFIG</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">"headless"</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>          <span class="c1"># no window on the Spark itself</span>
+    <span class="s2">"hide_ui"</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>          <span class="c1"># but keep the full GUI in the stream</span>
+    <span class="s2">"width"</span><span class="p">:</span> <span class="n">look</span><span class="o">.</span><span class="n">WIDTH</span><span class="p">,</span> <span class="s2">"height"</span><span class="p">:</span> <span class="n">look</span><span class="o">.</span><span class="n">HEIGHT</span><span class="p">,</span>
+    <span class="s2">"window_width"</span><span class="p">:</span> <span class="mi">1920</span><span class="p">,</span> <span class="s2">"window_height"</span><span class="p">:</span> <span class="mi">1080</span><span class="p">,</span>
+    <span class="s2">"renderer"</span><span class="p">:</span> <span class="s2">"RealTimePathTracing"</span><span class="p">,</span>
+    <span class="s2">"display_options"</span><span class="p">:</span> <span class="mi">3286</span><span class="p">,</span>   <span class="c1"># show the default grid</span>
+    <span class="s2">"open_usd"</span><span class="p">:</span> <span class="n">usd</span><span class="p">,</span>
+<span class="p">}</span>
+<span class="n">app</span> <span class="o">=</span> <span class="n">SimulationApp</span><span class="p">(</span><span class="n">launch_config</span><span class="o">=</span><span class="n">CONFIG</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">enable_extension</span><span class="p">(</span><span class="s2">"omni.kit.livestream.app"</span><span class="p">)</span>   <span class="c1"># WebRTC server</span>
+
+<span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+    <span class="n">app</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
+<span class="n">stage</span> <span class="o">=</span> <span class="n">stage_utils</span><span class="o">.</span><span class="n">get_current_stage</span><span class="p">()</span>
+<span class="k">if</span> <span class="n">stage</span><span class="o">.</span><span class="n">GetPrimAtPath</span><span class="p">(</span><span class="s2">"/World/Camera"</span><span class="p">):</span>
+    <span class="n">ViewportManager</span><span class="o">.</span><span class="n">set_camera</span><span class="p">(</span><span class="s2">"/World/Camera"</span><span class="p">)</span>   <span class="c1"># the scene's camera</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Streaming. Signal port TCP 49100, media port UDP 47998."</span><span class="p">)</span>
+</pre></div>
+</div>
+ </details>
+</li>
+<li><p>Wait until the script prints <code class="docutils literal notranslate"><span class="pre">Streaming.</span></code> and the log stops scrolling. In a second Spark terminal, confirm that both ports are open.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Spark, second terminal</span>
+ss<span class="w"> </span>-ltn<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span><span class="m">49100</span><span class="w">     </span><span class="c1"># TCP, signalling</span>
+ss<span class="w"> </span>-lun<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span><span class="m">47998</span><span class="w">     </span><span class="c1"># UDP, video</span>
+</pre></div>
+</div>
+</li>
+<li><p>On the Mac, download the <strong>Isaac Sim WebRTC Streaming Client</strong> for macOS from the <em>Latest Release</em> section of the Isaac Sim download page, open it, type the Spark’s address in place of <code class="docutils literal notranslate"><span class="pre">127.0.0.1</span></code>, and click <strong>Connect</strong>.</p></li>
+<li><p>The full Isaac Sim interface appears with your cube in the viewport, seen from the scene’s camera. Hold Alt and drag to orbit.</p></li>
+<li><p><strong>Experiment.</strong> Press Ctrl-C in the first Spark terminal. The picture on the Mac stops. Start the script again and reconnect.</p></li>
+</ol>
+<p><strong>Part B: save one frame as a file.</strong></p>
+<ol class="arabic" start="6">
+<li><p>Stop the stream (Ctrl-C), then capture what the scene’s camera sees.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Spark (isaac)</span>
+python<span class="w"> </span>labs/s4_shot.py<span class="w"> </span>out/hello_cube.usda<span class="w"> </span>out/hello_cube.png
+</pre></div>
+</div>
+<p>The script attaches an RTX camera sensor to <code class="docutils literal notranslate"><span class="pre">/World/Camera</span></code>, waits for the renderer to settle and saves 1280 by 720 pixels. If Pillow is not installed in the environment, it saves the pixels as <code class="docutils literal notranslate"><span class="pre">out/hello_cube.png.npy</span></code> instead; <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">pillow</span></code> fixes that.</p>
+</li>
+<li><p>Copy the picture to the Mac and compare it with the preview in Step 3.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Mac</span>
+scp<span class="w"> </span>spark:ivcl/courses/sim/out/hello_cube.png<span class="w"> </span>.
+open<span class="w"> </span>hello_cube.png
+</pre></div>
+</div>
+<p>The cube and the ground should sit where they do in the preview. If your picture is brighter or darker overall, change <code class="docutils literal notranslate"><span class="pre">DOME_INTENSITY</span></code> in <code class="docutils literal notranslate"><span class="pre">labs/look.py</span></code> and run Step 3 and step 6 again. If its colours are more contrasty, the renderer is applying a film-like tone curve: in the streamed window open <strong>Render Settings &gt; Post Processing &gt; Tone Mapping</strong> and choose a linear operator. These two adjustments could not be tested while writing this page.</p>
+</li>
+</ol>
+<aside>
+<p><strong>What to notice.</strong> Isaac Sim draws every frame on the Spark’s GPU and sends <em>video</em>; the Mac is a screen and a mouse. That is why stopping the script stops the picture, why the stream needs UDP and so cannot go through an SSH tunnel, why only one client can be connected to an instance, and why the documentation tells you to keep the stream on a trusted network: it has no password and no encryption.</p>
+</aside></section>
+<section id="step-5-make-the-cube-fall">
+<h3>Step 5: Make the Cube Fall<a class="headerlink" href="#step-5-make-the-cube-fall" title="Link to this heading">#</a></h3>
+<p>You do not program the fall. You say which prim is a rigid body and which prims collide, and step the physics engine.</p>
+<ol class="arabic">
+<li><p>Read the four lines that declare the physics, and the loop. <code class="docutils literal notranslate"><span class="pre">SimulationManager.step()</span></code> advances the physics by one time step without rendering.</p>
+ <details>
+ <summary>Listing: labs/s5_falling_cube.py, the declaration and the loop</summary>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">paths</span> <span class="o">=</span> <span class="n">look</span><span class="o">.</span><span class="n">usd_scene</span><span class="p">(</span><span class="n">stage</span><span class="p">,</span> <span class="n">scene</span><span class="o">.</span><span class="n">build</span><span class="p">(),</span> <span class="n">scene</span><span class="o">.</span><span class="n">VIEW</span><span class="p">,</span> <span class="n">THEME</span><span class="p">)</span>
+
+<span class="c1"># Physics is declared, not programmed:</span>
+<span class="n">body</span> <span class="o">=</span> <span class="n">RigidPrim</span><span class="p">(</span><span class="n">paths</span><span class="p">[</span><span class="s2">"cube"</span><span class="p">])</span>                     <span class="c1"># mass, gravity</span>
+<span class="n">shape</span> <span class="o">=</span> <span class="n">GeomPrim</span><span class="p">(</span><span class="n">paths</span><span class="p">[</span><span class="s2">"cube"</span><span class="p">],</span> <span class="n">apply_collision_apis</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">shape</span><span class="o">.</span><span class="n">set_collision_approximations</span><span class="p">(</span><span class="s2">"convexHull"</span><span class="p">)</span>    <span class="c1"># cube collides</span>
+<span class="n">GeomPrim</span><span class="p">(</span><span class="n">paths</span><span class="p">[</span><span class="s2">"ground"</span><span class="p">],</span> <span class="n">apply_collision_apis</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>  <span class="c1"># ground too</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">SimulationManager</span><span class="o">.</span><span class="n">set_physics_dt</span><span class="p">(</span><span class="n">DT</span><span class="p">)</span>   <span class="c1"># set before pressing play</span>
+<span class="n">app_utils</span><span class="o">.</span><span class="n">play</span><span class="p">()</span>
+<span class="n">app</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">STEPS</span><span class="p">):</span>
+    <span class="n">SimulationManager</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>           <span class="c1"># one physics step, no render</span>
+    <span class="n">pos</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">body</span><span class="o">.</span><span class="n">get_world_poses</span><span class="p">()</span>
+    <span class="n">rows</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">SimulationManager</span><span class="o">.</span><span class="n">get_simulation_time</span><span class="p">(),</span>
+                 <span class="nb">float</span><span class="p">(</span><span class="n">pos</span><span class="o">.</span><span class="n">numpy</span><span class="p">()[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">])))</span>
+</pre></div>
+</div>
+ </details>
+</li>
+<li><p>Run it.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Spark (isaac)</span>
+python<span class="w"> </span>labs/s5_falling_cube.py
+</pre></div>
+</div>
+<p>The script prints the number of steps and the time step it measured (it should be <span class="math notranslate nohighlight">\(1/60 = 0.0167\)</span> s), then the first and the final height of the cube. The final height should be close to 0.15 m: the cube resting on the ground. It writes <code class="docutils literal notranslate"><span class="pre">out/fall.csv</span></code> and <code class="docutils literal notranslate"><span class="pre">out/falling_cube.usda</span></code>.</p>
+</li>
+<li><p>Watch it. Stream the saved scene and press <strong>Play</strong> in the toolbar on the left.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Spark (isaac)</span>
+python<span class="w"> </span>labs/s4_stream.py<span class="w"> </span>out/falling_cube.usda
+</pre></div>
+</div>
+</li>
+</ol>
+<p>The expected end of the fall:</p>
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># HIDE/SHOW</span>
+<span class="n">show</span><span class="p">(</span><span class="n">CubeAtRest</span><span class="p">())</span>                 <span class="c1"># the same scene, the cube's centre half an edge above the ground</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output text_html"><figure class="simscene"><style>.simscene{margin:0 0 .5em}.simscene-stage{position:relative;border:1px solid #d9d9d9;border-radius:8px;overflow:hidden;background:#fff}.simscene-stage::before{content:"";display:block;padding-top:56.25%}.simscene-stage img,.simscene-stage canvas{position:absolute;left:0;top:0;display:block;width:100%;height:100%;margin:0;border:0;border-radius:0;max-width:none}.simscene-stage canvas{cursor:grab;touch-action:pan-y}.simscene-stage canvas:active{cursor:grabbing}.simscene [hidden]{display:none !important}.simscene.active .simscene-stage{border-color:#76B900;box-shadow:0 0 0 2px #76B900}.simscene-tools{position:absolute;top:10px;right:10px;display:flex;gap:6px}.simscene-tools button{font:13px/1 sans-serif;min-width:34px;padding:8px 10px;border:1px solid #d9d9d9;border-radius:6px;background:rgba(255,255,255,.92);color:#1a1a1a;cursor:pointer}</style><div class="simscene-stage"><img alt="The cube at rest on the ground" src="data:image/png;base64,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"><canvas hidden tabindex="0" role="img" aria-label="The cube at rest on the ground. Drag to turn it, arrow keys also turn it, plus and minus zoom, 0 resets."></canvas><div class="simscene-tools" hidden><button type="button" data-act="in" aria-label="Zoom in">+</button><button type="button" data-act="out" aria-label="Zoom out">&minus;</button><button type="button" data-act="reset">Reset view</button></div></div><script type="application/json">{"name":"CubeAtRest","eye":[2.2,-2.7,1.9],"target":[0.0,0.0,0.5],"fov":45.0,"lo":[-1.5,-1.5,0.0],"size":3.0,"bg":[255,255,255],"meshes":[{"name":"ground","per":"face","ntri":2,"wide":false,"pos":"AAAAAAAA//8AAAAA/////wAAAAD//wAA","idx":"AAABAAIAAAACAAMA","col":"sbGxsbGx"},{"name":"cube","per":"face","ntri":12,"wide":false,"pos":"M3MzcwAAM3Mzc5kZM3PMjAAAM3PMjJkZzIwzcwAAzIwzc5kZzIzMjAAAzIzMjJkZ","idx":"AAABAAMAAAADAAIABAAGAAcABAAHAAUAAAAEAAUAAAAFAAEAAgADAAcAAgAHAAYAAAACAAYAAAAGAAQAAQAFAAcAAQAHAAMA","col":"NVMANVMATHcATHcAWYsAWYsANVMANVMANVMANVMAZqAAZqAA"}]}</script></figure><script>(function () {
+  'use strict';
+  if (window.simsceneBoot) return;                      // defined once per page, however many figures there are
+
+  // ---------- data: base64 -> typed arrays -> one flat list of coloured triangles
+  function bytes(b64) {
+    var s = atob(b64), n = s.length, u = new Uint8Array(n);
+    for (var i = 0; i < n; i++) u[i] = s.charCodeAt(i);
+    return u;
+  }
+  function build(scene) {
+    var total = 0, m, i;
+    for (i = 0; i < scene.meshes.length; i++) total += scene.meshes[i].ntri * 3;
+    var pos = new Float32Array(total * 3), col = new Uint8Array(total * 3), o = 0;
+    for (i = 0; i < scene.meshes.length; i++) {
+      m = scene.meshes[i];
+      var q = new Uint16Array(bytes(m.pos).buffer);
+      var raw = bytes(m.idx).buffer;
+      var idx = m.wide ? new Uint32Array(raw) : new Uint16Array(raw);
+      var c = bytes(m.col), face = m.per === 'face';
+      for (var t = 0; t < m.ntri; t++) {
+        for (var k = 0; k < 3; k++) {
+          var v = idx[t * 3 + k], from = face ? t : v;
+          for (var a = 0; a < 3; a++) {
+            pos[o * 3 + a] = scene.lo[a] + q[v * 3 + a] / 65535 * scene.size;
+            col[o * 3 + a] = c[from * 3 + a];
+          }
+          o++;
+        }
+      }
+    }
+    return { pos: pos, col: col, count: total };
+  }
+
+  // ---------- camera: Z is up, the eye orbits the target
+  function sub(a, b) { return [a[0] - b[0], a[1] - b[1], a[2] - b[2]]; }
+  function cross(a, b) { return [a[1] * b[2] - a[2] * b[1], a[2] * b[0] - a[0] * b[2], a[0] * b[1] - a[1] * b[0]]; }
+  function dot(a, b) { return a[0] * b[0] + a[1] * b[1] + a[2] * b[2]; }
+  function unit(a) { var l = Math.sqrt(dot(a, a)); return [a[0] / l, a[1] / l, a[2] / l]; }
+  function startCamera(scene) {
+    var d = sub(scene.eye, scene.target), dist = Math.sqrt(dot(d, d));
+    return { target: scene.target.slice(), dist: dist, az: Math.atan2(d[1], d[0]), el: Math.asin(d[2] / dist), fov: scene.fov, size: scene.size };
+  }
+  function eyeOf(cam) {
+    var ce = Math.cos(cam.el);
+    return [cam.target[0] + cam.dist * ce * Math.cos(cam.az), cam.target[1] + cam.dist * ce * Math.sin(cam.az), cam.target[2] + cam.dist * Math.sin(cam.el)];
+  }
+  function axes(cam) {                       // right, up, forward of the camera
+    var f = unit(sub(cam.target, eyeOf(cam))), r = unit(cross(f, [0, 0, 1])), u = cross(r, f);
+    return { r: r, u: u, f: f };
+  }
+  function matrix(cam, aspect) {             // projection * view, column-major
+    var e = eyeOf(cam), x = axes(cam), r = x.r, u = x.u, f = x.f;
+    var near = Math.max(0.01, cam.dist * 0.02), far = cam.dist + 3 * cam.size;
+    var t = 1 / Math.tan(cam.fov * Math.PI / 360);
+    var A = (far + near) / (near - far), B = 2 * far * near / (near - far);
+    var sx = t / aspect, sy = t;
+    return new Float32Array([
+      sx * r[0], sy * u[0], -A * f[0], f[0],
+      sx * r[1], sy * u[1], -A * f[1], f[1],
+      sx * r[2], sy * u[2], -A * f[2], f[2],
+      -sx * dot(r, e), -sy * dot(u, e), A * dot(f, e) + B, -dot(f, e)]);
+  }
+
+  // ---------- drawing
+  var VS = 'attribute vec3 p; attribute vec3 c; uniform mat4 m; varying vec3 v;' +
+           'void main() { v = c; gl_Position = m * vec4(p, 1.0); }';
+  var FS = 'precision mediump float; varying vec3 v;' +
+           'void main() { gl_FragColor = vec4(v, 1.0); }';
+  function shader(gl, type, source) {
+    var s = gl.createShader(type);
+    gl.shaderSource(s, source); gl.compileShader(s);
+    if (!gl.getShaderParameter(s, gl.COMPILE_STATUS)) throw new Error(gl.getShaderInfoLog(s));
+    return s;
+  }
+  function start(figure) {
+    var canvas = figure.querySelector('canvas'), still = figure.querySelector('img');
+    var tools = figure.querySelector('.simscene-tools');
+    var scene = JSON.parse(figure.querySelector('script[type="application/json"]').textContent);
+    var gl = canvas.getContext('webgl', { antialias: true }) || canvas.getContext('experimental-webgl', { antialias: true });
+    if (!gl) throw new Error('no WebGL');
+    var data = build(scene), cam = startCamera(scene), home = startCamera(scene), queued = false;
+
+    var prog = gl.createProgram();
+    gl.attachShader(prog, shader(gl, gl.VERTEX_SHADER, VS));
+    gl.attachShader(prog, shader(gl, gl.FRAGMENT_SHADER, FS));
+    gl.linkProgram(prog);
+    if (!gl.getProgramParameter(prog, gl.LINK_STATUS)) throw new Error(gl.getProgramInfoLog(prog));
+    gl.useProgram(prog);
+    function attribute(name, array, size, type, normalised) {
+      var loc = gl.getAttribLocation(prog, name);
+      gl.bindBuffer(gl.ARRAY_BUFFER, gl.createBuffer());
+      gl.bufferData(gl.ARRAY_BUFFER, array, gl.STATIC_DRAW);
+      gl.enableVertexAttribArray(loc);
+      gl.vertexAttribPointer(loc, size, type, normalised, 0, 0);
+    }
+    attribute('p', data.pos, 3, gl.FLOAT, false);
+    attribute('c', data.col, 3, gl.UNSIGNED_BYTE, true);
+    var uM = gl.getUniformLocation(prog, 'm');
+    gl.enable(gl.DEPTH_TEST);
+    gl.clearColor(scene.bg[0] / 255, scene.bg[1] / 255, scene.bg[2] / 255, 1);
+
+    function draw() {
+      queued = false;
+      var ratio = Math.min(window.devicePixelRatio || 1, 2);
+      var w = Math.max(1, Math.round(canvas.clientWidth * ratio)), h = Math.max(1, Math.round(canvas.clientHeight * ratio));
+      if (canvas.width !== w || canvas.height !== h) { canvas.width = w; canvas.height = h; }
+      gl.viewport(0, 0, w, h);
+      gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
+      gl.uniformMatrix4fv(uM, false, matrix(cam, w / h));
+      gl.drawArrays(gl.TRIANGLES, 0, data.count);
+    }
+    function redraw() { if (!queued) { queued = true; window.requestAnimationFrame(draw); } }
+    function zoom(factor) {
+      cam.dist = Math.min(home.dist * 6, Math.max(home.dist * 0.15, cam.dist * factor)); redraw();
+    }
+    function reset() { cam = startCamera(scene); redraw(); }
+
+    // drag turns, Shift-drag (or the right button) moves; touch turns sideways only
+    var last = null, active = false;
+    canvas.addEventListener('pointerdown', function (e) {
+      last = { x: e.clientX, y: e.clientY, move: e.shiftKey || e.button === 2 };
+      active = true; figure.classList.add('active');
+      if (canvas.setPointerCapture) canvas.setPointerCapture(e.pointerId);
+    });
+    canvas.addEventListener('pointermove', function (e) {
+      if (!last) return;
+      var dx = e.clientX - last.x, dy = e.clientY - last.y;
+      last.x = e.clientX; last.y = e.clientY;
+      if (last.move) {
+        var x = axes(cam), k = 2 * cam.dist * Math.tan(cam.fov * Math.PI / 360) / canvas.clientHeight;
+        for (var a = 0; a < 3; a++) cam.target[a] += (-dx * x.r[a] + dy * x.u[a]) * k;
+      } else {
+        cam.az -= dx * 0.008;
+        if (e.pointerType !== 'touch') cam.el = Math.min(1.55, Math.max(-1.55, cam.el + dy * 0.008));
+      }
+      redraw();
+    });
+    function release() { last = null; }
+    canvas.addEventListener('pointerup', release);
+    canvas.addEventListener('pointercancel', release);
+    canvas.addEventListener('pointerleave', function () { if (!last) { active = false; figure.classList.remove('active'); } });
+    canvas.addEventListener('contextmenu', function (e) { e.preventDefault(); });
+    canvas.addEventListener('dblclick', reset);
+    canvas.addEventListener('wheel', function (e) {     // only after a click, so the page still scrolls
+      if (!active && !e.ctrlKey && !e.metaKey) return;
+      e.preventDefault(); zoom(Math.exp(e.deltaY * 0.0015));
+    }, { passive: false });
+    canvas.addEventListener('keydown', function (e) {     // arrows turn, + and - zoom, 0 resets
+      var k = e.key, used = true;
+      if (k === 'ArrowLeft') cam.az += 0.1; else if (k === 'ArrowRight') cam.az -= 0.1;
+      else if (k === 'ArrowUp') cam.el = Math.min(1.55, cam.el + 0.1); else if (k === 'ArrowDown') cam.el = Math.max(-1.55, cam.el - 0.1);
+      else if (k === '+' || k === '=') zoom(0.8); else if (k === '-') zoom(1.25); else if (k === '0') reset(); else used = false;
+      if (used) { e.preventDefault(); redraw(); }
+    });
+    tools.addEventListener('click', function (e) {
+      var act = e.target.getAttribute('data-act');
+      if (act === 'in') zoom(0.8); else if (act === 'out') zoom(1.25); else if (act === 'reset') reset();
+    });
+    if (window.ResizeObserver) new window.ResizeObserver(redraw).observe(canvas); else window.addEventListener('resize', redraw);
+
+    still.hidden = true; canvas.hidden = false; tools.hidden = false;
+    figure.classList.add('live');
+    draw();
+  }
+
+  function boot() {
+    var figures = document.querySelectorAll('figure.simscene');
+    function open(figure) {
+      if (figure.getAttribute('data-started')) return;
+      figure.setAttribute('data-started', '1');
+      try { start(figure); } catch (err) {                // keep the still picture
+        var c = figure.querySelector('canvas'), s = figure.querySelector('img'), t = figure.querySelector('.simscene-tools');
+        if (c) c.hidden = true; if (t) t.hidden = true; if (s) s.hidden = false;
+        figure.classList.remove('live');
+        if (window.console) window.console.warn('scene viewer: ' + err.message);
+      }
+    }
+    if (window.IntersectionObserver) {                    // start a scene when it scrolls into view
+      var watch = new window.IntersectionObserver(function (entries) {
+        entries.forEach(function (en) { if (en.isIntersecting) { watch.unobserve(en.target); open(en.target); } });
+      }, { rootMargin: '300px' });
+      Array.prototype.forEach.call(figures, function (f) { watch.observe(f); });
+    } else Array.prototype.forEach.call(figures, open);
+  }
+
+  window.simsceneBoot = boot;
+})();
+</script><script>window.simsceneBoot();</script></div></div>
+</div>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p></p></th>
+<th class="head"><p>Value</p></th>
+<th class="head"><p>Where it comes from</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Start</strong></p></td>
+<td><p>centre at <span class="math notranslate nohighlight">\(z_0 = 1\)</span> m</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">START</span></code> in <code class="docutils literal notranslate"><span class="pre">labs/scene.py</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>End</strong></p></td>
+<td><p>centre at <span class="math notranslate nohighlight">\(s/2 = 0.15\)</span> m</p></td>
+<td><p>half the edge <span class="math notranslate nohighlight">\(s = 0.3\)</span> m above the ground</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Time step</strong></p></td>
+<td><p><span class="math notranslate nohighlight">\(\Delta t = 1/60\)</span> s</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">SimulationManager.set_physics_dt(DT)</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Duration</strong></p></td>
+<td><p>120 steps, 2 s</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">STEPS</span></code> in the script</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<aside>
+<p><strong>What to notice.</strong> Four lines declared a body and two colliders. They would work unchanged for a tumbling cube, a stack of cubes or a robot. Without a physics engine the same step means writing the integrator and the ground test yourself, and writing them again for every new shape.</p>
+</aside></section>
+<section id="step-6-check-the-fall-against-the-formula">
+<h3>Step 6: Check the Fall Against the Formula<a class="headerlink" href="#step-6-check-the-fall-against-the-formula" title="Link to this heading">#</a></h3>
+<p>Without air, a cube with edge <span class="math notranslate nohighlight">\(s\)</span> that is dropped from height <span class="math notranslate nohighlight">\(z_0\)</span> falls freely until its centre is half an edge above the ground:</p>
+<div class="math notranslate nohighlight">
+\[
+z(t) = \max\!\Bigl(z_0 - \tfrac{1}{2}\,g\,t^2,\ \tfrac{s}{2}\Bigr),
+\qquad
+t_{\text{impact}} = \sqrt{\frac{2\,(z_0 - s/2)}{g}}
+\]</div>
+<p>With <span class="math notranslate nohighlight">\(z_0 = 1\)</span> m, <span class="math notranslate nohighlight">\(s = 0.3\)</span> m and <span class="math notranslate nohighlight">\(g = 9.81\ \text{m/s}^2\)</span> the impact time is <span class="math notranslate nohighlight">\(t_{\text{impact}} = 0.4163\)</span> s.</p>
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># HIDE/SHOW</span>
+<span class="n">show</span><span class="p">(</span><span class="n">FallChart</span><span class="p">())</span>                  <span class="c1"># the formula, and a plain loop that steps in time (vc.drop in labs/vizcore.py)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="../../_images/cf480f34bcab49856aae2291bee7345740a37350f4b2bd06496843540e884787.svg" src="../../_images/cf480f34bcab49856aae2291bee7345740a37350f4b2bd06496843540e884787.svg" />
+</div>
+</div>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p></p></th>
+<th class="head"><p>Curve</p></th>
+<th class="head"><p>Height of the centre while falling</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Formula</strong></p></td>
+<td><p>dashed</p></td>
+<td><p><span class="math notranslate nohighlight">\(z_0 - \tfrac{1}{2}\,g\,t^2\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Loop, 60 steps per second</strong></p></td>
+<td><p>blue</p></td>
+<td><p>below the formula by <span class="math notranslate nohighlight">\(\tfrac{1}{2}\,g\,t\,\Delta t\)</span> with <span class="math notranslate nohighlight">\(\Delta t = 1/60\)</span> s, about 3 cm just before impact</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Loop, 15 steps per second</strong></p></td>
+<td><p>red</p></td>
+<td><p>the same gap with <span class="math notranslate nohighlight">\(\Delta t = 1/15\)</span> s, four times as large</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>The two loops in the chart are a stand-in written in NumPy, not Isaac Sim’s physics engine. They show what a first-order integrator does. The steps below find out what your simulation did.</p>
+<ol class="arabic">
+<li><p>Read the check. It is plain NumPy and does not start the simulator.</p>
+ <details>
+ <summary>Listing: labs/s6_check_fall.py, the comparison</summary>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">exact</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">maximum</span><span class="p">(</span><span class="n">Z0</span> <span class="o">-</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">G</span> <span class="o">*</span> <span class="n">t</span><span class="o">**</span><span class="mi">2</span><span class="p">,</span> <span class="n">HALF</span><span class="p">)</span>
+<span class="n">t_exact</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="p">(</span><span class="n">Z0</span> <span class="o">-</span> <span class="n">HALF</span><span class="p">)</span> <span class="o">/</span> <span class="n">G</span><span class="p">)</span>
+<span class="n">landed</span> <span class="o">=</span> <span class="n">t</span><span class="p">[</span><span class="n">z</span> <span class="o">&lt;=</span> <span class="n">HALF</span> <span class="o">+</span> <span class="mf">1e-3</span><span class="p">]</span>             <span class="c1"># within 1 mm of rest</span>
+<span class="n">falling</span> <span class="o">=</span> <span class="n">t</span> <span class="o">&lt;</span> <span class="n">t_exact</span> <span class="o">-</span> <span class="mf">0.02</span>             <span class="c1"># samples before impact</span>
+<span class="n">dts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+</pre></div>
+</div>
+ </details>
+</li>
+<li><p>Run it.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Spark (isaac)</span>
+python<span class="w"> </span>labs/s6_check_fall.py
+</pre></div>
+</div>
+<p>It prints six lines: the number of samples; the mean, smallest and largest time step in the file; the impact time from the formula, which is 0.4163 s; the impact time in your simulation; the largest gap between simulation and formula while the cube is still falling; and the rest height.</p>
+</li>
+<li><p>Answer these from your own output.</p>
+<ul class="simple">
+<li><p>Is the mean time step exactly <span class="math notranslate nohighlight">\(\Delta t = 1/60\)</span> s? Are the smallest and the largest the same?</p></li>
+<li><p>Is the largest gap closer to a millimetre or to several centimetres? Compare it with the blue curve of the chart. What does your number suggest about the engine’s integrator?</p></li>
+<li><p>Does the cube come to rest at exactly 0.150 m? What could account for a small difference?</p></li>
+</ul>
+</li>
+</ol>
+</section>
+<section id="step-7-look-inside-the-stage">
+<h3>Step 7: Look Inside the Stage<a class="headerlink" href="#step-7-look-inside-the-stage" title="Link to this heading">#</a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Spark (isaac)</span>
+python<span class="w"> </span>labs/s7_inspect.py
+</pre></div>
+</div>
+<p>The script opens <code class="docutils literal notranslate"><span class="pre">out/hello_cube.usda</span></code> and prints, in this order:</p>
+<ol class="arabic simple">
+<li><p>the prim tree;</p></li>
+<li><p>the type of <code class="docutils literal notranslate"><span class="pre">/World/Look/cube</span></code>, which is <code class="docutils literal notranslate"><span class="pre">Mesh</span></code>;</p></li>
+<li><p>the schemas applied to the cube before any physics;</p></li>
+<li><p>every attribute on the cube: <code class="docutils literal notranslate"><span class="pre">points</span></code>, <code class="docutils literal notranslate"><span class="pre">faceVertexCounts</span></code>, <code class="docutils literal notranslate"><span class="pre">faceVertexIndices</span></code>, the display colour, the transform that places it;</p></li>
+<li><p>the schemas applied after <code class="docutils literal notranslate"><span class="pre">RigidPrim(...)</span></code> and <code class="docutils literal notranslate"><span class="pre">GeomPrim(...,</span> <span class="pre">apply_collision_apis=True)</span></code>: the list has grown by rigid-body and collision schemas;</p></li>
+<li><p>whether any attribute now mentions physics: <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p></li>
+</ol>
+<details>
+<summary>Listing: labs/s7_inspect.py, where physics is added</summary>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Physics is extra data attached to the same prim.</span>
+<span class="n">RigidPrim</span><span class="p">(</span><span class="s2">"/World/Look/cube"</span><span class="p">)</span>
+<span class="n">GeomPrim</span><span class="p">(</span><span class="s2">"/World/Look/cube"</span><span class="p">,</span> <span class="n">apply_collision_apis</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"applied schemas after: "</span><span class="p">,</span> <span class="nb">list</span><span class="p">(</span><span class="n">cube</span><span class="o">.</span><span class="n">GetAppliedSchemas</span><span class="p">()))</span>
+</pre></div>
+</div>
+</details>
+<aside>
+<p><strong>What to notice.</strong> Physics is not a separate system with its own copy of the scene. It is more attributes on the same prim. That is what lets a physics engine, a renderer and a sensor model share one stage.</p>
+</aside></section>
+<section id="step-8-change-it-while-it-is-running">
+<h3>Step 8: Change It While It Is Running<a class="headerlink" href="#step-8-change-it-while-it-is-running" title="Link to this heading">#</a></h3>
+<ol class="arabic">
+<li><p>Change the scene: in <code class="docutils literal notranslate"><span class="pre">labs/scene.py</span></code> replace <code class="docutils literal notranslate"><span class="pre">look.GREEN_RGB</span></code> with <code class="docutils literal notranslate"><span class="pre">(0.86,</span> <span class="pre">0.08,</span> <span class="pre">0.24)</span></code>. Run Step 3 again, then stream the new file.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Spark (isaac)</span>
+python<span class="w"> </span>labs/s3_hello_cube.py
+python<span class="w"> </span>labs/s4_stream.py<span class="w"> </span>out/hello_cube.usda
+</pre></div>
+</div>
+</li>
+<li><p>Connect the client on the Mac. The cube is red.</p></li>
+<li><p>In the <strong>Stage</strong> panel on the right, open <code class="docutils literal notranslate"><span class="pre">World</span> <span class="pre">&gt;</span> <span class="pre">Look</span></code> and click <code class="docutils literal notranslate"><span class="pre">cube</span></code>.</p></li>
+<li><p>Press <strong>W</strong> and drag an arrow to move the cube. Press <strong>E</strong> to rotate it, <strong>R</strong> to scale it.</p></li>
+<li><p>In the <strong>Property</strong> panel, click <strong>Add &gt; Physics &gt; Rigid Body with Colliders Preset</strong>. Do the same for <code class="docutils literal notranslate"><span class="pre">ground</span></code>, choosing <strong>Colliders Preset</strong>.</p></li>
+<li><p>Press <strong>Play</strong> on the left toolbar. The cube falls from where you put it. Press <strong>Stop</strong> and it returns to where you left it.</p></li>
+<li><p>Put <code class="docutils literal notranslate"><span class="pre">look.GREEN_RGB</span></code> back in <code class="docutils literal notranslate"><span class="pre">labs/scene.py</span></code>.</p></li>
+</ol>
+<p>The scene after the first of these steps:</p>
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># HIDE/SHOW</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">RedCube</span><span class="p">(</span><span class="n">HelloCube</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""The cube after the change of Step 8"""</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">shapes</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">ground</span><span class="p">,</span> <span class="n">_cube</span> <span class="o">=</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">shapes</span><span class="p">()</span>
+        <span class="k">return</span> <span class="p">[</span><span class="n">ground</span><span class="p">,</span> <span class="n">look</span><span class="o">.</span><span class="n">box</span><span class="p">(</span><span class="s2">"cube"</span><span class="p">,</span> <span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">height</span><span class="p">),</span> <span class="mf">0.3</span><span class="p">,</span> <span class="p">(</span><span class="mf">0.86</span><span class="p">,</span> <span class="mf">0.08</span><span class="p">,</span> <span class="mf">0.24</span><span class="p">))]</span>
+
+
+<span class="n">show</span><span class="p">(</span><span class="n">RedCube</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output text_html"><figure class="simscene"><style>.simscene{margin:0 0 .5em}.simscene-stage{position:relative;border:1px solid #d9d9d9;border-radius:8px;overflow:hidden;background:#fff}.simscene-stage::before{content:"";display:block;padding-top:56.25%}.simscene-stage img,.simscene-stage canvas{position:absolute;left:0;top:0;display:block;width:100%;height:100%;margin:0;border:0;border-radius:0;max-width:none}.simscene-stage canvas{cursor:grab;touch-action:pan-y}.simscene-stage canvas:active{cursor:grabbing}.simscene [hidden]{display:none !important}.simscene.active .simscene-stage{border-color:#76B900;box-shadow:0 0 0 2px #76B900}.simscene-tools{position:absolute;top:10px;right:10px;display:flex;gap:6px}.simscene-tools button{font:13px/1 sans-serif;min-width:34px;padding:8px 10px;border:1px solid #d9d9d9;border-radius:6px;background:rgba(255,255,255,.92);color:#1a1a1a;cursor:pointer}</style><div class="simscene-stage"><img alt="The cube after the change of Step 8" src="data:image/png;base64,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"><canvas hidden tabindex="0" role="img" aria-label="The cube after the change of Step 8. Drag to turn it, arrow keys also turn it, plus and minus zoom, 0 resets."></canvas><div class="simscene-tools" hidden><button type="button" data-act="in" aria-label="Zoom in">+</button><button type="button" data-act="out" aria-label="Zoom out">&minus;</button><button type="button" data-act="reset">Reset view</button></div></div><script type="application/json">{"name":"RedCube","eye":[2.2,-2.7,1.9],"target":[0.0,0.0,0.5],"fov":45.0,"lo":[-1.5,-1.5,0.0],"size":3.0,"bg":[255,255,255],"meshes":[{"name":"ground","per":"face","ntri":2,"wide":false,"pos":"AAAAAAAA//8AAAAA/////wAAAAD//wAA","idx":"AAABAAIAAAACAAMA","col":"sbGxsbGx"},{"name":"cube","per":"face","ntri":12,"wide":false,"pos":"M3Mzc4hIM3MzcyJiM3PMjIhIM3PMjCJizIwzc4hIzIwzcyJizIzMjIhIzIzMjCJi","idx":"AAABAAMAAAADAAIABAAGAAcABAAHAAUAAAAEAAUAAAAFAAEAAgADAAcAAgAHAAYAAAACAAYAAAAGAAQAAQAFAAcAAQAHAAMA","col":"YwkcYwkcjQ0njQ0npQ8upQ8uYwkcYwkcYwkcYwkcvhI1vhI1"}]}</script></figure><script>(function () {
+  'use strict';
+  if (window.simsceneBoot) return;                      // defined once per page, however many figures there are
+
+  // ---------- data: base64 -> typed arrays -> one flat list of coloured triangles
+  function bytes(b64) {
+    var s = atob(b64), n = s.length, u = new Uint8Array(n);
+    for (var i = 0; i < n; i++) u[i] = s.charCodeAt(i);
+    return u;
+  }
+  function build(scene) {
+    var total = 0, m, i;
+    for (i = 0; i < scene.meshes.length; i++) total += scene.meshes[i].ntri * 3;
+    var pos = new Float32Array(total * 3), col = new Uint8Array(total * 3), o = 0;
+    for (i = 0; i < scene.meshes.length; i++) {
+      m = scene.meshes[i];
+      var q = new Uint16Array(bytes(m.pos).buffer);
+      var raw = bytes(m.idx).buffer;
+      var idx = m.wide ? new Uint32Array(raw) : new Uint16Array(raw);
+      var c = bytes(m.col), face = m.per === 'face';
+      for (var t = 0; t < m.ntri; t++) {
+        for (var k = 0; k < 3; k++) {
+          var v = idx[t * 3 + k], from = face ? t : v;
+          for (var a = 0; a < 3; a++) {
+            pos[o * 3 + a] = scene.lo[a] + q[v * 3 + a] / 65535 * scene.size;
+            col[o * 3 + a] = c[from * 3 + a];
+          }
+          o++;
+        }
+      }
+    }
+    return { pos: pos, col: col, count: total };
+  }
+
+  // ---------- camera: Z is up, the eye orbits the target
+  function sub(a, b) { return [a[0] - b[0], a[1] - b[1], a[2] - b[2]]; }
+  function cross(a, b) { return [a[1] * b[2] - a[2] * b[1], a[2] * b[0] - a[0] * b[2], a[0] * b[1] - a[1] * b[0]]; }
+  function dot(a, b) { return a[0] * b[0] + a[1] * b[1] + a[2] * b[2]; }
+  function unit(a) { var l = Math.sqrt(dot(a, a)); return [a[0] / l, a[1] / l, a[2] / l]; }
+  function startCamera(scene) {
+    var d = sub(scene.eye, scene.target), dist = Math.sqrt(dot(d, d));
+    return { target: scene.target.slice(), dist: dist, az: Math.atan2(d[1], d[0]), el: Math.asin(d[2] / dist), fov: scene.fov, size: scene.size };
+  }
+  function eyeOf(cam) {
+    var ce = Math.cos(cam.el);
+    return [cam.target[0] + cam.dist * ce * Math.cos(cam.az), cam.target[1] + cam.dist * ce * Math.sin(cam.az), cam.target[2] + cam.dist * Math.sin(cam.el)];
+  }
+  function axes(cam) {                       // right, up, forward of the camera
+    var f = unit(sub(cam.target, eyeOf(cam))), r = unit(cross(f, [0, 0, 1])), u = cross(r, f);
+    return { r: r, u: u, f: f };
+  }
+  function matrix(cam, aspect) {             // projection * view, column-major
+    var e = eyeOf(cam), x = axes(cam), r = x.r, u = x.u, f = x.f;
+    var near = Math.max(0.01, cam.dist * 0.02), far = cam.dist + 3 * cam.size;
+    var t = 1 / Math.tan(cam.fov * Math.PI / 360);
+    var A = (far + near) / (near - far), B = 2 * far * near / (near - far);
+    var sx = t / aspect, sy = t;
+    return new Float32Array([
+      sx * r[0], sy * u[0], -A * f[0], f[0],
+      sx * r[1], sy * u[1], -A * f[1], f[1],
+      sx * r[2], sy * u[2], -A * f[2], f[2],
+      -sx * dot(r, e), -sy * dot(u, e), A * dot(f, e) + B, -dot(f, e)]);
+  }
+
+  // ---------- drawing
+  var VS = 'attribute vec3 p; attribute vec3 c; uniform mat4 m; varying vec3 v;' +
+           'void main() { v = c; gl_Position = m * vec4(p, 1.0); }';
+  var FS = 'precision mediump float; varying vec3 v;' +
+           'void main() { gl_FragColor = vec4(v, 1.0); }';
+  function shader(gl, type, source) {
+    var s = gl.createShader(type);
+    gl.shaderSource(s, source); gl.compileShader(s);
+    if (!gl.getShaderParameter(s, gl.COMPILE_STATUS)) throw new Error(gl.getShaderInfoLog(s));
+    return s;
+  }
+  function start(figure) {
+    var canvas = figure.querySelector('canvas'), still = figure.querySelector('img');
+    var tools = figure.querySelector('.simscene-tools');
+    var scene = JSON.parse(figure.querySelector('script[type="application/json"]').textContent);
+    var gl = canvas.getContext('webgl', { antialias: true }) || canvas.getContext('experimental-webgl', { antialias: true });
+    if (!gl) throw new Error('no WebGL');
+    var data = build(scene), cam = startCamera(scene), home = startCamera(scene), queued = false;
+
+    var prog = gl.createProgram();
+    gl.attachShader(prog, shader(gl, gl.VERTEX_SHADER, VS));
+    gl.attachShader(prog, shader(gl, gl.FRAGMENT_SHADER, FS));
+    gl.linkProgram(prog);
+    if (!gl.getProgramParameter(prog, gl.LINK_STATUS)) throw new Error(gl.getProgramInfoLog(prog));
+    gl.useProgram(prog);
+    function attribute(name, array, size, type, normalised) {
+      var loc = gl.getAttribLocation(prog, name);
+      gl.bindBuffer(gl.ARRAY_BUFFER, gl.createBuffer());
+      gl.bufferData(gl.ARRAY_BUFFER, array, gl.STATIC_DRAW);
+      gl.enableVertexAttribArray(loc);
+      gl.vertexAttribPointer(loc, size, type, normalised, 0, 0);
+    }
+    attribute('p', data.pos, 3, gl.FLOAT, false);
+    attribute('c', data.col, 3, gl.UNSIGNED_BYTE, true);
+    var uM = gl.getUniformLocation(prog, 'm');
+    gl.enable(gl.DEPTH_TEST);
+    gl.clearColor(scene.bg[0] / 255, scene.bg[1] / 255, scene.bg[2] / 255, 1);
+
+    function draw() {
+      queued = false;
+      var ratio = Math.min(window.devicePixelRatio || 1, 2);
+      var w = Math.max(1, Math.round(canvas.clientWidth * ratio)), h = Math.max(1, Math.round(canvas.clientHeight * ratio));
+      if (canvas.width !== w || canvas.height !== h) { canvas.width = w; canvas.height = h; }
+      gl.viewport(0, 0, w, h);
+      gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
+      gl.uniformMatrix4fv(uM, false, matrix(cam, w / h));
+      gl.drawArrays(gl.TRIANGLES, 0, data.count);
+    }
+    function redraw() { if (!queued) { queued = true; window.requestAnimationFrame(draw); } }
+    function zoom(factor) {
+      cam.dist = Math.min(home.dist * 6, Math.max(home.dist * 0.15, cam.dist * factor)); redraw();
+    }
+    function reset() { cam = startCamera(scene); redraw(); }
+
+    // drag turns, Shift-drag (or the right button) moves; touch turns sideways only
+    var last = null, active = false;
+    canvas.addEventListener('pointerdown', function (e) {
+      last = { x: e.clientX, y: e.clientY, move: e.shiftKey || e.button === 2 };
+      active = true; figure.classList.add('active');
+      if (canvas.setPointerCapture) canvas.setPointerCapture(e.pointerId);
+    });
+    canvas.addEventListener('pointermove', function (e) {
+      if (!last) return;
+      var dx = e.clientX - last.x, dy = e.clientY - last.y;
+      last.x = e.clientX; last.y = e.clientY;
+      if (last.move) {
+        var x = axes(cam), k = 2 * cam.dist * Math.tan(cam.fov * Math.PI / 360) / canvas.clientHeight;
+        for (var a = 0; a < 3; a++) cam.target[a] += (-dx * x.r[a] + dy * x.u[a]) * k;
+      } else {
+        cam.az -= dx * 0.008;
+        if (e.pointerType !== 'touch') cam.el = Math.min(1.55, Math.max(-1.55, cam.el + dy * 0.008));
+      }
+      redraw();
+    });
+    function release() { last = null; }
+    canvas.addEventListener('pointerup', release);
+    canvas.addEventListener('pointercancel', release);
+    canvas.addEventListener('pointerleave', function () { if (!last) { active = false; figure.classList.remove('active'); } });
+    canvas.addEventListener('contextmenu', function (e) { e.preventDefault(); });
+    canvas.addEventListener('dblclick', reset);
+    canvas.addEventListener('wheel', function (e) {     // only after a click, so the page still scrolls
+      if (!active && !e.ctrlKey && !e.metaKey) return;
+      e.preventDefault(); zoom(Math.exp(e.deltaY * 0.0015));
+    }, { passive: false });
+    canvas.addEventListener('keydown', function (e) {     // arrows turn, + and - zoom, 0 resets
+      var k = e.key, used = true;
+      if (k === 'ArrowLeft') cam.az += 0.1; else if (k === 'ArrowRight') cam.az -= 0.1;
+      else if (k === 'ArrowUp') cam.el = Math.min(1.55, cam.el + 0.1); else if (k === 'ArrowDown') cam.el = Math.max(-1.55, cam.el - 0.1);
+      else if (k === '+' || k === '=') zoom(0.8); else if (k === '-') zoom(1.25); else if (k === '0') reset(); else used = false;
+      if (used) { e.preventDefault(); redraw(); }
+    });
+    tools.addEventListener('click', function (e) {
+      var act = e.target.getAttribute('data-act');
+      if (act === 'in') zoom(0.8); else if (act === 'out') zoom(1.25); else if (act === 'reset') reset();
+    });
+    if (window.ResizeObserver) new window.ResizeObserver(redraw).observe(canvas); else window.addEventListener('resize', redraw);
+
+    still.hidden = true; canvas.hidden = false; tools.hidden = false;
+    figure.classList.add('live');
+    draw();
+  }
+
+  function boot() {
+    var figures = document.querySelectorAll('figure.simscene');
+    function open(figure) {
+      if (figure.getAttribute('data-started')) return;
+      figure.setAttribute('data-started', '1');
+      try { start(figure); } catch (err) {                // keep the still picture
+        var c = figure.querySelector('canvas'), s = figure.querySelector('img'), t = figure.querySelector('.simscene-tools');
+        if (c) c.hidden = true; if (t) t.hidden = true; if (s) s.hidden = false;
+        figure.classList.remove('live');
+        if (window.console) window.console.warn('scene viewer: ' + err.message);
+      }
+    }
+    if (window.IntersectionObserver) {                    // start a scene when it scrolls into view
+      var watch = new window.IntersectionObserver(function (entries) {
+        entries.forEach(function (en) { if (en.isIntersecting) { watch.unobserve(en.target); open(en.target); } });
+      }, { rootMargin: '300px' });
+      Array.prototype.forEach.call(figures, function (f) { watch.observe(f); });
+    } else Array.prototype.forEach.call(figures, open);
+  }
+
+  window.simsceneBoot = boot;
+})();
+</script><script>window.simsceneBoot();</script></div></div>
+</div>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p></p></th>
+<th class="head"><p>Before</p></th>
+<th class="head"><p>After</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Line in</strong> <code class="docutils literal notranslate"><span class="pre">labs/scene.py</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">look.GREEN_RGB</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">(0.86,</span> <span class="pre">0.08,</span> <span class="pre">0.24)</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Points and triangles</strong></p></td>
+<td><p>8 and 12</p></td>
+<td><p>unchanged</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Colour of each face</strong></p></td>
+<td><p>green, with its shading</p></td>
+<td><p>red, with the same shading</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<aside>
+<p><strong>What to notice.</strong> The scene is live. You edited a running simulator, and Stop restored the state from before Play.</p>
+</aside></section>
+<section id="step-9-shut-down-cleanly">
+<h3>Step 9: Shut Down Cleanly<a class="headerlink" href="#step-9-shut-down-cleanly" title="Link to this heading">#</a></h3>
+<p>In the streamed window choose <strong>File &gt; Exit</strong>, then close the client on the Mac. If the script is still running, press Ctrl-C in its terminal.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Spark</span>
+conda<span class="w"> </span>deactivate
+nvidia-smi<span class="w">        </span><span class="c1"># no python process should remain</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="what-you-just-saw">
+<h2>What You Just Saw<a class="headerlink" href="#what-you-just-saw" title="Link to this heading">#</a></h2>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p></p></th>
+<th class="head"><p>Answer for Isaac Sim</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Where is the picture drawn?</strong></p></td>
+<td><p>On the Spark’s GPU</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>What travels over the network?</strong></p></td>
+<td><p>Video, every frame; your input, back</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Does an SSH tunnel work?</strong></p></td>
+<td><p>No: the video is UDP</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>How many viewers?</strong></p></td>
+<td><p>One client per instance</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Who computes motion?</strong></p></td>
+<td><p>The physics engine</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>What is a scene?</strong></p></td>
+<td><p>A USD stage: prims and attributes</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>What does a cube know?</strong></p></td>
+<td><p>Its points and triangles, and after Step 5 its mass, velocity and collision shape</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Where does the scene come from?</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">labs/scene.py</span></code>, written to the stage by <code class="docutils literal notranslate"><span class="pre">labs/look.py</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><strong>What does it cost?</strong></p></td>
+<td><p>Your two numbers from Step 1</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Best for</strong></p></td>
+<td><p>Anything that moves, collides or is sensed</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="troubleshooting">
+<h2>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Link to this heading">#</a></h2>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p></p></th>
+<th class="head"><p>What to do</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">conda:</span> <span class="pre">command</span> <span class="pre">not</span> <span class="pre">found</span></code></p></td>
+<td><p>Run <code class="docutils literal notranslate"><span class="pre">exec</span> <span class="pre">bash</span></code> after <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">init</span> <span class="pre">bash</span></code>, or open a new terminal.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>pip cannot find</strong> <code class="docutils literal notranslate"><span class="pre">isaacsim</span></code></p></td>
+<td><p>Check that <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">--version</span></code> is 3.12 and that <code class="docutils literal notranslate"><span class="pre">--extra-index-url</span> <span class="pre">https://pypi.nvidia.com</span></code> is on the command.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Error mentioning</strong> <code class="docutils literal notranslate"><span class="pre">libgomp.so.1</span></code></p></td>
+<td><p>The <code class="docutils literal notranslate"><span class="pre">LD_PRELOAD</span></code> variable is missing. Repeat the <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">env</span> <span class="pre">config</span> <span class="pre">vars</span> <span class="pre">set</span></code> command from Step 1 and re-activate.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Error mentioning</strong> <code class="docutils literal notranslate"><span class="pre">CXXABI_1.3.15</span></code></p></td>
+<td><p>The C++ runtime is too old. Run <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">install</span> <span class="pre">-c</span> <span class="pre">conda-forge</span> <span class="pre">&quot;libstdcxx-ng&gt;=13&quot;</span></code> in the <code class="docutils literal notranslate"><span class="pre">isaac</span></code> environment.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Asked to accept a licence at every start</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OMNI_KIT_ACCEPT_EULA</span></code> is not set in this environment.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>A script stops at an import</strong></p></td>
+<td><p>Module names under <code class="docutils literal notranslate"><span class="pre">isaacsim.core.experimental</span></code> belong to Isaac Sim 6.x. Check that <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">show</span> <span class="pre">isaacsim</span></code> reports 6.2.0.0.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Client cannot connect</strong></p></td>
+<td><p>Check both ports with <code class="docutils literal notranslate"><span class="pre">ss</span></code> as in Step 4. A firewall must allow TCP 49100 <em>and</em> UDP 47998. Only one client can be connected at a time.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Client shows a black window</strong></p></td>
+<td><p>Isaac Sim is still loading. Wait a minute and reconnect.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>The picture is too bright or too dark</strong></p></td>
+<td><p>Change <code class="docutils literal notranslate"><span class="pre">DOME_INTENSITY</span></code> in <code class="docutils literal notranslate"><span class="pre">labs/look.py</span></code> and run the script again.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>The cube falls through the ground</strong></p></td>
+<td><p>The ground needs a collider too: check the line <code class="docutils literal notranslate"><span class="pre">GeomPrim(paths[&quot;ground&quot;],</span> <span class="pre">apply_collision_apis=True)</span></code> in <code class="docutils literal notranslate"><span class="pre">labs/s5_falling_cube.py</span></code>.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="checklist">
+<h2>Checklist<a class="headerlink" href="#checklist" title="Link to this heading">#</a></h2>
+<p>You are ready for the next page, Overview of Visualization, when you can tick every line.</p>
+<ul class="contains-task-list simple">
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">env</span> <span class="pre">list</span></code> on the Spark shows <code class="docutils literal notranslate"><span class="pre">isaac</span></code>, and <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">show</span> <span class="pre">isaacsim</span></code> reports 6.2.0.0.</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> <code class="docutils literal notranslate"><span class="pre">out/</span></code> contains <code class="docutils literal notranslate"><span class="pre">hello_cube.usda</span></code>, <code class="docutils literal notranslate"><span class="pre">hello_cube.png</span></code>, <code class="docutils literal notranslate"><span class="pre">falling_cube.usda</span></code> and <code class="docutils literal notranslate"><span class="pre">fall.csv</span></code>.</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> You have seen the Isaac Sim viewport on the Mac and made the cube fall with <strong>Play</strong>.</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> Your <code class="docutils literal notranslate"><span class="pre">hello_cube.png</span></code> shows the same view as the preview in Step 3.</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> You can say what <code class="docutils literal notranslate"><span class="pre">labs/s6_check_fall.py</span></code> reported for the impact time and the rest height.</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> You can say, in one sentence, where the pixels are drawn and what travels over the network.</p></li>
+</ul>
+</section>
+<section id="if-you-built-isaac-sim-from-source">
+<h2>If You Built Isaac Sim from Source<a class="headerlink" href="#if-you-built-isaac-sim-from-source" title="Link to this heading">#</a></h2>
+<p>NVIDIA’s DGX Spark playbook builds Isaac Sim from the GitHub repository instead of installing it with pip, and so does the page IsaacSim101. If your Spark was set up that way, everything above still applies with one change: run scripts with the build’s own Python instead of the <code class="docutils literal notranslate"><span class="pre">isaac</span></code> environment’s.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Spark</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">ISAACSIM_PATH</span><span class="o">=</span><span class="nv">$HOME</span>/IsaacSim/_build/linux-aarch64/release
+<span class="nb">export</span><span class="w"> </span><span class="nv">LD_PRELOAD</span><span class="o">=</span><span class="s2">"</span><span class="nv">$LD_PRELOAD</span><span class="s2">:/lib/aarch64-linux-gnu/libgomp.so.1"</span>
+<span class="nv">$ISAACSIM_PATH</span>/python.sh<span class="w"> </span>labs/s3_hello_cube.py
+</pre></div>
+</div>
+<p>The source build needs GCC/G++ 11, Git LFS and about 50 GB of disk; the playbook in Sources has the full steps. The Isaac Sim documentation also describes a browser-based viewer, deployed with Docker Compose on the Spark, as an alternative to the native streaming client.</p>
+</section>
+<section id="sources">
+<h2>Sources<a class="headerlink" href="#sources" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://docs.isaacsim.omniverse.nvidia.com/latest/installation/install_python.html">Isaac Sim: Python environment installation (pip, conda)</a></p></li>
+<li><p><a class="reference external" href="https://docs.isaacsim.omniverse.nvidia.com/latest/installation/requirements.html">Isaac Sim: requirements, including DGX Spark</a></p></li>
+<li><p><a class="reference external" href="https://docs.isaacsim.omniverse.nvidia.com/latest/installation/manual_livestream_clients.html">Isaac Sim: livestream clients</a></p></li>
+<li><p><a class="reference external" href="https://docs.isaacsim.omniverse.nvidia.com/latest/installation/download.html">Isaac Sim: download page (WebRTC Streaming Client)</a></p></li>
+<li><p><a class="reference external" href="https://docs.isaacsim.omniverse.nvidia.com/latest/introduction/quickstart_isaacsim.html">Isaac Sim: basic usage tutorial</a></p></li>
+<li><p><a class="reference external" href="https://docs.isaacsim.omniverse.nvidia.com/latest/common/licenses.html">Isaac Sim: licences</a></p></li>
+<li><p><a class="reference external" href="https://github.com/isaac-sim/IsaacSim">Isaac Sim standalone examples: getting_started.py and livestream.py</a></p></li>
+<li><p><a class="reference external" href="https://github.com/NVIDIA/dgx-spark-playbooks/blob/main/nvidia/isaac/README.md">NVIDIA DGX Spark playbook: Isaac Sim and Isaac Lab</a></p></li>
+<li><p><a class="reference external" href="https://github.com/conda-forge/miniforge">Miniforge</a></p></li>
+</ul>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./courses/sim"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="isaacsim101.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">IsaacSim101</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="chapter1.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Overview of Visualization</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item"><div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prerequisites">Prerequisites</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualization-in-python">Visualization in Python</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#utilizations">Utilizations</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-isaac-sim">What is Isaac Sim?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#before-you-start">Before You Start</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setup">Setup</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reach-the-spark-from-the-mac">Reach the Spark from the Mac</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#check-the-spark">Check the Spark</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#install-conda-on-the-spark">Install conda on the Spark</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#put-the-lab-files-on-the-spark">Put the Lab Files on the Spark</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-nine-steps">The Nine Steps</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-create-the-environment">Step 1: Create the Environment</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-check-that-it-works">Step 2: Check That It Works</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-put-a-cube-on-the-stage">Step 3: Put a Cube on the Stage</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-4-see-it-from-the-macbook">Step 4: See It from the MacBook</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-5-make-the-cube-fall">Step 5: Make the Cube Fall</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-6-check-the-fall-against-the-formula">Step 6: Check the Fall Against the Formula</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-7-look-inside-the-stage">Step 7: Look Inside the Stage</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-8-change-it-while-it-is-running">Step 8: Change It While It Is Running</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-9-shut-down-cleanly">Step 9: Shut Down Cleanly</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-you-just-saw">What You Just Saw</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#troubleshooting">Troubleshooting</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#checklist">Checklist</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#if-you-built-isaac-sim-from-source">If You Built Isaac Sim from Source</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sources">Sources</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Tran Minh Quan
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

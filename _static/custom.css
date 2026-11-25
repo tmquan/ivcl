@@ -72,3 +72,54 @@ p {
 /* the label column; the remaining columns share the rest equally */
 #signals-and-sequences table th:nth-child(1),
 #systems-and-transformations table th:nth-child(1) { width: 20%; }
+/* courses/sim (Isaac Sim on a DGX Spark, Overview of Visualization): tables and figures over
+   the text width, as on the DSP and FME pages; text in table cells set left. */
+#isaac-sim-on-a-dgx-spark table,
+#overview-of-visualization table {
+    display: table;
+    width: 100%;
+}
+#isaac-sim-on-a-dgx-spark td,
+#isaac-sim-on-a-dgx-spark th,
+#overview-of-visualization td,
+#overview-of-visualization th {
+    vertical-align: top;
+}
+#isaac-sim-on-a-dgx-spark td p,
+#isaac-sim-on-a-dgx-spark th p,
+#isaac-sim-on-a-dgx-spark li p,
+#overview-of-visualization td p,
+#overview-of-visualization th p,
+#overview-of-visualization li p {
+    text-align: left;
+}
+#isaac-sim-on-a-dgx-spark .cell_output,
+#overview-of-visualization .cell_output {
+    padding-left: 0;
+}
+#isaac-sim-on-a-dgx-spark .cell_output img,
+#overview-of-visualization .cell_output img {
+    width: 100%;
+}
+/* the label column */
+#isaac-sim-on-a-dgx-spark table th:nth-child(1),
+#overview-of-visualization table th:nth-child(1) { width: 20%; }
+/* callouts (<aside>) and folded listings (<details>), written as in Notion */
+#isaac-sim-on-a-dgx-spark aside,
+#overview-of-visualization aside {
+    margin: 1em 0;
+    padding: 0.9em 1.1em 0.1em;
+    border-radius: 6px;
+    background: rgba(118, 185, 0, 0.10);
+    border-left: 4px solid #76b900;
+}
+#isaac-sim-on-a-dgx-spark details:not(.admonition),
+#overview-of-visualization details:not(.admonition) {
+    margin: 0.6em 0 1em;
+}
+#isaac-sim-on-a-dgx-spark details:not(.admonition) > summary,
+#overview-of-visualization details:not(.admonition) > summary {
+    cursor: pointer;
+    font-weight: 600;
+    margin-bottom: 0.5em;
+}
