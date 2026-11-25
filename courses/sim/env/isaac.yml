@@ -1,0 +1,11 @@
+# Isaac Sim course. Needs the DGX Spark (aarch64 + NVIDIA GPU).
+#   conda env create -f env/isaac.yml
+# Isaac Sim itself is installed with pip in Step 1 (two commands),
+# so you can watch what gets downloaded.
+name: isaac
+channels:
+  - conda-forge
+dependencies:
+  - python=3.12          # Isaac Sim 6.2 requires Python 3.12
+  - pip
+  - libstdcxx-ng>=13     # Isaac Sim docs: conda needs CXXABI_1.3.15
