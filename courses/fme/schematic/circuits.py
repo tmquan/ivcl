@@ -102,10 +102,12 @@ def role_resistor(c):
 def role_capacitor(c):
     """Capacitor"""
     t1 = c.transistor('n', (0, 0), 'bg', side='right', rot=3, name=1)
-    c.w(t1.bg, (0, -40)); c.port((0, -40), 'V_p', 'r')
+    # the gate is the positive plate of the MOS capacitor.  The junctions of the npn are reverse biased, and so a
+    # capacitor, when the collector and emitter (n) are positive against the base (p): the names change sides
+    c.w(t1.bg, (0, -40)); c.port((0, -40), c.pick('V_n', 'V_p'), 'r')
     yb = t1.cd[1] + 20
     c.w(t1.cd, (t1.cd[0], yb), (t1.es[0], yb), t1.es); c.dot((0, yb))
-    c.w((0, yb), (0, yb + 40)); c.port((0, yb + 40), 'V_n', 'r')
+    c.w((0, yb), (0, yb + 40)); c.port((0, yb + 40), c.pick('V_p', 'V_n'), 'r')
 
 
 # ================================================================ one transistor: input and output impedances
@@ -221,7 +223,16 @@ def gain_follower(c):
 
 # ================================================================ helpers shared by several circuits
 def capacitor_to_ground(c, node):
-    """second transistor, connected as a capacitor from `node` to ground"""
+    """second transistor, connected as a capacitor from `node` to ground.  The node is positive.  A MOSFET has its
+    gate on the node.  An npn has its collector and emitter on the node and its base grounded, so that its
+    junctions are reverse biased; with the base on the node they would conduct and clamp the node."""
+    if c.pick(True, False):                                  # BJT: turned round, the base at the bottom
+        yt = node[1] + 54                                    # the node sits in the middle of its vertical run
+        t2 = c.transistor('n', (node[0], yt + 60), 'bg', side='right', rot=1, name=2)
+        c.w(t2.cd, (t2.cd[0], yt), (t2.es[0], yt), t2.es)
+        c.dot((node[0], yt)); c.w(node, (node[0], yt))
+        c.w(t2.bg, (node[0], yt + 90)); c.gnd((node[0], yt + 90))
+        return
     t2 = c.transistor('n', (node[0], node[1] + 40), 'bg', side='right', rot=3, name=2)
     c.w(node, t2.bg)
     yb = t2.cd[1] + 20
@@ -412,8 +423,8 @@ def buffer_stage(c):
     """Common-base stage | Common-gate stage"""
     (t1, t2), (j,) = c.chain([('n', 1), ('n', 2)], 0, 0)
     g = (0, t2.es[1] + 20); c.gnd(g); c.w(t2.es, g)
-    c.w(t1.bg, (t1.bg[0] - 30, t1.bg[1])); c.port((t1.bg[0] - 30, t1.bg[1]), 'V_bias2', 'l')
-    c.w(t2.bg, (t2.bg[0] - 30, t2.bg[1])); c.port((t2.bg[0] - 30, t2.bg[1]), 'V_bias1', 'l')
+    c.w(t1.bg, (t1.bg[0] - 30, t1.bg[1])); c.port((t1.bg[0] - 30, t1.bg[1]), 'V_bias1', 'l')
+    c.w(t2.bg, (t2.bg[0] - 30, t2.bg[1])); c.port((t2.bg[0] - 30, t2.bg[1]), 'V_bias2', 'l')
     xl = t1.bg[0] - 90
     c.dot(j); c.w(j, (xl, j[1])); c.port((xl, j[1]), 'I_in', 'l'); c.look((xl, j[1]), 'r', 'd', 'R_in')
     c.w(t1.cd, (0, -40)); c.port((0, -40), 'I_out', 'r')
