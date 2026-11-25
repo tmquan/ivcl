@@ -1,3 +1,30 @@
+/* Computer Modern everywhere: the text of every page is set in the typeface of LaTeX, like the
+   formulas (MathJax) and the figures.  The fonts are the Computer Modern Unicode fonts (SIL Open
+   Font License, see fonts/LICENSE.txt), served from _static/fonts. */
+@font-face { font-family: "Computer Modern Serif"; font-style: normal; font-weight: normal; font-display: swap; src: url("fonts/CMUSerif-Roman.woff2") format("woff2"); }
+@font-face { font-family: "Computer Modern Serif"; font-style: normal; font-weight: bold;   font-display: swap; src: url("fonts/CMUSerif-Bold.woff2") format("woff2"); }
+@font-face { font-family: "Computer Modern Serif"; font-style: italic; font-weight: normal; font-display: swap; src: url("fonts/CMUSerif-Italic.woff2") format("woff2"); }
+@font-face { font-family: "Computer Modern Serif"; font-style: italic; font-weight: bold;   font-display: swap; src: url("fonts/CMUSerif-BoldItalic.woff2") format("woff2"); }
+@font-face { font-family: "Computer Modern Typewriter"; font-style: normal; font-weight: normal; font-display: swap; src: url("fonts/CMUTypewriter-Regular.woff2") format("woff2"); }
+@font-face { font-family: "Computer Modern Typewriter"; font-style: normal; font-weight: bold;   font-display: swap; src: url("fonts/CMUTypewriter-Bold.woff2") format("woff2"); }
+@font-face { font-family: "Computer Modern Typewriter"; font-style: italic; font-weight: normal; font-display: swap; src: url("fonts/CMUTypewriter-Italic.woff2") format("woff2"); }
+@font-face { font-family: "Computer Modern Typewriter"; font-style: italic; font-weight: bold;   font-display: swap; src: url("fonts/CMUTypewriter-BoldItalic.woff2") format("woff2"); }
+
+html {
+    --cm-serif: "Computer Modern Serif", "New Computer Modern", "Latin Modern Roman", "CMU Serif", Georgia, serif;
+    --cm-mono: "Computer Modern Typewriter", "Latin Modern Mono", "CMU Typewriter Text", monospace;
+    --pst-font-family-base: var(--cm-serif);
+    --pst-font-family-heading: var(--cm-serif);
+    --pst-font-family-monospace: var(--cm-mono);
+}
+body, h1, h2, h3, h4, h5, h6, p, li, td, th, caption, figcaption, label, button, input, select,
+.navbar, .bd-sidebar, .bd-toc, .toc-entry, .prev-next-area, .admonition, summary, .headerlink {
+    font-family: var(--cm-serif);
+}
+code, kbd, pre, samp, tt, .highlight pre {
+    font-family: var(--cm-mono);
+}
+
 p {
     text-align: justify;
 }

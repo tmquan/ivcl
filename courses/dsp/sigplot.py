@@ -372,6 +372,7 @@ ZERO = '0.70'                  # the lines t = 0 and x = 0
 BLUE = 'b'                     # the signal, and its envelope at half strength
 GREY = '0.62'                  # the reference signal
 HIGHLIGHT = '#d62728'          # a selected point
+FONT = '"Computer Modern Serif", "New Computer Modern", "Latin Modern Roman", "CMU Serif", serif'   # of an interactive figure: the font of the page
 CURVE_W, STEM_W, DOT_R, AXIS_W = 1.7, 1.2, 2.5, 0.9
 
 
@@ -660,10 +661,9 @@ class InteractivePlot(Plot):
         """one Plotly trace; `value` is what the amplitude of a point is called when it is read"""
         import plotly.graph_objects as go
         var, value = self.time.variable, value or self.time.html(self.symbol)
-        plain = re.sub(r'<[^>]+>', '', value)
         self.figure.add_trace(go.Scatter(
             x=np.round(x, 6), y=np.round(y, 6), name=name, showlegend=False,
-            meta=dict(variable=var, value=plain),
+            meta=dict(variable=var, value=value),
             hovertemplate='<i>%s</i> = %%{x:.4g}<br>%s = %%{y:.4g}<extra>%s</extra>' % (var, value, name or role),
             **style), row=self.row, col=self.col)
 
@@ -799,9 +799,9 @@ class InteractiveSheet(Sheet):
         var p = event.points[0], m = p.data.meta;
         if (!m) { return; }
         pins.push({x: p.x, y: p.y, xref: p.data.xaxis || 'x', yref: p.data.yaxis || 'y',
-                   text: m.variable + ' = ' + num(p.x) + ',  ' + m.value + ' = ' + num(p.y),
+                   text: '<i>' + m.variable + '</i> = ' + num(p.x) + ',  ' + m.value + ' = ' + num(p.y),
                    showarrow: true, arrowhead: 0, arrowcolor: '#d62728', ax: 28, ay: -28,
-                   font: {color: '#d62728', size: 12}, bgcolor: 'rgba(255,255,255,0.9)',
+                   font: {color: '#d62728', size: 14, family: gd.layout.font.family}, bgcolor: 'rgba(255,255,255,0.9)',
                    bordercolor: '#d62728', borderpad: 3});
         Plotly.relayout(gd, {annotations: fixed.concat(pins)});
     });
@@ -824,17 +824,19 @@ class InteractiveSheet(Sheet):
         fig = make_subplots(rows=n, cols=len(self.axes), horizontal_spacing=0.11,
                             vertical_spacing=self.GAP / (height - self.TOP_H - self.BOTTOM_H) if n > 1 else 0,
                             column_titles=['<b>%s</b>' % time.head for time in self.axes])
+        fig.update_annotations(font=dict(family=FONT, size=19))      # the column heads
         for i, (signal, reference, symbol, _) in enumerate(self.rows, 1):
             for j, time in enumerate(self.axes, 1):
                 InteractivePlot(time, self.ylim, symbol, fig, i, j).show(signal, reference)
             lo, hi = fig.get_subplot(i, 1).yaxis.domain
             fig.add_annotation(xref='paper', yref='paper', x=0, y=(lo + hi) / 2, xanchor='left', yanchor='middle',
-                               xshift=-self.LEFT + 4, showarrow=False, align='left', font=dict(size=14),
+                               xshift=-self.LEFT + 4, showarrow=False, align='left', font=dict(size=17),
                                text='<br>'.join(self.markup(name) for name in dict.fromkeys(signal.names())))
         fig.update_layout(template='simple_white', height=round(height * self.zoom), autosize=True,
+                          font=dict(family=FONT, size=15, color='black'),
                           margin=dict(l=self.LEFT, r=24, t=self.TOP_H, b=self.BOTTOM_H),
                           clickmode='event+select', hovermode='closest', dragmode='zoom',
-                          hoverlabel=dict(bgcolor='white'), paper_bgcolor='white', plot_bgcolor='white')
+                          hoverlabel=dict(bgcolor='white', font=dict(family=FONT, size=15)), paper_bgcolor='white', plot_bgcolor='white')
         return fig
 
     def html(self):
