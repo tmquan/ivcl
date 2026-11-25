@@ -37,7 +37,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=6a604523" />
-    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=12990c72" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=21247f10" />
   
   <!-- So that users can add custom icons -->
   <script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
@@ -64,6 +64,7 @@
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'courses/fme/bank_other';</script>
+    <script src="../../_static/fme-fit.js?v=4f390d91"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="IsaacSim101" href="../sim/isaacsim101.html" />
@@ -421,8 +422,8 @@
                   
   <section class="tex2jax_ignore mathjax_ignore" id="bjt-and-mosfet-problem-bank-other-items">
 <h1>BJT and MOSFET Problem Bank: Other Items<a class="headerlink" href="#bjt-and-mosfet-problem-bank-other-items" title="Link to this heading">#</a></h1>
-<p>31 problems, each solved step by step. A problem is one table: the BJT problem on the left, a MOSFET problem of the same nature on the right, and under them the two answers side by side, line by line. Where one transistor has no partner problem, its column is empty. The natures and their solution patterns are introduced on <a class="reference internal" href="problems.html"><span class="std std-doc">BJT and MOSFET Problem Sets</span></a>.</p>
-<p>Inside a nature, the problems whose circuit we have drawn come under that drawing; the others describe their circuit in words. Every solution was solved a second time independently and compared, and every numeric result was recomputed by a program. The last row says how the result was checked.</p>
+<p>31 problems, each solved step by step. Every circuit has two tabs, BJT and MOSFET, with the problems of that transistor; choosing a tab changes every tab of the page. A problem is one table: the problem, what is given, the answer step by step, and the result. The natures and their solution patterns are introduced on <a class="reference internal" href="problems.html"><span class="std std-doc">BJT and MOSFET Problem Sets</span></a>, where a BJT answer and a MOSFET answer stand side by side, line by line; the problems worked through on that page are not repeated here.</p>
+<p>Inside a nature, the problems whose circuit we have drawn come under that drawing; the others describe their circuit in words. Every solution was solved a second time independently and compared, and every numeric result was recomputed by a program.</p>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>Nature</p></th>
@@ -464,58 +465,47 @@
 </div>
 <section id="other-circuits">
 <h2>Other Circuits<a class="headerlink" href="#other-circuits" title="Link to this heading">#</a></h2>
+<div class="sd-tab-set docutils">
+<input checked="checked" id="sd-tab-item-0" name="sd-tab-set-0" type="radio">
+<label aria-controls="sd-tab-item-0-content" class="sd-tab-label" data-sync-group="tab" data-sync-id="bjt" for="sd-tab-item-0">
+BJT</label><div class="sd-tab-content docutils" id="sd-tab-item-0-content">
 <p><strong>Problem 1</strong></p>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p></p></th>
 <th class="head"><p>BJT</p></th>
-<th class="head"><p>MOSFET</p></th>
 </tr>
 </thead>
 <tbody>
 <tr class="row-even"><td><p><strong>Problem</strong></p></td>
 <td><p>A voltage amplifier with a gain of 10 listens to a microphone and drives a speaker. The microphone is a source of <span class="math notranslate nohighlight">\(10\,\mathrm{mV}\)</span> peak-to-peak with a series resistance of <span class="math notranslate nohighlight">\(200\,\Omega\)</span>; the speaker is an <span class="math notranslate nohighlight">\(8\,\Omega\)</span> resistor. The amplifier has an input resistance <span class="math notranslate nohighlight">\(R_{in}\)</span> to ground and an output resistance <span class="math notranslate nohighlight">\(R_{amp}\)</span> in series with its ideal output voltage. (a) How much of the microphone signal appears across the amplifier input if <span class="math notranslate nohighlight">\(R_{in}=2\,\mathrm{k}\Omega\)</span> or <span class="math notranslate nohighlight">\(500\,\Omega\)</span>? (b) What fraction of the amplifier output voltage reaches the speaker if <span class="math notranslate nohighlight">\(R_{amp}=10\,\Omega\)</span> or <span class="math notranslate nohighlight">\(2\,\Omega\)</span>?</p></td>
-<td><p>–</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>Given</strong></p></td>
 <td><p><span class="math notranslate nohighlight">\(v_m=10\,\mathrm{mV_{pp}}\)</span>, <span class="math notranslate nohighlight">\(R_S=200\,\Omega\)</span>, <span class="math notranslate nohighlight">\(R_L=8\,\Omega\)</span>, <span class="math notranslate nohighlight">\(A_v=10\)</span>, <span class="math notranslate nohighlight">\(R_{in}=2\,\mathrm{k}\Omega\)</span> or <span class="math notranslate nohighlight">\(500\,\Omega\)</span>, <span class="math notranslate nohighlight">\(R_{amp}=10\,\Omega\)</span> or <span class="math notranslate nohighlight">\(2\,\Omega\)</span></p></td>
-<td><p>–</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>Answer 1</strong></p></td>
-<td><p><strong>Input interface.</strong> The microphone resistance <span class="math notranslate nohighlight">\(R_S\)</span> and the amplifier input resistance <span class="math notranslate nohighlight">\(R_{in}\)</span> form a voltage divider: <span class="math notranslate nohighlight">\(v_{in}=\dfrac{R_{in}}{R_{in}+R_S}\,v_m\)</span>.</p></td>
-<td><p>–</p></td>
+<tr class="row-even"><td><p><strong>Answer 1</strong></p></td>
+<td><p><strong>Input interface.</strong> The microphone resistance <span class="math notranslate nohighlight">\(R_S\)</span> and the amplifier input resistance <span class="math notranslate nohighlight">\(R_{in}\)</span> form a voltage divider: <span class="math notranslate nohighlight">\(v_{in}\)</span> <span class="math notranslate nohighlight">\(=\dfrac{R_{in}}{R_{in}+R_S}\,v_m\)</span>.</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>Answer 2</strong></p></td>
-<td><p><strong>(a) <span class="math notranslate nohighlight">\(R_{in}=2\,\mathrm{k}\Omega\)</span>.</strong> <span class="math notranslate nohighlight">\(v_{in}=\dfrac{2000}{2000+200}v_m=0.909\,v_m\)</span>, i.e. <span class="math notranslate nohighlight">\(9.09\,\mathrm{mV_{pp}}\)</span> of the <span class="math notranslate nohighlight">\(10\,\mathrm{mV_{pp}}\)</span>: a loss of only about 9 %.</p></td>
-<td><p>–</p></td>
+<tr class="row-odd"><td><p><strong>Answer 2</strong></p></td>
+<td><p><strong>(a) <span class="math notranslate nohighlight">\(R_{in}=2\,\mathrm{k}\Omega\)</span>.</strong> <span class="math notranslate nohighlight">\(v_{in}\)</span> <span class="math notranslate nohighlight">\(=\dfrac{2000}{2000+200}v_m\)</span> <span class="math notranslate nohighlight">\(=0.909\,v_m\)</span>, i.e. <span class="math notranslate nohighlight">\(9.09\,\mathrm{mV_{pp}}\)</span> of the <span class="math notranslate nohighlight">\(10\,\mathrm{mV_{pp}}\)</span>: a loss of only about 9 %.</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>Answer 3</strong></p></td>
-<td><p><strong>(a) <span class="math notranslate nohighlight">\(R_{in}=500\,\Omega\)</span>.</strong> <span class="math notranslate nohighlight">\(v_{in}=\dfrac{500}{500+200}v_m=0.714\,v_m\)</span>, i.e. <span class="math notranslate nohighlight">\(7.14\,\mathrm{mV_{pp}}\)</span>: nearly 30 % is lost. A large input resistance is desirable.</p></td>
-<td><p>–</p></td>
+<tr class="row-even"><td><p><strong>Answer 3</strong></p></td>
+<td><p><strong>(a) <span class="math notranslate nohighlight">\(R_{in}=500\,\Omega\)</span>.</strong> <span class="math notranslate nohighlight">\(v_{in}\)</span> <span class="math notranslate nohighlight">\(=\dfrac{500}{500+200}v_m\)</span> <span class="math notranslate nohighlight">\(=0.714\,v_m\)</span>, i.e. <span class="math notranslate nohighlight">\(7.14\,\mathrm{mV_{pp}}\)</span>: nearly 30 % is lost. A large input resistance is desirable.</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>Answer 4</strong></p></td>
-<td><p><strong>Output interface.</strong> The ideal amplifier output <span class="math notranslate nohighlight">\(v_{amp}\)</span> sits behind <span class="math notranslate nohighlight">\(R_{amp}\)</span> and drives the speaker <span class="math notranslate nohighlight">\(R_L\)</span>: <span class="math notranslate nohighlight">\(v_{out}=\dfrac{R_L}{R_L+R_{amp}}\,v_{amp}\)</span>.</p></td>
-<td><p>–</p></td>
+<tr class="row-odd"><td><p><strong>Answer 4</strong></p></td>
+<td><p><strong>Output interface.</strong> The ideal amplifier output <span class="math notranslate nohighlight">\(v_{amp}\)</span> sits behind <span class="math notranslate nohighlight">\(R_{amp}\)</span> and drives the speaker <span class="math notranslate nohighlight">\(R_L\)</span>: <span class="math notranslate nohighlight">\(v_{out}\)</span> <span class="math notranslate nohighlight">\(=\dfrac{R_L}{R_L+R_{amp}}\,v_{amp}\)</span>.</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>Answer 5</strong></p></td>
-<td><p><strong>(b) <span class="math notranslate nohighlight">\(R_{amp}=10\,\Omega\)</span>.</strong> <span class="math notranslate nohighlight">\(v_{out}=\dfrac{8}{8+10}v_{amp}=0.444\,v_{amp}\)</span>: more than half of the signal is lost.</p></td>
-<td><p>–</p></td>
+<tr class="row-even"><td><p><strong>Answer 5</strong></p></td>
+<td><p><strong>(b) <span class="math notranslate nohighlight">\(R_{amp}=10\,\Omega\)</span>.</strong> <span class="math notranslate nohighlight">\(v_{out}\)</span> <span class="math notranslate nohighlight">\(=\dfrac{8}{8+10}v_{amp}\)</span> <span class="math notranslate nohighlight">\(=0.444\,v_{amp}\)</span>: more than half of the signal is lost.</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>Answer 6</strong></p></td>
-<td><p><strong>(b) <span class="math notranslate nohighlight">\(R_{amp}=2\,\Omega\)</span>.</strong> <span class="math notranslate nohighlight">\(v_{out}=\dfrac{8}{8+2}v_{amp}=0.800\,v_{amp}\)</span>. A small output resistance is desirable.</p></td>
-<td><p>–</p></td>
+<tr class="row-odd"><td><p><strong>Answer 6</strong></p></td>
+<td><p><strong>(b) <span class="math notranslate nohighlight">\(R_{amp}=2\,\Omega\)</span>.</strong> <span class="math notranslate nohighlight">\(v_{out}\)</span> <span class="math notranslate nohighlight">\(=\dfrac{8}{8+2}v_{amp}\)</span> <span class="math notranslate nohighlight">\(=0.800\,v_{amp}\)</span>. A small output resistance is desirable.</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>Answer 7</strong></p></td>
-<td><p><strong>Numerical illustration.</strong> With an ideal input (<span class="math notranslate nohighlight">\(v_{amp}=10\times10\,\mathrm{mV_{pp}}=100\,\mathrm{mV_{pp}}\)</span>) the speaker would see <span class="math notranslate nohighlight">\(44.4\,\mathrm{mV_{pp}}\)</span> or <span class="math notranslate nohighlight">\(80.0\,\mathrm{mV_{pp}}\)</span> respectively.</p></td>
-<td><p>–</p></td>
+<tr class="row-even"><td><p><strong>Answer 7</strong></p></td>
+<td><p><strong>Numerical illustration.</strong> With an ideal input (<span class="math notranslate nohighlight">\(v_{amp}\)</span> <span class="math notranslate nohighlight">\(=10\times10\,\mathrm{mV_{pp}}\)</span> <span class="math notranslate nohighlight">\(=100\,\mathrm{mV_{pp}}\)</span>) the speaker would see <span class="math notranslate nohighlight">\(44.4\,\mathrm{mV_{pp}}\)</span> or <span class="math notranslate nohighlight">\(80.0\,\mathrm{mV_{pp}}\)</span> respectively.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>Result</strong></p></td>
 <td><p>(a) <span class="math notranslate nohighlight">\(0.909\,v_m\)</span> for <span class="math notranslate nohighlight">\(2\,\mathrm{k}\Omega\)</span>, <span class="math notranslate nohighlight">\(0.714\,v_m\)</span> for <span class="math notranslate nohighlight">\(500\,\Omega\)</span>; (b) <span class="math notranslate nohighlight">\(0.444\,v_{amp}\)</span> for <span class="math notranslate nohighlight">\(10\,\Omega\)</span>, <span class="math notranslate nohighlight">\(0.800\,v_{amp}\)</span> for <span class="math notranslate nohighlight">\(2\,\Omega\)</span></p></td>
-<td><p>–</p></td>
-</tr>
-<tr class="row-even"><td><p><strong>Check</strong></p></td>
-<td><p>Agrees with the published answer; solved twice.</p></td>
-<td><p>–</p></td>
 </tr>
 </tbody>
 </table>
@@ -525,49 +515,35 @@
 <thead>
 <tr class="row-odd"><th class="head"><p></p></th>
 <th class="head"><p>BJT</p></th>
-<th class="head"><p>MOSFET</p></th>
 </tr>
 </thead>
 <tbody>
 <tr class="row-even"><td><p><strong>Problem</strong></p></td>
 <td><p>A microphone signal is amplified by a single common-emitter stage (collector resistor <span class="math notranslate nohighlight">\(R_C\)</span>, collector current <span class="math notranslate nohighlight">\(I_C\)</span>) whose supply <span class="math notranslate nohighlight">\(V_{CC}\)</span> comes from a rectifier. The rectifier output is not perfectly constant but carries a ripple <span class="math notranslate nohighlight">\(v_r\)</span> at twice the line frequency. The loudspeaker plays a loud steady low-frequency hum. Explain where it comes from and how strongly the ripple reaches the output.</p></td>
-<td><p>–</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>Given</strong></p></td>
 <td><p><span class="math notranslate nohighlight">\(V_{CC}\)</span> with ripple <span class="math notranslate nohighlight">\(v_r\)</span> (frequency <span class="math notranslate nohighlight">\(2f_\mathrm{line}\)</span>); <span class="math notranslate nohighlight">\(V_{out}=V_{CC}-R_CI_C\)</span></p></td>
-<td><p>–</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>Answer 1</strong></p></td>
+<tr class="row-even"><td><p><strong>Answer 1</strong></p></td>
 <td><p><strong>Output voltage of the stage.</strong> The collector node sits at the supply minus the drop across the load: <span class="math notranslate nohighlight">\(V_{out}=V_{CC}-R_CI_C\)</span>.</p></td>
-<td><p>–</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>Answer 2</strong></p></td>
+<tr class="row-odd"><td><p><strong>Answer 2</strong></p></td>
 <td><p><strong>Bias current is set by the input.</strong> <span class="math notranslate nohighlight">\(I_C\)</span> is fixed by the base bias, not by <span class="math notranslate nohighlight">\(V_{CC}\)</span> (ignoring the Early effect), so a change of <span class="math notranslate nohighlight">\(V_{CC}\)</span> leaves <span class="math notranslate nohighlight">\(R_CI_C\)</span> unchanged.</p></td>
-<td><p>–</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>Answer 3</strong></p></td>
+<tr class="row-even"><td><p><strong>Answer 3</strong></p></td>
 <td><p><strong>Effect of the ripple.</strong> If <span class="math notranslate nohighlight">\(V_{CC}\)</span> moves by <span class="math notranslate nohighlight">\(v_r\)</span>, then <span class="math notranslate nohighlight">\(V_{out}\)</span> moves by <span class="math notranslate nohighlight">\(v_r\)</span> as well: <span class="math notranslate nohighlight">\(\Delta V_{out}/\Delta V_{CC}=1\)</span>. The output therefore follows the supply with unity gain.</p></td>
-<td><p>–</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>Answer 4</strong></p></td>
+<tr class="row-odd"><td><p><strong>Answer 4</strong></p></td>
 <td><p><strong>Two components at the output.</strong> <span class="math notranslate nohighlight">\(v_{out}=A_vv_{in}+v_r\)</span>: the amplified microphone signal plus the whole ripple.</p></td>
-<td><p>–</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>Answer 5</strong></p></td>
+<tr class="row-even"><td><p><strong>Answer 5</strong></p></td>
 <td><p><strong>Source of the hum.</strong> The ripple is a steady component at <span class="math notranslate nohighlight">\(2f_\mathrm{line}\)</span> (100 or 120 Hz), which the loudspeaker reproduces as hum. The cause is that <span class="math notranslate nohighlight">\(V_{out}\)</span> is measured against ground while <span class="math notranslate nohighlight">\(V_{CC}\)</span> is not constant; the output is not insensitive to the supply.</p></td>
-<td><p>–</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>Answer 6</strong></p></td>
+<tr class="row-odd"><td><p><strong>Answer 6</strong></p></td>
 <td><p><strong>.</strong> Measure the output between this node and a second node that carries the same ripple (a duplicate stage), so the ripple cancels in the difference: this is the idea of the differential amplifier.</p></td>
-<td><p>–</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>Result</strong></p></td>
 <td><p>Hum comes from supply ripple reaching <span class="math notranslate nohighlight">\(V_{out}\)</span> with gain <span class="math notranslate nohighlight">\(1\)</span>: <span class="math notranslate nohighlight">\(v_{out}=A_vv_{in}+v_r\)</span></p></td>
-<td><p>–</p></td>
-</tr>
-<tr class="row-odd"><td><p><strong>Check</strong></p></td>
-<td><p>Agrees with the published answer; solved twice.</p></td>
-<td><p>–</p></td>
 </tr>
 </tbody>
 </table>
@@ -577,41 +553,29 @@
 <thead>
 <tr class="row-odd"><th class="head"><p></p></th>
 <th class="head"><p>BJT</p></th>
-<th class="head"><p>MOSFET</p></th>
 </tr>
 </thead>
 <tbody>
 <tr class="row-even"><td><p><strong>Problem</strong></p></td>
 <td><p>A transformer with a center-tapped secondary delivers two signals <span class="math notranslate nohighlight">\(+v_{in}\)</span> and <span class="math notranslate nohighlight">\(-v_{in}\)</span> that are equal and opposite about the center tap. With the tap grounded their common-mode (average) level is 0 V. How must the transformer be connected so the two outputs have a common-mode level of <span class="math notranslate nohighlight">\(+2\,\mathrm{V}\)</span>?</p></td>
-<td><p>–</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>Given</strong></p></td>
 <td><p>Required common-mode level <span class="math notranslate nohighlight">\(V_{CM}=2\,\mathrm{V}\)</span></p></td>
-<td><p>–</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>Answer 1</strong></p></td>
+<tr class="row-even"><td><p><strong>Answer 1</strong></p></td>
 <td><p><strong>Common-mode level.</strong> The CM level of two outputs <span class="math notranslate nohighlight">\(V_1,V_2\)</span> that swing equally and oppositely is their dc average, which is the dc level of the center tap.</p></td>
-<td><p>–</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>Answer 2</strong></p></td>
+<tr class="row-odd"><td><p><strong>Answer 2</strong></p></td>
 <td><p><strong>Outputs with the tap grounded.</strong> <span class="math notranslate nohighlight">\(V_1=+v_{in}\)</span>, <span class="math notranslate nohighlight">\(V_2=-v_{in}\)</span>, so <span class="math notranslate nohighlight">\((V_1+V_2)/2=0\)</span>.</p></td>
-<td><p>–</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>Answer 3</strong></p></td>
+<tr class="row-even"><td><p><strong>Answer 3</strong></p></td>
 <td><p><strong>Raise the tap.</strong> The windings only fix the voltage of each end relative to the tap. Tying the center tap to <span class="math notranslate nohighlight">\(+2\,\mathrm{V}\)</span> shifts both ends by <span class="math notranslate nohighlight">\(2\,\mathrm{V}\)</span>: <span class="math notranslate nohighlight">\(V_1=2\,\mathrm{V}+v_{in}\)</span>, <span class="math notranslate nohighlight">\(V_2=2\,\mathrm{V}-v_{in}\)</span>.</p></td>
-<td><p>–</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>Answer 4</strong></p></td>
+<tr class="row-odd"><td><p><strong>Answer 4</strong></p></td>
 <td><p><strong>Check.</strong> Average <span class="math notranslate nohighlight">\(=2\,\mathrm{V}\)</span> and difference <span class="math notranslate nohighlight">\(V_1-V_2=2v_{in}\)</span> unchanged.</p></td>
-<td><p>–</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>Result</strong></p></td>
 <td><p>Connect the center tap to a <span class="math notranslate nohighlight">\(+2\,\mathrm{V}\)</span> source: <span class="math notranslate nohighlight">\(V_{CM}=2\,\mathrm{V}\)</span></p></td>
-<td><p>–</p></td>
-</tr>
-<tr class="row-odd"><td><p><strong>Check</strong></p></td>
-<td><p>Agrees with the published answer; solved twice.</p></td>
-<td><p>–</p></td>
 </tr>
 </tbody>
 </table>
@@ -621,45 +585,32 @@
 <thead>
 <tr class="row-odd"><th class="head"><p></p></th>
 <th class="head"><p>BJT</p></th>
-<th class="head"><p>MOSFET</p></th>
 </tr>
 </thead>
 <tbody>
 <tr class="row-even"><td><p><strong>Problem</strong></p></td>
 <td><p>An antenna is modelled by its Thevenin equivalent: a sinusoidal source <span class="math notranslate nohighlight">\(V_0\cos\omega t\)</span> in series with an output resistance <span class="math notranslate nohighlight">\(R_{out}\)</span>. A load resistor <span class="math notranslate nohighlight">\(R_L\)</span> is connected across it. Find the average power delivered to <span class="math notranslate nohighlight">\(R_L\)</span> and sketch it as a function of <span class="math notranslate nohighlight">\(R_L\)</span>.</p></td>
-<td><p>–</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>Given</strong></p></td>
 <td><p><span class="math notranslate nohighlight">\(v_s=V_0\cos\omega t\)</span>, source resistance <span class="math notranslate nohighlight">\(R_{out}\)</span>, load <span class="math notranslate nohighlight">\(R_L\)</span></p></td>
-<td><p>–</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>Answer 1</strong></p></td>
-<td><p><strong>Voltage divider.</strong> The load voltage is <span class="math notranslate nohighlight">\(v_L=\dfrac{R_L}{R_{out}+R_L}V_0\cos\omega t\)</span>.</p></td>
-<td><p>–</p></td>
+<tr class="row-even"><td><p><strong>Answer 1</strong></p></td>
+<td><p><strong>Voltage divider.</strong> The load voltage is <span class="math notranslate nohighlight">\(v_L\)</span> <span class="math notranslate nohighlight">\(=\dfrac{R_L}{R_{out}+R_L}V_0\cos\omega t\)</span>.</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>Answer 2</strong></p></td>
-<td><p><strong>Instantaneous power.</strong> <span class="math notranslate nohighlight">\(p(t)=\dfrac{v_L^2}{R_L}=\dfrac{R_LV_0^2}{(R_{out}+R_L)^2}\cos^2\omega t\)</span>.</p></td>
-<td><p>–</p></td>
+<tr class="row-odd"><td><p><strong>Answer 2</strong></p></td>
+<td><p><strong>Instantaneous power.</strong> <span class="math notranslate nohighlight">\(p(t)\)</span> <span class="math notranslate nohighlight">\(=\dfrac{v_L^2}{R_L}\)</span> <span class="math notranslate nohighlight">\(=\dfrac{R_LV_0^2}{(R_{out}+R_L)^2}\cos^2\omega t\)</span>.</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>Answer 3</strong></p></td>
-<td><p><strong>Average over a period.</strong> The mean of <span class="math notranslate nohighlight">\(\cos^2\omega t\)</span> is <span class="math notranslate nohighlight">\(1/2\)</span>, so <span class="math notranslate nohighlight">\(P_{av}=\dfrac{V_0^2R_L}{2(R_{out}+R_L)^2}\)</span>.</p></td>
-<td><p>–</p></td>
+<tr class="row-even"><td><p><strong>Answer 3</strong></p></td>
+<td><p><strong>Average over a period.</strong> The mean of <span class="math notranslate nohighlight">\(\cos^2\omega t\)</span> is <span class="math notranslate nohighlight">\(1/2\)</span>, so <span class="math notranslate nohighlight">\(P_{av}\)</span> <span class="math notranslate nohighlight">\(=\dfrac{V_0^2R_L}{2(R_{out}+R_L)^2}\)</span>.</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>Answer 4</strong></p></td>
-<td><p><strong>Maximum.</strong> <span class="math notranslate nohighlight">\(\dfrac{dP_{av}}{dR_L}\propto (R_{out}+R_L)-2R_L=0\)</span> gives <span class="math notranslate nohighlight">\(R_L=R_{out}\)</span> and <span class="math notranslate nohighlight">\(P_{max}=\dfrac{V_0^2}{8R_{out}}\)</span>.</p></td>
-<td><p>–</p></td>
+<tr class="row-odd"><td><p><strong>Answer 4</strong></p></td>
+<td><p><strong>Maximum.</strong> <span class="math notranslate nohighlight">\(\dfrac{dP_{av}}{dR_L}\propto (R_{out}+R_L)-2R_L\)</span> <span class="math notranslate nohighlight">\(=0\)</span> gives <span class="math notranslate nohighlight">\(R_L=R_{out}\)</span> and <span class="math notranslate nohighlight">\(P_{max}=\dfrac{V_0^2}{8R_{out}}\)</span>.</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>Answer 5</strong></p></td>
+<tr class="row-even"><td><p><strong>Answer 5</strong></p></td>
 <td><p><strong>Shape of the plot.</strong> <span class="math notranslate nohighlight">\(P_{av}=0\)</span> at <span class="math notranslate nohighlight">\(R_L=0\)</span>, rises linearly (<span class="math notranslate nohighlight">\(\approx V_0^2R_L/2R_{out}^2\)</span>) for <span class="math notranslate nohighlight">\(R_L\ll R_{out}\)</span>, peaks at <span class="math notranslate nohighlight">\(R_L=R_{out}\)</span>, then falls as <span class="math notranslate nohighlight">\(\approx V_0^2/2R_L\)</span> for <span class="math notranslate nohighlight">\(R_L\gg R_{out}\)</span>. It is symmetric on a logarithmic <span class="math notranslate nohighlight">\(R_L\)</span> axis: <span class="math notranslate nohighlight">\(P_{av}(R_L)=P_{av}(R_{out}^2/R_L)\)</span>.</p></td>
-<td><p>–</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>Result</strong></p></td>
-<td><p><span class="math notranslate nohighlight">\(P_{av}=\dfrac{V_0^2R_L}{2(R_{out}+R_L)^2}\)</span>, maximum <span class="math notranslate nohighlight">\(V_0^2/(8R_{out})\)</span> at <span class="math notranslate nohighlight">\(R_L=R_{out}\)</span></p></td>
-<td><p>–</p></td>
-</tr>
-<tr class="row-even"><td><p><strong>Check</strong></p></td>
-<td><p>Solved twice, with the same result; no answer is published.</p></td>
-<td><p>–</p></td>
+<td><p><span class="math notranslate nohighlight">\(P_{av}\)</span> <span class="math notranslate nohighlight">\(=\dfrac{V_0^2R_L}{2(R_{out}+R_L)^2}\)</span>, maximum <span class="math notranslate nohighlight">\(V_0^2/(8R_{out})\)</span> at <span class="math notranslate nohighlight">\(R_L=R_{out}\)</span></p></td>
 </tr>
 </tbody>
 </table>
@@ -669,49 +620,35 @@
 <thead>
 <tr class="row-odd"><th class="head"><p></p></th>
 <th class="head"><p>BJT</p></th>
-<th class="head"><p>MOSFET</p></th>
 </tr>
 </thead>
 <tbody>
 <tr class="row-even"><td><p><strong>Problem</strong></p></td>
 <td><p>Find the small-signal input resistance of three diode networks, all diodes forward-biased (each diode is a small-signal resistance <span class="math notranslate nohighlight">\(r_D=V_T/I_D\)</span>). (a) Input through diode <span class="math notranslate nohighlight">\(D_1\)</span>, then <span class="math notranslate nohighlight">\(R_1\)</span> to ground. (b) Input through <span class="math notranslate nohighlight">\(D_1\)</span> to a node X; from X, <span class="math notranslate nohighlight">\(R_1\)</span> to ground and diode <span class="math notranslate nohighlight">\(D_2\)</span> (anode at X) to ground. (c) Input through a diode to node X; between X and node Y, <span class="math notranslate nohighlight">\(R_1\)</span> in parallel with diode <span class="math notranslate nohighlight">\(D_2\)</span> (anode at X); from Y a second diode <span class="math notranslate nohighlight">\(D_1\)</span> (anode at Y) to ground.</p></td>
-<td><p>–</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>Given</strong></p></td>
 <td><p>Diodes forward-biased; <span class="math notranslate nohighlight">\(r_{D}=V_T/I_D\)</span></p></td>
-<td><p>–</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>Answer 1</strong></p></td>
+<tr class="row-even"><td><p><strong>Answer 1</strong></p></td>
 <td><p><strong>Diode model.</strong> Each forward-biased diode is replaced by <span class="math notranslate nohighlight">\(r_{Dj}=V_T/I_{Dj}\)</span>; a constant voltage source is not needed for small signals.</p></td>
-<td><p>–</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>Answer 2</strong></p></td>
+<tr class="row-odd"><td><p><strong>Answer 2</strong></p></td>
 <td><p><strong>(a) Series path.</strong> <span class="math notranslate nohighlight">\(R_{in}=r_{D1}+R_1\)</span>.</p></td>
-<td><p>–</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>Answer 3</strong></p></td>
-<td><p><strong>(b) Series then parallel.</strong> <span class="math notranslate nohighlight">\(R_{in}=r_{D1}+(R_1\parallel r_{D2})\)</span>.</p></td>
-<td><p>–</p></td>
+<tr class="row-even"><td><p><strong>Answer 3</strong></p></td>
+<td><p><strong>(b) Series then parallel.</strong> <span class="math notranslate nohighlight">\(R_{in}\)</span> <span class="math notranslate nohighlight">\(=r_{D1}+(R_1\parallel r_{D2})\)</span>.</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>Answer 4</strong></p></td>
+<tr class="row-odd"><td><p><strong>Answer 4</strong></p></td>
 <td><p><strong>(c) Same current in the two series diodes.</strong> The input diode and the diode to ground carry the same current, so both have <span class="math notranslate nohighlight">\(r_{D1}=V_T/I_{D1}\)</span>.</p></td>
-<td><p>–</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>Answer 5</strong></p></td>
-<td><p><strong>(c) Total.</strong> <span class="math notranslate nohighlight">\(R_{in}=2r_{D1}+(R_1\parallel r_{D2})\)</span>.</p></td>
-<td><p>–</p></td>
+<tr class="row-even"><td><p><strong>Answer 5</strong></p></td>
+<td><p><strong>(c) Total.</strong> <span class="math notranslate nohighlight">\(R_{in}\)</span> <span class="math notranslate nohighlight">\(=2r_{D1}+(R_1\parallel r_{D2})\)</span>.</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>Answer 6</strong></p></td>
+<tr class="row-odd"><td><p><strong>Answer 6</strong></p></td>
 <td><p><strong>Numerical check.</strong> With <span class="math notranslate nohighlight">\(I_{D1}=1\,\mathrm{mA}\)</span>, <span class="math notranslate nohighlight">\(I_{D2}=0.4\,\mathrm{mA}\)</span>, <span class="math notranslate nohighlight">\(R_1=100\,\Omega\)</span>: <span class="math notranslate nohighlight">\(r_{D1}=26\,\Omega\)</span>, <span class="math notranslate nohighlight">\(r_{D2}=65\,\Omega\)</span>, (c) gives <span class="math notranslate nohighlight">\(91.4\,\Omega\)</span> by formula and by nodal analysis.</p></td>
-<td><p>–</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>Result</strong></p></td>
 <td><p>(a) <span class="math notranslate nohighlight">\(r_{D1}+R_1\)</span>; (b) <span class="math notranslate nohighlight">\(r_{D1}+R_1\parallel r_{D2}\)</span>; (c) <span class="math notranslate nohighlight">\(2r_{D1}+R_1\parallel r_{D2}\)</span></p></td>
-<td><p>–</p></td>
-</tr>
-<tr class="row-odd"><td><p><strong>Check</strong></p></td>
-<td><p>Solved twice, with the same result; no answer is published.</p></td>
-<td><p>–</p></td>
 </tr>
 </tbody>
 </table>
@@ -721,45 +658,32 @@
 <thead>
 <tr class="row-odd"><th class="head"><p></p></th>
 <th class="head"><p>BJT</p></th>
-<th class="head"><p>MOSFET</p></th>
 </tr>
 </thead>
 <tbody>
 <tr class="row-even"><td><p><strong>Problem</strong></p></td>
 <td><p>An op amp has its non-inverting input grounded; a resistor <span class="math notranslate nohighlight">\(R_1\)</span> runs from <span class="math notranslate nohighlight">\(V_{REF}\)</span> to the inverting input; npn <span class="math notranslate nohighlight">\(Q_1\)</span> has its base grounded, its collector at the inverting input and its emitter at the op-amp output <span class="math notranslate nohighlight">\(V_1\)</span> (a logarithmic amplifier). <span class="math notranslate nohighlight">\(V_1\)</span> drives the base of npn <span class="math notranslate nohighlight">\(Q_2\)</span>, whose emitter sits at the negative terminal of a battery <span class="math notranslate nohighlight">\(V_B\)</span> (positive terminal grounded) and whose collector draws <span class="math notranslate nohighlight">\(I_X\)</span>. Explain what the circuit does.</p></td>
-<td><p>–</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>Given</strong></p></td>
 <td><p><span class="math notranslate nohighlight">\(I_{REF}=V_{REF}/R_1\)</span>, <span class="math notranslate nohighlight">\(Q_1\)</span>, <span class="math notranslate nohighlight">\(Q_2\)</span> with saturation currents <span class="math notranslate nohighlight">\(I_{S1}\)</span>, <span class="math notranslate nohighlight">\(I_{S2}\)</span>, battery <span class="math notranslate nohighlight">\(V_B\)</span></p></td>
-<td><p>–</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>Answer 1</strong></p></td>
-<td><p><strong>Log amplifier.</strong> The inverting input is a virtual ground, so <span class="math notranslate nohighlight">\(I_{REF}=V_{REF}/R_1\)</span> flows into the collector of <span class="math notranslate nohighlight">\(Q_1\)</span> (op-amp input current zero). With base at 0 and emitter at <span class="math notranslate nohighlight">\(V_1\)</span>: <span class="math notranslate nohighlight">\(V_{BE1}=-V_1=V_T\ln\dfrac{I_{REF}}{I_{S1}}\)</span>, so <span class="math notranslate nohighlight">\(V_1=-V_T\ln\dfrac{I_{REF}}{I_{S1}}\)</span>.</p></td>
-<td><p>–</p></td>
+<tr class="row-even"><td><p><strong>Answer 1</strong></p></td>
+<td><p><strong>Log amplifier.</strong> The inverting input is a virtual ground, so <span class="math notranslate nohighlight">\(I_{REF}=V_{REF}/R_1\)</span> flows into the collector of <span class="math notranslate nohighlight">\(Q_1\)</span> (op-amp input current zero). With base at 0 and emitter at <span class="math notranslate nohighlight">\(V_1\)</span>: <span class="math notranslate nohighlight">\(V_{BE1}\)</span> <span class="math notranslate nohighlight">\(=-V_1\)</span> <span class="math notranslate nohighlight">\(=V_T\ln\dfrac{I_{REF}}{I_{S1}}\)</span>, so <span class="math notranslate nohighlight">\(V_1=-V_T\ln\dfrac{I_{REF}}{I_{S1}}\)</span>.</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>Answer 2</strong></p></td>
-<td><p><strong>Base-emitter voltage of <span class="math notranslate nohighlight">\(Q_2\)</span>.</strong> <span class="math notranslate nohighlight">\(V_{BE2}=V_1-(-V_B)=V_B-V_T\ln\dfrac{I_{REF}}{I_{S1}}\)</span></p></td>
-<td><p>–</p></td>
+<tr class="row-odd"><td><p><strong>Answer 2</strong></p></td>
+<td><p><strong>Base-emitter voltage of <span class="math notranslate nohighlight">\(Q_2\)</span>.</strong> <span class="math notranslate nohighlight">\(V_{BE2}\)</span> <span class="math notranslate nohighlight">\(=V_1-(-V_B)\)</span> <span class="math notranslate nohighlight">\(=V_B-V_T\ln\dfrac{I_{REF}}{I_{S1}}\)</span></p></td>
 </tr>
-<tr class="row-even"><td><p><strong>Answer 3</strong></p></td>
-<td><p><strong>Output current.</strong> <span class="math notranslate nohighlight">\(I_X=I_{S2}\exp\dfrac{V_{BE2}}{V_T}=\dfrac{I_{S1}I_{S2}}{I_{REF}}\exp\dfrac{V_B}{V_T}\)</span></p></td>
-<td><p>–</p></td>
+<tr class="row-even"><td><p><strong>Answer 3</strong></p></td>
+<td><p><strong>Output current.</strong> <span class="math notranslate nohighlight">\(I_X\)</span> <span class="math notranslate nohighlight">\(=I_{S2}\exp\dfrac{V_{BE2}}{V_T}\)</span> <span class="math notranslate nohighlight">\(=\dfrac{I_{S1}I_{S2}}{I_{REF}}\exp\dfrac{V_B}{V_T}\)</span></p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>Answer 4</strong></p></td>
+<tr class="row-odd"><td><p><strong>Answer 4</strong></p></td>
 <td><p><strong>What happens.</strong> This is not a current copy. <span class="math notranslate nohighlight">\(I_X\)</span> is inversely proportional to <span class="math notranslate nohighlight">\(I_{REF}\)</span> and depends exponentially on the battery voltage and on <span class="math notranslate nohighlight">\(I_{S1}I_{S2}\)</span> (hence strongly on temperature). Without the battery <span class="math notranslate nohighlight">\(V_{BE2}=V_1&lt;0\)</span> and <span class="math notranslate nohighlight">\(Q_2\)</span> is off.</p></td>
-<td><p>–</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>Answer 5</strong></p></td>
+<tr class="row-even"><td><p><strong>Answer 5</strong></p></td>
 <td><p><strong>Numerical check.</strong> With <span class="math notranslate nohighlight">\(I_S=6\times10^{-17}\,\mathrm{A}\)</span>, <span class="math notranslate nohighlight">\(I_{REF}=0.1\,\mathrm{mA}\)</span>, <span class="math notranslate nohighlight">\(V_B=1.4\,\mathrm{V}\)</span>: <span class="math notranslate nohighlight">\(V_1=-0.732\,\mathrm{V}\)</span>, <span class="math notranslate nohighlight">\(V_{BE2}=0.668\,\mathrm{V}\)</span>, <span class="math notranslate nohighlight">\(I_X=8.74\,\mu\mathrm{A}\)</span>; doubling <span class="math notranslate nohighlight">\(I_{REF}\)</span> halves <span class="math notranslate nohighlight">\(I_X\)</span>.</p></td>
-<td><p>–</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>Result</strong></p></td>
-<td><p><span class="math notranslate nohighlight">\(I_X=\dfrac{I_{S1}I_{S2}}{I_{REF}}e^{V_B/V_T}\)</span>: inversely proportional to <span class="math notranslate nohighlight">\(I_{REF}\)</span>, set by the battery and temperature; not a mirror</p></td>
-<td><p>–</p></td>
-</tr>
-<tr class="row-even"><td><p><strong>Check</strong></p></td>
-<td><p>Solved twice, with the same result; no answer is published.</p></td>
-<td><p>–</p></td>
+<td><p><span class="math notranslate nohighlight">\(I_X\)</span> <span class="math notranslate nohighlight">\(=\dfrac{I_{S1}I_{S2}}{I_{REF}}e^{V_B/V_T}\)</span>: inversely proportional to <span class="math notranslate nohighlight">\(I_{REF}\)</span>, set by the battery and temperature; not a mirror</p></td>
 </tr>
 </tbody>
 </table>
@@ -769,45 +693,32 @@
 <thead>
 <tr class="row-odd"><th class="head"><p></p></th>
 <th class="head"><p>BJT</p></th>
-<th class="head"><p>MOSFET</p></th>
 </tr>
 </thead>
 <tbody>
 <tr class="row-even"><td><p><strong>Problem</strong></p></td>
 <td><p>With <span class="math notranslate nohighlight">\(I_1=I_0\cos\omega t+I_0\)</span> and <span class="math notranslate nohighlight">\(I_2=-I_0\cos\omega t+I_0\)</span>, sketch <span class="math notranslate nohighlight">\(V_X\)</span> and <span class="math notranslate nohighlight">\(V_Y\)</span> and give their peak-to-peak swings and common-mode level.</p></td>
-<td><p>–</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>Given</strong></p></td>
 <td><p><span class="math notranslate nohighlight">\(I_1=I_0\cos\omega t+I_0\)</span>, <span class="math notranslate nohighlight">\(I_2=-I_0\cos\omega t+I_0\)</span>, equal <span class="math notranslate nohighlight">\(R_C\)</span></p></td>
-<td><p>–</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>Answer 1</strong></p></td>
+<tr class="row-even"><td><p><strong>Answer 1</strong></p></td>
 <td><p><strong>Node X.</strong> All of <span class="math notranslate nohighlight">\(I_1\)</span> flows down through <span class="math notranslate nohighlight">\(R_C\)</span>: <span class="math notranslate nohighlight">\(V_X=R_CI_1=I_0R_C(1+\cos\omega t)\)</span>.</p></td>
-<td><p>–</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>Answer 2</strong></p></td>
+<tr class="row-odd"><td><p><strong>Answer 2</strong></p></td>
 <td><p><strong>Node Y.</strong> <span class="math notranslate nohighlight">\(V_Y=R_CI_2=I_0R_C(1-\cos\omega t)\)</span>.</p></td>
-<td><p>–</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>Answer 3</strong></p></td>
+<tr class="row-even"><td><p><strong>Answer 3</strong></p></td>
 <td><p><strong>Waveforms.</strong> <span class="math notranslate nohighlight">\(V_X\)</span> is a cosine between <span class="math notranslate nohighlight">\(0\)</span> and <span class="math notranslate nohighlight">\(2I_0R_C\)</span> (maximum at <span class="math notranslate nohighlight">\(t=0\)</span>); <span class="math notranslate nohighlight">\(V_Y\)</span> is the same cosine inverted, between <span class="math notranslate nohighlight">\(2I_0R_C\)</span> and <span class="math notranslate nohighlight">\(0\)</span>.</p></td>
-<td><p>–</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>Answer 4</strong></p></td>
+<tr class="row-odd"><td><p><strong>Answer 4</strong></p></td>
 <td><p><strong>Swings.</strong> Each node swings <span class="math notranslate nohighlight">\(2I_0R_C\)</span> peak to peak; <span class="math notranslate nohighlight">\(V_X-V_Y=2I_0R_C\cos\omega t\)</span> swings <span class="math notranslate nohighlight">\(4I_0R_C\)</span>.</p></td>
-<td><p>–</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>Answer 5</strong></p></td>
+<tr class="row-even"><td><p><strong>Answer 5</strong></p></td>
 <td><p><strong>CM level.</strong> <span class="math notranslate nohighlight">\((V_X+V_Y)/2=I_0R_C\)</span>, constant.</p></td>
-<td><p>–</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>Result</strong></p></td>
 <td><p><span class="math notranslate nohighlight">\(V_{X,Y}=I_0R_C(1\pm\cos\omega t)\)</span>; each <span class="math notranslate nohighlight">\(2I_0R_C\)</span> pp, CM level <span class="math notranslate nohighlight">\(I_0R_C\)</span>, differential swing <span class="math notranslate nohighlight">\(4I_0R_C\)</span></p></td>
-<td><p>–</p></td>
-</tr>
-<tr class="row-even"><td><p><strong>Check</strong></p></td>
-<td><p>Solved twice, with the same result; no answer is published.</p></td>
-<td><p>–</p></td>
 </tr>
 </tbody>
 </table>
@@ -817,45 +728,32 @@
 <thead>
 <tr class="row-odd"><th class="head"><p></p></th>
 <th class="head"><p>BJT</p></th>
-<th class="head"><p>MOSFET</p></th>
 </tr>
 </thead>
 <tbody>
 <tr class="row-even"><td><p><strong>Problem</strong></p></td>
 <td><p>With <span class="math notranslate nohighlight">\(I_1=I_0\cos\omega t+I_0\)</span> and <span class="math notranslate nohighlight">\(I_2=-I_0\cos\omega t+I_0\)</span>, sketch <span class="math notranslate nohighlight">\(V_X\)</span>, <span class="math notranslate nohighlight">\(V_Y\)</span> and <span class="math notranslate nohighlight">\(V_P\)</span> versus time and give the swings and the CM level.</p></td>
-<td><p>–</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>Given</strong></p></td>
 <td><p><span class="math notranslate nohighlight">\(I_1=I_0\cos\omega t+I_0\)</span>, <span class="math notranslate nohighlight">\(I_2=-I_0\cos\omega t+I_0\)</span>, <span class="math notranslate nohighlight">\(R_1\)</span>, equal <span class="math notranslate nohighlight">\(R_C\)</span></p></td>
-<td><p>–</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>Answer 1</strong></p></td>
+<tr class="row-even"><td><p><strong>Answer 1</strong></p></td>
 <td><p><strong>Current in R1.</strong> KCL at <span class="math notranslate nohighlight">\(P\)</span>: <span class="math notranslate nohighlight">\(I_{R1}=I_1+I_2=2I_0\)</span>, constant.</p></td>
-<td><p>–</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>Answer 2</strong></p></td>
+<tr class="row-odd"><td><p><strong>Answer 2</strong></p></td>
 <td><p><strong>Node P.</strong> <span class="math notranslate nohighlight">\(V_P=V_{CC}-2I_0R_1\)</span>: a constant (flat line).</p></td>
-<td><p>–</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>Answer 3</strong></p></td>
-<td><p><strong>Node X.</strong> <span class="math notranslate nohighlight">\(V_X=V_P-R_CI_1=V_{CC}-2I_0R_1-I_0R_C(1+\cos\omega t)\)</span>.</p></td>
-<td><p>–</p></td>
+<tr class="row-even"><td><p><strong>Answer 3</strong></p></td>
+<td><p><strong>Node X.</strong> <span class="math notranslate nohighlight">\(V_X\)</span> <span class="math notranslate nohighlight">\(=V_P-R_CI_1\)</span> <span class="math notranslate nohighlight">\(=V_{CC}-2I_0R_1-I_0R_C(1+\cos\omega t)\)</span>.</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>Answer 4</strong></p></td>
-<td><p><strong>Node Y.</strong> <span class="math notranslate nohighlight">\(V_Y=V_{CC}-2I_0R_1-I_0R_C(1-\cos\omega t)\)</span>.</p></td>
-<td><p>–</p></td>
+<tr class="row-odd"><td><p><strong>Answer 4</strong></p></td>
+<td><p><strong>Node Y.</strong> <span class="math notranslate nohighlight">\(V_Y\)</span> <span class="math notranslate nohighlight">\(=V_{CC}-2I_0R_1-I_0R_C(1-\cos\omega t)\)</span>.</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>Answer 5</strong></p></td>
+<tr class="row-even"><td><p><strong>Answer 5</strong></p></td>
 <td><p><strong>Swings and CM.</strong> Each swings <span class="math notranslate nohighlight">\(2I_0R_C\)</span> pp, in opposite phase; CM level <span class="math notranslate nohighlight">\(V_{CC}-2I_0R_1-I_0R_C\)</span>; <span class="math notranslate nohighlight">\(V_X-V_Y=-2I_0R_C\cos\omega t\)</span>.</p></td>
-<td><p>–</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>Result</strong></p></td>
-<td><p><span class="math notranslate nohighlight">\(V_P=V_{CC}-2I_0R_1\)</span> (constant); <span class="math notranslate nohighlight">\(V_{X,Y}=V_{CC}-2I_0R_1-I_0R_C(1\pm\cos\omega t)\)</span>; <span class="math notranslate nohighlight">\(2I_0R_C\)</span> pp each; CM <span class="math notranslate nohighlight">\(V_{CC}-2I_0R_1-I_0R_C\)</span></p></td>
-<td><p>–</p></td>
-</tr>
-<tr class="row-even"><td><p><strong>Check</strong></p></td>
-<td><p>Solved twice, with the same result; no answer is published.</p></td>
-<td><p>–</p></td>
+<td><p><span class="math notranslate nohighlight">\(V_P=V_{CC}-2I_0R_1\)</span> (constant); <span class="math notranslate nohighlight">\(V_{X,Y}\)</span> <span class="math notranslate nohighlight">\(=V_{CC}-2I_0R_1-I_0R_C(1\pm\cos\omega t)\)</span>; <span class="math notranslate nohighlight">\(2I_0R_C\)</span> pp each; CM <span class="math notranslate nohighlight">\(V_{CC}-2I_0R_1-I_0R_C\)</span></p></td>
 </tr>
 </tbody>
 </table>
@@ -865,41 +763,29 @@
 <thead>
 <tr class="row-odd"><th class="head"><p></p></th>
 <th class="head"><p>BJT</p></th>
-<th class="head"><p>MOSFET</p></th>
 </tr>
 </thead>
 <tbody>
 <tr class="row-even"><td><p><strong>Problem</strong></p></td>
 <td><p><span class="math notranslate nohighlight">\(R_C\)</span> from <span class="math notranslate nohighlight">\(V_{CC}\)</span> to node <span class="math notranslate nohighlight">\(X\)</span> with current source <span class="math notranslate nohighlight">\(I_1\)</span> from <span class="math notranslate nohighlight">\(X\)</span> to ground; a second <span class="math notranslate nohighlight">\(R_C\)</span> from <span class="math notranslate nohighlight">\(V_{CC}\)</span> to <span class="math notranslate nohighlight">\(Y\)</span> with <span class="math notranslate nohighlight">\(I_2\)</span> from <span class="math notranslate nohighlight">\(Y\)</span> to ground. With <span class="math notranslate nohighlight">\(I_1=I_0\cos\omega t+I_0\)</span> and <span class="math notranslate nohighlight">\(I_2=-I_0\cos\omega t+I_0\)</span>, sketch <span class="math notranslate nohighlight">\(V_X\)</span>, <span class="math notranslate nohighlight">\(V_Y\)</span> and give their swings and CM level.</p></td>
-<td><p>–</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>Given</strong></p></td>
 <td><p><span class="math notranslate nohighlight">\(I_1=I_0\cos\omega t+I_0\)</span>, <span class="math notranslate nohighlight">\(I_2=-I_0\cos\omega t+I_0\)</span>, equal <span class="math notranslate nohighlight">\(R_C\)</span></p></td>
-<td><p>–</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>Answer 1</strong></p></td>
-<td><p><strong>Node X.</strong> <span class="math notranslate nohighlight">\(V_X=V_{CC}-R_CI_1=V_{CC}-I_0R_C(1+\cos\omega t)\)</span>.</p></td>
-<td><p>–</p></td>
+<tr class="row-even"><td><p><strong>Answer 1</strong></p></td>
+<td><p><strong>Node X.</strong> <span class="math notranslate nohighlight">\(V_X\)</span> <span class="math notranslate nohighlight">\(=V_{CC}-R_CI_1\)</span> <span class="math notranslate nohighlight">\(=V_{CC}-I_0R_C(1+\cos\omega t)\)</span>.</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>Answer 2</strong></p></td>
-<td><p><strong>Node Y.</strong> <span class="math notranslate nohighlight">\(V_Y=V_{CC}-R_CI_2=V_{CC}-I_0R_C(1-\cos\omega t)\)</span>.</p></td>
-<td><p>–</p></td>
+<tr class="row-odd"><td><p><strong>Answer 2</strong></p></td>
+<td><p><strong>Node Y.</strong> <span class="math notranslate nohighlight">\(V_Y\)</span> <span class="math notranslate nohighlight">\(=V_{CC}-R_CI_2\)</span> <span class="math notranslate nohighlight">\(=V_{CC}-I_0R_C(1-\cos\omega t)\)</span>.</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>Answer 3</strong></p></td>
+<tr class="row-even"><td><p><strong>Answer 3</strong></p></td>
 <td><p><strong>Waveforms.</strong> <span class="math notranslate nohighlight">\(V_X\)</span> is an inverted cosine between <span class="math notranslate nohighlight">\(V_{CC}-2I_0R_C\)</span> and <span class="math notranslate nohighlight">\(V_{CC}\)</span>; <span class="math notranslate nohighlight">\(V_Y\)</span> is its mirror image.</p></td>
-<td><p>–</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>Answer 4</strong></p></td>
+<tr class="row-odd"><td><p><strong>Answer 4</strong></p></td>
 <td><p><strong>Swings and CM.</strong> Each swings <span class="math notranslate nohighlight">\(2I_0R_C\)</span> pp; CM level <span class="math notranslate nohighlight">\(V_{CC}-I_0R_C\)</span>; differential swing <span class="math notranslate nohighlight">\(4I_0R_C\)</span>.</p></td>
-<td><p>–</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>Result</strong></p></td>
-<td><p><span class="math notranslate nohighlight">\(V_{X,Y}=V_{CC}-I_0R_C(1\pm\cos\omega t)\)</span>; <span class="math notranslate nohighlight">\(2I_0R_C\)</span> pp each; CM <span class="math notranslate nohighlight">\(V_{CC}-I_0R_C\)</span></p></td>
-<td><p>–</p></td>
-</tr>
-<tr class="row-odd"><td><p><strong>Check</strong></p></td>
-<td><p>Solved twice, with the same result; no answer is published.</p></td>
-<td><p>–</p></td>
+<td><p><span class="math notranslate nohighlight">\(V_{X,Y}\)</span> <span class="math notranslate nohighlight">\(=V_{CC}-I_0R_C(1\pm\cos\omega t)\)</span>; <span class="math notranslate nohighlight">\(2I_0R_C\)</span> pp each; CM <span class="math notranslate nohighlight">\(V_{CC}-I_0R_C\)</span></p></td>
 </tr>
 </tbody>
 </table>
@@ -909,41 +795,29 @@
 <thead>
 <tr class="row-odd"><th class="head"><p></p></th>
 <th class="head"><p>BJT</p></th>
-<th class="head"><p>MOSFET</p></th>
 </tr>
 </thead>
 <tbody>
 <tr class="row-even"><td><p><strong>Problem</strong></p></td>
 <td><p>With <span class="math notranslate nohighlight">\(I_1=I_0\cos\omega t+I_0\)</span> and <span class="math notranslate nohighlight">\(I_2=-I_0\cos\omega t+I_0\)</span>, sketch <span class="math notranslate nohighlight">\(V_X\)</span>, <span class="math notranslate nohighlight">\(V_Y\)</span> and give their swings and CM level.</p></td>
-<td><p>–</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>Given</strong></p></td>
 <td><p><span class="math notranslate nohighlight">\(I_1=I_0\cos\omega t+I_0\)</span>, <span class="math notranslate nohighlight">\(I_2=-I_0\cos\omega t+I_0\)</span>, equal <span class="math notranslate nohighlight">\(R_C\)</span>, battery <span class="math notranslate nohighlight">\(V_b\)</span></p></td>
-<td><p>–</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>Answer 1</strong></p></td>
+<tr class="row-even"><td><p><strong>Answer 1</strong></p></td>
 <td><p><strong>Common node.</strong> The battery fixes the joined bottom of the two resistors at <span class="math notranslate nohighlight">\(V_b\)</span> whatever current it absorbs (<span class="math notranslate nohighlight">\(I_1+I_2=2I_0\)</span>).</p></td>
-<td><p>–</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>Answer 2</strong></p></td>
-<td><p><strong>Node X.</strong> <span class="math notranslate nohighlight">\(V_X=V_b+R_CI_1=V_b+I_0R_C(1+\cos\omega t)\)</span>.</p></td>
-<td><p>–</p></td>
+<tr class="row-odd"><td><p><strong>Answer 2</strong></p></td>
+<td><p><strong>Node X.</strong> <span class="math notranslate nohighlight">\(V_X\)</span> <span class="math notranslate nohighlight">\(=V_b+R_CI_1\)</span> <span class="math notranslate nohighlight">\(=V_b+I_0R_C(1+\cos\omega t)\)</span>.</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>Answer 3</strong></p></td>
+<tr class="row-even"><td><p><strong>Answer 3</strong></p></td>
 <td><p><strong>Node Y.</strong> <span class="math notranslate nohighlight">\(V_Y=V_b+I_0R_C(1-\cos\omega t)\)</span>.</p></td>
-<td><p>–</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>Answer 4</strong></p></td>
+<tr class="row-odd"><td><p><strong>Answer 4</strong></p></td>
 <td><p><strong>Swings and CM.</strong> Each swings <span class="math notranslate nohighlight">\(2I_0R_C\)</span> pp in opposite phase; CM level <span class="math notranslate nohighlight">\(V_b+I_0R_C\)</span>.</p></td>
-<td><p>–</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>Result</strong></p></td>
-<td><p><span class="math notranslate nohighlight">\(V_{X,Y}=V_b+I_0R_C(1\pm\cos\omega t)\)</span>; <span class="math notranslate nohighlight">\(2I_0R_C\)</span> pp each; CM <span class="math notranslate nohighlight">\(V_b+I_0R_C\)</span></p></td>
-<td><p>–</p></td>
-</tr>
-<tr class="row-odd"><td><p><strong>Check</strong></p></td>
-<td><p>Solved twice, with the same result; no answer is published.</p></td>
-<td><p>–</p></td>
+<td><p><span class="math notranslate nohighlight">\(V_{X,Y}\)</span> <span class="math notranslate nohighlight">\(=V_b+I_0R_C(1\pm\cos\omega t)\)</span>; <span class="math notranslate nohighlight">\(2I_0R_C\)</span> pp each; CM <span class="math notranslate nohighlight">\(V_b+I_0R_C\)</span></p></td>
 </tr>
 </tbody>
 </table>
@@ -953,45 +827,32 @@
 <thead>
 <tr class="row-odd"><th class="head"><p></p></th>
 <th class="head"><p>BJT</p></th>
-<th class="head"><p>MOSFET</p></th>
 </tr>
 </thead>
 <tbody>
 <tr class="row-even"><td><p><strong>Problem</strong></p></td>
 <td><p>Sketch <span class="math notranslate nohighlight">\(V_X\)</span>, <span class="math notranslate nohighlight">\(V_Y\)</span>, give swings and levels, and decide whether <span class="math notranslate nohighlight">\(V_X\)</span> and <span class="math notranslate nohighlight">\(V_Y\)</span> are truly differential signals.</p></td>
-<td><p>–</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>Given</strong></p></td>
 <td><p><span class="math notranslate nohighlight">\(I_1=I_0\cos\omega t+I_0\)</span>, <span class="math notranslate nohighlight">\(I_2=-I_0\cos\omega t+0.8I_0\)</span>, equal <span class="math notranslate nohighlight">\(R_C\)</span></p></td>
-<td><p>–</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>Answer 1</strong></p></td>
+<tr class="row-even"><td><p><strong>Answer 1</strong></p></td>
 <td><p><strong>Node X.</strong> <span class="math notranslate nohighlight">\(V_X=I_0R_C(1+\cos\omega t)\)</span>: swings <span class="math notranslate nohighlight">\(0\)</span> to <span class="math notranslate nohighlight">\(2I_0R_C\)</span>, average <span class="math notranslate nohighlight">\(I_0R_C\)</span>.</p></td>
-<td><p>–</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>Answer 2</strong></p></td>
+<tr class="row-odd"><td><p><strong>Answer 2</strong></p></td>
 <td><p><strong>Node Y.</strong> <span class="math notranslate nohighlight">\(V_Y=I_0R_C(0.8-\cos\omega t)\)</span>: swings <span class="math notranslate nohighlight">\(-0.2I_0R_C\)</span> to <span class="math notranslate nohighlight">\(1.8I_0R_C\)</span>, average <span class="math notranslate nohighlight">\(0.8I_0R_C\)</span>.</p></td>
-<td><p>–</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>Answer 3</strong></p></td>
-<td><p><strong>Swings.</strong> Both swing <span class="math notranslate nohighlight">\(2I_0R_C\)</span> pp in opposite phase; <span class="math notranslate nohighlight">\(V_X-V_Y=2I_0R_C\cos\omega t+0.2I_0R_C\)</span>.</p></td>
-<td><p>–</p></td>
+<tr class="row-even"><td><p><strong>Answer 3</strong></p></td>
+<td><p><strong>Swings.</strong> Both swing <span class="math notranslate nohighlight">\(2I_0R_C\)</span> pp in opposite phase; <span class="math notranslate nohighlight">\(V_X-V_Y\)</span> <span class="math notranslate nohighlight">\(=2I_0R_C\cos\omega t+0.2I_0R_C\)</span>.</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>Answer 4</strong></p></td>
+<tr class="row-odd"><td><p><strong>Answer 4</strong></p></td>
 <td><p><strong>Definition.</strong> Differential signals must vary by equal and opposite amounts around the same average (CM) level.</p></td>
-<td><p>–</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>Answer 5</strong></p></td>
+<tr class="row-even"><td><p><strong>Answer 5</strong></p></td>
 <td><p><strong>Verdict.</strong> The varying parts are equal and opposite, but the average levels differ by <span class="math notranslate nohighlight">\(0.2I_0R_C\)</span>, so <span class="math notranslate nohighlight">\(V_X-V_Y\)</span> carries a dc offset of <span class="math notranslate nohighlight">\(0.2I_0R_C\)</span>: strictly, <span class="math notranslate nohighlight">\(X\)</span> and <span class="math notranslate nohighlight">\(Y\)</span> are not true differential signals.</p></td>
-<td><p>–</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>Result</strong></p></td>
 <td><p><span class="math notranslate nohighlight">\(V_X=I_0R_C(1+\cos\omega t)\)</span>, <span class="math notranslate nohighlight">\(V_Y=I_0R_C(0.8-\cos\omega t)\)</span>; both <span class="math notranslate nohighlight">\(2I_0R_C\)</span> pp; averages <span class="math notranslate nohighlight">\(I_0R_C\)</span> and <span class="math notranslate nohighlight">\(0.8I_0R_C\)</span>, so not truly differential</p></td>
-<td><p>–</p></td>
-</tr>
-<tr class="row-even"><td><p><strong>Check</strong></p></td>
-<td><p>Solved twice, with the same result; no answer is published.</p></td>
-<td><p>–</p></td>
 </tr>
 </tbody>
 </table>
@@ -1001,65 +862,47 @@
 <thead>
 <tr class="row-odd"><th class="head"><p></p></th>
 <th class="head"><p>BJT</p></th>
-<th class="head"><p>MOSFET</p></th>
 </tr>
 </thead>
 <tbody>
 <tr class="row-even"><td><p><strong>Problem</strong></p></td>
 <td><p>(a) an extra constant source <span class="math notranslate nohighlight">\(I_T\)</span> from <span class="math notranslate nohighlight">\(Y\)</span> to ground; (b) a constant source <span class="math notranslate nohighlight">\(I_T\)</span> from <span class="math notranslate nohighlight">\(X\)</span> to <span class="math notranslate nohighlight">\(Y\)</span>; (c) a resistor <span class="math notranslate nohighlight">\(R_P\)</span> between <span class="math notranslate nohighlight">\(X\)</span> and <span class="math notranslate nohighlight">\(Y\)</span>; (d) a resistor <span class="math notranslate nohighlight">\(R_P\)</span> from <span class="math notranslate nohighlight">\(Y\)</span> to ground. Plot <span class="math notranslate nohighlight">\(V_X\)</span> and <span class="math notranslate nohighlight">\(V_Y\)</span> versus time.</p></td>
-<td><p>–</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>Given</strong></p></td>
 <td><p><span class="math notranslate nohighlight">\(I_1=I_0\cos\omega t+I_0\)</span>, <span class="math notranslate nohighlight">\(I_2=-I_0\cos\omega t+I_0\)</span>, equal <span class="math notranslate nohighlight">\(R_C\)</span>, constant <span class="math notranslate nohighlight">\(I_T\)</span>, resistor <span class="math notranslate nohighlight">\(R_P\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Answer 1</strong></p></td>
 <td><p>–</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>Answer 1</strong></p></td>
-<td><p>–</p></td>
-<td><p>–</p></td>
+<tr class="row-odd"><td><p><strong>Answer 2</strong></p></td>
+<td><p><strong>(a) Node Y.</strong> <span class="math notranslate nohighlight">\(R_C\)</span> now carries <span class="math notranslate nohighlight">\(I_2+I_T\)</span>: <span class="math notranslate nohighlight">\(V_Y\)</span> <span class="math notranslate nohighlight">\(=V_{CC}-I_TR_C-I_0R_C(1-\cos\omega t)\)</span>; same swing <span class="math notranslate nohighlight">\(2I_0R_C\)</span> pp, shifted down by <span class="math notranslate nohighlight">\(I_TR_C\)</span>.</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>Answer 2</strong></p></td>
-<td><p><strong>(a) Node Y.</strong> <span class="math notranslate nohighlight">\(R_C\)</span> now carries <span class="math notranslate nohighlight">\(I_2+I_T\)</span>: <span class="math notranslate nohighlight">\(V_Y=V_{CC}-I_TR_C-I_0R_C(1-\cos\omega t)\)</span>; same swing <span class="math notranslate nohighlight">\(2I_0R_C\)</span> pp, shifted down by <span class="math notranslate nohighlight">\(I_TR_C\)</span>.</p></td>
-<td><p>–</p></td>
-</tr>
-<tr class="row-even"><td><p><strong>Answer 3</strong></p></td>
+<tr class="row-even"><td><p><strong>Answer 3</strong></p></td>
 <td><p><strong>(b) KCL at X and Y.</strong> <span class="math notranslate nohighlight">\(I_{RC,X}=I_1+I_T\)</span>, <span class="math notranslate nohighlight">\(I_{RC,Y}=I_2-I_T\)</span>.</p></td>
-<td><p>–</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>Answer 4</strong></p></td>
-<td><p><strong>(b) Waveforms.</strong> <span class="math notranslate nohighlight">\(V_X=V_{CC}-I_TR_C-I_0R_C(1+\cos\omega t)\)</span>, <span class="math notranslate nohighlight">\(V_Y=V_{CC}+I_TR_C-I_0R_C(1-\cos\omega t)\)</span>: swings unchanged, averages split by <span class="math notranslate nohighlight">\(2I_TR_C\)</span>, CM level still <span class="math notranslate nohighlight">\(V_{CC}-I_0R_C\)</span>.</p></td>
-<td><p>–</p></td>
+<tr class="row-odd"><td><p><strong>Answer 4</strong></p></td>
+<td><p><strong>(b) Waveforms.</strong> <span class="math notranslate nohighlight">\(V_X\)</span> <span class="math notranslate nohighlight">\(=V_{CC}-I_TR_C-I_0R_C(1+\cos\omega t)\)</span>, <span class="math notranslate nohighlight">\(V_Y\)</span> <span class="math notranslate nohighlight">\(=V_{CC}+I_TR_C-I_0R_C(1-\cos\omega t)\)</span>: swings unchanged, averages split by <span class="math notranslate nohighlight">\(2I_TR_C\)</span>, CM level still <span class="math notranslate nohighlight">\(V_{CC}-I_0R_C\)</span>.</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>Answer 5</strong></p></td>
-<td><p><strong>(c) Sum of KCLs.</strong> <span class="math notranslate nohighlight">\(2V_{CC}-V_X-V_Y=R_C(I_1+I_2)=2I_0R_C\)</span>: CM level <span class="math notranslate nohighlight">\(V_{CC}-I_0R_C\)</span> unchanged (<span class="math notranslate nohighlight">\(R_P\)</span> carries no CM current).</p></td>
-<td><p>–</p></td>
+<tr class="row-even"><td><p><strong>Answer 5</strong></p></td>
+<td><p><strong>(c) Sum of KCLs.</strong> <span class="math notranslate nohighlight">\(2V_{CC}-V_X-V_Y\)</span> <span class="math notranslate nohighlight">\(=R_C(I_1+I_2)\)</span> <span class="math notranslate nohighlight">\(=2I_0R_C\)</span>: CM level <span class="math notranslate nohighlight">\(V_{CC}-I_0R_C\)</span> unchanged (<span class="math notranslate nohighlight">\(R_P\)</span> carries no CM current).</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>Answer 6</strong></p></td>
-<td><p><strong>(c) Difference.</strong> <span class="math notranslate nohighlight">\((V_X-V_Y)\left(\dfrac{1}{R_C}+\dfrac{2}{R_P}\right)=-(I_1-I_2)\)</span>, so <span class="math notranslate nohighlight">\(V_X-V_Y=-2I_0\cos\omega t\,\left(R_C\parallel\dfrac{R_P}{2}\right)\)</span>.</p></td>
-<td><p>–</p></td>
+<tr class="row-odd"><td><p><strong>Answer 6</strong></p></td>
+<td><p><strong>(c) Difference.</strong> <span class="math notranslate nohighlight">\((V_X-V_Y)\left(\dfrac{1}{R_C}+\dfrac{2}{R_P}\right)\)</span> <span class="math notranslate nohighlight">\(=-(I_1-I_2)\)</span>, so <span class="math notranslate nohighlight">\(V_X-V_Y\)</span> <span class="math notranslate nohighlight">\(=-2I_0\cos\omega t\,\left(R_C\parallel\dfrac{R_P}{2}\right)\)</span>.</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>Answer 7</strong></p></td>
-<td><p><strong>(c) Waveforms.</strong> <span class="math notranslate nohighlight">\(V_{X,Y}=V_{CC}-I_0R_C\mp I_0\left(R_C\parallel\dfrac{R_P}{2}\right)\cos\omega t\)</span>: smaller swing, same CM.</p></td>
-<td><p>–</p></td>
+<tr class="row-even"><td><p><strong>Answer 7</strong></p></td>
+<td><p><strong>(c) Waveforms.</strong> <span class="math notranslate nohighlight">\(V_{X,Y}\)</span> <span class="math notranslate nohighlight">\(=V_{CC}-I_0R_C\mp I_0\left(R_C\parallel\dfrac{R_P}{2}\right)\cos\omega t\)</span>: smaller swing, same CM.</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>Answer 8</strong></p></td>
-<td><p><strong>(d) Node Y.</strong> KCL: <span class="math notranslate nohighlight">\(\dfrac{V_{CC}-V_Y}{R_C}=I_2+\dfrac{V_Y}{R_P}\)</span>, so <span class="math notranslate nohighlight">\(V_Y=\dfrac{R_P}{R_C+R_P}\left[V_{CC}-I_0R_C(1-\cos\omega t)\right]\)</span>.</p></td>
-<td><p>–</p></td>
+<tr class="row-odd"><td><p><strong>Answer 8</strong></p></td>
+<td><p><strong>(d) Node Y.</strong> KCL: <span class="math notranslate nohighlight">\(\dfrac{V_{CC}-V_Y}{R_C}\)</span> <span class="math notranslate nohighlight">\(=I_2+\dfrac{V_Y}{R_P}\)</span>, so <span class="math notranslate nohighlight">\(V_Y\)</span> <span class="math notranslate nohighlight">\(=\dfrac{R_P}{R_C+R_P}\left[V_{CC}-I_0R_C(1-\cos\omega t)\right]\)</span>.</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>Answer 9</strong></p></td>
+<tr class="row-even"><td><p><strong>Answer 9</strong></p></td>
 <td><p><strong>(d) Waveforms.</strong> <span class="math notranslate nohighlight">\(V_X\)</span> as in (a); <span class="math notranslate nohighlight">\(V_Y\)</span> has amplitude scaled by <span class="math notranslate nohighlight">\(R_P/(R_C+R_P)\)</span> and a lower average <span class="math notranslate nohighlight">\(\dfrac{R_P}{R_C+R_P}(V_{CC}-I_0R_C)\)</span>, so <span class="math notranslate nohighlight">\(X\)</span> and <span class="math notranslate nohighlight">\(Y\)</span> are no longer symmetric.</p></td>
-<td><p>–</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>Answer 10</strong></p></td>
+<tr class="row-odd"><td><p><strong>Answer 10</strong></p></td>
 <td><p><strong>Numeric check.</strong> With <span class="math notranslate nohighlight">\(V_{CC}=2.5\,\mathrm{V}\)</span>, <span class="math notranslate nohighlight">\(I_0=0.5\,\mathrm{mA}\)</span>, <span class="math notranslate nohighlight">\(R_C=1\,\mathrm{k}\Omega\)</span>, <span class="math notranslate nohighlight">\(I_T=0.2\,\mathrm{mA}\)</span>, <span class="math notranslate nohighlight">\(R_P=2\,\mathrm{k}\Omega\)</span>, solving the node equations at several instants reproduces every formula above.</p></td>
-<td><p>–</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>Result</strong></p></td>
-<td><p>(a) <span class="math notranslate nohighlight">\(V_Y\)</span> shifted down by <span class="math notranslate nohighlight">\(I_TR_C\)</span>; (b) <span class="math notranslate nohighlight">\(V_X\)</span> down, <span class="math notranslate nohighlight">\(V_Y\)</span> up by <span class="math notranslate nohighlight">\(I_TR_C\)</span>; (c) swing reduced to <span class="math notranslate nohighlight">\(I_0(R_C\parallel R_P/2)\)</span> amplitude, CM <span class="math notranslate nohighlight">\(V_{CC}-I_0R_C\)</span>; (d) <span class="math notranslate nohighlight">\(V_Y=\frac{R_P}{R_C+R_P}[V_{CC}-I_0R_C(1-\cos\omega t)]\)</span></p></td>
-<td><p>–</p></td>
-</tr>
-<tr class="row-odd"><td><p><strong>Check</strong></p></td>
-<td><p>Solved twice, with the same result; no answer is published.</p></td>
-<td><p>–</p></td>
+<td><p>(a) <span class="math notranslate nohighlight">\(V_Y\)</span> shifted down by <span class="math notranslate nohighlight">\(I_TR_C\)</span>; (b) <span class="math notranslate nohighlight">\(V_X\)</span> down, <span class="math notranslate nohighlight">\(V_Y\)</span> up by <span class="math notranslate nohighlight">\(I_TR_C\)</span>; (c) swing reduced to <span class="math notranslate nohighlight">\(I_0(R_C\parallel R_P/2)\)</span> amplitude, CM <span class="math notranslate nohighlight">\(V_{CC}-I_0R_C\)</span>; (d) <span class="math notranslate nohighlight">\(V_Y\)</span> <span class="math notranslate nohighlight">\(=\frac{R_P}{R_C+R_P}[V_{CC}-I_0R_C(1-\cos\omega t)]\)</span></p></td>
 </tr>
 </tbody>
 </table>
@@ -1069,45 +912,32 @@
 <thead>
 <tr class="row-odd"><th class="head"><p></p></th>
 <th class="head"><p>BJT</p></th>
-<th class="head"><p>MOSFET</p></th>
 </tr>
 </thead>
 <tbody>
 <tr class="row-even"><td><p><strong>Problem</strong></p></td>
 <td><p>In (a) nothing else is connected to <span class="math notranslate nohighlight">\(P\)</span>; in (b) a resistor <span class="math notranslate nohighlight">\(R_1\)</span> goes from <span class="math notranslate nohighlight">\(P\)</span> to ground; in (c) a constant current source (labelled <span class="math notranslate nohighlight">\(I_1\)</span>, called <span class="math notranslate nohighlight">\(I_T\)</span> in the text) sinks current from <span class="math notranslate nohighlight">\(P\)</span> to ground. With <span class="math notranslate nohighlight">\(V_1=V_0\cos\omega t+V_0\)</span> and <span class="math notranslate nohighlight">\(V_2=-V_0\cos\omega t+V_0\)</span>, plot <span class="math notranslate nohighlight">\(V_P\)</span> versus time.</p></td>
-<td><p>–</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>Given</strong></p></td>
 <td><p><span class="math notranslate nohighlight">\(V_1=V_0\cos\omega t+V_0\)</span>, <span class="math notranslate nohighlight">\(V_2=-V_0\cos\omega t+V_0\)</span>, equal <span class="math notranslate nohighlight">\(R_C\)</span>, <span class="math notranslate nohighlight">\(R_1\)</span>, constant <span class="math notranslate nohighlight">\(I_T\)</span></p></td>
-<td><p>–</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>Answer 1</strong></p></td>
+<tr class="row-even"><td><p><strong>Answer 1</strong></p></td>
 <td><p><strong>(a) Divider.</strong> No current leaves <span class="math notranslate nohighlight">\(P\)</span>, so the same current flows from <span class="math notranslate nohighlight">\(V_1\)</span> to <span class="math notranslate nohighlight">\(V_2\)</span> and <span class="math notranslate nohighlight">\(V_P=\dfrac{V_1+V_2}{2}=V_0\)</span>: constant.</p></td>
-<td><p>–</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>Answer 2</strong></p></td>
-<td><p><strong>(b) KCL at P.</strong> <span class="math notranslate nohighlight">\(\dfrac{V_1-V_P}{R_C}+\dfrac{V_2-V_P}{R_C}=\dfrac{V_P}{R_1}\)</span></p></td>
-<td><p>–</p></td>
+<tr class="row-odd"><td><p><strong>Answer 2</strong></p></td>
+<td><p><strong>(b) KCL at P.</strong> <span class="math notranslate nohighlight">\(\dfrac{V_1-V_P}{R_C}+\dfrac{V_2-V_P}{R_C}\)</span> <span class="math notranslate nohighlight">\(=\dfrac{V_P}{R_1}\)</span></p></td>
 </tr>
-<tr class="row-even"><td><p><strong>Answer 3</strong></p></td>
-<td><p><strong>(b) Result.</strong> <span class="math notranslate nohighlight">\(V_P=\dfrac{(V_1+V_2)R_1}{2R_1+R_C}=\dfrac{2R_1}{2R_1+R_C}V_0\)</span>: constant.</p></td>
-<td><p>–</p></td>
+<tr class="row-even"><td><p><strong>Answer 3</strong></p></td>
+<td><p><strong>(b) Result.</strong> <span class="math notranslate nohighlight">\(V_P\)</span> <span class="math notranslate nohighlight">\(=\dfrac{(V_1+V_2)R_1}{2R_1+R_C}\)</span> <span class="math notranslate nohighlight">\(=\dfrac{2R_1}{2R_1+R_C}V_0\)</span>: constant.</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>Answer 4</strong></p></td>
-<td><p><strong>(c) KCL at P.</strong> <span class="math notranslate nohighlight">\(\dfrac{V_1-V_P}{R_C}+\dfrac{V_2-V_P}{R_C}=I_T\)</span>, so <span class="math notranslate nohighlight">\(V_P=V_0-\dfrac{I_TR_C}{2}\)</span>: constant.</p></td>
-<td><p>–</p></td>
+<tr class="row-odd"><td><p><strong>Answer 4</strong></p></td>
+<td><p><strong>(c) KCL at P.</strong> <span class="math notranslate nohighlight">\(\dfrac{V_1-V_P}{R_C}+\dfrac{V_2-V_P}{R_C}\)</span> <span class="math notranslate nohighlight">\(=I_T\)</span>, so <span class="math notranslate nohighlight">\(V_P=V_0-\dfrac{I_TR_C}{2}\)</span>: constant.</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>Answer 5</strong></p></td>
+<tr class="row-even"><td><p><strong>Answer 5</strong></p></td>
 <td><p><strong>Interpretation.</strong> In every case <span class="math notranslate nohighlight">\(V_P\)</span> depends only on <span class="math notranslate nohighlight">\(V_1+V_2=2V_0\)</span>, which does not vary: the differential components cancel at <span class="math notranslate nohighlight">\(P\)</span>, the basis of the virtual ground of a differential pair.</p></td>
-<td><p>–</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>Result</strong></p></td>
 <td><p>(a) <span class="math notranslate nohighlight">\(V_P=V_0\)</span>; (b) <span class="math notranslate nohighlight">\(V_P=2R_1V_0/(2R_1+R_C)\)</span>; (c) <span class="math notranslate nohighlight">\(V_P=V_0-I_TR_C/2\)</span>; all constant in time</p></td>
-<td><p>–</p></td>
-</tr>
-<tr class="row-even"><td><p><strong>Check</strong></p></td>
-<td><p>Solved twice, with the same result; no answer is published.</p></td>
-<td><p>–</p></td>
 </tr>
 </tbody>
 </table>
@@ -1117,33 +947,23 @@
 <thead>
 <tr class="row-odd"><th class="head"><p></p></th>
 <th class="head"><p>BJT</p></th>
-<th class="head"><p>MOSFET</p></th>
 </tr>
 </thead>
 <tbody>
 <tr class="row-even"><td><p><strong>Problem</strong></p></td>
 <td><p>The collector-base junction of a transistor is reverse biased: the collector is at <span class="math notranslate nohighlight">\(+10\,\mathrm{V}\)</span>, the emitter is open and the base node is pulled negative until the junction breaks down. The collector-base breakdown voltage is <span class="math notranslate nohighlight">\(BV_{CBO}=70\,\mathrm{V}\)</span>. Find the voltage <span class="math notranslate nohighlight">\(V_O\)</span> at the base node.</p></td>
-<td><p>–</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>Given</strong></p></td>
 <td><p><span class="math notranslate nohighlight">\(V_C=+10\,\mathrm{V}\)</span>, <span class="math notranslate nohighlight">\(BV_{CBO}=70\,\mathrm{V}\)</span></p></td>
-<td><p>–</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>Answer 1</strong></p></td>
+<tr class="row-even"><td><p><strong>Answer 1</strong></p></td>
 <td><p><strong>Breakdown condition.</strong> At breakdown <span class="math notranslate nohighlight">\(V_C-V_O=BV_{CBO}\)</span>.</p></td>
-<td><p>–</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>Answer 2</strong></p></td>
-<td><p><strong>Solve.</strong> <span class="math notranslate nohighlight">\(V_O=V_C-BV_{CBO}=10-70=-60\,\mathrm{V}\)</span></p></td>
-<td><p>–</p></td>
+<tr class="row-odd"><td><p><strong>Answer 2</strong></p></td>
+<td><p><strong>Solve.</strong> <span class="math notranslate nohighlight">\(V_O\)</span> <span class="math notranslate nohighlight">\(=V_C-BV_{CBO}\)</span> <span class="math notranslate nohighlight">\(=10-70\)</span> <span class="math notranslate nohighlight">\(=-60\,\mathrm{V}\)</span></p></td>
 </tr>
 <tr class="row-even"><td><p><strong>Result</strong></p></td>
 <td><p><span class="math notranslate nohighlight">\(V_O=-60\,\mathrm{V}\)</span></p></td>
-<td><p>–</p></td>
-</tr>
-<tr class="row-odd"><td><p><strong>Check</strong></p></td>
-<td><p>Agrees with the published answer; solved twice.</p></td>
-<td><p>–</p></td>
 </tr>
 </tbody>
 </table>
@@ -1153,37 +973,26 @@
 <thead>
 <tr class="row-odd"><th class="head"><p></p></th>
 <th class="head"><p>BJT</p></th>
-<th class="head"><p>MOSFET</p></th>
 </tr>
 </thead>
 <tbody>
 <tr class="row-even"><td><p><strong>Problem</strong></p></td>
 <td><p>The reverse leakage current <span class="math notranslate nohighlight">\(I_{CBO}\)</span> of a transistor is <span class="math notranslate nohighlight">\(10\,\mathrm{nA}\)</span> at <span class="math notranslate nohighlight">\(25^\circ\mathrm{C}\)</span> and doubles for every <span class="math notranslate nohighlight">\(10^\circ\mathrm{C}\)</span> rise of temperature. Find <span class="math notranslate nohighlight">\(I_{CBO}\)</span> at <span class="math notranslate nohighlight">\(125^\circ\mathrm{C}\)</span>.</p></td>
-<td><p>–</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>Given</strong></p></td>
-<td><p><span class="math notranslate nohighlight">\(I_{CBO}(25^\circ\mathrm{C})=10\,\mathrm{nA}\)</span>, doubling per <span class="math notranslate nohighlight">\(10^\circ\mathrm{C}\)</span></p></td>
-<td><p>–</p></td>
+<td><p><span class="math notranslate nohighlight">\(I_{CBO}(25^\circ\mathrm{C})\)</span> <span class="math notranslate nohighlight">\(=10\,\mathrm{nA}\)</span>, doubling per <span class="math notranslate nohighlight">\(10^\circ\mathrm{C}\)</span></p></td>
 </tr>
-<tr class="row-even"><td><p><strong>Answer 1</strong></p></td>
-<td><p><strong>Temperature rise.</strong> <span class="math notranslate nohighlight">\(\Delta T=125-25=100^\circ\mathrm{C}\)</span>.</p></td>
-<td><p>–</p></td>
+<tr class="row-even"><td><p><strong>Answer 1</strong></p></td>
+<td><p><strong>Temperature rise.</strong> <span class="math notranslate nohighlight">\(\Delta T\)</span> <span class="math notranslate nohighlight">\(=125-25\)</span> <span class="math notranslate nohighlight">\(=100^\circ\mathrm{C}\)</span>.</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>Answer 2</strong></p></td>
+<tr class="row-odd"><td><p><strong>Answer 2</strong></p></td>
 <td><p><strong>Number of doublings.</strong> <span class="math notranslate nohighlight">\(100/10=10\)</span> doublings, a factor <span class="math notranslate nohighlight">\(2^{10}=1024\)</span>.</p></td>
-<td><p>–</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>Answer 3</strong></p></td>
-<td><p><strong>Leakage at 125 C.</strong> <span class="math notranslate nohighlight">\(I_{CBO}=10\,\mathrm{nA}\times1024=10.24\,\mu\mathrm{A}\)</span>.</p></td>
-<td><p>–</p></td>
+<tr class="row-even"><td><p><strong>Answer 3</strong></p></td>
+<td><p><strong>Leakage at 125 C.</strong> <span class="math notranslate nohighlight">\(I_{CBO}\)</span> <span class="math notranslate nohighlight">\(=10\,\mathrm{nA}\times1024\)</span> <span class="math notranslate nohighlight">\(=10.24\,\mu\mathrm{A}\)</span>.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>Result</strong></p></td>
-<td><p><span class="math notranslate nohighlight">\(I_{CBO}(125^\circ\mathrm{C})=10.24\,\mu\mathrm{A}\)</span></p></td>
-<td><p>–</p></td>
-</tr>
-<tr class="row-even"><td><p><strong>Check</strong></p></td>
-<td><p>Agrees with the published answer; solved twice.</p></td>
-<td><p>–</p></td>
+<td><p><span class="math notranslate nohighlight">\(I_{CBO}(125^\circ\mathrm{C})\)</span> <span class="math notranslate nohighlight">\(=10.24\,\mu\mathrm{A}\)</span></p></td>
 </tr>
 </tbody>
 </table>
@@ -1193,49 +1002,35 @@
 <thead>
 <tr class="row-odd"><th class="head"><p></p></th>
 <th class="head"><p>BJT</p></th>
-<th class="head"><p>MOSFET</p></th>
 </tr>
 </thead>
 <tbody>
 <tr class="row-even"><td><p><strong>Problem</strong></p></td>
-<td><p>An npn transistor is modelled with a leakage current <span class="math notranslate nohighlight">\(I_{CBO}\)</span> from collector to base, so that <span class="math notranslate nohighlight">\(i_B=\dfrac{I_S}{\beta}e^{v_{BE}/V_T}-I_{CBO}\)</span>, <span class="math notranslate nohighlight">\(i_C=I_Se^{v_{BE}/V_T}+I_{CBO}\)</span> and <span class="math notranslate nohighlight">\(i_E=I_S\left(1+\dfrac1\beta\right)e^{v_{BE}/V_T}\)</span>. Show that with the base open the collector and emitter currents are <span class="math notranslate nohighlight">\(i_C=i_E=(\beta+1)I_{CBO}\)</span>.</p></td>
-<td><p>–</p></td>
+<td><p>An npn transistor is modelled with a leakage current <span class="math notranslate nohighlight">\(I_{CBO}\)</span> from collector to base, so that <span class="math notranslate nohighlight">\(i_B\)</span> <span class="math notranslate nohighlight">\(=\dfrac{I_S}{\beta}e^{v_{BE}/V_T}-I_{CBO}\)</span>, <span class="math notranslate nohighlight">\(i_C=I_Se^{v_{BE}/V_T}+I_{CBO}\)</span> and <span class="math notranslate nohighlight">\(i_E\)</span> <span class="math notranslate nohighlight">\(=I_S\left(1+\dfrac1\beta\right)e^{v_{BE}/V_T}\)</span>. Show that with the base open the collector and emitter currents are <span class="math notranslate nohighlight">\(i_C=i_E=(\beta+1)I_{CBO}\)</span>.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>Given</strong></p></td>
-<td><p><span class="math notranslate nohighlight">\(i_B=\dfrac{I_S}{\beta}e^{v_{BE}/V_T}-I_{CBO}\)</span>, <span class="math notranslate nohighlight">\(i_C=I_Se^{v_{BE}/V_T}+I_{CBO}\)</span>, <span class="math notranslate nohighlight">\(i_E=I_S\left(1+\dfrac1\beta\right)e^{v_{BE}/V_T}\)</span>, <span class="math notranslate nohighlight">\(i_B=0\)</span></p></td>
-<td><p>–</p></td>
+<td><p><span class="math notranslate nohighlight">\(i_B\)</span> <span class="math notranslate nohighlight">\(=\dfrac{I_S}{\beta}e^{v_{BE}/V_T}-I_{CBO}\)</span>, <span class="math notranslate nohighlight">\(i_C=I_Se^{v_{BE}/V_T}+I_{CBO}\)</span>, <span class="math notranslate nohighlight">\(i_E\)</span> <span class="math notranslate nohighlight">\(=I_S\left(1+\dfrac1\beta\right)e^{v_{BE}/V_T}\)</span>, <span class="math notranslate nohighlight">\(i_B=0\)</span></p></td>
 </tr>
-<tr class="row-even"><td><p><strong>Answer 1</strong></p></td>
-<td><p><strong>Model equations.</strong> (1) <span class="math notranslate nohighlight">\(i_B=\dfrac{I_S}{\beta}e^{v_{BE}/V_T}-I_{CBO}\)</span>; (2) <span class="math notranslate nohighlight">\(i_C=I_Se^{v_{BE}/V_T}+I_{CBO}\)</span>; (3) <span class="math notranslate nohighlight">\(i_E=I_S\left(1+\dfrac1\beta\right)e^{v_{BE}/V_T}\)</span>.</p></td>
-<td><p>–</p></td>
+<tr class="row-even"><td><p><strong>Answer 1</strong></p></td>
+<td><p><strong>Model equations.</strong> (1) <span class="math notranslate nohighlight">\(i_B\)</span> <span class="math notranslate nohighlight">\(=\dfrac{I_S}{\beta}e^{v_{BE}/V_T}-I_{CBO}\)</span>; (2) <span class="math notranslate nohighlight">\(i_C=I_Se^{v_{BE}/V_T}+I_{CBO}\)</span>; (3) <span class="math notranslate nohighlight">\(i_E\)</span> <span class="math notranslate nohighlight">\(=I_S\left(1+\dfrac1\beta\right)e^{v_{BE}/V_T}\)</span>.</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>Answer 2</strong></p></td>
-<td><p><strong>Open base.</strong> Setting <span class="math notranslate nohighlight">\(i_B=0\)</span> in (1): <span class="math notranslate nohighlight">\(\dfrac{I_S}{\beta}e^{v_{BE}/V_T}=I_{CBO}\)</span>.</p></td>
-<td><p>–</p></td>
+<tr class="row-odd"><td><p><strong>Answer 2</strong></p></td>
+<td><p><strong>Open base.</strong> Setting <span class="math notranslate nohighlight">\(i_B=0\)</span> in (1): <span class="math notranslate nohighlight">\(\dfrac{I_S}{\beta}e^{v_{BE}/V_T}\)</span> <span class="math notranslate nohighlight">\(=I_{CBO}\)</span>.</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>Answer 3</strong></p></td>
+<tr class="row-even"><td><p><strong>Answer 3</strong></p></td>
 <td><p><strong>The exponential term.</strong> Multiply by <span class="math notranslate nohighlight">\(\beta\)</span>: <span class="math notranslate nohighlight">\(I_Se^{v_{BE}/V_T}=\beta I_{CBO}\)</span> (4).</p></td>
-<td><p>–</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>Answer 4</strong></p></td>
-<td><p><strong>Collector current.</strong> Insert (4) in (2): <span class="math notranslate nohighlight">\(i_C=\beta I_{CBO}+I_{CBO}=(\beta+1)I_{CBO}\)</span>.</p></td>
-<td><p>–</p></td>
+<tr class="row-odd"><td><p><strong>Answer 4</strong></p></td>
+<td><p><strong>Collector current.</strong> Insert (4) in (2): <span class="math notranslate nohighlight">\(i_C\)</span> <span class="math notranslate nohighlight">\(=\beta I_{CBO}+I_{CBO}\)</span> <span class="math notranslate nohighlight">\(=(\beta+1)I_{CBO}\)</span>.</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>Answer 5</strong></p></td>
-<td><p><strong>Emitter current.</strong> Insert (4) in (3): <span class="math notranslate nohighlight">\(i_E=\beta I_{CBO}\left(1+\dfrac1\beta\right)=(\beta+1)I_{CBO}\)</span>.</p></td>
-<td><p>–</p></td>
+<tr class="row-even"><td><p><strong>Answer 5</strong></p></td>
+<td><p><strong>Emitter current.</strong> Insert (4) in (3): <span class="math notranslate nohighlight">\(i_E\)</span> <span class="math notranslate nohighlight">\(=\beta I_{CBO}\left(1+\dfrac1\beta\right)\)</span> <span class="math notranslate nohighlight">\(=(\beta+1)I_{CBO}\)</span>.</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>Answer 6</strong></p></td>
+<tr class="row-odd"><td><p><strong>Answer 6</strong></p></td>
 <td><p><strong>Consistency.</strong> <span class="math notranslate nohighlight">\(i_E=i_C+i_B\)</span> with <span class="math notranslate nohighlight">\(i_B=0\)</span> gives <span class="math notranslate nohighlight">\(i_E=i_C\)</span>, as found.</p></td>
-<td><p>–</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>Result</strong></p></td>
 <td><p><span class="math notranslate nohighlight">\(i_C=i_E=(\beta+1)I_{CBO}\)</span> with the base open</p></td>
-<td><p>–</p></td>
-</tr>
-<tr class="row-odd"><td><p><strong>Check</strong></p></td>
-<td><p>Solved twice, with the same result; no answer is published.</p></td>
-<td><p>–</p></td>
 </tr>
 </tbody>
 </table>
@@ -1245,53 +1040,38 @@
 <thead>
 <tr class="row-odd"><th class="head"><p></p></th>
 <th class="head"><p>BJT</p></th>
-<th class="head"><p>MOSFET</p></th>
 </tr>
 </thead>
 <tbody>
 <tr class="row-even"><td><p><strong>Problem</strong></p></td>
 <td><p>A transconductance stage has an input resistor <span class="math notranslate nohighlight">\(R_1\)</span> to ground, a feedback resistor <span class="math notranslate nohighlight">\(R_f\)</span> from the input to the output node, a controlled source <span class="math notranslate nohighlight">\(g_mv_i\)</span> from the output node to ground in parallel with <span class="math notranslate nohighlight">\(R_2\)</span>, and a load <span class="math notranslate nohighlight">\(R_L\)</span>. Derive <span class="math notranslate nohighlight">\(R_{in}\)</span>, <span class="math notranslate nohighlight">\(A_{vo}\)</span> and <span class="math notranslate nohighlight">\(R_o\)</span>. Evaluate with <span class="math notranslate nohighlight">\(R_1=100\,\mathrm{k\Omega}\)</span>, <span class="math notranslate nohighlight">\(R_f=1\,\mathrm{M\Omega}\)</span>, <span class="math notranslate nohighlight">\(g_m=100\,\mathrm{mA/V}\)</span>, <span class="math notranslate nohighlight">\(R_2=100\,\Omega\)</span>, <span class="math notranslate nohighlight">\(R_L=1\,\mathrm{k\Omega}\)</span> and a source with <span class="math notranslate nohighlight">\(R_{sig}=100\,\mathrm{k\Omega}\)</span>; compare with <span class="math notranslate nohighlight">\(R_f\)</span> removed.</p></td>
-<td><p>–</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>Given</strong></p></td>
 <td><p><span class="math notranslate nohighlight">\(R_1=100\,\mathrm{k}\Omega\)</span>, <span class="math notranslate nohighlight">\(R_f=1\,\mathrm{M}\Omega\)</span>, <span class="math notranslate nohighlight">\(g_m=100\,\mathrm{mA/V}\)</span>, <span class="math notranslate nohighlight">\(R_2=100\,\Omega\)</span>, <span class="math notranslate nohighlight">\(R_L=1\,\mathrm{k}\Omega\)</span>, <span class="math notranslate nohighlight">\(R_{sig}=100\,\mathrm{k}\Omega\)</span></p></td>
-<td><p>–</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>Answer 1</strong></p></td>
-<td><p><strong>Input resistance.</strong> <span class="math notranslate nohighlight">\(v_i=i_fR_f+(i_f-g_mv_i)(R_2\parallel R_L)\)</span> gives <span class="math notranslate nohighlight">\(R_{in}'=\dfrac{v_i}{i_f}=\dfrac{R_f+R_2\parallel R_L}{1+g_m(R_2\parallel R_L)}\)</span>; <span class="math notranslate nohighlight">\(R_{in}=R_1\parallel R_{in}'\)</span>.</p></td>
-<td><p>–</p></td>
+<tr class="row-even"><td><p><strong>Answer 1</strong></p></td>
+<td><p><strong>Input resistance.</strong> <span class="math notranslate nohighlight">\(v_i\)</span> <span class="math notranslate nohighlight">\(=i_fR_f+(i_f-g_mv_i)(R_2\parallel R_L)\)</span> gives <span class="math notranslate nohighlight">\(R_{in}'\)</span> <span class="math notranslate nohighlight">\(=\dfrac{v_i}{i_f}\)</span> <span class="math notranslate nohighlight">\(=\dfrac{R_f+R_2\parallel R_L}{1+g_m(R_2\parallel R_L)}\)</span>; <span class="math notranslate nohighlight">\(R_{in}=R_1\parallel R_{in}'\)</span>.</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>Answer 2</strong></p></td>
+<tr class="row-odd"><td><p><strong>Answer 2</strong></p></td>
 <td><p><strong>Open-circuit gain.</strong> With <span class="math notranslate nohighlight">\(R_L\)</span> open: <span class="math notranslate nohighlight">\(i_f=g_mv_i+v_o/R_2\)</span> and <span class="math notranslate nohighlight">\(v_i=i_fR_f+v_o\)</span>, so <span class="math notranslate nohighlight">\(v_i(1-g_mR_f)=v_o(1+R_f/R_2)\)</span> and <span class="math notranslate nohighlight">\(A_{vo}=\dfrac{1-g_mR_f}{1+R_f/R_2}\)</span>.</p></td>
-<td><p>–</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>Answer 3</strong></p></td>
+<tr class="row-even"><td><p><strong>Answer 3</strong></p></td>
 <td><p><strong>Output resistance.</strong> With <span class="math notranslate nohighlight">\(v_i=0\)</span> the source is off: <span class="math notranslate nohighlight">\(R_o=R_2\parallel R_f\)</span>.</p></td>
-<td><p>–</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>Answer 4</strong></p></td>
-<td><p><strong>Numbers: <span class="math notranslate nohighlight">\(R_{in}\)</span>.</strong> <span class="math notranslate nohighlight">\(R_2\parallel R_L=0.0909\,\mathrm{k\Omega}\)</span>; <span class="math notranslate nohighlight">\(R_{in}'=\dfrac{1000.09}{1+9.09}=99.1\,\mathrm{k\Omega}\)</span>; <span class="math notranslate nohighlight">\(R_{in}=100\parallel99.1=49.8\,\mathrm{k\Omega}\)</span>.</p></td>
-<td><p>–</p></td>
+<tr class="row-odd"><td><p><strong>Answer 4</strong></p></td>
+<td><p><strong>Numbers: <span class="math notranslate nohighlight">\(R_{in}\)</span>.</strong> <span class="math notranslate nohighlight">\(R_2\parallel R_L\)</span> <span class="math notranslate nohighlight">\(=0.0909\,\mathrm{k\Omega}\)</span>; <span class="math notranslate nohighlight">\(R_{in}'\)</span> <span class="math notranslate nohighlight">\(=\dfrac{1000.09}{1+9.09}\)</span> <span class="math notranslate nohighlight">\(=99.1\,\mathrm{k\Omega}\)</span>; <span class="math notranslate nohighlight">\(R_{in}\)</span> <span class="math notranslate nohighlight">\(=100\parallel99.1\)</span> <span class="math notranslate nohighlight">\(=49.8\,\mathrm{k\Omega}\)</span>.</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>Answer 5</strong></p></td>
-<td><p><strong>Numbers: <span class="math notranslate nohighlight">\(A_{vo}\)</span>, <span class="math notranslate nohighlight">\(R_o\)</span>.</strong> <span class="math notranslate nohighlight">\(A_{vo}=\dfrac{1-10^5}{1+10^4}=-10.0\,\mathrm{V/V}\)</span>; <span class="math notranslate nohighlight">\(R_o=0.1\parallel1000=100\,\Omega\)</span>.</p></td>
-<td><p>–</p></td>
+<tr class="row-even"><td><p><strong>Answer 5</strong></p></td>
+<td><p><strong>Numbers: <span class="math notranslate nohighlight">\(A_{vo}\)</span>, <span class="math notranslate nohighlight">\(R_o\)</span>.</strong> <span class="math notranslate nohighlight">\(A_{vo}\)</span> <span class="math notranslate nohighlight">\(=\dfrac{1-10^5}{1+10^4}\)</span> <span class="math notranslate nohighlight">\(=-10.0\,\mathrm{V/V}\)</span>; <span class="math notranslate nohighlight">\(R_o=0.1\parallel1000=100\,\Omega\)</span>.</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>Answer 6</strong></p></td>
-<td><p><strong>Overall gain.</strong> <span class="math notranslate nohighlight">\(G_v=\dfrac{49.8}{49.8+100}(-10)\dfrac{1}{1+0.1}=-3.02\,\mathrm{V/V}\)</span>.</p></td>
-<td><p>–</p></td>
+<tr class="row-odd"><td><p><strong>Answer 6</strong></p></td>
+<td><p><strong>Overall gain.</strong> <span class="math notranslate nohighlight">\(G_v\)</span> <span class="math notranslate nohighlight">\(=\dfrac{49.8}{49.8+100}(-10)\dfrac{1}{1+0.1}\)</span> <span class="math notranslate nohighlight">\(=-3.02\,\mathrm{V/V}\)</span>.</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>Answer 7</strong></p></td>
-<td><p><strong>Without <span class="math notranslate nohighlight">\(R_f\)</span>.</strong> <span class="math notranslate nohighlight">\(R_{in}=100\,\mathrm{k\Omega}\)</span>, <span class="math notranslate nohighlight">\(A_{vo}=-g_mR_2=-10\)</span>, <span class="math notranslate nohighlight">\(R_o=100\,\Omega\)</span>, <span class="math notranslate nohighlight">\(G_v=\dfrac{100}{200}(-10)\dfrac1{1.1}=-4.55\,\mathrm{V/V}\)</span>: only <span class="math notranslate nohighlight">\(R_{in}\)</span> is changed noticeably.</p></td>
-<td><p>–</p></td>
+<tr class="row-even"><td><p><strong>Answer 7</strong></p></td>
+<td><p><strong>Without <span class="math notranslate nohighlight">\(R_f\)</span>.</strong> <span class="math notranslate nohighlight">\(R_{in}=100\,\mathrm{k\Omega}\)</span>, <span class="math notranslate nohighlight">\(A_{vo}=-g_mR_2=-10\)</span>, <span class="math notranslate nohighlight">\(R_o=100\,\Omega\)</span>, <span class="math notranslate nohighlight">\(G_v\)</span> <span class="math notranslate nohighlight">\(=\dfrac{100}{200}(-10)\dfrac1{1.1}\)</span> <span class="math notranslate nohighlight">\(=-4.55\,\mathrm{V/V}\)</span>: only <span class="math notranslate nohighlight">\(R_{in}\)</span> is changed noticeably.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>Result</strong></p></td>
 <td><p><span class="math notranslate nohighlight">\(R_{in}=49.8\,\mathrm{k\Omega}\)</span>, <span class="math notranslate nohighlight">\(A_{vo}=-10\,\mathrm{V/V}\)</span>, <span class="math notranslate nohighlight">\(R_o=100\,\Omega\)</span>, <span class="math notranslate nohighlight">\(G_v=-3.02\,\mathrm{V/V}\)</span> (without <span class="math notranslate nohighlight">\(R_f\)</span>: <span class="math notranslate nohighlight">\(-4.55\)</span>)</p></td>
-<td><p>–</p></td>
-</tr>
-<tr class="row-even"><td><p><strong>Check</strong></p></td>
-<td><p>Agrees with the published answer; solved twice.</p></td>
-<td><p>–</p></td>
 </tr>
 </tbody>
 </table>
@@ -1301,85 +1081,65 @@
 <thead>
 <tr class="row-odd"><th class="head"><p></p></th>
 <th class="head"><p>BJT</p></th>
-<th class="head"><p>MOSFET</p></th>
 </tr>
 </thead>
 <tbody>
 <tr class="row-even"><td><p><strong>Problem</strong></p></td>
 <td><p>A common-emitter amplifier biased at <span class="math notranslate nohighlight">\(I_C=1\,\mathrm{mA}\)</span> has midband gain <span class="math notranslate nohighlight">\(100\,\mathrm{V/V}\)</span>, lower 3-dB frequency <span class="math notranslate nohighlight">\(f_L=100\,\mathrm{Hz}\)</span> and upper 3-dB frequency <span class="math notranslate nohighlight">\(f_H=500\,\mathrm{kHz}\)</span>. A small emitter resistance <span class="math notranslate nohighlight">\(R_e\)</span> is added to raise <span class="math notranslate nohighlight">\(f_H\)</span> to <span class="math notranslate nohighlight">\(2\,\mathrm{MHz}\)</span>. Assume the usual single-pole feedback behavior: gain is divided by <span class="math notranslate nohighlight">\(1+g_mR_e\)</span> while both band edges are scaled by this factor (gain falls, <span class="math notranslate nohighlight">\(f_H\)</span> rises, <span class="math notranslate nohighlight">\(f_L\)</span> falls). Find <span class="math notranslate nohighlight">\(R_e\)</span>, the new <span class="math notranslate nohighlight">\(f_L\)</span> and the new midband gain (<span class="math notranslate nohighlight">\(V_T=25\,\mathrm{mV}\)</span>).</p></td>
-<td><p>–</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>Given</strong></p></td>
-<td><p><span class="math notranslate nohighlight">\(I_C=1\,\mathrm{mA}\)</span>, <span class="math notranslate nohighlight">\(\lvert A_M\rvert=100\)</span>, <span class="math notranslate nohighlight">\(f_L=100\,\mathrm{Hz}\)</span>, <span class="math notranslate nohighlight">\(f_H=500\,\mathrm{kHz}\to2\,\mathrm{MHz}\)</span></p></td>
-<td><p>–</p></td>
+<td><p><span class="math notranslate nohighlight">\(I_C=1\,\mathrm{mA}\)</span>, <span class="math notranslate nohighlight">\(\lvert A_M\rvert=100\)</span>, <span class="math notranslate nohighlight">\(f_L=100\,\mathrm{Hz}\)</span>, <span class="math notranslate nohighlight">\(f_H\)</span> <span class="math notranslate nohighlight">\(=500\,\mathrm{kHz}\to2\,\mathrm{MHz}\)</span></p></td>
 </tr>
-<tr class="row-even"><td><p><strong>Answer 1</strong></p></td>
-<td><p><strong>Required factor.</strong> <span class="math notranslate nohighlight">\(\dfrac{f_H^{\prime}}{f_H}=\dfrac{2\,\mathrm{MHz}}{500\,\mathrm{kHz}}=4=1+g_mR_e\)</span>.</p></td>
-<td><p>–</p></td>
+<tr class="row-even"><td><p><strong>Answer 1</strong></p></td>
+<td><p><strong>Required factor.</strong> <span class="math notranslate nohighlight">\(\dfrac{f_H^{\prime}}{f_H}\)</span> <span class="math notranslate nohighlight">\(=\dfrac{2\,\mathrm{MHz}}{500\,\mathrm{kHz}}\)</span> <span class="math notranslate nohighlight">\(=4\)</span> <span class="math notranslate nohighlight">\(=1+g_mR_e\)</span>.</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>Answer 2</strong></p></td>
-<td><p><strong>Transconductance.</strong> <span class="math notranslate nohighlight">\(g_m=\dfrac{I_C}{V_T}=\dfrac{1}{0.025}=40\,\mathrm{mA/V}\)</span>.</p></td>
-<td><p>–</p></td>
+<tr class="row-odd"><td><p><strong>Answer 2</strong></p></td>
+<td><p><strong>Transconductance.</strong> <span class="math notranslate nohighlight">\(g_m\)</span> <span class="math notranslate nohighlight">\(=\dfrac{I_C}{V_T}\)</span> <span class="math notranslate nohighlight">\(=\dfrac{1}{0.025}\)</span> <span class="math notranslate nohighlight">\(=40\,\mathrm{mA/V}\)</span>.</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>Answer 3</strong></p></td>
-<td><p><strong>Emitter resistance.</strong> <span class="math notranslate nohighlight">\(R_e=\dfrac{4-1}{g_m}=\dfrac{3}{0.04\,\mathrm{S}}=75\,\Omega\)</span>.</p></td>
-<td><p>–</p></td>
+<tr class="row-even"><td><p><strong>Answer 3</strong></p></td>
+<td><p><strong>Emitter resistance.</strong> <span class="math notranslate nohighlight">\(R_e\)</span> <span class="math notranslate nohighlight">\(=\dfrac{4-1}{g_m}\)</span> <span class="math notranslate nohighlight">\(=\dfrac{3}{0.04\,\mathrm{S}}\)</span> <span class="math notranslate nohighlight">\(=75\,\Omega\)</span>.</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>Answer 4</strong></p></td>
-<td><p><strong>New lower cutoff.</strong> <span class="math notranslate nohighlight">\(f_L^{\prime}=\dfrac{100\,\mathrm{Hz}}{1+g_mR_e}=\dfrac{100}{4}=25\,\mathrm{Hz}\)</span>.</p></td>
-<td><p>–</p></td>
+<tr class="row-odd"><td><p><strong>Answer 4</strong></p></td>
+<td><p><strong>New lower cutoff.</strong> <span class="math notranslate nohighlight">\(f_L^{\prime}\)</span> <span class="math notranslate nohighlight">\(=\dfrac{100\,\mathrm{Hz}}{1+g_mR_e}\)</span> <span class="math notranslate nohighlight">\(=\dfrac{100}{4}\)</span> <span class="math notranslate nohighlight">\(=25\,\mathrm{Hz}\)</span>.</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>Answer 5</strong></p></td>
-<td><p><strong>New midband gain.</strong> <span class="math notranslate nohighlight">\(\lvert A_M^{\prime}\rvert=\dfrac{100}{4}=25\,\mathrm{V/V}\)</span>. The product <span class="math notranslate nohighlight">\(A_Mf_H=5\times10^7\,\mathrm{Hz}\)</span> is the same before (<span class="math notranslate nohighlight">\(100\times500\,\mathrm{kHz}\)</span>) and after (<span class="math notranslate nohighlight">\(25\times2\,\mathrm{MHz}\)</span>).</p></td>
-<td><p>–</p></td>
+<tr class="row-even"><td><p><strong>Answer 5</strong></p></td>
+<td><p><strong>New midband gain.</strong> <span class="math notranslate nohighlight">\(\lvert A_M^{\prime}\rvert\)</span> <span class="math notranslate nohighlight">\(=\dfrac{100}{4}\)</span> <span class="math notranslate nohighlight">\(=25\,\mathrm{V/V}\)</span>. The product <span class="math notranslate nohighlight">\(A_Mf_H=5\times10^7\,\mathrm{Hz}\)</span> is the same before (<span class="math notranslate nohighlight">\(100\times500\,\mathrm{kHz}\)</span>) and after (<span class="math notranslate nohighlight">\(25\times2\,\mathrm{MHz}\)</span>).</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>Result</strong></p></td>
 <td><p><span class="math notranslate nohighlight">\(R_e=75\,\Omega\)</span>, <span class="math notranslate nohighlight">\(f_L=25\,\mathrm{Hz}\)</span>, <span class="math notranslate nohighlight">\(\lvert A_M\rvert=25\,\mathrm{V/V}\)</span></p></td>
-<td><p>–</p></td>
-</tr>
-<tr class="row-even"><td><p><strong>Check</strong></p></td>
-<td><p>Agrees with the published answer; solved twice.</p></td>
-<td><p>–</p></td>
 </tr>
 </tbody>
 </table>
 </div>
+</div>
+<input id="sd-tab-item-1" name="sd-tab-set-0" type="radio">
+<label aria-controls="sd-tab-item-1-content" class="sd-tab-label" data-sync-group="tab" data-sync-id="mosfet" for="sd-tab-item-1">
+MOSFET</label><div class="sd-tab-content docutils" id="sd-tab-item-1-content">
 <p><strong>Problem 19</strong></p>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p></p></th>
-<th class="head"><p>BJT</p></th>
 <th class="head"><p>MOSFET</p></th>
 </tr>
 </thead>
 <tbody>
 <tr class="row-even"><td><p><strong>Problem</strong></p></td>
-<td><p>–</p></td>
 <td><p>A cordless telephone uses a single antenna for both reception and transmission. Explain how the system must be configured.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>Given</strong></p></td>
-<td><p>–</p></td>
 <td><p>Phone receives half the time and transmits the other half; switching interval e.g. <span class="math notranslate nohighlight">\(20\,\mathrm{ms}\)</span>.</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>Answer 1</strong></p></td>
-<td><p>–</p></td>
+<tr class="row-even"><td><p><strong>Answer 1</strong></p></td>
 <td><p><strong>Only one path at a time.</strong> Since the phone receives half of the time and transmits the other half, the antenna is needed by only one of the two circuits at any instant.</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>Answer 2</strong></p></td>
-<td><p>–</p></td>
+<tr class="row-odd"><td><p><strong>Answer 2</strong></p></td>
 <td><p><strong>Connection.</strong> The antenna is alternately connected to the receiver and to the transmitter at regular intervals, for example every <span class="math notranslate nohighlight">\(20\,\mathrm{ms}\)</span>.</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>Answer 3</strong></p></td>
-<td><p>–</p></td>
+<tr class="row-even"><td><p><strong>Answer 3</strong></p></td>
 <td><p>–</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>Result</strong></p></td>
-<td><p>–</p></td>
 <td><p>Antenna connected through an electronic switch alternately to the receiver and to the transmitter (e.g. every <span class="math notranslate nohighlight">\(20\,\mathrm{ms}\)</span>)</p></td>
-</tr>
-<tr class="row-even"><td><p><strong>Check</strong></p></td>
-<td><p>–</p></td>
-<td><p>Solved twice, with the same result; no answer is published.</p></td>
 </tr>
 </tbody>
 </table>
@@ -1388,42 +1148,30 @@
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p></p></th>
-<th class="head"><p>BJT</p></th>
 <th class="head"><p>MOSFET</p></th>
 </tr>
 </thead>
 <tbody>
 <tr class="row-even"><td><p><strong>Problem</strong></p></td>
-<td><p>–</p></td>
 <td><p>A MOSFET is in pinch-off near the drain. The relation <span class="math notranslate nohighlight">\(I=Q_d\,v\)</span> (current = mobile charge per unit length times carrier velocity) implies that if the current is constant, charge density and velocity change in opposite directions. How should this be interpreted at the pinch-off point, where the charge density tends to zero?</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>Given</strong></p></td>
-<td><p>–</p></td>
 <td><p><span class="math notranslate nohighlight">\(I_D=Q_d(x)\,v(x)\)</span> constant along the channel</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>Answer 1</strong></p></td>
-<td><p>–</p></td>
+<tr class="row-even"><td><p><strong>Answer 1</strong></p></td>
 <td><p><strong>What the equation says.</strong> Since <span class="math notranslate nohighlight">\(I_D=Q_d v\)</span> is the same at every <span class="math notranslate nohighlight">\(x\)</span>, a falling <span class="math notranslate nohighlight">\(Q_d\)</span> must be compensated by a rising <span class="math notranslate nohighlight">\(v\)</span>; as <span class="math notranslate nohighlight">\(Q_d\to 0\)</span> at pinch-off, <span class="math notranslate nohighlight">\(v=I_D/Q_d\)</span> would have to tend to infinity.</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>Answer 2</strong></p></td>
-<td><p>–</p></td>
+<tr class="row-odd"><td><p><strong>Answer 2</strong></p></td>
 <td><p><strong>Why that cannot be literal.</strong> Carrier velocity is limited (it saturates near <span class="math notranslate nohighlight">\(10^7\,\mathrm{cm/s}\)</span> in silicon), so the charge density never truly reaches zero: a small but finite density of electrons moving very fast carries the same current.</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>Answer 3</strong></p></td>
-<td><p>–</p></td>
+<tr class="row-even"><td><p><strong>Answer 3</strong></p></td>
 <td><p><strong>Where the model breaks.</strong> The relation <span class="math notranslate nohighlight">\(Q_d=WC_{ox}(V_{GS}-V-V_{TH})\)</span> assumes the vertical field dominates (gradual-channel approximation). Near pinch-off the lateral field becomes large, the approximation fails, and the “zero charge” is an artifact of the simple model.</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>Answer 4</strong></p></td>
-<td><p>–</p></td>
+<tr class="row-odd"><td><p><strong>Answer 4</strong></p></td>
 <td><p><strong>Beyond pinch-off.</strong> Past the pinch-off point the electrons leave the inversion layer and are swept through the depletion region to the drain by the strong lateral field, much as carriers cross the collector junction of a bipolar transistor; the current is set by how many electrons reach the pinch-off point, which is why <span class="math notranslate nohighlight">\(I_D\)</span> barely depends on <span class="math notranslate nohighlight">\(V_{DS}\)</span>.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>Result</strong></p></td>
-<td><p>–</p></td>
 <td><p>The charge density becomes very small but not zero, and the carriers move very fast (up to the saturation velocity), so <span class="math notranslate nohighlight">\(Q_d v\)</span> stays equal to <span class="math notranslate nohighlight">\(I_D\)</span>; beyond pinch-off the high lateral field sweeps the carriers to the drain.</p></td>
-</tr>
-<tr class="row-odd"><td><p><strong>Check</strong></p></td>
-<td><p>–</p></td>
-<td><p>Solved twice, with the same result; no answer is published.</p></td>
 </tr>
 </tbody>
 </table>
@@ -1432,46 +1180,33 @@
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p></p></th>
-<th class="head"><p>BJT</p></th>
 <th class="head"><p>MOSFET</p></th>
 </tr>
 </thead>
 <tbody>
 <tr class="row-even"><td><p><strong>Problem</strong></p></td>
-<td><p>–</p></td>
 <td><p>(b) sketch the local channel resistance per unit length versus <span class="math notranslate nohighlight">\(x\)</span>.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>Given</strong></p></td>
-<td><p>–</p></td>
 <td><p><span class="math notranslate nohighlight">\(V_S=0\)</span>, <span class="math notranslate nohighlight">\(0&lt; V_D&lt; V_{GS}-V_{TH}\)</span> (triode); <span class="math notranslate nohighlight">\(Q_d(x)=WC_{ox}[V_{GS}-V(x)-V_{TH}]\)</span></p></td>
 </tr>
-<tr class="row-even"><td><p><strong>Answer 1</strong></p></td>
-<td><p>–</p></td>
+<tr class="row-even"><td><p><strong>Answer 1</strong></p></td>
 <td><p><span class="math notranslate nohighlight">\(V\)</span> rises from 0 to <span class="math notranslate nohighlight">\(V_D\)</span>, slowly at first and faster near the drain.</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>Answer 2</strong></p></td>
-<td><p>–</p></td>
-<td><p><strong>(a) Electron density.</strong> <span class="math notranslate nohighlight">\(n(x)=Q_d(x)/q=\dfrac{WC_{ox}}{q}\sqrt{V_{ov}^2-\dfrac{2I_Dx}{\mu_nC_{ox}W}}\)</span> (per unit length): maximum <span class="math notranslate nohighlight">\(WC_{ox}V_{ov}/q\)</span> at the source, falling along <span class="math notranslate nohighlight">\(x\)</span> as a square root, to <span class="math notranslate nohighlight">\(WC_{ox}(V_{ov}-V_D)/q\)</span> at the drain. The fall is steepest near the drain.</p></td>
+<tr class="row-odd"><td><p><strong>Answer 2</strong></p></td>
+<td><p><strong>(a) Electron density.</strong> <span class="math notranslate nohighlight">\(n(x)\)</span> <span class="math notranslate nohighlight">\(=Q_d(x)/q\)</span> <span class="math notranslate nohighlight">\(=\dfrac{WC_{ox}}{q}\sqrt{V_{ov}^2-\dfrac{2I_Dx}{\mu_nC_{ox}W}}\)</span> (per unit length): maximum <span class="math notranslate nohighlight">\(WC_{ox}V_{ov}/q\)</span> at the source, falling along <span class="math notranslate nohighlight">\(x\)</span> as a square root, to <span class="math notranslate nohighlight">\(WC_{ox}(V_{ov}-V_D)/q\)</span> at the drain. The fall is steepest near the drain.</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>Answer 3</strong></p></td>
-<td><p>–</p></td>
+<tr class="row-even"><td><p><strong>Answer 3</strong></p></td>
 <td><p><strong>(a) Limit.</strong> At the edge of saturation (<span class="math notranslate nohighlight">\(V_D=V_{ov}\)</span>) the density falls to zero at <span class="math notranslate nohighlight">\(x=L\)</span> with a vertical tangent: pinch-off.</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>Answer 4</strong></p></td>
-<td><p>–</p></td>
-<td><p><strong>(b) Local resistance.</strong> A slice <span class="math notranslate nohighlight">\(dx\)</span> has resistance <span class="math notranslate nohighlight">\(dR=\dfrac{dx}{\mu_nQ_d(x)}\)</span>, so <span class="math notranslate nohighlight">\(\dfrac{dR}{dx}=\dfrac{1}{\mu_nWC_{ox}[V_{ov}-V(x)]}\)</span>: minimum <span class="math notranslate nohighlight">\(1/(\mu_nWC_{ox}V_{ov})\)</span> at the source, rising along the channel (as one over a square root) to <span class="math notranslate nohighlight">\(1/(\mu_nWC_{ox}(V_{ov}-V_D))\)</span> at the drain, and tending to infinity there at pinch-off.</p></td>
+<tr class="row-odd"><td><p><strong>Answer 4</strong></p></td>
+<td><p><strong>(b) Local resistance.</strong> A slice <span class="math notranslate nohighlight">\(dx\)</span> has resistance <span class="math notranslate nohighlight">\(dR=\dfrac{dx}{\mu_nQ_d(x)}\)</span>, so <span class="math notranslate nohighlight">\(\dfrac{dR}{dx}\)</span> <span class="math notranslate nohighlight">\(=\dfrac{1}{\mu_nWC_{ox}[V_{ov}-V(x)]}\)</span>: minimum <span class="math notranslate nohighlight">\(1/(\mu_nWC_{ox}V_{ov})\)</span> at the source, rising along the channel (as one over a square root) to <span class="math notranslate nohighlight">\(1/(\mu_nWC_{ox}(V_{ov}-V_D))\)</span> at the drain, and tending to infinity there at pinch-off.</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>Answer 5</strong></p></td>
-<td><p>–</p></td>
+<tr class="row-even"><td><p><strong>Answer 5</strong></p></td>
 <td><p><strong>Consistency.</strong> <span class="math notranslate nohighlight">\(dV/dx=I_D\,dR/dx\)</span>: the potential climbs fastest where the local resistance is highest, near the drain.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>Result</strong></p></td>
-<td><p>–</p></td>
 <td><p>(a) Electron density largest at the source, decreasing as <span class="math notranslate nohighlight">\(\sqrt{V_{ov}^2-2I_Dx/(\mu_nC_{ox}W)}\)</span> to <span class="math notranslate nohighlight">\(WC_{ox}(V_{ov}-V_D)/q\)</span> at the drain; (b) resistance per unit length <span class="math notranslate nohighlight">\(1/(\mu_nWC_{ox}[V_{ov}-V(x)])\)</span>, smallest at the source, rising toward the drain</p></td>
-</tr>
-<tr class="row-even"><td><p><strong>Check</strong></p></td>
-<td><p>–</p></td>
-<td><p>Solved twice, with the same result; no answer is published.</p></td>
 </tr>
 </tbody>
 </table>
@@ -1480,54 +1215,39 @@
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p></p></th>
-<th class="head"><p>BJT</p></th>
 <th class="head"><p>MOSFET</p></th>
 </tr>
 </thead>
 <tbody>
 <tr class="row-even"><td><p><strong>Problem</strong></p></td>
-<td><p>–</p></td>
 <td><p>Plot <span class="math notranslate nohighlight">\(V(x)\)</span> and <span class="math notranslate nohighlight">\(dV/dx\)</span> versus <span class="math notranslate nohighlight">\(x\)</span> for different values of <span class="math notranslate nohighlight">\(W\)</span> or <span class="math notranslate nohighlight">\(V_{TH}\)</span>.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>Given</strong></p></td>
-<td><p>–</p></td>
-<td><p><span class="math notranslate nohighlight">\(I_D=\mu_nC_{ox}W[V_{GS}-V(x)-V_{TH}]\,dV/dx\)</span>, <span class="math notranslate nohighlight">\(V(0)=0\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(I_D\)</span> <span class="math notranslate nohighlight">\(=\mu_nC_{ox}W[V_{GS}-V(x)-V_{TH}]\,dV/dx\)</span>, <span class="math notranslate nohighlight">\(V(0)=0\)</span></p></td>
 </tr>
-<tr class="row-even"><td><p><strong>Answer 1</strong></p></td>
-<td><p>–</p></td>
-<td><p><strong>Separate variables.</strong> <span class="math notranslate nohighlight">\(I_D\,dx=\mu_nC_{ox}W\,(V_{ov}-V)\,dV\)</span> with <span class="math notranslate nohighlight">\(V_{ov}=V_{GS}-V_{TH}\)</span>.</p></td>
+<tr class="row-even"><td><p><strong>Answer 1</strong></p></td>
+<td><p><strong>Separate variables.</strong> <span class="math notranslate nohighlight">\(I_D\,dx\)</span> <span class="math notranslate nohighlight">\(=\mu_nC_{ox}W\,(V_{ov}-V)\,dV\)</span> with <span class="math notranslate nohighlight">\(V_{ov}=V_{GS}-V_{TH}\)</span>.</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>Answer 2</strong></p></td>
-<td><p>–</p></td>
-<td><p><strong>Integrate from the source.</strong> <span class="math notranslate nohighlight">\(I_Dx=\mu_nC_{ox}W\left(V_{ov}V-\tfrac12V^2\right)\)</span>.</p></td>
+<tr class="row-odd"><td><p><strong>Answer 2</strong></p></td>
+<td><p><strong>Integrate from the source.</strong> <span class="math notranslate nohighlight">\(I_Dx\)</span> <span class="math notranslate nohighlight">\(=\mu_nC_{ox}W\left(V_{ov}V-\tfrac12V^2\right)\)</span>.</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>Answer 3</strong></p></td>
-<td><p>–</p></td>
-<td><p><strong>Solve the quadratic.</strong> <span class="math notranslate nohighlight">\(V(x)=V_{ov}-\sqrt{V_{ov}^2-\dfrac{2I_Dx}{\mu_nC_{ox}W}}\)</span> (the root with <span class="math notranslate nohighlight">\(V(0)=0\)</span>).</p></td>
+<tr class="row-even"><td><p><strong>Answer 3</strong></p></td>
+<td><p><strong>Solve the quadratic.</strong> <span class="math notranslate nohighlight">\(V(x)\)</span> <span class="math notranslate nohighlight">\(=V_{ov}-\sqrt{V_{ov}^2-\dfrac{2I_Dx}{\mu_nC_{ox}W}}\)</span> (the root with <span class="math notranslate nohighlight">\(V(0)=0\)</span>).</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>Answer 4</strong></p></td>
-<td><p>–</p></td>
-<td><p><strong>Slope.</strong> <span class="math notranslate nohighlight">\(\dfrac{dV}{dx}=\dfrac{I_D}{\mu_nC_{ox}W\sqrt{V_{ov}^2-2I_Dx/(\mu_nC_{ox}W)}}=\dfrac{I_D}{\mu_nC_{ox}W\,[V_{ov}-V(x)]}\)</span>.</p></td>
+<tr class="row-odd"><td><p><strong>Answer 4</strong></p></td>
+<td><p><strong>Slope.</strong> <span class="math notranslate nohighlight">\(\dfrac{dV}{dx}\)</span> <span class="math notranslate nohighlight">\(=\dfrac{I_D}{\mu_nC_{ox}W\sqrt{V_{ov}^2-2I_Dx/(\mu_nC_{ox}W)}}\)</span> <span class="math notranslate nohighlight">\(=\dfrac{I_D}{\mu_nC_{ox}W\,[V_{ov}-V(x)]}\)</span>.</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>Answer 5</strong></p></td>
-<td><p>–</p></td>
+<tr class="row-even"><td><p><strong>Answer 5</strong></p></td>
 <td><p><strong>Shapes.</strong> <span class="math notranslate nohighlight">\(V(x)\)</span> starts at 0 with slope <span class="math notranslate nohighlight">\(I_D/(\mu_nC_{ox}WV_{ov})\)</span> and curves upward (concave up); <span class="math notranslate nohighlight">\(dV/dx\)</span> grows along <span class="math notranslate nohighlight">\(x\)</span> and diverges where <span class="math notranslate nohighlight">\(V\to V_{ov}\)</span> (pinch-off).</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>Answer 6</strong></p></td>
-<td><p>–</p></td>
+<tr class="row-odd"><td><p><strong>Answer 6</strong></p></td>
 <td><p><strong>Effect of <span class="math notranslate nohighlight">\(W\)</span>.</strong> For a given <span class="math notranslate nohighlight">\(I_D\)</span>, a larger <span class="math notranslate nohighlight">\(W\)</span> lowers <span class="math notranslate nohighlight">\(2I_Dx/(\mu_nC_{ox}W)\)</span>: <span class="math notranslate nohighlight">\(V(x)\)</span> rises more slowly and <span class="math notranslate nohighlight">\(dV/dx\)</span> is smaller everywhere (a wider channel needs less field to carry the same current).</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>Answer 7</strong></p></td>
-<td><p>–</p></td>
+<tr class="row-even"><td><p><strong>Answer 7</strong></p></td>
 <td><p><strong>Effect of <span class="math notranslate nohighlight">\(V_{TH}\)</span>.</strong> A larger <span class="math notranslate nohighlight">\(V_{TH}\)</span> lowers <span class="math notranslate nohighlight">\(V_{ov}\)</span>: the curve starts steeper (<span class="math notranslate nohighlight">\(dV/dx\)</span> at <span class="math notranslate nohighlight">\(x=0\)</span> is <span class="math notranslate nohighlight">\(I_D/(\mu_nC_{ox}WV_{ov})\)</span>) and approaches the pinch-off limit <span class="math notranslate nohighlight">\(V=V_{ov}\)</span> sooner, so <span class="math notranslate nohighlight">\(V(x)\)</span> rises faster and <span class="math notranslate nohighlight">\(dV/dx\)</span> is larger.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>Result</strong></p></td>
-<td><p>–</p></td>
-<td><p><span class="math notranslate nohighlight">\(V(x)=V_{GS}-V_{TH}-\sqrt{(V_{GS}-V_{TH})^2-\dfrac{2I_Dx}{\mu_nC_{ox}W}}\)</span>, <span class="math notranslate nohighlight">\(\dfrac{dV}{dx}=\dfrac{I_D}{\mu_nC_{ox}W[V_{GS}-V_{TH}-V(x)]}\)</span></p></td>
-</tr>
-<tr class="row-even"><td><p><strong>Check</strong></p></td>
-<td><p>–</p></td>
-<td><p>Solved twice, with the same result; no answer is published.</p></td>
+<td><p><span class="math notranslate nohighlight">\(V(x)\)</span> <span class="math notranslate nohighlight">\(=V_{GS}-V_{TH}-\sqrt{(V_{GS}-V_{TH})^2-\dfrac{2I_Dx}{\mu_nC_{ox}W}}\)</span>, <span class="math notranslate nohighlight">\(\dfrac{dV}{dx}\)</span> <span class="math notranslate nohighlight">\(=\dfrac{I_D}{\mu_nC_{ox}W[V_{GS}-V_{TH}-V(x)]}\)</span></p></td>
 </tr>
 </tbody>
 </table>
@@ -1536,38 +1256,27 @@
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p></p></th>
-<th class="head"><p>BJT</p></th>
 <th class="head"><p>MOSFET</p></th>
 </tr>
 </thead>
 <tbody>
 <tr class="row-even"><td><p><strong>Problem</strong></p></td>
-<td><p>–</p></td>
 <td><p>For a MOSFET used as a resistor (deep triode), define the intrinsic time constant <span class="math notranslate nohighlight">\(\tau=R_{on}C_{GS}\)</span> with <span class="math notranslate nohighlight">\(C_{GS}=WLC_{ox}\)</span>. Find an expression for <span class="math notranslate nohighlight">\(\tau\)</span> and say what the designer must do to minimize it.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>Given</strong></p></td>
-<td><p>–</p></td>
-<td><p><span class="math notranslate nohighlight">\(R_{on}=\dfrac{1}{\mu_nC_{ox}(W/L)(V_{GS}-V_{TH})}\)</span>, <span class="math notranslate nohighlight">\(C_{GS}=WLC_{ox}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(R_{on}\)</span> <span class="math notranslate nohighlight">\(=\dfrac{1}{\mu_nC_{ox}(W/L)(V_{GS}-V_{TH})}\)</span>, <span class="math notranslate nohighlight">\(C_{GS}=WLC_{ox}\)</span></p></td>
 </tr>
-<tr class="row-even"><td><p><strong>Answer 1</strong></p></td>
-<td><p>–</p></td>
-<td><p><strong>Multiply.</strong> <span class="math notranslate nohighlight">\(\tau=\dfrac{WLC_{ox}}{\mu_nC_{ox}(W/L)(V_{GS}-V_{TH})}\)</span>.</p></td>
+<tr class="row-even"><td><p><strong>Answer 1</strong></p></td>
+<td><p><strong>Multiply.</strong> <span class="math notranslate nohighlight">\(\tau\)</span> <span class="math notranslate nohighlight">\(=\dfrac{WLC_{ox}}{\mu_nC_{ox}(W/L)(V_{GS}-V_{TH})}\)</span>.</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>Answer 2</strong></p></td>
-<td><p>–</p></td>
-<td><p><strong>Simplify.</strong> <span class="math notranslate nohighlight">\(\tau=\dfrac{L^2}{\mu_n(V_{GS}-V_{TH})}\)</span>: independent of <span class="math notranslate nohighlight">\(W\)</span> and of <span class="math notranslate nohighlight">\(C_{ox}\)</span>.</p></td>
+<tr class="row-odd"><td><p><strong>Answer 2</strong></p></td>
+<td><p><strong>Simplify.</strong> <span class="math notranslate nohighlight">\(\tau\)</span> <span class="math notranslate nohighlight">\(=\dfrac{L^2}{\mu_n(V_{GS}-V_{TH})}\)</span>: independent of <span class="math notranslate nohighlight">\(W\)</span> and of <span class="math notranslate nohighlight">\(C_{ox}\)</span>.</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>Answer 3</strong></p></td>
-<td><p>–</p></td>
+<tr class="row-even"><td><p><strong>Answer 3</strong></p></td>
 <td><p><strong>Minimize.</strong> Use the shortest channel length available (<span class="math notranslate nohighlight">\(\tau\propto L^2\)</span>) and the largest overdrive <span class="math notranslate nohighlight">\(V_{GS}-V_{TH}\)</span> (drive the gate as high as possible); higher carrier mobility also helps (an NMOS rather than a PMOS). Changing <span class="math notranslate nohighlight">\(W\)</span> does not help: it lowers <span class="math notranslate nohighlight">\(R_{on}\)</span> and raises <span class="math notranslate nohighlight">\(C_{GS}\)</span> by the same factor.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>Result</strong></p></td>
-<td><p>–</p></td>
-<td><p><span class="math notranslate nohighlight">\(\tau=\dfrac{L^2}{\mu_n(V_{GS}-V_{TH})}\)</span>; minimize with small <span class="math notranslate nohighlight">\(L\)</span> and large <span class="math notranslate nohighlight">\(V_{GS}-V_{TH}\)</span></p></td>
-</tr>
-<tr class="row-even"><td><p><strong>Check</strong></p></td>
-<td><p>–</p></td>
-<td><p>Solved twice, with the same result; no answer is published.</p></td>
+<td><p><span class="math notranslate nohighlight">\(\tau\)</span> <span class="math notranslate nohighlight">\(=\dfrac{L^2}{\mu_n(V_{GS}-V_{TH})}\)</span>; minimize with small <span class="math notranslate nohighlight">\(L\)</span> and large <span class="math notranslate nohighlight">\(V_{GS}-V_{TH}\)</span></p></td>
 </tr>
 </tbody>
 </table>
@@ -1576,46 +1285,33 @@
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p></p></th>
-<th class="head"><p>BJT</p></th>
 <th class="head"><p>MOSFET</p></th>
 </tr>
 </thead>
 <tbody>
 <tr class="row-even"><td><p><strong>Problem</strong></p></td>
-<td><p>–</p></td>
 <td><p>Its builder calls it a differential amplifier because its current depends on the difference of the two inputs. Explain which properties of differential signals and differential amplifiers it lacks.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>Given</strong></p></td>
-<td><p>–</p></td>
-<td><p><span class="math notranslate nohighlight">\(I_D=\frac12\mu_nC_{ox}\frac WL(V_{in2}-V_{in1}-V_{TH})^2\)</span> in saturation</p></td>
+<td><p><span class="math notranslate nohighlight">\(I_D\)</span> <span class="math notranslate nohighlight">\(=\frac12\mu_nC_{ox}\frac WL(V_{in2}-V_{in1}-V_{TH})^2\)</span> in saturation</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>Answer 1</strong></p></td>
-<td><p>–</p></td>
+<tr class="row-even"><td><p><strong>Answer 1</strong></p></td>
 <td><p><strong>What is true.</strong> Ignoring body effect, <span class="math notranslate nohighlight">\(I_D\)</span> depends only on <span class="math notranslate nohighlight">\(V_{GS}=V_{in2}-V_{in1}\)</span>, so the current does respond to the difference of the inputs</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>Answer 2</strong></p></td>
-<td><p>–</p></td>
+<tr class="row-odd"><td><p><strong>Answer 2</strong></p></td>
 <td><p><strong>Single-ended output.</strong> There is only one output referred to ground; a differential amplifier gives two outputs moving in opposite directions about a fixed common-mode level, so supply noise on <span class="math notranslate nohighlight">\(V_{DD}\)</span> appears fully at <span class="math notranslate nohighlight">\(V_{out}\)</span> instead of cancelling</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>Answer 3</strong></p></td>
-<td><p>–</p></td>
+<tr class="row-even"><td><p><strong>Answer 3</strong></p></td>
 <td><p><strong>Unequal inputs.</strong> The gate input draws no current, but the source input must sink the whole <span class="math notranslate nohighlight">\(I_D\)</span> and presents only about <span class="math notranslate nohighlight">\(1/(g_m+g_{mb})\)</span>; the gains differ too: <span class="math notranslate nohighlight">\(-g_mR_D\)</span> from <span class="math notranslate nohighlight">\(V_{in2}\)</span> but <span class="math notranslate nohighlight">\(+(g_m+g_{mb})R_D\)</span> from <span class="math notranslate nohighlight">\(V_{in1}\)</span>, e.g. <span class="math notranslate nohighlight">\(-5\)</span> and <span class="math notranslate nohighlight">\(+6\)</span> for <span class="math notranslate nohighlight">\(g_m=1\,\mathrm{mS}\)</span>, <span class="math notranslate nohighlight">\(g_{mb}=0.2\,\mathrm{mS}\)</span>, <span class="math notranslate nohighlight">\(R_D=5\,\mathrm{k}\Omega\)</span></p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>Answer 4</strong></p></td>
-<td><p>–</p></td>
+<tr class="row-odd"><td><p><strong>Answer 4</strong></p></td>
 <td><p><strong>Common-mode sensitivity.</strong> Raising both inputs together changes <span class="math notranslate nohighlight">\(V_{SB}\)</span> and hence <span class="math notranslate nohighlight">\(V_{TH}\)</span> (body effect), so <span class="math notranslate nohighlight">\(I_D\)</span> and <span class="math notranslate nohighlight">\(V_{out}\)</span> move with a common-mode change, and the bias current itself is not fixed by a tail source but by the input levels</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>Answer 5</strong></p></td>
-<td><p>–</p></td>
+<tr class="row-even"><td><p><strong>Answer 5</strong></p></td>
 <td><p><strong>Linearity and range.</strong> The output follows the square law of <span class="math notranslate nohighlight">\(V_{in2}-V_{in1}\)</span>, not a symmetric odd function of it; for <span class="math notranslate nohighlight">\(V_{in2}-V_{in1}&lt;V_{TH}\)</span> the device is off, and negative differences produce no response</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>Result</strong></p></td>
-<td><p>–</p></td>
 <td><p>It is not a true differential amplifier: single-ended output (no rejection of supply or common-mode noise), unequal input impedances and gains for the two inputs, bias current set by the inputs, common-mode sensitivity through body effect, and a one-sided square-law response</p></td>
-</tr>
-<tr class="row-even"><td><p><strong>Check</strong></p></td>
-<td><p>–</p></td>
-<td><p>Solved twice, with the same result; no answer is published.</p></td>
 </tr>
 </tbody>
 </table>
@@ -1624,38 +1320,27 @@
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p></p></th>
-<th class="head"><p>BJT</p></th>
 <th class="head"><p>MOSFET</p></th>
 </tr>
 </thead>
 <tbody>
 <tr class="row-even"><td><p><strong>Problem</strong></p></td>
-<td><p>–</p></td>
 <td><p>An NMOS transistor has zero-bias threshold <span class="math notranslate nohighlight">\(V_{t0}=0.8\,\mathrm{V}\)</span>, body-effect parameter <span class="math notranslate nohighlight">\(\gamma=0.4\,\mathrm{V^{1/2}}\)</span> and <span class="math notranslate nohighlight">\(2\phi_f=0.7\,\mathrm{V}\)</span>. Find its threshold <span class="math notranslate nohighlight">\(V_t\)</span> when the source-to-body voltage is <span class="math notranslate nohighlight">\(V_{SB}=3\,\mathrm{V}\)</span>.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>Given</strong></p></td>
-<td><p>–</p></td>
 <td><p><span class="math notranslate nohighlight">\(V_{t0}=0.8\,\mathrm{V}\)</span>, <span class="math notranslate nohighlight">\(\gamma=0.4\,\mathrm{V^{1/2}}\)</span>, <span class="math notranslate nohighlight">\(2\phi_f=0.7\,\mathrm{V}\)</span>, <span class="math notranslate nohighlight">\(V_{SB}=3\,\mathrm{V}\)</span></p></td>
 </tr>
-<tr class="row-even"><td><p><strong>Answer 1</strong></p></td>
-<td><p>–</p></td>
-<td><p><strong>Body-effect formula.</strong> <span class="math notranslate nohighlight">\(V_t=V_{t0}+\gamma\left(\sqrt{2\phi_f+V_{SB}}-\sqrt{2\phi_f}\right)\)</span></p></td>
+<tr class="row-even"><td><p><strong>Answer 1</strong></p></td>
+<td><p><strong>Body-effect formula.</strong> <span class="math notranslate nohighlight">\(V_t\)</span> <span class="math notranslate nohighlight">\(=V_{t0}+\gamma\left(\sqrt{2\phi_f+V_{SB}}-\sqrt{2\phi_f}\right)\)</span></p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>Answer 2</strong></p></td>
-<td><p>–</p></td>
+<tr class="row-odd"><td><p><strong>Answer 2</strong></p></td>
 <td><p><strong>Square roots.</strong> <span class="math notranslate nohighlight">\(\sqrt{0.7+3}=1.924\)</span>, <span class="math notranslate nohighlight">\(\sqrt{0.7}=0.837\)</span></p></td>
 </tr>
-<tr class="row-even"><td><p><strong>Answer 3</strong></p></td>
-<td><p>–</p></td>
-<td><p><strong>Threshold.</strong> <span class="math notranslate nohighlight">\(V_t=0.8+0.4(1.924-0.837)=1.23\,\mathrm{V}\)</span></p></td>
+<tr class="row-even"><td><p><strong>Answer 3</strong></p></td>
+<td><p><strong>Threshold.</strong> <span class="math notranslate nohighlight">\(V_t\)</span> <span class="math notranslate nohighlight">\(=0.8+0.4(1.924-0.837)\)</span> <span class="math notranslate nohighlight">\(=1.23\,\mathrm{V}\)</span></p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>Result</strong></p></td>
-<td><p>–</p></td>
 <td><p><span class="math notranslate nohighlight">\(V_t=1.23\,\mathrm{V}\)</span></p></td>
-</tr>
-<tr class="row-even"><td><p><strong>Check</strong></p></td>
-<td><p>–</p></td>
-<td><p>Agrees with the published answer; solved twice.</p></td>
 </tr>
 </tbody>
 </table>
@@ -1664,38 +1349,27 @@
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p></p></th>
-<th class="head"><p>BJT</p></th>
 <th class="head"><p>MOSFET</p></th>
 </tr>
 </thead>
 <tbody>
 <tr class="row-even"><td><p><strong>Problem</strong></p></td>
-<td><p>–</p></td>
 <td><p>A gate capacitor of <span class="math notranslate nohighlight">\(10\,\mathrm{pF}\)</span> is to be made from the gate oxide of a process whose oxide thickness may lie between <span class="math notranslate nohighlight">\(2\,\mathrm{nm}\)</span> and <span class="math notranslate nohighlight">\(10\,\mathrm{nm}\)</span> (<span class="math notranslate nohighlight">\(\epsilon_{ox}=34.5\,\mathrm{pF/m}\)</span>). Find the range of <span class="math notranslate nohighlight">\(C_{ox}\)</span>, the plate area needed and the side of a square plate.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>Given</strong></p></td>
-<td><p>–</p></td>
 <td><p><span class="math notranslate nohighlight">\(C=10\,\mathrm{pF}\)</span>, <span class="math notranslate nohighlight">\(t_{ox}=2\ldots10\,\mathrm{nm}\)</span>, <span class="math notranslate nohighlight">\(\epsilon_{ox}=34.5\,\mathrm{pF/m}\)</span></p></td>
 </tr>
-<tr class="row-even"><td><p><strong>Answer 1</strong></p></td>
-<td><p>–</p></td>
+<tr class="row-even"><td><p><strong>Answer 1</strong></p></td>
 <td><p><strong>Oxide capacitance per area.</strong> <span class="math notranslate nohighlight">\(C_{ox}=\epsilon_{ox}/t_{ox}\)</span>: <span class="math notranslate nohighlight">\(17.25\,\mathrm{fF/\mu m^2}\)</span> at <span class="math notranslate nohighlight">\(2\,\mathrm{nm}\)</span> down to <span class="math notranslate nohighlight">\(3.45\,\mathrm{fF/\mu m^2}\)</span> at <span class="math notranslate nohighlight">\(10\,\mathrm{nm}\)</span></p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>Answer 2</strong></p></td>
-<td><p>–</p></td>
-<td><p><strong>Area.</strong> <span class="math notranslate nohighlight">\(A=C/C_{ox}\)</span>: <span class="math notranslate nohighlight">\(\dfrac{10\,\mathrm{pF}}{17.25\,\mathrm{fF/\mu m^2}}=580\,\mu\mathrm{m^2}\)</span> and <span class="math notranslate nohighlight">\(\dfrac{10\,\mathrm{pF}}{3.45\,\mathrm{fF/\mu m^2}}=2900\,\mu\mathrm{m^2}\)</span></p></td>
+<tr class="row-odd"><td><p><strong>Answer 2</strong></p></td>
+<td><p><strong>Area.</strong> <span class="math notranslate nohighlight">\(A=C/C_{ox}\)</span>: <span class="math notranslate nohighlight">\(\dfrac{10\,\mathrm{pF}}{17.25\,\mathrm{fF/\mu m^2}}\)</span> <span class="math notranslate nohighlight">\(=580\,\mu\mathrm{m^2}\)</span> and <span class="math notranslate nohighlight">\(\dfrac{10\,\mathrm{pF}}{3.45\,\mathrm{fF/\mu m^2}}\)</span> <span class="math notranslate nohighlight">\(=2900\,\mu\mathrm{m^2}\)</span></p></td>
 </tr>
-<tr class="row-even"><td><p><strong>Answer 3</strong></p></td>
-<td><p>–</p></td>
+<tr class="row-even"><td><p><strong>Answer 3</strong></p></td>
 <td><p><strong>Side of a square.</strong> <span class="math notranslate nohighlight">\(d=\sqrt A\)</span>: <span class="math notranslate nohighlight">\(24.1\,\mu\mathrm{m}\)</span> to <span class="math notranslate nohighlight">\(53.8\,\mu\mathrm{m}\)</span></p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>Result</strong></p></td>
-<td><p>–</p></td>
 <td><p><span class="math notranslate nohighlight">\(C_{ox}=3.45\)</span> to <span class="math notranslate nohighlight">\(17.25\,\mathrm{fF/\mu m^2}\)</span>; area <span class="math notranslate nohighlight">\(580\)</span> to <span class="math notranslate nohighlight">\(2900\,\mu\mathrm{m^2}\)</span>; side <span class="math notranslate nohighlight">\(24\)</span> to <span class="math notranslate nohighlight">\(54\,\mu\mathrm{m}\)</span></p></td>
-</tr>
-<tr class="row-even"><td><p><strong>Check</strong></p></td>
-<td><p>–</p></td>
-<td><p>Agrees with the published answer; solved twice.</p></td>
 </tr>
 </tbody>
 </table>
@@ -1704,34 +1378,24 @@
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p></p></th>
-<th class="head"><p>BJT</p></th>
 <th class="head"><p>MOSFET</p></th>
 </tr>
 </thead>
 <tbody>
 <tr class="row-even"><td><p><strong>Problem</strong></p></td>
-<td><p>–</p></td>
 <td><p>An NMOS transistor with <span class="math notranslate nohighlight">\(C_{ox}=25\,\mathrm{fF/\mu m^2}\)</span>, <span class="math notranslate nohighlight">\(L=65\,\mathrm{nm}\)</span> and <span class="math notranslate nohighlight">\(W=0.65\,\mu\mathrm{m}\)</span> is biased with <span class="math notranslate nohighlight">\(v_{OV}=0.15\,\mathrm{V}\)</span> and <span class="math notranslate nohighlight">\(v_{DS}=0\)</span>. Find the charge stored in the channel.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>Given</strong></p></td>
-<td><p>–</p></td>
 <td><p><span class="math notranslate nohighlight">\(C_{ox}=25\,\mathrm{fF/\mu m^2}\)</span>, <span class="math notranslate nohighlight">\(W=0.65\,\mu\mathrm{m}\)</span>, <span class="math notranslate nohighlight">\(L=0.065\,\mu\mathrm{m}\)</span>, <span class="math notranslate nohighlight">\(v_{OV}=0.15\,\mathrm{V}\)</span>, <span class="math notranslate nohighlight">\(v_{DS}=0\)</span></p></td>
 </tr>
-<tr class="row-even"><td><p><strong>Answer 1</strong></p></td>
-<td><p>–</p></td>
-<td><p><strong>Gate capacitance.</strong> <span class="math notranslate nohighlight">\(C_{ox}WL=25\times0.65\times0.065=1.056\,\mathrm{fF}\)</span></p></td>
+<tr class="row-even"><td><p><strong>Answer 1</strong></p></td>
+<td><p><strong>Gate capacitance.</strong> <span class="math notranslate nohighlight">\(C_{ox}WL\)</span> <span class="math notranslate nohighlight">\(=25\times0.65\times0.065\)</span> <span class="math notranslate nohighlight">\(=1.056\,\mathrm{fF}\)</span></p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>Answer 2</strong></p></td>
-<td><p>–</p></td>
-<td><p><strong>Channel charge.</strong> With <span class="math notranslate nohighlight">\(v_{DS}=0\)</span> the channel is uniform, so <span class="math notranslate nohighlight">\(Q=C_{ox}WL\,v_{OV}=1.056\,\mathrm{fF}\times0.15\,\mathrm{V}=0.158\,\mathrm{fC}\approx0.16\,\mathrm{fC}\)</span></p></td>
+<tr class="row-odd"><td><p><strong>Answer 2</strong></p></td>
+<td><p><strong>Channel charge.</strong> With <span class="math notranslate nohighlight">\(v_{DS}=0\)</span> the channel is uniform, so <span class="math notranslate nohighlight">\(Q\)</span> <span class="math notranslate nohighlight">\(=C_{ox}WL\,v_{OV}\)</span> <span class="math notranslate nohighlight">\(=1.056\,\mathrm{fF}\times0.15\,\mathrm{V}\)</span> <span class="math notranslate nohighlight">\(=0.158\,\mathrm{fC}\)</span> <span class="math notranslate nohighlight">\(\approx0.16\,\mathrm{fC}\)</span></p></td>
 </tr>
 <tr class="row-even"><td><p><strong>Result</strong></p></td>
-<td><p>–</p></td>
 <td><p><span class="math notranslate nohighlight">\(Q\approx0.16\,\mathrm{fC}\)</span></p></td>
-</tr>
-<tr class="row-odd"><td><p><strong>Check</strong></p></td>
-<td><p>–</p></td>
-<td><p>Agrees with the published answer; solved twice.</p></td>
 </tr>
 </tbody>
 </table>
@@ -1740,58 +1404,42 @@
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p></p></th>
-<th class="head"><p>BJT</p></th>
 <th class="head"><p>MOSFET</p></th>
 </tr>
 </thead>
 <tbody>
 <tr class="row-even"><td><p><strong>Problem</strong></p></td>
-<td><p>–</p></td>
-<td><p>Complete the table of four CMOS technology generations. Given: minimum length <span class="math notranslate nohighlight">\(L=0.5,\,0.25,\,0.18,\,0.13\,\mu\mathrm{m}\)</span>; oxide thickness <span class="math notranslate nohighlight">\(t_{ox}=10,\,5,\,3.6,\,2.6\,\mathrm{nm}\)</span>; <span class="math notranslate nohighlight">\(V_{DD}=5,\,2.5,\,1.8,\,1.3\,\mathrm{V}\)</span>; <span class="math notranslate nohighlight">\(V_t=0.7,\,0.5,\,0.4,\,0.4\,\mathrm{V}\)</span>; <span class="math notranslate nohighlight">\(\epsilon_{ox}=34.5\,\mathrm{pF/m}\)</span>; <span class="math notranslate nohighlight">\(\mu_n=500\,\mathrm{cm^2/V\cdot s}\)</span>; <span class="math notranslate nohighlight">\(W/L=10\)</span> with <span class="math notranslate nohighlight">\(L=L_{min}\)</span>. Find <span class="math notranslate nohighlight">\(C_{ox}\)</span>, <span class="math notranslate nohighlight">\(k_n^\prime\)</span>, <span class="math notranslate nohighlight">\(k_n=k_n^\prime W/L\)</span>, device area <span class="math notranslate nohighlight">\(A=WL\)</span>, saturation current <span class="math notranslate nohighlight">\(I_D\)</span> at <span class="math notranslate nohighlight">\(V_{GS}=V_{DS}=V_{DD}\)</span>, power <span class="math notranslate nohighlight">\(P=V_{DD}I_D\)</span>, power density <span class="math notranslate nohighlight">\(P/A\)</span> and the relative number of devices on a chip of fixed area.</p></td>
+<td><p>Complete the table of four CMOS technology generations. Given: minimum length <span class="math notranslate nohighlight">\(L\)</span> <span class="math notranslate nohighlight">\(=0.5,\,0.25,\,0.18,\,0.13\,\mu\mathrm{m}\)</span>; oxide thickness <span class="math notranslate nohighlight">\(t_{ox}\)</span> <span class="math notranslate nohighlight">\(=10,\,5,\,3.6,\,2.6\,\mathrm{nm}\)</span>; <span class="math notranslate nohighlight">\(V_{DD}\)</span> <span class="math notranslate nohighlight">\(=5,\,2.5,\,1.8,\,1.3\,\mathrm{V}\)</span>; <span class="math notranslate nohighlight">\(V_t\)</span> <span class="math notranslate nohighlight">\(=0.7,\,0.5,\,0.4,\,0.4\,\mathrm{V}\)</span>; <span class="math notranslate nohighlight">\(\epsilon_{ox}=34.5\,\mathrm{pF/m}\)</span>; <span class="math notranslate nohighlight">\(\mu_n=500\,\mathrm{cm^2/V\cdot s}\)</span>; <span class="math notranslate nohighlight">\(W/L=10\)</span> with <span class="math notranslate nohighlight">\(L=L_{min}\)</span>. Find <span class="math notranslate nohighlight">\(C_{ox}\)</span>, <span class="math notranslate nohighlight">\(k_n^\prime\)</span>, <span class="math notranslate nohighlight">\(k_n=k_n^\prime W/L\)</span>, device area <span class="math notranslate nohighlight">\(A=WL\)</span>, saturation current <span class="math notranslate nohighlight">\(I_D\)</span> at <span class="math notranslate nohighlight">\(V_{GS}=V_{DS}=V_{DD}\)</span>, power <span class="math notranslate nohighlight">\(P=V_{DD}I_D\)</span>, power density <span class="math notranslate nohighlight">\(P/A\)</span> and the relative number of devices on a chip of fixed area.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>Given</strong></p></td>
-<td><p>–</p></td>
 <td><p><span class="math notranslate nohighlight">\(\epsilon_{ox}=34.5\,\mathrm{pF/m}\)</span>, <span class="math notranslate nohighlight">\(\mu_n=500\,\mathrm{cm^2/V\,s}\)</span>, <span class="math notranslate nohighlight">\(W/L=10\)</span>, <span class="math notranslate nohighlight">\(L,\,t_{ox},\,V_{DD},\,V_t\)</span> as listed</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>Answer 1</strong></p></td>
-<td><p>–</p></td>
-<td><p><strong>Oxide capacitance.</strong> <span class="math notranslate nohighlight">\(C_{ox}=\epsilon_{ox}/t_{ox}=34.5/t_{ox}(\mathrm{nm})\ \mathrm{fF/\mu m^2}\)</span>: <span class="math notranslate nohighlight">\(3.45,\,6.90,\,9.58,\,13.3\)</span>.</p></td>
+<tr class="row-even"><td><p><strong>Answer 1</strong></p></td>
+<td><p><strong>Oxide capacitance.</strong> <span class="math notranslate nohighlight">\(C_{ox}\)</span> <span class="math notranslate nohighlight">\(=\epsilon_{ox}/t_{ox}\)</span> <span class="math notranslate nohighlight">\(=34.5/t_{ox}(\mathrm{nm})\ \mathrm{fF/\mu m^2}\)</span>: <span class="math notranslate nohighlight">\(3.45,\,6.90,\,9.58,\,13.3\)</span>.</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>Answer 2</strong></p></td>
-<td><p>–</p></td>
-<td><p><strong>Process transconductance.</strong> <span class="math notranslate nohighlight">\(k_n^\prime=\mu_nC_{ox}=500\times C_{ox}\times10^{-1}\ \mu\mathrm{A/V^2}\)</span>: <span class="math notranslate nohighlight">\(173,\,345,\,479,\,665\)</span> (using <span class="math notranslate nohighlight">\(\mu_n=500\)</span> and the rounded <span class="math notranslate nohighlight">\(C_{ox}\)</span> of the table: <span class="math notranslate nohighlight">\(172.5\to173\)</span>).</p></td>
+<tr class="row-odd"><td><p><strong>Answer 2</strong></p></td>
+<td><p><strong>Process transconductance.</strong> <span class="math notranslate nohighlight">\(k_n^\prime\)</span> <span class="math notranslate nohighlight">\(=\mu_nC_{ox}\)</span> <span class="math notranslate nohighlight">\(=500\times C_{ox}\times10^{-1}\ \mu\mathrm{A/V^2}\)</span>: <span class="math notranslate nohighlight">\(173,\,345,\,479,\,665\)</span> (using <span class="math notranslate nohighlight">\(\mu_n=500\)</span> and the rounded <span class="math notranslate nohighlight">\(C_{ox}\)</span> of the table: <span class="math notranslate nohighlight">\(172.5\to173\)</span>).</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>Answer 3</strong></p></td>
-<td><p>–</p></td>
+<tr class="row-even"><td><p><strong>Answer 3</strong></p></td>
 <td><p><strong>Device transconductance.</strong> <span class="math notranslate nohighlight">\(k_n=k_n^\prime(W/L)=10k_n^\prime\)</span>: <span class="math notranslate nohighlight">\(1.73,\,3.45,\,4.79,\,6.65\ \mathrm{mA/V^2}\)</span>.</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>Answer 4</strong></p></td>
-<td><p>–</p></td>
+<tr class="row-odd"><td><p><strong>Answer 4</strong></p></td>
 <td><p><strong>Area.</strong> <span class="math notranslate nohighlight">\(A=W\cdot L=10L^2\)</span>: <span class="math notranslate nohighlight">\(2.50,\,0.625,\,0.324,\,0.169\,\mu\mathrm{m^2}\)</span>.</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>Answer 5</strong></p></td>
-<td><p>–</p></td>
+<tr class="row-even"><td><p><strong>Answer 5</strong></p></td>
 <td><p><strong>Drain current.</strong> <span class="math notranslate nohighlight">\(I_D=\tfrac12k_n(V_{DD}-V_t)^2\)</span>: <span class="math notranslate nohighlight">\(16.0,\,6.90,\,4.69,\,2.69\,\mathrm{mA}\)</span>.</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>Answer 6</strong></p></td>
-<td><p>–</p></td>
+<tr class="row-odd"><td><p><strong>Answer 6</strong></p></td>
 <td><p><strong>Power.</strong> <span class="math notranslate nohighlight">\(P=V_{DD}I_D\)</span>: <span class="math notranslate nohighlight">\(80,\,17.3,\,8.44,\,3.50\,\mathrm{mW}\)</span>.</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>Answer 7</strong></p></td>
-<td><p>–</p></td>
+<tr class="row-even"><td><p><strong>Answer 7</strong></p></td>
 <td><p><strong>Power density.</strong> <span class="math notranslate nohighlight">\(P/A\)</span>: <span class="math notranslate nohighlight">\(32,\,27.7,\,26.0,\,20.7\,\mathrm{mW/\mu m^2}\)</span>.</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>Answer 8</strong></p></td>
-<td><p>–</p></td>
+<tr class="row-odd"><td><p><strong>Answer 8</strong></p></td>
 <td><p><strong>Devices per chip.</strong> For equal chip area the count scales as <span class="math notranslate nohighlight">\(1/A\)</span> relative to the <span class="math notranslate nohighlight">\(0.5\,\mu\mathrm{m}\)</span> process (<span class="math notranslate nohighlight">\(n\)</span>): <span class="math notranslate nohighlight">\(n,\,4n,\,7.72n,\,14.8n\)</span>.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>Result</strong></p></td>
-<td><p>–</p></td>
-<td><p><span class="math notranslate nohighlight">\(C_{ox}=3.45,\,6.90,\,9.58,\,13.3\,\mathrm{fF/\mu m^2}\)</span>; <span class="math notranslate nohighlight">\(k_n^\prime=173,\,345,\,479,\,665\,\mu\mathrm{A/V^2}\)</span>; <span class="math notranslate nohighlight">\(k_n=1.73,\,3.45,\,4.79,\,6.65\,\mathrm{mA/V^2}\)</span>; <span class="math notranslate nohighlight">\(A=2.50,\,0.625,\,0.324,\,0.169\,\mu\mathrm{m^2}\)</span>; <span class="math notranslate nohighlight">\(I_D=16.0,\,6.90,\,4.69,\,2.69\,\mathrm{mA}\)</span>; <span class="math notranslate nohighlight">\(P=80,\,17.3,\,8.44,\,3.50\,\mathrm{mW}\)</span>; <span class="math notranslate nohighlight">\(P/A=32,\,27.7,\,26.0,\,20.7\,\mathrm{mW/\mu m^2}\)</span>; devices <span class="math notranslate nohighlight">\(n,\,4n,\,7.72n,\,14.8n\)</span></p></td>
-</tr>
-<tr class="row-odd"><td><p><strong>Check</strong></p></td>
-<td><p>–</p></td>
-<td><p>Agrees with the published answer; solved twice.</p></td>
+<td><p><span class="math notranslate nohighlight">\(C_{ox}\)</span> <span class="math notranslate nohighlight">\(=3.45,\,6.90,\,9.58,\,13.3\,\mathrm{fF/\mu m^2}\)</span>; <span class="math notranslate nohighlight">\(k_n^\prime\)</span> <span class="math notranslate nohighlight">\(=173,\,345,\,479,\,665\,\mu\mathrm{A/V^2}\)</span>; <span class="math notranslate nohighlight">\(k_n\)</span> <span class="math notranslate nohighlight">\(=1.73,\,3.45,\,4.79,\,6.65\,\mathrm{mA/V^2}\)</span>; <span class="math notranslate nohighlight">\(A\)</span> <span class="math notranslate nohighlight">\(=2.50,\,0.625,\,0.324,\,0.169\,\mu\mathrm{m^2}\)</span>; <span class="math notranslate nohighlight">\(I_D\)</span> <span class="math notranslate nohighlight">\(=16.0,\,6.90,\,4.69,\,2.69\,\mathrm{mA}\)</span>; <span class="math notranslate nohighlight">\(P\)</span> <span class="math notranslate nohighlight">\(=80,\,17.3,\,8.44,\,3.50\,\mathrm{mW}\)</span>; <span class="math notranslate nohighlight">\(P/A\)</span> <span class="math notranslate nohighlight">\(=32,\,27.7,\,26.0,\,20.7\,\mathrm{mW/\mu m^2}\)</span>; devices <span class="math notranslate nohighlight">\(n,\,4n,\,7.72n,\,14.8n\)</span></p></td>
 </tr>
 </tbody>
 </table>
@@ -1800,46 +1448,33 @@
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p></p></th>
-<th class="head"><p>BJT</p></th>
 <th class="head"><p>MOSFET</p></th>
 </tr>
 </thead>
 <tbody>
 <tr class="row-even"><td><p><strong>Problem</strong></p></td>
-<td><p>–</p></td>
 <td><p>An NMOS transistor has <span class="math notranslate nohighlight">\(V_{t0}=1\,\mathrm{V}\)</span>, <span class="math notranslate nohighlight">\(\gamma=0.5\,\mathrm{V^{1/2}}\)</span> and <span class="math notranslate nohighlight">\(2\phi_f=0.6\,\mathrm{V}\)</span>. Find the threshold voltage when the source-body voltage <span class="math notranslate nohighlight">\(V_{SB}\)</span> goes from <span class="math notranslate nohighlight">\(0\)</span> to <span class="math notranslate nohighlight">\(4\,\mathrm{V}\)</span>. Then find <span class="math notranslate nohighlight">\(V_t\)</span> at <span class="math notranslate nohighlight">\(V_{SB}=4\,\mathrm{V}\)</span> if the oxide thickness is increased by a factor of 4.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>Given</strong></p></td>
-<td><p>–</p></td>
 <td><p><span class="math notranslate nohighlight">\(V_{t0}=1\,\mathrm{V}\)</span>, <span class="math notranslate nohighlight">\(\gamma=0.5\,\mathrm{V^{1/2}}\)</span>, <span class="math notranslate nohighlight">\(2\phi_f=0.6\,\mathrm{V}\)</span>, <span class="math notranslate nohighlight">\(V_{SB}=0\ldots4\,\mathrm{V}\)</span></p></td>
 </tr>
-<tr class="row-even"><td><p><strong>Answer 1</strong></p></td>
-<td><p>–</p></td>
-<td><p><strong>Body-effect formula.</strong> <span class="math notranslate nohighlight">\(V_t=V_{t0}+\gamma\left(\sqrt{2\phi_f+V_{SB}}-\sqrt{2\phi_f}\right)\)</span>.</p></td>
+<tr class="row-even"><td><p><strong>Answer 1</strong></p></td>
+<td><p><strong>Body-effect formula.</strong> <span class="math notranslate nohighlight">\(V_t\)</span> <span class="math notranslate nohighlight">\(=V_{t0}+\gamma\left(\sqrt{2\phi_f+V_{SB}}-\sqrt{2\phi_f}\right)\)</span>.</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>Answer 2</strong></p></td>
-<td><p>–</p></td>
+<tr class="row-odd"><td><p><strong>Answer 2</strong></p></td>
 <td><p><strong>At <span class="math notranslate nohighlight">\(V_{SB}=0\)</span>.</strong> <span class="math notranslate nohighlight">\(V_t=V_{t0}=1.0\,\mathrm{V}\)</span>.</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>Answer 3</strong></p></td>
-<td><p>–</p></td>
-<td><p><strong>At <span class="math notranslate nohighlight">\(V_{SB}=4\,\mathrm{V}\)</span>.</strong> <span class="math notranslate nohighlight">\(V_t=1+0.5\left(\sqrt{4.6}-\sqrt{0.6}\right)=1+0.5(2.145-0.775)=1.69\,\mathrm{V}\)</span>.</p></td>
+<tr class="row-even"><td><p><strong>Answer 3</strong></p></td>
+<td><p><strong>At <span class="math notranslate nohighlight">\(V_{SB}=4\,\mathrm{V}\)</span>.</strong> <span class="math notranslate nohighlight">\(V_t\)</span> <span class="math notranslate nohighlight">\(=1+0.5\left(\sqrt{4.6}-\sqrt{0.6}\right)\)</span> <span class="math notranslate nohighlight">\(=1+0.5(2.145-0.775)\)</span> <span class="math notranslate nohighlight">\(=1.69\,\mathrm{V}\)</span>.</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>Answer 4</strong></p></td>
-<td><p>–</p></td>
-<td><p><strong>Thicker oxide.</strong> <span class="math notranslate nohighlight">\(\gamma=\sqrt{2q\epsilon_sN_A}/C_{ox}\)</span>, and <span class="math notranslate nohighlight">\(C_{ox}\propto1/t_{ox}\)</span>, so <span class="math notranslate nohighlight">\(\gamma\)</span> becomes <span class="math notranslate nohighlight">\(4\times0.5=2\,\mathrm{V^{1/2}}\)</span>.</p></td>
+<tr class="row-odd"><td><p><strong>Answer 4</strong></p></td>
+<td><p><strong>Thicker oxide.</strong> <span class="math notranslate nohighlight">\(\gamma\)</span> <span class="math notranslate nohighlight">\(=\sqrt{2q\epsilon_sN_A}/C_{ox}\)</span>, and <span class="math notranslate nohighlight">\(C_{ox}\propto1/t_{ox}\)</span>, so <span class="math notranslate nohighlight">\(\gamma\)</span> becomes <span class="math notranslate nohighlight">\(4\times0.5=2\,\mathrm{V^{1/2}}\)</span>.</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>Answer 5</strong></p></td>
-<td><p>–</p></td>
-<td><p><strong>New threshold.</strong> <span class="math notranslate nohighlight">\(V_t=1+2\left(\sqrt{4.6}-\sqrt{0.6}\right)=1+2(1.370)=3.74\,\mathrm{V}\)</span>.</p></td>
+<tr class="row-even"><td><p><strong>Answer 5</strong></p></td>
+<td><p><strong>New threshold.</strong> <span class="math notranslate nohighlight">\(V_t\)</span> <span class="math notranslate nohighlight">\(=1+2\left(\sqrt{4.6}-\sqrt{0.6}\right)\)</span> <span class="math notranslate nohighlight">\(=1+2(1.370)\)</span> <span class="math notranslate nohighlight">\(=3.74\,\mathrm{V}\)</span>.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>Result</strong></p></td>
-<td><p>–</p></td>
 <td><p><span class="math notranslate nohighlight">\(V_t\)</span> rises from <span class="math notranslate nohighlight">\(1\,\mathrm{V}\)</span> to <span class="math notranslate nohighlight">\(1.69\,\mathrm{V}\)</span>; with <span class="math notranslate nohighlight">\(4\times t_{ox}\)</span> it reaches <span class="math notranslate nohighlight">\(3.74\,\mathrm{V}\)</span></p></td>
-</tr>
-<tr class="row-even"><td><p><strong>Check</strong></p></td>
-<td><p>–</p></td>
-<td><p>Agrees with the published answer; solved twice.</p></td>
 </tr>
 </tbody>
 </table>
@@ -1848,38 +1483,27 @@
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p></p></th>
-<th class="head"><p>BJT</p></th>
 <th class="head"><p>MOSFET</p></th>
 </tr>
 </thead>
 <tbody>
 <tr class="row-even"><td><p><strong>Problem</strong></p></td>
-<td><p>–</p></td>
 <td><p>Moore-type scaling: a chip made in a <span class="math notranslate nohighlight">\(5\,\mu\mathrm{m}\)</span> process holds <span class="math notranslate nohighlight">\(20{,}000\)</span> transistors. By how much does the transistor count grow on a chip of the same area if the process is scaled to <span class="math notranslate nohighlight">\(32\,\mathrm{nm}\)</span> (device area shrinks as the square of the linear scaling factor)?</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>Given</strong></p></td>
-<td><p>–</p></td>
 <td><p>Process <span class="math notranslate nohighlight">\(5\,\mu\mathrm{m}\to32\,\mathrm{nm}\)</span>, <span class="math notranslate nohighlight">\(N_0=20{,}000\)</span> transistors on the same chip area</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>Answer 1</strong></p></td>
-<td><p>–</p></td>
-<td><p><strong>Scaling factor.</strong> <span class="math notranslate nohighlight">\(S=\dfrac{5\,\mu\mathrm{m}}{32\,\mathrm{nm}}=\dfrac{5000}{32}=156.25\)</span>.</p></td>
+<tr class="row-even"><td><p><strong>Answer 1</strong></p></td>
+<td><p><strong>Scaling factor.</strong> <span class="math notranslate nohighlight">\(S\)</span> <span class="math notranslate nohighlight">\(=\dfrac{5\,\mu\mathrm{m}}{32\,\mathrm{nm}}\)</span> <span class="math notranslate nohighlight">\(=\dfrac{5000}{32}\)</span> <span class="math notranslate nohighlight">\(=156.25\)</span>.</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>Answer 2</strong></p></td>
-<td><p>–</p></td>
+<tr class="row-odd"><td><p><strong>Answer 2</strong></p></td>
 <td><p><strong>Device area.</strong> Each device occupies <span class="math notranslate nohighlight">\(1/S^2\)</span> of the old area, so <span class="math notranslate nohighlight">\(S^2=24{,}414\)</span> times as many devices fit on the same area.</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>Answer 3</strong></p></td>
-<td><p>–</p></td>
-<td><p><strong>Transistor count.</strong> <span class="math notranslate nohighlight">\(N=20{,}000\times S^2=20{,}000\times156.25^2=4.88\times10^8\)</span>, about <span class="math notranslate nohighlight">\(488\)</span> million.</p></td>
+<tr class="row-even"><td><p><strong>Answer 3</strong></p></td>
+<td><p><strong>Transistor count.</strong> <span class="math notranslate nohighlight">\(N\)</span> <span class="math notranslate nohighlight">\(=20{,}000\times S^2\)</span> <span class="math notranslate nohighlight">\(=20{,}000\times156.25^2\)</span> <span class="math notranslate nohighlight">\(=4.88\times10^8\)</span>, about <span class="math notranslate nohighlight">\(488\)</span> million.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>Result</strong></p></td>
-<td><p>–</p></td>
 <td><p><span class="math notranslate nohighlight">\(N\approx4.88\times10^8\)</span> (488 million) transistors</p></td>
-</tr>
-<tr class="row-even"><td><p><strong>Check</strong></p></td>
-<td><p>–</p></td>
-<td><p>Agrees with the published answer; solved twice.</p></td>
 </tr>
 </tbody>
 </table>
@@ -1888,41 +1512,32 @@
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p></p></th>
-<th class="head"><p>BJT</p></th>
 <th class="head"><p>MOSFET</p></th>
 </tr>
 </thead>
 <tbody>
 <tr class="row-even"><td><p><strong>Problem</strong></p></td>
-<td><p>–</p></td>
-<td><p>A PMOS transistor has <span class="math notranslate nohighlight">\(\lvert V_{t0}\rvert=0.7\,\mathrm{V}\)</span>, <span class="math notranslate nohighlight">\(\gamma=0.5\,\mathrm{V^{1/2}}\)</span>, <span class="math notranslate nohighlight">\(2\phi_f=0.75\,\mathrm{V}\)</span>. Find its threshold voltage when <span class="math notranslate nohighlight">\(V_{BS}\)</span> is such that <span class="math notranslate nohighlight">\(\lvert V_{SB}\rvert=3\,\mathrm{V}\)</span>.</p></td>
+<td><p>A PMOS transistor has <span class="math notranslate nohighlight">\(\lvert V_{t0}\rvert\)</span> <span class="math notranslate nohighlight">\(=0.7\,\mathrm{V}\)</span>, <span class="math notranslate nohighlight">\(\gamma=0.5\,\mathrm{V^{1/2}}\)</span>, <span class="math notranslate nohighlight">\(2\phi_f=0.75\,\mathrm{V}\)</span>. Find its threshold voltage when <span class="math notranslate nohighlight">\(V_{BS}\)</span> is such that <span class="math notranslate nohighlight">\(\lvert V_{SB}\rvert=3\,\mathrm{V}\)</span>.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>Given</strong></p></td>
-<td><p>–</p></td>
-<td><p><span class="math notranslate nohighlight">\(\lvert V_{t0}\rvert=0.7\,\mathrm{V}\)</span>, <span class="math notranslate nohighlight">\(\gamma=0.5\,\mathrm{V^{1/2}}\)</span>, <span class="math notranslate nohighlight">\(2\phi_f=0.75\,\mathrm{V}\)</span>, <span class="math notranslate nohighlight">\(\lvert V_{SB}\rvert=3\,\mathrm{V}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\lvert V_{t0}\rvert\)</span> <span class="math notranslate nohighlight">\(=0.7\,\mathrm{V}\)</span>, <span class="math notranslate nohighlight">\(\gamma=0.5\,\mathrm{V^{1/2}}\)</span>, <span class="math notranslate nohighlight">\(2\phi_f=0.75\,\mathrm{V}\)</span>, <span class="math notranslate nohighlight">\(\lvert V_{SB}\rvert=3\,\mathrm{V}\)</span></p></td>
 </tr>
-<tr class="row-even"><td><p><strong>Answer 1</strong></p></td>
-<td><p>–</p></td>
-<td><p><strong>Body-effect formula.</strong> For a PMOS the magnitudes obey <span class="math notranslate nohighlight">\(\lvert V_t\rvert=\lvert V_{t0}\rvert+\gamma\left(\sqrt{2\phi_f+\lvert V_{SB}\rvert}-\sqrt{2\phi_f}\right)\)</span>.</p></td>
+<tr class="row-even"><td><p><strong>Answer 1</strong></p></td>
+<td><p><strong>Body-effect formula.</strong> For a PMOS the magnitudes obey <span class="math notranslate nohighlight">\(\lvert V_t\rvert\)</span> <span class="math notranslate nohighlight">\(=\lvert V_{t0}\rvert+\gamma\left(\sqrt{2\phi_f+\lvert V_{SB}\rvert}-\sqrt{2\phi_f}\right)\)</span>.</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>Answer 2</strong></p></td>
-<td><p>–</p></td>
-<td><p><strong>Substitute.</strong> <span class="math notranslate nohighlight">\(\lvert V_t\rvert=0.7+0.5\left(\sqrt{3.75}-\sqrt{0.75}\right)=0.7+0.5(1.936-0.866)\)</span>.</p></td>
+<tr class="row-odd"><td><p><strong>Answer 2</strong></p></td>
+<td><p><strong>Substitute.</strong> <span class="math notranslate nohighlight">\(\lvert V_t\rvert\)</span> <span class="math notranslate nohighlight">\(=0.7+0.5\left(\sqrt{3.75}-\sqrt{0.75}\right)\)</span> <span class="math notranslate nohighlight">\(=0.7+0.5(1.936-0.866)\)</span>.</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>Answer 3</strong></p></td>
-<td><p>–</p></td>
-<td><p><strong>Result.</strong> <span class="math notranslate nohighlight">\(\lvert V_t\rvert=1.235\approx1.24\,\mathrm{V}\)</span>, so <span class="math notranslate nohighlight">\(V_t=-1.24\,\mathrm{V}\)</span> (the PMOS threshold is negative).</p></td>
+<tr class="row-even"><td><p><strong>Answer 3</strong></p></td>
+<td><p><strong>Result.</strong> <span class="math notranslate nohighlight">\(\lvert V_t\rvert\)</span> <span class="math notranslate nohighlight">\(=1.235\)</span> <span class="math notranslate nohighlight">\(\approx1.24\,\mathrm{V}\)</span>, so <span class="math notranslate nohighlight">\(V_t=-1.24\,\mathrm{V}\)</span> (the PMOS threshold is negative).</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>Result</strong></p></td>
-<td><p>–</p></td>
 <td><p><span class="math notranslate nohighlight">\(V_t=-1.24\,\mathrm{V}\)</span></p></td>
-</tr>
-<tr class="row-even"><td><p><strong>Check</strong></p></td>
-<td><p>–</p></td>
-<td><p>Agrees with the published answer; solved twice.</p></td>
 </tr>
 </tbody>
 </table>
+</div>
+</div>
 </div>
 </section>
 </section>

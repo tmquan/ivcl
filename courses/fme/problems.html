@@ -37,7 +37,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=6a604523" />
-    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=12990c72" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=21247f10" />
   
   <!-- So that users can add custom icons -->
   <script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
@@ -64,6 +64,7 @@
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'courses/fme/problems';</script>
+    <script src="../../_static/fme-fit.js?v=4f390d91"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="BJT and MOSFET Problem Bank: One Transistor" href="bank_one.html" />
@@ -482,7 +483,7 @@
 </div>
 <section id="overview">
 <h2>Overview<a class="headerlink" href="#overview" title="Link to this heading">#</a></h2>
-<p>The number of problems of each nature in the problem bank, where every one of them is solved step by step: <a class="reference internal" href="bank_one.html"><span class="std std-doc">One Transistor</span></a>, <a class="reference internal" href="bank_bias.html"><span class="std std-doc">Bias</span></a>, <a class="reference internal" href="bank_stages.html"><span class="std std-doc">Amplifier Stages</span></a>, <a class="reference internal" href="bank_mirrors.html"><span class="std std-doc">Cascodes and Current Mirrors</span></a>, <a class="reference internal" href="bank_pairs.html"><span class="std std-doc">Differential Pairs</span></a>, <a class="reference internal" href="bank_other.html"><span class="std std-doc">Other Items</span></a>.</p>
+<p>The number of problems collected for each nature. One pair of each is worked through on this page and is not repeated elsewhere. The problem bank solves the others step by step, apart from a few whose data are inconsistent: <a class="reference internal" href="bank_one.html"><span class="std std-doc">One Transistor</span></a>, <a class="reference internal" href="bank_bias.html"><span class="std std-doc">Bias</span></a>, <a class="reference internal" href="bank_stages.html"><span class="std std-doc">Amplifier Stages</span></a>, <a class="reference internal" href="bank_mirrors.html"><span class="std std-doc">Cascodes and Current Mirrors</span></a>, <a class="reference internal" href="bank_pairs.html"><span class="std std-doc">Differential Pairs</span></a>, <a class="reference internal" href="bank_other.html"><span class="std std-doc">Other Items</span></a>.</p>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>Nature</p></th>
@@ -644,27 +645,27 @@
 <td><p><span class="math notranslate nohighlight">\(V_{CC}=2\,\mathrm{V}\)</span>, <span class="math notranslate nohighlight">\(R_C=500\,\Omega\)</span>, <span class="math notranslate nohighlight">\(V_{in}=V_{BE}=800\,\mathrm{mV}\)</span>, <span class="math notranslate nohighlight">\(I_S=5\times10^{-17}\,\mathrm{A}\)</span>, <span class="math notranslate nohighlight">\(\beta=100\)</span>, <span class="math notranslate nohighlight">\(V_T=26\,\mathrm{mV}\)</span></p></td>
 <td><p><span class="math notranslate nohighlight">\(V_{DD}=1.8\,\mathrm{V}\)</span>, <span class="math notranslate nohighlight">\(R_D=5\,\mathrm{k}\Omega\)</span>, <span class="math notranslate nohighlight">\(V_{in}=V_{GS}=1\,\mathrm{V}\)</span>, <span class="math notranslate nohighlight">\(\mu_nC_{ox}=100\,\mu\mathrm{A/V^2}\)</span>, <span class="math notranslate nohighlight">\(W/L=2/0.18\)</span>, <span class="math notranslate nohighlight">\(V_{TH}=0.4\,\mathrm{V}\)</span></p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>Answer 1.</strong> Is the device on?</p></td>
+<tr class="row-odd"><td><p><strong>Answer 1.</strong> Is the device on?</p></td>
 <td><p><span class="math notranslate nohighlight">\(V_{BE}\approx0.8\,\mathrm{V}\)</span>: the base-emitter junction conducts</p></td>
 <td><p><span class="math notranslate nohighlight">\(V_{GS}-V_{TH}=0.6\,\mathrm{V}&gt;0\)</span>: a channel exists</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>Answer 2.</strong> Current, assuming the amplifying region</p></td>
+<tr class="row-even"><td><p><strong>Answer 2.</strong> Current, assuming the amplifying region</p></td>
 <td><p><span class="math notranslate nohighlight">\(I_C=I_S\,e^{V_{BE}/V_T}\)</span> <span class="math notranslate nohighlight">\(=1.153\,\mathrm{mA}\)</span></p></td>
 <td><p><span class="math notranslate nohighlight">\(I_D=\frac{1}{2}\mu_nC_{ox}\frac{W}{L}(V_{GS}-V_{TH})^2\)</span> <span class="math notranslate nohighlight">\(=200\,\mu\mathrm{A}\)</span></p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>Answer 3.</strong> Current into the input</p></td>
+<tr class="row-odd"><td><p><strong>Answer 3.</strong> Current into the input</p></td>
 <td><p><span class="math notranslate nohighlight">\(I_B=I_C/\beta\)</span> <span class="math notranslate nohighlight">\(=11.5\,\mu\mathrm{A}\)</span></p></td>
 <td><p><span class="math notranslate nohighlight">\(I_G=0\)</span></p></td>
 </tr>
-<tr class="row-even"><td><p><strong>Answer 4.</strong> Output voltage</p></td>
+<tr class="row-even"><td><p><strong>Answer 4.</strong> Output voltage</p></td>
 <td><p><span class="math notranslate nohighlight">\(V_{out}=V_{CC}-I_CR_C\)</span> <span class="math notranslate nohighlight">\(=1.42\,\mathrm{V}\)</span></p></td>
 <td><p><span class="math notranslate nohighlight">\(V_{out}=V_{DD}-I_DR_D\)</span> <span class="math notranslate nohighlight">\(=800\,\mathrm{mV}\)</span></p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>Answer 5.</strong> Check the assumption</p></td>
+<tr class="row-odd"><td><p><strong>Answer 5.</strong> Check the assumption</p></td>
 <td><p>active if <span class="math notranslate nohighlight">\(V_{out}\geq V_{in}\)</span>: <span class="math notranslate nohighlight">\(1.42\geq0.8\)</span>, true</p></td>
 <td><p>saturated if <span class="math notranslate nohighlight">\(V_{out}\geq V_{in}-V_{TH}\)</span>: <span class="math notranslate nohighlight">\(0.8\geq0.6\)</span>, true</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>Answer 6.</strong> Largest load resistor</p></td>
+<tr class="row-even"><td><p><strong>Answer 6.</strong> Largest load resistor</p></td>
 <td><p><span class="math notranslate nohighlight">\(R_C\leq\dfrac{V_{CC}-V_{BE}}{I_C}\)</span> <span class="math notranslate nohighlight">\(=1.04\,\mathrm{k}\Omega\)</span></p></td>
 <td><p><span class="math notranslate nohighlight">\(R_D\leq\dfrac{V_{DD}-V_{GS}+V_{TH}}{I_D}\)</span> <span class="math notranslate nohighlight">\(=6\,\mathrm{k}\Omega\)</span></p></td>
 </tr>
@@ -738,31 +739,31 @@
 <td><p><span class="math notranslate nohighlight">\(I_C=1\,\mathrm{mA}\)</span> at <span class="math notranslate nohighlight">\(V_{BE}=700\,\mathrm{mV}\)</span>, <span class="math notranslate nohighlight">\(V_T=25\,\mathrm{mV}\)</span></p></td>
 <td><p><span class="math notranslate nohighlight">\(k_n=k_n^\prime\,W/L=4\,\mathrm{mA/V^2}\)</span>, <span class="math notranslate nohighlight">\(V_t=0.5\,\mathrm{V}\)</span>, <span class="math notranslate nohighlight">\(V_{GS}=1\,\mathrm{V}\)</span></p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>Answer 1.</strong> Law in the amplifying region</p></td>
+<tr class="row-odd"><td><p><strong>Answer 1.</strong> Law in the amplifying region</p></td>
 <td><p><span class="math notranslate nohighlight">\(I_C=I_S\,e^{V_{BE}/V_T}\)</span></p></td>
 <td><p><span class="math notranslate nohighlight">\(I_D=\frac{1}{2}k_n(V_{GS}-V_t)^2\)</span></p></td>
 </tr>
-<tr class="row-even"><td><p><strong>Answer 2.</strong> The known point</p></td>
+<tr class="row-even"><td><p><strong>Answer 2.</strong> The known point</p></td>
 <td><p><span class="math notranslate nohighlight">\(I_S=I_C\,e^{-V_{BE}/V_T}\)</span> <span class="math notranslate nohighlight">\(=6.9\times10^{-16}\,\mathrm{A}\)</span></p></td>
 <td><p><span class="math notranslate nohighlight">\(V_{OV}=V_{GS}-V_t=0.5\,\mathrm{V}\)</span>, <span class="math notranslate nohighlight">\(I_D=500\,\mu\mathrm{A}\)</span></p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>Answer 3.</strong> Control voltage for another current</p></td>
+<tr class="row-odd"><td><p><strong>Answer 3.</strong> Control voltage for another current</p></td>
 <td><p><span class="math notranslate nohighlight">\(V_{BE2}=V_{BE1}+V_T\ln\dfrac{I_{C2}}{I_{C1}}\)</span></p></td>
 <td><p><span class="math notranslate nohighlight">\(V_{GS2}=V_t+V_{OV1}\sqrt{\dfrac{I_{D2}}{I_{D1}}}\)</span></p></td>
 </tr>
-<tr class="row-even"><td><p><strong>Answer 4.</strong> Ten times the current</p></td>
+<tr class="row-even"><td><p><strong>Answer 4.</strong> Ten times the current</p></td>
 <td><p><span class="math notranslate nohighlight">\(700\,\mathrm{mV}+V_T\ln10\)</span> <span class="math notranslate nohighlight">\(=758\,\mathrm{mV}\)</span></p></td>
 <td><p><span class="math notranslate nohighlight">\(0.5\,\mathrm{V}+0.5\,\mathrm{V}\cdot\sqrt{10}\)</span> <span class="math notranslate nohighlight">\(=2.08\,\mathrm{V}\)</span></p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>Answer 5.</strong> A tenth of the current</p></td>
+<tr class="row-odd"><td><p><strong>Answer 5.</strong> A tenth of the current</p></td>
 <td><p><span class="math notranslate nohighlight">\(700\,\mathrm{mV}-V_T\ln10\)</span> <span class="math notranslate nohighlight">\(=642\,\mathrm{mV}\)</span></p></td>
 <td><p><span class="math notranslate nohighlight">\(0.5\,\mathrm{V}+0.5\,\mathrm{V}/\sqrt{10}\)</span> <span class="math notranslate nohighlight">\(=658\,\mathrm{mV}\)</span></p></td>
 </tr>
-<tr class="row-even"><td><p><strong>Answer 6.</strong> A device <span class="math notranslate nohighlight">\(n\)</span> times as large</p></td>
+<tr class="row-even"><td><p><strong>Answer 6.</strong> A device <span class="math notranslate nohighlight">\(n\)</span> times as large</p></td>
 <td><p><span class="math notranslate nohighlight">\(I_S\rightarrow nI_S\)</span>: <span class="math notranslate nohighlight">\(n\)</span> times the current at the same <span class="math notranslate nohighlight">\(V_{BE}\)</span></p></td>
 <td><p><span class="math notranslate nohighlight">\(W/L\rightarrow nW/L\)</span>: <span class="math notranslate nohighlight">\(n\)</span> times the current at the same <span class="math notranslate nohighlight">\(V_{GS}\)</span></p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>Answer 7.</strong> Where the law holds</p></td>
+<tr class="row-odd"><td><p><strong>Answer 7.</strong> Where the law holds</p></td>
 <td><p>active region: <span class="math notranslate nohighlight">\(V_{CE}\geq V_{BE}\)</span></p></td>
 <td><p>saturation: <span class="math notranslate nohighlight">\(V_{DS}\geq V_{OV}=0.5\,\mathrm{V}\)</span></p></td>
 </tr>
@@ -836,27 +837,27 @@
 <td><p><span class="math notranslate nohighlight">\(I_C=1\,\mathrm{mA}\)</span>, <span class="math notranslate nohighlight">\(\beta=100\)</span>, <span class="math notranslate nohighlight">\(V_A=15\,\mathrm{V}\)</span>, <span class="math notranslate nohighlight">\(V_T=26\,\mathrm{mV}\)</span></p></td>
 <td><p><span class="math notranslate nohighlight">\(I_D=0.5\,\mathrm{mA}\)</span>, <span class="math notranslate nohighlight">\(\mu_nC_{ox}=100\,\mu\mathrm{A/V^2}\)</span>, <span class="math notranslate nohighlight">\(W/L=10\)</span>, <span class="math notranslate nohighlight">\(\lambda=0.1\,\mathrm{V^{-1}}\)</span></p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>Answer 1.</strong> Transconductance</p></td>
+<tr class="row-odd"><td><p><strong>Answer 1.</strong> Transconductance</p></td>
 <td><p><span class="math notranslate nohighlight">\(g_m=\dfrac{I_C}{V_T}\)</span> <span class="math notranslate nohighlight">\(=\dfrac{1}{26\,\Omega}\)</span> <span class="math notranslate nohighlight">\(=38.5\,\mathrm{mS}\)</span></p></td>
 <td><p><span class="math notranslate nohighlight">\(g_m=\sqrt{2\mu_nC_{ox}\frac{W}{L}I_D}\)</span> <span class="math notranslate nohighlight">\(=\dfrac{1}{1\,\mathrm{k}\Omega}\)</span> <span class="math notranslate nohighlight">\(=1\,\mathrm{mS}\)</span></p></td>
 </tr>
-<tr class="row-even"><td><p><strong>Answer 2.</strong> What sets it</p></td>
+<tr class="row-even"><td><p><strong>Answer 2.</strong> What sets it</p></td>
 <td><p>the current alone</p></td>
 <td><p>current and size: <span class="math notranslate nohighlight">\(g_m=\dfrac{2I_D}{V_{GS}-V_{TH}}\)</span>, <span class="math notranslate nohighlight">\(V_{GS}-V_{TH}=1\,\mathrm{V}\)</span></p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>Answer 3.</strong> Resistance seen at the input</p></td>
+<tr class="row-odd"><td><p><strong>Answer 3.</strong> Resistance seen at the input</p></td>
 <td><p><span class="math notranslate nohighlight">\(r_\pi=\dfrac{\beta}{g_m}\)</span> <span class="math notranslate nohighlight">\(=2.6\,\mathrm{k}\Omega\)</span></p></td>
 <td><p>infinite: no gate current</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>Answer 4.</strong> Output resistance</p></td>
+<tr class="row-even"><td><p><strong>Answer 4.</strong> Output resistance</p></td>
 <td><p><span class="math notranslate nohighlight">\(r_O=\dfrac{V_A}{I_C}\)</span> <span class="math notranslate nohighlight">\(=15\,\mathrm{k}\Omega\)</span></p></td>
 <td><p><span class="math notranslate nohighlight">\(r_O=\dfrac{1}{\lambda I_D}\)</span> <span class="math notranslate nohighlight">\(=20\,\mathrm{k}\Omega\)</span></p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>Answer 5.</strong> Intrinsic gain</p></td>
+<tr class="row-odd"><td><p><strong>Answer 5.</strong> Intrinsic gain</p></td>
 <td><p><span class="math notranslate nohighlight">\(g_mr_O=\dfrac{V_A}{V_T}\)</span> <span class="math notranslate nohighlight">\(=577\)</span></p></td>
 <td><p><span class="math notranslate nohighlight">\(g_mr_O=\dfrac{2}{\lambda(V_{GS}-V_{TH})}\)</span> <span class="math notranslate nohighlight">\(=20\)</span></p></td>
 </tr>
-<tr class="row-even"><td><p><strong>Answer 6.</strong> Model</p></td>
+<tr class="row-even"><td><p><strong>Answer 6.</strong> Model</p></td>
 <td><p><span class="math notranslate nohighlight">\(r_\pi\)</span> from B to E, source <span class="math notranslate nohighlight">\(g_mv_\pi\)</span> and <span class="math notranslate nohighlight">\(r_O\)</span> from C to E</p></td>
 <td><p>gate open, source <span class="math notranslate nohighlight">\(g_mv_{gs}\)</span> and <span class="math notranslate nohighlight">\(r_O\)</span> from D to S</p></td>
 </tr>
@@ -933,31 +934,31 @@
 <td><p><span class="math notranslate nohighlight">\(V_{CC}=2.5\,\mathrm{V}\)</span>, <span class="math notranslate nohighlight">\(R_1=16\,\mathrm{k}\Omega\)</span>, <span class="math notranslate nohighlight">\(R_2=9\,\mathrm{k}\Omega\)</span>, <span class="math notranslate nohighlight">\(R_C=1\,\mathrm{k}\Omega\)</span>, <span class="math notranslate nohighlight">\(R_E=100\,\Omega\)</span>, <span class="math notranslate nohighlight">\(I_S=5\times10^{-17}\,\mathrm{A}\)</span>, <span class="math notranslate nohighlight">\(\beta=100\)</span></p></td>
 <td><p><span class="math notranslate nohighlight">\(V_{DD}=1.8\,\mathrm{V}\)</span>, <span class="math notranslate nohighlight">\(R_1=4\,\mathrm{k}\Omega\)</span>, <span class="math notranslate nohighlight">\(R_2=10\,\mathrm{k}\Omega\)</span>, <span class="math notranslate nohighlight">\(R_S=1\,\mathrm{k}\Omega\)</span>, <span class="math notranslate nohighlight">\(\mu_nC_{ox}=100\,\mu\mathrm{A/V^2}\)</span>, <span class="math notranslate nohighlight">\(W/L=5/0.18\)</span>, <span class="math notranslate nohighlight">\(V_{TH}=0.5\,\mathrm{V}\)</span></p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>Answer 1.</strong> Voltage of the divider</p></td>
+<tr class="row-odd"><td><p><strong>Answer 1.</strong> Voltage of the divider</p></td>
 <td><p><span class="math notranslate nohighlight">\(V_X\approx\dfrac{R_2}{R_1+R_2}V_{CC}\)</span> <span class="math notranslate nohighlight">\(=900\,\mathrm{mV}\)</span></p></td>
 <td><p><span class="math notranslate nohighlight">\(V_X=\dfrac{R_2}{R_1+R_2}V_{DD}\)</span> <span class="math notranslate nohighlight">\(=1.286\,\mathrm{V}\)</span></p></td>
 </tr>
-<tr class="row-even"><td><p><strong>Answer 2.</strong> Loop through the input</p></td>
+<tr class="row-even"><td><p><strong>Answer 2.</strong> Loop through the input</p></td>
 <td><p><span class="math notranslate nohighlight">\(V_X=V_{BE}+I_ER_E\)</span></p></td>
 <td><p><span class="math notranslate nohighlight">\(V_X=V_{GS}+I_DR_S\)</span></p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>Answer 3.</strong> Device law</p></td>
+<tr class="row-odd"><td><p><strong>Answer 3.</strong> Device law</p></td>
 <td><p><span class="math notranslate nohighlight">\(V_{BE}=V_T\ln\dfrac{I_C}{I_S}\)</span></p></td>
 <td><p><span class="math notranslate nohighlight">\(I_D=\frac{1}{2}\mu_nC_{ox}\frac{W}{L}(V_{GS}-V_{TH})^2\)</span></p></td>
 </tr>
-<tr class="row-even"><td><p><strong>Answer 4.</strong> Solve</p></td>
+<tr class="row-even"><td><p><strong>Answer 4.</strong> Solve</p></td>
 <td><p>guess <span class="math notranslate nohighlight">\(V_{BE}=0.8\,\mathrm{V}\)</span>: <span class="math notranslate nohighlight">\(I_C\approx\dfrac{V_X-V_{BE}}{R_E}\)</span> <span class="math notranslate nohighlight">\(=1\,\mathrm{mA}\)</span></p></td>
 <td><p>quadratic in <span class="math notranslate nohighlight">\(V_{GS}\)</span>: <span class="math notranslate nohighlight">\(V_{GS}=974\,\mathrm{mV}\)</span>, <span class="math notranslate nohighlight">\(I_D=312\,\mu\mathrm{A}\)</span></p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>Answer 5.</strong> Check the solution</p></td>
+<tr class="row-odd"><td><p><strong>Answer 5.</strong> Check the solution</p></td>
 <td><p><span class="math notranslate nohighlight">\(V_{BE}=V_T\ln(I_C/I_S)\)</span> <span class="math notranslate nohighlight">\(=796\,\mathrm{mV}\)</span>: the guess holds</p></td>
 <td><p><span class="math notranslate nohighlight">\(V_{GS}+I_DR_S\)</span> <span class="math notranslate nohighlight">\(=1.286\,\mathrm{V}\)</span> <span class="math notranslate nohighlight">\(=V_X\)</span></p></td>
 </tr>
-<tr class="row-even"><td><p><strong>Answer 6.</strong> Is the divider loaded?</p></td>
+<tr class="row-even"><td><p><strong>Answer 6.</strong> Is the divider loaded?</p></td>
 <td><p><span class="math notranslate nohighlight">\(I_B=10\,\mu\mathrm{A}\)</span> against <span class="math notranslate nohighlight">\(100\,\mu\mathrm{A}\)</span> in the divider: barely</p></td>
 <td><p>no: <span class="math notranslate nohighlight">\(I_G=0\)</span></p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>Answer 7.</strong> Region</p></td>
+<tr class="row-odd"><td><p><strong>Answer 7.</strong> Region</p></td>
 <td><p><span class="math notranslate nohighlight">\(V_Y=V_{CC}-I_CR_C\)</span> <span class="math notranslate nohighlight">\(=1.5\,\mathrm{V}\)</span> <span class="math notranslate nohighlight">\(\geq V_X\)</span>: active</p></td>
 <td><p>saturated if <span class="math notranslate nohighlight">\(V_D\geq V_X-V_{TH}\)</span>: <span class="math notranslate nohighlight">\(R_D\leq3.25\,\mathrm{k}\Omega\)</span></p></td>
 </tr>
@@ -1031,27 +1032,27 @@
 <td><p><span class="math notranslate nohighlight">\(V_{CC}=2.5\,\mathrm{V}\)</span>, <span class="math notranslate nohighlight">\(R_C=1\,\mathrm{k}\Omega\)</span>, <span class="math notranslate nohighlight">\(R_B=10\,\mathrm{k}\Omega\)</span>, <span class="math notranslate nohighlight">\(I_S=5\times10^{-17}\,\mathrm{A}\)</span>, <span class="math notranslate nohighlight">\(\beta=100\)</span></p></td>
 <td><p><span class="math notranslate nohighlight">\(V_{DD}=1.8\,\mathrm{V}\)</span>, <span class="math notranslate nohighlight">\(R_D=1\,\mathrm{k}\Omega\)</span>, <span class="math notranslate nohighlight">\(R_G=20\,\mathrm{k}\Omega\)</span>, <span class="math notranslate nohighlight">\(R_S=200\,\Omega\)</span>, <span class="math notranslate nohighlight">\(\mu_nC_{ox}=100\,\mu\mathrm{A/V^2}\)</span>, <span class="math notranslate nohighlight">\(W/L=5/0.18\)</span>, <span class="math notranslate nohighlight">\(V_{TH}=0.5\,\mathrm{V}\)</span></p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>Answer 1.</strong> Current in the feedback resistor</p></td>
+<tr class="row-odd"><td><p><strong>Answer 1.</strong> Current in the feedback resistor</p></td>
 <td><p><span class="math notranslate nohighlight">\(I_B=I_C/\beta\)</span></p></td>
 <td><p>none: <span class="math notranslate nohighlight">\(V_G=V_D\)</span></p></td>
 </tr>
-<tr class="row-even"><td><p><strong>Answer 2.</strong> Loop from the supply to ground</p></td>
+<tr class="row-even"><td><p><strong>Answer 2.</strong> Loop from the supply to ground</p></td>
 <td><p><span class="math notranslate nohighlight">\(V_{CC}=R_CI_C+R_BI_B+V_{BE}\)</span></p></td>
 <td><p><span class="math notranslate nohighlight">\(V_{DD}=R_DI_D+V_{GS}+R_SI_D\)</span></p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>Answer 3.</strong> Solve</p></td>
+<tr class="row-odd"><td><p><strong>Answer 3.</strong> Solve</p></td>
 <td><p>guess <span class="math notranslate nohighlight">\(V_{BE}=0.8\,\mathrm{V}\)</span>: <span class="math notranslate nohighlight">\(I_C=\dfrac{V_{CC}-V_{BE}}{R_C+R_B/\beta}\)</span> <span class="math notranslate nohighlight">\(=1.545\,\mathrm{mA}\)</span></p></td>
 <td><p>with <span class="math notranslate nohighlight">\(I_D=\frac{1}{2}\mu_nC_{ox}\frac{W}{L}(V_{GS}-V_{TH})^2\)</span>: <span class="math notranslate nohighlight">\(I_D=556\,\mu\mathrm{A}\)</span></p></td>
 </tr>
-<tr class="row-even"><td><p><strong>Answer 4.</strong> Control voltage</p></td>
+<tr class="row-even"><td><p><strong>Answer 4.</strong> Control voltage</p></td>
 <td><p><span class="math notranslate nohighlight">\(V_{BE}=V_T\ln(I_C/I_S)\)</span> <span class="math notranslate nohighlight">\(=807.6\,\mathrm{mV}\)</span>: the guess holds</p></td>
 <td><p><span class="math notranslate nohighlight">\(V_{GS}=V_{DD}-(R_D+R_S)I_D\)</span> <span class="math notranslate nohighlight">\(=1.133\,\mathrm{V}\)</span></p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>Answer 5.</strong> Output node</p></td>
+<tr class="row-odd"><td><p><strong>Answer 5.</strong> Output node</p></td>
 <td><p><span class="math notranslate nohighlight">\(V_Y=V_{BE}+R_BI_B\)</span> <span class="math notranslate nohighlight">\(=962\,\mathrm{mV}\)</span></p></td>
 <td><p><span class="math notranslate nohighlight">\(V_D=V_{DD}-R_DI_D\)</span> <span class="math notranslate nohighlight">\(=1.244\,\mathrm{V}\)</span></p></td>
 </tr>
-<tr class="row-even"><td><p><strong>Answer 6.</strong> Region</p></td>
+<tr class="row-even"><td><p><strong>Answer 6.</strong> Region</p></td>
 <td><p><span class="math notranslate nohighlight">\(V_Y&gt;V_{BE}\)</span> by <span class="math notranslate nohighlight">\(R_BI_B\)</span>: always active</p></td>
 <td><p><span class="math notranslate nohighlight">\(V_D=V_G&gt;V_G-V_{TH}\)</span>: always saturated</p></td>
 </tr>
@@ -1128,31 +1129,31 @@
 <td><p><span class="math notranslate nohighlight">\(I_C=0.5\,\mathrm{mA}\)</span>, <span class="math notranslate nohighlight">\(\beta=100\)</span>, <span class="math notranslate nohighlight">\(R_C=10\,\mathrm{k}\Omega\)</span>, load <span class="math notranslate nohighlight">\(R_L=5\,\mathrm{k}\Omega\)</span>, source <span class="math notranslate nohighlight">\(R_{sig}=5\,\mathrm{k}\Omega\)</span>, <span class="math notranslate nohighlight">\(V_T=25\,\mathrm{mV}\)</span></p></td>
 <td><p><span class="math notranslate nohighlight">\(I_D=0.25\,\mathrm{mA}\)</span>, <span class="math notranslate nohighlight">\(V_{OV}=0.25\,\mathrm{V}\)</span>, <span class="math notranslate nohighlight">\(R_D=20\,\mathrm{k}\Omega\)</span>, load <span class="math notranslate nohighlight">\(R_L=20\,\mathrm{k}\Omega\)</span></p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>Answer 1.</strong> Transconductance</p></td>
+<tr class="row-odd"><td><p><strong>Answer 1.</strong> Transconductance</p></td>
 <td><p><span class="math notranslate nohighlight">\(g_m=\dfrac{I_C}{V_T}\)</span> <span class="math notranslate nohighlight">\(=20\,\mathrm{mA/V}\)</span></p></td>
 <td><p><span class="math notranslate nohighlight">\(g_m=\dfrac{2I_D}{V_{OV}}\)</span> <span class="math notranslate nohighlight">\(=2\,\mathrm{mA/V}\)</span></p></td>
 </tr>
-<tr class="row-even"><td><p><strong>Answer 2.</strong> Input resistance</p></td>
+<tr class="row-even"><td><p><strong>Answer 2.</strong> Input resistance</p></td>
 <td><p><span class="math notranslate nohighlight">\(R_{in}=r_\pi=\dfrac{\beta}{g_m}\)</span> <span class="math notranslate nohighlight">\(=5\,\mathrm{k}\Omega\)</span></p></td>
 <td><p><span class="math notranslate nohighlight">\(R_{in}=\infty\)</span></p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>Answer 3.</strong> Gain without load</p></td>
+<tr class="row-odd"><td><p><strong>Answer 3.</strong> Gain without load</p></td>
 <td><p><span class="math notranslate nohighlight">\(A_{vo}=-g_mR_C\)</span> <span class="math notranslate nohighlight">\(=-200\)</span></p></td>
 <td><p><span class="math notranslate nohighlight">\(A_{vo}=-g_mR_D\)</span> <span class="math notranslate nohighlight">\(=-40\)</span></p></td>
 </tr>
-<tr class="row-even"><td><p><strong>Answer 4.</strong> Output resistance</p></td>
+<tr class="row-even"><td><p><strong>Answer 4.</strong> Output resistance</p></td>
 <td><p><span class="math notranslate nohighlight">\(R_{out}=R_C\)</span> <span class="math notranslate nohighlight">\(=10\,\mathrm{k}\Omega\)</span></p></td>
 <td><p><span class="math notranslate nohighlight">\(R_{out}=R_D\)</span> <span class="math notranslate nohighlight">\(=20\,\mathrm{k}\Omega\)</span></p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>Answer 5.</strong> Gain with the load</p></td>
+<tr class="row-odd"><td><p><strong>Answer 5.</strong> Gain with the load</p></td>
 <td><p><span class="math notranslate nohighlight">\(A_v=-g_m(R_C\parallel R_L)\)</span> <span class="math notranslate nohighlight">\(=-66.7\)</span></p></td>
 <td><p><span class="math notranslate nohighlight">\(A_v=-g_m(R_D\parallel R_L)\)</span> <span class="math notranslate nohighlight">\(=-20\)</span></p></td>
 </tr>
-<tr class="row-even"><td><p><strong>Answer 6.</strong> Gain from the signal source</p></td>
+<tr class="row-even"><td><p><strong>Answer 6.</strong> Gain from the signal source</p></td>
 <td><p><span class="math notranslate nohighlight">\(G_v=\dfrac{R_{in}}{R_{in}+R_{sig}}A_v\)</span> <span class="math notranslate nohighlight">\(=-33.3\)</span></p></td>
 <td><p><span class="math notranslate nohighlight">\(G_v=A_v\)</span> <span class="math notranslate nohighlight">\(=-20\)</span>: nothing is lost at the gate</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>Answer 7.</strong> With the output resistance of the device</p></td>
+<tr class="row-odd"><td><p><strong>Answer 7.</strong> With the output resistance of the device</p></td>
 <td><p><span class="math notranslate nohighlight">\(R_C\rightarrow R_C\parallel r_O\)</span></p></td>
 <td><p><span class="math notranslate nohighlight">\(R_D\rightarrow R_D\parallel r_O\)</span></p></td>
 </tr>
@@ -1226,27 +1227,27 @@
 <td><p><span class="math notranslate nohighlight">\(I_C=0.5\,\mathrm{mA}\)</span>, <span class="math notranslate nohighlight">\(\beta=100\)</span>, <span class="math notranslate nohighlight">\(R_E=350\,\Omega\)</span>, <span class="math notranslate nohighlight">\(R_C\parallel R_L=10\,\mathrm{k}\Omega\)</span>, source <span class="math notranslate nohighlight">\(R_{sig}=10\,\mathrm{k}\Omega\)</span></p></td>
 <td><p><span class="math notranslate nohighlight">\(g_m=2\,\mathrm{mA/V}\)</span>, <span class="math notranslate nohighlight">\(R_S=1.5\,\mathrm{k}\Omega\)</span>, <span class="math notranslate nohighlight">\(R_D\parallel R_L=10\,\mathrm{k}\Omega\)</span></p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>Answer 1.</strong> Resistance of the device itself</p></td>
+<tr class="row-odd"><td><p><strong>Answer 1.</strong> Resistance of the device itself</p></td>
 <td><p><span class="math notranslate nohighlight">\(r_e=\dfrac{V_T}{I_E}\approx\dfrac{1}{g_m}\)</span> <span class="math notranslate nohighlight">\(=50\,\Omega\)</span></p></td>
 <td><p><span class="math notranslate nohighlight">\(\dfrac{1}{g_m}\)</span> <span class="math notranslate nohighlight">\(=500\,\Omega\)</span></p></td>
 </tr>
-<tr class="row-even"><td><p><strong>Answer 2.</strong> Input resistance</p></td>
+<tr class="row-even"><td><p><strong>Answer 2.</strong> Input resistance</p></td>
 <td><p><span class="math notranslate nohighlight">\(R_{in}=(\beta+1)(r_e+R_E)\)</span> <span class="math notranslate nohighlight">\(=40.4\,\mathrm{k}\Omega\)</span></p></td>
 <td><p><span class="math notranslate nohighlight">\(R_{in}=\infty\)</span></p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>Answer 3.</strong> Gain from the input</p></td>
+<tr class="row-odd"><td><p><strong>Answer 3.</strong> Gain from the input</p></td>
 <td><p><span class="math notranslate nohighlight">\(A_v\approx-\dfrac{R_C\parallel R_L}{r_e+R_E}\)</span> <span class="math notranslate nohighlight">\(=-25\)</span></p></td>
 <td><p><span class="math notranslate nohighlight">\(A_v=-\dfrac{R_D\parallel R_L}{1/g_m+R_S}\)</span> <span class="math notranslate nohighlight">\(=-5\)</span></p></td>
 </tr>
-<tr class="row-even"><td><p><strong>Answer 4.</strong> Gain from the signal source</p></td>
+<tr class="row-even"><td><p><strong>Answer 4.</strong> Gain from the signal source</p></td>
 <td><p><span class="math notranslate nohighlight">\(G_v=-\dfrac{\beta(R_C\parallel R_L)}{R_{sig}+(\beta+1)(r_e+R_E)}\)</span> <span class="math notranslate nohighlight">\(=-19.8\)</span></p></td>
 <td><p><span class="math notranslate nohighlight">\(G_v=A_v\)</span> <span class="math notranslate nohighlight">\(=-5\)</span></p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>Answer 5.</strong> Share of the input across the device</p></td>
+<tr class="row-odd"><td><p><strong>Answer 5.</strong> Share of the input across the device</p></td>
 <td><p><span class="math notranslate nohighlight">\(\dfrac{v_\pi}{v_{in}}=\dfrac{r_e}{r_e+R_E}\)</span> <span class="math notranslate nohighlight">\(=\dfrac{1}{8}\)</span></p></td>
 <td><p><span class="math notranslate nohighlight">\(\dfrac{v_{gs}}{v_{in}}=\dfrac{1}{1+g_mR_S}\)</span> <span class="math notranslate nohighlight">\(=\dfrac{1}{4}\)</span></p></td>
 </tr>
-<tr class="row-even"><td><p><strong>Answer 6.</strong> Largest source signal</p></td>
+<tr class="row-even"><td><p><strong>Answer 6.</strong> Largest source signal</p></td>
 <td><p><span class="math notranslate nohighlight">\(v_\pi\leq10\,\mathrm{mV}\)</span>: <span class="math notranslate nohighlight">\(v_{sig}\leq99.8\,\mathrm{mV}\)</span></p></td>
 <td><p><span class="math notranslate nohighlight">\(v_{gs}\leq50\,\mathrm{mV}\)</span>: <span class="math notranslate nohighlight">\(v_{sig}\leq200\,\mathrm{mV}\)</span></p></td>
 </tr>
@@ -1320,31 +1321,31 @@
 <td><p><span class="math notranslate nohighlight">\(I=100\,\mu\mathrm{A}\)</span>, <span class="math notranslate nohighlight">\(\beta=100\)</span>, <span class="math notranslate nohighlight">\(\lvert V_A\rvert =50\,\mathrm{V}\)</span> for both devices, <span class="math notranslate nohighlight">\(V_T=25\,\mathrm{mV}\)</span></p></td>
 <td><p><span class="math notranslate nohighlight">\(I=100\,\mu\mathrm{A}\)</span>, <span class="math notranslate nohighlight">\(\mu_nC_{ox}=387\,\mu\mathrm{A/V^2}\)</span>, <span class="math notranslate nohighlight">\(W/L=7.2/0.36\)</span>, <span class="math notranslate nohighlight">\(V_{An}^\prime=5\,\mathrm{V/\mu m}\)</span>, <span class="math notranslate nohighlight">\(\lvert V_{Ap}^\prime\rvert =6\,\mathrm{V/\mu m}\)</span></p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>Answer 1.</strong> Transconductance</p></td>
+<tr class="row-odd"><td><p><strong>Answer 1.</strong> Transconductance</p></td>
 <td><p><span class="math notranslate nohighlight">\(g_{m1}=\dfrac{I}{V_T}\)</span> <span class="math notranslate nohighlight">\(=4\,\mathrm{mA/V}\)</span></p></td>
 <td><p><span class="math notranslate nohighlight">\(g_{m1}=\sqrt{2\mu_nC_{ox}\frac{W}{L}I}\)</span> <span class="math notranslate nohighlight">\(=1.24\,\mathrm{mA/V}\)</span></p></td>
 </tr>
-<tr class="row-even"><td><p><strong>Answer 2.</strong> Input resistance</p></td>
+<tr class="row-even"><td><p><strong>Answer 2.</strong> Input resistance</p></td>
 <td><p><span class="math notranslate nohighlight">\(r_{\pi1}=\dfrac{\beta}{g_{m1}}\)</span> <span class="math notranslate nohighlight">\(=25\,\mathrm{k}\Omega\)</span></p></td>
 <td><p>infinite</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>Answer 3.</strong> Output resistance of the amplifying device</p></td>
+<tr class="row-odd"><td><p><strong>Answer 3.</strong> Output resistance of the amplifying device</p></td>
 <td><p><span class="math notranslate nohighlight">\(r_{O1}=\dfrac{V_A}{I}\)</span> <span class="math notranslate nohighlight">\(=500\,\mathrm{k}\Omega\)</span></p></td>
 <td><p><span class="math notranslate nohighlight">\(r_{O1}=\dfrac{V_{An}^\prime L}{I}\)</span> <span class="math notranslate nohighlight">\(=18\,\mathrm{k}\Omega\)</span></p></td>
 </tr>
-<tr class="row-even"><td><p><strong>Answer 4.</strong> Intrinsic gain</p></td>
+<tr class="row-even"><td><p><strong>Answer 4.</strong> Intrinsic gain</p></td>
 <td><p><span class="math notranslate nohighlight">\(g_{m1}r_{O1}=\dfrac{V_A}{V_T}\)</span> <span class="math notranslate nohighlight">\(=2000\)</span></p></td>
 <td><p><span class="math notranslate nohighlight">\(g_{m1}r_{O1}\)</span> <span class="math notranslate nohighlight">\(=22.4\)</span></p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>Answer 5.</strong> Output resistance of the load</p></td>
+<tr class="row-odd"><td><p><strong>Answer 5.</strong> Output resistance of the load</p></td>
 <td><p><span class="math notranslate nohighlight">\(r_{O2}=\dfrac{\lvert V_A\rvert }{I}\)</span> <span class="math notranslate nohighlight">\(=500\,\mathrm{k}\Omega\)</span></p></td>
 <td><p><span class="math notranslate nohighlight">\(r_{O2}=\dfrac{\lvert V_{Ap}^\prime\rvert L}{I}\)</span> <span class="math notranslate nohighlight">\(=21.6\,\mathrm{k}\Omega\)</span></p></td>
 </tr>
-<tr class="row-even"><td><p><strong>Answer 6.</strong> Output resistance of the stage</p></td>
+<tr class="row-even"><td><p><strong>Answer 6.</strong> Output resistance of the stage</p></td>
 <td><p><span class="math notranslate nohighlight">\(R_{out}=r_{O1}\parallel r_{O2}\)</span> <span class="math notranslate nohighlight">\(=250\,\mathrm{k}\Omega\)</span></p></td>
 <td><p><span class="math notranslate nohighlight">\(R_{out}=r_{O1}\parallel r_{O2}\)</span> <span class="math notranslate nohighlight">\(=9.82\,\mathrm{k}\Omega\)</span></p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>Answer 7.</strong> Gain</p></td>
+<tr class="row-odd"><td><p><strong>Answer 7.</strong> Gain</p></td>
 <td><p><span class="math notranslate nohighlight">\(A_v=-g_{m1}(r_{O1}\parallel r_{O2})\)</span> <span class="math notranslate nohighlight">\(=-1000\)</span></p></td>
 <td><p><span class="math notranslate nohighlight">\(A_v=-g_{m1}(r_{O1}\parallel r_{O2})\)</span> <span class="math notranslate nohighlight">\(=-12.2\)</span></p></td>
 </tr>
@@ -1418,27 +1419,27 @@
 <td><p><span class="math notranslate nohighlight">\(I_C=1\,\mathrm{mA}\)</span>, <span class="math notranslate nohighlight">\(R_C=5\,\mathrm{k}\Omega\)</span>, load <span class="math notranslate nohighlight">\(R_L=5\,\mathrm{k}\Omega\)</span>, source <span class="math notranslate nohighlight">\(R_E=R_{sig}=5\,\mathrm{k}\Omega\)</span>, <span class="math notranslate nohighlight">\(V_T=25\,\mathrm{mV}\)</span></p></td>
 <td><p><span class="math notranslate nohighlight">\(g_m=10\,\mathrm{mA/V}\)</span> (<span class="math notranslate nohighlight">\(I_D=1\,\mathrm{mA}\)</span>, <span class="math notranslate nohighlight">\(V_{OV}=0.2\,\mathrm{V}\)</span>), <span class="math notranslate nohighlight">\(R_D=2\,\mathrm{k}\Omega\)</span>, source <span class="math notranslate nohighlight">\(R_S=R_{sig}=100\,\Omega\)</span></p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>Answer 1.</strong> Input resistance</p></td>
+<tr class="row-odd"><td><p><strong>Answer 1.</strong> Input resistance</p></td>
 <td><p><span class="math notranslate nohighlight">\(R_{in}=r_e\approx\dfrac{1}{g_m}\)</span> <span class="math notranslate nohighlight">\(=25\,\Omega\)</span></p></td>
 <td><p><span class="math notranslate nohighlight">\(R_{in}=\dfrac{1}{g_m}\)</span> <span class="math notranslate nohighlight">\(=100\,\Omega\)</span></p></td>
 </tr>
-<tr class="row-even"><td><p><strong>Answer 2.</strong> Gain without load</p></td>
+<tr class="row-even"><td><p><strong>Answer 2.</strong> Gain without load</p></td>
 <td><p><span class="math notranslate nohighlight">\(A_{vo}=g_mR_C\)</span> <span class="math notranslate nohighlight">\(=200\)</span></p></td>
 <td><p><span class="math notranslate nohighlight">\(A_{vo}=g_mR_D\)</span> <span class="math notranslate nohighlight">\(=20\)</span></p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>Answer 3.</strong> Output resistance</p></td>
+<tr class="row-odd"><td><p><strong>Answer 3.</strong> Output resistance</p></td>
 <td><p><span class="math notranslate nohighlight">\(R_{out}=R_C\)</span> <span class="math notranslate nohighlight">\(=5\,\mathrm{k}\Omega\)</span></p></td>
 <td><p><span class="math notranslate nohighlight">\(R_{out}=R_D\)</span> <span class="math notranslate nohighlight">\(=2\,\mathrm{k}\Omega\)</span></p></td>
 </tr>
-<tr class="row-even"><td><p><strong>Answer 4.</strong> Gain with the load</p></td>
+<tr class="row-even"><td><p><strong>Answer 4.</strong> Gain with the load</p></td>
 <td><p><span class="math notranslate nohighlight">\(A_v=g_m(R_C\parallel R_L)\)</span> <span class="math notranslate nohighlight">\(=100\)</span></p></td>
 <td><p><span class="math notranslate nohighlight">\(A_v=g_mR_D\)</span> <span class="math notranslate nohighlight">\(=20\)</span></p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>Answer 5.</strong> Gain from the signal source</p></td>
+<tr class="row-odd"><td><p><strong>Answer 5.</strong> Gain from the signal source</p></td>
 <td><p><span class="math notranslate nohighlight">\(G_v=\dfrac{R_C\parallel R_L}{R_{sig}+r_e}\)</span> <span class="math notranslate nohighlight">\(=0.5\)</span></p></td>
 <td><p><span class="math notranslate nohighlight">\(G_v=\dfrac{R_D}{R_{sig}+1/g_m}\)</span> <span class="math notranslate nohighlight">\(=10\)</span></p></td>
 </tr>
-<tr class="row-even"><td><p><strong>Answer 6.</strong> What the source resistance costs</p></td>
+<tr class="row-even"><td><p><strong>Answer 6.</strong> What the source resistance costs</p></td>
 <td><p><span class="math notranslate nohighlight">\(\dfrac{r_e}{r_e+R_{sig}}\)</span> <span class="math notranslate nohighlight">\(=0.005\)</span> of the signal reaches the emitter</p></td>
 <td><p><span class="math notranslate nohighlight">\(\dfrac{1/g_m}{1/g_m+R_{sig}}\)</span> <span class="math notranslate nohighlight">\(=0.5\)</span>: matched to the source</p></td>
 </tr>
@@ -1512,27 +1513,27 @@
 <td><p><span class="math notranslate nohighlight">\(I_C=5\,\mathrm{mA}\)</span>, <span class="math notranslate nohighlight">\(\beta=100\)</span>, load <span class="math notranslate nohighlight">\(R_E=R_L=1\,\mathrm{k}\Omega\)</span>, source <span class="math notranslate nohighlight">\(R_{sig}=10\,\mathrm{k}\Omega\)</span>, <span class="math notranslate nohighlight">\(V_T=25\,\mathrm{mV}\)</span></p></td>
 <td><p><span class="math notranslate nohighlight">\(g_m=5\,\mathrm{mA/V}\)</span> (<span class="math notranslate nohighlight">\(I_D=0.625\,\mathrm{mA}\)</span>, <span class="math notranslate nohighlight">\(V_{OV}=0.25\,\mathrm{V}\)</span>), load <span class="math notranslate nohighlight">\(R_S=R_L=1\,\mathrm{k}\Omega\)</span></p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>Answer 1.</strong> Resistance of the device itself</p></td>
+<tr class="row-odd"><td><p><strong>Answer 1.</strong> Resistance of the device itself</p></td>
 <td><p><span class="math notranslate nohighlight">\(r_e=\dfrac{V_T}{I_E}\)</span> <span class="math notranslate nohighlight">\(=5\,\Omega\)</span></p></td>
 <td><p><span class="math notranslate nohighlight">\(\dfrac{1}{g_m}\)</span> <span class="math notranslate nohighlight">\(=200\,\Omega\)</span></p></td>
 </tr>
-<tr class="row-even"><td><p><strong>Answer 2.</strong> Input resistance</p></td>
+<tr class="row-even"><td><p><strong>Answer 2.</strong> Input resistance</p></td>
 <td><p><span class="math notranslate nohighlight">\(R_{in}=(\beta+1)(r_e+R_L)\)</span> <span class="math notranslate nohighlight">\(=101.5\,\mathrm{k}\Omega\)</span></p></td>
 <td><p><span class="math notranslate nohighlight">\(R_{in}=\infty\)</span></p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>Answer 3.</strong> Gain from the input</p></td>
+<tr class="row-odd"><td><p><strong>Answer 3.</strong> Gain from the input</p></td>
 <td><p><span class="math notranslate nohighlight">\(A_v=\dfrac{R_L}{R_L+r_e}\)</span> <span class="math notranslate nohighlight">\(=0.995\)</span></p></td>
 <td><p><span class="math notranslate nohighlight">\(A_v=\dfrac{R_L}{R_L+1/g_m}\)</span> <span class="math notranslate nohighlight">\(=0.833\)</span></p></td>
 </tr>
-<tr class="row-even"><td><p><strong>Answer 4.</strong> Gain from the signal source</p></td>
+<tr class="row-even"><td><p><strong>Answer 4.</strong> Gain from the signal source</p></td>
 <td><p><span class="math notranslate nohighlight">\(G_v=\dfrac{(\beta+1)R_L}{R_{sig}+(\beta+1)(r_e+R_L)}\)</span> <span class="math notranslate nohighlight">\(=0.906\)</span></p></td>
 <td><p><span class="math notranslate nohighlight">\(G_v=A_v\)</span> <span class="math notranslate nohighlight">\(=0.833\)</span></p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>Answer 5.</strong> Output resistance</p></td>
+<tr class="row-odd"><td><p><strong>Answer 5.</strong> Output resistance</p></td>
 <td><p><span class="math notranslate nohighlight">\(R_{out}=r_e+\dfrac{R_{sig}}{\beta+1}\)</span> <span class="math notranslate nohighlight">\(=104\,\Omega\)</span></p></td>
 <td><p><span class="math notranslate nohighlight">\(R_{out}=\dfrac{1}{g_m}\)</span> <span class="math notranslate nohighlight">\(=200\,\Omega\)</span></p></td>
 </tr>
-<tr class="row-even"><td><p><strong>Answer 6.</strong> Gain without load</p></td>
+<tr class="row-even"><td><p><strong>Answer 6.</strong> Gain without load</p></td>
 <td><p><span class="math notranslate nohighlight">\(1\)</span></p></td>
 <td><p><span class="math notranslate nohighlight">\(1\)</span></p></td>
 </tr>
@@ -1606,23 +1607,23 @@
 <td><p>the device of Small-Signal Parameters: <span class="math notranslate nohighlight">\(g_m=1/(26\,\Omega)\)</span>, <span class="math notranslate nohighlight">\(r_\pi=2.6\,\mathrm{k}\Omega\)</span>, <span class="math notranslate nohighlight">\(r_O=15\,\mathrm{k}\Omega\)</span></p></td>
 <td><p>the device of Small-Signal Parameters: <span class="math notranslate nohighlight">\(g_m=1/(1\,\mathrm{k}\Omega)\)</span>, <span class="math notranslate nohighlight">\(r_O=20\,\mathrm{k}\Omega\)</span></p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>Answer 1.</strong> Test voltage across the device</p></td>
+<tr class="row-odd"><td><p><strong>Answer 1.</strong> Test voltage across the device</p></td>
 <td><p><span class="math notranslate nohighlight">\(v_\pi=v_x\)</span></p></td>
 <td><p><span class="math notranslate nohighlight">\(v_{gs}=v_x\)</span></p></td>
 </tr>
-<tr class="row-even"><td><p><strong>Answer 2.</strong> Current drawn</p></td>
+<tr class="row-even"><td><p><strong>Answer 2.</strong> Current drawn</p></td>
 <td><p><span class="math notranslate nohighlight">\(i_x=\dfrac{v_x}{r_\pi}+g_mv_x+\dfrac{v_x}{r_O}\)</span></p></td>
 <td><p><span class="math notranslate nohighlight">\(i_x=g_mv_x+\dfrac{v_x}{r_O}\)</span></p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>Answer 3.</strong> Resistance</p></td>
+<tr class="row-odd"><td><p><strong>Answer 3.</strong> Resistance</p></td>
 <td><p><span class="math notranslate nohighlight">\(R=\dfrac{v_x}{i_x}=\dfrac{1}{g_m}\parallel r_\pi\parallel r_O\)</span> <span class="math notranslate nohighlight">\(=25.7\,\Omega\)</span></p></td>
 <td><p><span class="math notranslate nohighlight">\(R=\dfrac{v_x}{i_x}=\dfrac{1}{g_m}\parallel r_O\)</span> <span class="math notranslate nohighlight">\(=952\,\Omega\)</span></p></td>
 </tr>
-<tr class="row-even"><td><p><strong>Answer 4.</strong> To a good approximation</p></td>
+<tr class="row-even"><td><p><strong>Answer 4.</strong> To a good approximation</p></td>
 <td><p><span class="math notranslate nohighlight">\(R\approx\dfrac{1}{g_m}\)</span> <span class="math notranslate nohighlight">\(=26\,\Omega\)</span></p></td>
 <td><p><span class="math notranslate nohighlight">\(R\approx\dfrac{1}{g_m}\)</span> <span class="math notranslate nohighlight">\(=1\,\mathrm{k}\Omega\)</span></p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>Answer 5.</strong> Into the other terminals, by inspection</p></td>
+<tr class="row-odd"><td><p><strong>Answer 5.</strong> Into the other terminals, by inspection</p></td>
 <td><p>emitter: <span class="math notranslate nohighlight">\(\dfrac{1}{g_m}\parallel r_\pi\)</span>; base: <span class="math notranslate nohighlight">\(r_\pi\)</span>; collector: <span class="math notranslate nohighlight">\(r_O\)</span></p></td>
 <td><p>source: <span class="math notranslate nohighlight">\(\dfrac{1}{g_m}\)</span>; gate: <span class="math notranslate nohighlight">\(\infty\)</span>; drain: <span class="math notranslate nohighlight">\(r_O\)</span></p></td>
 </tr>
@@ -1696,27 +1697,27 @@
 <td><p><span class="math notranslate nohighlight">\(g_m=20\,\mathrm{mA/V}\)</span>, <span class="math notranslate nohighlight">\(r_\pi=5\,\mathrm{k}\Omega\)</span>, <span class="math notranslate nohighlight">\(r_O=200\,\mathrm{k}\Omega\)</span>, divider <span class="math notranslate nohighlight">\(182\,\mathrm{k}\Omega\)</span> and <span class="math notranslate nohighlight">\(100\,\mathrm{k}\Omega\)</span>, <span class="math notranslate nohighlight">\(R_C=18\,\mathrm{k}\Omega\)</span>, <span class="math notranslate nohighlight">\(R_L=20\,\mathrm{k}\Omega\)</span>, <span class="math notranslate nohighlight">\(R_{sig}=10\,\mathrm{k}\Omega\)</span></p></td>
 <td><p><span class="math notranslate nohighlight">\(g_m=2\,\mathrm{mA/V}\)</span>, <span class="math notranslate nohighlight">\(r_O=200\,\mathrm{k}\Omega\)</span>, divider <span class="math notranslate nohighlight">\(5\,\mathrm{M}\Omega\)</span> and <span class="math notranslate nohighlight">\(2.5\,\mathrm{M}\Omega\)</span>, <span class="math notranslate nohighlight">\(R_D=18\,\mathrm{k}\Omega\)</span>, <span class="math notranslate nohighlight">\(R_L=20\,\mathrm{k}\Omega\)</span>, <span class="math notranslate nohighlight">\(R_{sig}=100\,\mathrm{k}\Omega\)</span></p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>Answer 1.</strong> Bias resistors, in parallel for signals</p></td>
+<tr class="row-odd"><td><p><strong>Answer 1.</strong> Bias resistors, in parallel for signals</p></td>
 <td><p><span class="math notranslate nohighlight">\(R_B=R_{B1}\parallel R_{B2}\)</span> <span class="math notranslate nohighlight">\(=64.5\,\mathrm{k}\Omega\)</span></p></td>
 <td><p><span class="math notranslate nohighlight">\(R_G=R_{G1}\parallel R_{G2}\)</span> <span class="math notranslate nohighlight">\(=1.67\,\mathrm{M}\Omega\)</span></p></td>
 </tr>
-<tr class="row-even"><td><p><strong>Answer 2.</strong> Input resistance</p></td>
+<tr class="row-even"><td><p><strong>Answer 2.</strong> Input resistance</p></td>
 <td><p><span class="math notranslate nohighlight">\(R_{in}=R_B\parallel r_\pi\)</span> <span class="math notranslate nohighlight">\(=4.64\,\mathrm{k}\Omega\)</span></p></td>
 <td><p><span class="math notranslate nohighlight">\(R_{in}=R_G\)</span> <span class="math notranslate nohighlight">\(=1.67\,\mathrm{M}\Omega\)</span></p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>Answer 3.</strong> Share of the source that reaches the input</p></td>
+<tr class="row-odd"><td><p><strong>Answer 3.</strong> Share of the source that reaches the input</p></td>
 <td><p><span class="math notranslate nohighlight">\(\dfrac{R_{in}}{R_{in}+R_{sig}}\)</span> <span class="math notranslate nohighlight">\(=0.317\)</span></p></td>
 <td><p><span class="math notranslate nohighlight">\(\dfrac{R_{in}}{R_{in}+R_{sig}}\)</span> <span class="math notranslate nohighlight">\(=0.943\)</span></p></td>
 </tr>
-<tr class="row-even"><td><p><strong>Answer 4.</strong> Resistance at the output node</p></td>
+<tr class="row-even"><td><p><strong>Answer 4.</strong> Resistance at the output node</p></td>
 <td><p><span class="math notranslate nohighlight">\(r_O\parallel R_C\parallel R_L\)</span> <span class="math notranslate nohighlight">\(=9.05\,\mathrm{k}\Omega\)</span></p></td>
 <td><p><span class="math notranslate nohighlight">\(r_O\parallel R_D\parallel R_L\)</span> <span class="math notranslate nohighlight">\(=9.05\,\mathrm{k}\Omega\)</span></p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>Answer 5.</strong> Overall gain</p></td>
+<tr class="row-odd"><td><p><strong>Answer 5.</strong> Overall gain</p></td>
 <td><p><span class="math notranslate nohighlight">\(G_v=-\dfrac{R_{in}}{R_{in}+R_{sig}}\,g_m(r_O\parallel R_C\parallel R_L)\)</span> <span class="math notranslate nohighlight">\(=-57.3\)</span></p></td>
 <td><p><span class="math notranslate nohighlight">\(G_v=-\dfrac{R_{in}}{R_{in}+R_{sig}}\,g_m(r_O\parallel R_D\parallel R_L)\)</span> <span class="math notranslate nohighlight">\(=-17.1\)</span></p></td>
 </tr>
-<tr class="row-even"><td><p><strong>Answer 6.</strong> Output resistance</p></td>
+<tr class="row-even"><td><p><strong>Answer 6.</strong> Output resistance</p></td>
 <td><p><span class="math notranslate nohighlight">\(R_{out}=R_C\parallel r_O\)</span> <span class="math notranslate nohighlight">\(=16.5\,\mathrm{k}\Omega\)</span></p></td>
 <td><p><span class="math notranslate nohighlight">\(R_{out}=R_D\parallel r_O\)</span> <span class="math notranslate nohighlight">\(=16.5\,\mathrm{k}\Omega\)</span></p></td>
 </tr>
@@ -1793,31 +1794,31 @@
 <td><p><span class="math notranslate nohighlight">\(I_C=1\,\mathrm{mA}\)</span>, <span class="math notranslate nohighlight">\(\beta=100\)</span>, <span class="math notranslate nohighlight">\(V_A=5\,\mathrm{V}\)</span>, <span class="math notranslate nohighlight">\(V_T=26\,\mathrm{mV}\)</span>, both devices alike</p></td>
 <td><p><span class="math notranslate nohighlight">\(I_D=0.5\,\mathrm{mA}\)</span>, <span class="math notranslate nohighlight">\(\mu_nC_{ox}=100\,\mu\mathrm{A/V^2}\)</span>, <span class="math notranslate nohighlight">\(W/L=15.6\)</span>, <span class="math notranslate nohighlight">\(\lambda=0.1\,\mathrm{V^{-1}}\)</span>, both devices alike</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>Answer 1.</strong> Transconductance</p></td>
+<tr class="row-odd"><td><p><strong>Answer 1.</strong> Transconductance</p></td>
 <td><p><span class="math notranslate nohighlight">\(g_m=\dfrac{I_C}{V_T}\)</span> <span class="math notranslate nohighlight">\(=\dfrac{1}{26\,\Omega}\)</span></p></td>
 <td><p><span class="math notranslate nohighlight">\(g_m=\sqrt{2\mu_nC_{ox}\frac{W}{L}I_D}\)</span> <span class="math notranslate nohighlight">\(=\dfrac{1}{800\,\Omega}\)</span></p></td>
 </tr>
-<tr class="row-even"><td><p><strong>Answer 2.</strong> Output resistance of one device</p></td>
+<tr class="row-even"><td><p><strong>Answer 2.</strong> Output resistance of one device</p></td>
 <td><p><span class="math notranslate nohighlight">\(r_O=\dfrac{V_A}{I_C}\)</span> <span class="math notranslate nohighlight">\(=5\,\mathrm{k}\Omega\)</span></p></td>
 <td><p><span class="math notranslate nohighlight">\(r_O=\dfrac{1}{\lambda I_D}\)</span> <span class="math notranslate nohighlight">\(=20\,\mathrm{k}\Omega\)</span></p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>Answer 3.</strong> Resistance under the upper device</p></td>
+<tr class="row-odd"><td><p><strong>Answer 3.</strong> Resistance under the upper device</p></td>
 <td><p><span class="math notranslate nohighlight">\(r_{O1}\parallel r_{\pi2}\)</span> <span class="math notranslate nohighlight">\(=1.71\,\mathrm{k}\Omega\)</span></p></td>
 <td><p><span class="math notranslate nohighlight">\(r_{O1}\)</span> <span class="math notranslate nohighlight">\(=20\,\mathrm{k}\Omega\)</span></p></td>
 </tr>
-<tr class="row-even"><td><p><strong>Answer 4.</strong> Output resistance of the stack</p></td>
+<tr class="row-even"><td><p><strong>Answer 4.</strong> Output resistance of the stack</p></td>
 <td><p><span class="math notranslate nohighlight">\(R_{out}\approx g_{m2}r_{O2}(r_{O1}\parallel r_{\pi2})\)</span> <span class="math notranslate nohighlight">\(=329\,\mathrm{k}\Omega\)</span></p></td>
 <td><p><span class="math notranslate nohighlight">\(R_{out}\approx g_{m2}r_{O2}r_{O1}\)</span> <span class="math notranslate nohighlight">\(=500\,\mathrm{k}\Omega\)</span></p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>Answer 5.</strong> Against one device</p></td>
+<tr class="row-odd"><td><p><strong>Answer 5.</strong> Against one device</p></td>
 <td><p><span class="math notranslate nohighlight">\(66\)</span> times <span class="math notranslate nohighlight">\(r_O\)</span></p></td>
 <td><p><span class="math notranslate nohighlight">\(25\)</span> times <span class="math notranslate nohighlight">\(r_O\)</span></p></td>
 </tr>
-<tr class="row-even"><td><p><strong>Answer 6.</strong> Limit</p></td>
+<tr class="row-even"><td><p><strong>Answer 6.</strong> Limit</p></td>
 <td><p><span class="math notranslate nohighlight">\(R_{out}&lt;\beta r_{O2}\)</span> <span class="math notranslate nohighlight">\(=500\,\mathrm{k}\Omega\)</span>, however large <span class="math notranslate nohighlight">\(r_{O1}\)</span></p></td>
 <td><p>none: a third device multiplies again</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>Answer 7.</strong> Gain with an ideal current-source load</p></td>
+<tr class="row-odd"><td><p><strong>Answer 7.</strong> Gain with an ideal current-source load</p></td>
 <td><p><span class="math notranslate nohighlight">\(A_v\approx-g_{m1}R_{out}\)</span> <span class="math notranslate nohighlight">\(=-12650\)</span></p></td>
 <td><p><span class="math notranslate nohighlight">\(A_v\approx-g_{m1}R_{out}\)</span> <span class="math notranslate nohighlight">\(=-625\)</span></p></td>
 </tr>
@@ -1891,31 +1892,31 @@
 <td><p><span class="math notranslate nohighlight">\(I_{in}=200\,\mu\mathrm{A}\)</span>; <span class="math notranslate nohighlight">\(Q_1\)</span> is 4 unit transistors, <span class="math notranslate nohighlight">\(Q_2\)</span> is 10; <span class="math notranslate nohighlight">\(\beta=100\)</span></p></td>
 <td><p><span class="math notranslate nohighlight">\(I_{in}=0.3\,\mathrm{mA}\)</span>; <span class="math notranslate nohighlight">\((W/L)_1=3\,(W/L)\)</span>, <span class="math notranslate nohighlight">\((W/L)_2=5\,(W/L)\)</span></p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>Answer 1.</strong> Same control voltage</p></td>
+<tr class="row-odd"><td><p><strong>Answer 1.</strong> Same control voltage</p></td>
 <td><p><span class="math notranslate nohighlight">\(V_{BE1}=V_{BE2}\)</span></p></td>
 <td><p><span class="math notranslate nohighlight">\(V_{GS1}=V_{GS2}\)</span></p></td>
 </tr>
-<tr class="row-even"><td><p><strong>Answer 2.</strong> Ratio of the currents</p></td>
+<tr class="row-even"><td><p><strong>Answer 2.</strong> Ratio of the currents</p></td>
 <td><p><span class="math notranslate nohighlight">\(\dfrac{I_{C2}}{I_{C1}}=\dfrac{I_{S2}}{I_{S1}}\)</span>, the ratio of the areas</p></td>
 <td><p><span class="math notranslate nohighlight">\(\dfrac{I_{D2}}{I_{D1}}=\dfrac{(W/L)_2}{(W/L)_1}\)</span></p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>Answer 3.</strong> Ideal copy</p></td>
+<tr class="row-odd"><td><p><strong>Answer 3.</strong> Ideal copy</p></td>
 <td><p><span class="math notranslate nohighlight">\(I_{out}=\dfrac{10}{4}\cdot200\,\mu\mathrm{A}\)</span> <span class="math notranslate nohighlight">\(=500\,\mu\mathrm{A}\)</span></p></td>
 <td><p><span class="math notranslate nohighlight">\(I_{out}=\dfrac{5}{3}\cdot0.3\,\mathrm{mA}\)</span> <span class="math notranslate nohighlight">\(=500\,\mu\mathrm{A}\)</span></p></td>
 </tr>
-<tr class="row-even"><td><p><strong>Answer 4.</strong> Current lost at the input node</p></td>
+<tr class="row-even"><td><p><strong>Answer 4.</strong> Current lost at the input node</p></td>
 <td><p><span class="math notranslate nohighlight">\(I_{in}=I_{C1}+I_{B1}+I_{B2}\)</span></p></td>
 <td><p>none: <span class="math notranslate nohighlight">\(I_{in}=I_{D1}\)</span></p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>Answer 5.</strong> Copy with that loss</p></td>
+<tr class="row-odd"><td><p><strong>Answer 5.</strong> Copy with that loss</p></td>
 <td><p><span class="math notranslate nohighlight">\(I_{out}=\dfrac{n\,I_{in}}{1+(1+n)/\beta}\)</span>, <span class="math notranslate nohighlight">\(n=\dfrac{10}{4}\)</span>: <span class="math notranslate nohighlight">\(483\,\mu\mathrm{A}\)</span></p></td>
 <td><p><span class="math notranslate nohighlight">\(I_{out}=500\,\mu\mathrm{A}\)</span>, unchanged</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>Answer 6.</strong> Effect of the output voltage</p></td>
+<tr class="row-even"><td><p><strong>Answer 6.</strong> Effect of the output voltage</p></td>
 <td><p>factor <span class="math notranslate nohighlight">\(\dfrac{1+V_{CE2}/V_A}{1+V_{CE1}/V_A}\)</span></p></td>
 <td><p>factor <span class="math notranslate nohighlight">\(\dfrac{1+\lambda V_{DS2}}{1+\lambda V_{DS1}}\)</span></p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>Answer 7.</strong> Output resistance</p></td>
+<tr class="row-odd"><td><p><strong>Answer 7.</strong> Output resistance</p></td>
 <td><p><span class="math notranslate nohighlight">\(r_{O2}\)</span></p></td>
 <td><p><span class="math notranslate nohighlight">\(r_{O2}\)</span></p></td>
 </tr>
@@ -1992,27 +1993,27 @@
 <td><p><span class="math notranslate nohighlight">\(R_C=1\,\mathrm{k}\Omega\)</span>, <span class="math notranslate nohighlight">\(I_{EE}=1\,\mathrm{mA}\)</span>, both inputs at <span class="math notranslate nohighlight">\(V_{CM}\)</span></p></td>
 <td><p><span class="math notranslate nohighlight">\(V_{DD}=1.8\,\mathrm{V}\)</span>, <span class="math notranslate nohighlight">\(I_{SS}=0.5\,\mathrm{mA}\)</span>, <span class="math notranslate nohighlight">\(V_{TH}=0.5\,\mathrm{V}\)</span>, both inputs at <span class="math notranslate nohighlight">\(V_{CM}=1.6\,\mathrm{V}\)</span></p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>Answer 1.</strong> Equal inputs</p></td>
+<tr class="row-odd"><td><p><strong>Answer 1.</strong> Equal inputs</p></td>
 <td><p><span class="math notranslate nohighlight">\(I_{C1}=I_{C2}=\dfrac{I_{EE}}{2}\)</span> <span class="math notranslate nohighlight">\(=0.5\,\mathrm{mA}\)</span></p></td>
 <td><p><span class="math notranslate nohighlight">\(I_{D1}=I_{D2}=\dfrac{I_{SS}}{2}\)</span> <span class="math notranslate nohighlight">\(=0.25\,\mathrm{mA}\)</span></p></td>
 </tr>
-<tr class="row-even"><td><p><strong>Answer 2.</strong> Output level</p></td>
+<tr class="row-even"><td><p><strong>Answer 2.</strong> Output level</p></td>
 <td><p><span class="math notranslate nohighlight">\(V_X=V_Y=V_{CC}-R_C\dfrac{I_{EE}}{2}\)</span> <span class="math notranslate nohighlight">\(=V_{CC}-0.5\,\mathrm{V}\)</span></p></td>
 <td><p><span class="math notranslate nohighlight">\(V_X=V_Y=V_{DD}-R_D\dfrac{I_{SS}}{2}\)</span></p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>Answer 3.</strong> Condition for the amplifying region</p></td>
+<tr class="row-odd"><td><p><strong>Answer 3.</strong> Condition for the amplifying region</p></td>
 <td><p><span class="math notranslate nohighlight">\(V_X\geq V_{CM}\)</span></p></td>
 <td><p><span class="math notranslate nohighlight">\(V_X\geq V_{CM}-V_{TH}\)</span></p></td>
 </tr>
-<tr class="row-even"><td><p><strong>Answer 4.</strong> Result</p></td>
+<tr class="row-even"><td><p><strong>Answer 4.</strong> Result</p></td>
 <td><p><span class="math notranslate nohighlight">\(V_{CM}\leq V_{CC}-0.5\,\mathrm{V}\)</span></p></td>
 <td><p><span class="math notranslate nohighlight">\(R_D\leq\dfrac{V_{DD}-V_{CM}+V_{TH}}{I_{SS}/2}\)</span> <span class="math notranslate nohighlight">\(=2.8\,\mathrm{k}\Omega\)</span></p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>Answer 5.</strong> Unequal inputs steer the current</p></td>
+<tr class="row-odd"><td><p><strong>Answer 5.</strong> Unequal inputs steer the current</p></td>
 <td><p><span class="math notranslate nohighlight">\(I_{C1}-I_{C2}=I_{EE}\tanh\dfrac{V_1-V_2}{2V_T}\)</span></p></td>
 <td><p><span class="math notranslate nohighlight">\(I_{D1}-I_{D2}=\frac{1}{2}\mu_nC_{ox}\frac{W}{L}\Delta V\sqrt{\dfrac{4I_{SS}}{\mu_nC_{ox}W/L}-\Delta V^2}\)</span>, <span class="math notranslate nohighlight">\(\Delta V=V_1-V_2\)</span></p></td>
 </tr>
-<tr class="row-even"><td><p><strong>Answer 6.</strong> All of it flows in one side</p></td>
+<tr class="row-even"><td><p><strong>Answer 6.</strong> All of it flows in one side</p></td>
 <td><p>beyond about <span class="math notranslate nohighlight">\(4V_T\approx100\,\mathrm{mV}\)</span></p></td>
 <td><p>beyond <span class="math notranslate nohighlight">\(\sqrt{2}\,(V_{GS}-V_{TH})\)</span> at equal inputs</p></td>
 </tr>
@@ -2086,31 +2087,31 @@
 <td><p><span class="math notranslate nohighlight">\(I_{EE}=1\,\mathrm{mA}\)</span>, <span class="math notranslate nohighlight">\(R_C=10\,\mathrm{k}\Omega\)</span>, <span class="math notranslate nohighlight">\(V_T=25\,\mathrm{mV}\)</span>, <span class="math notranslate nohighlight">\(r_O\)</span> neglected</p></td>
 <td><p><span class="math notranslate nohighlight">\(I_{SS}=0.8\,\mathrm{mA}\)</span>, <span class="math notranslate nohighlight">\(k_n=20\,\mathrm{mA/V^2}\)</span>, <span class="math notranslate nohighlight">\(R_D=5\,\mathrm{k}\Omega\)</span>, <span class="math notranslate nohighlight">\(V_A=20\,\mathrm{V}\)</span></p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>Answer 1.</strong> Bias of each side</p></td>
+<tr class="row-odd"><td><p><strong>Answer 1.</strong> Bias of each side</p></td>
 <td><p><span class="math notranslate nohighlight">\(I_C=\dfrac{I_{EE}}{2}\)</span> <span class="math notranslate nohighlight">\(=0.5\,\mathrm{mA}\)</span></p></td>
 <td><p><span class="math notranslate nohighlight">\(I_D=\dfrac{I_{SS}}{2}\)</span> <span class="math notranslate nohighlight">\(=0.4\,\mathrm{mA}\)</span>, <span class="math notranslate nohighlight">\(V_{OV}=\sqrt{2I_D/k_n}\)</span> <span class="math notranslate nohighlight">\(=200\,\mathrm{mV}\)</span></p></td>
 </tr>
-<tr class="row-even"><td><p><strong>Answer 2.</strong> Transconductance</p></td>
+<tr class="row-even"><td><p><strong>Answer 2.</strong> Transconductance</p></td>
 <td><p><span class="math notranslate nohighlight">\(g_m=\dfrac{I_C}{V_T}\)</span> <span class="math notranslate nohighlight">\(=20\,\mathrm{mA/V}\)</span></p></td>
 <td><p><span class="math notranslate nohighlight">\(g_m=\dfrac{2I_D}{V_{OV}}\)</span> <span class="math notranslate nohighlight">\(=4\,\mathrm{mA/V}\)</span></p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>Answer 3.</strong> Half circuit</p></td>
+<tr class="row-odd"><td><p><strong>Answer 3.</strong> Half circuit</p></td>
 <td><p>tail node at signal ground: a common-emitter stage with input <span class="math notranslate nohighlight">\(\frac{1}{2}(v_1-v_2)\)</span></p></td>
 <td><p>tail node at signal ground: a common-source stage with input <span class="math notranslate nohighlight">\(\frac{1}{2}(v_1-v_2)\)</span></p></td>
 </tr>
-<tr class="row-even"><td><p><strong>Answer 4.</strong> Output resistance of the device</p></td>
+<tr class="row-even"><td><p><strong>Answer 4.</strong> Output resistance of the device</p></td>
 <td><p>neglected</p></td>
 <td><p><span class="math notranslate nohighlight">\(r_O=\dfrac{V_A}{I_D}\)</span> <span class="math notranslate nohighlight">\(=50\,\mathrm{k}\Omega\)</span></p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>Answer 5.</strong> Differential gain</p></td>
+<tr class="row-odd"><td><p><strong>Answer 5.</strong> Differential gain</p></td>
 <td><p><span class="math notranslate nohighlight">\(\dfrac{v_X-v_Y}{v_1-v_2}=-g_mR_C\)</span> <span class="math notranslate nohighlight">\(=-200\)</span></p></td>
 <td><p><span class="math notranslate nohighlight">\(\dfrac{v_X-v_Y}{v_1-v_2}=-g_m(R_D\parallel r_O)\)</span> <span class="math notranslate nohighlight">\(=-18.2\)</span></p></td>
 </tr>
-<tr class="row-even"><td><p><strong>Answer 6.</strong> One output alone</p></td>
+<tr class="row-even"><td><p><strong>Answer 6.</strong> One output alone</p></td>
 <td><p>half of it: <span class="math notranslate nohighlight">\(-100\)</span></p></td>
 <td><p>half of it: <span class="math notranslate nohighlight">\(-9.09\)</span></p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>Answer 7.</strong> Resistance between the inputs</p></td>
+<tr class="row-odd"><td><p><strong>Answer 7.</strong> Resistance between the inputs</p></td>
 <td><p><span class="math notranslate nohighlight">\(R_{id}=2r_\pi\)</span></p></td>
 <td><p>infinite</p></td>
 </tr>
@@ -2184,27 +2185,27 @@
 <td><p><span class="math notranslate nohighlight">\(I_E=0.1\,\mathrm{mA}\)</span> in each side, <span class="math notranslate nohighlight">\(R_E=250\,\Omega\)</span>, <span class="math notranslate nohighlight">\(R_C=10\,\mathrm{k}\Omega\)</span>, <span class="math notranslate nohighlight">\(\beta=100\)</span>, <span class="math notranslate nohighlight">\(V_T=25\,\mathrm{mV}\)</span></p></td>
 <td><p><span class="math notranslate nohighlight">\(g_m=4\,\mathrm{mA/V}\)</span>, <span class="math notranslate nohighlight">\(R_S=250\,\Omega\)</span> in each side, <span class="math notranslate nohighlight">\(R_D=5\,\mathrm{k}\Omega\)</span>, <span class="math notranslate nohighlight">\(r_O\)</span> neglected</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>Answer 1.</strong> Resistance of the device itself</p></td>
+<tr class="row-odd"><td><p><strong>Answer 1.</strong> Resistance of the device itself</p></td>
 <td><p><span class="math notranslate nohighlight">\(r_e=\dfrac{V_T}{I_E}\)</span> <span class="math notranslate nohighlight">\(=250\,\Omega\)</span></p></td>
 <td><p><span class="math notranslate nohighlight">\(\dfrac{1}{g_m}\)</span> <span class="math notranslate nohighlight">\(=250\,\Omega\)</span></p></td>
 </tr>
-<tr class="row-even"><td><p><strong>Answer 2.</strong> Half circuit</p></td>
+<tr class="row-even"><td><p><strong>Answer 2.</strong> Half circuit</p></td>
 <td><p>a degenerated common-emitter stage</p></td>
 <td><p>a degenerated common-source stage</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>Answer 3.</strong> Differential gain</p></td>
+<tr class="row-odd"><td><p><strong>Answer 3.</strong> Differential gain</p></td>
 <td><p><span class="math notranslate nohighlight">\(\dfrac{v_X-v_Y}{v_1-v_2}\approx-\dfrac{R_C}{r_e+R_E}\)</span> <span class="math notranslate nohighlight">\(=-20\)</span></p></td>
 <td><p><span class="math notranslate nohighlight">\(\dfrac{v_X-v_Y}{v_1-v_2}=-\dfrac{R_D}{1/g_m+R_S}\)</span> <span class="math notranslate nohighlight">\(=-10\)</span></p></td>
 </tr>
-<tr class="row-even"><td><p><strong>Answer 4.</strong> Without the resistors</p></td>
+<tr class="row-even"><td><p><strong>Answer 4.</strong> Without the resistors</p></td>
 <td><p><span class="math notranslate nohighlight">\(-\dfrac{R_C}{r_e}\)</span> <span class="math notranslate nohighlight">\(=-40\)</span></p></td>
 <td><p><span class="math notranslate nohighlight">\(-g_mR_D\)</span> <span class="math notranslate nohighlight">\(=-20\)</span></p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>Answer 5.</strong> Resistance between the inputs</p></td>
+<tr class="row-odd"><td><p><strong>Answer 5.</strong> Resistance between the inputs</p></td>
 <td><p><span class="math notranslate nohighlight">\(R_{id}=(\beta+1)(2r_e+2R_E)\)</span> <span class="math notranslate nohighlight">\(=101\,\mathrm{k}\Omega\)</span></p></td>
 <td><p>infinite</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>Answer 6.</strong> Linear input range</p></td>
+<tr class="row-even"><td><p><strong>Answer 6.</strong> Linear input range</p></td>
 <td><p>grows by <span class="math notranslate nohighlight">\(1+R_E/r_e\)</span> <span class="math notranslate nohighlight">\(=2\)</span></p></td>
 <td><p>grows by <span class="math notranslate nohighlight">\(1+g_mR_S\)</span> <span class="math notranslate nohighlight">\(=2\)</span></p></td>
 </tr>
@@ -2278,31 +2279,31 @@
 <td><p><span class="math notranslate nohighlight">\(I_C=0.1\,\mathrm{mA}\)</span> in each side, <span class="math notranslate nohighlight">\(R_C=25\,\mathrm{k}\Omega\)</span> with <span class="math notranslate nohighlight">\(\Delta R_C/R_C=1\,\%\)</span>, <span class="math notranslate nohighlight">\(R_{EE}=500\,\mathrm{k}\Omega\)</span>, <span class="math notranslate nohighlight">\(V_T=25\,\mathrm{mV}\)</span></p></td>
 <td><p><span class="math notranslate nohighlight">\(g_m=4\,\mathrm{mA/V}\)</span>, <span class="math notranslate nohighlight">\(R_D=5\,\mathrm{k}\Omega\)</span> with <span class="math notranslate nohighlight">\(\Delta R_D/R_D=1\,\%\)</span>, <span class="math notranslate nohighlight">\(R_{SS}=25\,\mathrm{k}\Omega\)</span></p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>Answer 1.</strong> Transconductance</p></td>
+<tr class="row-odd"><td><p><strong>Answer 1.</strong> Transconductance</p></td>
 <td><p><span class="math notranslate nohighlight">\(g_m=\dfrac{I_C}{V_T}\)</span> <span class="math notranslate nohighlight">\(=4\,\mathrm{mA/V}\)</span></p></td>
 <td><p><span class="math notranslate nohighlight">\(g_m\)</span> <span class="math notranslate nohighlight">\(=4\,\mathrm{mA/V}\)</span></p></td>
 </tr>
-<tr class="row-even"><td><p><strong>Answer 2.</strong> Differential gain</p></td>
+<tr class="row-even"><td><p><strong>Answer 2.</strong> Differential gain</p></td>
 <td><p><span class="math notranslate nohighlight">\(\lvert A_d\rvert =g_mR_C\)</span> <span class="math notranslate nohighlight">\(=100\)</span></p></td>
 <td><p><span class="math notranslate nohighlight">\(\lvert A_d\rvert =g_mR_D\)</span> <span class="math notranslate nohighlight">\(=20\)</span></p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>Answer 3.</strong> Half circuit for a common input</p></td>
+<tr class="row-odd"><td><p><strong>Answer 3.</strong> Half circuit for a common input</p></td>
 <td><p>each side carries <span class="math notranslate nohighlight">\(2R_{EE}\)</span> in its emitter</p></td>
 <td><p>each side carries <span class="math notranslate nohighlight">\(2R_{SS}\)</span> in its source</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>Answer 4.</strong> Common input to each output</p></td>
+<tr class="row-even"><td><p><strong>Answer 4.</strong> Common input to each output</p></td>
 <td><p><span class="math notranslate nohighlight">\(-\dfrac{R_C}{r_e+2R_{EE}}\approx-\dfrac{R_C}{2R_{EE}}\)</span> <span class="math notranslate nohighlight">\(=-0.025\)</span></p></td>
 <td><p><span class="math notranslate nohighlight">\(-\dfrac{R_D}{1/g_m+2R_{SS}}\approx-\dfrac{R_D}{2R_{SS}}\)</span> <span class="math notranslate nohighlight">\(=-0.1\)</span></p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>Answer 5.</strong> Common input to the difference of the outputs</p></td>
+<tr class="row-odd"><td><p><strong>Answer 5.</strong> Common input to the difference of the outputs</p></td>
 <td><p><span class="math notranslate nohighlight">\(\lvert A_{cm}\rvert =\dfrac{R_C}{2R_{EE}}\cdot\dfrac{\Delta R_C}{R_C}\)</span> <span class="math notranslate nohighlight">\(=2.5\times10^{-4}\)</span></p></td>
 <td><p><span class="math notranslate nohighlight">\(\lvert A_{cm}\rvert =\dfrac{R_D}{2R_{SS}}\cdot\dfrac{\Delta R_D}{R_D}\)</span> <span class="math notranslate nohighlight">\(=0.001\)</span></p></td>
 </tr>
-<tr class="row-even"><td><p><strong>Answer 6.</strong> Rejection ratio</p></td>
+<tr class="row-even"><td><p><strong>Answer 6.</strong> Rejection ratio</p></td>
 <td><p><span class="math notranslate nohighlight">\(\dfrac{\lvert A_d\rvert }{\lvert A_{cm}\rvert }=\dfrac{2g_mR_{EE}}{\Delta R_C/R_C}\)</span> <span class="math notranslate nohighlight">\(=400000\)</span></p></td>
 <td><p><span class="math notranslate nohighlight">\(\dfrac{\lvert A_d\rvert }{\lvert A_{cm}\rvert }=\dfrac{2g_mR_{SS}}{\Delta R_D/R_D}\)</span> <span class="math notranslate nohighlight">\(=20000\)</span></p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>Answer 7.</strong> In decibels</p></td>
+<tr class="row-odd"><td><p><strong>Answer 7.</strong> In decibels</p></td>
 <td><p><span class="math notranslate nohighlight">\(112\,\mathrm{dB}\)</span></p></td>
 <td><p><span class="math notranslate nohighlight">\(86\,\mathrm{dB}\)</span></p></td>
 </tr>
@@ -2376,31 +2377,31 @@
 <td><p>tail current <span class="math notranslate nohighlight">\(0.8\,\mathrm{mA}\)</span>, <span class="math notranslate nohighlight">\(\beta=160\)</span>, <span class="math notranslate nohighlight">\(\lvert V_A\rvert =100\,\mathrm{V}\)</span>, <span class="math notranslate nohighlight">\(V_T=25\,\mathrm{mV}\)</span></p></td>
 <td><p>tail current <span class="math notranslate nohighlight">\(0.8\,\mathrm{mA}\)</span>, <span class="math notranslate nohighlight">\(k_n=20\,\mathrm{mA/V^2}\)</span>, <span class="math notranslate nohighlight">\(\lvert V_A\rvert =20\,\mathrm{V}\)</span></p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>Answer 1.</strong> Bias of each side</p></td>
+<tr class="row-odd"><td><p><strong>Answer 1.</strong> Bias of each side</p></td>
 <td><p><span class="math notranslate nohighlight">\(I_C=0.4\,\mathrm{mA}\)</span></p></td>
 <td><p><span class="math notranslate nohighlight">\(I_D=0.4\,\mathrm{mA}\)</span>, <span class="math notranslate nohighlight">\(V_{OV}=\sqrt{2I_D/k_n}\)</span> <span class="math notranslate nohighlight">\(=0.2\,\mathrm{V}\)</span></p></td>
 </tr>
-<tr class="row-even"><td><p><strong>Answer 2.</strong> Transconductance of each device</p></td>
+<tr class="row-even"><td><p><strong>Answer 2.</strong> Transconductance of each device</p></td>
 <td><p><span class="math notranslate nohighlight">\(g_m=\dfrac{I_C}{V_T}\)</span> <span class="math notranslate nohighlight">\(=16\,\mathrm{mA/V}\)</span></p></td>
 <td><p><span class="math notranslate nohighlight">\(g_m=\dfrac{2I_D}{V_{OV}}\)</span> <span class="math notranslate nohighlight">\(=4\,\mathrm{mA/V}\)</span></p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>Answer 3.</strong> Current into a shorted output</p></td>
+<tr class="row-odd"><td><p><strong>Answer 3.</strong> Current into a shorted output</p></td>
 <td><p><span class="math notranslate nohighlight">\(g_m\frac{v_1-v_2}{2}\)</span> from each side: <span class="math notranslate nohighlight">\(G_m=g_m\)</span></p></td>
 <td><p><span class="math notranslate nohighlight">\(g_m\frac{v_1-v_2}{2}\)</span> from each side: <span class="math notranslate nohighlight">\(G_m=g_m\)</span></p></td>
 </tr>
-<tr class="row-even"><td><p><strong>Answer 4.</strong> Output resistance of each device</p></td>
+<tr class="row-even"><td><p><strong>Answer 4.</strong> Output resistance of each device</p></td>
 <td><p><span class="math notranslate nohighlight">\(r_O=\dfrac{\lvert V_A\rvert }{I_C}\)</span> <span class="math notranslate nohighlight">\(=250\,\mathrm{k}\Omega\)</span></p></td>
 <td><p><span class="math notranslate nohighlight">\(r_O=\dfrac{\lvert V_A\rvert }{I_D}\)</span> <span class="math notranslate nohighlight">\(=50\,\mathrm{k}\Omega\)</span></p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>Answer 5.</strong> Output resistance</p></td>
+<tr class="row-odd"><td><p><strong>Answer 5.</strong> Output resistance</p></td>
 <td><p><span class="math notranslate nohighlight">\(R_{out}=r_{O2}\parallel r_{O4}\)</span> <span class="math notranslate nohighlight">\(=125\,\mathrm{k}\Omega\)</span></p></td>
 <td><p><span class="math notranslate nohighlight">\(R_{out}=r_{O2}\parallel r_{O4}\)</span> <span class="math notranslate nohighlight">\(=25\,\mathrm{k}\Omega\)</span></p></td>
 </tr>
-<tr class="row-even"><td><p><strong>Answer 6.</strong> Gain</p></td>
+<tr class="row-even"><td><p><strong>Answer 6.</strong> Gain</p></td>
 <td><p><span class="math notranslate nohighlight">\(A_d=G_mR_{out}\)</span> <span class="math notranslate nohighlight">\(=2000\)</span></p></td>
 <td><p><span class="math notranslate nohighlight">\(A_d=G_mR_{out}\)</span> <span class="math notranslate nohighlight">\(=100\)</span></p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>Answer 7.</strong> Resistance between the inputs</p></td>
+<tr class="row-odd"><td><p><strong>Answer 7.</strong> Resistance between the inputs</p></td>
 <td><p><span class="math notranslate nohighlight">\(R_{id}=2r_\pi\)</span> <span class="math notranslate nohighlight">\(=20\,\mathrm{k}\Omega\)</span></p></td>
 <td><p>infinite</p></td>
 </tr>
