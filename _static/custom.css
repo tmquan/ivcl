@@ -42,94 +42,94 @@ p {
    line down to a table of 520 px (a fifth of that holds the label and its padding); on a screen too
    narrow for that the table keeps this width and scrolls sideways.  The text column of the site is
    612 px wide in a 1200 px window, so the least width must stay below that. */
-:is(#transistor-circuits, #transistor-problem-sets, #transistor-problem-bank-one-transistor,
-    #transistor-problem-bank-bias, #transistor-problem-bank-amplifier-stages,
-    #transistor-problem-bank-cascodes-and-current-mirrors, #transistor-problem-bank-differential-pairs,
-    #transistor-problem-bank-other-items) table {
+:is(#transistor-circuits, #transistor-problem-sets, #one-transistor,
+    #bias, #amplifier-stages,
+    #cascodes-and-current-mirrors, #differential-pairs,
+    #other-items) table {
     display: table;
     width: 100%;
     min-width: 520px;
     table-layout: fixed;
 }
-:is(#transistor-circuits, #transistor-problem-sets, #transistor-problem-bank-one-transistor,
-    #transistor-problem-bank-bias, #transistor-problem-bank-amplifier-stages,
-    #transistor-problem-bank-cascodes-and-current-mirrors, #transistor-problem-bank-differential-pairs,
-    #transistor-problem-bank-other-items) :is(td, th) {
+:is(#transistor-circuits, #transistor-problem-sets, #one-transistor,
+    #bias, #amplifier-stages,
+    #cascodes-and-current-mirrors, #differential-pairs,
+    #other-items) :is(td, th) {
     overflow-x: auto;
     vertical-align: top;
 }
-:is(#transistor-circuits, #transistor-problem-sets, #transistor-problem-bank-one-transistor,
-    #transistor-problem-bank-bias, #transistor-problem-bank-amplifier-stages,
-    #transistor-problem-bank-cascodes-and-current-mirrors, #transistor-problem-bank-differential-pairs,
-    #transistor-problem-bank-other-items) :is(td, th) p {
+:is(#transistor-circuits, #transistor-problem-sets, #one-transistor,
+    #bias, #amplifier-stages,
+    #cascodes-and-current-mirrors, #differential-pairs,
+    #other-items) :is(td, th) p {
     text-align: left;
 }
-:is(#transistor-circuits, #transistor-problem-sets, #transistor-problem-bank-one-transistor,
-    #transistor-problem-bank-bias, #transistor-problem-bank-amplifier-stages,
-    #transistor-problem-bank-cascodes-and-current-mirrors, #transistor-problem-bank-differential-pairs,
-    #transistor-problem-bank-other-items) .cell_output {
+:is(#transistor-circuits, #transistor-problem-sets, #one-transistor,
+    #bias, #amplifier-stages,
+    #cascodes-and-current-mirrors, #differential-pairs,
+    #other-items) .cell_output {
     padding-left: 0;
 }
-:is(#transistor-circuits, #transistor-problem-sets, #transistor-problem-bank-one-transistor,
-    #transistor-problem-bank-bias, #transistor-problem-bank-amplifier-stages,
-    #transistor-problem-bank-cascodes-and-current-mirrors, #transistor-problem-bank-differential-pairs,
-    #transistor-problem-bank-other-items) .cell_output img {
+:is(#transistor-circuits, #transistor-problem-sets, #one-transistor,
+    #bias, #amplifier-stages,
+    #cascodes-and-current-mirrors, #differential-pairs,
+    #other-items) .cell_output img {
     width: 100%;
 }
 /* the three columns: 20 % | 40 % | 40 % */
-:is(#transistor-circuits, #transistor-problem-sets, #transistor-problem-bank-one-transistor,
-    #transistor-problem-bank-bias, #transistor-problem-bank-amplifier-stages,
-    #transistor-problem-bank-cascodes-and-current-mirrors, #transistor-problem-bank-differential-pairs,
-    #transistor-problem-bank-other-items) table :is(th, td):nth-child(1) { width: 20%; }
-:is(#transistor-circuits, #transistor-problem-sets, #transistor-problem-bank-one-transistor,
-    #transistor-problem-bank-bias, #transistor-problem-bank-amplifier-stages,
-    #transistor-problem-bank-cascodes-and-current-mirrors, #transistor-problem-bank-differential-pairs,
-    #transistor-problem-bank-other-items) table :is(th, td):nth-child(2),
-:is(#transistor-circuits, #transistor-problem-sets, #transistor-problem-bank-one-transistor,
-    #transistor-problem-bank-bias, #transistor-problem-bank-amplifier-stages,
-    #transistor-problem-bank-cascodes-and-current-mirrors, #transistor-problem-bank-differential-pairs,
-    #transistor-problem-bank-other-items) table :is(th, td):nth-child(3) { width: 40%; }
+:is(#transistor-circuits, #transistor-problem-sets, #one-transistor,
+    #bias, #amplifier-stages,
+    #cascodes-and-current-mirrors, #differential-pairs,
+    #other-items) table :is(th, td):nth-child(1) { width: 20%; }
+:is(#transistor-circuits, #transistor-problem-sets, #one-transistor,
+    #bias, #amplifier-stages,
+    #cascodes-and-current-mirrors, #differential-pairs,
+    #other-items) table :is(th, td):nth-child(2),
+:is(#transistor-circuits, #transistor-problem-sets, #one-transistor,
+    #bias, #amplifier-stages,
+    #cascodes-and-current-mirrors, #differential-pairs,
+    #other-items) table :is(th, td):nth-child(3) { width: 40%; }
 /* inside a tab (problem bank: one tab per transistor) a table has two columns: the label of the row and
    the row itself.  A tab is narrower than the text, so the table gives up the least width of the other
    tables and fills its tab: the label column keeps the width it has everywhere (128 px, "Answer 12" on
    one line) and the row takes all the rest, so nothing lies beyond the right edge of the tab. */
-:is(#transistor-problem-bank-one-transistor, #transistor-problem-bank-bias,
-    #transistor-problem-bank-amplifier-stages, #transistor-problem-bank-cascodes-and-current-mirrors,
-    #transistor-problem-bank-differential-pairs, #transistor-problem-bank-other-items)
+:is(#one-transistor, #bias,
+    #amplifier-stages, #cascodes-and-current-mirrors,
+    #differential-pairs, #other-items)
     .sd-tab-content table { min-width: 0; }
-:is(#transistor-problem-bank-one-transistor, #transistor-problem-bank-bias,
-    #transistor-problem-bank-amplifier-stages, #transistor-problem-bank-cascodes-and-current-mirrors,
-    #transistor-problem-bank-differential-pairs, #transistor-problem-bank-other-items)
+:is(#one-transistor, #bias,
+    #amplifier-stages, #cascodes-and-current-mirrors,
+    #differential-pairs, #other-items)
     .sd-tab-content table :is(th, td):nth-child(1) { width: 128px; }
-:is(#transistor-problem-bank-one-transistor, #transistor-problem-bank-bias,
-    #transistor-problem-bank-amplifier-stages, #transistor-problem-bank-cascodes-and-current-mirrors,
-    #transistor-problem-bank-differential-pairs, #transistor-problem-bank-other-items)
+:is(#one-transistor, #bias,
+    #amplifier-stages, #cascodes-and-current-mirrors,
+    #differential-pairs, #other-items)
     .sd-tab-content table :is(th, td):nth-child(2) { width: auto; }
 /* nothing in the label column is clipped or put behind a scroll bar: its text wraps between words */
-:is(#transistor-circuits, #transistor-problem-sets, #transistor-problem-bank-one-transistor,
-    #transistor-problem-bank-bias, #transistor-problem-bank-amplifier-stages,
-    #transistor-problem-bank-cascodes-and-current-mirrors, #transistor-problem-bank-differential-pairs,
-    #transistor-problem-bank-other-items) table :is(th, td):nth-child(1) {
+:is(#transistor-circuits, #transistor-problem-sets, #one-transistor,
+    #bias, #amplifier-stages,
+    #cascodes-and-current-mirrors, #differential-pairs,
+    #other-items) table :is(th, td):nth-child(1) {
     overflow: visible;
     overflow-wrap: normal;
     word-break: normal;
     hyphens: none;
 }
 /* the column heads BJT and MOSFET sit in the middle of their cells, as they do above the drawings */
-:is(#transistor-circuits, #transistor-problem-sets, #transistor-problem-bank-one-transistor,
-    #transistor-problem-bank-bias, #transistor-problem-bank-amplifier-stages,
-    #transistor-problem-bank-cascodes-and-current-mirrors, #transistor-problem-bank-differential-pairs,
-    #transistor-problem-bank-other-items) table th:is(:nth-child(2), :nth-child(3)),
-:is(#transistor-circuits, #transistor-problem-sets, #transistor-problem-bank-one-transistor,
-    #transistor-problem-bank-bias, #transistor-problem-bank-amplifier-stages,
-    #transistor-problem-bank-cascodes-and-current-mirrors, #transistor-problem-bank-differential-pairs,
-    #transistor-problem-bank-other-items) table th:is(:nth-child(2), :nth-child(3)) p {
+:is(#transistor-circuits, #transistor-problem-sets, #one-transistor,
+    #bias, #amplifier-stages,
+    #cascodes-and-current-mirrors, #differential-pairs,
+    #other-items) table th:is(:nth-child(2), :nth-child(3)),
+:is(#transistor-circuits, #transistor-problem-sets, #one-transistor,
+    #bias, #amplifier-stages,
+    #cascodes-and-current-mirrors, #differential-pairs,
+    #other-items) table th:is(:nth-child(2), :nth-child(3)) p {
     text-align: center;
 }
 /* the row labels of the problem pages (Problem, Given, Answer 1, ..., Result, Check) stay on one line */
-:is(#transistor-problem-sets, #transistor-problem-bank-one-transistor, #transistor-problem-bank-bias,
-    #transistor-problem-bank-amplifier-stages, #transistor-problem-bank-cascodes-and-current-mirrors,
-    #transistor-problem-bank-differential-pairs, #transistor-problem-bank-other-items) td:first-child strong {
+:is(#transistor-problem-sets, #one-transistor, #bias,
+    #amplifier-stages, #cascodes-and-current-mirrors,
+    #differential-pairs, #other-items) td:first-child strong {
     white-space: nowrap;
 }
 
