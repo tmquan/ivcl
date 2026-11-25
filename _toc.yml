@@ -22,6 +22,12 @@ parts:
     chapters:
     - file: courses/fme/index.ipynb
     - file: courses/fme/problems.ipynb
+    - file: courses/fme/bank_one.ipynb
+    - file: courses/fme/bank_bias.ipynb
+    - file: courses/fme/bank_stages.ipynb
+    - file: courses/fme/bank_mirrors.ipynb
+    - file: courses/fme/bank_pairs.ipynb
+    - file: courses/fme/bank_other.ipynb
 
   - caption: Medical Image Processing
     chapters:
