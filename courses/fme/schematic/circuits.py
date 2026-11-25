@@ -109,7 +109,7 @@ def role_capacitor(c):
 
 
 # ================================================================ one transistor: input and output impedances
-# The ten drawings inside the back cover of Razavi.  The arrow carries the impedance, as printed.
+# The ten drawings of the standard summary of impedances and gains.  The arrow carries the impedance, as printed.
 def into_base(c):
     """Into the base | Into the gate"""
     t = c.transistor('n', (0, 0), 'cd')
@@ -168,7 +168,7 @@ def into_emitter_base_resistance(c):
 
 
 # ================================================================ one transistor: voltage gain
-# The eight stages inside the back cover of Razavi.  The gain, printed under each stage, is its note.
+# The eight stages of the standard summary of impedances and gains.  The gain, printed under each stage, is its note.
 def gain_common_emitter(c):
     """Common emitter | Common source"""
     t = c.transistor('n', (0, 0), 'cd')
@@ -941,7 +941,7 @@ ROLES = [
     ('Resistor and Capacitor', role_resistor, role_capacitor),
 ]
 
-# one transistor, after the summary inside the back cover of Razavi: (heading, first, second)
+# one transistor, after the standard summary: (heading, first, second)
 IMPEDANCES = [
     ('Looking into the Base or Gate', into_base, into_base_degenerated),
     ('Looking into the Collector or Drain', into_collector, into_collector_degenerated),

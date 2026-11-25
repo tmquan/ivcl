@@ -1,4 +1,4 @@
-"""Circuit symbols measured from Razavi, "Fundamentals of Microelectronics" (2nd ed.).
+"""Circuit symbols measured from a printed textbook.
 
 Geometry is in BOOK PIXELS of the 150-ppi page scan (1 px = 0.48 pt), obtained by
 least-squares fitting of parametric outlines to the printed figures and averaging over

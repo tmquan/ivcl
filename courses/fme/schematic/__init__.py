@@ -1,4 +1,4 @@
-"""schematic: circuit symbols measured from Razavi's "Fundamentals of Microelectronics",
+"""schematic: circuit symbols as printed in the standard textbooks,
 a tiny schematic layout layer, and renderers (matplotlib, SVG, draw.io).
 
     from schematic import show, symbol_sheet
