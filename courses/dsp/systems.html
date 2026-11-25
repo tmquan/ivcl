@@ -431,7 +431,12 @@
 <h1>Systems and Transformations<a class="headerlink" href="#systems-and-transformations" title="Link to this heading">#</a></h1>
 <section id="prerequisites">
 <h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Link to this heading">#</a></h2>
-<div class="cell tag_hide_input docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># HIDE/SHOW</span>
 <span class="c1"># ! pip install -U numpy</span>
@@ -439,12 +444,18 @@
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 </section>
 <section id="visualization-in-python">
 <h2>Visualization in Python<a class="headerlink" href="#visualization-in-python" title="Link to this heading">#</a></h2>
 <p>The folder of this notebook holds a small module, <code class="docutils literal notranslate"><span class="pre">sigplot</span></code>, with classes for signals, systems and time axes, and a matplotlib renderer. Labels are set in Computer Modern through matplotlib’s mathtext, so no TeX installation is needed.</p>
-<div class="cell tag_hide_input docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># HIDE/SHOW</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">warnings</span>
@@ -461,6 +472,7 @@
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 </section>
 <section id="utilizations">
@@ -496,7 +508,12 @@
 <p>A system is an object that is called with a signal and returns a signal: <code class="docutils literal notranslate"><span class="pre">y</span> <span class="pre">=</span> <span class="pre">TimeShift(8)(x)</span></code>. A new system is a subclass of <code class="docutils literal notranslate"><span class="pre">System</span></code> with its own <code class="docutils literal notranslate"><span class="pre">apply</span></code>. <code class="docutils literal notranslate"><span class="pre">AmplitudeReversal</span></code> is an <code class="docutils literal notranslate"><span class="pre">AmplitudeScaling</span></code> with the gain <span class="math notranslate nohighlight">\(-1\)</span> and <code class="docutils literal notranslate"><span class="pre">TimeReversal</span></code> is a <code class="docutils literal notranslate"><span class="pre">TimeScaling</span></code> with the factor <span class="math notranslate nohighlight">\(-1\)</span>, and <code class="docutils literal notranslate"><span class="pre">first</span> <span class="pre">&gt;&gt;</span> <span class="pre">second</span></code> is the cascade of two systems. Every system names its output through its <code class="docutils literal notranslate"><span class="pre">label</span></code>, for example <em>Advance</em> or <em>Delay</em> by the sign of the shift; <code class="docutils literal notranslate"><span class="pre">named</span></code> gives another name.</p>
 <p><code class="docutils literal notranslate"><span class="pre">show(a,</span> <span class="pre">b,</span> <span class="pre">notes=[...])</span></code> draws the signals <code class="docutils literal notranslate"><span class="pre">a</span></code> and <code class="docutils literal notranslate"><span class="pre">b</span></code> as two rows: their names in the first column, then the curve over continuous time and the sequence of its samples over discrete time. <code class="docutils literal notranslate"><span class="pre">notes</span></code> holds the text that goes right under the plots, for every signal a pair <code class="docutils literal notranslate"><span class="pre">(continuous,</span> <span class="pre">discrete)</span></code> or one text for both.</p>
 <p>Every system on this page acts on the same input signal <code class="docutils literal notranslate"><span class="pre">x</span></code>, which is defined below: two flat levels and a slope. <code class="docutils literal notranslate"><span class="pre">reference=x</span></code> draws this input in grey behind every output, so each figure shows what the system has changed. The output is named <span class="math notranslate nohighlight">\(y\)</span>, and an intermediate signal <span class="math notranslate nohighlight">\(s\)</span>.</p>
-<div class="cell tag_hide_input docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># HIDE/SHOW</span>
 <span class="k">class</span><span class="w"> </span><span class="nc">Input</span><span class="p">(</span><span class="n">Signal</span><span class="p">):</span>
@@ -512,6 +529,7 @@
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 </section>
 <section id="what-are-systems">
@@ -531,7 +549,12 @@
 <li><p>Probabilistic systems: the output also depends on chance</p></li>
 </ul>
 <p>The systems on this page are deterministic. Each of them is shown twice, as a continuous-time system and as a discrete-time system, and each acts on the following input.</p>
-<div class="cell tag_hide_input docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># HIDE/SHOW</span>
 <span class="n">show</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">span</span><span class="o">=</span><span class="n">SPAN</span><span class="p">,</span> <span class="n">ylim</span><span class="o">=</span><span class="n">YLIM</span><span class="p">,</span> <span class="n">notes</span><span class="o">=</span><span class="p">[</span>
@@ -540,8 +563,9 @@
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
-<img alt="../../_images/0ec001623da8c79e93347b2fd93e7b04ce3f1bbf0e998714d2df38cdf2029047.svg" src="../../_images/0ec001623da8c79e93347b2fd93e7b04ce3f1bbf0e998714d2df38cdf2029047.svg" />
+<img alt="../../_images/acf0a77b8750bb01926efc914d66187b6f0feb751dbcc852866e24c99f0e59be.svg" src="../../_images/acf0a77b8750bb01926efc914d66187b6f0feb751dbcc852866e24c99f0e59be.svg" />
 </div>
 </div>
 </section>
@@ -589,7 +613,12 @@
 <section id="amplitude-scaling">
 <h3>Amplitude Scaling<a class="headerlink" href="#amplitude-scaling" title="Link to this heading">#</a></h3>
 <p>Every value is multiplied by the gain <span class="math notranslate nohighlight">\(K\)</span>. The time axis is untouched.</p>
-<div class="cell tag_hide_input docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># HIDE/SHOW</span>
 <span class="n">amplified</span> <span class="o">=</span> <span class="n">AmplitudeScaling</span><span class="p">(</span><span class="mf">1.5</span><span class="p">)(</span><span class="n">x</span><span class="p">)</span>
@@ -603,15 +632,21 @@
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
-<img alt="../../_images/c824425f36ec6888b88df565468ef7d79f010db77d1d382e0d41049206ceaea0.svg" src="../../_images/c824425f36ec6888b88df565468ef7d79f010db77d1d382e0d41049206ceaea0.svg" />
+<img alt="../../_images/64d23ff593591d602dcc6824af37038c53e1708eacc0c6a09d729ee08a731d83.svg" src="../../_images/64d23ff593591d602dcc6824af37038c53e1708eacc0c6a09d729ee08a731d83.svg" />
 </div>
 </div>
 </section>
 <section id="amplitude-reversal">
 <h3>Amplitude Reversal<a class="headerlink" href="#amplitude-reversal" title="Link to this heading">#</a></h3>
 <p>Amplitude scaling with <span class="math notranslate nohighlight">\(K=-1\)</span>: the signal is mirrored about the time axis.</p>
-<div class="cell tag_hide_input docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># HIDE/SHOW</span>
 <span class="n">inverted</span> <span class="o">=</span> <span class="n">AmplitudeReversal</span><span class="p">()(</span><span class="n">x</span><span class="p">)</span>
@@ -622,15 +657,21 @@
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
-<img alt="../../_images/b5e568128c546c3336ba0bae206ed2c2b20f54f1f6c7617af82b98cdf0e4c3db.svg" src="../../_images/b5e568128c546c3336ba0bae206ed2c2b20f54f1f6c7617af82b98cdf0e4c3db.svg" />
+<img alt="../../_images/dee0250ee54c831b98a43e13ac629ec66aad4f5336bf68bf8070907f8af01570.svg" src="../../_images/dee0250ee54c831b98a43e13ac629ec66aad4f5336bf68bf8070907f8af01570.svg" />
 </div>
 </div>
 </section>
 <section id="time-shifting">
 <h3>Time Shifting<a class="headerlink" href="#time-shifting" title="Link to this heading">#</a></h3>
 <p>A constant is added to the time variable. With <span class="math notranslate nohighlight">\(t+b\)</span> the output takes every value <span class="math notranslate nohighlight">\(b\)</span> earlier than the input, so the signal moves to the left (advance). With <span class="math notranslate nohighlight">\(t-b\)</span> it moves to the right (delay).</p>
-<div class="cell tag_hide_input docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># HIDE/SHOW</span>
 <span class="n">advanced</span> <span class="o">=</span> <span class="n">TimeShift</span><span class="p">(</span><span class="o">+</span><span class="n">b</span><span class="p">)(</span><span class="n">x</span><span class="p">)</span>
@@ -644,15 +685,21 @@
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
-<img alt="../../_images/b04cf073fe3da765f2bba9a2cbdc56ba0bcf2165857668e86422af6bcf0ec514.svg" src="../../_images/b04cf073fe3da765f2bba9a2cbdc56ba0bcf2165857668e86422af6bcf0ec514.svg" />
+<img alt="../../_images/940ae9b828904e30ce0edb1d2768485118f1028397a4d4a4f08da08ffddb58ef.svg" src="../../_images/940ae9b828904e30ce0edb1d2768485118f1028397a4d4a4f08da08ffddb58ef.svg" />
 </div>
 </div>
 </section>
 <section id="time-scaling">
 <h3>Time Scaling<a class="headerlink" href="#time-scaling" title="Link to this heading">#</a></h3>
 <p>The time variable is multiplied by a constant. With <span class="math notranslate nohighlight">\(at\)</span> the output runs <span class="math notranslate nohighlight">\(a\)</span> times as fast as the input, so the signal is compressed towards <span class="math notranslate nohighlight">\(t=0\)</span>. With <span class="math notranslate nohighlight">\(t/a\)</span> it is stretched away from <span class="math notranslate nohighlight">\(t=0\)</span>. The point <span class="math notranslate nohighlight">\(t=0\)</span> stays where it is. A sequence cannot be scaled as freely as a function of continuous time, since it exists only at the integers.</p>
-<div class="cell tag_hide_input docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># HIDE/SHOW</span>
 <span class="n">compressed</span> <span class="o">=</span> <span class="n">TimeScaling</span><span class="p">(</span><span class="n">a</span><span class="p">)(</span><span class="n">x</span><span class="p">)</span>
@@ -666,15 +713,21 @@
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
-<img alt="../../_images/0a60d5c71b6acb2393dd08f35eac07bc477e080a2ee6d394c23013973b554c58.svg" src="../../_images/0a60d5c71b6acb2393dd08f35eac07bc477e080a2ee6d394c23013973b554c58.svg" />
+<img alt="../../_images/b4c1b02fda465411e056d037f6898855d042e3c1eb7791c75ca4be266065d3b4.svg" src="../../_images/b4c1b02fda465411e056d037f6898855d042e3c1eb7791c75ca4be266065d3b4.svg" />
 </div>
 </div>
 </section>
 <section id="time-reversal">
 <h3>Time Reversal<a class="headerlink" href="#time-reversal" title="Link to this heading">#</a></h3>
 <p>Time scaling with <span class="math notranslate nohighlight">\(a=-1\)</span>: the signal is mirrored about <span class="math notranslate nohighlight">\(t=0\)</span>.</p>
-<div class="cell tag_hide_input docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># HIDE/SHOW</span>
 <span class="n">mirrored</span> <span class="o">=</span> <span class="n">TimeReversal</span><span class="p">()(</span><span class="n">x</span><span class="p">)</span>
@@ -685,8 +738,9 @@
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
-<img alt="../../_images/cdaa22f25febedb378715dfdb330690755a41496d2249b81b9accaf64c59db0e.svg" src="../../_images/cdaa22f25febedb378715dfdb330690755a41496d2249b81b9accaf64c59db0e.svg" />
+<img alt="../../_images/14f0676285f1bf2eb66d340640b39693f05b97d72c28268bd867e9089308205e.svg" src="../../_images/14f0676285f1bf2eb66d340640b39693f05b97d72c28268bd867e9089308205e.svg" />
 </div>
 </div>
 </section>
@@ -701,7 +755,12 @@
 <li><p>Define <span class="math notranslate nohighlight">\(y(t)=s(at)=x(at+b)\)</span>: multiply or divide <span class="math notranslate nohighlight">\(t\)</span> only, later.</p></li>
 </ul>
 <p>The constants are used as they stand in <span class="math notranslate nohighlight">\(x(at+b)\)</span>.</p>
-<div class="cell tag_hide_input docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># HIDE/SHOW</span>
 <span class="n">shift</span><span class="p">,</span> <span class="n">scale</span> <span class="o">=</span> <span class="n">TimeShift</span><span class="p">(</span><span class="n">b</span><span class="p">),</span> <span class="n">TimeScaling</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
@@ -716,8 +775,9 @@
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
-<img alt="../../_images/b34e60611b1c690c48981b05f8a14d8f35cbe8b1b8a230798000c7ab8c4b75e9.svg" src="../../_images/b34e60611b1c690c48981b05f8a14d8f35cbe8b1b8a230798000c7ab8c4b75e9.svg" />
+<img alt="../../_images/8d8d1174f8128b46f9cbda11caaaaaf80bea2a594fd674f3819f8eaf70576fb0.svg" src="../../_images/8d8d1174f8128b46f9cbda11caaaaaf80bea2a594fd674f3819f8eaf70576fb0.svg" />
 </div>
 </div>
 </section>
@@ -728,7 +788,12 @@
 <li><p>Define <span class="math notranslate nohighlight">\(y(t)=s\left(t+\dfrac{b}{a}\right)=x(at+b)\)</span>.</p></li>
 </ul>
 <p>After scaling, the time axis has changed, so the shift is <span class="math notranslate nohighlight">\(b/a\)</span> and not <span class="math notranslate nohighlight">\(b\)</span>.</p>
-<div class="cell tag_hide_input docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># HIDE/SHOW</span>
 <span class="n">scale</span><span class="p">,</span> <span class="n">shift</span> <span class="o">=</span> <span class="n">TimeScaling</span><span class="p">(</span><span class="n">a</span><span class="p">),</span> <span class="n">TimeShift</span><span class="p">(</span><span class="n">b</span> <span class="o">/</span> <span class="n">a</span><span class="p">)</span>
@@ -743,8 +808,9 @@
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
-<img alt="../../_images/5ae54cc5a25966706cfef426420fe311e00752b638f852c4a2ee20b49895ef6b.svg" src="../../_images/5ae54cc5a25966706cfef426420fe311e00752b638f852c4a2ee20b49895ef6b.svg" />
+<img alt="../../_images/8e5846a4cf10476b8dafaf935aca3c26a6280c6e7a4bdd3408dfc04cb7083f07.svg" src="../../_images/8e5846a4cf10476b8dafaf935aca3c26a6280c6e7a4bdd3408dfc04cb7083f07.svg" />
 </div>
 </div>
 </section>

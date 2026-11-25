@@ -494,7 +494,12 @@
 <h1>BJT and MOSFET Circuits<a class="headerlink" href="#bjt-and-mosfet-circuits" title="Link to this heading">#</a></h1>
 <section id="prerequisites">
 <h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Link to this heading">#</a></h2>
-<div class="cell tag_hide_input docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># HIDE/SHOW</span>
 <span class="c1"># ! pip install -U numpy</span>
@@ -502,12 +507,18 @@
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 </section>
 <section id="visualization-in-python">
 <h2>Visualization in Python<a class="headerlink" href="#visualization-in-python" title="Link to this heading">#</a></h2>
 <p>The folder of this notebook holds a small package, <code class="docutils literal notranslate"><span class="pre">schematic</span></code>, with the symbol geometry and a matplotlib renderer. Labels are set in Computer Modern through matplotlib’s mathtext, so no TeX installation is needed.</p>
-<div class="cell tag_hide_input docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># HIDE/SHOW</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">warnings</span>
@@ -525,6 +536,7 @@
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 </section>
 <section id="utilizations">
@@ -571,7 +583,12 @@
 </div>
 <p>The circuit functions use only the shared names, which read <em>base or gate</em>, <em>collector or drain</em> and <em>emitter or source</em>. <code class="docutils literal notranslate"><span class="pre">c.w(p0,</span> <span class="pre">p1,</span> <span class="pre">...)</span></code> draws a wire, <code class="docutils literal notranslate"><span class="pre">c.dot(p)</span></code> a node, <code class="docutils literal notranslate"><span class="pre">c.port(p,</span> <span class="pre">label,</span> <span class="pre">side)</span></code> an open terminal, <code class="docutils literal notranslate"><span class="pre">c.gnd(p)</span></code> a ground, <code class="docutils literal notranslate"><span class="pre">c.ac(p)</span></code> an ac ground, <code class="docutils literal notranslate"><span class="pre">c.res(p,</span> <span class="pre">label)</span></code> a resistor and <code class="docutils literal notranslate"><span class="pre">c.load(p)</span></code> a load. <code class="docutils literal notranslate"><span class="pre">c.look(p,</span> <span class="pre">into,</span> <span class="pre">side,</span> <span class="pre">label)</span></code> marks the impedance seen at <code class="docutils literal notranslate"><span class="pre">p</span></code> with a red arrow that has a 90-degree corner; <code class="docutils literal notranslate"><span class="pre">form='low'</span></code> and <code class="docutils literal notranslate"><span class="pre">form='long'</span></code> give its two other forms. <code class="docutils literal notranslate"><span class="pre">c.pick(a,</span> <span class="pre">b)</span></code> returns <code class="docutils literal notranslate"><span class="pre">a</span></code> in a BJT drawing and <code class="docutils literal notranslate"><span class="pre">b</span></code> in a MOSFET drawing, and <code class="docutils literal notranslate"><span class="pre">t.note(t.ideal)</span></code> writes <span class="math notranslate nohighlight">\(V_A=\infty\)</span> or <span class="math notranslate nohighlight">\(\lambda=0\)</span> beside a transistor. <code class="docutils literal notranslate"><span class="pre">c.chain([...],</span> <span class="pre">x,</span> <span class="pre">y)</span></code> places a series stack of transistors, and <code class="docutils literal notranslate"><span class="pre">c.bus([...],</span> <span class="pre">x)</span></code> ties their bases or gates together. Coordinates are pixels on a 10-px grid with <span class="math notranslate nohighlight">\(y\)</span> pointing down. Before drawing, all wire pieces and symbol leads are merged into continuous connectors.</p>
 <p><code class="docutils literal notranslate"><span class="pre">show(a,</span> <span class="pre">b,</span> <span class="pre">notes=[...])</span></code> draws the circuits <code class="docutils literal notranslate"><span class="pre">a</span></code> and <code class="docutils literal notranslate"><span class="pre">b</span></code> as two rows: their names in the first column, then the drawing made with <code class="docutils literal notranslate"><span class="pre">BJT</span></code> and the drawing made with <code class="docutils literal notranslate"><span class="pre">MOSFET</span></code>. <code class="docutils literal notranslate"><span class="pre">notes</span></code> holds the text that goes right under the drawings, for every circuit a pair <code class="docutils literal notranslate"><span class="pre">(BJT,</span> <span class="pre">MOSFET)</span></code> or one text for both. The first docstring line gives the names, as <code class="docutils literal notranslate"><span class="pre">BJT</span> <span class="pre">name</span> <span class="pre">|</span> <span class="pre">MOSFET</span> <span class="pre">name</span></code> where the two differ. A name <code class="docutils literal notranslate"><span class="pre">-</span></code> means that the circuit has no such version; that cell says so, and its note says why. Every drawing is centred in its cell on one vertical line: the main route of its transistors or, where two transistors stand side by side, the middle between them; <code class="docutils literal notranslate"><span class="pre">c.center(x)</span></code> picks another line. The cells are equally wide in every figure and every drawing has the same size, so the drawings line up down the whole page.</p>
-<div class="cell tag_hide_input docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># HIDE/SHOW</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">capacitor_to_ground</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
@@ -652,6 +669,7 @@
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 </section>
 <section id="what-are-transistors">
@@ -668,7 +686,12 @@
 <li><p>n-type transistors: npn BJT and NMOS FET</p></li>
 <li><p>p-type transistors: pnp BJT and PMOS FET, with all voltages and currents reversed</p></li>
 </ul>
-<div class="cell tag_hide_input docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># HIDE/SHOW</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">n_type</span><span class="p">(</span><span class="n">c</span><span class="p">):</span>
@@ -690,8 +713,9 @@
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
-<img alt="../../_images/f65c691f01bacff5c99a5e78feac52a3772182776d001318f0cd10b0fe59d7f1.svg" src="../../_images/f65c691f01bacff5c99a5e78feac52a3772182776d001318f0cd10b0fe59d7f1.svg" />
+<img alt="../../_images/3943ae9cccfcabedae12796ba1795ede51a16e3a71cc5c6873ce78adbcc07580.svg" src="../../_images/3943ae9cccfcabedae12796ba1795ede51a16e3a71cc5c6873ce78adbcc07580.svg" />
 </div>
 </div>
 <p>The two columns translate into each other term by term:</p>
@@ -752,7 +776,12 @@
 <section id="amplifier-and-follower">
 <h4>Amplifier and Follower<a class="headerlink" href="#amplifier-and-follower" title="Link to this heading">#</a></h4>
 <p>The input drives the base or gate. The output is taken at the collector or drain (amplifier), or at the emitter or source (follower).</p>
-<div class="cell tag_hide_input docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># HIDE/SHOW</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">role_amplifier</span><span class="p">(</span><span class="n">c</span><span class="p">):</span>
@@ -784,15 +813,21 @@
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
-<img alt="../../_images/9440fc693dfdf690e3e770deab0551ffb089c34782709dd9d7334b41e590dd20.svg" src="../../_images/9440fc693dfdf690e3e770deab0551ffb089c34782709dd9d7334b41e590dd20.svg" />
+<img alt="../../_images/229df1cc4ce303c7afa536d8fb5d9ad24b558e9bbf220754effe3446f3ecf209.svg" src="../../_images/229df1cc4ce303c7afa536d8fb5d9ad24b558e9bbf220754effe3446f3ecf209.svg" />
 </div>
 </div>
 </section>
 <section id="current-buffer-and-current-source">
 <h4>Current Buffer and Current Source<a class="headerlink" href="#current-buffer-and-current-source" title="Link to this heading">#</a></h4>
 <p>The base or gate is held at a fixed voltage. A current pushed into the emitter or source comes out of the collector or drain (current buffer). With the emitter or source grounded, the device sets the current itself (current source).</p>
-<div class="cell tag_hide_input docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># HIDE/SHOW</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">role_current_buffer</span><span class="p">(</span><span class="n">c</span><span class="p">):</span>
@@ -818,15 +853,21 @@
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
-<img alt="../../_images/50611372320dc9de1d4cf0cf79e47b8d76c6ba26d187785cdb76f7456406aee2.svg" src="../../_images/50611372320dc9de1d4cf0cf79e47b8d76c6ba26d187785cdb76f7456406aee2.svg" />
+<img alt="../../_images/479d7a10b37e7c63413c22cc6a789b09f787d8eb777e4bdea689434bca03f65e.svg" src="../../_images/479d7a10b37e7c63413c22cc6a789b09f787d8eb777e4bdea689434bca03f65e.svg" />
 </div>
 </div>
 </section>
 <section id="diode-and-switch">
 <h4>Diode and Switch<a class="headerlink" href="#diode-and-switch" title="Link to this heading">#</a></h4>
 <p>With the base tied to the collector, or the gate to the drain, the transistor is a two-terminal diode. Driven fully on and off, it is a switch.</p>
-<div class="cell tag_hide_input docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># HIDE/SHOW</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">role_diode</span><span class="p">(</span><span class="n">c</span><span class="p">):</span>
@@ -855,15 +896,21 @@
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
-<img alt="../../_images/a45cf5aede6246c1d8ad0621cd24b8b736691941e281ed214ab36cf9d19a328e.svg" src="../../_images/a45cf5aede6246c1d8ad0621cd24b8b736691941e281ed214ab36cf9d19a328e.svg" />
+<img alt="../../_images/916babecf553426c18e164ab7838babf101f07da64c24c05d84c96ce284e04bb.svg" src="../../_images/916babecf553426c18e164ab7838babf101f07da64c24c05d84c96ce284e04bb.svg" />
 </div>
 </div>
 </section>
 <section id="resistor-and-capacitor">
 <h4>Resistor and Capacitor<a class="headerlink" href="#resistor-and-capacitor" title="Link to this heading">#</a></h4>
 <p>A transistor can also stand in for a passive element. This is where the two devices differ most.</p>
-<div class="cell tag_hide_input docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># HIDE/SHOW</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">role_resistor</span><span class="p">(</span><span class="n">c</span><span class="p">):</span>
@@ -890,8 +937,9 @@
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
-<img alt="../../_images/2b21c660056feca9f60038cf04d06a24615147c18ce571f6b4dfe493702e81ee.svg" src="../../_images/2b21c660056feca9f60038cf04d06a24615147c18ce571f6b4dfe493702e81ee.svg" />
+<img alt="../../_images/339e172decc906a3c6c670c25afa777cc4106fd3a6dfb0c1098f8eb4e81bb273.svg" src="../../_images/339e172decc906a3c6c670c25afa777cc4106fd3a6dfb0c1098f8eb4e81bb273.svg" />
 </div>
 </div>
 </section>
@@ -902,7 +950,12 @@
 <section id="looking-into-the-base-or-gate">
 <h4>Looking into the Base or Gate<a class="headerlink" href="#looking-into-the-base-or-gate" title="Link to this heading">#</a></h4>
 <p>The emitter or source is at ac ground, directly or through a resistor. With the resistor the result holds for <span class="math notranslate nohighlight">\(V_A=\infty\)</span>, which is written beside the transistor.</p>
-<div class="cell tag_hide_input docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># HIDE/SHOW</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">into_base</span><span class="p">(</span><span class="n">c</span><span class="p">):</span>
@@ -929,15 +982,21 @@
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
-<img alt="../../_images/0057399ce6fc6fe7f33e164609f66d7031536e3c3073779fc685fe68ab48890c.svg" src="../../_images/0057399ce6fc6fe7f33e164609f66d7031536e3c3073779fc685fe68ab48890c.svg" />
+<img alt="../../_images/f0f0be683e4e7fd20d0e174916d3f8d58e09ae4d275727a0ded248752eb610d7.svg" src="../../_images/f0f0be683e4e7fd20d0e174916d3f8d58e09ae4d275727a0ded248752eb610d7.svg" />
 </div>
 </div>
 </section>
 <section id="looking-into-the-collector-or-drain">
 <h4>Looking into the Collector or Drain<a class="headerlink" href="#looking-into-the-collector-or-drain" title="Link to this heading">#</a></h4>
 <p>The base or gate is at ac ground. The emitter or source is at ac ground, directly or through a resistor.</p>
-<div class="cell tag_hide_input docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># HIDE/SHOW</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">into_collector</span><span class="p">(</span><span class="n">c</span><span class="p">):</span>
@@ -964,15 +1023,21 @@
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
-<img alt="../../_images/7ba1b63e22050ad249d4ee7e5bb158841b71dfbbb07d9a76a21bab3777c0dd73.svg" src="../../_images/7ba1b63e22050ad249d4ee7e5bb158841b71dfbbb07d9a76a21bab3777c0dd73.svg" />
+<img alt="../../_images/71d739c0bba715f607013be995e2dabbb2f73c23f2997ee7d338ae5841bd2a5e.svg" src="../../_images/71d739c0bba715f607013be995e2dabbb2f73c23f2997ee7d338ae5841bd2a5e.svg" />
 </div>
 </div>
 </section>
 <section id="looking-into-the-emitter-or-source">
 <h4>Looking into the Emitter or Source<a class="headerlink" href="#looking-into-the-emitter-or-source" title="Link to this heading">#</a></h4>
 <p>The collector or drain is tied to a load, drawn as a box. The base or gate is at ac ground, directly or through a resistor. Both results hold for <span class="math notranslate nohighlight">\(V_A=\infty\)</span> or <span class="math notranslate nohighlight">\(\lambda=0\)</span>.</p>
-<div class="cell tag_hide_input docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># HIDE/SHOW</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">into_emitter</span><span class="p">(</span><span class="n">c</span><span class="p">):</span>
@@ -1001,8 +1066,9 @@
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
-<img alt="../../_images/faa4955edde6df2ab191f35a03a9886d6dd811d1c3988289f6c54dd329e1297c.svg" src="../../_images/faa4955edde6df2ab191f35a03a9886d6dd811d1c3988289f6c54dd329e1297c.svg" />
+<img alt="../../_images/6921652a151ba08df7a105c0cff6cdb9b5c988a5bdfb8505afbf9eac4f8e1677.svg" src="../../_images/6921652a151ba08df7a105c0cff6cdb9b5c988a5bdfb8505afbf9eac4f8e1677.svg" />
 </div>
 </div>
 </section>
@@ -1013,7 +1079,12 @@
 <section id="common-emitter-and-common-source-stages">
 <h4>Common-Emitter and Common-Source Stages<a class="headerlink" href="#common-emitter-and-common-source-stages" title="Link to this heading">#</a></h4>
 <p>The input drives the base or gate, and the output is taken at the collector or drain. A resistor in the emitter or source degenerates the stage; that gain holds for <span class="math notranslate nohighlight">\(V_A=\infty\)</span> or <span class="math notranslate nohighlight">\(\lambda=0\)</span>.</p>
-<div class="cell tag_hide_input docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># HIDE/SHOW</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">gain_common_emitter</span><span class="p">(</span><span class="n">c</span><span class="p">):</span>
@@ -1047,15 +1118,21 @@
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
-<img alt="../../_images/e289760ebaf679c8d90847e8ef40650b3a5e12d1b811bcc34a009cc70c97c2ed.svg" src="../../_images/e289760ebaf679c8d90847e8ef40650b3a5e12d1b811bcc34a009cc70c97c2ed.svg" />
+<img alt="../../_images/13fd0b2e1e2bb46a8a5ffa8ba6ced0eb709fec0d9807d85ac346aca73f9e5cba.svg" src="../../_images/13fd0b2e1e2bb46a8a5ffa8ba6ced0eb709fec0d9807d85ac346aca73f9e5cba.svg" />
 </div>
 </div>
 </section>
 <section id="common-base-or-common-gate-stage-and-follower">
 <h4>Common-Base or Common-Gate Stage and Follower<a class="headerlink" href="#common-base-or-common-gate-stage-and-follower" title="Link to this heading">#</a></h4>
 <p>In the common-base or common-gate stage the input drives the emitter or source through a resistor, and the base or gate is held at <span class="math notranslate nohighlight">\(V_b\)</span>. In the follower the output is taken at the emitter or source.</p>
-<div class="cell tag_hide_input docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># HIDE/SHOW</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">gain_common_base</span><span class="p">(</span><span class="n">c</span><span class="p">):</span>
@@ -1091,8 +1168,9 @@
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
-<img alt="../../_images/83ef65a0b95373c7beff6925d8d7dd921aaeb39fbd7e00c5ca4d858423ad0332.svg" src="../../_images/83ef65a0b95373c7beff6925d8d7dd921aaeb39fbd7e00c5ca4d858423ad0332.svg" />
+<img alt="../../_images/093a7dbc3fa86549a75482e8a5936dc3b7c68e202f3894de9bb1b3593ecd6047.svg" src="../../_images/093a7dbc3fa86549a75482e8a5936dc3b7c68e202f3894de9bb1b3593ecd6047.svg" />
 </div>
 </div>
 </section>
@@ -1106,7 +1184,12 @@
 <section id="voltage-divider-and-ptat-generator">
 <h4>Voltage Divider and PTAT Generator<a class="headerlink" href="#voltage-divider-and-ptat-generator" title="Link to this heading">#</a></h4>
 <p>Two devices of the same type are stacked and carry the same current. In the divider each device is diode-connected. In the PTAT generator both bases or gates go to the top of the stack.</p>
-<div class="cell tag_hide_input docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># HIDE/SHOW</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">voltage_divider</span><span class="p">(</span><span class="n">c</span><span class="p">):</span>
@@ -1139,15 +1222,21 @@
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
-<img alt="../../_images/883c59820a3074d2e26a82077122676509377a5767e18fba4605801e35a5988c.svg" src="../../_images/883c59820a3074d2e26a82077122676509377a5767e18fba4605801e35a5988c.svg" />
+<img alt="../../_images/5934d9050f3e8a9a1b827d593219389b23a11d460542f2bdad313ea1606c314c.svg" src="../../_images/5934d9050f3e8a9a1b827d593219389b23a11d460542f2bdad313ea1606c314c.svg" />
 </div>
 </div>
 </section>
 <section id="bias-generator-and-tie-cell">
 <h4>Bias Generator and Tie Cell<a class="headerlink" href="#bias-generator-and-tie-cell" title="Link to this heading">#</a></h4>
 <p>A p-type device sits on the supply side and an n-type device on the ground side. One of the two is diode-connected and sets the level.</p>
-<div class="cell tag_hide_input docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># HIDE/SHOW</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">bias_generator</span><span class="p">(</span><span class="n">c</span><span class="p">):</span>
@@ -1181,15 +1270,21 @@
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
-<img alt="../../_images/2a1d994bf2e0abb8fe93af336c6e4f7d50aa68d43f3e8e58d2e3f2ce3092f872.svg" src="../../_images/2a1d994bf2e0abb8fe93af336c6e4f7d50aa68d43f3e8e58d2e3f2ce3092f872.svg" />
+<img alt="../../_images/8c1a6371bc0191415a5309a728ec37bfe3a1902fe3cb706061c29657fa0fe445.svg" src="../../_images/8c1a6371bc0191415a5309a728ec37bfe3a1902fe3cb706061c29657fa0fe445.svg" />
 </div>
 </div>
 </section>
 <section id="current-mirror-and-current-divider">
 <h4>Current Mirror and Current Divider<a class="headerlink" href="#current-mirror-and-current-divider" title="Link to this heading">#</a></h4>
 <p>Both bases or gates are tied together, so the device sizes set a current ratio. The mirror copies a current. The divider splits one.</p>
-<div class="cell tag_hide_input docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># HIDE/SHOW</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">current_mirror</span><span class="p">(</span><span class="n">c</span><span class="p">):</span>
@@ -1226,8 +1321,9 @@
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
-<img alt="../../_images/6dd04f5f4f2163ca220b051c7127110dfd881fffce5ed2aadb9a6b111b319bd8.svg" src="../../_images/6dd04f5f4f2163ca220b051c7127110dfd881fffce5ed2aadb9a6b111b319bd8.svg" />
+<img alt="../../_images/d99a1d51625c23efb1218881c6336bf94705de1300bc99912c8318cc8f27f4ea.svg" src="../../_images/d99a1d51625c23efb1218881c6336bf94705de1300bc99912c8318cc8f27f4ea.svg" />
 </div>
 </div>
 </section>
@@ -1238,7 +1334,12 @@
 <section id="active-load-and-inverter">
 <h4>Active Load and Inverter<a class="headerlink" href="#active-load-and-inverter" title="Link to this heading">#</a></h4>
 <p>An n-type and a p-type device are stacked between the rails, with the output at their junction. With the upper base or gate at a fixed bias, the upper device is a current-source load. With both inputs tied together, both devices amplify.</p>
-<div class="cell tag_hide_input docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># HIDE/SHOW</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">active_load</span><span class="p">(</span><span class="n">c</span><span class="p">):</span>
@@ -1270,15 +1371,21 @@
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
-<img alt="../../_images/ef0122a54d1f36b8391077236f4c5b4082d053abf0a8a00d8fd8362612c1fca9.svg" src="../../_images/ef0122a54d1f36b8391077236f4c5b4082d053abf0a8a00d8fd8362612c1fca9.svg" />
+<img alt="../../_images/b93f430edb6395d6f07dce5d2bc0bf251b8a018638c7190804692848ef71ae89.svg" src="../../_images/b93f430edb6395d6f07dce5d2bc0bf251b8a018638c7190804692848ef71ae89.svg" />
 </div>
 </div>
 </section>
 <section id="stacked-and-folded-diode-loads">
 <h4>Stacked and Folded Diode Loads<a class="headerlink" href="#stacked-and-folded-diode-loads" title="Link to this heading">#</a></h4>
 <p>The load is a diode-connected device of the same type as the amplifying device. It sits on top of that device, or beside it with its own share of a bias current.</p>
-<div class="cell tag_hide_input docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># HIDE/SHOW</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">diode_load</span><span class="p">(</span><span class="n">c</span><span class="p">):</span>
@@ -1313,15 +1420,21 @@
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
-<img alt="../../_images/0522527a9c1ed9ba884a30663b1c4f3aa56fac9e7c25a371f9b7a5434a176027.svg" src="../../_images/0522527a9c1ed9ba884a30663b1c4f3aa56fac9e7c25a371f9b7a5434a176027.svg" />
+<img alt="../../_images/d84ebececde32bf9178fbecde73e674d85e119adeb3c638df7971d55209e3974.svg" src="../../_images/d84ebececde32bf9178fbecde73e674d85e119adeb3c638df7971d55209e3974.svg" />
 </div>
 </div>
 </section>
 <section id="fixed-and-tunable-degeneration">
 <h4>Fixed and Tunable Degeneration<a class="headerlink" href="#fixed-and-tunable-degeneration" title="Link to this heading">#</a></h4>
 <p>The lower device takes the place of a resistor in the source of the upper one. Its gate is driven by the input, or by a separate bias.</p>
-<div class="cell tag_hide_input docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># HIDE/SHOW</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">degeneration</span><span class="p">(</span><span class="n">c</span><span class="p">):</span>
@@ -1351,8 +1464,9 @@
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
-<img alt="../../_images/a87c704c4f0981bc9a54b5ae0d128e28db8f7af1bb92411ec5fc5527a0db7ac0.svg" src="../../_images/a87c704c4f0981bc9a54b5ae0d128e28db8f7af1bb92411ec5fc5527a0db7ac0.svg" />
+<img alt="../../_images/de57e19827bf44c5b9496c85dccde3a6a30fe9bb89566bae6f7d6cb3ccb70dd3.svg" src="../../_images/de57e19827bf44c5b9496c85dccde3a6a30fe9bb89566bae6f7d6cb3ccb70dd3.svg" />
 </div>
 </div>
 </section>
@@ -1363,7 +1477,12 @@
 <section id="class-a-and-push-pull-followers">
 <h4>Class-A and Push-Pull Followers<a class="headerlink" href="#class-a-and-push-pull-followers" title="Link to this heading">#</a></h4>
 <p>A follower passes a voltage. Its partner is a current source, or a complementary follower that takes over for the other signal polarity.</p>
-<div class="cell tag_hide_input docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># HIDE/SHOW</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">follower</span><span class="p">(</span><span class="n">c</span><span class="p">):</span>
@@ -1394,15 +1513,21 @@
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
-<img alt="../../_images/0cda6fe3b23434541df33c2f086d0d79b911f9ede73d028a778f617760124c5d.svg" src="../../_images/0cda6fe3b23434541df33c2f086d0d79b911f9ede73d028a778f617760124c5d.svg" />
+<img alt="../../_images/27a99a21b761a109a9a987974217fea1acb3e9a63bf0e481924572ef6540b399.svg" src="../../_images/27a99a21b761a109a9a987974217fea1acb3e9a63bf0e481924572ef6540b399.svg" />
 </div>
 </div>
 </section>
 <section id="single-and-stacked-current-buffers">
 <h4>Single and Stacked Current Buffers<a class="headerlink" href="#single-and-stacked-current-buffers" title="Link to this heading">#</a></h4>
 <p>A current buffer passes a current. Its partner is the current source that biases it, or a second buffer on top.</p>
-<div class="cell tag_hide_input docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># HIDE/SHOW</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">buffer_stage</span><span class="p">(</span><span class="n">c</span><span class="p">):</span>
@@ -1432,15 +1557,21 @@
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
-<img alt="../../_images/e6b7e0398c8d7d3c448ab6b36b8356efdf016d8d15f9485f1c8faf87e7920614.svg" src="../../_images/e6b7e0398c8d7d3c448ab6b36b8356efdf016d8d15f9485f1c8faf87e7920614.svg" />
+<img alt="../../_images/be4360ec0ee66d267c6e7d50404aa782c6041760b6bc058eb3040fbbce31657d.svg" src="../../_images/be4360ec0ee66d267c6e7d50404aa782c6041760b6bc058eb3040fbbce31657d.svg" />
 </div>
 </div>
 </section>
 <section id="two-outputs-and-two-paths">
 <h4>Two Outputs and Two Paths<a class="headerlink" href="#two-outputs-and-two-paths" title="Link to this heading">#</a></h4>
 <p>One input drives the base or gate of one device and the emitter or source of the other at the same time.</p>
-<div class="cell tag_hide_input docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># HIDE/SHOW</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">two_outputs</span><span class="p">(</span><span class="n">c</span><span class="p">):</span>
@@ -1476,8 +1607,9 @@
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
-<img alt="../../_images/a3d1a2e9bf899b9b5b40efdcfa7af9c895acd1667fc8e212e56033c725f4aa75.svg" src="../../_images/a3d1a2e9bf899b9b5b40efdcfa7af9c895acd1667fc8e212e56033c725f4aa75.svg" />
+<img alt="../../_images/42069679c08ed365146f0da9ecbb5769c1bd2884e4b74272907483e74dcaaa51.svg" src="../../_images/42069679c08ed365146f0da9ecbb5769c1bd2884e4b74272907483e74dcaaa51.svg" />
 </div>
 </div>
 </section>
@@ -1488,7 +1620,12 @@
 <section id="cascode-and-regulated-cascode">
 <h4>Cascode and Regulated Cascode<a class="headerlink" href="#cascode-and-regulated-cascode" title="Link to this heading">#</a></h4>
 <p>A current buffer on top of an amplifier shields its collector or drain. In the regulated cascode a second device senses the emitter or source of the buffer and drives its base or gate.</p>
-<div class="cell tag_hide_input docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># HIDE/SHOW</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">cascode</span><span class="p">(</span><span class="n">c</span><span class="p">):</span>
@@ -1521,15 +1658,21 @@
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
-<img alt="../../_images/5e50bd0731ae538d86a8d0457ff198e9f287bf905a8270b528af76e887a4c19b.svg" src="../../_images/5e50bd0731ae538d86a8d0457ff198e9f287bf905a8270b528af76e887a4c19b.svg" />
+<img alt="../../_images/447c1469ffc510f3c8d9192fc781290fcab9ee37bab79dbf1d57fed8eb50add8.svg" src="../../_images/447c1469ffc510f3c8d9192fc781290fcab9ee37bab79dbf1d57fed8eb50add8.svg" />
 </div>
 </div>
 </section>
 <section id="flipped-follower-and-active-inductor">
 <h4>Flipped Follower and Active Inductor<a class="headerlink" href="#flipped-follower-and-active-inductor" title="Link to this heading">#</a></h4>
 <p>Both rows are the same loop: the upper device passes a signal from the lower node up to the bias node, and the lower device amplifies it back down. Driving the upper base or gate gives a follower. Looking into the lower node gives an inductor.</p>
-<div class="cell tag_hide_input docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># HIDE/SHOW</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">flipped_follower</span><span class="p">(</span><span class="n">c</span><span class="p">):</span>
@@ -1561,15 +1704,21 @@
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
-<img alt="../../_images/a972ac4e2715bf43e87e6910655ca71eefacb46c45778b701b3af33d84bfb5fc.svg" src="../../_images/a972ac4e2715bf43e87e6910655ca71eefacb46c45778b701b3af33d84bfb5fc.svg" />
+<img alt="../../_images/aedebd1d8c8cbd79622074ba90fdbab140afd69a58ec2727f7e649eb46cb5a90.svg" src="../../_images/aedebd1d8c8cbd79622074ba90fdbab140afd69a58ec2727f7e649eb46cb5a90.svg" />
 </div>
 </div>
 </section>
 <section id="differential-and-cross-coupled-pairs">
 <h4>Differential and Cross-Coupled Pairs<a class="headerlink" href="#differential-and-cross-coupled-pairs" title="Link to this heading">#</a></h4>
 <p>Two matched devices share a tail current. Connecting each base or gate to the opposite collector or drain turns the amplifier into a negative resistance.</p>
-<div class="cell tag_hide_input docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># HIDE/SHOW</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">differential_pair</span><span class="p">(</span><span class="n">c</span><span class="p">):</span>
@@ -1606,8 +1755,9 @@
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
-<img alt="../../_images/f977aa82ca0d6c18371a3e101ee43f8524ed0684142cccfbf8e8181b641e4237.svg" src="../../_images/f977aa82ca0d6c18371a3e101ee43f8524ed0684142cccfbf8e8181b641e4237.svg" />
+<img alt="../../_images/5fb5d5ee5e57104e5636df8977585a6b5afccb6d8e52b2c130d49494c08adc7c.svg" src="../../_images/5fb5d5ee5e57104e5636df8977585a6b5afccb6d8e52b2c130d49494c08adc7c.svg" />
 </div>
 </div>
 </section>
@@ -1618,7 +1768,12 @@
 <section id="controlled-and-large-resistors">
 <h4>Controlled and Large Resistors<a class="headerlink" href="#controlled-and-large-resistors" title="Link to this heading">#</a></h4>
 <p>A MOSFET in the triode region is a resistor between source and drain. One device sets the gate voltage of the other, or two devices in series bias each other close to cutoff.</p>
-<div class="cell tag_hide_input docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># HIDE/SHOW</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">controlled_resistor</span><span class="p">(</span><span class="n">c</span><span class="p">):</span>
@@ -1655,15 +1810,21 @@
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
-<img alt="../../_images/d7103c5115cab7a34d92e526815a9c781d1c7d05f08036f8e2c30a64a9660f5e.svg" src="../../_images/d7103c5115cab7a34d92e526815a9c781d1c7d05f08036f8e2c30a64a9660f5e.svg" />
+<img alt="../../_images/43963ec1ec4870580d311f800cdbd9a47104521042a2064cdf9efb4b573fbd29.svg" src="../../_images/43963ec1ec4870580d311f800cdbd9a47104521042a2064cdf9efb4b573fbd29.svg" />
 </div>
 </div>
 </section>
 <section id="varactor-and-anti-parallel-capacitors">
 <h4>Varactor and Anti-Parallel Capacitors<a class="headerlink" href="#varactor-and-anti-parallel-capacitors" title="Link to this heading">#</a></h4>
 <p>The gate of a MOSFET whose source and drain are tied together is one plate of a capacitor.</p>
-<div class="cell tag_hide_input docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># HIDE/SHOW</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">varactor</span><span class="p">(</span><span class="n">c</span><span class="p">):</span>
@@ -1699,15 +1860,21 @@
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
-<img alt="../../_images/50471085a6bb114b7cb9d7fa6503f99182a29dd51389adecc3caed4cb35896f2.svg" src="../../_images/50471085a6bb114b7cb9d7fa6503f99182a29dd51389adecc3caed4cb35896f2.svg" />
+<img alt="../../_images/680fc2c08f4eee3a9b6955087101595057651f1993e80fe4092e05597a32635f.svg" src="../../_images/680fc2c08f4eee3a9b6955087101595057651f1993e80fe4092e05597a32635f.svg" />
 </div>
 </div>
 </section>
 <section id="anti-parallel-and-ultra-low-power-diodes">
 <h4>Anti-Parallel and Ultra-Low-Power Diodes<a class="headerlink" href="#anti-parallel-and-ultra-low-power-diodes" title="Link to this heading">#</a></h4>
 <p>Two diode-connected devices in opposite directions conduct for either polarity. An n-type and a p-type device in series, each controlled from the far terminal, make a diode with very little leakage.</p>
-<div class="cell tag_hide_input docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># HIDE/SHOW</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">antiparallel_diodes</span><span class="p">(</span><span class="n">c</span><span class="p">):</span>
@@ -1742,15 +1909,21 @@
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
-<img alt="../../_images/45a6c7a420eb71f81f06f74556b930c450e39974735f15a490593834e3283d00.svg" src="../../_images/45a6c7a420eb71f81f06f74556b930c450e39974735f15a490593834e3283d00.svg" />
+<img alt="../../_images/eaf4716314949f1050884c637366b56bdf46fb0bf6f16f4e4cc563927a4318bd.svg" src="../../_images/eaf4716314949f1050884c637366b56bdf46fb0bf6f16f4e4cc563927a4318bd.svg" />
 </div>
 </div>
 </section>
 <section id="level-shift-and-linear-i-to-v-converter">
 <h4>Level Shift and Linear I-to-V Converter<a class="headerlink" href="#level-shift-and-linear-i-to-v-converter" title="Link to this heading">#</a></h4>
 <p>Both circuits put two base-emitter or gate-source voltages in series.</p>
-<div class="cell tag_hide_input docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># HIDE/SHOW</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">level_shift</span><span class="p">(</span><span class="n">c</span><span class="p">):</span>
@@ -1786,8 +1959,9 @@
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
-<img alt="../../_images/51eac471d26f48b5e90c46bdaa64b5abefe75e220eb41f24b4bab9d3bf4bfd4d.svg" src="../../_images/51eac471d26f48b5e90c46bdaa64b5abefe75e220eb41f24b4bab9d3bf4bfd4d.svg" />
+<img alt="../../_images/20150e2e69a000923c674b8940e51757cbad6cd62a0508bf81b62a4a3faeed3c.svg" src="../../_images/20150e2e69a000923c674b8940e51757cbad6cd62a0508bf81b62a4a3faeed3c.svg" />
 </div>
 </div>
 </section>
@@ -1798,7 +1972,12 @@
 <section id="transmission-gate-and-multiplexer">
 <h4>Transmission Gate and Multiplexer<a class="headerlink" href="#transmission-gate-and-multiplexer" title="Link to this heading">#</a></h4>
 <p>Pass devices connect or isolate two nodes. Two complementary devices in parallel make a switch for the full signal range. Two devices with a common output select one of two inputs.</p>
-<div class="cell tag_hide_input docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># HIDE/SHOW</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">transmission_gate</span><span class="p">(</span><span class="n">c</span><span class="p">):</span>
@@ -1832,15 +2011,21 @@
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
-<img alt="../../_images/3dd7e251d7679470fdc2fa386d93e1f03222cc06c576db1fd8ce0e79ac2164ef.svg" src="../../_images/3dd7e251d7679470fdc2fa386d93e1f03222cc06c576db1fd8ce0e79ac2164ef.svg" />
+<img alt="../../_images/25f50763a9056e8b8908cf7dd2300926e2e0516b187a153910d5ac6f34a1aeb5.svg" src="../../_images/25f50763a9056e8b8908cf7dd2300926e2e0516b187a153910d5ac6f34a1aeb5.svg" />
 </div>
 </div>
 </section>
 <section id="sample-and-hold-and-low-pass-filter">
 <h4>Sample-and-Hold and Low-Pass Filter<a class="headerlink" href="#sample-and-hold-and-low-pass-filter" title="Link to this heading">#</a></h4>
 <p>A pass device feeds a node that the second device loads as a capacitor. With a clock on the gate the circuit samples. With a fixed bias it filters.</p>
-<div class="cell tag_hide_input docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># HIDE/SHOW</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">sample_and_hold</span><span class="p">(</span><span class="n">c</span><span class="p">):</span>
@@ -1860,15 +2045,21 @@
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
-<img alt="../../_images/c822926adec858ed0016861061cde9b0ac30eaf5d27667f3f6fec10174c29b32.svg" src="../../_images/c822926adec858ed0016861061cde9b0ac30eaf5d27667f3f6fec10174c29b32.svg" />
+<img alt="../../_images/d893e8113c4c9c4fc2496dd3f5bff3fac11ee8c705f7ad483a90899eb5096e12.svg" src="../../_images/d893e8113c4c9c4fc2496dd3f5bff3fac11ee8c705f7ad483a90899eb5096e12.svg" />
 </div>
 </div>
 </section>
 <section id="peak-detector-and-voltage-doubler">
 <h4>Peak Detector and Voltage Doubler<a class="headerlink" href="#peak-detector-and-voltage-doubler" title="Link to this heading">#</a></h4>
 <p>A diode-connected device and a capacitor-connected device rectify. Their order decides the function.</p>
-<div class="cell tag_hide_input docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># HIDE/SHOW</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">peak_detector</span><span class="p">(</span><span class="n">c</span><span class="p">):</span>
@@ -1905,8 +2096,9 @@
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
-<img alt="../../_images/e50efe7064fc30df15c5a1ef8558a1918115a13575717cb6088cfd6baffec581.svg" src="../../_images/e50efe7064fc30df15c5a1ef8558a1918115a13575717cb6088cfd6baffec581.svg" />
+<img alt="../../_images/02a05595f67b5824891a95e51e38ecdd5e60f6e02aa3c72d5209cd021a3b43ca.svg" src="../../_images/02a05595f67b5824891a95e51e38ecdd5e60f6e02aa3c72d5209cd021a3b43ca.svg" />
 </div>
 </div>
 </section>
@@ -1917,7 +2109,12 @@
 <section id="nand-and-nor">
 <h4>NAND and NOR<a class="headerlink" href="#nand-and-nor" title="Link to this heading">#</a></h4>
 <p>Two switches in series conduct only when both are on. Two switches in parallel conduct when either is on. The current source pulls the output high otherwise.</p>
-<div class="cell tag_hide_input docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># HIDE/SHOW</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">nand</span><span class="p">(</span><span class="n">c</span><span class="p">):</span>
@@ -1952,15 +2149,21 @@
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
-<img alt="../../_images/50c61a97db4e54160874a8cb0c6240e5b82582c99cd0c397beabc3d4a9d9bc59.svg" src="../../_images/50c61a97db4e54160874a8cb0c6240e5b82582c99cd0c397beabc3d4a9d9bc59.svg" />
+<img alt="../../_images/0c46fdcecfccfc6cb882532c28943e60b7419cd9c1e4bf5c9579a138ccd2c85c.svg" src="../../_images/0c46fdcecfccfc6cb882532c28943e60b7419cd9c1e4bf5c9579a138ccd2c85c.svg" />
 </div>
 </div>
 </section>
 <section id="xnor-and-mixer">
 <h4>XNOR and Mixer<a class="headerlink" href="#xnor-and-mixer" title="Link to this heading">#</a></h4>
 <p>Both circuits multiply. The XNOR gate multiplies two logic signs. The mixer multiplies two analog signals.</p>
-<div class="cell tag_hide_input docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># HIDE/SHOW</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">xnor</span><span class="p">(</span><span class="n">c</span><span class="p">):</span>
@@ -1997,8 +2200,9 @@
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
-<img alt="../../_images/1bcbf7f0a344a64093f6d1444f0664509206413905045b58b070e95ca548b5e7.svg" src="../../_images/1bcbf7f0a344a64093f6d1444f0664509206413905045b58b070e95ca548b5e7.svg" />
+<img alt="../../_images/259216fa0ca2f962a0d395f6cae36eee9a5adcd40056598335277c13668f1f61.svg" src="../../_images/259216fa0ca2f962a0d395f6cae36eee9a5adcd40056598335277c13668f1f61.svg" />
 </div>
 </div>
 </section>
@@ -2012,7 +2216,12 @@
 <section id="pair-and-tail-source">
 <h4>Pair and Tail Source<a class="headerlink" href="#pair-and-tail-source" title="Link to this heading">#</a></h4>
 <p>The differential pair is one of the feedback pairs. The current source in its tail is one of the eight roles.</p>
-<div class="cell tag_hide_input docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># HIDE/SHOW</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">op_amp_pair</span><span class="p">(</span><span class="n">c</span><span class="p">):</span>
@@ -2031,15 +2240,21 @@
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
-<img alt="../../_images/117323376b43c627aa17e31d829efe9218b0663e71e9b32c4809c9a3eb1d3e62.svg" src="../../_images/117323376b43c627aa17e31d829efe9218b0663e71e9b32c4809c9a3eb1d3e62.svg" />
+<img alt="../../_images/10c3532c6c5c7c25b242f5efe82000842d992b2b9f0a8024b8a162295657c380.svg" src="../../_images/10c3532c6c5c7c25b242f5efe82000842d992b2b9f0a8024b8a162295657c380.svg" />
 </div>
 </div>
 </section>
 <section id="mirror-load-and-second-stage">
 <h4>Mirror Load and Second Stage<a class="headerlink" href="#mirror-load-and-second-stage" title="Link to this heading">#</a></h4>
 <p>The current mirror is one of the bias circuits. The second stage is the active-load stage of the gain stages, with the two types swapped.</p>
-<div class="cell tag_hide_input docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># HIDE/SHOW</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">op_amp_mirror</span><span class="p">(</span><span class="n">c</span><span class="p">):</span>
@@ -2059,15 +2274,21 @@
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
-<img alt="../../_images/02e6869daacad6159cea55787a97e2ef0336dd7773f2881b577f910d79e26d92.svg" src="../../_images/02e6869daacad6159cea55787a97e2ef0336dd7773f2881b577f910d79e26d92.svg" />
+<img alt="../../_images/5fc95d118ea3431e5d292e3740d86020260a3c03da82680ffa0ac1dee2216db1.svg" src="../../_images/5fc95d118ea3431e5d292e3740d86020260a3c03da82680ffa0ac1dee2216db1.svg" />
 </div>
 </div>
 </section>
 <section id="bias-mirror">
 <h4>Bias Mirror<a class="headerlink" href="#bias-mirror" title="Link to this heading">#</a></h4>
 <p>A second current mirror supplies both bias currents from one reference current.</p>
-<div class="cell tag_hide_input docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># HIDE/SHOW</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">op_amp_bias</span><span class="p">(</span><span class="n">c</span><span class="p">):</span>
@@ -2080,8 +2301,9 @@
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
-<img alt="../../_images/30871e4e4a426901467d775a2f711b8623a9f90d7500bbc1c5ac6142feb7fb9d.svg" src="../../_images/30871e4e4a426901467d775a2f711b8623a9f90d7500bbc1c5ac6142feb7fb9d.svg" />
+<img alt="../../_images/77a62521e9727cd50b3013e95970ef9d028370fe1a609c3438c6ceda9aa18ffc.svg" src="../../_images/77a62521e9727cd50b3013e95970ef9d028370fe1a609c3438c6ceda9aa18ffc.svg" />
 </div>
 </div>
 </section>
@@ -2090,15 +2312,21 @@
 <section id="symbols">
 <h2>Symbols<a class="headerlink" href="#symbols" title="Link to this heading">#</a></h2>
 <p>The symbol library behind the drawings, at one scale. This page uses the transistors, the resistor, the ground, the supply rail, the terminal and the node dot. The BJT and the MOSFET share one footprint, so the two versions of every circuit line up.</p>
-<div class="cell tag_hide_input docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># HIDE/SHOW</span>
 <span class="n">symbol_sheet</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
-<img alt="../../_images/459e4cc3ca11655d37a9c26d0b1b146bf7fa1f2fa695e1553bb7b0d3ed8685a6.svg" src="../../_images/459e4cc3ca11655d37a9c26d0b1b146bf7fa1f2fa695e1553bb7b0d3ed8685a6.svg" />
+<img alt="../../_images/e1f1398336f50424c68152a0db853edf0fec4fef5bc5fe1cae0e5e7bcbb3be16.svg" src="../../_images/e1f1398336f50424c68152a0db853edf0fec4fef5bc5fe1cae0e5e7bcbb3be16.svg" />
 </div>
 </div>
 </section>

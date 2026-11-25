@@ -432,7 +432,12 @@
 <h1>Signals and Sequences<a class="headerlink" href="#signals-and-sequences" title="Link to this heading">#</a></h1>
 <section id="prerequisites">
 <h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Link to this heading">#</a></h2>
-<div class="cell tag_hide_input docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># HIDE/SHOW</span>
 <span class="c1"># ! pip install -U numpy</span>
@@ -440,12 +445,18 @@
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 </section>
 <section id="visualization-in-python">
 <h2>Visualization in Python<a class="headerlink" href="#visualization-in-python" title="Link to this heading">#</a></h2>
 <p>The folder of this notebook holds a small module, <code class="docutils literal notranslate"><span class="pre">sigplot</span></code>, with classes for signals, systems and time axes, and a matplotlib renderer. Labels are set in Computer Modern through matplotlib’s mathtext, so no TeX installation is needed.</p>
-<div class="cell tag_hide_input docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># HIDE/SHOW</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">warnings</span>
@@ -462,6 +473,7 @@
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 </section>
 <section id="utilizations">
@@ -545,7 +557,12 @@
 <li><p>Quantized signals: the amplitude takes only a finite set of levels</p></li>
 <li><p>Digital signals: discrete in time and quantized in amplitude</p></li>
 </ul>
-<div class="cell tag_hide_input docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># HIDE/SHOW</span>
 <span class="k">class</span><span class="w"> </span><span class="nc">Wave</span><span class="p">(</span><span class="n">Signal</span><span class="p">):</span>
@@ -566,8 +583,9 @@
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
-<img alt="../../_images/8e763e73416419f3c53c71af1048dbb51d3250c5c5d15eccf856ad8c164fdcee.svg" src="../../_images/8e763e73416419f3c53c71af1048dbb51d3250c5c5d15eccf856ad8c164fdcee.svg" />
+<img alt="../../_images/f6b7e51e81a2affdec4d88a129a9212c1e12214ccf2b9c3f0702071ead13665a.svg" src="../../_images/f6b7e51e81a2affdec4d88a129a9212c1e12214ccf2b9c3f0702071ead13665a.svg" />
 </div>
 </div>
 <p>The two columns translate into each other term by term:</p>
@@ -626,7 +644,12 @@
 <section id="even-and-odd-signals">
 <h3>Even and Odd Signals<a class="headerlink" href="#even-and-odd-signals" title="Link to this heading">#</a></h3>
 <p>An even signal is its own mirror image about <span class="math notranslate nohighlight">\(t=0\)</span>. An odd signal is its own mirror image with the sign reversed. Every signal is the sum of an even part <span class="math notranslate nohighlight">\(\tfrac12[x(t)+x(-t)]\)</span> and an odd part <span class="math notranslate nohighlight">\(\tfrac12[x(t)-x(-t)]\)</span>; both rows are made from one one-sided pulse in this way.</p>
-<div class="cell tag_hide_input docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># HIDE/SHOW</span>
 <span class="k">class</span><span class="w"> </span><span class="nc">Pulse</span><span class="p">(</span><span class="n">Signal</span><span class="p">):</span>
@@ -648,15 +671,21 @@
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
-<img alt="../../_images/5204c8329821715f290aaaa6c77929800830c0004c3a14a7fb48d0b82caa8f5f.svg" src="../../_images/5204c8329821715f290aaaa6c77929800830c0004c3a14a7fb48d0b82caa8f5f.svg" />
+<img alt="../../_images/a9152751e73ceaea0bea87ac918665640a5e59237da5cf56fee87e9ae573c525.svg" src="../../_images/a9152751e73ceaea0bea87ac918665640a5e59237da5cf56fee87e9ae573c525.svg" />
 </div>
 </div>
 </section>
 <section id="aperiodic-and-periodic-signals">
 <h3>Aperiodic and Periodic Signals<a class="headerlink" href="#aperiodic-and-periodic-signals" title="Link to this heading">#</a></h3>
 <p>A periodic signal repeats itself after a shift by its period. The smallest such shift is the fundamental period, <span class="math notranslate nohighlight">\(T_0\)</span> or <span class="math notranslate nohighlight">\(N_0\)</span>. The second row repeats the pulse of the first row every 5 units of time.</p>
-<div class="cell tag_hide_input docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># HIDE/SHOW</span>
 <span class="k">class</span><span class="w"> </span><span class="nc">Tooth</span><span class="p">(</span><span class="n">Signal</span><span class="p">):</span>
@@ -678,15 +707,21 @@
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
-<img alt="../../_images/0389540940c3867dae43beaf0e252fe671cbf6c297c5c34d7075b1641849b72b.svg" src="../../_images/0389540940c3867dae43beaf0e252fe671cbf6c297c5c34d7075b1641849b72b.svg" />
+<img alt="../../_images/3923ceee1557afa439af6932a8aac4f922ef7006791debaebd91b5e14a54488d.svg" src="../../_images/3923ceee1557afa439af6932a8aac4f922ef7006791debaebd91b5e14a54488d.svg" />
 </div>
 </div>
 </section>
 <section id="sinusoidal-signals">
 <h3>Sinusoidal Signals<a class="headerlink" href="#sinusoidal-signals" title="Link to this heading">#</a></h3>
 <p>The sinusoid <span class="math notranslate nohighlight">\(A\cos(\omega_0t+\phi)\)</span> has the amplitude <span class="math notranslate nohighlight">\(A\)</span>, the angular frequency <span class="math notranslate nohighlight">\(\omega_0\)</span> and the phase <span class="math notranslate nohighlight">\(\phi\)</span>. The sine is odd and the cosine is even; one is the other shifted by a quarter of a period. Over continuous time a sinusoid is periodic for every <span class="math notranslate nohighlight">\(\omega_0\)</span>. Over discrete time it is periodic only if <span class="math notranslate nohighlight">\(\Omega_0/2\pi\)</span> is a ratio of integers.</p>
-<div class="cell tag_hide_input docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># HIDE/SHOW</span>
 <span class="n">sine</span> <span class="o">=</span> <span class="n">Sinusoid</span><span class="p">(</span><span class="n">omega</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">/</span> <span class="mi">8</span><span class="p">,</span> <span class="n">phi</span><span class="o">=-</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">'Sine'</span><span class="p">)</span>
@@ -700,15 +735,21 @@
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
-<img alt="../../_images/b1360d516290329400f4bd15546d247a0b4f35176a735df3536799f66d99f8f4.svg" src="../../_images/b1360d516290329400f4bd15546d247a0b4f35176a735df3536799f66d99f8f4.svg" />
+<img alt="../../_images/667981063520f9637eedcfc4ebe98ff32e79264b7cb5eed0b12882fa9d9954a7.svg" src="../../_images/667981063520f9637eedcfc4ebe98ff32e79264b7cb5eed0b12882fa9d9954a7.svg" />
 </div>
 </div>
 </section>
 <section id="real-exponential-signals">
 <h3>Real Exponential Signals<a class="headerlink" href="#real-exponential-signals" title="Link to this heading">#</a></h3>
 <p>In <span class="math notranslate nohighlight">\(x(t)=Ce^{at}\)</span> both <span class="math notranslate nohighlight">\(C\)</span> and <span class="math notranslate nohighlight">\(a\)</span> are real. The sign of <span class="math notranslate nohighlight">\(a\)</span> decides between growth and decay, and <span class="math notranslate nohighlight">\(x(0)=C\)</span>. The samples form a geometric sequence <span class="math notranslate nohighlight">\(C\alpha^n\)</span> with the ratio <span class="math notranslate nohighlight">\(\alpha=e^{aT}\)</span>. In this figure <span class="math notranslate nohighlight">\(C=1\)</span> and <span class="math notranslate nohighlight">\(T=1/2\)</span>.</p>
-<div class="cell tag_hide_input docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># HIDE/SHOW</span>
 <span class="n">growth</span> <span class="o">=</span> <span class="n">Exponential</span><span class="p">(</span><span class="n">a</span><span class="o">=</span><span class="mi">1</span> <span class="o">/</span> <span class="mi">5</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">'Growing exponential'</span><span class="p">)</span>
@@ -722,15 +763,21 @@
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
-<img alt="../../_images/6a25b87b2fc188a5dad3bbe3d108008ecf4da1f600469d302d61bdc045fe889c.svg" src="../../_images/6a25b87b2fc188a5dad3bbe3d108008ecf4da1f600469d302d61bdc045fe889c.svg" />
+<img alt="../../_images/2685094dc6529bef3af17f9b94bdfbc5659b44f562789f49b101278a8ba21009.svg" src="../../_images/2685094dc6529bef3af17f9b94bdfbc5659b44f562789f49b101278a8ba21009.svg" />
 </div>
 </div>
 </section>
 <section id="complex-exponential-signals">
 <h3>Complex Exponential Signals<a class="headerlink" href="#complex-exponential-signals" title="Link to this heading">#</a></h3>
 <p>In <span class="math notranslate nohighlight">\(x(t)=Ce^{st}\)</span> the exponent <span class="math notranslate nohighlight">\(s=r+j\omega_0\)</span> is complex. With <span class="math notranslate nohighlight">\(C=\lvert C\rvert e^{j\phi}\)</span> the real part of the signal is <span class="math notranslate nohighlight">\(\lvert C\rvert e^{rt}\cos(\omega_0t+\phi)\)</span>: a sinusoid inside the envelope <span class="math notranslate nohighlight">\(\pm\lvert C\rvert e^{rt}\)</span>, which is drawn dashed. For <span class="math notranslate nohighlight">\(r=0\)</span> the envelope is flat and the signal is the sinusoid of the section before. In this figure <span class="math notranslate nohighlight">\(\lvert C\rvert=1\)</span>, <span class="math notranslate nohighlight">\(\phi=0\)</span>, <span class="math notranslate nohighlight">\(\omega_0=\pi/5\)</span> and <span class="math notranslate nohighlight">\(T=1/2\)</span>.</p>
-<div class="cell tag_hide_input docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># HIDE/SHOW</span>
 <span class="n">growing</span> <span class="o">=</span> <span class="n">ComplexExponential</span><span class="p">(</span><span class="n">r</span><span class="o">=</span><span class="mi">1</span> <span class="o">/</span> <span class="mi">10</span><span class="p">,</span> <span class="n">omega</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">/</span> <span class="mi">5</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">'Growing oscillation'</span><span class="p">)</span>
@@ -744,8 +791,9 @@
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
-<img alt="../../_images/eaba2facd04cfdbef181a2600e9b2aee2462a2a965d0881c73cc5309dcb6b774.svg" src="../../_images/eaba2facd04cfdbef181a2600e9b2aee2462a2a965d0881c73cc5309dcb6b774.svg" />
+<img alt="../../_images/48e7e727ac8c6ebae71a7da1be96f9e1eed92b576f5637c4e06509ac358d8fd7.svg" src="../../_images/48e7e727ac8c6ebae71a7da1be96f9e1eed92b576f5637c4e06509ac358d8fd7.svg" />
 </div>
 </div>
 </section>
@@ -756,7 +804,12 @@
 <section id="unit-step-and-unit-ramp">
 <h3>Unit Step and Unit Ramp<a class="headerlink" href="#unit-step-and-unit-ramp" title="Link to this heading">#</a></h3>
 <p>The unit step (Heaviside function) switches on at <span class="math notranslate nohighlight">\(t=0\)</span>. The unit ramp (ReLU) is its running integral: zero before <span class="math notranslate nohighlight">\(t=0\)</span>, then a line of slope 1.</p>
-<div class="cell tag_hide_input docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># HIDE/SHOW</span>
 <span class="n">show</span><span class="p">(</span><span class="n">Step</span><span class="p">(),</span> <span class="n">Ramp</span><span class="p">(),</span> <span class="n">span</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="n">ylim</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="n">T</span><span class="o">=</span><span class="mf">0.25</span><span class="p">,</span> <span class="n">notes</span><span class="o">=</span><span class="p">[</span>
@@ -767,15 +820,21 @@
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
-<img alt="../../_images/e4de64ae2350c42fb211409ccde6c900656813f4ca3e69c74e5704499fe700c1.svg" src="../../_images/e4de64ae2350c42fb211409ccde6c900656813f4ca3e69c74e5704499fe700c1.svg" />
+<img alt="../../_images/df82c8812e72d04b172dce9abc65fe1e62ba23f5372da4f4d87b6066b62b3a06.svg" src="../../_images/df82c8812e72d04b172dce9abc65fe1e62ba23f5372da4f4d87b6066b62b3a06.svg" />
 </div>
 </div>
 </section>
 <section id="unit-rectangle-and-unit-triangle">
 <h3>Unit Rectangle and Unit Triangle<a class="headerlink" href="#unit-rectangle-and-unit-triangle" title="Link to this heading">#</a></h3>
 <p>The unit rectangle is a pulse of width 1 and height 1, centred at <span class="math notranslate nohighlight">\(t=0\)</span>. The unit triangle has the same height and area, on a base of width 2; it is the rectangle convolved with itself.</p>
-<div class="cell tag_hide_input docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># HIDE/SHOW</span>
 <span class="n">show</span><span class="p">(</span><span class="n">Rect</span><span class="p">(),</span> <span class="n">Tri</span><span class="p">(),</span> <span class="n">span</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="n">ylim</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="n">T</span><span class="o">=</span><span class="mf">0.25</span><span class="p">,</span> <span class="n">notes</span><span class="o">=</span><span class="p">[</span>
@@ -786,15 +845,21 @@
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
-<img alt="../../_images/59265acfe4105c3b0e4ec1e81f83773be1730fc70c0a8f3f1a54e2e99a2b0995.svg" src="../../_images/59265acfe4105c3b0e4ec1e81f83773be1730fc70c0a8f3f1a54e2e99a2b0995.svg" />
+<img alt="../../_images/11aa0d61aa6b1876c223d1952cf1655637071e4f2611a87e47f80f538a1b4ef2.svg" src="../../_images/11aa0d61aa6b1876c223d1952cf1655637071e4f2611a87e47f80f538a1b4ef2.svg" />
 </div>
 </div>
 </section>
 <section id="unit-sinc-and-unit-impulse">
 <h3>Unit Sinc and Unit Impulse<a class="headerlink" href="#unit-sinc-and-unit-impulse" title="Link to this heading">#</a></h3>
 <p>The unit sinc is 1 at <span class="math notranslate nohighlight">\(t=0\)</span> and crosses zero at every other integer. The unit impulse (delta function) is the limit of a pulse of area 1 whose width goes to zero: it is zero everywhere except at <span class="math notranslate nohighlight">\(t=0\)</span>, and it is drawn as an arrow with its area beside it. Over discrete time the impulse is an ordinary sample of value 1.</p>
-<div class="cell tag_hide_input docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># HIDE/SHOW</span>
 <span class="n">show</span><span class="p">(</span><span class="n">Sinc</span><span class="p">(),</span> <span class="n">Impulse</span><span class="p">(),</span> <span class="n">span</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="n">ylim</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="n">T</span><span class="o">=</span><span class="mf">0.25</span><span class="p">,</span> <span class="n">notes</span><span class="o">=</span><span class="p">[</span>
@@ -805,8 +870,9 @@
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
-<img alt="../../_images/06602acd0d58821a7ea7691956b459828eb638d86b16f7241b170382497dd488.svg" src="../../_images/06602acd0d58821a7ea7691956b459828eb638d86b16f7241b170382497dd488.svg" />
+<img alt="../../_images/7f9172c35cfbc00e9b37db26ea1605b3946ff6b94e84fa1eaec49b347ff0a89a.svg" src="../../_images/7f9172c35cfbc00e9b37db26ea1605b3946ff6b94e84fa1eaec49b347ff0a89a.svg" />
 </div>
 </div>
 <p>The six signals are related to each other:</p>
