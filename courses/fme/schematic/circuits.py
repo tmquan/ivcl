@@ -574,13 +574,15 @@ def antiparallel_capacitors(c):
     """- | Anti-parallel capacitors"""
     t1 = c.transistor('n', (0, 0), 'cd', side='right')
     t1.name(1, 'r', dy=-14)
-    t2 = c.transistor('n', (90, -130), 'cd')
+    t2 = c.transistor('n', (90, -80), 'cd')
     t2.name(2, 'l', dy=-14)
     xl, xr = -30, 120
-    c.w(t1.cd, (xl, 0)); c.w(t1.es, (xl, 80)); c.w(t2.bg, (xl, t2.bg[1])); c.w((xl, t2.bg[1]), (xl, 80))
-    c.dot((xl, -45)); c.w((xl, -45), (xl - 30, -45)); c.port((xl - 30, -45), 'V_p', 'l')
-    c.w(t2.cd, (xr, t2.cd[1])); c.w(t2.es, (xr, t2.es[1])); c.w(t1.bg, (xr, t1.bg[1])); c.w((xr, t1.bg[1]), (xr, t2.cd[1]))
-    c.dot((xr, -90)); c.w((xr, -90), (xr + 30, -90)); c.port((xr + 30, -90), 'V_n', 'r')
+    # left terminal: drain and source of the first device, gate of the second
+    c.w(t1.cd, (xl, 0)); c.w(t1.es, (xl, 80)); c.w(t2.bg, (xl, t2.bg[1])); c.w((xl, t2.bg[1]), (xl, 80)); c.dot((xl, 0))
+    c.dot((xl, 40)); c.w((xl, 40), (xl - 30, 40)); c.port((xl - 30, 40), 'V_p', 'l')
+    # right terminal: drain and source of the second device, gate of the first
+    c.w(t2.cd, (xr, t2.cd[1])); c.w(t2.es, (xr, t2.es[1])); c.w(t1.bg, (xr, t1.bg[1])); c.w((xr, t1.bg[1]), (xr, t2.cd[1])); c.dot((xr, t2.es[1]))
+    c.dot((xr, -40)); c.w((xr, -40), (xr + 30, -40)); c.port((xr + 30, -40), 'V_n', 'r')
 
 
 def antiparallel_diodes(c):

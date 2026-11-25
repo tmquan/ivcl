@@ -20,12 +20,15 @@ CORNER = 8.0                                            # radius of the rounded 
 BASE = 0.33                                             # baseline offset below the label's y, in font sizes
 BLACK = '#000000'
 RED = '#e00000'                                         # impedance arrows and their labels
+BLUE = '#0b55d9'                                        # circuit elements; the routing between them stays black
+ELEMENTS = {'nmos', 'pmos', 'nmos_b', 'pmos_b', 'nmos_na', 'pmos_na', 'nmos_thick', 'npn', 'pnp', 'opamp',
+            'resistor', 'capacitor', 'inductor', 'diode', 'zener', 'vsource', 'isource', 'battery', 'load'}
 
 
 class Inst:
     def __init__(s, key, x, y, rot, mirror, sym, color=None):
         s.key, s.x, s.y, s.rot, s.mirror = key, x, y, rot, mirror
-        s.sym, s.color = sym, color                     # color None = black
+        s.sym, s.color = sym, color                     # color None = black (Scene.add colours the elements)
         s.w, s.h = S.oriented(sym, rot, mirror)
         s.t = {k: (x + p[0], y + p[1]) for k, p in S.terminals(sym, rot, mirror).items()}
         s.a = {k: (x + p[0], y + p[1]) for k, p in S.anchors(sym, rot, mirror).items()}
@@ -90,6 +93,10 @@ class Scene:
 
     # -- building ---------------------------------------------------
     def add(s, key, x, y, rot=0, mirror=False, color=None):
+        """a symbol with its corner at (x, y).  A circuit element is blue unless a colour is given;
+        grounds, supplies and everything that only routes stay black."""
+        if color is None and key in ELEMENTS:
+            color = BLUE
         i = Inst(key, x, y, rot, mirror, S.SYM[key], color)
         s.insts.append(i)
         return i
