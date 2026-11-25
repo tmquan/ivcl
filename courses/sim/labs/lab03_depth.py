@@ -1,4 +1,4 @@
-"""Lab 3 (handbook 1.2.1): a simulated depth camera produces a
+"""Lab 3: a simulated depth camera produces a
 scalar per pixel. Capture it, then colour-map it four ways: two
 tables, two ranges.
 

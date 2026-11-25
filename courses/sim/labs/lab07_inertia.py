@@ -1,4 +1,4 @@
-"""Lab 7 (handbook 1.4): the inertia of a rigid body is a tensor.
+"""Lab 7: the inertia of a rigid body is a tensor.
 Read it from the physics engine and find its principal axes.
 
 Run (env isaac):  python labs/lab07_inertia.py --stream

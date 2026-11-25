@@ -1,4 +1,4 @@
-"""Lab 11 (handbook 1.5.7): data reduction by subsampling. How
+"""Lab 11: data reduction by subsampling. How
 much error does each level of reduction cost? Plain NumPy; the
 simulator is not started.
 

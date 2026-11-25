@@ -1,4 +1,4 @@
-"""Lab 8, part A (handbook 1.5.2): implicit functions. Build a
+"""Lab 8, part A: implicit functions. Build a
 part from three distance functions and contour it. Plain NumPy;
 the simulator is not started.
 

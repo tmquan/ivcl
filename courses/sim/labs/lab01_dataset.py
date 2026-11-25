@@ -1,4 +1,4 @@
-"""Lab 1 (handbook 1.1): a dataset is topology + geometry +
+"""Lab 1: a dataset is topology + geometry +
 attributes, and algorithms are transformations of them.
 
 Run (env isaac):  python labs/lab01_dataset.py

@@ -91,6 +91,9 @@ class View:
 
 # ---------------------------------------------------------------
 # Prims: triangle meshes with the shading baked into their colours
+# (colors). Each prim also keeps its colour before shading (rgb)
+# and whether it is shaded at all (lit), for a renderer that lights
+# the scene itself.
 # ---------------------------------------------------------------
 
 
@@ -108,7 +111,8 @@ def mesh(name, points, tris, rgb, lit=True, origin=(0.0, 0.0, 0.0)):
                           (len(tris), 3))
     colors = shade(rgb, face_normals(points, tris)) if lit else rgb
     return dict(name=name, points=points, tris=tris, per="face",
-                colors=np.array(colors), origin=np.array(origin, float))
+                colors=np.array(colors), origin=np.array(origin, float),
+                rgb=np.array(rgb), lit=lit)
 
 
 def smooth(name, points, tris, rgb, normals, origin=(0.0, 0.0, 0.0)):
@@ -119,7 +123,8 @@ def smooth(name, points, tris, rgb, normals, origin=(0.0, 0.0, 0.0)):
     return dict(name=name, points=points,
                 tris=np.asarray(tris, dtype=int), per="vertex",
                 colors=shade(rgb, normals),
-                origin=np.array(origin, float))
+                origin=np.array(origin, float),
+                rgb=np.array(rgb), lit=True)
 
 
 _BOX_QUADS = [(0, 1, 3, 2), (4, 6, 7, 5), (0, 4, 5, 1),

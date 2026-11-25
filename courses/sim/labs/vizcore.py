@@ -9,7 +9,7 @@ Self-test:  python labs/vizcore.py
 import numpy as np
 
 # ----------------------------------------------------------------
-# 1.1  Datasets: topology + geometry + attributes
+# Datasets: topology + geometry + attributes
 # ----------------------------------------------------------------
 
 
@@ -45,7 +45,7 @@ def grid_to_mesh(X, Y, Z):
 
 
 def subsample_grid(X, Y, Z, stride):
-    """1.5.7 data reduction: keep every stride-th sample."""
+    """Data reduction: keep every stride-th sample."""
     return X[::stride, ::stride], Y[::stride, ::stride], \
         Z[::stride, ::stride]
 
@@ -79,7 +79,7 @@ def grid_normals(X, Y, Z):
 
 
 # ----------------------------------------------------------------
-# 1.2.1  Colour mapping: scalar -> lookup table -> colour
+# Colour mapping: scalar -> lookup table -> colour
 # ----------------------------------------------------------------
 
 _VIRIDIS = np.array([
@@ -136,7 +136,7 @@ def luminance(rgb):
 
 
 # ----------------------------------------------------------------
-# 1.2.2  Contouring: marching squares
+# Contouring: marching squares
 # ----------------------------------------------------------------
 
 # For each of the 16 cases: which cell edges the contour crosses.
@@ -205,7 +205,7 @@ def saddle_check(n=8):
 
 
 # ----------------------------------------------------------------
-# 1.3.4  Time integration
+# Time integration
 # ----------------------------------------------------------------
 
 
@@ -280,7 +280,7 @@ def simulate_throw(pos0, vel0, dt, steps, half, g=9.81):
 
 
 # ----------------------------------------------------------------
-# 1.4  Tensors: inertia and its principal axes
+# Tensors: inertia and its principal axes
 # ----------------------------------------------------------------
 
 
@@ -317,7 +317,7 @@ def ellipsoid_surface(evals, evecs, n=24):
 
 
 # ----------------------------------------------------------------
-# 1.5.2 / 1.5.3  Implicit functions and distance fields
+# Implicit functions and distance fields
 # ----------------------------------------------------------------
 
 
@@ -390,7 +390,7 @@ def mesh_volume(points, tris):
 
 
 # ----------------------------------------------------------------
-# 1.5.4  Glyphs: orient an object along a vector
+# Glyphs: orient an object along a vector
 # ----------------------------------------------------------------
 
 
@@ -414,7 +414,7 @@ def quat_rotate(q, v):
 
 
 # ----------------------------------------------------------------
-# 1.5.6  Probing: sample a scene along rays
+# Probing: sample a scene along rays
 # ----------------------------------------------------------------
 
 

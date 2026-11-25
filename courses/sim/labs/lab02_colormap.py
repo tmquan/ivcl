@@ -1,4 +1,4 @@
-"""Lab 2 (handbook 1.1.2, 1.2.1): a source -> filter -> sink
+"""Lab 2: a source -> filter -> sink
 pipeline that colour-maps elevation, with two lookup tables.
 
 Run (env isaac):  python labs/lab02_colormap.py --stream

@@ -1,4 +1,4 @@
-"""Lab 10 (handbook 1.5.6): probing. A sensor samples the scene
+"""Lab 10: probing. A sensor samples the scene
 along rays; how many rays decides what the robot can see.
 
 Run (env isaac):  python labs/lab10_probe.py --stream

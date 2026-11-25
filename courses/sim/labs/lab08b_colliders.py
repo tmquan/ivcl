@@ -1,4 +1,4 @@
-"""Lab 8, part B (handbook 1.5.2, 1.5.3, 1.5.7): the collision
+"""Lab 8, part B: the collision
 shape is a model of the mesh. Drop a ball onto a ring and change
 the model.
 

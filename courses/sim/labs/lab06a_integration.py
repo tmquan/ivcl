@@ -1,4 +1,4 @@
-"""Lab 6, part A (handbook 1.3.4): Euler against Runge-Kutta 2 in
+"""Lab 6, part A: Euler against Runge-Kutta 2 in
 a field where the exact answer is a circle. Plain NumPy; the
 simulator is not started.
 

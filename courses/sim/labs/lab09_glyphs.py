@@ -1,4 +1,4 @@
-"""Lab 9 (handbook 1.5.4): glyphs. One cone per sample, turned
+"""Lab 9: glyphs. One cone per sample, turned
 along the surface normal and stretched by the slope.
 
 Run (env isaac):  python labs/lab09_glyphs.py --stream

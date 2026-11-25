@@ -1,4 +1,4 @@
-"""Lab 5 (handbook 1.3.1, 1.3.5): hedgehogs and pathlines.
+"""Lab 5: hedgehogs and pathlines.
 Throw 25 cubes, record position and velocity at every step.
 
 Run (env isaac):  python labs/lab05_vectors.py --stream

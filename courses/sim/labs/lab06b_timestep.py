@@ -1,4 +1,4 @@
-"""Lab 6, part B (handbook 1.3.4): a physics engine is a numerical
+"""Lab 6, part B: a physics engine is a numerical
 integrator. Drop the same cube with three different time steps
 and compare each run with the exact free-fall curve.
 

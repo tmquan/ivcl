@@ -1,4 +1,4 @@
-"""Lab 4 (handbook 1.2.2): contour lines with marching squares,
+"""Lab 4: contour lines with marching squares,
 laid on the terrain inside Isaac Sim.
 
 Run (env isaac):  python labs/lab04_contour.py --stream
