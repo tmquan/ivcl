@@ -5,7 +5,7 @@ Run (env isaac):  python labs/lab01_dataset.py
                   python labs/lab01_dataset.py --stride 4
 Output:           out/lab01.usda
 """
-from simlab import finish, new_stage, parse_args, save, show, start
+from simlab import finish, new_stage, parse_args, save, start, THEME
 
 args = parse_args(n=65, stride=1)
 app = start(args.stream)
@@ -15,13 +15,14 @@ import os
 import numpy as np
 from pxr import Sdf, UsdGeom
 
+import look
 import scenes
 
 stage = new_stage()
 
 # SOURCE: a height field becomes a mesh prim on the stage.
 prims, view = scenes.lab01(args.n, args.stride)
-paths = show(stage, prims, view)
+paths = look.usd_scene(stage, prims, view, THEME)
 mesh = UsdGeom.Mesh(stage.GetPrimAtPath(paths["terrain"]))
 
 

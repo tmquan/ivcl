@@ -8,7 +8,7 @@ Output:           out/lab03.usda, out/depth.npy (metres, H x W),
                   out/depth_rainbow_auto.png,
                   out/depth_viridis_auto.png
 """
-from simlab import (finish, new_stage, parse_args, save, show, start,
+from simlab import (finish, new_stage, parse_args, save, start, THEME,
                     to_np)
 
 args = parse_args()
@@ -28,7 +28,7 @@ import vizcore as vc
 
 stage = new_stage()
 prims, view = scenes.lab03()
-show(stage, prims, view)
+look.usd_scene(stage, prims, view, THEME)
 save("lab03.usda")
 
 # The depth sensor looks through the same camera as the pictures.

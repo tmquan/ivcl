@@ -5,8 +5,8 @@ and compare each run with the exact free-fall curve.
 Run (env isaac):  python labs/lab06b_timestep.py
 Output:           out/timestep_240.csv, _60.csv, _15.csv
 """
-from simlab import (collide, finish, new_stage, parse_args, show, start,
-                    to_np)
+from simlab import (collide, finish, new_stage, parse_args, start,
+                    THEME, to_np)
 
 args = parse_args()
 app = start(args.stream)
@@ -16,6 +16,7 @@ import isaacsim.core.experimental.utils.app as app_utils
 from isaacsim.core.experimental.prims import RigidPrim
 from isaacsim.core.simulation_manager import SimulationManager
 
+import look
 import scenes
 
 Z0, SIZE, DURATION = (scenes.LAB06_Z0, scenes.LAB06_SIZE,
@@ -24,7 +25,7 @@ table = []
 for hz in scenes.LAB06_RATES:
     stage = new_stage()
     prims, view = scenes.lab06()           # ground + cube at 2 m
-    paths = show(stage, prims, view)
+    paths = look.usd_scene(stage, prims, view, THEME)
     body = RigidPrim(paths["cube"])
     collide(paths["cube"], "convexHull")
     collide(paths["ground"])

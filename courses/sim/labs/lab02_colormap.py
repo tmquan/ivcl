@@ -4,13 +4,14 @@ pipeline that colour-maps elevation, with two lookup tables.
 Run (env isaac):  python labs/lab02_colormap.py --stream
 Output:           out/lab02.usda
 """
-from simlab import finish, new_stage, parse_args, save, show, start
+from simlab import finish, new_stage, parse_args, save, start, THEME
 
 args = parse_args(n=65)
 app = start(args.stream)
 
 import numpy as np
 
+import look
 import scenes
 import vizcore as vc
 
@@ -21,7 +22,7 @@ stage = new_stage()
 prims, view = scenes.lab02(args.n)
 
 # SINK: the coloured meshes go on the stage; the renderer draws.
-show(stage, prims, view)
+look.usd_scene(stage, prims, view, THEME)
 
 for p in prims:
     low = p["points"][:, 2].argmin()

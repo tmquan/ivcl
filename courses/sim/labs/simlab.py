@@ -8,7 +8,8 @@ anything else from isaacsim or pxr.
     app = start(stream=True)   # headless + WebRTC stream to the Mac
 
 Every lab accepts --stream and --theme light|dark. What a lab shows
-comes from scenes.py and is put on the stage by look.py.
+comes from scenes.py; the lab puts it on the stage itself, with
+look.usd_scene(stage, prims, view, THEME).
 
 Written against Isaac Sim 6.2 (isaacsim.core.experimental.*).
 The Omniverse licence is accepted in Chapter 0, Step 1; without
@@ -63,12 +64,6 @@ def new_stage():
     import isaacsim.core.experimental.utils.stage as stage_utils
     stage_utils.create_new_stage()
     return stage_utils.get_current_stage()
-
-
-def show(stage, prims, view):
-    """Author a scene from scenes.py: meshes, camera and light.
-    Returns {name: prim path}."""
-    return look.usd_scene(stage, prims, view, THEME)
 
 
 def collide(paths, approximation=None):

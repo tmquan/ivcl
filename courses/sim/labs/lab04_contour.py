@@ -4,19 +4,20 @@ laid on the terrain inside Isaac Sim.
 Run (env isaac):  python labs/lab04_contour.py --stream
 Output:           out/contours.npz, out/lab04.usda
 """
-from simlab import finish, new_stage, parse_args, save, show, start
+from simlab import finish, new_stage, parse_args, save, start, THEME
 
 args = parse_args(n=65)
 app = start(args.stream)
 
 import numpy as np
 
+import look
 import scenes
 import vizcore as vc
 
 stage = new_stage()
 prims, view = scenes.lab04(args.n)     # terrain + contour rods
-show(stage, prims, view)
+look.usd_scene(stage, prims, view, THEME)
 
 saved = {}
 for level, (segs, ambiguous) in scenes.lab04_segments(args.n).items():

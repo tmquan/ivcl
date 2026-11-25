@@ -4,8 +4,8 @@ Throw 25 cubes, record position and velocity at every step.
 Run (env isaac):  python labs/lab05_vectors.py --stream
 Output:           out/vectors.npz, out/lab05.usda
 """
-from simlab import (collide, finish, new_stage, parse_args, save, show,
-                    start, to_np)
+from simlab import (collide, finish, new_stage, parse_args, save, start,
+                    THEME, to_np)
 
 args = parse_args()
 app = start(args.stream)
@@ -23,7 +23,7 @@ DT, STEPS, SNAPSHOT = (scenes.LAB05_DT, scenes.LAB05_STEPS,
 
 stage = new_stage()
 prims, view = scenes.lab05_base()          # ground + 25 cubes
-paths = show(stage, prims, view)
+paths = look.usd_scene(stage, prims, view, THEME)
 cubes = [paths[p["name"]] for p in prims if p["name"] != "ground"]
 bodies = RigidPrim(cubes)                  # the cubes move ...
 collide(cubes, "convexHull")               # ... and collide

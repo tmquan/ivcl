@@ -5,8 +5,8 @@ the model.
 Run (env isaac):  python labs/lab08b_colliders.py
 Output:           out/colliders.csv, out/lab08.usda
 """
-from simlab import (collide, finish, new_stage, parse_args, save, show,
-                    start, to_np)
+from simlab import (collide, finish, new_stage, parse_args, save, start,
+                    THEME, to_np)
 
 args = parse_args()
 app = start(args.stream)
@@ -15,6 +15,7 @@ import isaacsim.core.experimental.utils.app as app_utils
 from isaacsim.core.experimental.prims import RigidPrim
 from isaacsim.core.simulation_manager import SimulationManager
 
+import look
 import scenes
 
 DT = 1 / 120
@@ -23,7 +24,7 @@ for approximation in ("convexHull", "convexDecomposition", "sdf",
                       "none"):
     stage = new_stage()
     prims, view = scenes.lab08()             # ground, ring, ball
-    paths = show(stage, prims, view)
+    paths = look.usd_scene(stage, prims, view, THEME)
     if not rows:
         save("lab08.usda")                   # the start of every run
     collide(paths["ring"], approximation)    # <- the model under test

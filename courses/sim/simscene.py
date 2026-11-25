@@ -4,15 +4,20 @@ A scene is a list of shapes and a camera. It is written down once, in labs/scene
 labs/scenes.py, the files the lab scripts use on the DGX Spark. This module draws the same
 scenes, and the charts and diagrams of the pages, with NumPy and matplotlib only:
 
-    show(HelloCube())            a 3D scene: a canvas you can turn, with Play if it has time
-    show(FallChart())            a chart or a diagram: every item answers to the pointer
+    refresh("chapter0.ipynb")    the picture of every folded cell of a notebook, drawn again
+    show(HelloCube())            one picture, in a notebook cell of your own
     colour("chapter0.ipynb")     the code blocks of a page in the colours Notion gives them
 
-Every figure also has a still picture, shown where a page cannot run scripts.
+A folded code cell of the pages holds a script for Isaac Sim, exactly as it is in labs/. It runs
+on the DGX Spark, not when a page is made; the picture under it is the one this module draws for it.
+
+    3D scene             a canvas you can turn, lit like a studio shot, with Play if it has time
+    chart or diagram     every item answers to the pointer and can be selected
+    everywhere else      a still picture
 
 Four class families, each with methods that its subclasses override:
 
-    Picture    Scene, Chart                  bundle()                 what a notebook cell displays
+    Picture    Scene, Chart                  bundle()                 what stands under a notebook cell
     Scene      HelloCube, Terrain, ...       shapes(), motion()       the triangle meshes, what moves with time
     Chart      SetupDiagram, FallChart, ...  plot(fig), items(sheet)  the still picture, the interactive figure
     Renderer   Still, Canvas, Plot, Stage    draw(picture)            pixels, a 3D canvas, a Plotly figure, a USD stage
@@ -57,6 +62,26 @@ def show(*pictures):
     from IPython.display import display
     for picture in pictures:
         display(picture.bundle(), raw=True)
+
+
+def refresh(notebook):
+    """Draws the pictures of a notebook again and puts them under their cells.
+
+    A folded code cell of the pages holds a script for Isaac Sim, exactly as it is in labs/. Such a cell is
+    not run when the page is made (its tag says "skip-execution"); what stands under it is the picture
+    that this module draws for the script. The cell names that picture in its metadata, as in
+    "simscene": "HelloCube"."""
+    path = Path(notebook)
+    book = json.loads(path.read_text(encoding="utf-8"))
+    count = 0
+    for cell in book["cells"]:
+        name = cell.get("metadata", {}).get("simscene")
+        if cell["cell_type"] == "code" and name:
+            cell["outputs"] = [dict(output_type="display_data", metadata={}, data=globals()[name]().bundle())]
+            cell["execution_count"] = None
+            count += 1
+    path.write_text(json.dumps(book, indent=1, ensure_ascii=False) + "\n", encoding="utf-8")
+    return count
 
 
 # ------------------------------------------------------------------------------------------
@@ -115,6 +140,14 @@ class FallingCube(HelloCube):
         return dict(labels=[f"t = {v:.3f} s" for v in t], seconds=4.0, moves={"cube": np.stack([0 * t, 0 * t, z - rest], axis=1)}, shows={})
 
 
+class RedCube(HelloCube):
+    """The cube after the change of Step 8"""
+
+    def shapes(self):
+        ground, _cube = super().shapes()
+        return [ground, look.box("cube", (0.0, 0.0, self.height), chapter0.SIZE, (0.86, 0.08, 0.24))]
+
+
 class LabScene(Scene):
     """A scene of Chapter 1: shapes and camera come from one function of labs/scenes.py."""
 
@@ -135,6 +168,13 @@ class Terrain(LabScene):
 
     def build(self):
         return chapter1.lab01(taller=True)
+
+
+class CoarseTerrain(LabScene):
+    """The terrain with one sample in eight kept"""
+
+    def build(self):
+        return chapter1.lab01(n=129, stride=8, taller=True)
 
 
 class ColourMaps(LabScene):

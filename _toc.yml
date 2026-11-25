@@ -29,6 +29,12 @@ parts:
     - file: courses/fme/bank_pairs.ipynb
     - file: courses/fme/bank_other.ipynb
 
+  - caption: Simulation
+    chapters:
+    - file: courses/sim/isaacsim101.md
+    - file: courses/sim/chapter0.ipynb
+    - file: courses/sim/chapter1.ipynb
+
   - caption: Medical Image Processing
     chapters:
     - file: courses/mip/intro.md     
@@ -44,12 +50,6 @@ parts:
     - file: courses/mip/em.md
     # - file: courses/mip/fg.md
     # - file: courses/mip/oct.md
-
-  - caption: Simulation
-    chapters:
-    - file: courses/sim/isaacsim101.md
-    - file: courses/sim/chapter0.ipynb
-    - file: courses/sim/chapter1.ipynb
 
 # parts:
 # - caption: Publications

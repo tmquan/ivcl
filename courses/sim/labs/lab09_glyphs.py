@@ -4,7 +4,7 @@ along the surface normal and stretched by the slope.
 Run (env isaac):  python labs/lab09_glyphs.py --stream
 Output:           out/lab09.usda
 """
-from simlab import finish, new_stage, parse_args, save, show, start
+from simlab import finish, new_stage, parse_args, save, start, THEME
 
 args = parse_args(n=65, every=4)
 app = start(args.stream)
@@ -16,7 +16,7 @@ import scenes
 
 stage = new_stage()
 prims, view = scenes.lab09_terrain(args.n)
-show(stage, prims, view)
+look.usd_scene(stage, prims, view, THEME)
 
 # Where each cone stands, how it is turned, how long it is.
 bases, quats, lengths, normals = scenes.lab09_glyphs(args.n, args.every)

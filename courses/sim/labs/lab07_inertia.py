@@ -4,8 +4,8 @@ Read it from the physics engine and find its principal axes.
 Run (env isaac):  python labs/lab07_inertia.py --stream
 Output:           out/inertia.npz, out/lab07.usda
 """
-from simlab import (collide, finish, new_stage, parse_args, save, show,
-                    start, to_np)
+from simlab import (collide, finish, new_stage, parse_args, save, start,
+                    THEME, to_np)
 
 args = parse_args()
 app = start(args.stream)
@@ -20,7 +20,7 @@ import vizcore as vc
 
 stage = new_stage()
 prims, view = scenes.lab07_base()            # ground + box
-paths = show(stage, prims, view)
+paths = look.usd_scene(stage, prims, view, THEME)
 body = RigidPrim(paths["box"], masses=[scenes.LAB07_MASS])
 collide(paths["box"], "convexHull")
 collide(paths["ground"])

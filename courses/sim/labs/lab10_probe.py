@@ -4,8 +4,8 @@ along rays; how many rays decides what the robot can see.
 Run (env isaac):  python labs/lab10_probe.py --stream
 Output:           out/probe.npz, out/lab10.usda
 """
-from simlab import (collide, finish, new_stage, parse_args, save, show,
-                    start)
+from simlab import (collide, finish, new_stage, parse_args, save, start,
+                    THEME)
 
 args = parse_args()
 app = start(args.stream)
@@ -21,7 +21,7 @@ import vizcore as vc
 
 stage = new_stage()
 prims, view = scenes.lab10_base()            # ground + obstacles
-paths = show(stage, prims, view)
+paths = look.usd_scene(stage, prims, view, THEME)
 collide([paths[p["name"]] for p in prims if p["name"] != "ground"])
 
 app_utils.play()
