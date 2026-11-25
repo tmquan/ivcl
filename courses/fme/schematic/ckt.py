@@ -77,7 +77,8 @@ class Transistor:
 
     def name(self, index, loc='auto', dy=0, dx=0):
         """label the device: name(1) writes Q_1 or M_1"""
-        self.note('%s_%s' % (self.letter, index), loc, dy, dx)
+        self.inst.label = '%s_%s' % (self.letter, index)             # the name of the element, for a renderer that asks
+        self.note(self.inst.label, loc, dy, dx)
 
     def note(self, text, loc='auto', dy=0, dx=0):
         """write something beside the device, such as its name or the condition `ideal`"""
@@ -129,6 +130,7 @@ class MOSFET(Transistor):
 
     def size(self, text):
         i = self.inst
+        i.size = text
         if self.mir:
             self.ckt.sc.text(text, i.x - 8, i.y + i.h / 2 - 20, 'end')
         else:
@@ -181,6 +183,7 @@ class Ckt:
         want = {'down': (0, 1), 'left': (-1, 0), 'right': (1, 0)}[to]
         rot = next(r for r in range(4) if _dir(Inst('resistor', 0, 0, r, False, S.SYM['resistor']).t, 'a', 'b') == want)
         i = self.sc.put('resistor', 'a', p, rot)
+        i.label = label
         if label and to == 'down':
             if side == 'l':
                 self.sc.text(label, p[0] - 18, p[1] + 30, 'end')

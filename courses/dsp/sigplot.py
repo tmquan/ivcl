@@ -665,7 +665,7 @@ class InteractivePlot(Plot):
         self.figure.add_trace(go.Scatter(
             x=np.round(x, 6), y=np.round(y, 6), name=name, showlegend=False,
             meta=dict(variable=var, value=value),
-            hovertemplate='<i>%s</i> = %%{x:.4g}<br>%s = %%{y:.4g}<extra>%s</extra>' % (var, value, name or role),
+            hovertemplate='<i>%s</i> = %%{x:.4~g}<br>%s = %%{y:.4~g}<extra>%s</extra>' % (var, value, name or role),
             **style), row=self.row, col=self.col)
 
     def marks(self, role, size, hidden=False):

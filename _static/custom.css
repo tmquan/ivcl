@@ -29,6 +29,11 @@ code, kbd, pre, samp, tt, .highlight pre, .highlight pre span, code span.pre {
 p {
     text-align: justify;
 }
+/* only the text of a page is justified: in the narrow sidebars and in the links to the previous
+   and the next page, justified lines pull their words apart */
+.bd-sidebar-primary p, .bd-sidebar-secondary p, .bd-sidebar p, .bd-toc p, .prev-next-area p, .bd-footer p, .footer p {
+    text-align: left;
+}
 
 /* courses/fme (BJT and MOSFET Circuits): BJT and MOSFET columns of equal width.
    The theme shows tables as scrollable blocks whose columns follow their content.
