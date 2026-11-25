@@ -21,6 +21,7 @@ parts:
   - caption: Fundamentals of Microelectronics
     chapters:
     - file: courses/fme/index.ipynb
+    - file: courses/fme/gallery.ipynb
     - file: courses/fme/problems.ipynb
     - file: courses/fme/bank_one.ipynb
     - file: courses/fme/bank_bias.ipynb

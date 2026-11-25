@@ -10,11 +10,11 @@ from . import symbols, scene, tex, poly
 from .scene import Scene, RED
 from .ckt import Ckt, Transistor, BJT, MOSFET, mid
 
-__all__ = ['symbols', 'scene', 'tex', 'poly', 'Scene', 'RED', 'Ckt', 'Transistor', 'BJT', 'MOSFET', 'mid', 'show', 'grid', 'panels', 'build', 'draw', 'names', 'symbol_sheet']
+__all__ = ['symbols', 'scene', 'tex', 'poly', 'Scene', 'RED', 'Ckt', 'Transistor', 'BJT', 'MOSFET', 'mid', 'show', 'grid', 'panels', 'build', 'draw', 'names', 'symbol_sheet', 'gallery']
 
 
 def __getattr__(name):          # matplotlib and Plotly are imported only when a renderer is used
-    if name in ('show', 'symbol_sheet'):                 # the interactive canvas; mpl.show draws the same figure as a picture
+    if name in ('show', 'symbol_sheet', 'gallery'):                 # the interactive canvas; mpl.show draws the same figure as a picture
         from . import canvas
         return getattr(canvas, name)
     if name in ('grid', 'panels', 'build', 'draw', 'names'):
