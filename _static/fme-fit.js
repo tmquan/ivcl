@@ -5,7 +5,7 @@
    changes its width. */
 (function () {
     function fit() {
-        var formulas = document.querySelectorAll('section[id^="bjt-and-mosfet-"] td mjx-container');
+        var formulas = document.querySelectorAll('section[id^="transistor-"] td mjx-container');
         formulas.forEach(function (m) { m.style.removeProperty('zoom'); });
         formulas.forEach(function (m) {
             var cell = m.closest('td');
@@ -26,7 +26,7 @@
         }
     }
     function start() {
-        if (!document.querySelector('section[id^="bjt-and-mosfet-"]')) { return; }
+        if (!document.querySelector('section[id^="transistor-"]')) { return; }
         whenSet(0);
         window.addEventListener('resize', fit);
         /* a tab that was hidden has no width until it is shown: fit its formulas when a tab is chosen */
