@@ -8,7 +8,7 @@ SITE_NAME = 'Intelligent Visual Computing'
 
 PAGES = {
     'courses/fme/index': dict(
-        title='BJT and MOSFET Circuits',
+        title='Transistor Circuits',
         description='One transistor in eight roles, its impedances and gains, and forty-two circuits of two '
                     'transistors, each drawn as a BJT version and as a MOSFET version.',
         image='_images/fme_gallery.png', width=1200, height=630,
