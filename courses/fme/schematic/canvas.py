@@ -402,73 +402,128 @@ def symbol_sheet(keys=None, cols=6, zoom=1.0, compact=False):
 
 # ---------------------------------------------------------------- the gallery: many circuits on one sheet
 
-GALLERY_BAND, GALLERY_NAME, GALLERY_NOTE = 44, 30, 14      # px: band of a group title, band of a name, size of a note
-SNAP = 5                                                     # px: every drawing of a sheet is moved by a multiple of this
+GRID = 10                      # px: the grid of the sheet; every edge, line and drawing sits on it
+SNAP = 5                       # px: a drawing whose axis lies between two grid lines is moved by half a step
+COLUMNS = 4                    # cells in a row; a cell is as wide as a cell of the other figures (340 px = 34 steps)
+PART_H, NAME_H, PAD = 50, 30, 10                 # px: band of a part, band of a name, clear space around a drawing
+CARD_PAD, CARD_TITLE, CARD_TEXT, CARD_LINE = 20, 26, 18, 26   # px: the card of a band
+PART_FILL, CARD_FILL, CARD_GREY = '#1f2937', '#f3f4f6', '#374151'
 
 
-def gallery(groups, device=MOSFET, columns=4, zoom=1.0):
-    """A sheet of circuits for reference, drawn with one transistor class, on one canvas.
+def _up(v, step=GRID):
+    """v, moved up to the next line of the grid"""
+    return step * -(-v // step)
 
-    groups = [(title, [(circuit, note), ...]), ...]: a band with the title, then the circuits of the group in rows
-    of `columns` cells.  A cell holds the name of the circuit, the drawing, and at most a short note under it.
 
-    The drawings are the ones of the other pages, unchanged, so the rules they were drawn by still hold inside
-    each of them (devices on one line, joints in the middle of their runs, everything on the 10 px grid).  On the
-    sheet: the cells are equally wide; a drawing stands with its axis on the centre line of its cell; the drawings
-    of a row stand on one line, the line of their first transistor (the origin of the drawing); and every drawing
-    is moved by whole grid steps, so the grids of all drawings coincide."""
+def gallery(bands, device=MOSFET, zoom=1.0, draw=True):
+    """A sheet of circuits to look things up on, drawn with one transistor class, on one canvas.
+
+    The sheet is a grid of four equal columns.  It is made of bands, and every band reads the same way:
+
+        on the left a card (title, one idea, at most a formula), one to three columns wide;
+        on the right the circuits of that idea, in columns of two: a circuit, and under it its variant.
+
+    So a column is always "this, and what it becomes", and the cards down the left edge are the table of
+    contents.  A band with three such columns has a card of one column, a band with two a card of two.
+
+    bands = [('part', title, subtitle),                                  a dark band that opens a part
+             (title, [lines of text], [formulas], [(top, bottom), ...]),   a band; top and bottom are
+             ...]                                                          (circuit, note) or None
+
+    The drawings are those of the other pages, unchanged, so the rules they were drawn by hold inside each of
+    them.  On the sheet every drawing is moved by whole steps of the grid, so all grids coincide: its axis is on
+    the centre line of its cell (which is on the grid), and the two drawings of a column share that line; the
+    drawings of a row are aligned at the top, the top of each circuit on one line of the grid; the names stand on
+    one line and the notes of a row on one line."""
     from . import mpl
-    if not _notebook():                                               # a script: nothing to show
+    if draw and not _notebook():                                      # a script: nothing to show
         return None
     which = (BJT, MOSFET).index(device)
-    cells = []                                                        # per group: [(name, scene, note lines, note height)]
-    for title, entries in groups:
-        row = []
-        for circuit, note in entries:
-            name = mpl.names(circuit)[which]
-            assert name, '%s has no %s version' % (circuit.__name__, device.__name__)
-            lines, height = mpl._note(note or '')
-            row.append((name, mpl.build(circuit, device), lines, height))
-        cells.append((title, row))
-    far = max(max(_reach(sc)) for _, row in cells for _, sc, _, _ in row)
-    step = 2 * SNAP
-    cw = max(PANEL_W, step * -(-2 * (far + MARGIN) // step))          # as wide as a cell of the other figures, on the grid
-    W = columns * cw
-    plan, y = [], 0                                                   # (kind, y, ...) in the order of drawing
-    for title, row in cells:
-        plan.append(('band', y, title)); y += GALLERY_BAND
-        for k in range(0, len(row), columns):
-            part = row[k:k + columns]
-            boxes = [sc.bounds() for _, sc, _, _ in part]
-            up = step * -(-max(-b[1] for b in boxes) // step)         # room above and below the common line, on the grid
-            down = step * -(-max(b[3] for b in boxes) // step)
-            notes = max(h for _, _, _, h in part)
-            base = y + GALLERY_NAME + MARGIN + up                     # the line on which the origins of the drawings stand
-            base = step * -(-base // step)
-            top = y
-            y = base + down + MARGIN + (notes + MARGIN if notes else 0)
-            y = step * -(-y // step)
-            plan.append(('row', top, base, part, y))
-    canvas = Canvas(W, y, zoom)
-    for item in plan:
-        if item[0] == 'band':
-            _, top, title = item
-            canvas.parts.append('<rect x="0" y="%.1f" width="%.1f" height="%d" fill="#f2f3f5"/>' % (top, W, GALLERY_BAND))
-            canvas.text(title, MARGIN, top + GALLERY_BAND / 2, 'start', size=19, bold=True)
+    cw = _up(max(PANEL_W, 2 * (MARGIN + max(
+        max(_reach(mpl.build(c[0], device))) for b in bands if b[0] != 'part' for col in b[3] for c in col if c))), 2 * GRID)
+    W = COLUMNS * cw
+
+    def cell(entry):
+        circuit, note = entry
+        name = mpl.names(circuit)[which]
+        assert name, '%s has no %s version' % (circuit.__name__, device.__name__)
+        lines, height = mpl._note(note or '')
+        return name, mpl.build(circuit, device), lines, height
+
+    def card(title, text, formulas, width, canvas, top):
+        """the card of a band, drawn on `canvas` with its top at `top`; returns its height (canvas None: only that)"""
+        ty = top + CARD_PAD + CARD_TITLE / 2
+        for line_ in _wrap(title, CARD_TITLE, width - 2 * CARD_PAD):
+            if canvas:
+                canvas.text(line_, CARD_PAD, ty, 'start', size=CARD_TITLE, bold=True)
+            ty += CARD_TITLE + 8
+        ty += 6
+        for sentence in text:
+            for line_ in _wrap(sentence, CARD_TEXT, width - 2 * CARD_PAD):
+                if canvas:
+                    canvas.text(line_, CARD_PAD, ty, 'start', size=CARD_TEXT, color=CARD_GREY)
+                ty += CARD_LINE
+            ty += 4
+        ty += 10
+        for formula in formulas:                                      # maths: Computer Modern
+            _, lo, _, hi = T.extent(formula, 21, 'mixed')
+            if canvas:
+                canvas.parts.append('<path d="%s" fill="#000" stroke="none"/>' % T.svg_d(formula, 21, CARD_PAD, ty + hi, 'start', 'mixed'))
+            ty += hi - lo + 18
+        return ty - top + CARD_PAD
+
+    plan, y = [], 0
+    for band in bands:
+        if band[0] == 'part':
+            plan.append(('part', y, band[1], band[2])); y += PART_H
             continue
-        _, top, base, part, bottom = item
-        note_y = base + step * -(-max(sc.bounds()[3] for _, sc, _, _ in part) // step) + MARGIN
+        title, text, formulas, columns = band
+        span = COLUMNS - len(columns)                                 # columns of the card
+        assert 1 <= span <= 3, 'a band has one to three columns of circuits: %s' % title
+        rows, top = [], y
+        for r in (0, 1):
+            part = [(j, cell(col[r])) for j, col in enumerate(columns) if col[r]]
+            if not part:
+                continue
+            tops = [GRID * (sc.bounds(texts=False)[1] // GRID) for _, (_, sc, _, _) in part]   # top of each circuit
+            boxes = [sc.bounds() for _, (_, sc, _, _) in part]
+            head = _up(max(t - b[1] for t, b in zip(tops, boxes)))    # room for a label above the top line
+            line = _up(y + NAME_H + PAD + head)
+            down = _up(max(b[3] - t for t, b in zip(tops, boxes)))
+            notes = max(h for _, (_, _, _, h) in part)
+            rows.append((y, line, [line - t for t in tops], line + down + PAD, part))
+            y = _up(line + down + PAD + (notes + PAD if notes else 0))
+        y = max(y, _up(top + card(title, text, formulas, span * cw, None, 0)))      # a band is at least as tall as its card
+        plan.append(('band', top, y, span, title, text, formulas, rows))
+    canvas = Canvas(W, y, zoom)
+
+    for item in plan:
+        if item[0] == 'part':
+            _, top, title, sub = item
+            canvas.parts.append('<rect x="0" y="%d" width="%d" height="%d" fill="%s"/>' % (top, W, PART_H, PART_FILL))
+            canvas.text(title, CARD_PAD, top + PART_H / 2, 'start', size=24, bold=True, color='#fff')
+            canvas.text(sub, W - CARD_PAD, top + PART_H / 2, 'end', size=17, color='#d1d5db')
+            continue
+        _, top, bottom, span, title, text, formulas, rows = item
+        x0 = span * cw                                                # where the circuits begin
+        canvas.parts.append('<rect x="0" y="%d" width="%d" height="%d" fill="%s"/>' % (top, x0, bottom - top, CARD_FILL))
+        card(title, text, formulas, x0, canvas, top)
         canvas.rule(0, top, W, top)
-        for j, (name, sc, lines, _) in enumerate(part):
-            xc = j * cw + cw / 2
-            canvas.text(name, xc, top + GALLERY_NAME / 2 + 4, size=15, bold=True)
-            dx = SNAP * round((xc - sc.axis) / SNAP)                  # the axis on the centre line, to the nearest grid step
-            assert abs(dx + sc.axis - xc) <= SNAP / 2 and base % step == 0
-            canvas.place(Cell(sc, dx, base, 0, 0))
-            below = note_y                                            # the notes of a row stand on one line
-            for text, baseline in lines:                              # the note, in Computer Modern, right under its drawing
-                canvas.parts.append('<path d="%s" fill="#000" stroke="none"/>'
-                                    % T.svg_d(text, mpl.NOTE, xc, below + baseline, 'middle', 'mixed'))
-            if j:
-                canvas.rule(j * cw, top, j * cw, bottom)
-    canvas.draw()
+        for k, (ry, line, moves, note_y, part) in enumerate(rows):
+            if k:
+                canvas.rule(x0, ry, W, ry)
+            for (j, (name, sc, lines, _)), move in zip(part, moves):
+                xc = x0 + j * cw + cw / 2
+                canvas.text(name, xc, ry + NAME_H / 2 + 4, size=16, bold=True)
+                dx = SNAP * round((xc - sc.axis) / SNAP)              # the axis on the centre line of the cell
+                assert abs(dx + sc.axis - xc) <= SNAP / 2 and move % GRID == 0 and xc % GRID == 0
+                canvas.place(Cell(sc, dx, move, 0, 0))
+                for text_, baseline in lines:                         # the note: Computer Modern, one line per row
+                    canvas.parts.append('<path d="%s" fill="#000" stroke="none"/>'
+                                        % T.svg_d(text_, mpl.NOTE, xc, note_y + baseline, 'middle', 'mixed'))
+        for j in range(COLUMNS - span):
+            canvas.rule(x0 + j * cw, top, x0 + j * cw, bottom)
+    canvas.rule(0, y, W, y)
+    if draw:
+        canvas.draw()
+    return None if draw else canvas
