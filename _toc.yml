@@ -21,6 +21,7 @@ parts:
   - caption: Fundamentals of Microelectronics
     chapters:
     - file: courses/fme/index.ipynb
+    - file: courses/fme/problems.ipynb
 
   - caption: Medical Image Processing
     chapters:

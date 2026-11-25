@@ -839,6 +839,97 @@ def names(f):
     return tuple('' if p == '-' else p for p in (parts[0], parts[-1]))
 
 
+# ================================================================ circuits of the problem sets
+def bias_divider(c):
+    """Divider bias with emitter degeneration | Divider bias with source degeneration"""
+    t1 = c.transistor('n', (0, 0), 'cd', name=1)
+    C, E = t1.pin('cd'), t1.pin('es')
+    c.supply((0, -130)); c.w((0, -130), (0, -110))
+    c.w(c.res((0, -110), 'R_' + C), t1.cd)
+    c.w(t1.es, (0, 100)); c.w(c.res((0, 100), 'R_' + E), (0, 180)); c.gnd((0, 180))
+    x = t1.bg[0] - 40                                       # the divider stands left of the transistor
+    c.w(t1.bg, (x, 40)); c.dot((x, 40))
+    c.supply((x, -60), side='l'); c.w((x, -60), (x, -40))
+    c.w(c.res((x, -40), 'R_1', side='l'), (x, 60))
+    c.w(c.res((x, 60), 'R_2', side='l'), (x, 140)); c.gnd((x, 140))
+
+
+def bias_self(c):
+    """Self-biased common emitter | Self-biased common source"""
+    t1 = c.transistor('n', (0, 0), 'cd', name=1)
+    c.supply((0, -130)); c.w((0, -130), (0, -110))
+    top = (0, -20)
+    c.w(c.res((0, -110), 'R_' + t1.pin('cd')), t1.cd); c.dot(top)
+    c.w(top, (-20, -20))                                    # the resistor from the output back to the input
+    left = c.res((-20, -20), 'R_' + t1.pin('bg'), to='left', side='u')
+    c.w(left, (left[0] - 10, -20), (left[0] - 10, 40), t1.bg)
+    if c.pick(False, True):                                 # the MOS stage of the example has a source resistor
+        c.w(t1.es, (0, 100)); c.w(c.res((0, 100), 'R_S'), (0, 180)); c.gnd((0, 180))
+    else:
+        c.w(t1.es, (0, 100)); c.gnd((0, 100))
+
+
+def stage_signal(c):
+    """Common-emitter amplifier, signal circuit | Common-source amplifier, signal circuit"""
+    t1 = c.transistor('n', (0, 0), 'cd', name=1)
+    c.supply((0, -130)); c.w((0, -130), (0, -110))
+    out = (0, -20)
+    c.w(c.res((0, -110), 'R_' + t1.pin('cd'), side='l'), t1.cd); c.dot(out)
+    c.w(out, (120, -20)); c.port((120, -20), 'v_out', 't')
+    c.dot((60, -20)); c.w((60, -20), (60, 0)); c.w(c.res((60, 0), 'R_L'), (60, 80)); c.gnd((60, 80))
+    c.w(t1.es, (0, 100)); c.gnd((0, 100))
+    node = (t1.bg[0] - 12, 40)                              # bias resistance and signal source meet at the input
+    c.w(t1.bg, node); c.dot(node)
+    c.w(node, (node[0], 60)); c.w(c.res((node[0], 60), 'R_' + t1.pin('bg'), side='l'), (node[0], 140)); c.gnd((node[0], 140))
+    c.w(node, (node[0] - 8, 40))
+    left = c.res((node[0] - 8, 40), 'R_sig', to='left', side='u')
+    c.w(left, (left[0] - 10, 40)); c.port((left[0] - 10, 40), 'v_sig', 'b')
+
+
+def pair_loaded(c, degenerated=False, tail='source'):
+    """Differential pair with resistive loads"""
+    c.center(55)
+    t1 = c.transistor('n', (0, 0), 'cd', name=1, lbl='r')
+    t2 = c.transistor('n', (110, 0), 'cd', side='right', name=2, lbl='l')
+    C, E = t1.pin('cd'), t1.pin('es')
+    c.port(t1.bg, 'V_1', 't'); c.port(t2.bg, 'V_2', 't')
+    c.w((0, -110), (0, -130), (110, -130), (110, -110)); c.dot((55, -130))
+    c.w((55, -130), (55, -170)); c.supply((55, -170))
+    c.w(c.res((0, -110), 'R_' + C), t1.cd); c.w(c.res((110, -110), 'R_' + C, side='l'), t2.cd)
+    c.dot((0, -20)); c.w((0, -20), (-40, -20)); c.port((-40, -20), 'V_X', 'l')
+    c.dot((110, -20)); c.w((110, -20), (150, -20)); c.port((150, -20), 'V_Y', 'r')
+    y = 100
+    if degenerated:                                         # a resistor in each emitter or source
+        c.w(t1.es, (0, 90)); c.w(t2.es, (110, 90))
+        c.w(c.res((0, 90), 'R_' + E, side='l'), (0, 170), (110, 170)); c.w(c.res((110, 90), 'R_' + E), (110, 170))
+        y = 170
+    else:
+        c.w(t1.es, (0, y), (110, y), t2.es)
+    c.dot((55, y))
+    if tail == 'source':
+        c.w((55, y), (55, y + 40)); c.port((55, y + 40), 'I_' + E + E, 'b')
+    else:                                                   # the tail source with its output resistance
+        c.w((55, y), (55, y + 20)); c.w(c.res((55, y + 20), 'R_' + E + E), (55, y + 100)); c.gnd((55, y + 100))
+
+
+def pair_degenerated(c):
+    """Differential pair with emitter degeneration | Differential pair with source degeneration"""
+    pair_loaded(c, degenerated=True)
+
+
+def pair_tail_resistance(c):
+    """Differential pair with a finite tail resistance"""
+    pair_loaded(c, tail='resistor')
+
+
+def pair_mirror_load(c):
+    """Differential pair with current-mirror load"""
+    op_amp(c, 3)
+
+
+PROBLEM_CIRCUITS = [bias_divider, bias_self, stage_signal, pair_loaded, pair_degenerated, pair_tail_resistance, pair_mirror_load]
+
+
 TYPES = (n_type, p_type)
 HELPERS = (capacitor_to_ground, pass_device_and_capacitor, op_amp)
 
