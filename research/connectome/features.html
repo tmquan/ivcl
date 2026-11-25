@@ -1,0 +1,851 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Features &#8212; Intelligent Visual Computing</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=6a604523" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=7b9e58ef" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script data-sd-tabs-storage-prefix="sphinx-design-tab-id-" src="../../_static/design-tabs.js?v=fcb327ea"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'research/connectome/features';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Multi-scale" href="multiscale.html" />
+    <link rel="prev" title="Supervision" href="supervision.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../home.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/gpgpu.png" class="logo__image only-light" alt="Intelligent Visual Computing - Home"/>
+    <img src="../../_static/gpgpu.png" class="logo__image only-dark pst-js-only" alt="Intelligent Visual Computing - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../home.html">
+                    Welcome
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Digital Signal Processing</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../courses/dsp/signals.html">Signals and Sequences</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../courses/dsp/systems.html">Systems and Transformations</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Fundamentals of Microelectronics</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../courses/fme/index.html">BJT and MOSFET Circuits</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Medical Image Processing</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../courses/mip/intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../courses/mip/sigsys.html">Signals and Systems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../courses/mip/xr.html">X-ray (XR) Imaging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../courses/mip/ct.html">Computed Tomography (CT)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../courses/mip/mr.html">Magnetic Resonance (MR) Imaging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../courses/mip/pt.html">Positron Emission Tomography (PET)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../courses/mip/es.html">Endoscopy (ES) Imaging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../courses/mip/histo.html">Histology / Histopathology Imaging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../courses/mip/em.html">Electron Microscopy (EM) Imaging</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Simulation</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../courses/sim/isaacsim101.html">IsaacSim101</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Research</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">Connectome Agent</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="representation.html">Representation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="supervision.html">Supervision</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multiscale.html">Multi-scale</a></li>
+<li class="toctree-l2"><a class="reference internal" href="agent.html">Agent</a></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/tmquan/ivcl" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/tmquan/ivcl/issues/new?title=Issue%20on%20page%20%2Fresearch/connectome/features.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/research/connectome/features.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button pst-navbar-icon"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm pst-navbar-icon" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Features</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gaussian-splats">Gaussian splats</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-slab-renderer">The slab renderer</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-many">How many</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#in-isaac-sim">In Isaac Sim</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#geometry">Geometry</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#anisotropy">Anisotropy</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#anisotropy-of-the-acquisition">Anisotropy of the acquisition</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#anisotropy-of-the-tissue">Anisotropy of the tissue</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tests">Tests</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="features">
+<h1>Features<a class="headerlink" href="#features" title="Link to this heading">#</a></h1>
+<p>Three features describe the tissue: its geometry, its anisotropy, and the Gaussian splats that carry both.</p>
+<p>A Gaussian splat is one node of a <a class="reference internal" href="representation.html"><span class="std std-doc">Frame</span></a>: a ball of the medial axis, stretched to an ellipsoid.</p>
+<section id="gaussian-splats">
+<h2>Gaussian splats<a class="headerlink" href="#gaussian-splats" title="Link to this heading">#</a></h2>
+<p>A Gaussian is a soft ellipsoid of material. Its density at a point <span class="math notranslate nohighlight">\(x\)</span> (in nanometres) is</p>
+<div class="math notranslate nohighlight">
+\[
+g(x) = a \, \exp\!\left(-\tfrac{1}{2} (x - \mu)^\top \Sigma^{-1} (x - \mu)\right),
+\qquad
+\Sigma = R \, \mathrm{diag}(s_1^2, s_2^2, s_3^2) \, R^\top
+\]</div>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Size</p></th>
+<th class="head"><p>Meaning</p></th>
+<th class="head"><p>Trained by</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Centre <span class="math notranslate nohighlight">\(\mu\)</span></p></td>
+<td><p>3</p></td>
+<td><p>Position, nm</p></td>
+<td><p>Raw</p></td>
+</tr>
+<tr class="row-odd"><td><p>Rotation <span class="math notranslate nohighlight">\(R\)</span>, as a quaternion</p></td>
+<td><p>4</p></td>
+<td><p>Orientation of the axes</p></td>
+<td><p>Raw</p></td>
+</tr>
+<tr class="row-even"><td><p>Scales <span class="math notranslate nohighlight">\(s_1 \ge s_2 \ge s_3\)</span></p></td>
+<td><p>3</p></td>
+<td><p>Half-lengths of the axes, nm</p></td>
+<td><p>Raw</p></td>
+</tr>
+<tr class="row-odd"><td><p>Amplitude <span class="math notranslate nohighlight">\(a\)</span></p></td>
+<td><p>1</p></td>
+<td><p>How much material</p></td>
+<td><p>Raw</p></td>
+</tr>
+<tr class="row-even"><td><p>Intensity <span class="math notranslate nohighlight">\(c\)</span></p></td>
+<td><p>1</p></td>
+<td><p>Grey value it contributes</p></td>
+<td><p>Raw</p></td>
+</tr>
+<tr class="row-odd"><td><p>Identity vector <span class="math notranslate nohighlight">\(e\)</span></p></td>
+<td><p>16</p></td>
+<td><p>Which object it belongs to</p></td>
+<td><p>Segmentation</p></td>
+</tr>
+<tr class="row-even"><td><p>Class scores <span class="math notranslate nohighlight">\(k\)</span></p></td>
+<td><p>One per class</p></td>
+<td><p>What kind of structure it is</p></td>
+<td><p>Class type</p></td>
+</tr>
+<tr class="row-odd"><td><p>Level, parent</p></td>
+<td><p>2</p></td>
+<td><p>Place in the scale hierarchy</p></td>
+<td><p>The <a class="reference internal" href="multiscale.html"><span class="std std-doc">multi-scale cycle</span></a></p></td>
+</tr>
+<tr class="row-even"><td><p>Component</p></td>
+<td><p>1</p></td>
+<td><p>The Frame it is a node of</p></td>
+<td><p>The agent</p></td>
+</tr>
+<tr class="row-odd"><td><p>Confidence</p></td>
+<td><p>1</p></td>
+<td><p>How well it is supported</p></td>
+<td><p>All</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>About 46 numbers, 184 bytes, per Gaussian.</p>
+<section id="the-slab-renderer">
+<h3>The slab renderer<a class="headerlink" href="#the-slab-renderer" title="Link to this heading">#</a></h3>
+<p>A pixel of a <a class="reference internal" href="representation.html"><span class="std std-doc">view</span></a> is the mean, over the thickness <span class="math notranslate nohighlight">\(t\)</span> of the slab, of what the Gaussians contribute. In the coordinates of the camera, write a point as <span class="math notranslate nohighlight">\((p, z)\)</span> with <span class="math notranslate nohighlight">\(p\)</span> in the plane and <span class="math notranslate nohighlight">\(z\)</span> along the normal, and split the centre and covariance in the same way:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\mu = \begin{pmatrix} \mu_p \\ \mu_z \end{pmatrix},
+\qquad
+\Sigma = \begin{pmatrix} \Sigma_{pp} &amp; \Sigma_{pz} \\ \Sigma_{zp} &amp; \sigma_{zz} \end{pmatrix}
+\end{split}\]</div>
+<p>Along the normal through a pixel at <span class="math notranslate nohighlight">\(p\)</span>, the Gaussian is a 1D Gaussian with centre and variance</p>
+<div class="math notranslate nohighlight">
+\[
+m(p) = \mu_z + \Sigma_{zp} \Sigma_{pp}^{-1} (p - \mu_p),
+\qquad
+v = \sigma_{zz} - \Sigma_{zp} \Sigma_{pp}^{-1} \Sigma_{pz}
+\]</div>
+<p>Integrating it over the slab from <span class="math notranslate nohighlight">\(z_0 - t/2\)</span> to <span class="math notranslate nohighlight">\(z_0 + t/2\)</span> gives the weight of the Gaussian at that pixel:</p>
+<div class="math notranslate nohighlight">
+\[
+w(p) = a \, \exp\!\left(-\tfrac{1}{2} (p - \mu_p)^\top \Sigma_{pp}^{-1} (p - \mu_p)\right)
+\cdot \frac{\sqrt{2 \pi v}}{2t}
+\left[ \operatorname{erf}\!\frac{z_0 + \tfrac{t}{2} - m(p)}{\sqrt{2v}} - \operatorname{erf}\!\frac{z_0 - \tfrac{t}{2} - m(p)}{\sqrt{2v}} \right]
+\]</div>
+<p>The view is a sum over the Gaussians near the slab, with no ordering:</p>
+<div class="math notranslate nohighlight">
+\[
+I(p) = b + \sum_k c_k \, w_k(p)
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(b\)</span> is the grey value of empty resin. The identity and class channels use the same weights with <span class="math notranslate nohighlight">\(e_k\)</span> or <span class="math notranslate nohighlight">\(k_k\)</span> in place of <span class="math notranslate nohighlight">\(c_k\)</span>, divided by <span class="math notranslate nohighlight">\(\sum_k w_k(p)\)</span>.</p>
+<p>Three properties follow.</p>
+<ul class="simple">
+<li><p><strong>No sorting.</strong> Standard splatting sorts by depth and blends front to back. A slab has no front. The sum is simpler, faster, and has exact gradients.</p></li>
+<li><p><strong>Section thickness is a parameter.</strong> A Gaussian thinner than the slab is averaged by it, as the microscope averages it. The same Gaussians render a 40 nm section and an 8 nm one.</p></li>
+<li><p><strong>Any orientation.</strong> Rotating <span class="math notranslate nohighlight">\(\mu\)</span> and <span class="math notranslate nohighlight">\(\Sigma\)</span> into the coordinates of the camera is all that an oblique view needs.</p></li>
+</ul>
+<p>The renderer is a Warp kernel. Gaussians are put in a grid of tiles by their extent of 3 standard deviations; each pixel sums the Gaussians of its tile. Warp records the operations and gives gradients with respect to every field.</p>
+<p>Tradeoff: the additive model treats grey value as linear in the amount of stain. Real contrast saturates. A monotone curve with 3 parameters per section, fitted with the Gaussians, corrects for it and also absorbs brightness steps between sections.</p>
+</section>
+<section id="how-many">
+<h3>How many<a class="headerlink" href="#how-many" title="Link to this heading">#</a></h3>
+<p>A Gaussian should stand for one piece of structure, not for one voxel. The budget is set by a rule: the smallest scale of a Gaussian at level ℓ is half a voxel of that level, and a Gaussian is split only while it lowers the error by more than a threshold.</p>
+<p><em>Estimate:</em> a CREMI sample is 5 × 5 × 5 µm, 195 million voxels. With membranes as thin sheets about 100 nm across, and interiors as tubes and blobs, about 2 to 5 million Gaussians, 0.4 to 0.9 GB. The count per cubic micrometre is reported with every result, because it is the cost of the representation.</p>
+</section>
+<section id="in-isaac-sim">
+<h3>In Isaac Sim<a class="headerlink" href="#in-isaac-sim" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Use</p></th>
+<th class="head"><p>Form</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Fitting and the agent’s views</p></td>
+<td><p>Warp arrays, one structure of arrays per block</p></td>
+</tr>
+<tr class="row-odd"><td><p>The stage</p></td>
+<td><p>Per component, arrays of positions, orientations and radii under <code class="docutils literal notranslate"><span class="pre">/Objects/o_{id}/Splats</span></code>; the line nodes also as curves under <code class="docutils literal notranslate"><span class="pre">/Objects/o_{id}/Frame</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>Display as solid ellipsoids, with instance and class annotations</p></td>
+<td><p>A point instancer of unit spheres with those arrays</p></td>
+</tr>
+<tr class="row-odd"><td><p>Display as splats</p></td>
+<td><p>The USD particle-field schema, rendered by RTX</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>The particle-field display is the 3D look of the model. It is not the slab renderer and is not used for training.</p>
+</section>
+</section>
+<section id="geometry">
+<h2>Geometry<a class="headerlink" href="#geometry" title="Link to this heading">#</a></h2>
+<p>Geometry is read from the nodes of the Frames, with no extra network. The scales <span class="math notranslate nohighlight">\(s_1, s_2, s_3\)</span> of a node are its three radii.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Quantity</p></th>
+<th class="head"><p>From</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Position</p></td>
+<td><p><span class="math notranslate nohighlight">\(\mu\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>Tangent of a neurite; normal of a sheet</p></td>
+<td><p>The axis of <span class="math notranslate nohighlight">\(R\)</span> with the largest scale; the axis with the smallest</p></td>
+</tr>
+<tr class="row-even"><td><p>Caliber</p></td>
+<td><p><span class="math notranslate nohighlight">\(2 s_2\)</span> for a tube: twice the middle scale</p></td>
+</tr>
+<tr class="row-odd"><td><p>Thickness of a sheet</p></td>
+<td><p><span class="math notranslate nohighlight">\(2 s_3\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p>Length along a neurite</p></td>
+<td><p>Sum of distances between adjacent centres</p></td>
+</tr>
+<tr class="row-odd"><td><p>Curvature</p></td>
+<td><p>Change of tangent between adjacent Gaussians, per unit length</p></td>
+</tr>
+<tr class="row-even"><td><p>Medial axis of a component</p></td>
+<td><p>The centres of its nodes: a curve through the line nodes, a surface through the sheet nodes</p></td>
+</tr>
+<tr class="row-odd"><td><p>Volume of a component</p></td>
+<td><p><span class="math notranslate nohighlight">\(\sum_k a_k (2\pi)^{3/2} s_1 s_2 s_3\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p>Surface</p></td>
+<td><p>The level set of the summed density at half its interior value</p></td>
+</tr>
+<tr class="row-odd"><td><p>Contact area between two components</p></td>
+<td><p>Sum of overlaps between the nodes of their Frames</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>Overlap</strong> of two Gaussians <span class="math notranslate nohighlight">\(i\)</span> and <span class="math notranslate nohighlight">\(j\)</span> is the integral of their product:</p>
+<div class="math notranslate nohighlight">
+\[
+O_{ij} = a_i a_j \, (2\pi)^{3/2} \sqrt{\frac{|\Sigma_i|\,|\Sigma_j|}{|\Sigma_i + \Sigma_j|}}
+\exp\!\left(-\tfrac{1}{2} (\mu_i - \mu_j)^\top (\Sigma_i + \Sigma_j)^{-1} (\mu_i - \mu_j)\right)
+\]</div>
+<p>It is the test behind the <code class="docutils literal notranslate"><span class="pre">adjacent</span></code> edges of a Frame and the <code class="docutils literal notranslate"><span class="pre">contact</span></code> edges of the <a class="reference internal" href="representation.html"><span class="std std-doc">Graph</span></a>, and behind the matching of nodes across the halo of two blocks.</p>
+<p>Two voxel fields complete the geometry, at the working level only:</p>
+<ul class="simple">
+<li><p>the <strong>membrane map</strong>, predicted by a small 3D network from the raw image;</p></li>
+<li><p>its <strong>distance transform</strong>, the distance from each voxel to the nearest membrane.</p></li>
+</ul>
+<p>They are needed once, at the end: the nodes of the Frames are seeds, and a watershed on the distance transform gives every voxel to one seed. This is the step that puts the boundary on the membrane exactly, which a smooth Gaussian cannot do.</p>
+</section>
+<section id="anisotropy">
+<h2>Anisotropy<a class="headerlink" href="#anisotropy" title="Link to this heading">#</a></h2>
+<p>The word has two meanings here, and the design keeps them apart.</p>
+<section id="anisotropy-of-the-acquisition">
+<h3>Anisotropy of the acquisition<a class="headerlink" href="#anisotropy-of-the-acquisition" title="Link to this heading">#</a></h3>
+<p>Sections are thicker than pixels are wide: 10 times in CREMI and MICrONS, 5 times in SNEMI3D, not at all in CellMap.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Where it matters</p></th>
+<th class="head"><p>What is done</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Units</p></td>
+<td><p>Every length is in nanometres; the voxel size is data, not an assumption of the code</p></td>
+</tr>
+<tr class="row-odd"><td><p>Views</p></td>
+<td><p>The slab thickness is the section thickness</p></td>
+</tr>
+<tr class="row-even"><td><p>The pyramid</p></td>
+<td><p>x and y are halved until the voxel is within a factor of 2.5 of isotropic; then all three axes (see <a class="reference internal" href="multiscale.html"><span class="std std-doc">Multi-scale</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p>Gaussians</p></td>
+<td><p>No scale along the section normal can be fitted below half the section thickness. Below that, the image holds no information, and the scale is set by a prior: the middle scale <span class="math notranslate nohighlight">\(s_2\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p>Oblique views of raw data</p></td>
+<td><p>Only at near-isotropic levels</p></td>
+</tr>
+<tr class="row-odd"><td><p>Networks on voxels</p></td>
+<td><p>Kernels of 3 × 3 × 1 at anisotropic levels, 3 × 3 × 3 at near-isotropic ones</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="anisotropy-of-the-tissue">
+<h3>Anisotropy of the tissue<a class="headerlink" href="#anisotropy-of-the-tissue" title="Link to this heading">#</a></h3>
+<p>Structures have a direction. A neurite is long in one direction; a membrane is thin in one. The three scales of a Gaussian say which, through three numbers that sum to 1:</p>
+<div class="math notranslate nohighlight">
+\[
+c_{\text{line}} = \frac{s_1 - s_2}{s_1},
+\qquad
+c_{\text{sheet}} = \frac{s_2 - s_3}{s_1},
+\qquad
+c_{\text{blob}} = \frac{s_3}{s_1}
+\]</div>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Shape</p></th>
+<th class="head"><p>Largest of the three</p></th>
+<th class="head"><p>Structures</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Line</p></td>
+<td><p><span class="math notranslate nohighlight">\(c_{\text{line}}\)</span></p></td>
+<td><p>Axons, thin dendrites, spine necks, microtubules</p></td>
+</tr>
+<tr class="row-odd"><td><p>Sheet</p></td>
+<td><p><span class="math notranslate nohighlight">\(c_{\text{sheet}}\)</span></p></td>
+<td><p>Membranes, synaptic clefts, endoplasmic reticulum, Golgi cisternae</p></td>
+</tr>
+<tr class="row-even"><td><p>Blob</p></td>
+<td><p><span class="math notranslate nohighlight">\(c_{\text{blob}}\)</span></p></td>
+<td><p>Vesicles, lysosomes, lipid droplets, cell bodies, short mitochondria</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>These numbers are used in four places:</p>
+<ul class="simple">
+<li><p>as an input to the class scores: a cleft is a sheet between two objects, a vesicle is a blob of 40 nm;</p></li>
+<li><p>to give each node of a Frame its shape type, and so to say which nodes form the medial curve (line) and which the medial surface (sheet);</p></li>
+<li><p>to start a Gaussian: before fitting, its axes are those of the <strong>structure tensor</strong> of the raw image at that place and scale, the smoothed outer product of the image gradient, whose eigenvectors give the local direction;</p></li>
+<li><p>to detect errors: a line-like Gaussian whose tangent turns sharply against its neighbours, or a caliber that jumps, marks a likely merge.</p></li>
+</ul>
+</section>
+</section>
+<section id="tests">
+<h2>Tests<a class="headerlink" href="#tests" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Renderer: a single Gaussian rendered as a slab equals the numerical integral of its density over the slab, to 4 decimal places, at 5 orientations.</p></li>
+<li><p>Renderer: gradients from Warp equal finite differences for every field.</p></li>
+<li><p>Thickness: one set of Gaussians rendered at 8 nm and summed over 5 slabs equals the render at 40 nm.</p></li>
+<li><p>Overlap: the closed form equals a numerical integral on a grid.</p></li>
+<li><p>Shape: Gaussians fitted to a synthetic tube, sheet and ball get the right largest shape number.</p></li>
+</ul>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./research/connectome"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="supervision.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Supervision</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="multiscale.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Multi-scale</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item"><div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gaussian-splats">Gaussian splats</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-slab-renderer">The slab renderer</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-many">How many</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#in-isaac-sim">In Isaac Sim</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#geometry">Geometry</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#anisotropy">Anisotropy</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#anisotropy-of-the-acquisition">Anisotropy of the acquisition</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#anisotropy-of-the-tissue">Anisotropy of the tissue</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tests">Tests</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Tran Minh Quan
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

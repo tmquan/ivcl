@@ -1,0 +1,1178 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>IsaacSim101 &#8212; Intelligent Visual Computing</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=6a604523" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=7b9e58ef" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script data-sd-tabs-storage-prefix="sphinx-design-tab-id-" src="../../_static/design-tabs.js?v=fcb327ea"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'courses/sim/isaacsim101';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Connectome Agent" href="../../research/connectome/index.html" />
+    <link rel="prev" title="Electron Microscopy (EM) Imaging" href="../mip/em.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../home.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/gpgpu.png" class="logo__image only-light" alt="Intelligent Visual Computing - Home"/>
+    <img src="../../_static/gpgpu.png" class="logo__image only-dark pst-js-only" alt="Intelligent Visual Computing - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../home.html">
+                    Welcome
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Digital Signal Processing</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../dsp/signals.html">Signals and Sequences</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dsp/systems.html">Systems and Transformations</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Fundamentals of Microelectronics</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../fme/index.html">BJT and MOSFET Circuits</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Medical Image Processing</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../mip/intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mip/sigsys.html">Signals and Systems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mip/xr.html">X-ray (XR) Imaging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mip/ct.html">Computed Tomography (CT)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mip/mr.html">Magnetic Resonance (MR) Imaging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mip/pt.html">Positron Emission Tomography (PET)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mip/es.html">Endoscopy (ES) Imaging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mip/histo.html">Histology / Histopathology Imaging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mip/em.html">Electron Microscopy (EM) Imaging</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Simulation</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">IsaacSim101</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Research</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../research/connectome/index.html">Connectome Agent</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../research/connectome/representation.html">Representation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../research/connectome/supervision.html">Supervision</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../research/connectome/features.html">Features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../research/connectome/multiscale.html">Multi-scale</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../research/connectome/agent.html">Agent</a></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/tmquan/ivcl" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/tmquan/ivcl/issues/new?title=Issue%20on%20page%20%2Fcourses/sim/isaacsim101.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/courses/sim/isaacsim101.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button pst-navbar-icon"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm pst-navbar-icon" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>IsaacSim101</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#versions">Versions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#before-you-start">Before You Start</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-1-reach-the-spark-from-the-mac">Part 1: Reach the Spark from the Mac</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#find-the-spark">Find the Spark</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#log-in-once-with-the-password">Log In Once with the Password</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#set-up-a-key-and-a-short-name">Set Up a Key and a Short Name</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#check-the-spark">Check the Spark</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-2-connect-the-editor">Part 2: Connect the Editor</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#open-a-web-page-of-the-spark">Open a Web Page of the Spark</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#keep-long-jobs-alive">Keep Long Jobs Alive</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-3-install-isaac-sim-on-the-spark">Part 3: Install Isaac Sim on the Spark</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#choose-a-route">Choose a Route</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-compiler-and-tools">Step 1: Compiler and Tools</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-source">Step 2: Source</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-build">Step 3: Build</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-4-environment">Step 4: Environment</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-5-first-run">Step 5: First Run</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-4-use-isaac-sim-from-the-mac">Part 4: Use Isaac Sim from the Mac</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scripts-without-a-window">Scripts without a Window</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#stream-the-window-to-the-mac">Stream the Window to the Mac</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#isaac-sim-in-the-editor">Isaac Sim in the Editor</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#troubleshooting">Troubleshooting</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#remove-isaac-sim">Remove Isaac Sim</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#next">Next</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="isaacsim101">
+<h1>IsaacSim101<a class="headerlink" href="#isaacsim101" title="Link to this heading">#</a></h1>
+<p>Install NVIDIA Isaac Sim on a DGX Spark, and work on it from a Mac with Cursor or VS Code.</p>
+<p>The DGX Spark sits on the network and does the computing. The Mac holds the editor. At the end of this session you can open a folder of the Spark in your editor, run an Isaac Sim script there, and see the simulator from the Mac.</p>
+<figure class="align-default" id="isaacsim101-setup">
+<a class="reference internal image-reference" href="../../_images/isaacsim101-setup.svg"><img alt="A Mac on the left and a DGX Spark on the right, joined by three links. The editor reaches the SSH server on TCP port 22. Web pages of the Spark reach the browser through ports forwarded inside SSH. The Isaac Sim WebRTC client connects directly on TCP 49100 and UDP 47998." src="../../_images/isaacsim101-setup.svg" style="width: 100%;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 1 </span><span class="caption-text">The three links of this session. The editor and the forwarded web pages travel inside one SSH connection. The picture of the simulator does not: it needs a direct path between the two machines.</span><a class="headerlink" href="#isaacsim101-setup" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This session was put together from the documentation of NVIDIA, Microsoft and Cursor as it stood on 23 November 2026, for the versions in the table below. It has not yet been run from start to finish on the lab’s DGX Spark. Where the documentation is silent, or two pages disagree, the text says so.</p>
+</div>
+<section id="versions">
+<h2>Versions<a class="headerlink" href="#versions" title="Link to this heading">#</a></h2>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Component</p></th>
+<th class="head"><p>Version</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Isaac Sim</p></td>
+<td><p>6.2.0, tag <code class="docutils literal notranslate"><span class="pre">v6.2.0</span></code> (October 2026)</p></td>
+</tr>
+<tr class="row-odd"><td><p>DGX Spark system software</p></td>
+<td><p>DGX OS 7.6.0 on Ubuntu 24.04, GPU driver 580.178.04, CUDA 13.0.3</p></td>
+</tr>
+<tr class="row-even"><td><p>NVIDIA Sync on the Mac</p></td>
+<td><p>0.148.0</p></td>
+</tr>
+<tr class="row-odd"><td><p>VS Code, with Remote - SSH</p></td>
+<td><p>1.147, with 0.128.0</p></td>
+</tr>
+<tr class="row-even"><td><p>Cursor, with Remote - SSH by Anysphere</p></td>
+<td><p>3.31, with 1.1.19</p></td>
+</tr>
+<tr class="row-odd"><td><p>Isaac Sim WebRTC Streaming Client</p></td>
+<td><p>2.0.0</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Isaac Sim for Arm processors is supported on the DGX Spark only. Two of its features, cuRobo and cuMotion, are not supported there.</p>
+</section>
+<section id="before-you-start">
+<h2>Before You Start<a class="headerlink" href="#before-you-start" title="Link to this heading">#</a></h2>
+<p>You need:</p>
+<ul class="simple">
+<li><p>A Mac with Apple silicon, on the same network as the Spark, with Cursor or VS Code installed.</p></li>
+<li><p>A DGX Spark that has finished its <a class="reference external" href="https://docs.nvidia.com/dgx/dgx-spark/first-boot.html">first boot</a>, with all updates installed from the DGX Dashboard.</p></li>
+<li><p>The user name and password made in the setup wizard. Keep them safe: a lost password means reinstalling the system.</p></li>
+<li><p>The name of the Spark. It looks like <code class="docutils literal notranslate"><span class="pre">spark-abcd</span></code> and is printed on the Quick Start Guide.</p></li>
+<li><p>50 GB of free disk space on the Spark.</p></li>
+</ul>
+<p>The two machines differ in ways that matter later.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p></p></th>
+<th class="head"><p>Mac</p></th>
+<th class="head"><p>DGX Spark</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Role</strong></p></td>
+<td><p>editor, browser, viewer</p></td>
+<td><p>build, simulation, training</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Processor</strong></p></td>
+<td><p>Apple silicon, arm64</p></td>
+<td><p>NVIDIA GB10: 20 Arm cores and a Blackwell GPU, aarch64</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Memory</strong></p></td>
+<td><p>its own</p></td>
+<td><p>128 GB or 64 GB, shared by CPU and GPU</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>System</strong></p></td>
+<td><p>macOS</p></td>
+<td><p>DGX OS 7, a version of Ubuntu 24.04</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>In this page a block labelled <strong>Mac</strong> runs in the Terminal of the Mac, and a block labelled <strong>Spark</strong> runs in a shell on the Spark. Replace <code class="docutils literal notranslate"><span class="pre">spark-abcd</span></code> with the name of your Spark and <code class="docutils literal notranslate"><span class="pre">student</span></code> with your user name on it.</p>
+<div class="tip admonition">
+<p class="admonition-title">Sharing one Spark</p>
+<p>Give every student a separate account on the Spark. The steps with <code class="docutils literal notranslate"><span class="pre">sudo</span></code> in Part 3 change the whole machine and are done once, by whoever administers it. Each build from source needs at least 50 GB of free disk space. The streaming ports of Part 4 serve one viewer at a time.</p>
+</div>
+</section>
+<section id="part-1-reach-the-spark-from-the-mac">
+<h2>Part 1: Reach the Spark from the Mac<a class="headerlink" href="#part-1-reach-the-spark-from-the-mac" title="Link to this heading">#</a></h2>
+<section id="find-the-spark">
+<h3>Find the Spark<a class="headerlink" href="#find-the-spark" title="Link to this heading">#</a></h3>
+<p>The Spark announces its name on the local network. <strong>Mac:</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ping<span class="w"> </span>-c<span class="w"> </span><span class="m">3</span><span class="w"> </span>spark-abcd.local
+</pre></div>
+</div>
+<p>Three replies mean the name works. The first line also shows the IP address of the Spark in brackets. <code class="docutils literal notranslate"><span class="pre">ping:</span> <span class="pre">cannot</span> <span class="pre">resolve</span> <span class="pre">spark-abcd.local:</span> <span class="pre">Unknown</span> <span class="pre">host</span></code> means the network blocks this kind of name, which is common on campus networks. Use the IP address of the Spark instead, wherever this page writes <code class="docutils literal notranslate"><span class="pre">spark-abcd.local</span></code>. The router’s list of devices shows it, and so does a display attached to the Spark.</p>
+</section>
+<section id="log-in-once-with-the-password">
+<h3>Log In Once with the Password<a class="headerlink" href="#log-in-once-with-the-password" title="Link to this heading">#</a></h3>
+<p><strong>Mac:</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ssh<span class="w"> </span>student@spark-abcd.local
+</pre></div>
+</div>
+<p>The first connection shows the fingerprint of the Spark. Type <code class="docutils literal notranslate"><span class="pre">yes</span></code>, then the password. You are now in a shell on the Spark. <strong>Spark:</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>hostname
+dpkg<span class="w"> </span>--print-architecture
+<span class="nb">exit</span>
+</pre></div>
+</div>
+<p>The second command prints <code class="docutils literal notranslate"><span class="pre">arm64</span></code>. Software for the Spark must be built for this architecture, which Linux also calls aarch64.</p>
+</section>
+<section id="set-up-a-key-and-a-short-name">
+<h3>Set Up a Key and a Short Name<a class="headerlink" href="#set-up-a-key-and-a-short-name" title="Link to this heading">#</a></h3>
+<p>A key replaces the password, and a short name replaces the address. The editor needs both to work smoothly. Choose one of two ways.</p>
+<div class="sd-tab-set docutils">
+<input checked="checked" id="sd-tab-item-0" name="sd-tab-set-0" type="radio">
+<label aria-controls="sd-tab-item-0-content" class="sd-tab-label" for="sd-tab-item-0">
+With NVIDIA Sync</label><div class="sd-tab-content docutils" id="sd-tab-item-0-content">
+<p>NVIDIA Sync is NVIDIA’s helper app for the Mac. It installs a key on the Spark, names the connection, and starts the editor for you.</p>
+<ol class="arabic simple">
+<li><p>Install Cursor or VS Code first. Sync offers only the editors it finds on the Mac.</p></li>
+<li><p>Download NVIDIA Sync for macOS from the <a class="reference external" href="https://build.nvidia.com/spark/connect-to-your-spark/sync">connection playbook</a>. Open <code class="docutils literal notranslate"><span class="pre">nvidia-sync.dmg</span></code>, drag the app into Applications, and start it.</p></li>
+<li><p>Agree to the license. Tick the apps that Sync may start, such as Cursor and VS Code.</p></li>
+<li><p>Select your Spark when Sync finds it, or choose <strong>Add a device manually</strong>. Either way a form opens. Type <code class="docutils literal notranslate"><span class="pre">spark</span></code> as the name, so that the connection is called as on the rest of this page. Fill in the host name or IP address, the port (usually 22), your user name and your password, then select <strong>Add</strong>. The password is used once, to install the key.</p></li>
+<li><p>If Sync asks <strong>Configure Docker Group?</strong>, choose <strong>Skip</strong> on a shared Spark. Membership of that group gives root-level control of the machine, and this session does not use Docker.</p></li>
+<li><p>Select <strong>Get Started</strong> when Sync shows it. This starts the connection. Later, select the device in the Sync window and <strong>Connect</strong>.</p></li>
+</ol>
+<p>Sync adds one <code class="docutils literal notranslate"><span class="pre">Include</span></code> line at the top of <code class="docutils literal notranslate"><span class="pre">~/.ssh/config</span></code> on the Mac. It points to a file that Sync manages, with one entry for each device. From then on <code class="docutils literal notranslate"><span class="pre">ssh</span></code> followed by the device name works in any terminal, and the same name appears in the editor. Leave that line first in the file, and write your own entries below it.</p>
+</div>
+<input id="sd-tab-item-1" name="sd-tab-set-0" type="radio">
+<label aria-controls="sd-tab-item-1-content" class="sd-tab-label" for="sd-tab-item-1">
+By hand</label><div class="sd-tab-content docutils" id="sd-tab-item-1-content">
+<ol class="arabic">
+<li><p>Make a key for the Spark. <strong>Mac:</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ssh-keygen<span class="w"> </span>-t<span class="w"> </span>ed25519<span class="w"> </span>-f<span class="w"> </span>~/.ssh/id_ed25519_spark
+</pre></div>
+</div>
+</li>
+<li><p>Copy its public half to the Spark. This asks for the password one last time. <strong>Mac:</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ssh-copy-id<span class="w"> </span>-i<span class="w"> </span>~/.ssh/id_ed25519_spark.pub<span class="w"> </span>student@spark-abcd.local
+</pre></div>
+</div>
+</li>
+<li><p>Name the connection. Open the file <code class="docutils literal notranslate"><span class="pre">~/.ssh/config</span></code> on the Mac in the editor of the Terminal. <strong>Mac:</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>nano<span class="w"> </span>~/.ssh/config
+</pre></div>
+</div>
+<p>Paste this entry at the end of the file. Press Ctrl+O and then Return to save, and Ctrl+X to leave:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Host spark
+    HostName spark-abcd.local
+    User student
+    IdentityFile ~/.ssh/id_ed25519_spark
+    ServerAliveInterval 60
+    ServerAliveCountMax 3
+</pre></div>
+</div>
+</li>
+<li><p>Test it. <strong>Mac:</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ssh<span class="w"> </span>spark
+</pre></div>
+</div>
+</li>
+</ol>
+<p>The shell opens without asking for the password of the Spark. Type <code class="docutils literal notranslate"><span class="pre">exit</span></code> to return to the Mac.</p>
+</div>
+</div>
+<p>The rest of this page calls the connection <code class="docutils literal notranslate"><span class="pre">spark</span></code>. With NVIDIA Sync it carries the name typed in the form. If you typed another name or left it empty, the list of <strong>Remote-SSH: Connect to Host…</strong> in Part 2 shows the name to use in place of <code class="docutils literal notranslate"><span class="pre">spark</span></code>. With an empty name it is normally the host name, such as <code class="docutils literal notranslate"><span class="pre">spark-abcd.local</span></code>.</p>
+<div class="tip admonition">
+<p class="admonition-title">Away from the lab</p>
+<p>All of this needs the Mac and the Spark on one network. NVIDIA Sync can also connect across networks through Tailscale: see the Tailscale tab of the <a class="reference external" href="https://build.nvidia.com/spark/connect-to-your-spark">connection playbook</a>. Set it up while you still have direct access.</p>
+</div>
+</section>
+<section id="check-the-spark">
+<h3>Check the Spark<a class="headerlink" href="#check-the-spark" title="Link to this heading">#</a></h3>
+<p>Open a shell on the Spark. <strong>Mac:</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ssh<span class="w"> </span>spark
+</pre></div>
+</div>
+<p><strong>Spark:</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>nvidia-smi
+df<span class="w"> </span>-h<span class="w"> </span>~
+<span class="nb">exit</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">exit</span></code> returns the Terminal to the Mac. The prompt tells where you are: on the Spark it starts with your user name and the name of the Spark, as in <code class="docutils literal notranslate"><span class="pre">student&#64;spark-abcd</span></code>.</p>
+<p><code class="docutils literal notranslate"><span class="pre">nvidia-smi</span></code> must show a driver version that starts with 580. Isaac Sim 6.2.0 was tested by NVIDIA with driver 580.159.03, and the Spark receives its drivers of that series through its own updates. Do not install a driver by any other route. The line <code class="docutils literal notranslate"><span class="pre">Memory-Usage:</span> <span class="pre">Not</span> <span class="pre">Supported</span></code> is expected: CPU and GPU share one memory, so use <code class="docutils literal notranslate"><span class="pre">free</span> <span class="pre">-h</span></code> to see it. <code class="docutils literal notranslate"><span class="pre">df</span> <span class="pre">-h</span> <span class="pre">~</span></code> shows the free disk space.</p>
+<p>Updates are installed from the DGX Dashboard, under Settings. An update needs an account with <code class="docutils literal notranslate"><span class="pre">sudo</span></code> and restarts the Spark, which ends every session and job on it. On a shared Spark leave it to the administrator. Part 2 shows how to open the dashboard from the Mac.</p>
+</section>
+</section>
+<section id="part-2-connect-the-editor">
+<h2>Part 2: Connect the Editor<a class="headerlink" href="#part-2-connect-the-editor" title="Link to this heading">#</a></h2>
+<p>The editor stays on the Mac. On the first connection it installs a small server program in your home directory on the Spark. After that, the files, the terminal and the debugger of the editor all work on the Spark.</p>
+<div class="sd-tab-set docutils">
+<input checked="checked" id="sd-tab-item-2" name="sd-tab-set-1" type="radio">
+<label aria-controls="sd-tab-item-2-content" class="sd-tab-label" for="sd-tab-item-2">
+VS Code</label><div class="sd-tab-content docutils" id="sd-tab-item-2-content">
+<ol class="arabic simple">
+<li><p>Open the Extensions view and install <strong>Remote - SSH</strong> by Microsoft. Its identifier is <code class="docutils literal notranslate"><span class="pre">ms-vscode-remote.remote-ssh</span></code>.</p></li>
+<li><p>Press Cmd+Shift+P and run <strong>Remote-SSH: Connect to Host…</strong>. Choose <code class="docutils literal notranslate"><span class="pre">spark</span></code>. If VS Code asks for the type of the remote machine, choose <strong>Linux</strong>.</p></li>
+<li><p>Wait while VS Code installs its server on the Spark, in <code class="docutils literal notranslate"><span class="pre">~/.vscode-server</span></code>. The left corner of the Status bar then shows <code class="docutils literal notranslate"><span class="pre">SSH:</span> <span class="pre">spark</span></code>.</p></li>
+<li><p>Open a folder of the Spark with <strong>File &gt; Open Folder…</strong>, and a shell on the Spark with <strong>Terminal &gt; New Terminal</strong>.</p></li>
+</ol>
+<p>Extensions for a language run on the Spark, so they must be installed there too. In the Extensions view, press <strong>Install in SSH: spark</strong> on Python, Pylance, Python Debugger and Jupyter.</p>
+</div>
+<input id="sd-tab-item-3" name="sd-tab-set-1" type="radio">
+<label aria-controls="sd-tab-item-3-content" class="sd-tab-label" for="sd-tab-item-3">
+Cursor</label><div class="sd-tab-content docutils" id="sd-tab-item-3-content">
+<ol class="arabic simple">
+<li><p>Work in the classic editor window. If Cursor shows its Agents window, press Cmd+Shift+P and run <strong>Open IDE</strong>.</p></li>
+<li><p>Open the Extensions view, search for <code class="docutils literal notranslate"><span class="pre">&#64;id:anysphere.remote-ssh</span></code>, and install <strong>Remote - SSH</strong> by Anysphere. Microsoft’s extension of the same name is not supported in Cursor. Remove it if it came along with imported VS Code settings.</p></li>
+<li><p>Press Cmd+Shift+P and run <strong>Remote-SSH: Connect to Host…</strong>. Choose <code class="docutils literal notranslate"><span class="pre">spark</span></code>. If Cursor asks, the platform is <strong>linux</strong> and the architecture is <strong>arm64</strong>.</p></li>
+<li><p>Wait while Cursor installs its server on the Spark, in <code class="docutils literal notranslate"><span class="pre">~/.cursor-server</span></code>.</p></li>
+<li><p>Open a folder of the Spark with <strong>File &gt; Open Folder</strong>, and a shell on the Spark with <strong>Terminal &gt; New Terminal</strong>.</p></li>
+</ol>
+<p>Extensions for a language run on the Spark, so they must be installed there too. With the remote window open, install Python (<code class="docutils literal notranslate"><span class="pre">ms-python.python</span></code>), Python Debugger (<code class="docutils literal notranslate"><span class="pre">ms-python.debugpy</span></code>) and Jupyter (<code class="docutils literal notranslate"><span class="pre">ms-toolsai.jupyter</span></code>). Pylance does not exist for Cursor. Its place is taken by <strong>Python</strong> by Anysphere (<code class="docutils literal notranslate"><span class="pre">anysphere.cursorpyright</span></code>).</p>
+</div>
+<input id="sd-tab-item-4" name="sd-tab-set-1" type="radio">
+<label aria-controls="sd-tab-item-4-content" class="sd-tab-label" for="sd-tab-item-4">
+From NVIDIA Sync</label><div class="sd-tab-content docutils" id="sd-tab-item-4-content">
+<p>Connect to the device in NVIDIA Sync, then click the icon of VS Code or Cursor. The editor opens with the connection to the Spark already made. Sync installs the Remote - SSH extension of Cursor when it is missing.</p>
+<p>The extensions for Python are still yours to install, as described in the other two tabs.</p>
+</div>
+</div>
+<p>Confirm where the terminal of the editor runs. <strong>Spark:</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>hostnamectl
+whoami
+</pre></div>
+</div>
+<p>The output names the Spark and your user on it.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>If the Terminal of the Mac reaches the Spark but the editor reports <code class="docutils literal notranslate"><span class="pre">No</span> <span class="pre">route</span> <span class="pre">to</span> <span class="pre">host</span></code>, macOS is keeping the editor off the local network. Open System Settings &gt; Privacy &amp; Security &gt; Local Network and switch on the editor, and NVIDIA Sync if you use it. Cursor has been reported not to appear in that list. The workaround given by Cursor’s staff is to start it from a Terminal that already has access. Quit Cursor first (Cmd+Q), because a second start only hands over to the copy that is already running. Then run:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>/Applications/Cursor.app/Contents/MacOS/Cursor &amp;
+</pre></div>
+</div>
+</div>
+<section id="open-a-web-page-of-the-spark">
+<h3>Open a Web Page of the Spark<a class="headerlink" href="#open-a-web-page-of-the-spark" title="Link to this heading">#</a></h3>
+<p>Some programs on the Spark show their results as a web page that only the Spark itself can open. The DGX Dashboard is one: it listens on port 11000 of the Spark. The editor can carry such a port to the Mac.</p>
+<p>In the remote window, open the <strong>Ports</strong> view, choose <strong>Forward a Port</strong>, and enter <code class="docutils literal notranslate"><span class="pre">11000</span></code>. Then open <a class="reference external" href="http://localhost:11000">http://localhost:11000</a> in the browser of the Mac and log in with your account on the Spark. The dashboard shows the load of the GPU and the memory, and installs updates.</p>
+<p>NVIDIA Sync has a <strong>DGX Dashboard</strong> button that does the same. So does one command. <strong>Mac:</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ssh<span class="w"> </span>-L<span class="w"> </span><span class="m">11000</span>:localhost:11000<span class="w"> </span>spark
+</pre></div>
+</div>
+<p>Forwarding carries TCP connections only. This matters in Part 4.</p>
+</section>
+<section id="keep-long-jobs-alive">
+<h3>Keep Long Jobs Alive<a class="headerlink" href="#keep-long-jobs-alive" title="Link to this heading">#</a></h3>
+<p>A command started in the terminal of the editor may stop when the connection drops. A build or a training run is better started inside <code class="docutils literal notranslate"><span class="pre">tmux</span></code>, which keeps a shell alive on the Spark. <strong>Spark:</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>tmux<span class="w"> </span>new<span class="w"> </span>-s<span class="w"> </span>isaac
+</pre></div>
+</div>
+<p>Run the long command there. Press Ctrl+B and then D to leave the session running, and return to it later with <code class="docutils literal notranslate"><span class="pre">tmux</span> <span class="pre">attach</span> <span class="pre">-t</span> <span class="pre">isaac</span></code>. If <code class="docutils literal notranslate"><span class="pre">tmux</span></code> is not found, install it with <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">apt</span> <span class="pre">install</span> <span class="pre">tmux</span></code>.</p>
+</section>
+</section>
+<section id="part-3-install-isaac-sim-on-the-spark">
+<h2>Part 3: Install Isaac Sim on the Spark<a class="headerlink" href="#part-3-install-isaac-sim-on-the-spark" title="Link to this heading">#</a></h2>
+<section id="choose-a-route">
+<h3>Choose a Route<a class="headerlink" href="#choose-a-route" title="Link to this heading">#</a></h3>
+<p>Isaac Sim 6.2.0 reaches the Spark by four routes.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Route</p></th>
+<th class="head"><p>What you do</p></th>
+<th class="head"><p>Remarks</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Build from source</strong></p></td>
+<td><p>clone tag <code class="docutils literal notranslate"><span class="pre">v6.2.0</span></code> and compile it with GCC 11</p></td>
+<td><p>the route of NVIDIA’s playbook for the DGX Spark, used below</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Prebuilt package</strong></p></td>
+<td><p>unpack one 10 GB archive into <code class="docutils literal notranslate"><span class="pre">~/isaacsim</span></code></p></td>
+<td><p>no compiler; see the box at the end of this part</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Python package</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span></code> into a Python 3.12 environment</p></td>
+<td><p>for projects that start from Python</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Container</strong></p></td>
+<td><p>run <code class="docutils literal notranslate"><span class="pre">nvcr.io/nvidia/isaac-sim:6.2.0</span></code></p></td>
+<td><p>Docker is already on the Spark</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>This session follows the playbook <a class="reference external" href="https://build.nvidia.com/spark/isaac">Set Up Isaac Sim and Isaac Lab</a>. It is NVIDIA’s step-by-step guide for the DGX Spark, and it names the build from source as the default there. The documentation of Isaac Lab says the opposite: build Isaac Sim from source only when you need to change it. The box at the end of this part gives the shorter route. Use one route per account: the routes share caches in your home directory, and mixing them causes trouble.</p>
+<p>Run every step below in a shell on the Spark, with no Python environment active. If the prompt starts with <code class="docutils literal notranslate"><span class="pre">(base)</span></code> or another name in brackets, run <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">deactivate</span></code> or <code class="docutils literal notranslate"><span class="pre">deactivate</span></code> first.</p>
+</section>
+<section id="step-1-compiler-and-tools">
+<h3>Step 1: Compiler and Tools<a class="headerlink" href="#step-1-compiler-and-tools" title="Link to this heading">#</a></h3>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>This step needs <code class="docutils literal notranslate"><span class="pre">sudo</span></code> and makes GCC 11 the default compiler for every user of the Spark. No NVIDIA page describes how to undo this. On a shared Spark the administrator does it once. Check first with <code class="docutils literal notranslate"><span class="pre">gcc</span> <span class="pre">--version</span></code>, <code class="docutils literal notranslate"><span class="pre">g++</span> <span class="pre">--version</span></code> and <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">lfs</span> <span class="pre">version</span></code>: if the first two read 11 and the third prints a version, go to Step 2.</p>
+</div>
+<p>Isaac Sim builds with GCC 11 only, and the system ships a newer one. The README of Isaac Sim also asks for two sets of packages that the playbook leaves out. Install those first. <strong>Spark:</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>apt<span class="w"> </span>update
+sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>build-essential
+sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>libx11-dev<span class="w"> </span>xorg-dev
+</pre></div>
+</div>
+<p>Then install GCC 11, make it the default, and check. <strong>Spark:</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>apt<span class="w"> </span>update<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>gcc-11<span class="w"> </span>g++-11
+sudo<span class="w"> </span>update-alternatives<span class="w"> </span>--install<span class="w"> </span>/usr/bin/gcc<span class="w"> </span>gcc<span class="w"> </span>/usr/bin/gcc-11<span class="w"> </span><span class="m">200</span>
+sudo<span class="w"> </span>update-alternatives<span class="w"> </span>--install<span class="w"> </span>/usr/bin/g++<span class="w"> </span>g++<span class="w"> </span>/usr/bin/g++-11<span class="w"> </span><span class="m">200</span>
+sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>git-lfs
+gcc<span class="w"> </span>--version
+g++<span class="w"> </span>--version
+</pre></div>
+</div>
+<p>Both versions must read 11.</p>
+</section>
+<section id="step-2-source">
+<h3>Step 2: Source<a class="headerlink" href="#step-2-source" title="Link to this heading">#</a></h3>
+<p><strong>Spark:</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>~
+git<span class="w"> </span>clone<span class="w"> </span>--depth<span class="o">=</span><span class="m">1</span><span class="w"> </span>--recursive<span class="w"> </span>--branch<span class="o">=</span>v6.2.0<span class="w"> </span>https://github.com/isaac-sim/IsaacSim
+<span class="nb">cd</span><span class="w"> </span>IsaacSim
+git<span class="w"> </span>lfs<span class="w"> </span>install
+git<span class="w"> </span>lfs<span class="w"> </span>pull
+git<span class="w"> </span>describe<span class="w"> </span>--tags
+</pre></div>
+</div>
+<p>The last command prints <code class="docutils literal notranslate"><span class="pre">v6.2.0</span></code>. Keep the <code class="docutils literal notranslate"><span class="pre">--branch=v6.2.0</span></code> part: without it you get a different version, because the other branches of the repository hold older or unfinished code.</p>
+</section>
+<section id="step-3-build">
+<h3>Step 3: Build<a class="headerlink" href="#step-3-build" title="Link to this heading">#</a></h3>
+<p><strong>Spark:</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./build.sh
+</pre></div>
+</div>
+<p>The first run prints a link to the license terms and asks <code class="docutils literal notranslate"><span class="pre">Do</span> <span class="pre">you</span> <span class="pre">accept</span> <span class="pre">the</span> <span class="pre">governing</span> <span class="pre">terms?</span> <span class="pre">(yes/No):</span></code>. Open the link on the Mac, read the terms, and answer <code class="docutils literal notranslate"><span class="pre">yes</span></code>. The build downloads its parts and compiles for ten minutes or more. It ends with a line such as:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>BUILD (RELEASE) SUCCEEDED (Took 674.39 seconds)
+</pre></div>
+</div>
+</section>
+<section id="step-4-environment">
+<h3>Step 4: Environment<a class="headerlink" href="#step-4-environment" title="Link to this heading">#</a></h3>
+<p>Three variables tell the shell where Isaac Sim is. Run them inside <code class="docutils literal notranslate"><span class="pre">~/IsaacSim</span></code>. <strong>Spark:</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span><span class="w"> </span><span class="nv">ISAACSIM_PATH</span><span class="o">=</span><span class="s2">"</span><span class="si">${</span><span class="nv">PWD</span><span class="si">}</span><span class="s2">/_build/linux-aarch64/release"</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">ISAACSIM_PYTHON_EXE</span><span class="o">=</span><span class="s2">"</span><span class="si">${</span><span class="nv">ISAACSIM_PATH</span><span class="si">}</span><span class="s2">/python.sh"</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">LD_PRELOAD</span><span class="o">=</span><span class="s2">"</span><span class="nv">$LD_PRELOAD</span><span class="s2">:/lib/aarch64-linux-gnu/libgomp.so.1"</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">ISAACSIM_PATH</span></code> is the built simulator. <code class="docutils literal notranslate"><span class="pre">python.sh</span></code> is the Python of Isaac Sim: use it in place of <code class="docutils literal notranslate"><span class="pre">python</span></code> for every Isaac Sim script. The third line loads a system library early. The playbook asks for it before Isaac Sim starts on this architecture.</p>
+<p>The variables last for the current terminal only. To get them back in a new terminal, save these lines with the editor as <code class="docutils literal notranslate"><span class="pre">~/isaacsim-env.sh</span></code>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span><span class="w"> </span><span class="nv">ISAACSIM_PATH</span><span class="o">=</span><span class="s2">"</span><span class="nv">$HOME</span><span class="s2">/IsaacSim/_build/linux-aarch64/release"</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">ISAACSIM_PYTHON_EXE</span><span class="o">=</span><span class="s2">"</span><span class="si">${</span><span class="nv">ISAACSIM_PATH</span><span class="si">}</span><span class="s2">/python.sh"</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">LD_PRELOAD</span><span class="o">=</span><span class="s2">"</span><span class="nv">$LD_PRELOAD</span><span class="s2">:/lib/aarch64-linux-gnu/libgomp.so.1"</span>
+</pre></div>
+</div>
+<p>Then start each new terminal with <code class="docutils literal notranslate"><span class="pre">source</span> <span class="pre">~/isaacsim-env.sh</span></code>.</p>
+</section>
+<section id="step-5-first-run">
+<h3>Step 5: First Run<a class="headerlink" href="#step-5-first-run" title="Link to this heading">#</a></h3>
+<p><strong>Spark:</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="si">${</span><span class="nv">ISAACSIM_PYTHON_EXE</span><span class="si">}</span><span class="w"> </span>-c<span class="w"> </span><span class="s2">"print('Isaac Sim configuration is now complete.')"</span>
+<span class="nb">cd</span><span class="w"> </span><span class="s2">"</span><span class="si">${</span><span class="nv">ISAACSIM_PATH</span><span class="si">}</span><span class="s2">"</span>
+./python.sh<span class="w"> </span>standalone_examples/api/isaacsim.simulation_app/hello_world.py
+</pre></div>
+</div>
+<p>The first command prints its sentence and shows that the Python of Isaac Sim starts. The second starts the simulator without a window, runs 100 frames, prints <code class="docutils literal notranslate"><span class="pre">Hello</span> <span class="pre">World!</span></code> and exits. The first start takes several minutes, while Isaac Sim caches its extensions and shaders. Later starts take well under a minute.</p>
+<p>The simulator with its window starts with:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="si">${</span><span class="nv">ISAACSIM_PATH</span><span class="si">}</span>/isaac-sim.sh
+</pre></div>
+</div>
+<p>This opens the window on a display attached to the Spark. Over SSH nothing appears on the Mac. Part 4 covers that.</p>
+<div class="dropdown admonition">
+<p class="admonition-title">The prebuilt package instead of a build</p>
+<p>Isaac Sim’s own documentation gives a shorter route for this architecture, with no compiler: download <code class="docutils literal notranslate"><span class="pre">isaac-sim-standalone-6.2.0-linux-aarch64.zip</span></code> from the <a class="reference external" href="https://docs.isaacsim.omniverse.nvidia.com/6.2.0/installation/download.html">download page</a> and unpack it. The archive is about 10 GB. Keep 50 GB free, because the archive and the unpacked files need about 40 GB together for a while.</p>
+<p>The commands below follow <a class="reference external" href="https://docs.isaacsim.omniverse.nvidia.com/6.2.0/installation/quick-install.html">Quick Install</a>, with two changes for work over SSH. Quick Install expects the archive in <code class="docutils literal notranslate"><span class="pre">~/Downloads</span></code> on the Spark. Here <code class="docutils literal notranslate"><span class="pre">wget</span></code> fetches it there. That line and the <code class="docutils literal notranslate"><span class="pre">md5sum</span></code> line are not on NVIDIA’s page. The address is the one behind <strong>Linux (aarch64)</strong> on the download page, and <code class="docutils literal notranslate"><span class="pre">md5sum</span></code> must print the value shown there, <code class="docutils literal notranslate"><span class="pre">535e23a85a36f6e159e3d92cc7d957b3</span></code>. Quick Install ends with <code class="docutils literal notranslate"><span class="pre">./isaac-sim.sh</span></code>, which opens a window. That line is left out here. <strong>Spark:</strong></p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>mkdir -p ~/Downloads
+cd ~/Downloads
+wget https://downloads.isaacsim.nvidia.com/isaac-sim-standalone-6.2.0-linux-aarch64.zip
+md5sum isaac-sim-standalone-6.2.0-linux-aarch64.zip
+mkdir ~/isaacsim
+unzip "isaac-sim-standalone-6.2.0-linux-aarch64.zip" -d ~/isaacsim
+cd ~/isaacsim
+./post_install.sh
+</pre></div>
+</div>
+<p>If <code class="docutils literal notranslate"><span class="pre">unzip</span></code> is not found, install it with <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">apt</span> <span class="pre">install</span> <span class="pre">unzip</span></code>.</p>
+<p>With this route, skip Steps 1 to 3. Isaac Sim lives in <code class="docutils literal notranslate"><span class="pre">~/isaacsim</span></code>, so that folder takes the place of <code class="docutils literal notranslate"><span class="pre">~/IsaacSim/_build/linux-aarch64/release</span></code> everywhere on this page. Steps 4 and 5 are still needed, with one change in Step 4: skip its first block, save <code class="docutils literal notranslate"><span class="pre">~/isaacsim-env.sh</span></code> with <code class="docutils literal notranslate"><span class="pre">export</span> <span class="pre">ISAACSIM_PATH=&quot;$HOME/isaacsim&quot;</span></code> as its first line, and run <code class="docutils literal notranslate"><span class="pre">source</span> <span class="pre">~/isaacsim-env.sh</span></code>.</p>
+<p>The playbook for the Spark does not cover this route. Whether it needs the third variable of Step 4 is not documented.</p>
+</div>
+</section>
+</section>
+<section id="part-4-use-isaac-sim-from-the-mac">
+<h2>Part 4: Use Isaac Sim from the Mac<a class="headerlink" href="#part-4-use-isaac-sim-from-the-mac" title="Link to this heading">#</a></h2>
+<p>There are three ways to work with a simulator that runs on another machine.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Way</p></th>
+<th class="head"><p>Needs</p></th>
+<th class="head"><p>Standing</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Scripts without a window</strong>, results as files</p></td>
+<td><p>the SSH connection only</p></td>
+<td><p>works wherever SSH works</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Livestream</strong> to a viewer on the Mac</p></td>
+<td><p>both machines on one network, with TCP 49100 and UDP 47998 open between them</p></td>
+<td><p>documented for Isaac Sim on the Spark; test it on your unit</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Display on the Spark</strong></p></td>
+<td><p>a monitor, keyboard and mouse on the Spark</p></td>
+<td><p>the way the playbook runs it</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<section id="scripts-without-a-window">
+<h3>Scripts without a Window<a class="headerlink" href="#scripts-without-a-window" title="Link to this heading">#</a></h3>
+<p>Most work with Isaac Sim is a Python script that starts the simulator itself. With the editor, save these lines on the Spark as <code class="docutils literal notranslate"><span class="pre">~/hello_isaac.py</span></code>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">isaacsim</span><span class="w"> </span><span class="kn">import</span> <span class="n">SimulationApp</span>
+<span class="n">simulation_app</span> <span class="o">=</span> <span class="n">SimulationApp</span><span class="p">({</span><span class="s2">"headless"</span><span class="p">:</span> <span class="kc">True</span><span class="p">})</span>
+<span class="n">simulation_app</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>  <span class="c1"># Render a single frame</span>
+<span class="n">simulation_app</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>  <span class="c1"># Cleanup application</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">&quot;headless&quot;:</span> <span class="pre">True</span></code> means no window. Every other import of Isaac Sim must come after the line that creates <code class="docutils literal notranslate"><span class="pre">SimulationApp</span></code>. Run the script. <strong>Spark:</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="si">${</span><span class="nv">ISAACSIM_PYTHON_EXE</span><span class="si">}</span><span class="w"> </span>~/hello_isaac.py
+</pre></div>
+</div>
+<p>Scripts that render write their pictures to files, and the editor shows them: click an image in its file explorer.</p>
+<div class="tip admonition">
+<p class="admonition-title">Exercise</p>
+<p>The folder <code class="docutils literal notranslate"><span class="pre">standalone_examples/api/isaacsim.replicator.examples</span></code> holds <code class="docutils literal notranslate"><span class="pre">sdg_getting_started_01.py</span></code>, which renders a small scene and writes images to a folder named <code class="docutils literal notranslate"><span class="pre">_out_basic_writer</span></code>. As shipped it starts with <code class="docutils literal notranslate"><span class="pre">&quot;headless&quot;:</span> <span class="pre">False</span></code>. Copy it to your home directory, change that value to <code class="docutils literal notranslate"><span class="pre">True</span></code>, run the copy with <code class="docutils literal notranslate"><span class="pre">python.sh</span></code>, and open the images from the Mac.</p>
+</div>
+</section>
+<section id="stream-the-window-to-the-mac">
+<h3>Stream the Window to the Mac<a class="headerlink" href="#stream-the-window-to-the-mac" title="Link to this heading">#</a></h3>
+<p>Isaac Sim can run without a display and send its window over the network. <strong>Spark:</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span><span class="s2">"</span><span class="si">${</span><span class="nv">ISAACSIM_PATH</span><span class="si">}</span><span class="s2">"</span>
+./isaac-sim.streaming.sh
+</pre></div>
+</div>
+<p>Wait for this line. On the first start it takes minutes.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Isaac Sim Full Streaming App is loaded.
+</pre></div>
+</div>
+<p>On the Mac, download <strong>Isaac Sim WebRTC Streaming Client</strong> for macOS (aarch64) from the <a class="reference external" href="https://docs.isaacsim.omniverse.nvidia.com/6.2.0/installation/download.html">download page</a>. Open the file and drag the app into Applications. Start it, replace the server <code class="docutils literal notranslate"><span class="pre">127.0.0.1</span></code> with the IP address of the Spark, and select <strong>Connect</strong>. If macOS asks whether the client may find devices on the local network, choose <strong>Allow</strong>, then select <strong>Connect</strong> again if the first attempt failed.</p>
+<p>The address is the one in brackets in the first line of <code class="docutils literal notranslate"><span class="pre">ping</span> <span class="pre">-c</span> <span class="pre">3</span> <span class="pre">spark-abcd.local</span></code> on the Mac. On the Spark, <code class="docutils literal notranslate"><span class="pre">hostname</span> <span class="pre">-I</span></code> in a second terminal prints all of its addresses on one line. Use the one on the lab network. Docker’s own address, usually <code class="docutils literal notranslate"><span class="pre">172.17.0.1</span></code>, does not work.</p>
+<p>To finish, choose File &gt; Exit inside the streamed window, then close the client.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The stream is not part of the SSH connection. Keep four things in mind.</p>
+<ul class="simple">
+<li><p>The viewer talks to the Spark directly, on TCP port 49100 and UDP port 47998. Forwarding a port cannot carry it, because forwarding carries TCP only. With only the TCP port open, the viewer connects and stays black.</p></li>
+<li><p>The stream has no password and no encryption. Use it on a network you trust.</p></li>
+<li><p>One viewer can connect at a time.</p></li>
+<li><p>Connect only after the line above has appeared.</p></li>
+</ul>
+</div>
+<p>If a firewall is active on the Spark, open the two ports. <strong>Spark:</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>ufw<span class="w"> </span>allow<span class="w"> </span><span class="m">49100</span>/tcp<span class="w"> </span>comment<span class="w"> </span><span class="s1">'Isaac Sim WebRTC signal'</span>
+sudo<span class="w"> </span>ufw<span class="w"> </span>allow<span class="w"> </span><span class="m">47998</span>/udp<span class="w"> </span>comment<span class="w"> </span><span class="s1">'Isaac Sim WebRTC stream'</span>
+</pre></div>
+</div>
+<p>NVIDIA’s pages do not fully agree on streaming from a Spark. The release notes of Isaac Sim list it as supported since version 6.0. The documentation of Isaac Lab still lists Isaac Lab’s own livestream option as not supported or validated on the Spark. No page reports a test with the viewer for the Mac. Try it on your unit before you rely on it.</p>
+</section>
+<section id="isaac-sim-in-the-editor">
+<h3>Isaac Sim in the Editor<a class="headerlink" href="#isaac-sim-in-the-editor" title="Link to this heading">#</a></h3>
+<p>Open the folder <code class="docutils literal notranslate"><span class="pre">~/IsaacSim/_build/linux-aarch64/release</span></code> in the editor, not <code class="docutils literal notranslate"><span class="pre">~/IsaacSim</span></code>. The build puts a <code class="docutils literal notranslate"><span class="pre">.vscode</span></code> folder for this architecture there. It sets the interpreter to <code class="docutils literal notranslate"><span class="pre">kit/python/bin/python3</span></code> and brings a debug configuration named <strong>Python: Current File</strong> for scripts such as <code class="docutils literal notranslate"><span class="pre">hello_world.py</span></code>. The <code class="docutils literal notranslate"><span class="pre">.vscode</span></code> folder at the top of the repository points to a path for another architecture and does not work on the Spark.</p>
+<p>Two remarks:</p>
+<ul class="simple">
+<li><p>Do not choose <code class="docutils literal notranslate"><span class="pre">python.sh</span></code> as the interpreter of the editor. The editor would skip the setup that the script performs. Run scripts with <code class="docutils literal notranslate"><span class="pre">python.sh</span></code> in the terminal, or with the debug configuration.</p></li>
+<li><p>The settings in that folder name Pylance as the language server. In Cursor, the Python extension by Anysphere takes its place.</p></li>
+</ul>
+<p>NVIDIA also publishes the extension <strong>Isaac Sim VS Code Edition</strong>, on the Visual Studio Marketplace and on Open VSX. It sends code from the editor to an Isaac Sim that is already running. That is a subject for a later session.</p>
+</section>
+</section>
+<section id="troubleshooting">
+<h2>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Link to this heading">#</a></h2>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Symptom</p></th>
+<th class="head"><p>Cause and remedy</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">cannot</span> <span class="pre">resolve</span> <span class="pre">spark-abcd.local</span></code></p></td>
+<td><p>The network blocks local names. Use the IP address of the Spark.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">Connection</span> <span class="pre">refused</span></code> just after the first boot</p></td>
+<td><p>The Spark is still installing updates and may restart more than once. Wait ten minutes.</p></td>
+</tr>
+<tr class="row-even"><td><p>Terminal connects, the editor says <code class="docutils literal notranslate"><span class="pre">No</span> <span class="pre">route</span> <span class="pre">to</span> <span class="pre">host</span></code></p></td>
+<td><p>macOS blocks the editor from the local network. See the warning in Part 2.</p></td>
+</tr>
+<tr class="row-odd"><td><p>VS Code hangs or reports that its server failed to start</p></td>
+<td><p>Run <strong>Remote-SSH: Kill VS Code Server on Host…</strong> and connect again.</p></td>
+</tr>
+<tr class="row-even"><td><p>Cursor fails to connect after an update</p></td>
+<td><p>In the error message choose <strong>More Options</strong>, then <strong>Reinstall Server</strong>. In a connected window, run <strong>Remote-SSH: Reinstall Remote Server and Reload Window</strong>.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Cursor fails with errors about sockets or prerequisites</p></td>
+<td><p>Microsoft’s Remote - SSH is installed in Cursor. Replace it with the one by Anysphere.</p></td>
+</tr>
+<tr class="row-even"><td><p>No code completion in the remote window</p></td>
+<td><p>The Python extensions are installed on the Mac only. Install them on the Spark side.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">./build.sh</span></code> stops at a compiler version check</p></td>
+<td><p>GCC 11 is not the default. Repeat Step 1 and check <code class="docutils literal notranslate"><span class="pre">gcc</span> <span class="pre">--version</span></code>.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">./build.sh</span></code> fails with <code class="docutils literal notranslate"><span class="pre">found</span> <span class="pre">0</span> <span class="pre">packages</span></code></p></td>
+<td><p>The build cannot reach <code class="docutils literal notranslate"><span class="pre">ovextensionsprod.blob.core.windows.net</span></code>, where it fetches its extensions. Check that the firewall or proxy of the network lets the build reach this host.</p></td>
+</tr>
+<tr class="row-odd"><td><p>The build fails after an earlier attempt</p></td>
+<td><p>Delete the <code class="docutils literal notranslate"><span class="pre">.cache</span></code> folder inside <code class="docutils literal notranslate"><span class="pre">~/IsaacSim</span></code> and build again.</p></td>
+</tr>
+<tr class="row-even"><td><p>Isaac Sim does not start</p></td>
+<td><p>The third variable of Step 4 is missing in this terminal. Run <code class="docutils literal notranslate"><span class="pre">source</span> <span class="pre">~/isaacsim-env.sh</span></code>.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Isaac Sim crashes while starting its renderer</p></td>
+<td><p>The GPU driver is not from the 580 series. Install the updates offered by the DGX Dashboard.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">isaac-sim.sh</span></code> shows nothing</p></td>
+<td><p>It needs a display on the Spark. Use a script without a window, or the stream.</p></td>
+</tr>
+<tr class="row-odd"><td><p>The viewer connects and stays black</p></td>
+<td><p>UDP port 47998 does not reach the Spark, or Isaac Sim had not finished loading.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">python.sh</span></code> warns about a conda environment</p></td>
+<td><p>Run <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">deactivate</span></code>.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="remove-isaac-sim">
+<h2>Remove Isaac Sim<a class="headerlink" href="#remove-isaac-sim" title="Link to this heading">#</a></h2>
+<p>The build lives in one folder.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The command below deletes the source, the build and everything you saved inside <code class="docutils literal notranslate"><span class="pre">~/IsaacSim</span></code>. Copy your own files out first.</p>
+</div>
+<p><strong>Spark:</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>rm<span class="w"> </span>-rf<span class="w"> </span>~/IsaacSim
+</pre></div>
+</div>
+<p>Caches in your home directory and the compiler setting of Step 1 remain. Isaac Sim’s documentation lists where it keeps its logs, shader cache and settings: <code class="docutils literal notranslate"><span class="pre">~/.nvidia-omniverse/logs/Kit/Isaac-Sim</span></code>, <code class="docutils literal notranslate"><span class="pre">~/.cache/ov/Kit</span></code> and <code class="docutils literal notranslate"><span class="pre">~/.local/share/ov/data/Kit/Isaac-Sim</span></code>. No NVIDIA page gives a complete removal, or tells how to undo the compiler setting.</p>
+</section>
+<section id="next">
+<h2>Next<a class="headerlink" href="#next" title="Link to this heading">#</a></h2>
+<p>The playbook continues with Isaac Lab, the framework for robot learning on top of Isaac Sim. Its steps 6 to 9 clone Isaac Lab next to <code class="docutils literal notranslate"><span class="pre">IsaacSim</span></code>, link the two, and train a walking policy for a humanoid robot without a window. Start them inside <code class="docutils literal notranslate"><span class="pre">~/IsaacSim</span></code>, with the variables of Step 4 set: step 6 begins with <code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">..</span></code>.</p>
+</section>
+<section id="references">
+<h2>References<a class="headerlink" href="#references" title="Link to this heading">#</a></h2>
+<p>DGX Spark:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://docs.nvidia.com/dgx/dgx-spark/">DGX Spark User Guide</a>, with <a class="reference external" href="https://docs.nvidia.com/dgx/dgx-spark/first-boot.html">First Boot</a> and <a class="reference external" href="https://docs.nvidia.com/dgx/dgx-spark/release-notes.html">Release Notes</a></p></li>
+<li><p><a class="reference external" href="https://build.nvidia.com/spark/connect-to-your-spark">Connect Remotely to Your AI Compute</a>, the playbook for NVIDIA Sync and manual SSH</p></li>
+<li><p><a class="reference external" href="https://docs.nvidia.com/sync/latest/">NVIDIA Sync User Guide</a></p></li>
+<li><p><a class="reference external" href="https://github.com/NVIDIA/dgx-spark-playbooks">DGX Spark playbooks on GitHub</a>. The current text of each playbook is in a folder whose name starts with <code class="docutils literal notranslate"><span class="pre">playbook-</span></code>. Folders without that prefix are older copies.</p></li>
+</ul>
+<p>Isaac Sim:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://build.nvidia.com/spark/isaac">Set Up Isaac Sim and Isaac Lab</a>, the playbook for the DGX Spark</p></li>
+<li><p><a class="reference external" href="https://docs.isaacsim.omniverse.nvidia.com/6.2.0/installation/requirements.html">Isaac Sim Requirements</a> and <a class="reference external" href="https://docs.isaacsim.omniverse.nvidia.com/6.2.0/installation/quick-install.html">Quick Install</a></p></li>
+<li><p><a class="reference external" href="https://github.com/isaac-sim/IsaacSim/blob/v6.2.0/README.md">README of Isaac Sim at tag v6.2.0</a></p></li>
+<li><p><a class="reference external" href="https://docs.isaacsim.omniverse.nvidia.com/6.2.0/python_scripting/manual_standalone_python.html">Python Environment</a></p></li>
+<li><p><a class="reference external" href="https://docs.isaacsim.omniverse.nvidia.com/6.2.0/installation/manual_livestream_clients.html">Livestream Clients</a></p></li>
+<li><p><a class="reference external" href="https://docs.isaacsim.omniverse.nvidia.com/6.2.0/development_tools/vscode.html">Isaac Sim and VS Code</a></p></li>
+<li><p><a class="reference external" href="https://isaac-sim.github.io/IsaacLab/v3.0.0/source/isaaclab/installation.html">Isaac Lab 3.0.0 Installation</a></p></li>
+</ul>
+<p>Editors:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://code.visualstudio.com/docs/remote/ssh">VS Code: Remote Development using SSH</a> and its <a class="reference external" href="https://code.visualstudio.com/docs/remote/troubleshooting">Tips and Tricks</a></p></li>
+<li><p><a class="reference external" href="https://github.com/NVIDIA/dgx-spark-playbooks/blob/main/nvidia/playbook-vscode/README.md">Set Up VS Code for Local and Remote Development</a>, the playbook for the DGX Spark</p></li>
+<li><p><a class="reference external" href="https://cursor.com/help/troubleshooting/network">Cursor: Network troubleshooting</a>, which covers remote SSH</p></li>
+</ul>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./courses/sim"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../mip/em.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Electron Microscopy (EM) Imaging</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../../research/connectome/index.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Connectome Agent</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item"><div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#versions">Versions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#before-you-start">Before You Start</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-1-reach-the-spark-from-the-mac">Part 1: Reach the Spark from the Mac</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#find-the-spark">Find the Spark</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#log-in-once-with-the-password">Log In Once with the Password</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#set-up-a-key-and-a-short-name">Set Up a Key and a Short Name</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#check-the-spark">Check the Spark</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-2-connect-the-editor">Part 2: Connect the Editor</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#open-a-web-page-of-the-spark">Open a Web Page of the Spark</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#keep-long-jobs-alive">Keep Long Jobs Alive</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-3-install-isaac-sim-on-the-spark">Part 3: Install Isaac Sim on the Spark</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#choose-a-route">Choose a Route</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-compiler-and-tools">Step 1: Compiler and Tools</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-source">Step 2: Source</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-build">Step 3: Build</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-4-environment">Step 4: Environment</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-5-first-run">Step 5: First Run</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-4-use-isaac-sim-from-the-mac">Part 4: Use Isaac Sim from the Mac</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scripts-without-a-window">Scripts without a Window</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#stream-the-window-to-the-mac">Stream the Window to the Mac</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#isaac-sim-in-the-editor">Isaac Sim in the Editor</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#troubleshooting">Troubleshooting</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#remove-isaac-sim">Remove Isaac Sim</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#next">Next</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Tran Minh Quan
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

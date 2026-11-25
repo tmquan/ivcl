@@ -1,0 +1,844 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Connectome Agent &#8212; Intelligent Visual Computing</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=6a604523" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=7b9e58ef" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script data-sd-tabs-storage-prefix="sphinx-design-tab-id-" src="../../_static/design-tabs.js?v=fcb327ea"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'research/connectome/index';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Representation" href="representation.html" />
+    <link rel="prev" title="IsaacSim101" href="../../courses/sim/isaacsim101.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../home.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/gpgpu.png" class="logo__image only-light" alt="Intelligent Visual Computing - Home"/>
+    <img src="../../_static/gpgpu.png" class="logo__image only-dark pst-js-only" alt="Intelligent Visual Computing - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../home.html">
+                    Welcome
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Digital Signal Processing</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../courses/dsp/signals.html">Signals and Sequences</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../courses/dsp/systems.html">Systems and Transformations</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Fundamentals of Microelectronics</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../courses/fme/index.html">BJT and MOSFET Circuits</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Medical Image Processing</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../courses/mip/intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../courses/mip/sigsys.html">Signals and Systems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../courses/mip/xr.html">X-ray (XR) Imaging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../courses/mip/ct.html">Computed Tomography (CT)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../courses/mip/mr.html">Magnetic Resonance (MR) Imaging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../courses/mip/pt.html">Positron Emission Tomography (PET)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../courses/mip/es.html">Endoscopy (ES) Imaging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../courses/mip/histo.html">Histology / Histopathology Imaging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../courses/mip/em.html">Electron Microscopy (EM) Imaging</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Simulation</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../courses/sim/isaacsim101.html">IsaacSim101</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Research</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">Connectome Agent</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="representation.html">Representation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="supervision.html">Supervision</a></li>
+<li class="toctree-l2"><a class="reference internal" href="features.html">Features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multiscale.html">Multi-scale</a></li>
+<li class="toctree-l2"><a class="reference internal" href="agent.html">Agent</a></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/tmquan/ivcl" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/tmquan/ivcl/issues/new?title=Issue%20on%20page%20%2Fresearch/connectome/index.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/research/connectome/index.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button pst-navbar-icon"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm pst-navbar-icon" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Connectome Agent</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-idea">The idea</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#outputs">Outputs</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#isaac-sim">Isaac Sim</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#datasets">Datasets</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#decisions">Decisions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#build-order">Build order</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="connectome-agent">
+<h1>Connectome Agent<a class="headerlink" href="#connectome-agent" title="Link to this heading">#</a></h1>
+<p>An agent that reconstructs an electron-microscopy (EM) volume inside Isaac Sim. It holds the tissue as a set of 3D Gaussians, looks at it through a camera that cuts sections, and edits the Gaussians until they explain the image, the segmentation and the class of every structure.</p>
+<p>Three words are used in a fixed sense throughout. <strong>Voxel</strong> is the image grid. <strong>Frame</strong> is the medial axes of one connected component, with a radius at every point. <strong>Graph</strong> is the set of components and their links. A 2D image from the camera is called a <strong>view</strong>, never a frame.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This is a design, written on 23 November 2026. It replaces an earlier design built around a flood-filling network. One part has been run: a scene of the CellMap crop 313 was built and rendered on the lab’s DGX Spark with the Kit runtime of Isaac Sim. Everything else is to be built. Numbers marked <em>estimate</em> are arithmetic, not measurements.</p>
+</div>
+<section id="the-idea">
+<h2>The idea<a class="headerlink" href="#the-idea" title="Link to this heading">#</a></h2>
+<p>The design has four axes. Each has three members, and each member has a job.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Axis</p></th>
+<th class="head"><p>Members</p></th>
+<th class="head"><p>Page</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Data representation</strong></p></td>
+<td><p>Voxel, Frame, Graph</p></td>
+<td><p><a class="reference internal" href="representation.html"><span class="std std-doc">Representation</span></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Data supervision</strong></p></td>
+<td><p>Raw, segmentation, class type</p></td>
+<td><p><a class="reference internal" href="supervision.html"><span class="std std-doc">Supervision</span></a></p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Feature</strong></p></td>
+<td><p>Geometry, anisotropy, Gaussian splats</p></td>
+<td><p><a class="reference internal" href="features.html"><span class="std std-doc">Features</span></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Multi-scale</strong></p></td>
+<td><p>Coarse-to-fine, fine-to-coarse, mipmap</p></td>
+<td><p><a class="reference internal" href="multiscale.html"><span class="std std-doc">Multi-scale</span></a></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>One object ties the four together: the <strong>Gaussian</strong>. A Gaussian is an ellipsoid of stained material with a centre, a shape, an intensity, an identity and a class.</p>
+<ul class="simple">
+<li><p>It can be drawn into voxels. The Gaussians of one connected component, with their neighbour links, are its Frame. The components and their contacts are the Graph. So it joins the three representations.</p></li>
+<li><p>Its intensity is trained by the raw image, its identity by the segmentation, its class by the class labels. So it carries the three kinds of supervision.</p></li>
+<li><p>Its centre and shape are the geometry; the ratio of its axes is the anisotropy. So it is the feature.</p></li>
+<li><p>Small Gaussians merge into large ones and large ones split into small ones. So it has a scale, and a pyramid of them is a mipmap.</p></li>
+</ul>
+<p>The <a class="reference internal" href="agent.html"><span class="std std-doc">agent</span></a> is the loop that edits this set.</p>
+</section>
+<section id="outputs">
+<h2>Outputs<a class="headerlink" href="#outputs" title="Link to this heading">#</a></h2>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Output</p></th>
+<th class="head"><p>How it is obtained from the Gaussians</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Dense segmentation of neurites, mitochondria, clefts (and the organelle classes of CellMap)</p></td>
+<td><p>Gaussians are the seeds; a watershed on the membrane map at the finest level gives each voxel to one seed</p></td>
+</tr>
+<tr class="row-odd"><td><p>A skeleton of every neurite</p></td>
+<td><p>The Frame of the neurite: its elongated Gaussians, joined by a minimum spanning tree</p></td>
+</tr>
+<tr class="row-even"><td><p>A graph of neurons, branches, synapses</p></td>
+<td><p>The Graph: one node per component, with the contact and synapse links between Frames</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="isaac-sim">
+<h2>Isaac Sim<a class="headerlink" href="#isaac-sim" title="Link to this heading">#</a></h2>
+<p>Isaac Sim is the runtime, not a viewer beside it. Each part of the design maps to a part of Isaac Sim.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Part of the design</p></th>
+<th class="head"><p>In Isaac Sim</p></th>
+<th class="head"><p>Seen in the lab’s build</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Voxel</p></td>
+<td><p>NanoVDB volumes on the GPU through Warp; a USD <code class="docutils literal notranslate"><span class="pre">Volume</span></code> prim for display</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">omni.volume</span></code>, <code class="docutils literal notranslate"><span class="pre">omni.warp.core</span></code> 1.17</p></td>
+</tr>
+<tr class="row-odd"><td><p>Frame</p></td>
+<td><p>Curves with widths under the prim of each component; its nodes as splats</p></td>
+<td><p>USD 25.11</p></td>
+</tr>
+<tr class="row-even"><td><p>Graph</p></td>
+<td><p>The USD stage: one prim per component, relationships for links, layers for versions</p></td>
+<td><p>USD 25.11</p></td>
+</tr>
+<tr class="row-odd"><td><p>Views</p></td>
+<td><p>A camera prim with a render product; Replicator annotators for colour, instance and class</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">omni.replicator.core</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>Gaussians</p></td>
+<td><p>Warp arrays for fitting; the USD particle-field schema and NuRec for display</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">omni.usd.schema.usd_particle_field</span></code>, <code class="docutils literal notranslate"><span class="pre">isaacsim.replicator.nurec_utils</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Differentiable rendering</p></td>
+<td><p>Warp kernels with automatic differentiation</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">omni.warp.core</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>The agent’s body</p></td>
+<td><p>A camera rig that the policy moves</p></td>
+<td><p>Camera prim</p></td>
+</tr>
+<tr class="row-odd"><td><p>Many blocks at once</p></td>
+<td><p>A vectorised environment of the Isaac Lab kind</p></td>
+<td><p>Needs Isaac Lab</p></td>
+</tr>
+<tr class="row-even"><td><p>Human review</p></td>
+<td><p>The Isaac Sim window, streamed to the Mac</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">isaac-sim.streaming.sh</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="warning admonition">
+<p class="admonition-title">State of the build on the Spark</p>
+<p>On <code class="docutils literal notranslate"><span class="pre">spark-tiger</span></code>, the Isaac Sim 6.2.0 build starts, but 28 of its own extensions fail to load: their compiled parts were built and never copied into the application (<code class="docutils literal notranslate"><span class="pre">isaacsim.core.simulation_manager.bindings</span></code> is the first one missing). With <code class="docutils literal notranslate"><span class="pre">SimulationApp</span></code>, the renderer then returns empty images. The Kit runtime of the same build, started with the renderer and Replicator only, does render. Milestone M0 is to finish that build. Until then the prototype uses the Kit route.</p>
+</div>
+</section>
+<section id="datasets">
+<h2>Datasets<a class="headerlink" href="#datasets" title="Link to this heading">#</a></h2>
+<p>The redesign adds the CellMap challenge data to the three volumes named before, because it is the only one with dense class labels for many organelles, and the only isotropic one.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p></p></th>
+<th class="head"><p>CREMI</p></th>
+<th class="head"><p>SNEMI3D</p></th>
+<th class="head"><p>MICrONS</p></th>
+<th class="head"><p>CellMap</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Tissue</strong></p></td>
+<td><p>Fly brain</p></td>
+<td><p>Mouse cortex</p></td>
+<td><p>Mouse visual cortex</p></td>
+<td><p>Cells and tissues, several species</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Imaging</strong></p></td>
+<td><p>Serial-section TEM</p></td>
+<td><p>Serial-section SEM</p></td>
+<td><p>Serial-section TEM</p></td>
+<td><p>FIB-SEM</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Voxel, nm</strong></p></td>
+<td><p>4 × 4 × 40</p></td>
+<td><p>6 × 6 × 29</p></td>
+<td><p>4 × 4 × 40</p></td>
+<td><p>Isotropic, 8 or finer</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Raw</strong></p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Segmentation</strong></p></td>
+<td><p>Neurites, dense</p></td>
+<td><p>Neurites, dense</p></td>
+<td><p>Automatic; some neurons proofread</p></td>
+<td><p>Instances for some classes</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Class type</strong></p></td>
+<td><p>Clefts, with partners</p></td>
+<td><p>None</p></td>
+<td><p>Synapse table; cell types for some neurons</p></td>
+<td><p>Dozens of organelle classes, dense in labelled crops</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Role</strong></p></td>
+<td><p>First slice</p></td>
+<td><p>Second slice</p></td>
+<td><p>The full volume</p></td>
+<td><p>Class types and the isotropic case</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>No dataset has all three kinds of supervision for all structures. That is why supervision is an axis of its own: each kind trains its own part of the Gaussian, and a volume with only raw data still trains the first part.</p>
+</section>
+<section id="decisions">
+<h2>Decisions<a class="headerlink" href="#decisions" title="Link to this heading">#</a></h2>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>#</p></th>
+<th class="head"><p>Decision</p></th>
+<th class="head"><p>Turned down</p></th>
+<th class="head"><p>Why, and what it costs</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>D1</p></td>
+<td><p>The state of the agent is a set of anisotropic 3D Gaussians.</p></td>
+<td><p>A voxel canvas per object (flood filling).</p></td>
+<td><p>One primitive serves Voxel, Frame and Graph, and is trained by all three kinds of supervision. The cost: a Gaussian is smooth, so the exact membrane position comes from a final voxel step.</p></td>
+</tr>
+<tr class="row-odd"><td><p>D2</p></td>
+<td><p>The agent’s view is a <strong>slab</strong>: the sum of everything inside one section thickness. No depth order, no occlusion.</p></td>
+<td><p>Perspective splatting with alpha blending, as in novel-view synthesis.</p></td>
+<td><p>An EM image is a thin slice of tissue, not a view of a surface. The slab integral of a Gaussian has a closed form. The cost: the standard splat renderers cannot be used for training; the project writes its own in Warp.</p></td>
+</tr>
+<tr class="row-even"><td><p>D3</p></td>
+<td><p>Isaac Sim is the runtime. One Isaac Sim process per GPU holds many blocks.</p></td>
+<td><p>A separate core with Isaac Sim as a viewer.</p></td>
+<td><p>Required. It also gives cameras, annotators, USD layers and Warp in one process. The cost: the build must work, and each process takes tens of seconds to start.</p></td>
+</tr>
+<tr class="row-odd"><td><p>D4</p></td>
+<td><p>Continuous values (centre, shape, intensity) are fitted by gradient descent. Discrete edits (split, merge, link, label) are chosen by a policy.</p></td>
+<td><p>A policy that outputs everything; or optimisation only.</p></td>
+<td><p>Gradients are exact and cheap for continuous values and do not exist for structure. The cost: two mechanisms to keep in step.</p></td>
+</tr>
+<tr class="row-even"><td><p>D5</p></td>
+<td><p>Every length is in nanometres. The section thickness is a parameter of the camera.</p></td>
+<td><p>Working in voxels.</p></td>
+<td><p>One model then serves 4 × 4 × 40 nm sections and 8 nm isotropic blocks.</p></td>
+</tr>
+<tr class="row-odd"><td><p>D6</p></td>
+<td><p>The stage is the record. The data, the agent’s edits and the reviewer’s edits are separate USD layers.</p></td>
+<td><p>A separate event log.</p></td>
+<td><p>A reviewer’s layer overrides the agent’s without changing it, and removing a layer undoes it. The cost: layers record the result of edits, not their order; the order is kept in a small side table.</p></td>
+</tr>
+<tr class="row-even"><td><p>D7</p></td>
+<td><p>The policy’s view encoder can be swapped. The first one is a small convolutional network; Cosmos 3 Edge is an option for later.</p></td>
+<td><p>Cosmos in the main loop from the start.</p></td>
+<td><p>A sequence of views along a Frame is a video, which suits Cosmos, but nothing in the design depends on it.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="build-order">
+<h2>Build order<a class="headerlink" href="#build-order" title="Link to this heading">#</a></h2>
+<p>Each milestone has one test.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p></p></th>
+<th class="head"><p>Milestone</p></th>
+<th class="head"><p>Data</p></th>
+<th class="head"><p>Done when</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>M0</p></td>
+<td><p>Isaac Sim build finished; scene viewer</p></td>
+<td><p>CellMap crop 313</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">SimulationApp</span></code> renders a non-empty image on the Spark. (The viewer already renders through the Kit route.)</p></td>
+</tr>
+<tr class="row-odd"><td><p>M1</p></td>
+<td><p>Voxel store, mipmap, slab camera</p></td>
+<td><p>CREMI A</p></td>
+<td><p>A view from the camera at any level equals the same slice computed with numpy.</p></td>
+</tr>
+<tr class="row-even"><td><p>M2</p></td>
+<td><p>Slab renderer in Warp, with gradients; fit to raw</p></td>
+<td><p>A 2 µm crop of CREMI A</p></td>
+<td><p>Gradients match finite differences. The fitted Gaussians reproduce the image above a set quality, with the count reported.</p></td>
+</tr>
+<tr class="row-odd"><td><p>M3</p></td>
+<td><p>Frames from the true labels; Graph; back to voxels</p></td>
+<td><p>CREMI A</p></td>
+<td><p>The segmentation rebuilt from those Frames has adapted Rand error below 0.02 against the labels. This shows the representation is sufficient.</p></td>
+</tr>
+<tr class="row-even"><td><p>M4</p></td>
+<td><p>The multi-scale cycle</p></td>
+<td><p>CREMI A, SNEMI3D</p></td>
+<td><p>Same quality as M2 and M3 with fewer Gaussians and fewer steps.</p></td>
+</tr>
+<tr class="row-odd"><td><p>M5</p></td>
+<td><p>The policy for discrete edits</p></td>
+<td><p>CREMI, SNEMI3D</p></td>
+<td><p>Scores on the held-out sections no worse than a baseline affinity network with watershed.</p></td>
+</tr>
+<tr class="row-even"><td><p>M6</p></td>
+<td><p>Class types: clefts and synapses; organelles</p></td>
+<td><p>CREMI; CellMap crops</p></td>
+<td><p>Cleft and synapse scores on CREMI; per-class scores on held-out CellMap crops.</p></td>
+</tr>
+<tr class="row-odd"><td><p>M7</p></td>
+<td><p>Vectorised environment, layers, review in the window</p></td>
+<td><p>CREMI</p></td>
+<td><p>A reviewer’s edit in the Isaac Sim window overrides the agent, and removing the reviewer’s layer restores the agent’s result.</p></td>
+</tr>
+<tr class="row-even"><td><p>M8</p></td>
+<td><p>Blocks and stitching</p></td>
+<td><p>A 100 µm cube of MICrONS</p></td>
+<td><p>Killing workers at random does not change the result.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>M3 comes before any learning on purpose. If Frames made from perfect labels cannot be turned back into a good segmentation, the design is wrong, and it is cheap to find that out first.</p>
+</section>
+<div class="toctree-wrapper compound">
+</div>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./research/connectome"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../../courses/sim/isaacsim101.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">IsaacSim101</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="representation.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Representation</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item"><div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-idea">The idea</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#outputs">Outputs</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#isaac-sim">Isaac Sim</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#datasets">Datasets</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#decisions">Decisions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#build-order">Build order</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Tran Minh Quan
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

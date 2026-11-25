@@ -1,0 +1,854 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Agent &#8212; Intelligent Visual Computing</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=6a604523" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=7b9e58ef" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script data-sd-tabs-storage-prefix="sphinx-design-tab-id-" src="../../_static/design-tabs.js?v=fcb327ea"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'research/connectome/agent';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="prev" title="Multi-scale" href="multiscale.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../home.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/gpgpu.png" class="logo__image only-light" alt="Intelligent Visual Computing - Home"/>
+    <img src="../../_static/gpgpu.png" class="logo__image only-dark pst-js-only" alt="Intelligent Visual Computing - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../home.html">
+                    Welcome
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Digital Signal Processing</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../courses/dsp/signals.html">Signals and Sequences</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../courses/dsp/systems.html">Systems and Transformations</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Fundamentals of Microelectronics</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../courses/fme/index.html">BJT and MOSFET Circuits</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Medical Image Processing</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../courses/mip/intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../courses/mip/sigsys.html">Signals and Systems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../courses/mip/xr.html">X-ray (XR) Imaging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../courses/mip/ct.html">Computed Tomography (CT)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../courses/mip/mr.html">Magnetic Resonance (MR) Imaging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../courses/mip/pt.html">Positron Emission Tomography (PET)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../courses/mip/es.html">Endoscopy (ES) Imaging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../courses/mip/histo.html">Histology / Histopathology Imaging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../courses/mip/em.html">Electron Microscopy (EM) Imaging</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Simulation</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../courses/sim/isaacsim101.html">IsaacSim101</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Research</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">Connectome Agent</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="representation.html">Representation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="supervision.html">Supervision</a></li>
+<li class="toctree-l2"><a class="reference internal" href="features.html">Features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multiscale.html">Multi-scale</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Agent</a></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/tmquan/ivcl" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/tmquan/ivcl/issues/new?title=Issue%20on%20page%20%2Fresearch/connectome/agent.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/research/connectome/agent.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button pst-navbar-icon"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm pst-navbar-icon" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Agent</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#body-and-state">Body and state</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-loop">The loop</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#actions">Actions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#policy">Policy</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#training">Training</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#finding-and-fixing-errors">Finding and fixing errors</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#review">Review</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#layers">Layers</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#many-blocks-many-gpus">Many blocks, many GPUs</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tests">Tests</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="agent">
+<h1>Agent<a class="headerlink" href="#agent" title="Link to this heading">#</a></h1>
+<p>The agent is the loop that builds and corrects the Frames. It runs inside Isaac Sim: its body is a camera in the stage, what it sees are views from that camera, and what it changes are prims of the stage.</p>
+<section id="body-and-state">
+<h2>Body and state<a class="headerlink" href="#body-and-state" title="Link to this heading">#</a></h2>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p></p></th>
+<th class="head"><p>What</p></th>
+<th class="head"><p>In Isaac Sim</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Body</strong></p></td>
+<td><p>A slab camera: position, orientation, level, slab thickness</p></td>
+<td><p>A camera prim, <code class="docutils literal notranslate"><span class="pre">/World/Block_*/Cameras/c_{n}</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Attention</strong></p></td>
+<td><p>The Frame node it is working at, and a queue of nodes to visit</p></td>
+<td><p>Attributes of the camera prim</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>State of the world</strong></p></td>
+<td><p>The Frames and the Graph of the block</p></td>
+<td><p>Warp arrays, mirrored to the prims of the components</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Memory</strong></p></td>
+<td><p>Which nodes are settled; confidence of each</p></td>
+<td><p>Attributes of the nodes</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>One Isaac Sim process holds many blocks side by side in one stage, each with several agents. A block is an environment in the sense of Isaac Lab: the same sub-tree of prims, cloned on a grid, stepped together.</p>
+</section>
+<section id="the-loop">
+<h2>The loop<a class="headerlink" href="#the-loop" title="Link to this heading">#</a></h2>
+<p>One step of the agent has four parts.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>        ┌──────────────────────────────────────────────────────────┐
+        ▼                                                          │
+   1. look        views from the camera: raw, model, residual,     │
+                  identity, class; the nodes near the camera       │
+   2. fit         a few gradient steps on the nodes in view        │
+                  (centre, radii, intensity, identity, class)      │
+   3. edit        the policy chooses one discrete action           │
+   4. move        the camera goes to the next place ───────────────┘
+</pre></div>
+</div>
+<p>Fitting and editing are separate on purpose (decision D4). Where a node sits and how large it is are continuous, and the slab renderer gives exact gradients for them. Whether a node should exist, and what it is joined to, are discrete, and a policy chooses them.</p>
+</section>
+<section id="actions">
+<h2>Actions<a class="headerlink" href="#actions" title="Link to this heading">#</a></h2>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>On</p></th>
+<th class="head"><p>Action</p></th>
+<th class="head"><p>Effect</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Frame</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">grow</span></code></p></td>
+<td><p>Add a node at the tip of the Frame, one caliber ahead along the tangent. This is how a neurite is traced.</p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">branch</span></code></p></td>
+<td><p>Add a node to the side of the current node, and put it on the queue</p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">retract</span></code></p></td>
+<td><p>Remove the last k nodes of the tip and mark the place as tried</p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">split</span></code></p></td>
+<td><p>Replace a node by two children along its longest axis</p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">merge</span></code></p></td>
+<td><p>Replace two adjacent nodes by their moment-matched parent</p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">prune</span></code></p></td>
+<td><p>Remove a node that explains nothing</p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">cut</span></code></p></td>
+<td><p>Remove an <code class="docutils literal notranslate"><span class="pre">adjacent</span></code> edge: the component becomes two</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Graph</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">join</span></code></p></td>
+<td><p>Add a <code class="docutils literal notranslate"><span class="pre">same</span></code> edge between two components</p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">separate</span></code></p></td>
+<td><p>Remove a <code class="docutils literal notranslate"><span class="pre">same</span></code> edge</p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">link</span></code></p></td>
+<td><p>Add a <code class="docutils literal notranslate"><span class="pre">synapse</span></code> edge from one component to another through a cleft</p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">label</span></code></p></td>
+<td><p>Set the class of a component</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Body</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">step</span></code></p></td>
+<td><p>Move the camera to the next node along the Frame</p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">rescale</span></code></p></td>
+<td><p>Go one level up or down</p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">jump</span></code></p></td>
+<td><p>Move the camera to the next node on the queue</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Control</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">flag</span></code></p></td>
+<td><p>Mark the place for review, with a reason</p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">close</span></code></p></td>
+<td><p>Finish the component: settled, or abandoned</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Tracing a neurite is <code class="docutils literal notranslate"><span class="pre">grow</span></code>, <code class="docutils literal notranslate"><span class="pre">step</span></code>, <code class="docutils literal notranslate"><span class="pre">grow</span></code>, <code class="docutils literal notranslate"><span class="pre">step</span></code>, with <code class="docutils literal notranslate"><span class="pre">branch</span></code> where the view shows a second profile leaving. Compared with flood filling, the agent writes a few nodes per micrometre and not thousands of voxels, and each node already carries the caliber and the direction.</p>
+<p>Three rules are enforced by the environment, so that no policy can break them:</p>
+<ul class="simple">
+<li><p>a node cannot be placed where the summed density of settled components of other identities is above one half;</p></li>
+<li><p>a component that grows beyond 3 times the 99th percentile of path length in the training set is stopped and flagged;</p></li>
+<li><p>every action is written with its actor: the agent with the hash of its weights, or a person by name.</p></li>
+</ul>
+</section>
+<section id="policy">
+<h2>Policy<a class="headerlink" href="#policy" title="Link to this heading">#</a></h2>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span> views (5 channels, 256 × 256, up to 8 along the Frame) ─► view encoder ──┐
+ nodes within 2 µm: centre, radii, shape, identity, class ─► graph network ┼─► action type
+ scalars: level, caliber, queue length, confidence ────────► MLP ──────────┘    action arguments
+                                                                                confidence
+</pre></div>
+</div>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Part</p></th>
+<th class="head"><p>Choice</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>View encoder</p></td>
+<td><p>A 2D convolutional network with a small transformer over the sequence of views. It can be swapped for Cosmos 3 Edge, which takes a sequence of views along a Frame as a video (decision D7).</p></td>
+</tr>
+<tr class="row-odd"><td><p>Graph network</p></td>
+<td><p>Message passing over the nodes near the camera and their <code class="docutils literal notranslate"><span class="pre">adjacent</span></code> and <code class="docutils literal notranslate"><span class="pre">contact</span></code> edges, 4 rounds</p></td>
+</tr>
+<tr class="row-even"><td><p>Outputs</p></td>
+<td><p>The action type; its arguments (which node, which neighbour, which class); a confidence</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Each action type has a rule that it starts from, and that takes over when the confidence of the policy is low. <code class="docutils literal notranslate"><span class="pre">grow</span></code> continues along the tangent while the residual ahead is high; <code class="docutils literal notranslate"><span class="pre">rescale</span></code> follows the table of <a class="reference internal" href="multiscale.html"><span class="std std-doc">Multi-scale</span></a>; <code class="docutils literal notranslate"><span class="pre">flag</span></code> fires on the error signals below. A rule is easy to debug and cannot improve; a network can improve and can fail quietly. Starting from rules gives a working agent at every milestone.</p>
+<section id="training">
+<h3>Training<a class="headerlink" href="#training" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p><strong>The teacher.</strong> Milestone M3 builds the true Frames from the labels. A scripted agent that can see them takes the right action at every state.</p></li>
+<li><p><strong>Imitation.</strong> The policy learns to copy the teacher on CREMI and SNEMI3D.</p></li>
+<li><p><strong>Correction.</strong> The learned policy is run; the states it reaches are labelled by the teacher; training repeats. So the policy learns to recover from its own mistakes, which the teacher never makes.</p></li>
+<li><p><strong>Review as data.</strong> Every edit by a human reviewer is one more labelled state.</p></li>
+</ol>
+<p>Reinforcement learning, with expected run length as reward, is left as an option. Imitation has a clear target and is stable.</p>
+</section>
+</section>
+<section id="finding-and-fixing-errors">
+<h2>Finding and fixing errors<a class="headerlink" href="#finding-and-fixing-errors" title="Link to this heading">#</a></h2>
+<p>A merge joins two neurons and corrupts the connections of both. A split loses connections and invents none. The agent is therefore set to prefer splits: components are grown carefully, and joining them is a separate, checked action.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Signal</p></th>
+<th class="head"><p>From</p></th>
+<th class="head"><p>Catches</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Children disagree on identity</p></td>
+<td><p>The pass up of the <a class="reference internal" href="multiscale.html"><span class="std std-doc">multi-scale cycle</span></a></p></td>
+<td><p>A coarse node over two objects</p></td>
+</tr>
+<tr class="row-odd"><td><p>The cross-section predictor is surprised</p></td>
+<td><p><a class="reference internal" href="supervision.html"><span class="std std-doc">Raw on Frame</span></a></p></td>
+<td><p>The Frame leaving its neurite</p></td>
+</tr>
+<tr class="row-even"><td><p>Tangent turns by more than 60° between neighbours, or caliber changes by more than 3 times</p></td>
+<td><p>Geometry of the Frame</p></td>
+<td><p>Two neurites that touch and cross</p></td>
+</tr>
+<tr class="row-odd"><td><p>Four branches at one node with two straight paths through</p></td>
+<td><p>Topology of the Frame</p></td>
+<td><p>A crossing taken for a branch point</p></td>
+</tr>
+<tr class="row-even"><td><p>An end inside the block that is not a natural end</p></td>
+<td><p>Topology of the Frame</p></td>
+<td><p>A split</p></td>
+</tr>
+<tr class="row-odd"><td><p>Two cell bodies in one object</p></td>
+<td><p>The Graph</p></td>
+<td><p>A large merge</p></td>
+</tr>
+<tr class="row-even"><td><p>A cleft whose two sides are one object</p></td>
+<td><p>The Graph</p></td>
+<td><p>A merge at a synapse</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Each signal has a score, calibrated against held-out labels so that 0.9 means right 9 times in 10. Above 0.9 the agent acts: <code class="docutils literal notranslate"><span class="pre">cut</span></code> for a merge, <code class="docutils literal notranslate"><span class="pre">join</span></code> for a split. Between 0.5 and 0.9 it raises a flag. The priority of a flag is the path length that depends on the answer, times how uncertain the score is.</p>
+</section>
+<section id="review">
+<h2>Review<a class="headerlink" href="#review" title="Link to this heading">#</a></h2>
+<p>A reviewer works in the Isaac Sim window, streamed from the Spark.</p>
+<ol class="arabic simple">
+<li><p>The reviewer takes the open flag with the highest priority.</p></li>
+<li><p>The stage shows the components involved in different colours, their Frames as curves, and three views at the place: across the sections, and along each of the two Frames.</p></li>
+<li><p>The reviewer uses the same actions as the agent: <code class="docutils literal notranslate"><span class="pre">join</span></code>, <code class="docutils literal notranslate"><span class="pre">cut</span></code>, <code class="docutils literal notranslate"><span class="pre">label</span></code>, <code class="docutils literal notranslate"><span class="pre">grow</span></code> from a clicked point, or accept.</p></li>
+</ol>
+<section id="layers">
+<h3>Layers<a class="headerlink" href="#layers" title="Link to this heading">#</a></h3>
+<p>The stage is composed of USD layers, strongest first.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Layer</p></th>
+<th class="head"><p>Written by</p></th>
+<th class="head"><p>Holds</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">review.usd</span></code></p></td>
+<td><p>People</p></td>
+<td><p>Their edits</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">agent.usd</span></code></p></td>
+<td><p>The agent</p></td>
+<td><p>Frames, Graph, flags</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">data.usd</span></code></p></td>
+<td><p>Ingest</p></td>
+<td><p>Volumes, block layout, cameras</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>A reviewer’s edit is an opinion in a stronger layer. It overrides the agent’s result and leaves it in place. Muting <code class="docutils literal notranslate"><span class="pre">review.usd</span></code> shows what the agent alone produced; that comparison is how the value of review is measured. When the agent is retrained and run again, <code class="docutils literal notranslate"><span class="pre">agent.usd</span></code> is replaced and the reviewers’ edits still apply where their prims still exist; edits whose prims are gone are listed for a second look.</p>
+<p>Layers hold the result of edits, not their order. The order, with actor and time, is kept in a table beside the stage (decision D6).</p>
+</section>
+</section>
+<section id="many-blocks-many-gpus">
+<h2>Many blocks, many GPUs<a class="headerlink" href="#many-blocks-many-gpus" title="Link to this heading">#</a></h2>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Unit</p></th>
+<th class="head"><p>Rule</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Process</p></td>
+<td><p>One Isaac Sim process per GPU, started once, kept running. Starting takes tens of seconds, so it is not done per block.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Block</p></td>
+<td><p>16 blocks per process at a time, as cloned environments (<em>estimate</em>, to be set by memory in M7)</p></td>
+</tr>
+<tr class="row-even"><td><p>Task</p></td>
+<td><p>A row in a task table: block, stage, state, lease. A worker takes a task for 30 minutes and renews the lease while it works. A dead worker stops renewing, and the task returns to the queue.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Checkpoint</p></td>
+<td><p>The Warp arrays of a block are written every 5 minutes, and at the end of each pass of the cycle, to a new file that is then renamed. A reader sees a whole checkpoint or none.</p></td>
+</tr>
+<tr class="row-even"><td><p>Restart</p></td>
+<td><p>A worker loads the last checkpoint of its block and continues. Components that were open are reopened from their last settled node.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Border</p></td>
+<td><p>Nodes in the halo are computed by both neighbours. Two nodes from two blocks are matched when their overlap is above a threshold; a match becomes an <code class="docutils literal notranslate"><span class="pre">adjacent</span></code> edge. Disagreements become flags.</p></td>
+</tr>
+<tr class="row-even"><td><p>Result</p></td>
+<td><p>The stage of a block is a payload of the stage of the volume, loaded only when looked at</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Warp arrays and USD prims</p>
+<p>During fitting, nodes change thousands of times a second. They live in Warp arrays. Writing each change to USD would be far slower than the fit itself. The prims of a component are therefore updated when the component is closed, when a flag is raised, and at display rate while a person is watching. The Warp arrays are the working copy; the stage is the record.</p>
+</div>
+<p><em>Estimate</em> of size for MICrONS, about 1.3 million blocks at 8 × 8 × 40 nm: at 1 to 3 million nodes per block and 184 bytes per node, 240 to 720 TB of nodes at the finest level. That is the same order as the image itself, and too much to keep. So the finest nodes of a block are kept only until its labels and its Frames at level 2 and above are written; the fine nodes can be fitted again from the image where needed. What is kept for the whole volume is the output labels, the Frames from level 2 up, and the Graph.</p>
+</section>
+<section id="tests">
+<h2>Tests<a class="headerlink" href="#tests" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Rules: a policy that outputs random actions never places a node inside a settled component.</p></li>
+<li><p>Teacher: the scripted agent on CREMI A rebuilds the true Frames with expected run length equal to the maximum.</p></li>
+<li><p>Layers: an edit in <code class="docutils literal notranslate"><span class="pre">review.usd</span></code> changes the composed stage; muting the layer restores the agent’s result exactly.</p></li>
+<li><p>Restart: a block killed at a random moment and restarted gives the same Frames and Graph as an uninterrupted run.</p></li>
+<li><p>Border: a synthetic neurite crossing 8 blocks comes out as one object with one Frame.</p></li>
+</ul>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./research/connectome"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="multiscale.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Multi-scale</p>
+      </div>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item"><div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#body-and-state">Body and state</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-loop">The loop</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#actions">Actions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#policy">Policy</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#training">Training</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#finding-and-fixing-errors">Finding and fixing errors</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#review">Review</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#layers">Layers</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#many-blocks-many-gpus">Many blocks, many GPUs</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tests">Tests</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Tran Minh Quan
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

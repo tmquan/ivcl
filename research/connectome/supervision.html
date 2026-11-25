@@ -1,0 +1,865 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Supervision &#8212; Intelligent Visual Computing</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=6a604523" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=7b9e58ef" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script data-sd-tabs-storage-prefix="sphinx-design-tab-id-" src="../../_static/design-tabs.js?v=fcb327ea"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'research/connectome/supervision';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Features" href="features.html" />
+    <link rel="prev" title="Representation" href="representation.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../home.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/gpgpu.png" class="logo__image only-light" alt="Intelligent Visual Computing - Home"/>
+    <img src="../../_static/gpgpu.png" class="logo__image only-dark pst-js-only" alt="Intelligent Visual Computing - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../home.html">
+                    Welcome
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Digital Signal Processing</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../courses/dsp/signals.html">Signals and Sequences</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../courses/dsp/systems.html">Systems and Transformations</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Fundamentals of Microelectronics</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../courses/fme/index.html">BJT and MOSFET Circuits</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Medical Image Processing</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../courses/mip/intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../courses/mip/sigsys.html">Signals and Systems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../courses/mip/xr.html">X-ray (XR) Imaging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../courses/mip/ct.html">Computed Tomography (CT)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../courses/mip/mr.html">Magnetic Resonance (MR) Imaging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../courses/mip/pt.html">Positron Emission Tomography (PET)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../courses/mip/es.html">Endoscopy (ES) Imaging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../courses/mip/histo.html">Histology / Histopathology Imaging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../courses/mip/em.html">Electron Microscopy (EM) Imaging</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Simulation</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../courses/sim/isaacsim101.html">IsaacSim101</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Research</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">Connectome Agent</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="representation.html">Representation</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Supervision</a></li>
+<li class="toctree-l2"><a class="reference internal" href="features.html">Features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multiscale.html">Multi-scale</a></li>
+<li class="toctree-l2"><a class="reference internal" href="agent.html">Agent</a></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/tmquan/ivcl" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/tmquan/ivcl/issues/new?title=Issue%20on%20page%20%2Fresearch/connectome/supervision.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/research/connectome/supervision.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button pst-navbar-icon"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm pst-navbar-icon" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Supervision</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-loss-for-every-pair">A loss for every pair</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#raw">Raw</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#raw-on-voxel">Raw on Voxel</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#raw-on-frame">Raw on Frame</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#segmentation">Segmentation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#segmentation-on-voxel">Segmentation on Voxel</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#segmentation-on-frame">Segmentation on Frame</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#segmentation-on-graph">Segmentation on Graph</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#class-type">Class type</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#one-model-partial-labels">One model, partial labels</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#labels-from-isaac-sim">Labels from Isaac Sim</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#held-out">Held out</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#measures">Measures</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tests">Tests</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="supervision">
+<h1>Supervision<a class="headerlink" href="#supervision" title="Link to this heading">#</a></h1>
+<p>Three kinds of data teach the agent: the raw image, the segmentation, and the class type. They differ in how much of each exists.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Kind</p></th>
+<th class="head"><p>What it says</p></th>
+<th class="head"><p>How much exists</p></th>
+<th class="head"><p>Trains</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Raw</strong></p></td>
+<td><p>What the tissue looks like</p></td>
+<td><p>All of every volume</p></td>
+<td><p>Centre, radii, amplitude and intensity of the Frame nodes</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Segmentation</strong></p></td>
+<td><p>Which voxels belong to the same component</p></td>
+<td><p>Small labelled volumes</p></td>
+<td><p>The identity of each node; the edges of Frame and Graph</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Class type</strong></p></td>
+<td><p>What kind of thing a component is</p></td>
+<td><p>Small labelled crops; tables for some neurons</p></td>
+<td><p>The class scores</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Raw data is unlimited and needs no person. The part of the model that it trains is therefore trained on everything, including the whole of MICrONS. The labelled parts only have to teach identity and class, on top of a geometry that already fits.</p>
+<section id="a-loss-for-every-pair">
+<h2>A loss for every pair<a class="headerlink" href="#a-loss-for-every-pair" title="Link to this heading">#</a></h2>
+<p>Each kind of supervision can be applied in each <a class="reference internal" href="representation.html"><span class="std std-doc">representation</span></a>. That gives nine places for a loss. Eight are used.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p></p></th>
+<th class="head"><p>Voxel</p></th>
+<th class="head"><p>Frame</p></th>
+<th class="head"><p>Graph</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Raw</strong></p></td>
+<td><p><strong>Main.</strong> The slab rendered from the Frames against the raw slab</p></td>
+<td><p>The cross-section along a Frame changes slowly; predict the next one</p></td>
+<td><p>Not used</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Segmentation</strong></p></td>
+<td><p>Rendered identity against the label slab; a node inside a labelled component takes its identity</p></td>
+<td><p>Nodes against the true medial axis and its radius; <code class="docutils literal notranslate"><span class="pre">adjacent</span></code> edges against the true Frame</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">same</span></code> and <code class="docutils literal notranslate"><span class="pre">contact</span></code> edges against the labels</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Class type</strong></p></td>
+<td><p>Rendered class against the class slab</p></td>
+<td><p>The class of a component from its Frame: caliber, branching, shape</p></td>
+<td><p>Cell type from connections; <code class="docutils literal notranslate"><span class="pre">synapse</span></code> edges and their direction against tables</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="raw">
+<h2>Raw<a class="headerlink" href="#raw" title="Link to this heading">#</a></h2>
+<section id="raw-on-voxel">
+<h3>Raw on Voxel<a class="headerlink" href="#raw-on-voxel" title="Link to this heading">#</a></h3>
+<p>The main loss of the whole system. For a camera pose drawn at random in a block, at a level drawn at random, the model channel of the <a class="reference internal" href="representation.html"><span class="std std-doc">view</span></a> is compared with the raw channel:</p>
+<div class="math notranslate nohighlight">
+\[
+L_{\text{raw}} = (1 - \lambda) \, \lVert I_{\text{model}} - I_{\text{raw}} \rVert_1 + \lambda \, \bigl(1 - \mathrm{SSIM}(I_{\text{model}}, I_{\text{raw}})\bigr),
+\qquad \lambda = 0.2
+\]</div>
+<p>Two variants make it harder and more useful.</p>
+<ul class="simple">
+<li><p><strong>Held-out section.</strong> One section in ten is never shown during fitting. The Frames fitted to its neighbours must render it. This measures whether the model has learned structure and not copied pixels. It is also how a missing or damaged section is filled.</p></li>
+<li><p><strong>Across levels.</strong> The slab is rendered at one level of the mipmap and compared with the raw data of that level (see <a class="reference internal" href="multiscale.html"><span class="std std-doc">Multi-scale</span></a>).</p></li>
+</ul>
+<p>The small network that predicts the membrane map is pretrained the same way, without labels: blocks of raw voxels are masked and predicted.</p>
+</section>
+<section id="raw-on-frame">
+<h3>Raw on Frame<a class="headerlink" href="#raw-on-frame" title="Link to this heading">#</a></h3>
+<p>Along the Frame of a neurite, the cross-section changes slowly: the same profile, the same organelles, sliding past. A small predictor takes the last 8 views along a Frame and predicts the next one. It needs no labels: any Frame gives training sequences, right or wrong, because most stretches of most Frames are right.</p>
+<p>Its error is used at run time. A sudden rise marks the place where the Frame leaves its neurite: a merge, a break, a damaged section. This is the only supervision that looks along an object and not across it.</p>
+<p>By the rule on oblique views, it is trained at near-isotropic levels only.</p>
+</section>
+</section>
+<section id="segmentation">
+<h2>Segmentation<a class="headerlink" href="#segmentation" title="Link to this heading">#</a></h2>
+<section id="segmentation-on-voxel">
+<h3>Segmentation on Voxel<a class="headerlink" href="#segmentation-on-voxel" title="Link to this heading">#</a></h3>
+<p>Where labels exist, a node whose centre falls in component <span class="math notranslate nohighlight">\(o\)</span> is told so directly. This is the strongest signal and is used first.</p>
+<p>For everything else, the identity vectors of the nodes are rendered into a slab with 16 channels, and the label slab says which pixels are the same component. The loss pulls the vectors of one component together and pushes the means of different components apart by a margin:</p>
+<div class="math notranslate nohighlight">
+\[
+L_{\text{id}} = \frac{1}{N} \sum_{o} \frac{1}{|o|} \sum_{p \in o} \bigl[\lVert e(p) - \bar e_o \rVert - \delta_v\bigr]_+^2
+\; + \; \frac{1}{N(N-1)} \sum_{o \ne o'} \bigl[2\delta_d - \lVert \bar e_o - \bar e_{o'} \rVert\bigr]_+^2
+\]</div>
+<p>with <span class="math notranslate nohighlight">\(N\)</span> the number of components in the view, <span class="math notranslate nohighlight">\(\bar e_o\)</span> the mean vector of component <span class="math notranslate nohighlight">\(o\)</span>, <span class="math notranslate nohighlight">\(\delta_v = 0.5\)</span> and <span class="math notranslate nohighlight">\(\delta_d = 1.5\)</span>. Tradeoff: an identity vector is trained, and not an identity number, because a number has no gradient and the count of components is not known in advance. The number is given afterwards, by clustering the vectors along the <code class="docutils literal notranslate"><span class="pre">adjacent</span></code> edges.</p>
+</section>
+<section id="segmentation-on-frame">
+<h3>Segmentation on Frame<a class="headerlink" href="#segmentation-on-frame" title="Link to this heading">#</a></h3>
+<p>The labels give the true Frame of every labelled component: the ridge of its distance transform, with the distance as radius. Three losses use it.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Loss</p></th>
+<th class="head"><p>Says</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Position</p></td>
+<td><p>Each line node lies on the true medial curve; each sheet node on the true medial surface</p></td>
+</tr>
+<tr class="row-odd"><td><p>Radius</p></td>
+<td><p>The middle radius of a node equals the distance transform at its centre</p></td>
+</tr>
+<tr class="row-even"><td><p>Topology</p></td>
+<td><p>The <code class="docutils literal notranslate"><span class="pre">adjacent</span></code> edges give the same branch points and ends as the true Frame, matched within 500 nm</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>This is where shape and continuity are learned. It also makes labels go further: a component labelled only by its skeleton, as in many proofreading tools, still gives the position and topology losses.</p>
+</section>
+<section id="segmentation-on-graph">
+<h3>Segmentation on Graph<a class="headerlink" href="#segmentation-on-graph" title="Link to this heading">#</a></h3>
+<p>A classifier scores each pair of components that touch: one object or two? Its inputs come from the two Frames near the contact (overlap, angle between tangents, change of caliber, distance between identity vectors, and the error of the raw-on-Frame predictor carried across the contact). Its target comes from the labels. This is agglomeration, learned.</p>
+<p>Sources, in order of trust: manual labels (CREMI, SNEMI3D); proofread neurons of MICrONS; the automatic segmentation of MICrONS, with a low weight and never for evaluation.</p>
+</section>
+</section>
+<section id="class-type">
+<h2>Class type<a class="headerlink" href="#class-type" title="Link to this heading">#</a></h2>
+<p>“Class type” covers three things at three sizes, and each has its natural representation.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Size</p></th>
+<th class="head"><p>Classes</p></th>
+<th class="head"><p>Source</p></th>
+<th class="head"><p>Applied on</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Structure</p></td>
+<td><p>Membrane, cytoplasm, mitochondrion, cleft, vesicle, and the organelle classes of CellMap</p></td>
+<td><p>CREMI clefts; CellMap crops</p></td>
+<td><p>Voxel</p></td>
+</tr>
+<tr class="row-odd"><td><p>Compartment</p></td>
+<td><p>Axon, dendrite, soma, glia</p></td>
+<td><p>MICrONS tables for some neurons</p></td>
+<td><p>Frame</p></td>
+</tr>
+<tr class="row-even"><td><p>Cell</p></td>
+<td><p>Cell type of a neuron; direction of a synapse</p></td>
+<td><p>MICrONS tables; CREMI partners</p></td>
+<td><p>Graph</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>On Voxel.</strong> Class scores are rendered and compared with the class slab by cross-entropy, each class weighted by the inverse of its frequency. A cleft is a few hundred voxels among millions; without weights it is never learned.</p>
+<p><strong>On Frame.</strong> An axon and a dendrite differ in their Frames: caliber, how often they branch and at what angle, spines, the shape numbers of <a class="reference internal" href="features.html"><span class="std std-doc">Features</span></a>. A small graph network on the nodes of one Frame predicts the compartment. The loss applies only where a label exists.</p>
+<p><strong>On Graph.</strong> A cell type shows in what a neuron connects to. A graph network on the Graph predicts it for neurons with a cell body. For a synapse, the target on CREMI is the annotated pair: which side of the cleft is presynaptic.</p>
+</section>
+<section id="one-model-partial-labels">
+<h2>One model, partial labels<a class="headerlink" href="#one-model-partial-labels" title="Link to this heading">#</a></h2>
+<p>A training step takes a block from any dataset and applies the losses for which that block has data.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Dataset</p></th>
+<th class="head"><p>Raw</p></th>
+<th class="head"><p>Segmentation</p></th>
+<th class="head"><p>Class type</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>CREMI</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>Clefts, synapses</p></td>
+</tr>
+<tr class="row-odd"><td><p>SNEMI3D</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>None</p></td>
+</tr>
+<tr class="row-even"><td><p>MICrONS, anywhere</p></td>
+<td><p>Yes</p></td>
+<td><p>Weak</p></td>
+<td><p>Weak</p></td>
+</tr>
+<tr class="row-odd"><td><p>MICrONS, proofread neurons</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes, for those neurons</p></td>
+<td><p>Compartment, cell type</p></td>
+</tr>
+<tr class="row-even"><td><p>CellMap crops</p></td>
+<td><p>Yes</p></td>
+<td><p>For some classes</p></td>
+<td><p>Many structure classes</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>A class that a crop does not label is left out of the loss for that crop. It is not counted as background. CellMap crops label different sets of classes, so the rule is needed even inside one dataset.</p>
+</section>
+<section id="labels-from-isaac-sim">
+<h2>Labels from Isaac Sim<a class="headerlink" href="#labels-from-isaac-sim" title="Link to this heading">#</a></h2>
+<p>Views of what the agent has built need labels too: for display, for review, and for training the policy on its own state. Replicator annotators on the camera give them, aligned with the colour image.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Annotator</p></th>
+<th class="head"><p>Gives</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Colour</p></td>
+<td><p>The scene as drawn</p></td>
+</tr>
+<tr class="row-odd"><td><p>Instance segmentation</p></td>
+<td><p>Which component prim each pixel shows</p></td>
+</tr>
+<tr class="row-even"><td><p>Semantic segmentation</p></td>
+<td><p>The class label of that prim</p></td>
+</tr>
+<tr class="row-odd"><td><p>Normals, depth</p></td>
+<td><p>The surface of drawn meshes and ellipsoids</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>The class of a component is stored on its prim as a USD semantic label. A change of class by the agent or by a reviewer therefore shows in the next view with no other step.</p>
+</section>
+<section id="held-out">
+<h2>Held out<a class="headerlink" href="#held-out" title="Link to this heading">#</a></h2>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Dataset</p></th>
+<th class="head"><p>Held out</p></th>
+<th class="head"><p>Unused between training and test</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>CREMI A, B, C</p></td>
+<td><p>Sections 100 to 124 of each</p></td>
+<td><p>Sections 95 to 99</p></td>
+</tr>
+<tr class="row-odd"><td><p>SNEMI3D</p></td>
+<td><p>Sections 80 to 99</p></td>
+<td><p>Sections 75 to 79</p></td>
+</tr>
+<tr class="row-even"><td><p>MICrONS</p></td>
+<td><p>One cube of 100 µm: the cube with the greatest path length of fully proofread neurons</p></td>
+<td><p>A shell of 10 µm</p></td>
+</tr>
+<tr class="row-odd"><td><p>CellMap</p></td>
+<td><p>Every fifth labelled crop of each dataset, by crop number</p></td>
+<td><p>None: crops do not touch</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>The raw loss is not applied in the held-out parts either. Otherwise the geometry would already be fitted there, and the test of identity and class would be easier than on new data.</p>
+</section>
+<section id="measures">
+<h2>Measures<a class="headerlink" href="#measures" title="Link to this heading">#</a></h2>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>On</p></th>
+<th class="head"><p>Measure</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Voxel</p></td>
+<td><p>Raw: peak signal-to-noise ratio and SSIM on held-out sections, per level. Segmentation: variation of information, split and merge apart; adapted Rand error. Class: intersection over union per class; for clefts also the mean distance to the nearest true cleft</p></td>
+</tr>
+<tr class="row-odd"><td><p>Frame</p></td>
+<td><p>Expected run length; precision and recall of nodes within 200 nm of the true Frame; F1 of branch points and of ends; radius error; nodes per cubic micrometre</p></td>
+</tr>
+<tr class="row-even"><td><p>Graph</p></td>
+<td><p>Synapse F1 with partners; precision and recall of connected pairs; correlation of synapse counts; accuracy of compartment and cell type</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Every score is given beside the same score of a baseline trained on the same split: a 3D affinity network with watershed for segmentation, a 3D U-Net for classes, TEASAR on the baseline segmentation for Frames.</p>
+</section>
+<section id="tests">
+<h2>Tests<a class="headerlink" href="#tests" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Each loss, on a synthetic scene where the answer is known, reaches zero.</p></li>
+<li><p>A crop with one class left unlabelled gives no gradient to that class.</p></li>
+<li><p>The held-out section of a synthetic stack is rendered within a set error from its neighbours.</p></li>
+<li><p>The raw-on-Frame predictor, on a synthetic tube joined to another, has its largest error at the join.</p></li>
+</ul>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./research/connectome"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="representation.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Representation</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="features.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Features</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item"><div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-loss-for-every-pair">A loss for every pair</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#raw">Raw</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#raw-on-voxel">Raw on Voxel</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#raw-on-frame">Raw on Frame</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#segmentation">Segmentation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#segmentation-on-voxel">Segmentation on Voxel</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#segmentation-on-frame">Segmentation on Frame</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#segmentation-on-graph">Segmentation on Graph</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#class-type">Class type</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#one-model-partial-labels">One model, partial labels</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#labels-from-isaac-sim">Labels from Isaac Sim</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#held-out">Held out</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#measures">Measures</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tests">Tests</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Tran Minh Quan
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
