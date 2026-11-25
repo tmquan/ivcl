@@ -506,7 +506,7 @@
 </table>
 </div>
 <p>A system is an object that is called with a signal and returns a signal: <code class="docutils literal notranslate"><span class="pre">y</span> <span class="pre">=</span> <span class="pre">TimeShift(8)(x)</span></code>. A new system is a subclass of <code class="docutils literal notranslate"><span class="pre">System</span></code> with its own <code class="docutils literal notranslate"><span class="pre">apply</span></code>. <code class="docutils literal notranslate"><span class="pre">AmplitudeReversal</span></code> is an <code class="docutils literal notranslate"><span class="pre">AmplitudeScaling</span></code> with the gain <span class="math notranslate nohighlight">\(-1\)</span> and <code class="docutils literal notranslate"><span class="pre">TimeReversal</span></code> is a <code class="docutils literal notranslate"><span class="pre">TimeScaling</span></code> with the factor <span class="math notranslate nohighlight">\(-1\)</span>, and <code class="docutils literal notranslate"><span class="pre">first</span> <span class="pre">&gt;&gt;</span> <span class="pre">second</span></code> is the cascade of two systems. Every system names its output through its <code class="docutils literal notranslate"><span class="pre">label</span></code>, for example <em>Advance</em> or <em>Delay</em> by the sign of the shift; <code class="docutils literal notranslate"><span class="pre">named</span></code> gives another name.</p>
-<p><code class="docutils literal notranslate"><span class="pre">show(a,</span> <span class="pre">b,</span> <span class="pre">notes=[...])</span></code> draws the signals <code class="docutils literal notranslate"><span class="pre">a</span></code> and <code class="docutils literal notranslate"><span class="pre">b</span></code> as two rows: their names in the first column, then the curve over continuous time and the sequence of its samples over discrete time. <code class="docutils literal notranslate"><span class="pre">notes</span></code> holds the text that goes right under the plots, for every signal a pair <code class="docutils literal notranslate"><span class="pre">(continuous,</span> <span class="pre">discrete)</span></code> or one text for both.</p>
+<p><code class="docutils literal notranslate"><span class="pre">show(a,</span> <span class="pre">b)</span></code> draws the signals <code class="docutils literal notranslate"><span class="pre">a</span></code> and <code class="docutils literal notranslate"><span class="pre">b</span></code> as two rows: their names in the first column, then the curve over continuous time and the sequence of its samples over discrete time. The table under every figure has the same rows and columns and gives the formula of each plot.</p>
 <p>Every system on this page acts on the same input signal <code class="docutils literal notranslate"><span class="pre">x</span></code>, which is defined below: two flat levels and a slope. <code class="docutils literal notranslate"><span class="pre">reference=x</span></code> draws this input in grey behind every output, so each figure shows what the system has changed. The output is named <span class="math notranslate nohighlight">\(y\)</span>, and an intermediate signal <span class="math notranslate nohighlight">\(s\)</span>.</p>
 <div class="cell tag_hide-input docutils container">
 <details class="admonition hide above-input">
@@ -557,16 +557,29 @@
 </summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># HIDE/SHOW</span>
-<span class="n">show</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">span</span><span class="o">=</span><span class="n">SPAN</span><span class="p">,</span> <span class="n">ylim</span><span class="o">=</span><span class="n">YLIM</span><span class="p">,</span> <span class="n">notes</span><span class="o">=</span><span class="p">[</span>
-    <span class="p">(</span><span class="s1">'$x(t)$: levels of 10 and 20, then a slope down to zero'</span><span class="p">,</span>
-     <span class="s1">'$x[n]=x(nT)$, $T=1$'</span><span class="p">)])</span>
+<span class="n">show</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">span</span><span class="o">=</span><span class="n">SPAN</span><span class="p">,</span> <span class="n">ylim</span><span class="o">=</span><span class="n">YLIM</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="../../_images/acf0a77b8750bb01926efc914d66187b6f0feb751dbcc852866e24c99f0e59be.svg" src="../../_images/acf0a77b8750bb01926efc914d66187b6f0feb751dbcc852866e24c99f0e59be.svg" />
+<img alt="../../_images/8355f5b2e3d480dfa3630875a1ab87bb3846a766a7a25977bf99ce40ee9d2fe7.svg" src="../../_images/8355f5b2e3d480dfa3630875a1ab87bb3846a766a7a25977bf99ce40ee9d2fe7.svg" />
 </div>
+</div>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p></p></th>
+<th class="head"><p>Continuous time</p></th>
+<th class="head"><p>Discrete time</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Input signal</strong></p></td>
+<td><p><span class="math notranslate nohighlight">\(x(t)\)</span>: levels of 10 and 20, then a slope down to zero</p></td>
+<td><p><span class="math notranslate nohighlight">\(x[n]=x(nT)\)</span>, <span class="math notranslate nohighlight">\(T=1\)</span></p></td>
+</tr>
+</tbody>
+</table>
 </div>
 </section>
 <section id="rigid-shape-preserving-systems">
@@ -624,18 +637,33 @@
 <span class="n">amplified</span> <span class="o">=</span> <span class="n">AmplitudeScaling</span><span class="p">(</span><span class="mf">1.5</span><span class="p">)(</span><span class="n">x</span><span class="p">)</span>
 <span class="n">attenuated</span> <span class="o">=</span> <span class="n">AmplitudeScaling</span><span class="p">(</span><span class="mf">0.4</span><span class="p">)(</span><span class="n">x</span><span class="p">)</span>
 
-<span class="n">show</span><span class="p">(</span><span class="n">amplified</span><span class="p">,</span> <span class="n">attenuated</span><span class="p">,</span> <span class="n">span</span><span class="o">=</span><span class="n">SPAN</span><span class="p">,</span> <span class="n">ylim</span><span class="o">=</span><span class="n">YLIM</span><span class="p">,</span> <span class="n">reference</span><span class="o">=</span><span class="n">x</span><span class="p">,</span> <span class="n">symbol</span><span class="o">=</span><span class="s1">'y'</span><span class="p">,</span> <span class="n">notes</span><span class="o">=</span><span class="p">[</span>
-    <span class="p">(</span><span class="s1">'$y(t)=Kx(t)$, $K=1.5&gt;1$'</span><span class="p">,</span>
-     <span class="s1">'$y[n]=Kx[n]$, $K=1.5&gt;1$'</span><span class="p">),</span>
-    <span class="p">(</span><span class="s1">'$y(t)=Kx(t)$, $0&lt;K=0.4&lt;1$'</span><span class="p">,</span>
-     <span class="s1">'$y[n]=Kx[n]$, $0&lt;K=0.4&lt;1$'</span><span class="p">)])</span>
+<span class="n">show</span><span class="p">(</span><span class="n">amplified</span><span class="p">,</span> <span class="n">attenuated</span><span class="p">,</span> <span class="n">span</span><span class="o">=</span><span class="n">SPAN</span><span class="p">,</span> <span class="n">ylim</span><span class="o">=</span><span class="n">YLIM</span><span class="p">,</span> <span class="n">reference</span><span class="o">=</span><span class="n">x</span><span class="p">,</span> <span class="n">symbol</span><span class="o">=</span><span class="s1">'y'</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="../../_images/64d23ff593591d602dcc6824af37038c53e1708eacc0c6a09d729ee08a731d83.svg" src="../../_images/64d23ff593591d602dcc6824af37038c53e1708eacc0c6a09d729ee08a731d83.svg" />
+<img alt="../../_images/caed2790f71d634178b5581f7212f0edc48d048483f067468fbecc55074230aa.svg" src="../../_images/caed2790f71d634178b5581f7212f0edc48d048483f067468fbecc55074230aa.svg" />
 </div>
+</div>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p></p></th>
+<th class="head"><p>Continuous time</p></th>
+<th class="head"><p>Discrete time</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Amplification</strong></p></td>
+<td><p><span class="math notranslate nohighlight">\(y(t)=Kx(t)\)</span>, <span class="math notranslate nohighlight">\(K=1.5&gt;1\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(y[n]=Kx[n]\)</span>, <span class="math notranslate nohighlight">\(K=1.5&gt;1\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Attenuation</strong></p></td>
+<td><p><span class="math notranslate nohighlight">\(y(t)=Kx(t)\)</span>, <span class="math notranslate nohighlight">\(0&lt;K=0.4&lt;1\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(y[n]=Kx[n]\)</span>, <span class="math notranslate nohighlight">\(0&lt;K=0.4&lt;1\)</span></p></td>
+</tr>
+</tbody>
+</table>
 </div>
 </section>
 <section id="amplitude-reversal">
@@ -651,16 +679,29 @@
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># HIDE/SHOW</span>
 <span class="n">inverted</span> <span class="o">=</span> <span class="n">AmplitudeReversal</span><span class="p">()(</span><span class="n">x</span><span class="p">)</span>
 
-<span class="n">show</span><span class="p">(</span><span class="n">inverted</span><span class="p">,</span> <span class="n">span</span><span class="o">=</span><span class="n">SPAN</span><span class="p">,</span> <span class="n">ylim</span><span class="o">=</span><span class="n">YLIM</span><span class="p">,</span> <span class="n">reference</span><span class="o">=</span><span class="n">x</span><span class="p">,</span> <span class="n">symbol</span><span class="o">=</span><span class="s1">'y'</span><span class="p">,</span> <span class="n">notes</span><span class="o">=</span><span class="p">[</span>
-    <span class="p">(</span><span class="s1">'$y(t)=-x(t)$'</span><span class="p">,</span>
-     <span class="s1">'$y[n]=-x[n]$'</span><span class="p">)])</span>
+<span class="n">show</span><span class="p">(</span><span class="n">inverted</span><span class="p">,</span> <span class="n">span</span><span class="o">=</span><span class="n">SPAN</span><span class="p">,</span> <span class="n">ylim</span><span class="o">=</span><span class="n">YLIM</span><span class="p">,</span> <span class="n">reference</span><span class="o">=</span><span class="n">x</span><span class="p">,</span> <span class="n">symbol</span><span class="o">=</span><span class="s1">'y'</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="../../_images/dee0250ee54c831b98a43e13ac629ec66aad4f5336bf68bf8070907f8af01570.svg" src="../../_images/dee0250ee54c831b98a43e13ac629ec66aad4f5336bf68bf8070907f8af01570.svg" />
+<img alt="../../_images/865844e7506f949fc8a16695df89ffb53d9f72d4f2cfb9297a75c425bae821a5.svg" src="../../_images/865844e7506f949fc8a16695df89ffb53d9f72d4f2cfb9297a75c425bae821a5.svg" />
 </div>
+</div>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p></p></th>
+<th class="head"><p>Continuous time</p></th>
+<th class="head"><p>Discrete time</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Amplitude reversal</strong></p></td>
+<td><p><span class="math notranslate nohighlight">\(y(t)=-x(t)\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(y[n]=-x[n]\)</span></p></td>
+</tr>
+</tbody>
+</table>
 </div>
 </section>
 <section id="time-shifting">
@@ -677,18 +718,33 @@
 <span class="n">advanced</span> <span class="o">=</span> <span class="n">TimeShift</span><span class="p">(</span><span class="o">+</span><span class="n">b</span><span class="p">)(</span><span class="n">x</span><span class="p">)</span>
 <span class="n">delayed</span> <span class="o">=</span> <span class="n">TimeShift</span><span class="p">(</span><span class="o">-</span><span class="n">b</span><span class="p">)(</span><span class="n">x</span><span class="p">)</span>
 
-<span class="n">show</span><span class="p">(</span><span class="n">advanced</span><span class="p">,</span> <span class="n">delayed</span><span class="p">,</span> <span class="n">span</span><span class="o">=</span><span class="n">SPAN</span><span class="p">,</span> <span class="n">ylim</span><span class="o">=</span><span class="n">YLIM</span><span class="p">,</span> <span class="n">reference</span><span class="o">=</span><span class="n">x</span><span class="p">,</span> <span class="n">symbol</span><span class="o">=</span><span class="s1">'y'</span><span class="p">,</span> <span class="n">notes</span><span class="o">=</span><span class="p">[</span>
-    <span class="p">(</span><span class="s1">'$y(t)=x(t+b)$, $b=8$: to the left'</span><span class="p">,</span>
-     <span class="s1">'$y[n]=x[n+b]$, $b=8$: to the left'</span><span class="p">),</span>
-    <span class="p">(</span><span class="s1">'$y(t)=x(t-b)$, $b=8$: to the right'</span><span class="p">,</span>
-     <span class="s1">'$y[n]=x[n-b]$, $b=8$: to the right'</span><span class="p">)])</span>
+<span class="n">show</span><span class="p">(</span><span class="n">advanced</span><span class="p">,</span> <span class="n">delayed</span><span class="p">,</span> <span class="n">span</span><span class="o">=</span><span class="n">SPAN</span><span class="p">,</span> <span class="n">ylim</span><span class="o">=</span><span class="n">YLIM</span><span class="p">,</span> <span class="n">reference</span><span class="o">=</span><span class="n">x</span><span class="p">,</span> <span class="n">symbol</span><span class="o">=</span><span class="s1">'y'</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="../../_images/940ae9b828904e30ce0edb1d2768485118f1028397a4d4a4f08da08ffddb58ef.svg" src="../../_images/940ae9b828904e30ce0edb1d2768485118f1028397a4d4a4f08da08ffddb58ef.svg" />
+<img alt="../../_images/dc06991fe5269f9f8d15c67b1516922fee0f28c305811e4abdda75d2ce91a38b.svg" src="../../_images/dc06991fe5269f9f8d15c67b1516922fee0f28c305811e4abdda75d2ce91a38b.svg" />
 </div>
+</div>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p></p></th>
+<th class="head"><p>Continuous time</p></th>
+<th class="head"><p>Discrete time</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Advance</strong></p></td>
+<td><p><span class="math notranslate nohighlight">\(y(t)=x(t+b)\)</span>, <span class="math notranslate nohighlight">\(b=8\)</span>: to the left</p></td>
+<td><p><span class="math notranslate nohighlight">\(y[n]=x[n+b]\)</span>, <span class="math notranslate nohighlight">\(b=8\)</span>: to the left</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Delay</strong></p></td>
+<td><p><span class="math notranslate nohighlight">\(y(t)=x(t-b)\)</span>, <span class="math notranslate nohighlight">\(b=8\)</span>: to the right</p></td>
+<td><p><span class="math notranslate nohighlight">\(y[n]=x[n-b]\)</span>, <span class="math notranslate nohighlight">\(b=8\)</span>: to the right</p></td>
+</tr>
+</tbody>
+</table>
 </div>
 </section>
 <section id="time-scaling">
@@ -705,18 +761,33 @@
 <span class="n">compressed</span> <span class="o">=</span> <span class="n">TimeScaling</span><span class="p">(</span><span class="n">a</span><span class="p">)(</span><span class="n">x</span><span class="p">)</span>
 <span class="n">stretched</span> <span class="o">=</span> <span class="n">TimeScaling</span><span class="p">(</span><span class="mi">1</span> <span class="o">/</span> <span class="n">a</span><span class="p">)(</span><span class="n">x</span><span class="p">)</span>
 
-<span class="n">show</span><span class="p">(</span><span class="n">compressed</span><span class="p">,</span> <span class="n">stretched</span><span class="p">,</span> <span class="n">span</span><span class="o">=</span><span class="n">SPAN</span><span class="p">,</span> <span class="n">ylim</span><span class="o">=</span><span class="n">YLIM</span><span class="p">,</span> <span class="n">reference</span><span class="o">=</span><span class="n">x</span><span class="p">,</span> <span class="n">symbol</span><span class="o">=</span><span class="s1">'y'</span><span class="p">,</span> <span class="n">notes</span><span class="o">=</span><span class="p">[</span>
-    <span class="p">(</span><span class="s1">'$y(t)=x(at)$, $a=2$: half as long'</span><span class="p">,</span>
-     <span class="s1">'$y[n]=x[an]$, $a=2$: every second sample is dropped'</span><span class="p">),</span>
-    <span class="p">(</span><span class="s1">'$y(t)=x(t/a)$, $a=2$: twice as long'</span><span class="p">,</span>
-     <span class="s1">'The samples of $x(t/a)$; the sequence itself has $x[n/a]$ only where $n/a$ is an integer'</span><span class="p">)])</span>
+<span class="n">show</span><span class="p">(</span><span class="n">compressed</span><span class="p">,</span> <span class="n">stretched</span><span class="p">,</span> <span class="n">span</span><span class="o">=</span><span class="n">SPAN</span><span class="p">,</span> <span class="n">ylim</span><span class="o">=</span><span class="n">YLIM</span><span class="p">,</span> <span class="n">reference</span><span class="o">=</span><span class="n">x</span><span class="p">,</span> <span class="n">symbol</span><span class="o">=</span><span class="s1">'y'</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="../../_images/b4c1b02fda465411e056d037f6898855d042e3c1eb7791c75ca4be266065d3b4.svg" src="../../_images/b4c1b02fda465411e056d037f6898855d042e3c1eb7791c75ca4be266065d3b4.svg" />
+<img alt="../../_images/a47141d01c59e1a825442f955fccdf8026b317586997f84fd66d411441beb82e.svg" src="../../_images/a47141d01c59e1a825442f955fccdf8026b317586997f84fd66d411441beb82e.svg" />
 </div>
+</div>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p></p></th>
+<th class="head"><p>Continuous time</p></th>
+<th class="head"><p>Discrete time</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Compression / Decimation</strong></p></td>
+<td><p><span class="math notranslate nohighlight">\(y(t)=x(at)\)</span>, <span class="math notranslate nohighlight">\(a=2\)</span>: half as long</p></td>
+<td><p><span class="math notranslate nohighlight">\(y[n]=x[an]\)</span>, <span class="math notranslate nohighlight">\(a=2\)</span>: every second sample is dropped</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Expansion</strong></p></td>
+<td><p><span class="math notranslate nohighlight">\(y(t)=x(t/a)\)</span>, <span class="math notranslate nohighlight">\(a=2\)</span>: twice as long</p></td>
+<td><p>The samples of <span class="math notranslate nohighlight">\(x(t/a)\)</span>; the sequence itself has <span class="math notranslate nohighlight">\(x[n/a]\)</span> only where <span class="math notranslate nohighlight">\(n/a\)</span> is an integer</p></td>
+</tr>
+</tbody>
+</table>
 </div>
 </section>
 <section id="time-reversal">
@@ -732,16 +803,29 @@
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># HIDE/SHOW</span>
 <span class="n">mirrored</span> <span class="o">=</span> <span class="n">TimeReversal</span><span class="p">()(</span><span class="n">x</span><span class="p">)</span>
 
-<span class="n">show</span><span class="p">(</span><span class="n">mirrored</span><span class="p">,</span> <span class="n">span</span><span class="o">=</span><span class="n">SPAN</span><span class="p">,</span> <span class="n">ylim</span><span class="o">=</span><span class="n">YLIM</span><span class="p">,</span> <span class="n">reference</span><span class="o">=</span><span class="n">x</span><span class="p">,</span> <span class="n">symbol</span><span class="o">=</span><span class="s1">'y'</span><span class="p">,</span> <span class="n">notes</span><span class="o">=</span><span class="p">[</span>
-    <span class="p">(</span><span class="s1">'$y(t)=x(-t)$'</span><span class="p">,</span>
-     <span class="s1">'$y[n]=x[-n]$'</span><span class="p">)])</span>
+<span class="n">show</span><span class="p">(</span><span class="n">mirrored</span><span class="p">,</span> <span class="n">span</span><span class="o">=</span><span class="n">SPAN</span><span class="p">,</span> <span class="n">ylim</span><span class="o">=</span><span class="n">YLIM</span><span class="p">,</span> <span class="n">reference</span><span class="o">=</span><span class="n">x</span><span class="p">,</span> <span class="n">symbol</span><span class="o">=</span><span class="s1">'y'</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="../../_images/14f0676285f1bf2eb66d340640b39693f05b97d72c28268bd867e9089308205e.svg" src="../../_images/14f0676285f1bf2eb66d340640b39693f05b97d72c28268bd867e9089308205e.svg" />
+<img alt="../../_images/7a3e9d94d335702fcd6c3adbbc7aa1e27f90996b123e5c75a4e702e790a6428e.svg" src="../../_images/7a3e9d94d335702fcd6c3adbbc7aa1e27f90996b123e5c75a4e702e790a6428e.svg" />
 </div>
+</div>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p></p></th>
+<th class="head"><p>Continuous time</p></th>
+<th class="head"><p>Discrete time</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Time reversal</strong></p></td>
+<td><p><span class="math notranslate nohighlight">\(y(t)=x(-t)\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(y[n]=x[-n]\)</span></p></td>
+</tr>
+</tbody>
+</table>
 </div>
 </section>
 </section>
@@ -767,18 +851,33 @@
 <span class="n">s</span> <span class="o">=</span> <span class="n">shift</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">.</span><span class="n">named</span><span class="p">(</span><span class="s1">'Shift by $b$'</span><span class="p">)</span>
 <span class="n">y</span> <span class="o">=</span> <span class="p">(</span><span class="n">shift</span> <span class="o">&gt;&gt;</span> <span class="n">scale</span><span class="p">)(</span><span class="n">x</span><span class="p">)</span><span class="o">.</span><span class="n">named</span><span class="p">(</span><span class="s1">'then scale by $a$'</span><span class="p">)</span>           <span class="c1"># the cascade: shift first, then scale</span>
 
-<span class="n">show</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">span</span><span class="o">=</span><span class="n">SPAN</span><span class="p">,</span> <span class="n">ylim</span><span class="o">=</span><span class="n">YLIM</span><span class="p">,</span> <span class="n">reference</span><span class="o">=</span><span class="p">[</span><span class="n">x</span><span class="p">,</span> <span class="n">s</span><span class="p">],</span> <span class="n">symbol</span><span class="o">=</span><span class="p">[</span><span class="s1">'s'</span><span class="p">,</span> <span class="s1">'y'</span><span class="p">],</span> <span class="n">notes</span><span class="o">=</span><span class="p">[</span>
-    <span class="p">(</span><span class="s1">'$s(t)=x(t+b)$, $b=8$'</span><span class="p">,</span>
-     <span class="s1">'$s[n]=x[n+b]$, $b=8$'</span><span class="p">),</span>
-    <span class="p">(</span><span class="s1">'$y(t)=s(at)=x(at+b)$, $a=2$'</span><span class="p">,</span>
-     <span class="s1">'$y[n]=s[an]=x[an+b]$, $a=2$'</span><span class="p">)])</span>
+<span class="n">show</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">span</span><span class="o">=</span><span class="n">SPAN</span><span class="p">,</span> <span class="n">ylim</span><span class="o">=</span><span class="n">YLIM</span><span class="p">,</span> <span class="n">reference</span><span class="o">=</span><span class="p">[</span><span class="n">x</span><span class="p">,</span> <span class="n">s</span><span class="p">],</span> <span class="n">symbol</span><span class="o">=</span><span class="p">[</span><span class="s1">'s'</span><span class="p">,</span> <span class="s1">'y'</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="../../_images/8d8d1174f8128b46f9cbda11caaaaaf80bea2a594fd674f3819f8eaf70576fb0.svg" src="../../_images/8d8d1174f8128b46f9cbda11caaaaaf80bea2a594fd674f3819f8eaf70576fb0.svg" />
+<img alt="../../_images/0b98f8849c3ba042655ab96c2fc17c445bb3c6e86870052752ec8576a5414987.svg" src="../../_images/0b98f8849c3ba042655ab96c2fc17c445bb3c6e86870052752ec8576a5414987.svg" />
 </div>
+</div>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p></p></th>
+<th class="head"><p>Continuous time</p></th>
+<th class="head"><p>Discrete time</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Shift by <span class="math notranslate nohighlight">\(b\)</span></strong></p></td>
+<td><p><span class="math notranslate nohighlight">\(s(t)=x(t+b)\)</span>, <span class="math notranslate nohighlight">\(b=8\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(s[n]=x[n+b]\)</span>, <span class="math notranslate nohighlight">\(b=8\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>then scale by <span class="math notranslate nohighlight">\(a\)</span></strong></p></td>
+<td><p><span class="math notranslate nohighlight">\(y(t)=s(at)=x(at+b)\)</span>, <span class="math notranslate nohighlight">\(a=2\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(y[n]=s[an]=x[an+b]\)</span>, <span class="math notranslate nohighlight">\(a=2\)</span></p></td>
+</tr>
+</tbody>
+</table>
 </div>
 </section>
 <section id="method-2-scale-then-shift">
@@ -800,18 +899,33 @@
 <span class="n">s</span> <span class="o">=</span> <span class="n">scale</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">.</span><span class="n">named</span><span class="p">(</span><span class="s1">'Scale by $a$'</span><span class="p">)</span>
 <span class="n">y</span> <span class="o">=</span> <span class="p">(</span><span class="n">scale</span> <span class="o">&gt;&gt;</span> <span class="n">shift</span><span class="p">)(</span><span class="n">x</span><span class="p">)</span><span class="o">.</span><span class="n">named</span><span class="p">(</span><span class="s1">'then shift by $b/a$'</span><span class="p">)</span>         <span class="c1"># the cascade: scale first, then shift by b/a</span>
 
-<span class="n">show</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">span</span><span class="o">=</span><span class="n">SPAN</span><span class="p">,</span> <span class="n">ylim</span><span class="o">=</span><span class="n">YLIM</span><span class="p">,</span> <span class="n">reference</span><span class="o">=</span><span class="p">[</span><span class="n">x</span><span class="p">,</span> <span class="n">s</span><span class="p">],</span> <span class="n">symbol</span><span class="o">=</span><span class="p">[</span><span class="s1">'s'</span><span class="p">,</span> <span class="s1">'y'</span><span class="p">],</span> <span class="n">notes</span><span class="o">=</span><span class="p">[</span>
-    <span class="p">(</span><span class="s1">'$s(t)=x(at)$, $a=2$'</span><span class="p">,</span>
-     <span class="s1">'$s[n]=x[an]$, $a=2$'</span><span class="p">),</span>
-    <span class="p">(</span><span class="s1">'$y(t)=s(t+b/a)=x(at+b)$, $b/a=4$'</span><span class="p">,</span>
-     <span class="s1">'$y[n]=s[n+b/a]=x[an+b]$, which needs an integer $b/a$'</span><span class="p">)])</span>
+<span class="n">show</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">span</span><span class="o">=</span><span class="n">SPAN</span><span class="p">,</span> <span class="n">ylim</span><span class="o">=</span><span class="n">YLIM</span><span class="p">,</span> <span class="n">reference</span><span class="o">=</span><span class="p">[</span><span class="n">x</span><span class="p">,</span> <span class="n">s</span><span class="p">],</span> <span class="n">symbol</span><span class="o">=</span><span class="p">[</span><span class="s1">'s'</span><span class="p">,</span> <span class="s1">'y'</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="../../_images/8e5846a4cf10476b8dafaf935aca3c26a6280c6e7a4bdd3408dfc04cb7083f07.svg" src="../../_images/8e5846a4cf10476b8dafaf935aca3c26a6280c6e7a4bdd3408dfc04cb7083f07.svg" />
+<img alt="../../_images/035c71b9c720776c84a7c1fddb6647450f1855e68ea3473b9dd62967836e3928.svg" src="../../_images/035c71b9c720776c84a7c1fddb6647450f1855e68ea3473b9dd62967836e3928.svg" />
 </div>
+</div>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p></p></th>
+<th class="head"><p>Continuous time</p></th>
+<th class="head"><p>Discrete time</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Scale by <span class="math notranslate nohighlight">\(a\)</span></strong></p></td>
+<td><p><span class="math notranslate nohighlight">\(s(t)=x(at)\)</span>, <span class="math notranslate nohighlight">\(a=2\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(s[n]=x[an]\)</span>, <span class="math notranslate nohighlight">\(a=2\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>then shift by <span class="math notranslate nohighlight">\(b/a\)</span></strong></p></td>
+<td><p><span class="math notranslate nohighlight">\(y(t)=s(t+b/a)=x(at+b)\)</span>, <span class="math notranslate nohighlight">\(b/a=4\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(y[n]=s[n+b/a]=x[an+b]\)</span>, which needs an integer <span class="math notranslate nohighlight">\(b/a\)</span></p></td>
+</tr>
+</tbody>
+</table>
 </div>
 </section>
 </section>
