@@ -41,7 +41,7 @@ MATH_FONT = '"Computer Modern Serif", "Latin Modern Roman", "CMU Serif", serif'
 SANS = 1.16                    # a line of sans serif text is at most this much wider than in Computer Modern
 PAD = 4                        # px around the box of an element: the area that answers to the pointer
 
-KINDS = {'npn': 'npn transistor', 'pnp': 'pnp transistor',
+KINDS = {'npn': 'NPN transistor', 'pnp': 'PNP transistor',         # in capitals, like NMOS and PMOS
          'nmos': 'NMOS transistor', 'pmos': 'PMOS transistor',
          'nmos_b': 'NMOS transistor with its bulk terminal', 'pmos_b': 'PMOS transistor with its bulk terminal',
          'nmos_na': 'NMOS transistor', 'pmos_na': 'PMOS transistor', 'nmos_thick': 'thick-oxide NMOS transistor',
