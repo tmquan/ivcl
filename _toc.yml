@@ -58,6 +58,16 @@ parts:
     # - file: courses/mip/fg.md
     # - file: courses/mip/oct.md
 
+  - caption: Research
+    chapters:
+    - file: research/connectome/index.md
+      sections:
+      - file: research/connectome/representation.md
+      - file: research/connectome/supervision.md
+      - file: research/connectome/features.md
+      - file: research/connectome/multiscale.md
+      - file: research/connectome/agent.md
+
 # parts:
 # - caption: Publications
 #   chapters:

@@ -1,0 +1,19 @@
+# Python for the steps of isaac_viewer.ipynb that run outside Isaac Sim (CONNECTOME_PYTHON):
+# meshing (sim/mesh_crop.py) and the interactive views (sim/web_view.py), and for
+# running the notebook from the command line (jupyter-execute).
+#
+#   conda create -n isaac python=3.15
+#   PATH=~/miniconda3/envs/isaac/bin:$PATH ~/miniconda3/envs/isaac/bin/python -m pip install -r requirements.txt
+#
+# scikit-image has no wheel for Python 3.15 on aarch64 and is built from source; the build
+# needs the bin folder of the environment on PATH.
+
+numpy==2.5.5
+scipy==1.18.1
+scikit-image==0.26.0
+pillow==13.0.0
+
+# notebook execution
+nbclient==0.11.0
+nbformat==5.11.1
+ipykernel==7.4.0

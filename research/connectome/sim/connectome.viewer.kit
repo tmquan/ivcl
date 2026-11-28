@@ -1,0 +1,29 @@
+[package]
+title = "connectome viewer"
+description = "The Kit runtime of Isaac Sim with the RTX renderer and Replicator only, to render the connectome scenes without a window, also on a build whose Isaac Sim extensions do not load."
+version = "0.1.0"
+keywords = ["app"]
+
+[dependencies]
+"omni.usd" = {}
+"omni.hydra.rtx" = {}
+"omni.kit.viewport.window" = {}
+"omni.kit.pip_archive" = {}
+"omni.syntheticdata" = {}
+"omni.replicator.core" = {}
+
+[settings.app]
+name = "connectome.viewer"
+version = "0.1.0"
+vulkan = true
+hydraEngine.waitIdle = true
+content.emptyStageOnStart = true
+enableDeveloperWarnings = false
+settings.fabricDefaultStageFrameHistoryCount = 3   # needed by omni.syntheticdata (Replicator annotators)
+
+[settings.renderer]
+active = "rtx"
+enabled = "rtx"
+
+[settings.rtx]
+rendermode = "RaytracedLighting"

@@ -9,6 +9,13 @@ logo: gpgpu.png
 # See https://jupyterbook.org/content/execute.html
 execute:
   execute_notebooks: force
+  # research/connectome/isaac_viewer.ipynb runs on an Isaac Sim machine only (kernel
+  # "isaac_sim_connectome"). Anywhere else the missing kernel stops the whole build.
+  exclude_patterns: ['*isaac_viewer.ipynb']
+
+# Files in the folder that are not pages of the book. The first four are Jupyter Book's own defaults.
+# isaac_viewer.ipynb is a working notebook: it is not in _toc.yml and no page links to it.
+exclude_patterns: [_build, Thumbs.db, .DS_Store, "**.ipynb_checkpoints", "research/connectome/isaac_viewer.ipynb"]
 
 # Define the name of the latex output file for PDF builds
 latex:
